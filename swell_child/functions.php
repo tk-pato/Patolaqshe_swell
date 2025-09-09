@@ -5,6 +5,10 @@ if (! defined('ABSPATH')) exit;
 
 /* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
 
+// カスタマイザー設定を読み込み
+require_once get_stylesheet_directory() . '/inc/customizer-nav-bg.php';
+require_once get_stylesheet_directory() . '/inc/section-bg-helper.php';
+
 // bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
 add_filter('body_class', function ($classes) {
   if (is_front_page() || is_page_template('page-landing.php')) {
