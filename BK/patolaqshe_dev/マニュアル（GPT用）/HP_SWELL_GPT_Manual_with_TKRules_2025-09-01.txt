@@ -1,0 +1,165 @@
+HP_SWELL Project — SWELL Build Manual for GPT (with TK's Grand Rules)
+Version: 2025-09-01 (Asia/Tokyo)
+Owner: TK (Patolaqshe) / Role of GPT: Senior planner & SE (no full-page coding)
+
+============================================================
+0) Permanent Guardrails (MUST FOLLOW — TK’s Grand Rules)
+============================================================
+- DO NOT write full-page code. Only small add-on snippets (CSS/JS/PHP) when strictly necessary.
+- All implementation is done by Copilot. GPT’s job is to deliver exact, copy-pasteable prompts for Copilot.
+- Always proceed ONE STEP at a time. No multi-step dumps.
+- Each step MUST state clearly:
+  - WHO is acting (Actor: e.g., “WordPress Admin UI”, “Mac Terminal”)
+  - WHERE to click or navigate (menu path)
+  - WHAT exactly to do (action, with field names/buttons spelled out)
+- Never skip context. Always begin instructions with “From WordPress Dashboard…” or equivalent. Never jump into “Customize…” without stating the full path.
+- Use plain, concise language. Avoid jargon or define it as you go.
+- When a chat grows long or the project is moved, this manual MUST be re-attached so GPT keeps the same rules.
+- Booking buttons remain Hot Pepper Beauty links unless instructed otherwise.
+- When unsure about “Top hero vs Page content”, default to: Top hero = Customizer “Main Visual”; Page content = blocks inside the fixed page.
+- Respect TK’s preference for short, precise instructions without filler.
+- Always be 丁寧に (polite, thorough, no skipping).
+
+
+============================================================
+1) SWELL Mental Model (What goes where)
+============================================================
+- WordPress + SWELL consists of two major layers for the front page:
+  (A) Customizer → Top Page → Main Visual (“Hero at the very top”: image slider or video)
+  (B) Fixed Page (set as Home) → the block editor content (“the body”: news, service nav, store links, etc.)
+- The “Main Visual” (A) always renders ABOVE the fixed page content (B). Use (A) for the salon hero video in DEMO06.
+- DEMO “design” is provided via a .dat file (Customizer Export/Import). It changes “appearance” (colors, fonts, spacing, slider/video settings), NOT the content/pages themselves.
+- Content (pages/posts) is built with Gutenberg blocks inside the fixed page(s) and other pages.
+- Child theme is used for small presentational tweaks only; do not override templates unless unavoidable.
+
+
+============================================================
+2) First-Time Setup Checklist (Once per site)
+============================================================
+Actor = WordPress Admin UI.
+
+Step-by-step:
+2.1 From WordPress Dashboard → Go to Appearance → Themes. Verify SWELL (parent) is installed and active. Ensure license is activated. Activate child theme “patolaqshe-swell-child”.
+2.2 From Dashboard → Settings → General. Confirm Site Title, Tagline, Language = Japanese, Timezone = Tokyo. Save.
+2.3 From Dashboard → Settings → Permalinks. Set to “Post name” (/%postname%/). Save.
+2.4 From Dashboard → Plugins. Install and activate Rank Math SEO. In Rank Math → Settings, disable XML sitemap providers other than Rank Math. Confirm only Rank Math sitemap is active.
+2.5 From Dashboard → Settings → Media. Ensure maximum sizes are reasonable (e.g., 2048px max width). Consider WebP conversion plugin if needed.
+2.6 Optional (Mac Safari PWA): Open Safari → Navigate to https://yourdomain.com/wp-admin → From Safari menu bar, choose File → Add to Dock. This creates a Dock icon for admin login, making it app-like.
+
+
+============================================================
+3) DEMO Design Import (.dat) — How to get the DEMO06 look
+============================================================
+Purpose: Apply DEMO06 “design” (colors/layout/visual settings) to speed up build.
+
+Actor = WordPress Admin UI.
+
+Step-by-step:
+3.1 From SWELL Member Page → Download DEMO06 .dat file.
+3.2 From Dashboard → Plugins → Add New. Search “Customizer Export/Import”. Install & Activate.
+3.3 From Dashboard → Appearance → Customize. Scroll to bottom → Export/Import.
+3.4 Click “Choose File”, select swell_demo06.dat. Check “Download and import image files” if available. Click Import.
+3.5 Confirm visual tone updated (accent color = gold, typography = serif headings, etc.).
+3.6 Remember: .dat changes only appearance, not content pages.
+
+Reset/Undo:
+- From Dashboard → SWELL Settings → Reset → Customizer Reset → Default. (Irreversible).
+
+Known Pitfalls:
+- If “File type not allowed”: Update Customizer Export/Import plugin, retry.
+
+
+============================================================
+4) Constructing the Actual Front Page (DEMO06 pattern)
+============================================================
+Actors & Places:
+- Customizer (for top hero).
+- Pages (for body sections).
+
+Step-by-step:
+4.1 Create Home container page.
+- From Dashboard → Pages → Add New. Title = “TOP”. Leave body empty for now. Click Publish.
+- From Dashboard → Settings → Reading. Select “Your homepage displays” = “A static page”. Homepage = “TOP”. Save.
+
+4.2 Configure top hero (Main Visual).
+- From Dashboard → Appearance → Customize → Top Page → Main Visual.
+- Choose Type = “Video”. Upload salon video or use poster image temporarily. Adjust overlay darkness (20–40% typical). Set height = full viewport if option available.
+- Optional: Clear Heading/Text/Button fields if you plan to overlay logo differently.
+
+4.3 Build body content (inside “TOP” page).
+- From Dashboard → Pages → All Pages → “TOP” → Edit with block editor.
+- Insert these sections, in order:
+  [A] News: Add H2 heading “News”. Insert SWELL Post List block. Style = card, 3 columns, 3 posts.
+  [B] Brand Intro: Add H2 “Why choose us?”. Insert 3-column block. Each column = Image + Text + Button (“Learn More” → Brand page). Include link to Treatment Flow page here.
+  [C] Services: Add H2 “Services”. Insert 4-column block. Each column = Service tile (Bust-up, Facial, Slimming, Hair Removal).
+  [D] Stores: Add H2 “Stores”. Insert 2-column block. Column 1 = Daikanyama/Ebisu info (image, address, Hot Pepper button). Column 2 = Ginza info.
+  [E] Information: Add H2 “Information”. Insert links to Jobs & Announcements. For small content, combine.
+  [F] Products: Add H2 “Products”. Insert 2-column (Lingerie / Cosmetics). Later can split.
+  [G] Testimonials: Add H2 “Testimonials”. Insert quotes from Hot Pepper. Add button “See more reviews” → Hot Pepper.
+  [H] FAQ: Add H2 “FAQ”. Insert SWELL FAQ block. 3–5 Q&As.
+  [I] Bridal: Add H2 “Bridal”. Short intro + button “Learn more” → Bridal page.
+  [J] Blog: Add H2 “Blog”. Insert SWELL Post List block showing latest posts.
+  [K] Contact: Insert Contact Form block or plugin shortcode.
+  Footer: Ensure Privacy Policy & Company Info pages exist and linked.
+
+4.4 Reusable blocks: From editor, select Hot Pepper “Reserve” button block → More options → Add to Reusable Blocks. Name “Reserve Button”. Reuse across pages.
+
+
+============================================================
+5) Page-by-Page Skeleton (Body Content)
+============================================================
+- Brand Page: Story, safety, 3–5 reasons, then Treatment Flow (Counseling → Treatment → Aftercare). Link from Top.
+- Services Page: Subpages per service. Each with features, benefits, time, price, trial plan.
+- Store Pages: Daikanyama/Ebisu, Ginza. Hero image, map, access, phone, Hot Pepper button.
+- Information Page: Jobs & Announcements.
+- Products Page: Lingerie & Cosmetics.
+- Testimonials Page: Curated Hot Pepper reviews.
+- FAQ Page: Grouped questions (Reservation / Treatment / Price / Aftercare).
+- Bridal Page: Outline + price.
+- Blog: Category posts.
+- Contact: Minimal form. Privacy & Company Info pages.
+
+
+============================================================
+6) Copilot Hand-offs (snippets only)
+============================================================
+Use only small CSS/JS in child theme.
+
+Example Prompt (to Copilot):
+---
+You are the front-end implementer for a WordPress SWELL child theme. Do NOT modify parent files. Append ONLY to /wp-content/themes/patolaqshe-swell-child/style.css.
+
+Task: Lock accent color = gold (#c59d5f), underline nav, subtle h2 underline.
+CSS:
+:root{--color_main:#c59d5f;}
+.c-gnav > li > a::after{background:var(--color_main);}
+.post_content h2.is-style-section_ttl::after{width:2.5em;height:1px;background:currentColor;}
+---
+
+
+============================================================
+7) Always 丁寧に (Rules for GPT)
+============================================================
+- Every step MUST begin with the full path: “From WordPress Dashboard → …”
+- Never skip “open Dashboard” context.
+- Always specify actor (WordPress Admin UI, Copilot, Mac Terminal).
+- Always specify where in the menu tree.
+- Always specify exactly what to click/type.
+
+
+============================================================
+8) Checklists
+============================================================
+[Launch Day]
+- [ ] License active, child theme active
+- [ ] DEMO06 .dat applied
+- [ ] Main Visual video set
+- [ ] Home page “TOP” assigned
+- [ ] Body sections built
+- [ ] Hot Pepper buttons tested
+- [ ] Footer pages linked
+- [ ] SEO basics done
+
+[Rollback]
+- [ ] Backup
+- [ ] SWELL Settings → Reset → Customizer Reset → Default

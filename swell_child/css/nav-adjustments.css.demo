@@ -1,0 +1,114 @@
+/* --- SWELL06デモサイトのナビゲーションに合わせたスタイル --- */
+
+/* 基本のグリッドレイアウト */
+.ptl-pageNavHero__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 28px auto 0;
+    max-width: 1000px;
+    justify-content: center;
+    width: 90%;
+}
+
+/* 各ボタンのスタイル */
+.ptl-pageNavHero__btn {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    padding: 24px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+    transition: box-shadow .2s, transform .15s;
+    aspect-ratio: 7/5;
+    min-height: 120px;
+}
+
+.ptl-pageNavHero__btn:hover {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+/* アイコンスタイル - デモサイトに合わせて */
+.ptl-pageNavHero__icon {
+    height: 30px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.ptl-pageNavHero__icon img,
+.ptl-pageNavHero__icon svg {
+    height: 28px;
+    width: auto;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/* ラベルスタイル - デモサイトに合わせて */
+.ptl-pageNavHero__label {
+    margin-top: 0;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-align: center;
+    width: 100%;
+}
+
+/* ハンバーガーUI非表示 */
+.ptl-nav-toggle-wrap,
+.ptl-nav-hamburger,
+.ptl-nav-menu-text {
+    display: none !important;
+}
+
+/* タブレット向け調整 */
+@media (max-width: 1023px) {
+    .ptl-pageNavHero__grid {
+        gap: 16px;
+        max-width: 800px;
+    }
+    
+    .ptl-pageNavHero__btn {
+        min-height: 110px;
+    }
+}
+
+/* スマホ向け調整：2列グリッドに変更 */
+@media (max-width: 767px) {
+    .ptl-pageNavHero__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 95%;
+        margin: 20px auto 0;
+    }
+    
+    .ptl-pageNavHero__btn {
+        padding: 18px 0 16px;
+        font-size: 0.9rem;
+        min-height: 100px;
+    }
+    
+    .ptl-pageNavHero__icon {
+        height: 26px;
+        margin-bottom: 12px;
+    }
+    
+    .ptl-pageNavHero__icon img,
+    .ptl-pageNavHero__icon svg {
+        height: 24px;
+    }
+    
+    .ptl-pageNavHero__label {
+        font-size: 0.85em;
+    }
+}

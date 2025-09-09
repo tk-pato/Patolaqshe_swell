@@ -1,0 +1,43 @@
+# WordPress SWELL × オリジナル構築ログ（作り方部分）
+
+## 1. ファイル権限の確認・修正
+- テーマ・子テーマ（`swell` / `swell_child`）のフォルダ：`755`
+- ファイル：`644`
+- `wp-content/uploads` も同様に修正
+- SSHで一括実行コマンド：
+  find themes -type d -exec chmod 755 {} \;
+  find themes -type f -exec chmod 644 {} \;
+  find uploads -type d -exec chmod 755 {} \;
+  find uploads -type f -exec chmod 644 {} \;
+
+## 2. Rank Math 再インストール手順
+- 「停止 → 削除 → 再インストール」
+- セットアップウィザードで以下を実施：
+  - Googleサービス連携 → **スキップ**
+  - サイトマップ → 投稿/固定ページのみON（LP・メディアはOFF）
+  - SEO微調整 → 「空のカテゴリNoindex：ON」「外部リンクnofollow：OFF」「外部リンク新規タブ：ON」
+- **AnalyticsモジュールはOFF**（DB不具合の原因だったため）
+
+## 3. 構造化データの方針
+- SWELL/ブロックエディタに依存せず、子テーマ `inc/meta.php` に **JSON-LD を直書き**
+- SEOプラグインの自動生成（記事・FAQなど）と、独自JSON-LD（LocalBusiness・Service・FAQ・Reviewなど）を併用するハイブリッド設計
+
+## 4. ブロックとHTMLのハイブリッド構築
+- **可能であることが公式でも確認済み**（カスタムHTMLブロックに直書きできる仕様）
+- ページ単位での運用例：
+  - ブログ記事 → 100%ブロック
+  - トップページ → ヒーロー動画などはブロック／固有セクションはHTML直書き
+  - LP → 子テーマテンプレート＋HTML直書き
+- SWELL特有の動き（フェード、タブ、スライダーなど）は **軽量JS＋CSS** で再現可能
+
+## 5. 推奨制作フロー（Copilot主体 × GPTディレクション）
+1. GPTが設計（サイト構成・meta設計・構造化データ方針）
+2. Copilotにコード実装を依頼（全文上書きで生成）
+3. GPTがレビュー＆修正
+4. WordPress上で動作確認
+5. ログを保存・次ステップに展開
+
+## 6. 完成サイトの要件
+- **SEO**：正規化済みメタ・強化JSON-LD・軽量コード
+- **MEO**：LocalBusinessスキーマ＋NAP統一
+- **AIO**：表示速度最適化、セキュリティ調整、スマホUX強化

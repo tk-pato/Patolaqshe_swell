@@ -1,0 +1,1 @@
+<?php // child theme bootstrap ?>

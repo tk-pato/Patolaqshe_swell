@@ -1,0 +1,141 @@
+/* --- PC4列×2段・SP2列グリッドのナビゲーション --- */
+
+/* 基本のグリッドレイアウト */
+.ptl-pageNavHero__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+    margin: 40px auto 0 auto;
+    max-width: 1200px;
+    justify-content: center;
+}
+
+/* 各ボタンのスタイル */
+.ptl-pageNavHero__btn {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 32px 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222;
+    text-decoration: none;
+    transition: box-shadow .2s, transform .2s;
+}
+
+.ptl-pageNavHero__btn:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* アイコンスタイル */
+.ptl-pageNavHero__icon {
+    height: 40px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.ptl-pageNavHero__icon img,
+.ptl-pageNavHero__icon svg {
+    height: 32px;
+    width: auto;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/* ラベルスタイル */
+.ptl-pageNavHero__label {
+    margin-top: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-align: center;
+    width: 100%;
+}
+
+/* パララックス背景のスタイル */
+.ptl-pageNavHero {
+    position: relative;
+    overflow: hidden;
+}
+
+.ptl-pageNavHero__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.ptl-pageNavHero__image,
+.ptl-pageNavHero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ptl-pageNavHero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, var(--overlay, 0.25));
+}
+
+/* ハンバーガーUI非表示 */
+.ptl-nav-toggle-wrap,
+.ptl-nav-hamburger,
+.ptl-nav-menu-text {
+    display: none !important;
+}
+
+/* タブレット向け調整 */
+@media (max-width: 1023px) {
+    .ptl-pageNavHero__grid {
+        gap: 24px 12px;
+        max-width: 900px;
+    }
+}
+
+/* スマホ向け調整：2列グリッドに変更 */
+@media (max-width: 767px) {
+    .ptl-pageNavHero__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 16px;
+        max-width: 90%;
+        margin: 24px auto 0 auto;
+    }
+    
+    .ptl-pageNavHero__btn {
+        padding: 20px 0 16px 0;
+        font-size: 1.1rem;
+    }
+    
+    .ptl-pageNavHero__icon {
+        height: 36px;
+        margin-bottom: 12px;
+    }
+    
+    .ptl-pageNavHero__icon img,
+    .ptl-pageNavHero__icon svg {
+        height: 28px;
+    }
+    
+    .ptl-pageNavHero__label {
+        margin-top: 4px;
+        font-size: 0.9em;
+    }
+}

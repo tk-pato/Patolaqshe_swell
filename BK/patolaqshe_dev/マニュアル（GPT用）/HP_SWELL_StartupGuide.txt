@@ -1,0 +1,40 @@
+HP_SWELL Project — GPT Startup Guide
+Version: 2025-09-01
+
+============================================================
+Purpose
+============================================================
+To ensure every new chat or project with GPT begins under the exact same rules, avoiding miscommunication or wasted time.
+
+============================================================
+Startup Procedure (Always Follow These Steps)
+============================================================
+1. Start a new chat or project.
+
+2. Immediately upload the file:
+   - HP_SWELL_GPT_Manual_with_TKRules_2025-09-01.txt
+
+3. Instruct GPT explicitly:
+   "This project is for SWELL site building. Always follow the attached manual as the highest priority."
+
+4. Confirm GPT’s adherence to rules:
+   - Instructions delivered ONE STEP at a time.
+   - Actor (who), Place (where in UI), and Action (what) always specified.
+   - Never skip context. Always begin with “From WordPress Dashboard → …” or equivalent.
+   - No full-page coding. Only minimal snippet prompts for Copilot when necessary.
+   - Booking button defaults to Hot Pepper Beauty links unless specified.
+
+5. Core Principles (to remind GPT each time):
+   - Top hero = Customizer → Top Page → Main Visual (video/image/slider)
+   - Body content = Fixed Page “TOP” built with blocks
+   - Clarify whenever ambiguity arises (hero vs body, plugin vs theme, etc.)
+   - If GPT drifts from manual, immediately say: “Return to manual.”
+
+============================================================
+Optional Notes
+============================================================
+- Keep both files together:
+  (A) HP_SWELL_GPT_Manual_with_TKRules_2025-09-01.txt
+  (B) HP_SWELL_StartupGuide.txt
+- Upload both if project is especially long or complex.
+- Use this startup guide as a reminder checklist for TK and GPT.

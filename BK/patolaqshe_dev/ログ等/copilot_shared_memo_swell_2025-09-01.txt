@@ -1,0 +1,92 @@
+Patolaqshe SWELL移行 — Copilot共有メモ v2025-09-01
+
+【役割と原則】
+- 開発は WordPress「SWELL」ベース。実装は Copilot が担当。GPT は設計書/指示の作成のみ。
+- 厳守: 「指定箇所のみ編集」「ページ全体の一括生成禁止」「1手順ずつ」「不要な最適化や言い換え禁止」。
+- 提出は常に“そのまま使える完成版”。不要な説明や推測はしない。
+
+【設計リファレンス（抜粋）】
+- テーマ/トーン/フォント: SWELL、白ベース＋ピンクベージュ差し色、見出し=Noto Serif JP／本文=Noto Sans JP。 参照: 新サイト構想メモ I-サイト全体方針。
+- サイトマップ（要点）: トップ（ヒーロー/コンセプト/サービス/BeforeAfter/口コミ/2店舗リンク/予約CTA/最新記事3件）、コンセプト、サービス、スタッフ、ギャラリー、ブログ、アクセス兼予約。参照: 新サイト構想メモ II-ページ構成。
+- SEO/MEO方針: 「代官山・銀座 バストアップ専門店」を明記、LocalBusiness/Breadcrumb/FAQのJSON-LD、2店舗のGBP連動、記事カテゴリで恵比寿・銀座KWを強化。参照: 新サイト構想メモ III。
+- マイグレーション原則: 既存PHP＋WPの併用は破棄。SWELL新構築→完成後に現行PHPを一括入替。参照: 引っ越しログ 背景/注意点。
+
+【デザイン定数（初期案）】
+- Color: base=#FFFFFF、accent（pink-beige）=※後で確定、text=#111、muted=#777
+- Font: 見出し Noto Serif JP、本文 Noto Sans JP
+- Spacing scale: 4/8/12/16/24/32/48px（暫定）
+- 画像: ヒーローは動画または静止画スライダー。Before/Afterは軽量最優先（WebP）。
+
+【実装方針】
+- 子テーマを作成し、すべての追加CSS/JSは子テーマ配下で管理。
+- JSON-LDはテーマフックで出力（親テーマ改変禁止）。
+- 2店舗情報（代官山・銀座）は明確に分離し、アクセス/予約導線を常時表示。
+
+【命名/配置（提案）】
+- テーマスラッグ: patolaqshe-swell-child
+- PHP関数プレフィックス: ptlqsh_
+- ディレクトリ: wp-content/themes/patolaqshe-swell-child/
+
+【品質基準（抜粋）】
+- LCP/CLS最適化（ヒーローのメディア最適化、遅延読込設定の確認）
+- a11y: alt/aria/コントラスト基準を満たす
+- セキュリティ: 直接出力は esc_html/esc_attr/esc_url、nonceと権限チェック徹底
+
+【現在のSTEP（ここだけ実行）】
+STEP 1: 「子テーマの雛形だけ」を作る（デザインやレイアウトはまだ触らない）。
+
+―――― Copilot向け実行プロンプト（STEP 1 / そのまま投入可）――――
+```
+あなたは WordPress テーマ開発のシニアエンジニアです。以下を“子テーマのみ”で実装してください。親テーマ SWELL は一切改変しません。
+
+■ ゴール
+- 子テーマ「patolaqshe-swell-child」の最小雛形を作成して有効化可能な状態にする。
+- まだデザイン調整はしない。将来の追記に耐える骨子のみ。
+
+■ 作業
+1) ディレクトリ作成
+   - `wp-content/themes/patolaqshe-swell-child/`
+
+2) style.css（以下のヘッダを含む）
+   /*
+    Theme Name: Patolaqshe SWELL Child
+    Template:   swell
+    Text Domain: patolaqshe-swell-child
+    Description: Patolaqshe専用SWELL子テーマ
+    Version: 0.1.0
+   */
+   :root {
+     /* 後で確定するブランドカラー（仮） */
+     --color-base: #ffffff;
+     --color-text: #111111;
+     --color-muted: #777777;
+     --color-accent: /* TODO: pink-beige */;
+   }
+   body { font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif; }
+
+3) functions.php
+   - 親/子スタイルの読み込み（`wp_enqueue_scripts`）
+   - テーマサポート（title-tag, post-thumbnails）
+   - 将来のJSON-LD出力用のフック雛形（空の関数だけ）
+   - Text Domain を読み込む仕掛け（`load_child_theme_textdomain`）
+
+4) readme.md（開発者向け）
+   - 目的、編集原則（指定箇所のみ／親テーマ改変禁止／1手順ずつ）を1ページで記載
+
+■ コーディング規約
+- PHP: `ptlqsh_` プレフィックス、国際化関数の使用、直出力禁止（必ずエスケープ）。
+- CSS: 変数ベース、特異度の高いセレクタ禁止、!important禁止。
+
+■ 期待する成果物
+- ディレクトリと3ファイル（style.css, functions.php, readme.md）が生成済み。
+- WordPress管理画面の外観>テーマに「Patolaqshe SWELL Child」が表示され、有効化可能。
+
+実装後は差分一覧（作成ファイル・追加行数）も書き出してください。
+```
+
+【次のSTEP候補（まだ実行しない）】
+- STEP 2: JSON-LDの枠（LocalBusiness/Breadcrumb/FAQ）の関数ファイル追加
+- STEP 3: ヒーロー/CTAのコンポーネント設計（SWELL標準ブロック活用）
+- STEP 4: 店舗別アクセス/予約導線の常時表示パーツ化
+
+以上。
