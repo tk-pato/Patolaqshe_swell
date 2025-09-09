@@ -75,31 +75,48 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title is-onImage">NAVIGATION</h2>
-        <div class="ptl-pageNavHero__grid">
-            <?php
-            // 子テーマ内のアイコン格納場所（PNG想定）
-            $icon_dir_rel = '/img/nav';
-            $icon_dir_abs = trailingslashit(get_stylesheet_directory() . $icon_dir_rel);
-            $icon_dir_uri = trailingslashit(get_stylesheet_directory_uri() . $icon_dir_rel);
 
-            foreach ($items as $it): if (empty($it['label'])) continue;
-                $href = $it['url'] ?? '#';
-                $label = (string) $it['label'];
-                $slug  = !empty($it['slug']) ? (string) $it['slug'] : strtolower(preg_replace('/[^a-z0-9\-]+/i', '-', $label));
-                $icon_html = $it['icon_html'] ?? '';
-                if (!$icon_html && $slug) {
-                    $png = $icon_dir_abs . $slug . '.png';
-                    if (file_exists($png)) {
-                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" loading="lazy" decoding="async">';
+        <!-- SPの場合のみ表示するハンバーガーUI -->
+        <div class="ptl-nav-toggle-wrap">
+            <button id="ptlNavHamburger" class="ptl-nav-hamburger" aria-expanded="false" aria-controls="ptlNavMenu">
+                <span class="ptl-nav-hamburger__icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="sr-only">メニュー</span>
+            </button>
+            <span id="ptlNavMenuText" class="ptl-nav-menu-text">menu</span>
+        </div>
+
+        <!-- メニュー本体（SP時は非表示→ハンバーガークリックで表示） -->
+        <div id="ptlNavMenu" class="ptl-pageNavHero__grid-wrap">
+            <div class="ptl-pageNavHero__grid">
+                <?php
+                // 子テーマ内のアイコン格納場所（PNG想定）
+                $icon_dir_rel = '/img/nav';
+                $icon_dir_abs = trailingslashit(get_stylesheet_directory() . $icon_dir_rel);
+                $icon_dir_uri = trailingslashit(get_stylesheet_directory_uri() . $icon_dir_rel);
+
+                foreach ($items as $it): if (empty($it['label'])) continue;
+                    $href = $it['url'] ?? '#';
+                    $label = (string) $it['label'];
+                    $slug  = !empty($it['slug']) ? (string) $it['slug'] : strtolower(preg_replace('/[^a-z0-9\-]+/i', '-', $label));
+                    $icon_html = $it['icon_html'] ?? '';
+                    if (!$icon_html && $slug) {
+                        $png = $icon_dir_abs . $slug . '.png';
+                        if (file_exists($png)) {
+                            $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" loading="lazy" decoding="async">';
+                        }
                     }
-                }
-                if (!$icon_html) { $icon_html = ptl_nav_placeholder_svg($label); }
-                ?>
-                <a class="ptl-pageNavHero__btn" href="<?php echo esc_url($href); ?>">
-                    <span class="ptl-pageNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-                    <span class="ptl-pageNavHero__label"><?php echo esc_html($label); ?></span>
-                </a>
-            <?php endforeach; ?>
+                    if (!$icon_html) { $icon_html = ptl_nav_placeholder_svg($label); }
+                    ?>
+                    <a class="ptl-pageNavHero__btn" href="<?php echo esc_url($href); ?>">
+                        <span class="ptl-pageNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+                        <span class="ptl-pageNavHero__label"><?php echo esc_html($label); ?></span>
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>

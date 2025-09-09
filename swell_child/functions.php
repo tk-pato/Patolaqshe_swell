@@ -28,6 +28,11 @@ add_action('wp_enqueue_scripts', function () {
   $nav_css_ver = file_exists($nav_css_path) ? date('YmdHis', filemtime($nav_css_path)) : time();
   wp_enqueue_style('patolaqshe-nav-adjust', get_stylesheet_directory_uri() . '/css/nav-adjustments.css', ['child_style'], $nav_css_ver);
 
+  // SP用メニューのCSS
+  $sp_menu_css_path = get_stylesheet_directory() . '/css/sp-menu.css';
+  $sp_menu_css_ver = file_exists($sp_menu_css_path) ? date('YmdHis', filemtime($sp_menu_css_path)) : time();
+  wp_enqueue_style('patolaqshe-sp-menu', get_stylesheet_directory_uri() . '/css/sp-menu.css', ['child_style'], $sp_menu_css_ver);
+
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');

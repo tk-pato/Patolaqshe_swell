@@ -1,41 +1,40 @@
-// ハンバーガーメニュー開閉（SPのみ）
-
+// SPナビゲーションの開閉処理
 document.addEventListener('DOMContentLoaded', function() {
-	var hamburger = document.getElementById('ptlNavHamburger');
-	var navMenu = document.getElementById('ptlNavMenu');
-	var menuText = document.getElementById('ptlNavMenuText');
-	if (!hamburger || !navMenu || !menuText) return;
+    // 要素の取得
+    const hamburger = document.getElementById('ptlNavHamburger');
+    const menuText = document.getElementById('ptlNavMenuText');
+    const navMenu = document.getElementById('ptlNavMenu');
 
-	function handleResize() {
-		if (window.innerWidth <= 767) {
-			hamburger.style.display = 'flex';
-			menuText.style.display = 'inline-block';
-			navMenu.classList.remove('is-open');
-			hamburger.setAttribute('aria-expanded', false);
-		} else {
-			hamburger.style.display = 'none';
-			menuText.style.display = 'none';
-			navMenu.classList.add('is-open');
-			hamburger.setAttribute('aria-expanded', false);
-		}
-	}
+    // 要素が存在しない場合は処理しない
+    if (!hamburger || !menuText || !navMenu) return;
 
-	// 初期化時にSPなら必ず表示
-	if (window.innerWidth <= 767) {
-		hamburger.style.display = 'flex';
-		menuText.style.display = 'inline-block';
-	} else {
-		hamburger.style.display = 'none';
-		menuText.style.display = 'none';
-	}
+    // 画面サイズに応じた初期表示制御
+    function handleScreenSize() {
+        if (window.innerWidth <= 767) {
+            // SP表示時
+            hamburger.style.display = 'flex';
+            menuText.style.display = 'inline-block';
+            navMenu.classList.remove('is-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        } else {
+            // PC表示時はハンバーガーUI非表示・メニュー常時表示
+            hamburger.style.display = 'none';
+            menuText.style.display = 'none';
+            navMenu.classList.add('is-open');
+        }
+    }
 
-	function toggleMenu() {
-		var expanded = hamburger.getAttribute('aria-expanded') === 'true';
-		hamburger.setAttribute('aria-expanded', !expanded);
-		navMenu.classList.toggle('is-open', !expanded);
-		hamburger.classList.toggle('is-active', !expanded);
-	}
-	hamburger.addEventListener('click', toggleMenu);
-	menuText.addEventListener('click', toggleMenu);
-	window.addEventListener('resize', handleResize);
+    // メニューの開閉トグル処理
+    function toggleMenu() {
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('is-open');
+        hamburger.classList.toggle('is-active');
+    }
+
+    // 初期化とイベントリスナー設定
+    handleScreenSize();
+    hamburger.addEventListener('click', toggleMenu);
+    menuText.addEventListener('click', toggleMenu);
+    window.addEventListener('resize', handleScreenSize);
 });

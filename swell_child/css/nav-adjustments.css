@@ -1,5 +1,12 @@
 /* --- PC4列×2段・SP2列グリッドのナビゲーション（最新スクリーンショット通り） --- */
 
+/* ハンバーガーメニュー制御のためのラッパーとナビゲーション */
+.ptl-pageNavHero__grid-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 /* 基本のグリッドレイアウト */
 .ptl-pageNavHero__grid {
     display: grid;
@@ -61,11 +68,26 @@
     width: 100%;
 }
 
-/* ハンバーガーUI非表示 */
-.ptl-nav-toggle-wrap,
-.ptl-nav-hamburger,
-.ptl-nav-menu-text {
-    display: none !important;
+/* SP時のメニューの開閉制御 */
+@media (max-width: 767px) {
+    #ptlNavMenu {
+        display: none;
+    }
+    
+    #ptlNavMenu.is-open {
+        display: block;
+    }
+}
+
+/* PCではハンバーガーUI非表示・メニュー常時表示 */
+@media (min-width: 768px) {
+    .ptl-nav-toggle-wrap {
+        display: none !important;
+    }
+    
+    #ptlNavMenu {
+        display: block !important;
+    }
 }
 
 /* タブレット向け調整 */
