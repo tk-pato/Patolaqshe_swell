@@ -1,0 +1,115 @@
+/* navigationクローンをcommitment専用にスコープ */
+.ptl-commitment-grid .cmt-cards{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
+}
+@media(max-width:1024px){.ptl-commitment-grid .cmt-cards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:767px){.ptl-commitment-grid .cmt-cards{grid-template-columns:repeat(2,1fr)}}
+.ptl-commitment-grid .cmt-card{
+  background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.06);
+  padding:24px;text-align:center;
+}
+.ptl-commitment-grid .cmt-thumb{
+  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:8px;margin:0 auto 16px;
+}
+.ptl-commitment-grid .cmt-title{font-weight:700;letter-spacing:.02em;margin:.5rem 0 .25rem}
+.ptl-commitment-grid .cmt-excerpt{font-size:14px;line-height:1.75;color:#444;margin:0}
+.ptl-commitment-grid .cmt-card a,.ptl-commitment-grid .cmt-card:hover{
+  pointer-events:none;transform:none;box-shadow:none;opacity:1;
+}
+/* 幅は .l-container 共有で自動一致。独自max-width指定はしない */
+/* === commitment ⇔ navigation 幅/レイアウト統一 === */
+.ptl-commitment .l-container{max-width:inherit;margin:0 auto}
+.ptl-commitment .cards{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
+}
+
+/* === Navigation風COMMITMENTタイル === */
+#section-commitment-tiles .ptl-pageNavHero__grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
+}
+@media(max-width:1024px){
+  #section-commitment-tiles .ptl-pageNavHero__grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:767px){
+  #section-commitment-tiles .ptl-pageNavHero__grid{grid-template-columns:repeat(2,1fr)}
+}
+/* 画像を"写真カード"に最適化 */
+#section-commitment-tiles .ptl-pageNavHero__btn{padding:24px;text-align:center}
+#section-commitment-tiles .ptl-pageNavHero__icon{width:100%;margin:0 0 16px}
+#section-commitment-tiles .ptl-pageNavHero__icon img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+/* 非リンク・非ホバー */
+#section-commitment-tiles .ptl-pageNavHero__btn a{pointer-events:none;cursor:default}
+#section-commitment-tiles .ptl-pageNavHero__btn:hover{transform:none;box-shadow:none;opacity:1}
+/* テキスト */
+#section-commitment-tiles .nav-text{font-size:14px;line-height:1.75;color:#444;margin:4px 0 0;text-align:center}
+@media(max-width:1024px){
+  .ptl-commitment .cards{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:767px){
+  .ptl-commitment .cards{grid-template-columns:repeat(2,1fr)}
+}
+.ptl-commitment .card{
+  background:#fff;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+.ptl-commitment .card .thumb{
+  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+}
+/* 画像リンク無効（MOREのみ生かす） */
+.ptl-commitment .card a.thumb-link{pointer-events:none;cursor:default}
+/* セクション内のホバー演出を無効化 */
+.ptl-commitment .card:hover{transform:none;box-shadow:none;opacity:1}
+/* タイトルと本文の最小体裁 */
+.ptl-commitment .card .title{font-weight:700;letter-spacing:.02em;margin:.75rem 0 .25rem}
+.ptl-commitment .card .excerpt{font-size:14px;line-height:1.75;color:#444}
+/* 共通コンテナ幅（navigationと同期） */
+.ptl-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* commitmentカードのグリッド（navigationと同じ列数・gap） */
+.ptl-commitment .cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .ptl-commitment .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .ptl-commitment .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ptl-commitment .card {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.ptl-commitment .card .thumb {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.ptl-commitment .card a.is-static,
+.ptl-commitment .card .thumb-link {
+  pointer-events: none;
+  cursor: default;
+}
+.ptl-commitment .card:hover {
+  transform: none;
+  box-shadow: inherit;
+  opacity: 1;
+}

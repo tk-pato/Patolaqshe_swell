@@ -1,0 +1,24 @@
+/* navigationクローンをcommitment専用にスコープ */
+.ptl-commitment-grid .cmt-cards{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
+}
+@media(max-width:1024px){.ptl-commitment-grid .cmt-cards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:767px){.ptl-commitment-grid .cmt-cards{grid-template-columns:repeat(2,1fr)}}
+.ptl-commitment-grid .cmt-card{
+  background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.06);
+  padding:24px;text-align:center;
+}
+.ptl-commitment-grid .cmt-thumb{
+  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:8px;margin:0 auto 16px;
+}
+.ptl-commitment-grid .cmt-title{font-weight:700;letter-spacing:.02em;margin:.5rem 0 .25rem}
+.ptl-commitment-grid .cmt-excerpt{font-size:14px;line-height:1.75;color:#444;margin:0}
+.ptl-commitment-grid .cmt-card a,.ptl-commitment-grid .cmt-card:hover{
+  pointer-events:none;transform:none;box-shadow:none;opacity:1;
+}
+/* 幅は .l-container 共有で自動一致。独自max-width指定はしない */
+.ptl-commitment-grid > .l-container{max-width:inherit;margin:0 auto}
+/* nav側が .l-container に max-width を当てていないテーマ設定の場合、下記をコメント解除して固定値で同期
+   .ptl-commitment-grid > .l-container{max-width:1200px;padding:0 16px} */
