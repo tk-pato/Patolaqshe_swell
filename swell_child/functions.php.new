@@ -1,0 +1,170 @@
+<?php
+if (! defined('ABSPATH')) exit;
+
+/* 子テーマのfunctions.phpは、親テーマのfunctions.phpより先に読み込まれることに注意してください。 */
+
+/* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
+
+// カスタマイザー設定を読み込み
+require_once get_stylesheet_directory() . '/inc/customizer-nav-bg.php';
+require_once get_stylesheet_directory() . '/inc/section-bg-helper.php';
+
+// bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
+add_filter('body_class', function($classes) {    
+    // 初期状態でptl-header-hiddenクラスを追加（新ヘッダー制御用）
+    if (is_front_page() || is_page_template('page-landing.php')) {
+        $classes[] = 'ptl-header-hidden';
+    }
+    return $classes;
+});
+
+
+/**
+ * 子テーマでのファイルの読み込み
+ */
+add_action('wp_enqueue_scripts', function () {
+  // style.css
+  $style_path = get_stylesheet_directory() . '/style.css';
+  $style_ver  = file_exists($style_path) ? date('Ymdgis', filemtime($style_path)) : null;
+  // 親テーマ main.css のハンドルは 'main_style'（SWELL）
+  wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
+  
+  // nav-adjustments.css（SPナビCSS）- キャッシュバスティング追加
+  $nav_css_path = get_stylesheet_directory() . '/css/nav-adjustments.css';
+  $nav_css_ver = file_exists($nav_css_path) ? date('YmdHis', filemtime($nav_css_path)) : time();
+  wp_enqueue_style('patolaqshe-nav-adjust', get_stylesheet_directory_uri() . '/css/nav-adjustments.css', ['child_style'], $nav_css_ver);
+
+  // SP用メニューのCSS
+  $sp_menu_css_path = get_stylesheet_directory() . '/css/sp-menu.css';
+  $sp_menu_css_ver = file_exists($sp_menu_css_path) ? date('YmdHis', filemtime($sp_menu_css_path)) : time();
+  wp_enqueue_style('patolaqshe-sp-menu', get_stylesheet_directory_uri() . '/css/sp-menu.css', ['child_style'], $sp_menu_css_ver);
+
+  // ★ヘッダー表示/非表示制御を一本化（インラインCSSで優先度最大化）
+  wp_add_inline_style(
+    'main_style', // SWELLテーマの主要スタイル
+    <<<'CSS'
+/* ==== Header Visibility (single source of truth) ==== */
+.l-header, .p-headerBar, .l-fixHeader {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 999 !important;
+  /* 背景はお好みで */
+  background: rgba(0,0,0,.40) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+
+  /* アニメーション */
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity .28s ease, transform .28s ease !important;
+
+  /* 既存スクリプトが setAttribute/style で display を触っても復元 */
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* 画面最上部（未スクロール）は隠す */
+body.ptl-header-hidden .l-header,
+body.ptl-header-hidden .p-headerBar,
+body.ptl-header-hidden .l-fixHeader {
+  opacity: 0 !important;
+  transform: translateY(-10px) !important;
+  pointer-events: none !important;
+}
+
+/* 管理バーがある場合の押し出し（必要なら調整） */
+@media (min-width: 783px) {
+  body.admin-bar .l-header,
+  body.admin-bar .p-headerBar,
+  body.admin-bar .l-fixHeader { top: 32px !important; }
+}
+@media (max-width: 782px) {
+  body.admin-bar .l-header,
+  body.admin-bar .p-headerBar,
+  body.admin-bar .l-fixHeader { top: 46px !important; }
+}
+
+/* SWELLの固定ヘッダー重複対策（存在する場合のみ） */
+.c-fixBtnWrap, .l-fixHeader { will-change: transform, opacity; }
+CSS
+  );
+
+  // ★ヘッダー表示制御のJSも統合（依存性を最小化）
+  wp_add_inline_script(
+    'jquery-core', // 標準のjQueryに依存
+    <<<'JS'
+/*!
+ * Header show/hide on scroll - 統合版
+ * - ページ最上部: 非表示
+ * - スクロール時: 表示
+ */
+(function() {
+  'use strict';
+  var body = document.body;
+  var headers = null;
+  var ticking = false;
+
+  function restoreHeaderDisplay() {
+    headers = headers || document.querySelectorAll('.l-header, .p-headerBar, .l-fixHeader');
+    headers.forEach(function(h) {
+      // 既存スクリプトが display を上書きしていても解除
+      if (h && h.style && h.style.display === 'none') h.style.display = '';
+      if (h && h.style && h.style.visibility === 'hidden') h.style.visibility = '';
+    });
+  }
+
+  function update() {
+    restoreHeaderDisplay();
+    var y = window.scrollY || window.pageYOffset || 0;
+    // スクロール閾値（8px）
+    if (y <= 8) {
+      if (!body.classList.contains('ptl-header-hidden')) {
+        body.classList.add('ptl-header-hidden');
+      }
+    } else {
+      body.classList.remove('ptl-header-hidden');
+    }
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  // 初期化と各種イベント登録
+  document.addEventListener('DOMContentLoaded', update);
+  window.addEventListener('load', update, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  setTimeout(update, 100);
+  setTimeout(update, 500);
+})();
+JS
+  );
+
+  // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読込でも軽量
+  $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
+  if (file_exists($parallax_js_path)) {
+    $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
+    wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
+    
+    // パララックス強制初期化スクリプト（section-parallax.jsの後に読み込む）
+    $parallax_init_path = get_stylesheet_directory() . '/js/parallax-initializer.js';
+    if (file_exists($parallax_init_path)) {
+      $parallax_init_ver = date('Ymdgis', filemtime($parallax_init_path));
+      wp_enqueue_script('child_parallax_initializer', get_stylesheet_directory_uri() . '/js/parallax-initializer.js', ['child_section_parallax'], $parallax_init_ver, true);
+    }
+  }
+
+  // nav-toggle.js（SPナビJS）
+  $nav_js_path = get_stylesheet_directory() . '/js/nav-toggle.js';
+  $nav_js_ver = file_exists($nav_js_path) ? date('YmdHis', filemtime($nav_js_path)) : time();
+  wp_enqueue_script('patolaqshe-nav-toggle', get_stylesheet_directory_uri() . '/js/nav-toggle.js', [], $nav_js_ver, true);
+}, 20);

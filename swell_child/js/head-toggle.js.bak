@@ -1,0 +1,57 @@
+
+/**
+ * head-toggle.js: ヘッダーバー表示制御 - 完全修正版
+ * ページ最上部でのみヘッダーを非表示にし、
+ * スクロールやアンカーリンク移動でヘッダーを表示する
+ */
+
+(function() {
+  'use strict';
+  var body = document.body;
+  var lastScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  var ticking = false;
+  
+  // 厳密にページ最上部かどうか判定
+  function isPageTop() {
+    var scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    var scrollX = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft || 0;
+    return scrollY === 0 && scrollX === 0;
+  }
+  
+  // ヘッダー表示・非表示を設定
+  function updateHeaderVisibility() {
+    if (isPageTop()) {
+      // 完全なページ最上部の場合のみ非表示
+      body.classList.add('ptl-header-hidden');
+    } else {
+      // 少しでもスクロールしたら表示
+      body.classList.remove('ptl-header-hidden');
+    }
+    ticking = false;
+  }
+  
+  // スクロールイベントハンドラ
+  function onScroll() {
+    lastScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateHeaderVisibility();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  // アンカーリンク移動などを検知するためのイベント
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('hashchange', updateHeaderVisibility, { passive: true });
+  window.addEventListener('popstate', updateHeaderVisibility, { passive: true });
+  document.addEventListener('DOMContentLoaded', updateHeaderVisibility);
+  window.addEventListener('load', updateHeaderVisibility);
+
+  // 確実に初期状態を設定
+  updateHeaderVisibility();
+  setTimeout(updateHeaderVisibility, 100);
+  setTimeout(updateHeaderVisibility, 500);
+})();

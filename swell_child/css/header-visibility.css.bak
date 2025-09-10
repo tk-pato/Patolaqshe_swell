@@ -1,0 +1,51 @@
+/**
+ * ヘッダー表示制御用CSS - 完全修正版
+ * ページ最上部でのみ非表示、スクロールすると表示
+ */
+
+/* 基本ヘッダースタイル（常に適用） */
+.l-header,
+.p-headerBar,
+.l-fixHeader {
+    display: block !important;
+    z-index: 999 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: rgba(0, 0, 0, 0.4) !important; /* 黒ベースで40%不透明度 */
+    backdrop-filter: blur(5px) !important; /* 背景をぼかす */
+    -webkit-backdrop-filter: blur(5px) !important; /* Safari対応 */
+    
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+    pointer-events: auto !important;
+}
+
+/* ページ最上部（スクロール位置0）でのみ非表示 */
+body.ptl-header-hidden .l-header,
+body.ptl-header-hidden .p-headerBar,
+body.ptl-header-hidden .l-fixHeader {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-10px) !important;
+    pointer-events: none !important;
+}
+
+/* 管理バーがある場合の調整 */
+@media (min-width: 783px) {
+    body.admin-bar .l-header,
+    body.admin-bar .p-headerBar,
+    body.admin-bar .l-fixHeader {
+        top: 32px !important;
+    }
+}
+@media (max-width: 782px) {
+    body.admin-bar .l-header,
+    body.admin-bar .p-headerBar,
+    body.admin-bar .l-fixHeader {
+        top: 46px !important;
+    }
+}
