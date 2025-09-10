@@ -1,5 +1,6 @@
 <?php
 if (! defined('ABSPATH')) exit;
+// WordPress標準のヘッダー呼び出し
 get_header();
 ?>
 

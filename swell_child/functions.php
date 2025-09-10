@@ -5,12 +5,13 @@ if (! defined('ABSPATH')) exit;
 
 /* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
 
-// カスタマイザー設定を読み込み
-require_once get_stylesheet_directory() . '/inc/customizer-nav-bg.php';
-require_once get_stylesheet_directory() . '/inc/section-bg-helper.php';
-
-// ヘッダー表示制御はJS単独(PTL v2)で行うため、body_classの強制付与は廃止
-
+// bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
+add_filter('body_class', function ($classes) {
+  if (is_front_page() || is_page_template('page-landing.php')) {
+    $classes[] = 'has-head-toggle';
+  }
+  return $classes;
+});
 
 /**
  * 子テーマでのファイルの読み込み
@@ -21,42 +22,387 @@ add_action('wp_enqueue_scripts', function () {
   $style_ver  = file_exists($style_path) ? date('Ymdgis', filemtime($style_path)) : null;
   // 親テーマ main.css のハンドルは 'main_style'（SWELL）
   wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
-  
-  // nav-adjustments.css（SPナビCSS）- キャッシュバスティング追加
-  $nav_css_path = get_stylesheet_directory() . '/css/nav-adjustments.css';
-  $nav_css_ver = file_exists($nav_css_path) ? date('YmdHis', filemtime($nav_css_path)) : time();
-  wp_enqueue_style('patolaqshe-nav-adjust', get_stylesheet_directory_uri() . '/css/nav-adjustments.css', ['child_style'], $nav_css_ver);
 
-  // SP用メニューのCSS
-  $sp_menu_css_path = get_stylesheet_directory() . '/css/sp-menu.css';
-  $sp_menu_css_ver = file_exists($sp_menu_css_path) ? date('YmdHis', filemtime($sp_menu_css_path)) : time();
-  wp_enqueue_style('patolaqshe-sp-menu', get_stylesheet_directory_uri() . '/css/sp-menu.css', ['child_style'], $sp_menu_css_ver);
-
-  // 旧: ヘッダー表示制御CSSは読み込み停止（JSで動的スタイル注入するため）
-
-  // ヘッダー表示/非表示制御JS（ファイルを確実に読み込み）
+  // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
-  if (file_exists($head_js_path)) {
-    $head_js_ver  = date('Ymdgis', filemtime($head_js_path));
-    wp_enqueue_script('ptl-head-toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
-  }
+  $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
+  wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
   // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読込でも軽量
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
     wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
-    
-    // パララックス強制初期化スクリプト（section-parallax.jsの後に読み込む）
-    $parallax_init_path = get_stylesheet_directory() . '/js/parallax-initializer.js';
-    if (file_exists($parallax_init_path)) {
-      $parallax_init_ver = date('Ymdgis', filemtime($parallax_init_path));
-      wp_enqueue_script('child_parallax_initializer', get_stylesheet_directory_uri() . '/js/parallax-initializer.js', ['child_section_parallax'], $parallax_init_ver, true);
+  }
+}, 20);
+/* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
+
+// add_theme_support( 'post-thumbnails' );
+// JSON-LDやフック追加は、サイト固有要件が固まってから実装します。
+
+// パターン: 選ばれる理由（4カード）
+add_action('init', function () {
+  if (!function_exists('register_block_pattern')) return;
+
+  // カテゴリ登録（なければ）
+  if (function_exists('register_block_pattern_category')) {
+    register_block_pattern_category('patolaqshe', [
+      'label' => 'Patolaqshe',
+    ]);
+  }
+
+  $reason_url = home_url('/reason/'); // 後で変更可（現在は /media/reason/ 相当）
+
+  $content = '<!-- wp:group {"tagName":"section","className":"ptl-reasons","anchor":"brand-reason"} -->
+  <section class="wp-block-group ptl-reasons" id="brand-reason"><div class="wp-block-group__inner-container">
+  <!-- wp:heading {"textAlign":"center"} -->
+  <h2 class="has-text-align-center">選ばれる理由</h2>
+  <!-- /wp:heading -->
+
+  <!-- wp:columns {"className":"ptl-reasons__grid"} -->
+  <div class="wp-block-columns ptl-reasons__grid">
+
+    <!-- wp:column -->
+    <div class="wp-block-column">
+      <!-- wp:group {"className":"ptl-reason-card"} -->
+      <div class="wp-block-group ptl-reason-card">
+        <!-- wp:group {"className":"ptl-reason-card__media"} -->
+        <div class="wp-block-group ptl-reason-card__media"><a href="' . esc_url($reason_url) . '"><div class="ptl-ph" aria-hidden="true"></div></a></div>
+        <!-- /wp:group -->
+        <!-- wp:heading {"level":4,"className":"ptl-reason-card__title"} -->
+        <h4 class="ptl-reason-card__title"><a href="' . esc_url($reason_url) . '">施術からホームケアまでアドバイス</a></h4>
+        <!-- /wp:heading -->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:column -->
+
+    <!-- wp:column -->
+    <div class="wp-block-column">
+      <!-- wp:group {"className":"ptl-reason-card"} -->
+      <div class="wp-block-group ptl-reason-card">
+        <!-- wp:group {"className":"ptl-reason-card__media"} -->
+        <div class="wp-block-group ptl-reason-card__media"><a href="' . esc_url($reason_url) . '"><div class="ptl-ph" aria-hidden="true"></div></a></div>
+        <!-- /wp:group -->
+        <!-- wp:heading {"level":4,"className":"ptl-reason-card__title"} -->
+        <h4 class="ptl-reason-card__title"><a href="' . esc_url($reason_url) . '">様々なバストのお悩みに対処</a></h4>
+        <!-- /wp:heading -->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:column -->
+
+    <!-- wp:column -->
+    <div class="wp-block-column">
+      <!-- wp:group {"className":"ptl-reason-card"} -->
+      <div class="wp-block-group ptl-reason-card">
+        <!-- wp:group {"className":"ptl-reason-card__media"} -->
+        <div class="wp-block-group ptl-reason-card__media"><a href="' . esc_url($reason_url) . '"><div class="ptl-ph" aria-hidden="true"></div></a></div>
+        <!-- /wp:group -->
+        <!-- wp:heading {"level":4,"className":"ptl-reason-card__title"} -->
+        <h4 class="ptl-reason-card__title"><a href="' . esc_url($reason_url) . '">お一人お一人のお悩みに合わせた施術を</a></h4>
+        <!-- /wp:heading -->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:column -->
+
+    <!-- wp:column -->
+    <div class="wp-block-column">
+      <!-- wp:group {"className":"ptl-reason-card"} -->
+      <div class="wp-block-group ptl-reason-card">
+        <!-- wp:group {"className":"ptl-reason-card__media"} -->
+        <div class="wp-block-group ptl-reason-card__media"><a href="' . esc_url($reason_url) . '"><div class="ptl-ph" aria-hidden="true"></div></a></div>
+        <!-- /wp:group -->
+        <!-- wp:heading {"level":4,"className":"ptl-reason-card__title"} -->
+        <h4 class="ptl-reason-card__title"><a href="' . esc_url($reason_url) . '">創業10年以上の安心の実績</a></h4>
+        <!-- /wp:heading -->
+      </div>
+      <!-- /wp:group -->
+    </div>
+    <!-- /wp:column -->
+
+  </div>
+  <!-- /wp:columns -->
+
+  <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+  <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link ptl-reasons__more" href="' . esc_url($reason_url) . '">More</a></div></div>
+  <!-- /wp:buttons -->
+
+  </div></section>
+  <!-- /wp:group -->';
+
+  register_block_pattern('patolaqshe/reasons-4', [
+    'title'       => '選ばれる理由（4カード）',
+    'description' => 'グレープレースホルダー画像付きの4カード。Moreボタン・各カードから「選ばれる理由・施術の流れ」へリンクします。',
+    'categories'  => ['patolaqshe'],
+    'content'     => $content,
+  ]);
+});
+
+/**
+ * カスタマイザー: NAVIGATION 背景の動画/画像とオーバーレイ濃度
+ */
+add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
+  // セクション（表示名だけ汎用化：既存IDは互換のため維持）
+  $wp_customize->add_section('ptl_navigation', [
+    'title'       => 'セクション背景',
+    'priority'    => 160,
+    'description' => '共通で使えるセクション背景（現在は NAVIGATION で使用）。動画またはPC/SP画像とオーバーレイ濃度を設定できます。',
+  ]);
+
+  // 動画（メディア）
+  $wp_customize->add_setting('ptl_nav_video', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      return is_numeric($v) ? (int)$v : esc_url_raw($v);
+    },
+  ]);
+  if (class_exists('WP_Customize_Media_Control')) {
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_nav_video', [
+      'label'     => 'セクション背景動画（MP4推奨）',
+      'section'   => 'ptl_navigation',
+      'mime_type' => 'video',
+    ]));
+  }
+
+  // PC画像
+  $wp_customize->add_setting('ptl_nav_bg_pc', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_nav_bg_pc', [
+      'label'   => 'PC用セクション背景画像',
+      'section' => 'ptl_navigation',
+    ]));
+  }
+
+  // SP画像
+  $wp_customize->add_setting('ptl_nav_bg_sp', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_nav_bg_sp', [
+      'label'   => 'SP用セクション背景画像',
+      'section' => 'ptl_navigation',
+    ]));
+  }
+
+  // オーバーレイ濃度（0〜0.8）
+  $wp_customize->add_setting('ptl_nav_overlay', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      $f = floatval($v);
+      if ($f < 0) $f = 0;
+      if ($f > 0.8) $f = 0.8;
+      return $f;
+    },
+    'default'           => 0.25,
+  ]);
+  $wp_customize->add_control('ptl_nav_overlay', [
+    'label'       => 'セクション背景のオーバーレイ濃度（0〜0.8）',
+    'section'     => 'ptl_navigation',
+    'type'        => 'number',
+    'input_attrs' => ['min' => 0, 'max' => 0.8, 'step' => 0.05],
+  ]);
+
+  // パララックス速度（0〜1、1で追従なし）
+  $wp_customize->add_setting('ptl_nav_parallax_speed', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      $f = floatval($v);
+      if ($f < 0) $f = 0;
+      if ($f > 1) $f = 1;
+      return $f;
+    },
+    'default'           => 0.6,
+  ]);
+  $wp_customize->add_control('ptl_nav_parallax_speed', [
+    'label'       => 'セクション背景のパララックス速度（0〜1、1で追従なし）',
+    'section'     => 'ptl_navigation',
+    'type'        => 'number',
+    'input_attrs' => ['min' => 0, 'max' => 1, 'step' => 0.05],
+  ]);
+});
+
+/**
+ * 共通セクション背景設定を取得（将来は他セクションでも再利用）
+ * 既存の ptl_nav_* の theme_mod を利用しつつ、URLや数値IDを解決して返す。
+ *
+ * @return array{video_url:string,bg_pc:string,bg_sp:string,overlay:float}
+ */
+function ptl_get_common_section_bg(): array
+{
+  $video_mod = get_theme_mod('ptl_nav_video');
+  $bg_pc     = (string) get_theme_mod('ptl_nav_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
+  $bg_sp     = (string) get_theme_mod('ptl_nav_bg_sp', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
+  $overlay   = (float) get_theme_mod('ptl_nav_overlay', 0.25);
+  $p_speed   = (float) get_theme_mod('ptl_nav_parallax_speed', 0.6);
+
+  // 動画URL解決（添付ID/URLいずれにも対応）
+  $video_url = '';
+  if (!empty($video_mod)) {
+    if (is_numeric($video_mod)) {
+      $u = wp_get_attachment_url((int) $video_mod);
+      if ($u) $video_url = $u;
+    } else {
+      $video_url = esc_url_raw((string) $video_mod);
     }
   }
 
-  // nav-toggle.js（SPナビJS）
-  $nav_js_path = get_stylesheet_directory() . '/js/nav-toggle.js';
-  $nav_js_ver = file_exists($nav_js_path) ? date('YmdHis', filemtime($nav_js_path)) : time();
-  wp_enqueue_script('patolaqshe-nav-toggle', get_stylesheet_directory_uri() . '/js/nav-toggle.js', [], $nav_js_ver, true);
-}, 20);
+  if ($overlay < 0) $overlay = 0.0;
+  if ($overlay > 0.8) $overlay = 0.8;
+  if ($p_speed < 0) $p_speed = 0.0;
+  if ($p_speed > 1) $p_speed = 1.0;
+
+  return [
+    'video_url' => $video_url,
+    'bg_pc'     => $bg_pc,
+    'bg_sp'     => $bg_sp,
+    'overlay'   => $overlay,
+    'parallax_speed' => $p_speed,
+  ];
+}
+
+/**
+ * カスタマイザー: フロント共通の縦並び動画背景（最大4本）
+ */
+/* （削除）グローバル動画背景のカスタマイザー（ptl_global_bg）は撤去しました */
+
+/**
+ * ブロックエディタのコンテンツから、アンカーIDが一致するブロックを1つ探して描画するヘルパー。
+ * 例: ptl_render_block_slot('brand-reason');
+ */
+function ptl_render_block_slot(string $anchor, $post = null)
+{
+  $post = get_post($post ?: get_the_ID());
+  if (!$post) return;
+
+  $html = ptl_get_block_by_anchor($post->post_content, $anchor);
+  if ($html) echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
+ * 指定アンカーを持つブロックを再帰的に探索してHTMLを返す
+ */
+function ptl_get_block_by_anchor(string $content, string $anchor)
+{
+  if (!has_blocks($content)) return '';
+  $blocks = parse_blocks($content);
+  $found = ptl_find_block_by_anchor_recursive($blocks, $anchor);
+  return $found ? render_block($found) : '';
+}
+
+function ptl_find_block_by_anchor_recursive(array $blocks, string $anchor)
+{
+  foreach ($blocks as $block) {
+    $attrs = isset($block['attrs']) ? $block['attrs'] : [];
+    if (!empty($attrs['anchor']) && $attrs['anchor'] === $anchor) {
+      return $block;
+    }
+    if (!empty($block['innerBlocks'])) {
+      $inner = ptl_find_block_by_anchor_recursive($block['innerBlocks'], $anchor);
+      if ($inner) return $inner;
+    }
+  }
+  return null;
+}
+
+/**
+ * ショートコード: [ptl_marquee images="1,2,3" speed="30" gap="24" height="200"]
+ * - images: 添付IDまたはURLをカンマ区切り
+ * - speed: アニメーション1ループの秒数（小さいほど速い）
+ * - gap: 画像間の隙間(px)
+ * - height: 画像の高さ(px)
+ */
+add_shortcode('ptl_marquee', function ($atts) {
+  $atts = shortcode_atts([
+    'images' => '',
+    'speed'  => '30',
+    'gap'    => '24',
+    'height' => '200',
+  ], $atts, 'ptl_marquee');
+
+  $list = array_filter(array_map('trim', explode(',', (string) $atts['images'])));
+  if (!$list) return '';
+
+  $urls = [];
+  foreach ($list as $token) {
+    if (ctype_digit($token)) {
+      $src = wp_get_attachment_image_src((int) $token, 'full');
+      if (!empty($src[0])) $urls[] = $src[0];
+    } else {
+      $urls[] = esc_url_raw($token);
+    }
+  }
+  if (!$urls) return '';
+
+  $speed  = max(5, (int) $atts['speed']);
+  $gap    = max(0, (int) $atts['gap']);
+  $height = max(80, (int) $atts['height']);
+
+  ob_start();
+?>
+  <div class="ptl-marquee" style="--duration: <?php echo esc_attr($speed); ?>s; --gap: <?php echo esc_attr($gap); ?>px; --height: <?php echo esc_attr($height); ?>px;">
+    <div class="ptl-marquee__track" aria-hidden="true">
+      <?php foreach ([$urls, $urls] as $dup): ?>
+        <?php foreach ($dup as $u): ?>
+          <div class="ptl-marquee__item"><img src="<?php echo esc_url($u); ?>" alt="" loading="lazy" decoding="async"></div>
+        <?php endforeach; ?>
+      <?php endforeach; ?>
+    </div>
+  </div>
+<?php
+  return ob_get_clean();
+});
+
+/**
+ * ショートコード: [ptl_sns_buttons instagram="url" tiktok="url" youtube="url" x="url" facebook="url"]
+ */
+add_shortcode('ptl_sns_buttons', function ($atts) {
+  $atts = shortcode_atts([
+    'instagram' => '',
+    'tiktok'    => '',
+    'youtube'   => '',
+    'x'         => '',
+    'facebook'  => '',
+  ], $atts, 'ptl_sns_buttons');
+
+  $map = [
+    'instagram' => 'fa-instagram',
+    'tiktok'    => 'fa-tiktok',
+    'youtube'   => 'fa-youtube',
+    'x'         => 'fa-x-twitter',
+    'facebook'  => 'fa-facebook',
+  ];
+
+  $items = [];
+  foreach ($map as $key => $icon) {
+    $url = trim((string) ($atts[$key] ?? ''));
+    if ($url) {
+      $items[] = ['url' => $url, 'icon' => $icon, 'label' => ucfirst($key)];
+    }
+  }
+  if (!$items) return '';
+
+  ob_start();
+?>
+  <ul class="ptl-sns" role="list">
+    <?php foreach ($items as $it): ?>
+      <li class="ptl-sns__item"><a class="ptl-sns__btn" href="<?php echo esc_url($it['url']); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr($it['label']); ?>">
+          <i class="fa-brands <?php echo esc_attr($it['icon']); ?>" aria-hidden="true"></i>
+        </a></li>
+    <?php endforeach; ?>
+  </ul>
+<?php
+  return ob_get_clean();
+});
