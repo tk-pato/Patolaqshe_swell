@@ -1,0 +1,35 @@
+/* 基本状態：ヘッダーは常に表示 */
+.l-header,
+.p-headerBar {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: none !important;
+}
+
+/* 
+ * 注意: 以下のヘッダー非表示コードはコメントアウト中
+ * ヘッダー切り替え機能を有効にする場合はコメントを外してください
+ */
+/*
+body.has-head-toggle.is-top .l-header {
+    opacity: 0;
+    visibility: hidden;
+}
+
+body.has-head-toggle.is-top .p-headerBar {
+    opacity: 0;
+    visibility: hidden;
+}
+
+body.has-head-toggle:not(.is-top) .l-header,
+body.has-head-toggle:not(.is-top) .p-headerBar {
+    opacity: 1;
+    visibility: visible;
+}
+
+.l-header,
+.p-headerBar {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+*/

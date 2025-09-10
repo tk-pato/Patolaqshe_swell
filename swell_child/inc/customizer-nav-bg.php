@@ -1,3 +1,6 @@
+<?php
+if (! defined('ABSPATH')) exit;
+
 /**
  * カスタマイザー: NAVIGATION 背景の動画/画像とオーバーレイ濃度
  */

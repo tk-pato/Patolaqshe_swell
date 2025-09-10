@@ -1,6 +1,7 @@
 <?php
 if (! defined('ABSPATH')) exit;
-get_header();
+// 子テーマにheader.phpが存在しない場合は親テーマのheader.phpを明示的に呼び出す
+require_once get_template_directory() . '/header.php';
 ?>
 
 <main id="main_content" class="l-mainContent l-article">

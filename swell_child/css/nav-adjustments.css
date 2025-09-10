@@ -11,7 +11,7 @@
 .ptl-pageNavHero__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 24px; /* 余白を増やす */
     margin: 24px auto 0 auto;
     max-width: 1100px;
     justify-content: center;
@@ -22,7 +22,7 @@
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    padding: 16px 12px 12px;
+    padding: 20px 16px 16px; /* パディングを増やす */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,10 +39,10 @@
     transform: translateY(-1px) scale(1.02);
 }
 
-/* アイコンスタイル - スクリーンショット通りの小さいサイズ */
+/* アイコンスタイル - アイコンサイズ調整 */
 .ptl-pageNavHero__icon {
-    height: 22px;
-    margin-bottom: 10px;
+    height: 30px; /* アイコン高さ増加 */
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +52,7 @@
 
 .ptl-pageNavHero__icon img,
 .ptl-pageNavHero__icon svg {
-    height: 20px;
+    height: 26px; /* アイコン自体のサイズを増加 */
     width: auto;
     display: inline-block;
     margin: 0 auto;
@@ -60,8 +60,8 @@
 
 /* ラベルスタイル - スクリーンショット通りのフォント */
 .ptl-pageNavHero__label {
-    margin-top: 6px;
-    font-size: 0.85em;
+    margin-top: 8px;
+    font-size: 0.9em; /* フォントサイズ増加 */
     font-weight: bold;
     letter-spacing: 0.05em;
     text-align: center;
@@ -93,7 +93,7 @@
 /* タブレット向け調整 */
 @media (max-width: 1023px) {
     .ptl-pageNavHero__grid {
-        gap: 14px;
+        gap: 18px; /* タブレットでも余白確保 */
         max-width: 900px;
     }
 }
@@ -102,28 +102,28 @@
 @media (max-width: 767px) {
     .ptl-pageNavHero__grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 16px; /* SP時の余白も増加 */
         max-width: 98vw;
         margin: 16px auto 0 auto;
     }
     
     .ptl-pageNavHero__btn {
-        padding: 12px 8px 10px;
+        padding: 16px 12px 14px; /* SP時のパディングも増加 */
         font-size: 0.85rem;
     }
     
     .ptl-pageNavHero__icon {
-        height: 20px;
-        margin-bottom: 8px;
+        height: 24px; /* SP時のアイコン高さ */
+        margin-bottom: 10px;
     }
     
     .ptl-pageNavHero__icon img,
     .ptl-pageNavHero__icon svg {
-        height: 18px;
+        height: 22px; /* SP時のアイコンサイズ */
     }
     
     .ptl-pageNavHero__label {
-        margin-top: 4px;
-        font-size: 0.8em;
+        margin-top: 6px;
+        font-size: 0.85em;
     }
 }

@@ -1,3 +1,6 @@
+<?php
+if (! defined('ABSPATH')) exit;
+
 /**
  * 共通セクション背景設定を取得（将来は他セクションでも再利用）
  * 既存の ptl_nav_* の theme_mod を利用しつつ、URLや数値IDを解決して返す。

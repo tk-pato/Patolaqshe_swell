@@ -10,12 +10,7 @@ require_once get_stylesheet_directory() . '/inc/customizer-nav-bg.php';
 require_once get_stylesheet_directory() . '/inc/section-bg-helper.php';
 
 // bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
-add_filter('body_class', function ($classes) {
-  if (is_front_page() || is_page_template('page-landing.php')) {
-    $classes[] = 'has-head-toggle';
-  }
-  return $classes;
-});
+
 
 /**
  * 子テーマでのファイルの読み込み
@@ -37,6 +32,11 @@ add_action('wp_enqueue_scripts', function () {
   $sp_menu_css_ver = file_exists($sp_menu_css_path) ? date('YmdHis', filemtime($sp_menu_css_path)) : time();
   wp_enqueue_style('patolaqshe-sp-menu', get_stylesheet_directory_uri() . '/css/sp-menu.css', ['child_style'], $sp_menu_css_ver);
 
+  // ヘッダー表示/非表示制御用CSS
+  $header_css_path = get_stylesheet_directory() . '/css/header-visibility.css';
+  $header_css_ver = file_exists($header_css_path) ? date('YmdHis', filemtime($header_css_path)) : time();
+  wp_enqueue_style('patolaqshe-header-visibility', get_stylesheet_directory_uri() . '/css/header-visibility.css', ['child_style'], $header_css_ver);
+
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
@@ -47,6 +47,13 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
     wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
+    
+    // パララックス強制初期化スクリプト（section-parallax.jsの後に読み込む）
+    $parallax_init_path = get_stylesheet_directory() . '/js/parallax-initializer.js';
+    if (file_exists($parallax_init_path)) {
+      $parallax_init_ver = date('Ymdgis', filemtime($parallax_init_path));
+      wp_enqueue_script('child_parallax_initializer', get_stylesheet_directory_uri() . '/js/parallax-initializer.js', ['child_section_parallax'], $parallax_init_ver, true);
+    }
   }
 
   // nav-toggle.js（SPナビJS）
