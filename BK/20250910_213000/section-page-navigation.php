@@ -20,6 +20,14 @@ $default_items = [
     ['label' => 'TREATMENT',  'slug' => 'treatment',  'url' => home_url('/treatment/')],
     ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => home_url('/collection/')],
     ['label' => 'SALON',      'slug' => 'salon',      'url' => home_url('/salon/')],
+    ['label' => 'BRIDAL',     'slug' => 'bridal',     'url' => home_url('/bridal/')],
+    ['label' => 'INFO',       'slug' => 'info',       'url' => home_url('/info/')],
+    // COLUM → BLOG に名称変更
+    ['label' => 'BLOG',       'slug' => 'blog',       'url' => (function () {
+        $pid = (int) get_option('page_for_posts');
+        return $pid ? get_permalink($pid) : home_url('/blog/');
+    })()],
+    ['label' => 'CONTACT',    'slug' => 'contact',    'url' => home_url('/contact/')],
 ];
 $items = apply_filters('ptl_page_nav_items', $default_items);
 $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
@@ -41,13 +49,24 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 ?>
 
 <section id="page-navigation" class="ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="0.92" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
+    <?php if ($has_bg): ?>
+        <div class="ptl-pageNavHero__bg" aria-hidden="true">
+            <?php if ($video_url): ?>
+                <video class="ptl-pageNavHero__video" src="<?php echo esc_url($video_url); ?>" autoplay muted loop playsinline></video>
+            <?php else: ?>
+                <picture class="ptl-pageNavHero__image">
+                    <?php if (! empty($bg_sp)): ?>
+                        <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
+                    <?php endif; ?>
+                    <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" decoding="async">
+                </picture>
+            <?php endif; ?>
+            <div class="ptl-pageNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
+        </div>
+    <?php endif; ?>
 
     <div class="ptl-section__inner">
-    <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">COMMITMENT</h2>
-        <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">パトラクシェの魅力</div>
-        <div class="ptl-section__ornament" style="text-align:center;margin:12px 0;">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
-        </div>
+        <h2 class="ptl-section__title is-onImage">NAVIGATION</h2>
         <div class="ptl-pageNavHero__grid">
             <?php
             // 子テーマ内のアイコン格納場所（PNG想定）
@@ -76,14 +95,6 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     <span class="ptl-pageNavHero__label"><?php echo esc_html($label); ?></span>
                 </a>
             <?php endforeach; ?>
-        </div>
-        <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-        <div class="ptl-news__more">
-            <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/reason/')); ?>">
-                <span class="ptl-news__moreLabel">MORE</span>
-                <span class="ptl-news__moreArrow" aria-hidden="true">&rarr;</span>
-            </a>
-        </div>
         </div>
     </div>
 </section>

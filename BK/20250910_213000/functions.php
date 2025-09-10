@@ -79,12 +79,6 @@ add_action('wp_enqueue_scripts', function () {
   // 親テーマ main.css のハンドルは 'main_style'（SWELL）
   wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
 
-  // ptl-layout.css（commitment/navigation幅・カードレイアウト同期用）
-  wp_enqueue_style('ptl_layout', get_stylesheet_directory_uri() . '/css/ptl-layout.css', ['child_style'], wp_get_theme()->get('Version'));
-  
-  // commitment-grid.css - 一時無効化
-  // wp_enqueue_style('ptl_commitment_grid', get_stylesheet_directory_uri() . '/css/commitment-grid.css', ['child_style'], wp_get_theme()->get('Version'));
-
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
