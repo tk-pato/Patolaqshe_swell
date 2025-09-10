@@ -380,4 +380,32 @@ html, body { overflow-x: hidden; }
 .ptl-serviceFeature__cardMedia > img,
 .ptl-phsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
+/* ==== Header hardening: 常時表示を強制（競合対策） ==== */
+.l-header,
+.p-headerBar,
+.l-fixHeader {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+/* 万一 .is-top 等で隠していても無効化 */
+.is-top .l-header,
+.is-top .p-headerBar,
+.is-top .l-fixHeader,
+.header--hidden,
+.header-hidden {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* 透過調整は使う時だけクラス付与で行う（今回は未使用） */
+.header--alpha45 { opacity: 0.45 !important; }
+
 

@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+__MACOSX/
+
+# archives
+*.zip
+*.tar
+*.tar.gz
+
+# IDE
+.vscode/
+.idea/
