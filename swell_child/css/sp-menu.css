@@ -67,5 +67,7 @@
         font-weight: bold !important;
         letter-spacing: 0.05em !important;
         cursor: pointer !important;
+        position: relative !important;
+        top: 0 !important; /* 縦位置調整 - ハンバーガーと同じ高さに */
     }
 }

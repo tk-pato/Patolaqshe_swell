@@ -29,6 +29,7 @@
         // 対象要素にclass追加で視覚的にマーク
         targets.forEach(function(target) {
             target.classList.add('ptl-has-parallax');
+            log('パララックス要素にマーク適用:', target);
         });
         
         // イベントを連続で発火させて確実に初期化
@@ -41,10 +42,13 @@
         // 初期化と定期的な再適用
         fireEvents();
         
-        // 複数回の遅延実行で確実に適用
+        // 複数回の遅延実行で確実に適用（より多くの間隔で実行）
         setTimeout(fireEvents, 100);
+        setTimeout(fireEvents, 300);
         setTimeout(fireEvents, 500);
-        setTimeout(fireEvents, 1000);
+        setTimeout(fireEvents, 800);
+        setTimeout(fireEvents, 1200);
+        setTimeout(fireEvents, 2000);
         
         // DOM変更監視で新しく追加された要素にも適用
         if ('MutationObserver' in window) {
@@ -66,10 +70,11 @@
         log('パララックス初期化完了');
     }
     
-    // イベントリスナー登録
+    // イベントリスナー登録（複数ポイントで登録して確実に実行）
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', forceInitParallax);
     } else {
+        // すでにDOMContentLoadedが発火済みの場合は即実行
         forceInitParallax();
     }
     
@@ -77,4 +82,8 @@
     window.addEventListener('load', function() {
         setTimeout(forceInitParallax, 100);
     });
+    
+    // さらに、確実にするためにタイマー実行も追加
+    setTimeout(forceInitParallax, 500);
+    setTimeout(forceInitParallax, 1500);
 })();

@@ -11,8 +11,8 @@
 .ptl-pageNavHero__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px; /* 余白を増やす */
-    margin: 24px auto 0 auto;
+    gap: 32px; /* 余白をさらに増やす - ターゲット画像に合わせて調整 */
+    margin: 32px auto 0 auto; /* 上下マージンも増加 */
     max-width: 1100px;
     justify-content: center;
 }
@@ -22,7 +22,7 @@
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    padding: 20px 16px 16px; /* パディングを増やす */
+    padding: 24px 20px 20px; /* パディングをさらに増やす */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,8 +41,8 @@
 
 /* アイコンスタイル - アイコンサイズ調整 */
 .ptl-pageNavHero__icon {
-    height: 30px; /* アイコン高さ増加 */
-    margin-bottom: 12px;
+    height: 36px; /* アイコン高さをさらに増加 */
+    margin-bottom: 16px; /* 下マージンも増加 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +52,7 @@
 
 .ptl-pageNavHero__icon img,
 .ptl-pageNavHero__icon svg {
-    height: 26px; /* アイコン自体のサイズを増加 */
+    height: 32px; /* アイコン自体のサイズをさらに増加 */
     width: auto;
     display: inline-block;
     margin: 0 auto;

@@ -1,9 +1,15 @@
 /* 基本状態：ヘッダーは常に表示 */
 .l-header,
-.p-headerBar {
+.p-headerBar,
+.l-fixHeader {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
+    z-index: 9999 !important; /* 最前面に強制 */
+    position: fixed !important; /* 最上部に固定 */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
     transition: none !important;
 }
 
