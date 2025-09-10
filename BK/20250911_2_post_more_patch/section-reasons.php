@@ -1,3 +1,0 @@
-<?php
-// section-reasons.php バックアップ（MOREボタン修正後）
-// ...existing code...

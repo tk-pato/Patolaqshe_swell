@@ -380,12 +380,4 @@ html, body { overflow-x: hidden; }
 .ptl-serviceFeature__cardMedia > img,
 .ptl-phsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-@media (max-width: 767px) {
-  .l-header,
-  .p-headerBar,
-  .l-fixHeader {
-    background: rgba(0,0,0,0.85) !important;
-  }
-}
-
 
