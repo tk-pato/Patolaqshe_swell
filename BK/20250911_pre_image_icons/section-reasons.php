@@ -40,7 +40,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 }
 ?>
 
-<section id="section-reasons" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
+<section id="page-navigation" class="ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="0.92" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
 
     <div class="ptl-section__inner">
     <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">COMMITMENT</h2>
@@ -48,7 +48,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>
-        <div class="ptl-reasonsHero__grid">
+        <div class="ptl-pageNavHero__grid">
             <?php
             // 子テーマ内のアイコン格納場所（PNG想定）
             $icon_dir_rel = '/img/nav';
@@ -58,37 +58,23 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
             foreach ($items as $it): if (empty($it['label'])) continue;
                 $href = $it['url'] ?? '#';
                 $label = (string) $it['label'];
-                $image_src = '';
-                
-                // 各メニューアイテムに対応する画像パスを設定
-                switch ($label) {
-                    case 'COMMITMENT':
-                        $image_src = get_stylesheet_directory_uri() . '/img/hair.jpg';
-                        break;
-                    case 'TREATMENT':
-                        $image_src = get_stylesheet_directory_uri() . '/img/makup.jpg';
-                        break;
-                    case 'COLLECTION':
-                        $image_src = get_stylesheet_directory_uri() . '/img/nail.jpg';
-                        break;
-                    case 'SALON':
-                        $image_src = get_stylesheet_directory_uri() . '/img/spa.jpg';
-                        break;
-                    default:
-                        // デフォルトのSVGアイコン
-                        $icon_html = ptl_nav_placeholder_svg($label);
+                $slug  = !empty($it['slug']) ? (string) $it['slug'] : strtolower(preg_replace('/[^a-z0-9\-]+/i', '-', $label));
+                $icon_html = $it['icon_html'] ?? '';
+                if (!$icon_html && $slug) {
+                    $png = $icon_dir_abs . $slug . '.png';
+                    if (file_exists($png)) {
+                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" loading="lazy" decoding="async">';
+                    }
                 }
-                
-                // 画像パスがある場合はimg要素を生成
-                if (!empty($image_src)) {
-                    $icon_html = '<img src="' . esc_url($image_src) . '" alt="' . esc_attr($label) . '" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;border-radius:8px;" loading="lazy" decoding="async">';
+                if (!$icon_html) {
+                    $icon_html = ptl_nav_placeholder_svg($label);
                 }
             ?>
-                <div class="ptl-reasonsHero__btn">
-                    <span class="ptl-reasonsHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                <a class="ptl-pageNavHero__btn" href="<?php echo esc_url($href); ?>">
+                    <span class="ptl-pageNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                                         ?></span>
-                    <span class="ptl-reasonsHero__label"><?php echo esc_html($label); ?></span>
-                </div>
+                    <span class="ptl-pageNavHero__label"><?php echo esc_html($label); ?></span>
+                </a>
             <?php endforeach; ?>
         </div>
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
