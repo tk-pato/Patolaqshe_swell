@@ -25,7 +25,17 @@ html, body { overflow-x: hidden; }
 }
 
 /* 追加の見た目調整はここに記述（必要最小限） */
-/* 例: 必要ならここに追記 */
+
+/* PCでのMENUボタン非表示（最優先） */
+@media screen and (min-width: 768px) {
+    #page-navigation .ptl-nav-toggle,
+    .ptl-pageNavHero .ptl-nav-toggle,
+    section[id="page-navigation"] button.ptl-nav-toggle {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
 
 /* ヒーローロゴ：ふわっと出て、少し表示して、ふわっと消える（ホーム/フロントページ） */
 .home .p-mainVisual .hero-logo,
