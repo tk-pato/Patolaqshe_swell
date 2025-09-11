@@ -62,16 +62,16 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 
                 // 各メニューアイテムに対応する画像パスを設定
                 switch ($label) {
-                    case 'COMMITMENT':
+                    case 'HAIR STYLING':
                         $image_src = get_stylesheet_directory_uri() . '/img/hair.jpg';
                         break;
-                    case 'TREATMENT':
-                        $image_src = get_stylesheet_directory_uri() . '/img/makup.jpg';
+                    case 'MAKE UP':
+                        $image_src = get_stylesheet_directory_uri() . '/img/makeup.jpg';
                         break;
-                    case 'COLLECTION':
+                    case 'NAIL ART':
                         $image_src = get_stylesheet_directory_uri() . '/img/nail.jpg';
                         break;
-                    case 'SALON':
+                    case 'SPA':
                         $image_src = get_stylesheet_directory_uri() . '/img/spa.jpg';
                         break;
                     default:
