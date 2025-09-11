@@ -3,7 +3,7 @@ if (! defined('ABSPATH')) exit;
 
 /* 子テーマのfunctions.phpは、親テーマのfunctions.phpより先に読み込まれることに注意してください。 */
 
-/* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
+/* （削除）グローバル動背景の強制OFFスイッチと関連機能は撤去しました */
 
 // bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
 add_filter('body_class', function ($classes) {
@@ -38,7 +38,7 @@ add_action('wp_footer', function () {
       // 2) 非表示化だけを無効化（display/visibilityのみ）。opacity/transform/色は触らない＝デザイン不変
       const forceShow = () => {
         try {
-          // inlineのdisplay/visibilityを強制上書き（!important）
+          // inlineでdisplay/visibilityを強制上書き（!important）
           header.style.setProperty('display', 'block', 'important');
           header.style.setProperty('visibility', 'visible', 'important');
           // 万一親要素でvisibility隠蔽がある場合は最小限で剥がす
@@ -122,7 +122,7 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
-  // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読込でも軽量
+  // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読み込みでも軽量
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
