@@ -564,77 +564,6 @@ add_action('wp_enqueue_scripts', function () {
     /* gapは30-40%縮小（例: 24px -> 12-16px） */
     --ptl-gap: 14px;
     gap: var(--ptl-gap);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-  }
-  
-  /* ハンバーガーメニュー表示/非表示 */
-  .ptl-nav-collapsible.is-open {
-    max-height: 1000px;
-  }
-  
-  /* ハンバーガーボタン */
-  .ptl-nav-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    margin: 8px auto 16px;
-    padding: 8px 16px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 0.1em;
-  }
-  
-  .ptl-nav-toggle__icon {
-    position: relative;
-    width: 24px;
-    height: 2px;
-    background: #fff;
-    transition: all 0.3s ease;
-    margin-top: 1px; /* テキストと中央揃え */
-  }
-  
-  .ptl-nav-toggle__icon::before,
-  .ptl-nav-toggle__icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #fff;
-    transition: all 0.3s ease;
-    left: 0;
-  }
-  
-  .ptl-nav-toggle__icon::before { top: -7px; }
-  .ptl-nav-toggle__icon::after { bottom: -7px; }
-  
-  /* 開いたときのアイコン */
-  .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon {
-    background: transparent;
-  }
-  
-  .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon::before {
-    top: 0;
-    transform: rotate(45deg);
-  }
-  
-  .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon::after {
-    bottom: 0;
-    transform: rotate(-45deg);
-  }
-  
-  /* メニューテキスト調整 */
-  .ptl-nav-toggle__text {
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    position: relative;
-    top: 1px;
   }
 
   /* カード本体（既存命名に合わせて双方を網羅） */
@@ -722,25 +651,6 @@ CSS;
 // ③ SP向け：ナビ折り畳みの max-height 再計測（<=768pxのみ）
 (function(){
   var mqSP = window.matchMedia('(max-width: 768px)');
-  
-  // ハンバーガーメニューの制御
-  function setupToggle() {
-    var toggle = document.querySelector('.ptl-nav-toggle');
-    var menu = document.getElementById('ptl-nav-menu');
-    
-    if (!toggle || !menu) return;
-    
-    toggle.addEventListener('click', function() {
-      var expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !expanded);
-      menu.classList.toggle('is-open');
-      
-      // 開いた直後にmax-heightを再計算
-      if (!expanded) {
-        setTimeout(recalc, 50);
-      }
-    });
-  }
 
   function panelsIn(container){
     // よくある候補を包括（存在しない場合は無処理）
@@ -783,13 +693,6 @@ CSS;
 
   // 初期1フレーム後に実行
   setTimeout(recalc, 0);
-  
-  // DOMContentLoadedで初期化
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupToggle);
-  } else {
-    setupToggle();
-  }
 })();
 JS;
 
