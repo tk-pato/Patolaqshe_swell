@@ -43,7 +43,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 <section id="section-reasons" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
 
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">COMMITMENT</h2>
+    <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">COMMITMENT</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">パトラクシェの魅力</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
@@ -59,7 +59,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 $href = $it['url'] ?? '#';
                 $label = (string) $it['label'];
                 $image_src = '';
-
+                
                 // 各メニューアイテムに対応する画像パスを設定
                 switch ($label) {
                     case 'COMMITMENT':
@@ -78,7 +78,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         // デフォルトのSVGアイコン
                         $icon_html = ptl_nav_placeholder_svg($label);
                 }
-
+                
                 // 画像パスがある場合はimg要素を生成
                 if (!empty($image_src)) {
                     $icon_html = '<img src="' . esc_url($image_src) . '" alt="' . esc_attr($label) . '" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;border-radius:8px;" loading="lazy" decoding="async">';
@@ -87,18 +87,17 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 <div class="ptl-reasonsHero__btn">
                     <span class="ptl-reasonsHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                                         ?></span>
-                    <div class="ptl-reasonsHero__boxTitle">HAIR STYLING</div>
-                    <div class="ptl-reasonsHero__boxDesc">Beautiful, healthy hair and a great style is a trademark for Hairdresser. Professional care and awesome attention to details and your needs defines us.</div>
+                    <span class="ptl-reasonsHero__label"><?php echo esc_html($label); ?></span>
                 </div>
             <?php endforeach; ?>
         </div>
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <div class="ptl-news__more">
-                <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/reason/')); ?>">
-                    <span class="ptl-news__moreLabel">MORE</span>
-                    <span class="ptl-news__moreArrow" aria-hidden="true">&rarr;</span>
-                </a>
-            </div>
+        <div class="ptl-news__more">
+            <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/reason/')); ?>">
+                <span class="ptl-news__moreLabel">MORE</span>
+                <span class="ptl-news__moreArrow" aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
         </div>
     </div>
 </section>

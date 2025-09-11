@@ -87,8 +87,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 <div class="ptl-reasonsHero__btn">
                     <span class="ptl-reasonsHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                                         ?></span>
-                    <div class="ptl-reasonsHero__boxTitle">HAIR STYLING</div>
-                    <div class="ptl-reasonsHero__boxDesc">Beautiful, healthy hair and a great style is a trademark for Hairdresser. Professional care and awesome attention to details and your needs defines us.</div>
+                    <span class="ptl-reasonsHero__label"><?php echo esc_html($label); ?></span>
                 </div>
             <?php endforeach; ?>
         </div>

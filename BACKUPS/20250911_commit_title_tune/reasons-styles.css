@@ -1,6 +1,6 @@
 #section-reasons .ptl-reasonsHero__boxTitle {
   /* ナビの .ptl-pageNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
-  font-size: clamp(13px, 1.4vw, 16px);
+  font-size: clamp(16px, 1.6vw, 20px);
   font-weight: 600;
   color: #444;
   text-align: center;
