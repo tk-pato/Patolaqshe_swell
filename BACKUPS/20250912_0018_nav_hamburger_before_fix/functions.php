@@ -579,25 +579,24 @@ add_action('wp_enqueue_scripts', function () {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     background: transparent;
     border: none;
     cursor: pointer;
     margin: 8px auto 16px;
     padding: 8px 16px;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     color: #fff;
     letter-spacing: 0.1em;
   }
   
   .ptl-nav-toggle__icon {
     position: relative;
-    width: 24px;
+    width: 20px;
     height: 2px;
     background: #fff;
     transition: all 0.3s ease;
-    margin-top: 1px; /* テキストと中央揃え */
   }
   
   .ptl-nav-toggle__icon::before,
@@ -608,11 +607,10 @@ add_action('wp_enqueue_scripts', function () {
     height: 2px;
     background: #fff;
     transition: all 0.3s ease;
-    left: 0;
   }
   
-  .ptl-nav-toggle__icon::before { top: -7px; }
-  .ptl-nav-toggle__icon::after { bottom: -7px; }
+  .ptl-nav-toggle__icon::before { top: -6px; }
+  .ptl-nav-toggle__icon::after { bottom: -6px; }
   
   /* 開いたときのアイコン */
   .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon {
@@ -627,14 +625,6 @@ add_action('wp_enqueue_scripts', function () {
   .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon::after {
     bottom: 0;
     transform: rotate(-45deg);
-  }
-  
-  /* メニューテキスト調整 */
-  .ptl-nav-toggle__text {
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    position: relative;
-    top: 1px;
   }
 
   /* カード本体（既存命名に合わせて双方を網羅） */

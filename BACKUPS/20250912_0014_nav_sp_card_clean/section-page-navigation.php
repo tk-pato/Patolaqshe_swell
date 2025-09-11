@@ -67,11 +67,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title is-onImage">NAVIGATION</h2>
-        <button type="button" class="ptl-nav-toggle" aria-expanded="false" aria-controls="ptl-nav-menu">
-            <span class="ptl-nav-toggle__icon"></span>
-            <span class="ptl-nav-toggle__text" style="font-family: serif;">MENU</span>
-        </button>
-        <div id="ptl-nav-menu" class="ptl-pageNavHero__grid ptl-nav-collapsible">
+        <div class="ptl-pageNavHero__grid ptl-nav-collapsible">
             <?php
             // 子テーマ内のアイコン格納場所（PNG想定）
             $icon_dir_rel = '/img/nav';
