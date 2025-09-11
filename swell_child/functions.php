@@ -519,3 +519,114 @@ add_action('wp_enqueue_scripts', function () {
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
   wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
 }, 20);
+
+/**
+ * ptl-navigation: PC パララックス強化（インラインCSS/JS）
+ * - 親/子のenqueueは不変更
+ * - DOMは .ptl-navigation 前提（動画 <video> にも対応）
+ */
+add_action('wp_enqueue_scripts', function () {
+  if (!is_front_page()) return;
+
+  // CSS（インライン）
+  $css = <<<CSS
+/* ptl-navigation: PC parallax boost */
+.ptl-navigation { position: relative; overflow: clip; }
+
+@media (min-width: 769px) {
+  /* 背景画像を直接持つ .ptl-navigation 用 */
+  .ptl-navigation {
+    --ptl-parallax: 0px;
+    background-position: 50% calc(50% + var(--ptl-parallax));
+    background-size: 120% auto; /* 背景を縦方向に大きく見せる */
+    will-change: background-position;
+  }
+  .ptl-navigation.ptl-has-video video {
+    transform: translateY(var(--ptl-parallax)) scale(1.15);
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  /* 子要素に video / image を持つ .ptl-pageNavHero 用（既存DOMに追従） */
+  .ptl-pageNavHero { --ptl-parallax: 0px; }
+  .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
+  .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img {
+    transform: translateY(var(--ptl-parallax)) scale(1.12);
+    transform-origin: center;
+    will-change: transform;
+  }
+}
+
+@media (max-width: 768px) {
+  /* SPは②③で追記。現状は無変更 */
+}
+CSS;
+
+  // JS（インライン）
+  $js = <<<JS
+(function(){
+  var els = document.querySelectorAll('.ptl-navigation, .ptl-pageNavHero');
+  if (!els.length) return;
+
+  var isPC = window.matchMedia('(min-width: 769px)');
+  var FACTOR = 0.35; // 値を上げるほど移動量が増える
+  var ticking = false;
+
+  // 初期化: 各要素に動画/画像の有無でクラスを付与
+  els.forEach(function(el){
+    var vid = el.querySelector('video, .ptl-pageNavHero__video');
+    var img = el.querySelector('.ptl-pageNavHero__image img');
+    if (vid) el.classList.add('ptl-has-video');
+    if (img) el.classList.add('ptl-has-image');
+  });
+
+  function update(){
+    if (!isPC.matches) {
+      els.forEach(function(el){ el.style.removeProperty('--ptl-parallax'); });
+      return;
+    }
+    els.forEach(function(el){
+      var rect = el.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var center = rect.top + rect.height/2 - vh/2;   // ビューポート中心基準
+      var move = -center * FACTOR;
+      el.style.setProperty('--ptl-parallax', move.toFixed(2) + 'px');
+    });
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      update();
+      ticking = false;
+    });
+  }
+
+  ['scroll','resize'].forEach(function(ev){
+    window.addEventListener(ev, onScroll, {passive:true});
+  });
+  update();
+})();
+JS;
+
+  // 既存のナビCSS/JSが読み込まれている前提で、インラインを追加
+  if (wp_style_is('ptl-navigation-style', 'enqueued')) {
+    wp_add_inline_style('ptl-navigation-style', $css);
+  } else {
+    // 後方互換：child_style に付与
+    wp_add_inline_style('child_style', $css);
+  }
+
+  if (wp_script_is('ptl-navigation', 'enqueued')) {
+    wp_add_inline_script('ptl-navigation', $js);
+  } else {
+    // 後方互換：child_section_parallax に付与（存在すれば）
+    if (wp_script_is('child_section_parallax', 'enqueued')) {
+      wp_add_inline_script('child_section_parallax', $js);
+    } else {
+      // 何も無ければ jQuery へ（最終手段）
+      wp_add_inline_script('jquery-core', $js);
+    }
+  }
+}, 25); // ベースのenqueue(20)の後に実行
