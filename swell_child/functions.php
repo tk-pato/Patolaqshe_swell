@@ -775,7 +775,6 @@ add_action('wp_enqueue_scripts', function () {
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
   wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
   wp_enqueue_script('ptl-nav-fix', get_stylesheet_directory_uri() . '/js/ptl-nav-fix.js', [], date('YmdHis'), true);
-  wp_enqueue_script('ptl-parallax-scale-sp', get_stylesheet_directory_uri() . '/js/ptl-parallax-scale-sp.js', [], date('YmdHis'), true);
 }, 20);
 
 /**

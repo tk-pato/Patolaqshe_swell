@@ -1,4 +1,3 @@
-
 <?php
 if (! defined('ABSPATH')) exit;
 
@@ -10,38 +9,30 @@ $bg_sp     = $bg['bg_sp'];
 $overlay   = $bg['overlay_opacity'];
 $p_speed   = $bg['parallax_speed'];
 
-// 8ボタン（リンクは後から差し替え想定。フィルターで上書き可）
-$default_items = [
-    ['label' => 'COMMITMENT', 'slug' => 'commitment', 'url' => home_url('/reason/')],
-    ['label' => 'TREATMENT',  'slug' => 'treatment',  'url' => home_url('/treatment/')],
-    ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => home_url('/collection/')],
-    ['label' => 'SALON',      'slug' => 'salon',      'url' => home_url('/salon/')],
-    ['label' => 'BRIDAL',     'slug' => 'bridal',     'url' => home_url('/bridal/')],
-    ['label' => 'INFO',       'slug' => 'info',       'url' => home_url('/info/')],
-    // COLUM → BLOG に名称変更
-    ['label' => 'BLOG',       'slug' => 'blog',       'url' => (function () {
-        $pid = (int) get_option('page_for_posts');
-        return $pid ? get_permalink($pid) : home_url('/blog/');
-    })()],
-    ['label' => 'CONTACT',    'slug' => 'contact',    'url' => home_url('/contact/')],
+// 8つの悩み（バックアップの$itemsを移植）
+$items = [
+    'バストが小さい',
+    '左右で大きさが違う',
+    'ハリや弾力不足',
+    '乳輪の黒ずみ',
+    '形のバランスが悪い',
+    'バストが離れている',
+    '谷間を作りたい',
+    '加齢や授乳による下垂など',
 ];
-$items = apply_filters('ptl_page_nav_items', $default_items);
-$has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
-if (!function_exists('ptl_nav_placeholder_svg')) {
-    function ptl_nav_placeholder_svg($label)
-    {
-        $ch = strtoupper(substr(trim((string)$label), 0, 1));
-        if (!preg_match('/[A-Z]/', $ch)) $ch = 'A';
-        $ch = esc_html($ch);
-        ob_start(); ?>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <circle cx="50" cy="50" r="46" fill="#111" />
-            <text x="50" y="57" text-anchor="middle" font-family="'Georgia', 'Times New Roman', serif" font-size="56" fill="#fff" letter-spacing="1"><?php echo $ch; ?></text>
-        </svg>
-<?php return ob_get_clean();
+// チェックアイコン（img/check.png が無ければSVG）
+if (!function_exists('ptl_check_svg_fallback')) {
+    function ptl_check_svg_fallback() {
+        return '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     }
 }
+$check_rel = 'img/check.png';
+$check_path = trailingslashit(get_stylesheet_directory()) . $check_rel;
+$check_uri  = trailingslashit(get_stylesheet_directory_uri()) . $check_rel;
+$has_check_img = file_exists($check_path);
+
+$has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 ?>
 
 <section id="bust-issues" class="ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="0.92" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
@@ -63,36 +54,27 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title is-onImage">BUST-ISSUES</h2>
-        <button type="button" class="ptl-nav-toggle" aria-expanded="false" aria-controls="ptl-nav-menu">
-            <span class="ptl-nav-toggle__icon"></span>
-            <span class="ptl-nav-toggle__text" style="font-family: serif;">MENU</span>
-        </button>
-        <div id="ptl-nav-menu" class="ptl-pageNavHero__grid ptl-nav-collapsible">
-            <?php
-            $icon_dir_rel = '/img/nav';
-            $icon_dir_abs = trailingslashit(get_stylesheet_directory() . $icon_dir_rel);
-            $icon_dir_uri = trailingslashit(get_stylesheet_directory_uri() . $icon_dir_rel);
-
-            foreach ($items as $it): if (empty($it['label'])) continue;
-                $href = $it['url'] ?? '#';
-                $label = (string) $it['label'];
-                $slug  = !empty($it['slug']) ? (string) $it['slug'] : strtolower(preg_replace('/[^a-z0-9\-]+/i', '-', $label));
-                $icon_html = $it['icon_html'] ?? '';
-                if (!$icon_html && $slug) {
-                    $png = $icon_dir_abs . $slug . '.png';
-                    if (file_exists($png)) {
-                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" loading="lazy" decoding="async">';
-                    }
-                }
-                if (!$icon_html) {
-                    $icon_html = ptl_nav_placeholder_svg($label);
-                }
-            ?>
-                <a class="ptl-pageNavHero__btn" href="<?php echo esc_url($href); ?>">
-                    <span class="ptl-pageNavHero__icon"><?php echo $icon_html; ?></span>
-                    <span class="ptl-pageNavHero__label"><?php echo esc_html($label); ?></span>
+        <p class="ptl-section__subtitle">バストのお悩みを解決</p>
+        
+        <!-- 新：8つの悩みチェックリスト -->
+        <div id="ptl-nav-menu" class="ptl-bustIssues__card">
+            <ul class="ptl-bustIssues__list" role="list">
+                <?php foreach ($items as $text): if (!is_string($text) || $text==='') continue; ?>
+                    <li class="ptl-bustIssues__item">
+                        <span class="ptl-bustIssues__icon" aria-hidden="true">
+                            <?php echo $has_check_img ? '<img src="'.esc_url($check_uri).'" alt="" loading="lazy" decoding="async">' : ptl_check_svg_fallback(); ?>
+                        </span>
+                        <span class="ptl-bustIssues__text"><?php echo esc_html($text); ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <!-- MORE: NEWSセクションと同意匠 -->
+            <div class="ptl-news__more">
+                <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/reason/')); ?>">
+                    <span class="ptl-news__moreLabel">MORE</span>
+                    <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
                 </a>
-            <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>

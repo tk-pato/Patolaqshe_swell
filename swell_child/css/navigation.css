@@ -21,7 +21,7 @@
   .ptl-navigation {
     --ptl-parallax: 0px; /* JSで上書きされる前提の初期値 */
     background-position: 50% calc(50% + var(--ptl-parallax));
-    background-size: 145% auto; /* PC 120% → SP 145% に拡大して端露出を防止 */
+    background-size: 135% auto; /* PC 120% → SP 135% に拡大して端露出を防止 */
     will-change: background-position;
   }
 
@@ -29,10 +29,7 @@
   .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img,
   .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
   .ptl-navigation.ptl-has-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate3d(0, var(--ptl-parallax), 0) scale(var(--ptl-scale-sp, 1.32)); /* CSS変数化 */
+    transform: translateY(var(--ptl-parallax)) scale(1.28); /* PC 1.15 → SP 1.28 */
     transform-origin: center;
     will-change: transform;
   }
@@ -41,7 +38,6 @@
   .ptl-pageNavHero,
   .ptl-navigation {
     overflow: clip; /* 互換目的なら overflow: hidden; でも可 */
-    contain: paint;
   }
   
   /* #page-navigation と #bust-issues の両方に明示的に適用 */
@@ -49,10 +45,7 @@
   #page-navigation .ptl-pageNavHero__video,
   #bust-issues .ptl-pageNavHero__image img,
   #bust-issues .ptl-pageNavHero__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate3d(0, var(--ptl-parallax), 0) scale(var(--ptl-scale-sp, 1.32));
+    transform: translateY(var(--ptl-parallax)) scale(1.28); /* PC 1.15 → SP 1.28 */
     transform-origin: center;
     will-change: transform;
   }
@@ -60,11 +53,62 @@
   /* has-bg クラスを持つ要素にも適用 */
   .ptl-pageNavHero.has-bg .ptl-pageNavHero__image img,
   .ptl-pageNavHero.has-bg .ptl-pageNavHero__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate3d(0, var(--ptl-parallax), 0) scale(var(--ptl-scale-sp, 1.32));
+    transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
+}
+
+/* ===== BUST-ISSUES 調整：幅合わせ・不透明化・MORE統一 ===== */
+#bust-issues .ptl-section__inner{
+  /* 下段（COMMITMENT 4ボックス）と同幅に揃える */
+  max-width: 1180px; /* 必要なら下段と同値へ変更 */
+  margin: 0 auto;
+  padding-left: clamp(16px,4vw,24px);
+  padding-right: clamp(16px,4vw,24px);
+  position: relative;
+  isolation: isolate; /* 背景パララックスの透過影響を遮断 */
+}
+#bust-issues .ptl-bustIssues__card{
+  width: 100%;
+  background: #fff;           /* 透過をやめて完全不透明に */
+  backdrop-filter: none;      /* 透過由来のブラーを無効化 */
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  padding: 16px 20px;
+  position: relative;
+  z-index: 1;                 /* パララックス背景より前面に固定 */
+}
+#bust-issues .ptl-bustIssues__list{
+  list-style: none; margin:0; padding:0;
+  display: grid; grid-template-columns: 1fr; column-gap: 40px;
+}
+#bust-issues .ptl-bustIssues__item{
+  display:grid; grid-template-columns:24px 1fr; align-items:center;
+  gap:12px; padding:18px 4px;
+  border-bottom:1px dashed rgba(0,0,0,.12);
+}
+#bust-issues .ptl-bustIssues__item:last-child{ border-bottom:none; }
+#bust-issues .ptl-bustIssues__icon{ width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;color:#666; }
+#bust-issues .ptl-bustIssues__icon img{ width:20px;height:20px;object-fit:contain;display:block; }
+#bust-issues .ptl-bustIssues__text{ font-size:16px; line-height:1.9; letter-spacing:.02em; color:#222; }
+
+/* PCは2カラム */
+@media (min-width: 768px){
+  #bust-issues .ptl-bustIssues__list{ grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== MOREボタン（NEWSと完全統一） ===== */
+#bust-issues .ptl-news__more { 
+  display: flex; 
+  justify-content: center; 
+  margin: 20px 0 4px; 
+}
+
+/* NEWSの標準クラスをそのまま継承（style.cssに定義済み） */
+/* ptl-news__moreBtn, ptl-news__moreLabel, ptl-news__moreArrowクラスをそのまま使用 */
+
+/* オーバーライドが必要な場合は以下に追加 */
+#bust-issues .ptl-news__moreBtn {
+  /* カスタマイズ追加（ここは既存スタイルを上書きしたい場合のみ使用） */
 }
