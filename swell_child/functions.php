@@ -6,7 +6,8 @@ if (! defined('ABSPATH')) exit;
 /* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
 
 // NAV背景メディアを取得
-function ptl_get_nav_background(): array {
+function ptl_get_nav_background(): array
+{
   // テーマ設定より取得
   $video_mod = get_theme_mod('ptl_nav_video');
   $bg_pc     = (string) get_theme_mod('ptl_nav_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
@@ -37,7 +38,8 @@ function ptl_get_nav_background(): array {
 }
 
 // BUST-ISSUES背景メディアを取得
-function ptl_get_bust_issues_background(): array {
+function ptl_get_bust_issues_background(): array
+{
   // テーマ設定より取得
   $video_mod = get_theme_mod('ptl_bust_issues_video');
   $bg_pc     = (string) get_theme_mod('ptl_bust_issues_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
@@ -773,6 +775,7 @@ add_action('wp_enqueue_scripts', function () {
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
   wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
   wp_enqueue_script('ptl-nav-fix', get_stylesheet_directory_uri() . '/js/ptl-nav-fix.js', [], date('YmdHis'), true);
+  wp_enqueue_script('ptl-parallax-scale-sp', get_stylesheet_directory_uri() . '/js/ptl-parallax-scale-sp.js', [], date('YmdHis'), true);
 }, 20);
 
 /**

@@ -14,3 +14,57 @@
     /* SP専用の調整はここに */
   }
 }
+
+/* ===== SP: パララックス可視化強化（速度はカスタマイザー制御のまま） ===== */
+@media (max-width: 768px) {
+  /* 背景画像パターン（.ptl-navigation に直接背景を持つケース） */
+  .ptl-navigation {
+    --ptl-parallax: 0px; /* JSで上書きされる前提の初期値 */
+    background-position: 50% calc(50% + var(--ptl-parallax));
+    background-size: 145% auto; /* PC 120% → SP 145% に拡大して端露出を防止 */
+    will-change: background-position;
+  }
+
+  /* 画像/動画パターン（要素として埋め込むケース） */
+  .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img,
+  .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
+  .ptl-navigation.ptl-has-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate3d(0, var(--ptl-parallax), 0) scale(var(--ptl-scale-sp, 1.32)); /* CSS変数化 */
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  /* はみ出し抑止（translate時の端露出を防ぐ） */
+  .ptl-pageNavHero,
+  .ptl-navigation {
+    overflow: clip; /* 互換目的なら overflow: hidden; でも可 */
+    contain: paint;
+  }
+  
+  /* #page-navigation と #bust-issues の両方に明示的に適用 */
+  #page-navigation .ptl-pageNavHero__image img,
+  #page-navigation .ptl-pageNavHero__video,
+  #bust-issues .ptl-pageNavHero__image img,
+  #bust-issues .ptl-pageNavHero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate3d(0, var(--ptl-parallax), 0) scale(var(--ptl-scale-sp, 1.32));
+    transform-origin: center;
+    will-change: transform;
+  }
+  
+  /* has-bg クラスを持つ要素にも適用 */
+  .ptl-pageNavHero.has-bg .ptl-pageNavHero__image img,
+  .ptl-pageNavHero.has-bg .ptl-pageNavHero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate3d(0, var(--ptl-parallax), 0) scale(var(--ptl-scale-sp, 1.32));
+    transform-origin: center;
+    will-change: transform;
+  }
+}
