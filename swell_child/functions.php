@@ -772,6 +772,7 @@ add_action('wp_enqueue_scripts', function () {
   $nav_js_path = get_stylesheet_directory() . '/js/navigation.js';
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
   wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
+  wp_enqueue_script('ptl-nav-fix', get_stylesheet_directory_uri() . '/js/ptl-nav-fix.js', [], date('YmdHis'), true);
 }, 20);
 
 /**
@@ -979,21 +980,41 @@ CSS;
   
   // ハンバーガーメニューの制御
   function setupToggle() {
-    var toggle = document.querySelector('.ptl-nav-toggle');
-    var menu = document.getElementById('ptl-nav-menu');
+    // 「page-navigation」セクション内のトグルボタンとメニューを取得
+    var navToggle = document.querySelector('#page-navigation .ptl-nav-toggle');
+    var navMenu = document.querySelector('#page-navigation #ptl-nav-menu');
     
-    if (!toggle || !menu) return;
+    // ナビゲーションセクションのトグル設定
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', function() {
+        var expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !expanded);
+        navMenu.classList.toggle('is-open');
+        
+        // 開いた直後にmax-heightを再計算
+        if (!expanded) {
+          setTimeout(recalc, 50);
+        }
+      });
+    }
     
-    toggle.addEventListener('click', function() {
-      var expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !expanded);
-      menu.classList.toggle('is-open');
-      
-      // 開いた直後にmax-heightを再計算
-      if (!expanded) {
-        setTimeout(recalc, 50);
-      }
-    });
+    // ISSUESセクション内のトグルボタンとメニューも取得（既に機能しているが念のため）
+    var issuesToggle = document.querySelector('#bust-issues .ptl-nav-toggle');
+    var issuesMenu = document.querySelector('#bust-issues #ptl-nav-menu');
+    
+    // ISSUESセクションのトグル設定
+    if (issuesToggle && issuesMenu) {
+      issuesToggle.addEventListener('click', function() {
+        var expanded = issuesToggle.getAttribute('aria-expanded') === 'true';
+        issuesToggle.setAttribute('aria-expanded', !expanded);
+        issuesMenu.classList.toggle('is-open');
+        
+        // 開いた直後にmax-heightを再計算
+        if (!expanded) {
+          setTimeout(recalc, 50);
+        }
+      });
+    }
   }
 
   function panelsIn(container){

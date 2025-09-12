@@ -83,20 +83,9 @@
 
 /* PCではナビトグルボタンを非表示に */
 @media screen and (min-width: 768px) {
-    #page-navigation .ptl-nav-toggle,
-    .ptl-pageNavHero .ptl-nav-toggle,
-    section[id="page-navigation"] .ptl-nav-toggle,
+    /* PCモードでハンバーガーボタンを非表示 */
     body:not(.sp-view) .ptl-nav-toggle {
         display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        position: absolute !important;
-        left: -9999px !important;
-        height: 0 !important;
-        width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
 }
 
