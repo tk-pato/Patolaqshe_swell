@@ -70,6 +70,8 @@
     if (!btn) return;
     if (!isSP()) return; // SPのみ処理
     ev.preventDefault();
+    ev.stopPropagation(); // 伝播停止（既存リスナーへの伝達を防ぐ）
+    if (typeof ev.stopImmediatePropagation === 'function') ev.stopImmediatePropagation(); // 同一要素の他のリスナーも停止
     toggle(btn);
   }, true);
 
