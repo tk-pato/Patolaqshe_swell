@@ -54,7 +54,6 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title is-onImage">BUST-ISSUES</h2>
-        <p class="ptl-section__subtitle">バストのお悩みを解決</p>
         
         <!-- 新：8つの悩みチェックリスト -->
         <div id="ptl-nav-menu" class="ptl-bustIssues__card">
