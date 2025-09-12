@@ -5,6 +5,68 @@ if (! defined('ABSPATH')) exit;
 
 /* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
 
+// NAV背景メディアを取得
+function ptl_get_nav_background(): array {
+  // テーマ設定より取得
+  $video_mod = get_theme_mod('ptl_nav_video');
+  $bg_pc     = (string) get_theme_mod('ptl_nav_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
+  $bg_sp     = (string) get_theme_mod('ptl_nav_bg_sp', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
+  $overlay   = (float) get_theme_mod('ptl_nav_overlay', 0.25);
+  $p_speed   = (float) get_theme_mod('ptl_nav_parallax_speed', 0.6);
+
+  // 結果を組み立て
+  $result = [
+    'bg_pc'           => $bg_pc,
+    'bg_sp'           => $bg_sp,
+    'overlay_opacity' => $overlay,
+    'parallax_speed'  => $p_speed,
+  ];
+
+  // 動画の設定（あれば）
+  if ($video_mod) {
+    if (is_numeric($video_mod)) {
+      $u = wp_get_attachment_url((int) $video_mod);
+      if ($u) $result['video_url'] = $u;
+    } else {
+      $video_url = esc_url_raw((string) $video_mod);
+      if ($video_url) $result['video_url'] = $video_url;
+    }
+  }
+
+  return $result;
+}
+
+// BUST-ISSUES背景メディアを取得
+function ptl_get_bust_issues_background(): array {
+  // テーマ設定より取得
+  $video_mod = get_theme_mod('ptl_bust_issues_video');
+  $bg_pc     = (string) get_theme_mod('ptl_bust_issues_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
+  $bg_sp     = (string) get_theme_mod('ptl_bust_issues_bg_sp', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
+  $overlay   = (float) get_theme_mod('ptl_bust_issues_overlay', 0.25);
+  $p_speed   = (float) get_theme_mod('ptl_bust_issues_parallax_speed', 0.92);
+
+  // 結果を組み立て
+  $result = [
+    'bg_pc'           => $bg_pc,
+    'bg_sp'           => $bg_sp,
+    'overlay_opacity' => $overlay,
+    'parallax_speed'  => $p_speed,
+  ];
+
+  // 動画の設定（あれば）
+  if ($video_mod) {
+    if (is_numeric($video_mod)) {
+      $u = wp_get_attachment_url((int) $video_mod);
+      if ($u) $result['video_url'] = $u;
+    } else {
+      $video_url = esc_url_raw((string) $video_mod);
+      if ($video_url) $result['video_url'] = $video_url;
+    }
+  }
+
+  return $result;
+}
+
 // bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
 add_filter('body_class', function ($classes) {
   if (is_front_page() || is_page_template('page-landing.php')) {
@@ -243,6 +305,198 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     'title'       => 'セクション背景',
     'priority'    => 160,
     'description' => '共通で使えるセクション背景（現在は NAVIGATION で使用）。動画またはPC/SP画像とオーバーレイ濃度を設定できます。',
+  ]);
+
+  // NAV: 動画
+  $wp_customize->add_setting('ptl_nav_video', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      return is_numeric($v) ? (int)$v : esc_url_raw($v);
+    },
+  ]);
+  if (class_exists('WP_Customize_Media_Control')) {
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_nav_video', [
+      'label'     => 'セクション背景動画（MP4推奨）',
+      'section'   => 'ptl_navigation',
+      'mime_type' => 'video',
+    ]));
+  }
+
+  // NAV: PC画像
+  $wp_customize->add_setting('ptl_nav_bg_pc', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_nav_bg_pc', [
+      'label'   => 'PC用セクション背景画像',
+      'section' => 'ptl_navigation',
+    ]));
+  }
+
+  // NAV: SP画像
+  $wp_customize->add_setting('ptl_nav_bg_sp', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_nav_bg_sp', [
+      'label'   => 'SP用セクション背景画像',
+      'section' => 'ptl_navigation',
+    ]));
+  }
+
+  // NAV: オーバーレイ濃度
+  $wp_customize->add_setting('ptl_nav_overlay', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      $f = floatval($v);
+      if ($f < 0) $f = 0;
+      if ($f > 0.8) $f = 0.8;
+      return $f;
+    },
+    'default'           => 0.25,
+  ]);
+  $wp_customize->add_control('ptl_nav_overlay', [
+    'label'       => 'オーバーレイ濃度（0〜0.8）',
+    'section'     => 'ptl_navigation',
+    'type'        => 'number',
+    'input_attrs' => [
+      'min'  => 0,
+      'max'  => 0.8,
+      'step' => 0.01,
+    ],
+  ]);
+
+  // NAV: パララックス速度
+  $wp_customize->add_setting('ptl_nav_parallax_speed', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      $f = floatval($v);
+      if ($f < 0.1) $f = 0.1;
+      if ($f > 2.0) $f = 2.0;
+      return $f;
+    },
+    'default'           => 0.6,
+  ]);
+  $wp_customize->add_control('ptl_nav_parallax_speed', [
+    'label'       => 'パララックス速度（0.1〜2.0）',
+    'section'     => 'ptl_navigation',
+    'type'        => 'number',
+    'input_attrs' => [
+      'min'  => 0.1,
+      'max'  => 2.0,
+      'step' => 0.01,
+    ],
+  ]);
+});
+
+/**
+ * BUST-ISSUES専用背景のカスタマイザー設定
+ */
+add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
+  // BUST-ISSUESセクション（完全独立）
+  $wp_customize->add_section('ptl_bust_issues', [
+    'title'       => 'BUST-ISSUES背景',
+    'priority'    => 161,
+    'description' => 'BUST-ISSUES専用の背景設定（動画・画像・オーバーレイ・パララックス）',
+  ]);
+
+  // BUST-ISSUES: 動画
+  $wp_customize->add_setting('ptl_bust_issues_video', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      return is_numeric($v) ? (int)$v : esc_url_raw($v);
+    },
+  ]);
+  if (class_exists('WP_Customize_Media_Control')) {
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_bust_issues_video', [
+      'label'     => '背景動画（MP4推奨）',
+      'section'   => 'ptl_bust_issues',
+      'mime_type' => 'video',
+    ]));
+  }
+
+  // BUST-ISSUES: PC画像
+  $wp_customize->add_setting('ptl_bust_issues_bg_pc', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_bust_issues_bg_pc', [
+      'label'   => 'PC用背景画像',
+      'section' => 'ptl_bust_issues',
+    ]));
+  }
+
+  // BUST-ISSUES: SP画像
+  $wp_customize->add_setting('ptl_bust_issues_bg_sp', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => 'esc_url_raw',
+    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_bust_issues_bg_sp', [
+      'label'   => 'SP用背景画像',
+      'section' => 'ptl_bust_issues',
+    ]));
+  }
+
+  // BUST-ISSUES: オーバーレイ濃度
+  $wp_customize->add_setting('ptl_bust_issues_overlay', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      $f = floatval($v);
+      if ($f < 0) $f = 0;
+      if ($f > 0.8) $f = 0.8;
+      return $f;
+    },
+    'default'           => 0.25,
+  ]);
+  $wp_customize->add_control('ptl_bust_issues_overlay', [
+    'label'       => 'オーバーレイ濃度（0〜0.8）',
+    'section'     => 'ptl_bust_issues',
+    'type'        => 'number',
+    'input_attrs' => [
+      'min'  => 0,
+      'max'  => 0.8,
+      'step' => 0.01,
+    ],
+  ]);
+
+  // BUST-ISSUES: パララックス速度
+  $wp_customize->add_setting('ptl_bust_issues_parallax_speed', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      $f = floatval($v);
+      if ($f < 0.1) $f = 0.1;
+      if ($f > 2.0) $f = 2.0;
+      return $f;
+    },
+    'default'           => 0.92,
+  ]);
+  $wp_customize->add_control('ptl_bust_issues_parallax_speed', [
+    'label'       => 'パララックス速度（0.1〜2.0）',
+    'section'     => 'ptl_bust_issues',
+    'type'        => 'number',
+    'input_attrs' => [
+      'min'  => 0.1,
+      'max'  => 2.0,
+      'step' => 0.01,
+    ],
   ]);
 
   // 動画（メディア）
