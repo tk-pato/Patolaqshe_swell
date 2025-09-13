@@ -57,7 +57,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
         <h2 class="ptl-section__title is-onImage">BUST-ISSUES</h2>
 
         <!-- 新：8つの悩みチェックリスト -->
-        <div class="ptl-bustIssues__card">
+        <div id="ptl-nav-menu" class="ptl-bustIssues__card">
             <ul class="ptl-bustIssues__list" role="list">
                 <?php foreach ($items as $text): if (!is_string($text) || $text === '') continue; ?>
                     <li class="ptl-bustIssues__item">
@@ -70,11 +70,13 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
             </ul>
             <!-- MORE: NEWSセクションと同意匠 -->
             <div class="ptl-news__more">
-                <a class="ptl-moreButton--news" href="<?php echo esc_url(home_url('/reason/')); ?>">
-                    <span class="ptl-moreButton__label">MORE</span>
-                    <span class="ptl-moreButton__arrow" aria-hidden="true">→</span>
+                <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/reason/')); ?>">
+                    <span class="ptl-news__moreLabel">MORE</span>
+                    <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
                 </a>
             </div>
-        </div>
+        cat >/tmp/rsync_files.txt <<'EOF'
+        swell_child/変更したファイルパス
+        EOF        </div>
     </div>
 </section>
