@@ -1,6 +1,9 @@
 <?php
 if (! defined('ABSPATH')) exit;
 
+// 専用CSSを後読みで確実に読み込む
+echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() . '/css/section-service-feature.css' ) . '" media="all">';
+
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
     'video_url' => '',
@@ -40,11 +43,11 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 }
 ?>
 
-<section id="section-reasons" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
+<section id="section-services" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
 
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">COMMITMENT</h2>
-        <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">パトラクシェの魅力</div>
+        <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">SERVICE</h2>
+        <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種サービス</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>

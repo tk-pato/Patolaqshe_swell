@@ -472,3 +472,21 @@ html, body { overflow-x: hidden; }
   margin: 0 auto;
 }
 
+/* === Canonical container lock (global, matches navigation) === */
+:root { --ptl-container-max: 1160px; --ptl-container-pad: 20px; }
+.ptl-section > .ptl-section__inner{
+  max-width: var(--ptl-container-max) !important;
+  margin-inline: auto !important;
+  padding-inline: var(--ptl-container-pad) !important;
+  width: auto !important;
+  box-sizing: border-box;
+}
+/* Optional safety: if a section wrapper tries to re-define width */
+.ptl-section [class*="__inner"],
+.ptl-section [class*="__wrap"],
+.ptl-section [class*="__container"]{
+  max-width: none !important;
+  width: auto !important;
+  box-sizing: border-box;
+}
+
