@@ -236,9 +236,22 @@ html, body { overflow-x: hidden; }
 /* NEWS（タイトルのみ）*/
 .ptl-news { --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
 .ptl-news .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+.ptl-news .ptl-section__subtitleLine {
+    /* ロココ調の飾りライン画像（子テーマ img/bg_1.png） */
+    width: clamp(180px, 18vw, 240px);
+    height: clamp(16px, 2.4vw, 20px);
+    margin: 10px auto 26px;
+    background: url('./img/bg_1.png') center/contain no-repeat;
+}
 
-/* REASONS（サブタイトル）*/
+/* REASONS（サブタイトル＆飾りライン）*/
 .ptl-reasons .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+.ptl-reasons .ptl-section__subtitleLine {
+    width: clamp(180px, 28vw, 560px);
+    height: clamp(16px, 3.2vw, 28px);
+    margin: 10px auto 26px;
+    background: url('./img/bg_1.png') center/contain no-repeat;
+}
 .ptl-news__list.is-titleOnly { max-width: 980px; margin: 0 auto; }
 .ptl-news__list.is-titleOnly .ptl-news__item { padding: 18px 0; border-bottom: 1px solid #e5e5e5; }
 .ptl-news__title { text-decoration: none; font-weight: 700; letter-spacing: .01em; }

@@ -1,0 +1,22 @@
+/* ===========================
+   REASONS Section Styles  
+   REASONSセクション専用スタイル
+   =========================== */
+
+/* REASONSセクション基本設定 */
+.ptl-reasons { 
+    --ptl-subtitle-size: clamp(16px, 2vw, 18px); 
+}
+
+/* サブタイトル */
+.ptl-reasons .ptl-section__subtitle { 
+    text-align: center; 
+    color: #777; 
+    margin-top: -4px; 
+    font-size: var(--ptl-subtitle-size); 
+}
+
+/* REASONSグリッド（既存のスタイルがあれば適宜追加） */
+.ptl-reasonsHero__grid {
+    /* 必要に応じてグリッドスタイルを追加 */
+}

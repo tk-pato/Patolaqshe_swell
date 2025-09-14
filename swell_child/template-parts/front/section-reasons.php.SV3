@@ -1,9 +1,6 @@
 <?php
 if (! defined('ABSPATH')) exit;
 
-// 専用CSSを後読みで確実に読み込む
-echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() . '/css/section-reasons.css' ) . '" media="all">';
-
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
     'video_url' => '',
@@ -48,7 +45,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">COMMITMENT</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">パトラクシェの魅力</div>
-        <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
+        <div class="ptl-section__ornament" style="text-align:center;margin:12px 0;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>
         <div class="ptl-reasonsHero__grid">
