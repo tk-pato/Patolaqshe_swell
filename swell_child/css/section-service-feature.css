@@ -214,3 +214,20 @@
 }
 
 /* ファイル末尾 */
+#section-services .ptl-menu__mainImage img {
+  width: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  border-radius: 16px 16px 0 0 !important;
+  height: 340px !important;
+  max-height: 340px !important;
+  min-height: 240px !important;
+}
+
+#section-services .ptl-menu__mainTitle {
+  margin-bottom: 24px !important;
+}
+
+#section-services .ptl-menu__mainDesc {
+  margin-top: 0 !important;
+}
