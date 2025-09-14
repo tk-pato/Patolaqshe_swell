@@ -24,7 +24,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">MENU</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種メニュー</div>
-        <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
+        <div class="ptl-section__ornament" style="text-align:center;margin:12px 0;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>
 
@@ -40,6 +40,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                         <div class="ptl-menu__mainText">
                             <h3 class="ptl-menu__mainTitle">テキストテキストテキスト</h3>
                             <p class="ptl-menu__mainDesc">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキスト。</p>
+                            <span class="ptl-menu__mainCta">View all</span>
                         </div>
                     </a>
                 </div>
