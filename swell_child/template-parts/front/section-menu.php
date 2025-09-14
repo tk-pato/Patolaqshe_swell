@@ -1,34 +1,16 @@
 <?php
-if (! defined('ABSPATH')) exit;
-
-// 専用CSSを後読みで確実に読み込む
-echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() . '/css/section-service-feature.css' ) . '" media="all">';
-
-// 共通セクション背景（Customizer）を取得
-$bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
-    'video_url' => '',
-    'bg_pc'     => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
-    'bg_sp'     => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
-    'overlay'   => 0.25,
-];
-$video_url = (string) ($bg['video_url'] ?? '');
-$bg_pc     = (string) ($bg['bg_pc'] ?? '');
-$bg_sp     = (string) ($bg['bg_sp'] ?? '');
-$overlay   = (float)   ($bg['overlay'] ?? 0.25);
-$p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
-
-$has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
+/**
+ * MENU Section (Rococo-style)
+ * メニューセクション - rococoサイト完全再現版
+ */
 ?>
-
-<section id="section-services" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
+<section id="menu" class="ptl-section ptl-menu">
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">MENU</h2>
-        <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種メニュー</div>
-        <div class="ptl-section__ornament" style="text-align:center;margin:12px 0;">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
+        <!-- セクションタイトル -->
+        <div class="ptl-menu__header">
+            <h2 class="ptl-menu__title">MENU</h2>
         </div>
 
-        <!-- MENU Content (Rococo Style) -->
         <div class="ptl-menu__content">
             <!-- メインコンテンツ -->
             <div class="ptl-menu__main">
@@ -38,8 +20,8 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                             <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
                         </div>
                         <div class="ptl-menu__mainText">
-                            <h3 class="ptl-menu__mainTitle">テキストテキストテキスト</h3>
-                            <p class="ptl-menu__mainDesc">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキスト。</p>
+                            <h3 class="ptl-menu__mainTitle">Rococo式 バストアップ施術</h3>
+                            <p class="ptl-menu__mainDesc">一度でバストアップが実感できる驚きの豊胸メソッド！特別価格の初回限定キャンペーン。</p>
                             <span class="ptl-menu__mainCta">View all</span>
                         </div>
                     </a>
@@ -75,18 +57,25 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                             <h4 class="ptl-menu__subTitle">離れバストケア</h4>
                         </a>
                     </div>
+
+                    <div class="ptl-menu__subItem">
+                        <a href="<?php echo esc_url(home_url('/menu/gap/')); ?>" class="ptl-menu__subLink">
+                            <div class="ptl-menu__subImage">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="左右差ケア" loading="lazy" decoding="async">
+                            </div>
+                            <h4 class="ptl-menu__subTitle">左右差ケア</h4>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- MORE ボタン -->
-        <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <div class="ptl-news__more">
-                <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
-                    <span class="ptl-news__moreLabel">More</span>
-                    <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
-                </a>
-            </div>
+        <div class="ptl-menu__more">
+            <a class="ptl-menu__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
+                <span class="ptl-menu__moreLabel">More</span>
+                <span class="ptl-menu__moreArrow" aria-hidden="true">→</span>
+            </a>
         </div>
     </div>
 </section>
