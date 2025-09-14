@@ -70,10 +70,10 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
             </ul>
             <!-- MORE: NEWSセクションと同意匠 -->
             <div class="ptl-news__more">
-                <a class="ptl-moreButton--news" href="<?php echo esc_url(home_url('/reason/')); ?>">
-                    <span class="ptl-moreButton__label">MORE</span>
-                    <span class="ptl-moreButton__arrow" aria-hidden="true">→</span>
-                </a>
+              <a class="ptl-news__moreBtn" href="<?php echo esc_url( home_url( '/reason/' ) ); ?>">
+                <span class="ptl-news__moreLabel">MORE</span>
+                <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
+              </a>
             </div>
         </div>
     </div>
