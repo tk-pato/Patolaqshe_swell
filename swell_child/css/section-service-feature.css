@@ -233,5 +233,9 @@
   margin-top: 4px !important; /* 既存0→4px */
 }
 
-/* DEBUG */
-#section-services { outline: 3px solid magenta !important; }
+/* FIX: 左メイン画像の縦量を確保してカバー表示 */
+#section-services .ptl-menu__main .ptl-menu__mainContent { display: flex !important; flex-direction: column !important; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink { display: flex !important; flex-direction: column !important; height: 100% !important; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage{ max-width:none !important; width:100% !important; flex: 0 0 68% !important; /* 上下幅の68%に戻す */ margin-bottom: 24px !important; /* 写真とタイトルの間の余白を拡張 */ }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage img{ width:100% !important; height:100% !important; object-fit:cover !important; display:block !important; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainText { flex: 0 0 32% !important; /* 残り32%をテキストに */ padding-top: 12px !important; /* テキスト上部の余白も拡張 */ }
