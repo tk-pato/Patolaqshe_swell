@@ -219,15 +219,19 @@
   display: block !important;
   object-fit: cover !important;
   border-radius: 16px 16px 0 0 !important;
-  height: 340px !important;
-  max-height: 340px !important;
-  min-height: 240px !important;
+  /* 最小260px ↔ 最大420px。足りない場合は420→440に調整 */
+  height: clamp(260px, 35vw, 420px) !important;
+  max-height: none !important;
+  min-height: 260px !important;
 }
 
 #section-services .ptl-menu__mainTitle {
-  margin-bottom: 24px !important;
+  margin-bottom: 28px !important; /* 既存24px→28px */
 }
 
 #section-services .ptl-menu__mainDesc {
-  margin-top: 0 !important;
+  margin-top: 4px !important; /* 既存0→4px */
 }
+
+/* DEBUG */
+#section-services { outline: 3px solid magenta !important; }

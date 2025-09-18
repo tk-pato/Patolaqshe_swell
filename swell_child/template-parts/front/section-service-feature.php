@@ -1,6 +1,8 @@
 <?php
-
 if (! defined('ABSPATH')) exit;
+
+// 専用CSSを後読みで確実に読み込む
+
 
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
