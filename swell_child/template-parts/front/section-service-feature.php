@@ -1,8 +1,6 @@
 <?php
-if (! defined('ABSPATH')) exit;
 
-// 専用CSSを後読みで確実に読み込む
-echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() . '/css/section-service-feature.css' ) . '" media="all">';
+if (! defined('ABSPATH')) exit;
 
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
