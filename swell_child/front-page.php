@@ -40,32 +40,27 @@ get_header();
 		?>
 
 		<?php
-		// 5) サービスナビ（PHP、動画背景＋アイコングリッド）
-		get_template_part('template-parts/front/section', 'service-nav');
+		// 5) お客様の声（カスタム投稿タイプから動的取得）
+		get_template_part('template-parts/front/section', 'uservoice');
 		?>
 
 		<?php
-		// 6) お客様の声（ブロック・アンカー: voices）
-		ptl_render_block_slot('voices');
-		?>
-
-		<?php
-		// 7) 店舗ナビ（PHP）
+		// 6) 店舗ナビ（PHP）
 		get_template_part('template-parts/front/section', 'store-nav');
 		?>
 
 		<?php
-		// 8) ブライダルナビ（ブロック・アンカー: bridal-nav）
+		// 7) ブライダルナビ（ブロック・アンカー: bridal-nav）
 		ptl_render_block_slot('bridal-nav');
 		?>
 
 		<?php
-		// 9) FAQ（ブロック・アンカー: faq）
+		// 8) FAQ（ブロック・アンカー: faq）
 		ptl_render_block_slot('faq');
 		?>
 
 		<?php
-		// 10) お問合せ（ブロック・アンカー: contact）
+		// 9) お問合せ（ブロック・アンカー: contact）
 		ptl_render_block_slot('contact');
 		?>
 
