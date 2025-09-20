@@ -1,5 +1,2 @@
 swell_child/functions.php
 swell_child/css/section-service-feature.css
-swell_child/template-parts/front/section-uservoice.php
-swell_child/css/section-uservoice.css
-swell_child/js/uservoice-slider.js
