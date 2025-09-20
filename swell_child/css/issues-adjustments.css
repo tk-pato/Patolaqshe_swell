@@ -1,2 +1,8 @@
-/* nav-adjustments.css を複製して issues-adjustments.css を新規作成 */
-/* ...existing code... */
+
+/* BUST-ISSUES: 全行に下線を強制（HTML構造に合わせた正しいセレクタ） */
+#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
+	border-bottom: 1px dashed rgba(0,0,0,.18) !important;
+}
+
+/* （任意のデバッグ）この枠が出たらCSSは確実に読めている */
+#bust-issues { outline: 3px solid magenta !important; }

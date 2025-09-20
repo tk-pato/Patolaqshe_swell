@@ -1,26 +1,3 @@
-// ==== BUST-ISSUES: 読み順を固定（navigation → adjustments） ====
-add_action('wp_enqueue_scripts', function () {
-  $nav = get_stylesheet_directory() . '/css/issues-navigation.css';
-  if ( file_exists($nav) ) {
-    wp_enqueue_style(
-      'ptl-issues-navigation-style',
-      get_stylesheet_directory_uri() . '/css/issues-navigation.css',
-      [],
-      filemtime($nav)
-    );
-  }
-
-  $adj = get_stylesheet_directory() . '/css/issues-adjustments.css';
-  if ( file_exists($adj) ) {
-    // navigation の後に必ず読む（依存を指定）
-    wp_enqueue_style(
-      'ptl-issues-adjustments',
-      get_stylesheet_directory_uri() . '/css/issues-adjustments.css',
-      ['ptl-issues-navigation-style'],
-      filemtime($adj)
-    );
-  }
-}, 99);
 <?php
 if (! defined('ABSPATH')) exit;
 
@@ -97,7 +74,6 @@ add_filter('body_class', function ($classes) {
   if (is_front_page() || is_page_template('page-landing.php')) {
     $classes[] = 'has-head-toggle';
   }
-  return $classes;
 });
 /* === PTL Header Visibility Guard (Plan B) | 非表示だけ無効化。見た目は変更しない === */
 add_action('wp_footer', function () {
@@ -146,6 +122,96 @@ add_action('wp_footer', function () {
         once: true
       });
       else apply();
+  /**
+   * 子テーマでのファイルの読み込み
+   * section-uservoice.css, uservoice-slider.js, issues系のenqueue掃除・整理済み
+   */
+  add_action('wp_enqueue_scripts', function () {
+    // style.css
+    $style_path = get_stylesheet_directory() . '/style.css';
+    $style_ver  = file_exists($style_path) ? date('Ymdgis', filemtime($style_path)) : null;
+    wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
+
+    // ptl-layout.css
+    wp_enqueue_style('ptl_layout', get_stylesheet_directory_uri() . '/css/ptl-layout.css', ['child_style'], wp_get_theme()->get('Version'));
+
+    // reasons-styles.css
+    wp_enqueue_style('ptl_reasons_styles', get_stylesheet_directory_uri() . '/css/reasons-styles.css', ['child_style'], time());
+
+    // section-service-feature.css（filemtimeのみ残す）
+    $ssf_path = get_stylesheet_directory() . '/css/section-service-feature.css';
+    if (file_exists($ssf_path)) {
+      wp_enqueue_style(
+        'ptl_section_service_feature',
+        get_stylesheet_directory_uri() . '/css/section-service-feature.css',
+        ['child_style'],
+        filemtime($ssf_path)
+      );
+    }
+
+    // issues-adjustments.css（一本化）
+    $adj_path = get_stylesheet_directory() . '/css/issues-adjustments.css';
+    if (file_exists($adj_path)) {
+      wp_enqueue_style('ptl_issues_adjustments', get_stylesheet_directory_uri() . '/css/issues-adjustments.css', ['child_style'], filemtime($adj_path));
+    }
+
+    // head-toggle.js
+    $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
+    $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
+    wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
+
+    // section-parallax.js
+    $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
+    if (file_exists($parallax_js_path)) {
+      $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
+      wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
+    }
+  }, 20);
+
+  // ==== USER'S VOICE: 強制読み込み（最後に） ====
+  add_action('wp_enqueue_scripts', function () {
+    $uv_css = get_stylesheet_directory().'/css/section-uservoice.css';
+    if (file_exists($uv_css)) {
+      wp_enqueue_style('ptl-uservoice',
+        get_stylesheet_directory_uri().'/css/section-uservoice.css',
+        [],
+        filemtime($uv_css)
+      );
+    }
+    $uv_js = get_stylesheet_directory().'/js/uservoice-slider.js';
+    if (file_exists($uv_js)) {
+      wp_enqueue_script('ptl-uservoice-js',
+        get_stylesheet_directory_uri().'/js/uservoice-slider.js',
+        [],
+        filemtime($uv_js), true
+      );
+    }
+  }, 999);
+
+  // 読込確認用インラインDEBUG（後で削除可）
+  add_action('wp_head', function(){
+    echo '<style id="ptl-uservoice-debug-css">#uservoice, .ptl-uservoice{outline:3px solid lime!important;}</style>';
+  }, 9999);
+
+  // ==== BUST-ISSUES: 読み順を固定（navigation → adjustments） ====
+  add_action('wp_enqueue_scripts', function () {
+    $nav = get_stylesheet_directory().'/css/issues-navigation.css';
+    if (file_exists($nav)) {
+      wp_enqueue_style('ptl-issues-navigation-style',
+        get_stylesheet_directory_uri().'/css/issues-navigation.css',
+        [],
+        filemtime($nav)
+      );
+    }
+    $adj = get_stylesheet_directory().'/css/issues-adjustments.css';
+    if (file_exists($adj)) {
+      wp_enqueue_style('ptl-issues-adjustments',
+        get_stylesheet_directory_uri().'/css/issues-adjustments.css',
+        ['ptl-issues-navigation-style'],
+        filemtime($adj)
+      );
+    }
+  }, 99);
       window.addEventListener('load', apply, {
         once: true
       });
@@ -203,6 +269,9 @@ add_action('wp_enqueue_scripts', function () {
 
   // section-service-feature.css（サービス特徴セクション用）
   wp_enqueue_style('ptl_section_service_feature', get_stylesheet_directory_uri() . '/css/section-service-feature.css', ['child_style'], time());
+
+  // issues-adjustments.css（BUST-ISSUES下線用）
+  wp_enqueue_style('ptl_issues_adjustments', get_stylesheet_directory_uri() . '/css/issues-adjustments.css', ['child_style'], time());
 
   // section-service-feature.css（サービス特徴セクション用）
   $ssf_path = get_stylesheet_directory() . '/css/section-service-feature.css';
@@ -808,6 +877,11 @@ add_action('wp_enqueue_scripts', function () {
   $nav_css_ver  = file_exists($nav_css_path) ? date('Ymdgis', filemtime($nav_css_path)) : null;
   wp_enqueue_style('ptl-navigation-style', get_stylesheet_directory_uri() . '/css/navigation.css', [], $nav_css_ver);
 
+  // issues-navigation.css（BUST-ISSUES下線用）
+  $issues_nav_css_path = get_stylesheet_directory() . '/css/issues-navigation.css';
+  $issues_nav_css_ver  = file_exists($issues_nav_css_path) ? date('Ymdgis', filemtime($issues_nav_css_path)) : null;
+  wp_enqueue_style('ptl-issues-navigation-style', get_stylesheet_directory_uri() . '/css/issues-navigation.css', ['ptl-navigation-style'], $issues_nav_css_ver);
+
   // JS（jQuery依存、フッター）
   $nav_js_path = get_stylesheet_directory() . '/js/navigation.js';
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
@@ -1324,27 +1398,50 @@ add_action('manage_uservoice_posts_custom_column', function ($column, $post_id) 
 
 // （旧）お客様の声スライダーのスクリプトエンキューは削除済み。新ブロックで管理。
 
-// お客様の声セクション用の CSS/JS をフロントページで登録・エンキュー（末尾に追記のみ）
-
+// ==== FORCE ENQUEUE: USER'S VOICE (CSS/JS) ====
 add_action('wp_enqueue_scripts', function () {
+  // CSS
+  $css_path = get_stylesheet_directory() . '/css/section-uservoice.css';
+  if (file_exists($css_path)) {
+    wp_enqueue_style(
+      'ptl-uservoice',
+      get_stylesheet_directory_uri() . '/css/section-uservoice.css',
+      [],
+      filemtime($css_path) // キャッシュ殺し
+    );
+  } else {
+    // 目視できるコメントで不在を通知
+    add_action('wp_head', function () use ($css_path) {
+      echo "\n<!-- ptl-uservoice CSS NOT FOUND: " . esc_html($css_path) . " -->\n";
+    }, 1);
+  }
 
-  // Swiper CDN を登録（未登録なら）
-  if (! wp_style_is('swiper', 'registered')) {
-    wp_register_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', [], '8.4.7');
+  // JS（footerで）
+  $js_path = get_stylesheet_directory() . '/js/uservoice-slider.js';
+  if (file_exists($js_path)) {
+    wp_enqueue_script(
+      'ptl-uservoice-js',
+      get_stylesheet_directory_uri() . '/js/uservoice-slider.js',
+      [],
+      filemtime($js_path),
+      true
+    );
+  } else {
+    add_action('wp_head', function () use ($js_path) {
+      echo "\n<!-- ptl-uservoice JS NOT FOUND: " . esc_html($js_path) . " -->\n";
+    }, 1);
   }
-  if (! wp_script_is('swiper', 'registered')) {
-    wp_register_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', [], '8.4.7', true);
-  }
+}, 999); // できる限り後ろで
 
-  // お客様の声 CSS
-  $css = get_stylesheet_directory() . '/css/section-uservoice.css';
-  if (file_exists($css) && ! wp_style_is('ptl-uservoice', 'enqueued')) {
-    wp_enqueue_style('ptl-uservoice', get_stylesheet_directory_uri() . '/css/section-uservoice.css', ['child_style', 'swiper'], filemtime($css));
-  }
+// ==== HARD DEBUG (読込確認用。表示されたら後で削除可) ====
+add_action('wp_head', function () {
+  echo '<style id="uv-hard-debug">
+    /* ラッパーID or クラスの両方に当てる */
+    #uservoice, .ptl-uservoice { outline: 6px solid magenta !important; }
+  </style>';
+}, 1000);
 
-  // お客様の声 JS（Swiperに依存）
-  $js = get_stylesheet_directory() . '/js/uservoice-slider.js';
-  if (file_exists($js) && ! wp_script_is('ptl-uservoice', 'enqueued')) {
-    wp_enqueue_script('ptl-uservoice', get_stylesheet_directory_uri() . '/js/uservoice-slider.js', ['swiper'], filemtime($js), true);
-  }
-}, 30);
+// ページ末尾にフック確認コメント（wp_footer() の有無も同時確認）
+add_action('wp_footer', function () {
+  echo "\n<!-- FOOTER_OK / ptl-uservoice handles: ptl-uservoice + ptl-uservoice-js -->\n";
+}, 1000);

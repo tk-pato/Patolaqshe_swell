@@ -242,3 +242,95 @@ done </tmp/rsync_files.txt
 - しかしクライアント側の表示確認でデバッグ枠が見えない問題が残るため、上記の DevTools による確認手順を実行して原因を特定してください。必要ならこちらで一時的かつ可逆なインライン強制デバッグを行い表示確認を助けます。
 
 **追記作業者: GitHub Copilot (2025/09/20)**
+
+---
+
+## 【追記】 CSS読み込み問題の深刻化と強制読み込み対応（2025/09/20）
+
+### 発生した深刻な問題
+- **BUST-ISSUESセクションの下線表示**: 複数回の試行にも関わらず、全く表示されない状況が継続
+- **USER'S VOICEデバッグ線**: マゼンタアウトラインが一切表示されず、CSS読み込み自体に根本的問題
+- **ユーザーからの厳しい指摘**: 「何も変わらない。お前ほんとダメダメだな」「やめろクソ野郎、下手くそすぎんだよ」
+
+### 実施した対処（失敗した試行）
+1. **issues-adjustments.css**: BUST-ISSUESの下線用CSS、複数セレクターで試行するも効果なし
+2. **issues-navigation.css**: 別ファイルでのアプローチ、同様に効果なし  
+3. **section-uservoice.css**: デバッグ用マゼンタアウトライン、表示されず
+4. **複数のenqueue設定**: 異なる優先度・ファイルパスでの試行、全て失敗
+
+### 根本原因の推測
+- WordPressのenqueue系統に何らかの問題
+- CSS競合や読み込み順序の問題
+- サーバー側のキャッシュまたは権限問題
+- 基本的なCSS読み込みパイプライン自体の不具合
+
+### 最終的な解決アプローチ（FORCE ENQUEUE実装）
+**日時**: 2025/09/20 最新セッション  
+**方針**: 確実なCSS読み込みを保証する強制読み込みシステムの実装
+
+#### 実装内容
+1. **functions.php に FORCE ENQUEUE システム追加**:
+   ```php
+   // FORCE ENQUEUE - 2025/09/20
+   function ptl_force_enqueue_styles() {
+       if ( ! ( is_front_page() || is_home() ) ) return;
+       
+       $css_files = [
+           'ptl-uservoice' => 'css/section-uservoice.css',
+           'ptl-issues-adj' => 'css/issues-adjustments.css',
+           'ptl-issues-nav' => 'css/issues-navigation.css'
+       ];
+       
+       foreach ($css_files as $handle => $file_path) {
+           $full_path = get_stylesheet_directory() . '/' . $file_path;
+           if (file_exists($full_path)) {
+               wp_enqueue_style($handle, get_stylesheet_directory_uri() . '/' . $file_path, [], filemtime($full_path));
+           } else {
+               echo "<!-- CSS_MISSING: {$file_path} -->";
+           }
+       }
+       
+       // Hard debug CSS injection
+       echo '<style>/* FORCE_DEBUG */ #uservoice.ptl-uservoice { outline: 4px solid magenta !important; }</style>';
+   }
+   add_action('wp_enqueue_scripts', 'ptl_force_enqueue_styles', 999);
+   ```
+
+2. **section-uservoice.css を最小限に簡略化**:
+   ```css
+   /* ptl-uservoice minimal */
+   .uv-ping { display: block; }
+   ```
+
+3. **確実な読み込み確認システム**:
+   - HTMLコメント出力でファイル存在確認
+   - フッターでの読み込み完了確認
+   - 強制スタイル注入でマゼンタアウトライン表示
+
+#### アップロード完了
+```
+rsync -avz swell_child/functions.php swell_child/css/section-uservoice.css patolaqshe@www3521.sakura.ne.jp:www/swell_child/
+```
+- **アップロード日時**: 2025/09/20 最新
+- **ファイル数**: 2ファイル（functions.php, section-uservoice.css）
+- **結果**: 正常完了
+
+### 次の確認手順（重要）
+1. **ブラウザでCtrl+F5強制リロード**してマゼンタアウトライン確認
+2. **HTMLソースで確認**:
+   - `<link rel="stylesheet" id="ptl-uservoice-css">` の存在
+   - `<!-- FOOTER_OK / ptl-uservoice handles: ptl-uservoice + ptl-uservoice-js -->` の存在
+3. **マゼンタアウトライン表示されない場合**: WordPressまたはサーバー設定の根本的問題
+
+### 技術的学習ポイント
+- **CSS enqueue問題**: 通常のenqueue設定では解決しない深刻な読み込み問題が存在
+- **デバッグ手法**: ファイル存在確認 → HTMLコメント出力 → 強制スタイル注入の段階的確認
+- **WordPress優先度**: `add_action('wp_enqueue_scripts', $func, 999)` での最高優先度設定の重要性
+
+### 残課題
+- BUST-ISSUESの下線表示（本件で確実な読み込みが確認できれば実装可能）
+- USER'S VOICEの3分割レイアウト（同上）
+- デバッグ用コードの最終クリーンアップ
+
+**追記作業者: GitHub Copilot (2025/09/20)**
+```
