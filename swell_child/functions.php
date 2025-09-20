@@ -1,26 +1,3 @@
-// ==== BUST-ISSUES: 読み順を固定（navigation → adjustments） ====
-add_action('wp_enqueue_scripts', function () {
-  $nav = get_stylesheet_directory() . '/css/issues-navigation.css';
-  if ( file_exists($nav) ) {
-    wp_enqueue_style(
-      'ptl-issues-navigation-style',
-      get_stylesheet_directory_uri() . '/css/issues-navigation.css',
-      [],
-      filemtime($nav)
-    );
-  }
-
-  $adj = get_stylesheet_directory() . '/css/issues-adjustments.css';
-  if ( file_exists($adj) ) {
-    // navigation の後に必ず読む（依存を指定）
-    wp_enqueue_style(
-      'ptl-issues-adjustments',
-      get_stylesheet_directory_uri() . '/css/issues-adjustments.css',
-      ['ptl-issues-navigation-style'],
-      filemtime($adj)
-    );
-  }
-}, 99);
 <?php
 if (! defined('ABSPATH')) exit;
 

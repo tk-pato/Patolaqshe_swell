@@ -86,7 +86,9 @@
 #bust-issues .ptl-bustIssues__item{
   display:grid; grid-template-columns:24px 1fr; align-items:center;
   gap:12px; padding:18px 4px;
+  border-bottom:1px dashed rgba(0,0,0,.12);
 }
+#bust-issues .ptl-bustIssues__item:last-child{ border-bottom:none; }
 #bust-issues .ptl-bustIssues__icon{ width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;color:#666; }
 #bust-issues .ptl-bustIssues__icon img{ width:20px;height:20px;object-fit:contain;display:block; }
 #bust-issues .ptl-bustIssues__text{ font-size:16px; line-height:1.9; letter-spacing:.02em; color:#222; }
