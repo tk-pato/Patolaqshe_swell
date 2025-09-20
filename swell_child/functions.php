@@ -1,3 +1,12 @@
+// BUST-ISSUES専用CSS（issues-navigation.css）をnavigation.cssの後に読み込む
+add_action('wp_enqueue_scripts', function () {
+  if (!is_front_page()) return;
+  $issues_css_path = get_stylesheet_directory() . '/css/issues-navigation.css';
+  if (file_exists($issues_css_path)) {
+    $issues_css_ver = date('Ymdgis', filemtime($issues_css_path));
+    wp_enqueue_style('ptl-issues-navigation-style', get_stylesheet_directory_uri() . '/css/issues-navigation.css', ['ptl-navigation-style'], $issues_css_ver);
+  }
+}, 21);
 <?php
 if (! defined('ABSPATH')) exit;
 
