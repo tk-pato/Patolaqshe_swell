@@ -1163,19 +1163,19 @@ function ptl_uservoice_meta_box_callback($post)
   $uservoice_title = get_post_meta($post->ID, '_uservoice_title', true);
 
   echo '<table class="form-table">';
-
+  
   // 顧客名
   echo '<tr>';
   echo '<th><label for="customer_name">顧客名</label></th>';
   echo '<td><input type="text" id="customer_name" name="customer_name" value="' . esc_attr($customer_name) . '" style="width:100%;" /></td>';
   echo '</tr>';
-
+  
   // 見出し
   echo '<tr>';
   echo '<th><label for="uservoice_title">見出し</label></th>';
   echo '<td><input type="text" id="uservoice_title" name="uservoice_title" value="' . esc_attr($uservoice_title) . '" style="width:100%;" placeholder="例: Amazing customer service！" /></td>';
   echo '</tr>';
-
+  
   // 星評価
   echo '<tr>';
   echo '<th><label for="rating">星評価</label></th>';
@@ -1188,7 +1188,7 @@ function ptl_uservoice_meta_box_callback($post)
   echo '</select>';
   echo '</td>';
   echo '</tr>';
-
+  
   // 顧客画像
   echo '<tr>';
   echo '<th><label for="customer_image">顧客画像</label></th>';
@@ -1206,9 +1206,9 @@ function ptl_uservoice_meta_box_callback($post)
   echo '</div>';
   echo '</td>';
   echo '</tr>';
-
+  
   echo '</table>';
-
+  
   // JavaScript for image upload
   echo '<script>
 jQuery(document).ready(function($) {
@@ -1299,29 +1299,16 @@ add_action('manage_uservoice_posts_custom_column', function ($column, $post_id) 
   }
 }, 10, 2);
 
-// （旧）お客様の声スライダーのスクリプトエンキューは削除済み。新ブロックで管理。
-
-// お客様の声セクション用の CSS/JS をフロントページで登録・エンキュー（末尾に追記のみ）
-
+// お客様の声スライダーのスクリプトをエンキュー
 add_action('wp_enqueue_scripts', function () {
-
-  // Swiper CDN を登録（未登録なら）
-  if (! wp_style_is('swiper', 'registered')) {
-    wp_register_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', [], '8.4.7');
+  // フロントページでのみ読み込み
+  if (is_front_page()) {
+    wp_enqueue_script(
+      'uservoice-slider',
+      get_stylesheet_directory_uri() . '/js/uservoice-slider.js',
+      ['swiper'], // Swiperに依存
+      '1.0.0',
+      true
+    );
   }
-  if (! wp_script_is('swiper', 'registered')) {
-    wp_register_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', [], '8.4.7', true);
-  }
-
-  // お客様の声 CSS
-  $css = get_stylesheet_directory() . '/css/section-uservoice.css';
-  if (file_exists($css) && ! wp_style_is('ptl-uservoice', 'enqueued')) {
-    wp_enqueue_style('ptl-uservoice', get_stylesheet_directory_uri() . '/css/section-uservoice.css', ['child_style', 'swiper'], filemtime($css));
-  }
-
-  // お客様の声 JS（Swiperに依存）
-  $js = get_stylesheet_directory() . '/js/uservoice-slider.js';
-  if (file_exists($js) && ! wp_script_is('ptl-uservoice', 'enqueued')) {
-    wp_enqueue_script('ptl-uservoice', get_stylesheet_directory_uri() . '/js/uservoice-slider.js', ['swiper'], filemtime($js), true);
-  }
-}, 30);
+});
