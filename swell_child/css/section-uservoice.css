@@ -10,7 +10,6 @@
 /* ページネーション余白 */
 #uservoice .swiper-pagination{ margin-top:16px; }
 /* デバッグは任意で残す */
-#uservoice{ border-top:4px solid magenta !important; border-bottom:4px solid magenta !important; }
 /* ===========================
    User's Voice Section Styles
    お客様の声セクション専用スタイル
@@ -20,13 +19,11 @@
 .ptl-uservoice {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     background: white;
-    padding: clamp(40px, 6vw, 80px) 0;
 }
 
 .ptl-uservoice .ptl-section__inner {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .ptl-uservoice .ptl-section__title {
@@ -190,10 +187,6 @@
         padding: 60px 0;
     }
     
-    .ptl-uservoice .ptl-section__inner {
-        padding: 0 15px;
-    }
-    
     .uservoice-slider {
         margin: 40px 0;
     }
@@ -232,10 +225,6 @@
 @media (max-width: 480px) {
     .ptl-uservoice {
         padding: 50px 0;
-    }
-    
-    .ptl-uservoice .ptl-section__inner {
-        padding: 0 10px;
     }
     
     .uservoice-slider {
@@ -285,7 +274,6 @@
 }
 
 /* normalize header like MENU/COMMITMENT */
-#uservoice .ptl-section__inner:first-child{max-width:1100px;margin:0 auto;padding:40px 20px 32px !important;}
 #uservoice .ptl-section__title{margin:0 0 10px !important;text-align:center !important;}
 #uservoice .ptl-section__subtitle{margin-top:8px !important;text-align:center !important;}
 #uservoice .ptl-section__ornament{margin:12px 0 40px !important;text-align:center !important;} /* inline styleに勝つため !important */
@@ -305,19 +293,6 @@
 
 /* .feedback-card rules removed per request */
 
-/* DEBUG: 読み込み確認用マーカー */
-#uservoice{border-top:4px solid magenta !important;border-bottom:4px solid magenta !important;}
-#uservoice .uservoice-slider{border-top:2px dashed magenta !important;border-bottom:2px dashed magenta !important;}
-
-/* DEBUG-STRONG: より確実に目視できるバーを追加 (確認後このブロックは削除してください) */
-#uservoice{position:relative !important;}
-#uservoice::before, #uservoice::after{content:"" !important;position:absolute !important;left:0 !important;right:0 !important;height:10px !important;background:magenta !important;z-index:2147483647 !important;}
-#uservoice::before{top:0 !important}
-#uservoice::after{bottom:0 !important}
-
-
-/* DEBUG */
-#uservoice { border-top: 4px solid magenta !important; }
 
 /* kill boxes and shadows in USER'S VOICE */
 #uservoice .wp-block-group,
@@ -338,5 +313,12 @@
     transform: none !important;
     background: transparent !important;
     border: none !important;
+}
+
+/* 最終的な統一設定（パララックス画像下との距離調整） */
+#uservoice.ptl-section .ptl-section__inner {
+    padding: 20px 20px 80px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
 }
 

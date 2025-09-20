@@ -178,8 +178,8 @@ add_action('wp_enqueue_scripts', function () {
   // reasons-styles.css（コミットメントセクション用）
   wp_enqueue_style('ptl_reasons_styles', get_stylesheet_directory_uri() . '/css/reasons-styles.css', ['child_style'], time());
 
-  // section-menu.css（メニューセクション用）
-  wp_enqueue_style('ptl_section_menu', get_stylesheet_directory_uri() . '/css/section-menu.css', ['child_style'], time());
+  // section-service-feature.css（サービス特徴セクション用）
+  wp_enqueue_style('ptl_section_service_feature', get_stylesheet_directory_uri() . '/css/section-service-feature.css', ['child_style'], time());
 
   // section-service-feature.css（サービス特徴セクション用）
   $ssf_path = get_stylesheet_directory() . '/css/section-service-feature.css';

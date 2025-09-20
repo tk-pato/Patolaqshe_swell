@@ -2,7 +2,7 @@
 if (!defined('ABSPATH')) exit;
 ?>
 
-<section id="uservoice" class="ptl-section ptl-uservoice" style="border-top:4px solid magenta;border-bottom:4px solid magenta;">
+<section id="uservoice" class="ptl-section ptl-uservoice">
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title">USER'S VOICE</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">お客様の声</div>

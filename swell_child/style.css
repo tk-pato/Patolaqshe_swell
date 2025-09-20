@@ -1,3 +1,79 @@
+
+/* STEP1: issue→commitment と commitment→navigation の間だけ調整 */
+#bust-issues .ptl-section__inner{ padding-bottom: clamp(12px,3vw,24px) !important; } /* issueの下だけ詰める */
+#section-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
+
+:root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
+
+#section-commitment .ptl-section__inner{ padding-top: var(--gap-base) !important; }
+#section-commitment .ptl-section__title{ margin-top: 0 !important; }
+#bust-issues{ margin-bottom: 0 !important; } /* パララックスの高さは維持し、外側だけ詰める */
+
+/* 各セクション個別の余白を無効化してグランド統一管理 */
+.ptl-section,
+#news, #section-commitment, #section-navigation, #section-services, #uservoice,
+#bust-issues, #section-reasons{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 各セクションの内部コンテンツ余白をグランドで統一 */
+.ptl-section .ptl-section__inner,
+#news .ptl-section__inner,
+#section-commitment .ptl-section__inner,
+#section-navigation .ptl-section__inner,
+#section-services .ptl-section__inner,
+#bust-issues .ptl-section__inner,
+#section-reasons .ptl-section__inner{
+  padding: 80px 20px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* セクション間の統一マージン */
+#news + #section-commitment,
+#section-commitment + #section-navigation,
+#section-navigation + #section-services,
+#uservoice + #bust-issues{
+  margin-top: 96px !important;
+}
+
+/* 全セクションの見えているコンテンツ部分を①のNEWSセクション境界に統一 */
+:root{ --section-padding: 80px 0; --section-inner-width: 1200px; }
+
+/* 各セクションのコンテンツ部分を統一（パララックス背景は維持） */
+.ptl-section .ptl-section__inner,
+#section-commitment .ptl-section__inner,
+#section-navigation .ptl-section__inner,
+#section-services .ptl-section__inner{
+  max-width: var(--section-inner-width) !important;
+  margin: 0 auto !important;
+  padding: 80px 20px !important;
+}
+
+/* NEWSセクションのパディングを基準として他も合わせる */
+#news .ptl-section__inner{ padding: 80px 20px !important; }
+
+/* パララックス画像幅は維持、コンテンツのみ統一 */
+#bust-issues .ptl-section__inner,
+#section-reasons .ptl-section__inner{
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+:root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
+
+/* セクション間の外側マージンを統一（内部のパララックス高さは不変） */
+#section-issue + #section-commitment,
+#section-commitment + #section-navigation,
+#section-navigation + #section-services{
+    margin-top: var(--gap-base) !important;
+}
+
+/* 視覚補正：パララックス境界だけ少し詰める（表示領域は削らない） */
+#section-issue + #section-commitment{ margin-top: var(--gap-parallax) !important; }
 /*
 Theme Name: SWELL CHILD
 Template: swell
@@ -222,7 +298,7 @@ html, body { overflow-x: hidden; }
     ----------------------------------------------------- */
 .ptl-section { --ptl-heading-size: clamp(22px, 2.8vw, 28px); }
 .ptl-section { --ptl-heading-size: clamp(22px, 2.8vw, 28px); --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
-.ptl-section { padding: clamp(48px, 6vw, 96px) 0; }
+.ptl-section { padding: 80px 0; }
 .ptl-section__inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 .ptl-section__title { text-align: center; letter-spacing: .08em; font-weight: 600; margin-bottom: 28px; font-size: var(--ptl-heading-size); }
 

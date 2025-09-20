@@ -2,4 +2,9 @@ swell_child/functions.php
 swell_child/css/section-service-feature.css
 swell_child/template-parts/front/section-uservoice.php
 swell_child/css/section-uservoice.css
-swell_child/js/uservoice-slider.js
+swell_child/style.css
+swell_child/css/section-news.css
+swell_child/css/section-reasons.css
+swell_child/front-page.php
+swell_child/home.php
+swell_child/page-landing.php
