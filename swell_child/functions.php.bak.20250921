@@ -1,0 +1,24 @@
+<?php
+// バックアップ: 2025-09-21 修正前 functions.php
+// --- 以下、修正前の内容 ---
+
+/* 子テーマ functions.php 末尾にそのまま追記。CSSを確実に出し、ID不一致でも効く選択子で描画 */
+add_action('wp_enqueue_scripts', function () {
+  $rel  = '/css/issues-navigation.css';
+  $path = get_stylesheet_directory() . $rel;
+  if (file_exists($path)) {
+    wp_enqueue_style('ptl-issues-bundle', get_stylesheet_directory_uri() . $rel, [], filemtime($path));
+  }
+}, 999);
+
+add_action('wp_head', function () {
+  /* ここが見えればCSS出力経路は生きている */
+  echo "<!-- ptl-issues inline armed -->\n";
+  echo '<style id="ptl-issues-inline">'
+     /* IDに依存しない選択子。li全件に破線を描画し最終行も確実に表示 */
+     . 'ul.ptl-bustIssues__list{list-style:none;margin:0;padding:0}'
+     . 'ul.ptl-bustIssues__list>li.ptl-bustIssues__item{position:relative;border:0}'
+     . 'ul.ptl-bustIssues__list>li.ptl-bustIssues__item::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;'
+     . 'background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 4px,transparent 4px 8px)}'
+     . '</style>';
+}, 9999);

@@ -67,11 +67,11 @@
 
 .ptl-pageNavHero__icon {
   display: block;
-  width: 100%;
-  margin-bottom: 12px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .ptl-pageNavHero__label {

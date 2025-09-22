@@ -1,6 +1,22 @@
-/* navigation.css を複製して issues-navigation.css を新規作成 */
+/* BUST-ISSUES — 点線のみ表示（実線削除） */
+#bust-issues .ptl-bustIssues__list{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	/* 点線のみで表現 */
+}
 
-/* BUST-ISSUES: 全行に下線を強制（HTML構造に合わせた正しいセレクタ） */
+/* 親テーマの個別ボーダー指定を無効化 */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item{
+	border: 0;
+}
+
+/* 項目間の実線も削除 */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item + li.ptl-bustIssues__item{
+	border-top: none;
+}
+
+/* BUST-ISSUES: 点線のみの下線 */
 #bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
 	border-bottom: 1px dashed rgba(0,0,0,.18) !important;
 }

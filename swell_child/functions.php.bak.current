@@ -1,7 +1,5 @@
-<?php
-if (!defined('ABSPATH')) exit;
 
-/* BUST-ISSUES: 統合CSSを最終読込＋動作マーカー */
+/* 子テーマ functions.php 末尾にそのまま追記。CSSを確実に出し、ID不一致でも効く選択子で描画 */
 add_action('wp_enqueue_scripts', function () {
   $rel  = '/css/issues-navigation.css';
   $path = get_stylesheet_directory() . $rel;
@@ -11,9 +9,40 @@ add_action('wp_enqueue_scripts', function () {
 }, 999);
 
 add_action('wp_head', function () {
+  /* ここが見えればCSS出力経路は生きている */
   echo "<!-- ptl-issues inline armed -->\n";
-  echo '<style>#bust-issues .ptl-bustIssues__list{list-style:none;margin:0;padding:0}#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item{border-bottom:1px dashed rgba(0,0,0,.18) !important;border-top:0;border-left:0;border-right:0;}</style>'."\n";
+  echo '<style id="ptl-issues-inline">'
+     /* IDに依存しない選択子。li全件に破線を描画し最終行も確実に表示 */
+     . 'ul.ptl-bustIssues__list{list-style:none;margin:0;padding:0}'
+     . 'ul.ptl-bustIssues__list>li.ptl-bustIssues__item{position:relative;border:0}'
+     . 'ul.ptl-bustIssues__list>li.ptl-bustIssues__item::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;'
+     . 'background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 4px,transparent 4px 8px)}'
+     . '</style>';
 }, 9999);
+<?php
+// --- BUST-ISSUES統合CSSを最終順でenqueue（!important不使用・既存機能は一切変更しない） ---
+add_action('wp_enqueue_scripts', function () {
+  // 念のため旧ハンドルを無効化（存在しなくても安全）
+  wp_dequeue_style('ptl-issues-adjustments');
+  wp_dequeue_style('ptl-issues-navigation-style');
+
+  // 統合CSSを最終順で読む（依存なし、優先度で制御）
+  $rel  = '/css/issues-navigation.css';
+  $path = get_stylesheet_directory() . $rel;
+  if (!file_exists($path)) return;
+
+  wp_enqueue_style(
+    'ptl-issues-bundle',
+    get_stylesheet_directory_uri() . $rel,
+    [],
+    filemtime($path)
+  );
+}, 999);
+if (! defined('ABSPATH')) exit;
+
+/* 子テーマのfunctions.phpは、親テーマのfunctions.phpより先に読み込まれることに注意してください。 */
+
+/* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
 
 // NAV背景メディアを取得
 function ptl_get_nav_background(): array
