@@ -54,7 +54,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
     <?php endif; ?>
 
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage">BUST-ISSUES</h2>
+        <h2 class="ptl-section__title">BUST-ISSUES</h2>
 
         <!-- 新：8つの悩みチェックリスト -->
         <div class="ptl-bustIssues__card">

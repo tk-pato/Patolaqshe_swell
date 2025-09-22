@@ -61,7 +61,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
     <?php endif; ?>
 
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage">NAVIGATION</h2>
+        <h2 class="ptl-section__title">NAVIGATION</h2>
         <button type="button" class="ptl-nav-toggle" aria-expanded="false" aria-controls="ptl-nav-menu">
             <span class="ptl-nav-toggle__icon"></span>
             <span class="ptl-nav-toggle__text" style="font-family: serif;">MENU</span>

@@ -22,7 +22,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
 <section id="section-services" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">MENU</h2>
+        <h2 class="ptl-section__title">MENU</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種メニュー</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />

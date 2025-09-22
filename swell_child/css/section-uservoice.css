@@ -6,7 +6,7 @@
 /* セクション基本設定 */
 .ptl-uservoice {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
-    --ptl-heading-size: clamp(24px, 4vw, 32px);
+    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
     background: white;
     padding: 80px 0;
 }
@@ -18,19 +18,18 @@
 }
 
 .ptl-uservoice .ptl-section__title {
-    text-align: center;
-    letter-spacing: .08em;
-    font-weight: 600;
-    margin-bottom: 28px;
-    font-size: var(--ptl-heading-size);
-    color: #333;
+  text-align: center;
+  letter-spacing: .08em;
+  font-weight: 600;
+  margin-bottom: 28px;
+  font-size: var(--ptl-heading-size);
 }
 
 .ptl-uservoice .ptl-section__subtitle {
-    text-align: center;
-    color: #777;
-    margin-top: -4px;
-    font-size: var(--ptl-subtitle-size);
+  text-align: center;
+  color: #777;
+  margin-top: -4px;
+  font-size: var(--ptl-subtitle-size);
 }
 
 /* Swiper navigation arrows */
@@ -494,7 +493,7 @@
 }
 
 /* normalize header like MENU/COMMITMENT */
-#uservoice .ptl-section__title{margin:0 0 10px !important;text-align:center !important;}
+#uservoice .ptl-section__title{margin-bottom:28px !important;text-align:center !important;}
 #uservoice .ptl-section__subtitle{margin-top:8px !important;text-align:center !important;}
 #uservoice .ptl-section__ornament{margin:12px 0 40px !important;text-align:center !important;} /* inline styleに勝つため !important */
 

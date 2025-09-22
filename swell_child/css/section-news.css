@@ -5,7 +5,17 @@
 
 /* NEWSセクション基本設定 */
 .ptl-news { 
+    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
     --ptl-subtitle-size: clamp(16px, 2vw, 18px); 
+}
+
+/* h2タイトル - 全セクション統一基準 */
+.ptl-news .ptl-section__title {
+    text-align: center;
+    letter-spacing: .08em;
+    font-weight: 600;
+    margin-bottom: 28px;
+    font-size: var(--ptl-heading-size);
 }
 
 /* サブタイトル */

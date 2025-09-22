@@ -4,19 +4,26 @@
    =========================== */
 
 /* REASONSセクション基本設定 */
-.ptl-reasons { 
+.ptl-reasonsHero { 
+    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
     --ptl-subtitle-size: clamp(16px, 2vw, 18px); 
 }
 
+/* h2タイトル - NEWSセクション標準と統一 */
+.ptl-reasonsHero .ptl-section__title {
+    text-align: center;
+    letter-spacing: .08em;
+    font-weight: 600;
+    margin-bottom: 28px;
+    font-size: var(--ptl-heading-size);
+}
+
 /* サブタイトル */
-.ptl-reasons .ptl-section__subtitle { 
+.ptl-reasonsHero .ptl-section__subtitle { 
     text-align: center; 
     color: #777; 
     margin-top: -4px; 
     font-size: var(--ptl-subtitle-size); 
 }
 
-/* REASONSグリッド（既存のスタイルがあれば適宜追加） */
-.ptl-reasonsHero__grid {
-    /* 必要に応じてグリッドスタイルを追加 */
-}
+/* REASONSグリッド（必要に応じて後で追加） */

@@ -185,13 +185,13 @@ add_action('wp_enqueue_scripts', function () {
   // ptl-layout.css（commitment/navigation幅・カードレイアウト同期用）
   wp_enqueue_style('ptl_layout', get_stylesheet_directory_uri() . '/css/ptl-layout.css', ['child_style'], wp_get_theme()->get('Version'));
 
-  // section-news.css（NEWSセクション用）
-  wp_enqueue_style('ptl_section_news', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], time());
+  // reasons-styles.css（コミットメントセクション用）
+  wp_enqueue_style('ptl_reasons_styles', get_stylesheet_directory_uri() . '/css/reasons-styles.css', ['child_style'], time());
 
-  // section-reasons.css（COMMITMENTセクション用）
-  wp_enqueue_style('ptl_section_reasons', get_stylesheet_directory_uri() . '/css/section-reasons.css', ['child_style'], time());
+  // section-service-feature.css（サービス特徴セクション用）
+  wp_enqueue_style('ptl_section_service_feature', get_stylesheet_directory_uri() . '/css/section-service-feature.css', ['child_style'], time());
 
-  // section-service-feature.css（MENUセクション用）
+  // section-service-feature.css（サービス特徴セクション用）
   $ssf_path = get_stylesheet_directory() . '/css/section-service-feature.css';
   if (file_exists($ssf_path)) {
     wp_enqueue_style(
