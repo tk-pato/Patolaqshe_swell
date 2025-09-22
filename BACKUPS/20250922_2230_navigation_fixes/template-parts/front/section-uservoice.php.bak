@@ -1,0 +1,152 @@
+<?php
+/**
+ * お客様の声セクション
+ * 
+ * カスタム投稿タイプ 'uservoice' から投稿を取得して表示
+ */
+
+if (!defined('ABSPATH')) exit;
+
+// DEBUG: セクション読み込み確認
+echo '<!-- DEBUG: section-uservoice.php loaded -->';
+
+// 専用CSSとJSを後読みで確実に読み込む
+echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() . '/css/section-uservoice.css' ) . '" media="all">';
+echo '<script src="' . esc_url( get_stylesheet_directory_uri() . '/js/uservoice-slider.js' ) . '" defer></script>';
+
+// お客様の声の投稿を取得
+$uservoices = get_posts([
+    'post_type' => 'uservoice',
+    'posts_per_page' => 6, // 最大6件表示
+    'post_status' => 'publish',
+    'orderby' => 'menu_order date',
+    'order' => 'ASC'
+]);
+
+// DEBUG: 投稿数確認（アップロード後削除）
+echo '<!-- DEBUG: uservoice posts count = ' . count($uservoices) . ' -->';
+
+if (empty($uservoices)) {
+    echo '<!-- DEBUG: No uservoice posts found, showing default content -->';
+    // 投稿がない場合でも表示する（テスト用）
+}
+
+// DEBUG: 強制表示テスト
+echo '<div style="background: yellow; padding: 20px; margin: 20px 0; border: 3px solid red;">
+    <h2>DEBUG: User Voice Section テスト表示</h2>
+    <p>このセクションが表示されていれば、テンプレートファイルは正常に読み込まれています。</p>
+</div>';
+?>
+
+<section id="uservoice" class="ptl-section ptl-uservoice">
+    <div class="ptl-section__inner">
+        <h2 class="ptl-section__title">User's Voice</h2>
+        <div class="ptl-section__subtitle">お客様の声</div>
+        <div class="ptl-section__ornament">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" />
+        </div>
+
+        <div id="customer-uservoice-wrapper" class="uservoice-wrapper">
+            <div id="customer-uservoice-slider" class="uservoice-slider swiper">
+                <div class="swiper-wrapper">
+                    
+                    <?php if (!empty($uservoices)): ?>
+                        <?php foreach ($uservoices as $uservoice): 
+                            // カスタムフィールドを取得
+                            $customer_name = get_post_meta($uservoice->ID, '_customer_name', true);
+                            $rating = get_post_meta($uservoice->ID, '_rating', true);
+                            $customer_image_id = get_post_meta($uservoice->ID, '_customer_image', true);
+                            $uservoice_title = get_post_meta($uservoice->ID, '_uservoice_title', true);
+                            
+                            // 顧客画像のURL取得
+                            $customer_image_url = '';
+                            if ($customer_image_id) {
+                                $customer_image_url = wp_get_attachment_image_url($customer_image_id, [120, 120]);
+                            }
+                            
+                            // デフォルト値設定
+                            if (empty($customer_name)) $customer_name = 'お客様';
+                            if (empty($rating)) $rating = 5;
+                            if (empty($uservoice_title)) $uservoice_title = get_the_title($uservoice);
+                        
+                        // 投稿内容を取得
+                        $content = get_the_content(null, false, $uservoice);
+                        $content = apply_filters('the_content', $content);
+                        $content = wp_strip_all_tags($content); // HTMLタグを除去
+                    ?>
+                    
+                    <div class="uservoice-card swiper-slide">
+                        <?php if ($customer_image_url): ?>
+                        <div class="uservoice-image">
+                            <img src="<?php echo esc_url($customer_image_url); ?>" 
+                                 alt="<?php echo esc_attr($customer_name); ?>" 
+                                 width="80" 
+                                 height="80">
+                        </div>
+                        <?php endif; ?>
+                        
+                        <div class="uservoice-content">
+                            <?php if ($uservoice_title): ?>
+                            <h3 class="uservoice-title"><?php echo esc_html($uservoice_title); ?></h3>
+                            <?php endif; ?>
+                            
+                            <div class="uservoice-text">
+                                <p><?php echo esc_html($content); ?></p>
+                            </div>
+                            
+                            <div class="uservoice-author"><?php echo esc_html($customer_name); ?></div>
+                            
+                            <div class="uservoice-rating">
+                                <?php for ($i = 1; $i <= 5; $i++): ?>
+                                    <i class="fa fa-star<?php echo ($i <= $rating) ? '' : '-o'; ?>"></i>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <?php endforeach; ?>
+                    
+                    <?php else: ?>
+                        <!-- DEBUG: ダミーデータ表示（投稿がない場合） -->
+                        <div class="swiper-slide">
+                            <div class="uservoice-card">
+                                <div class="uservoice-image">
+                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="デモ顧客" class="customer-img" />
+                                </div>
+                                
+                                <div class="uservoice-content">
+                                    <h3 class="uservoice-title">素晴らしいサービスでした！</h3>
+                                    <div class="uservoice-text">
+                                        <p>スタッフの皆様が親切で、とても気持ちの良い時間を過ごすことができました。また利用したいと思います。</p>
+                                    </div>
+                                    
+                                    <div class="uservoice-author">サンプル様</div>
+                                    
+                                    <div class="uservoice-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
+                </div>
+                
+                <!-- ページネーション -->
+                <div class="swiper-pagination uservoice-pagination"></div>
+            </div>
+        </div>
+
+        <!-- 自サイトスタイルのMOREボタン -->
+        <div class="ptl-news__more">
+            <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/uservoice/')); ?>">
+                <span class="ptl-news__moreLabel">MORE</span>
+                <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,29 +1,20 @@
-/* arrows */
-#uservoice .swiper-button-prev,
-#uservoice .swiper-button-next{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
-    z-index:5; pointer-events:auto; opacity:1;
-}
-#uservoice .swiper-button-prev{ left:8px; }
-#uservoice .swiper-button-next{ right:8px; }
-/* ページネーション余白 */
-#uservoice .swiper-pagination{ margin-top:16px; }
-/* デバッグは任意で残す */
 /* ===========================
    User's Voice Section Styles
-   お客様の声セクション専用スタイル
+   お客様の声セクション専用スタイル - 完全独自管理
    =========================== */
 
 /* セクション基本設定 */
 .ptl-uservoice {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+    --ptl-heading-size: clamp(24px, 4vw, 32px);
     background: white;
+    padding: 80px 0;
 }
 
 .ptl-uservoice .ptl-section__inner {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .ptl-uservoice .ptl-section__title {
@@ -32,6 +23,7 @@
     font-weight: 600;
     margin-bottom: 28px;
     font-size: var(--ptl-heading-size);
+    color: #333;
 }
 
 .ptl-uservoice .ptl-section__subtitle {
@@ -41,12 +33,214 @@
     font-size: var(--ptl-subtitle-size);
 }
 
+/* Swiper navigation arrows */
+#uservoice .swiper-button-prev,
+#uservoice .swiper-button-next {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 44px; 
+    height: 44px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    z-index: 5; 
+    pointer-events: auto; 
+    opacity: 1;
+}
+#uservoice .swiper-button-prev { left: 8px; }
+#uservoice .swiper-button-next { right: 8px; }
+
+/* ページネーション */
+#uservoice .swiper-pagination { 
+    margin-top: 16px; 
+    position: static;
+    text-align: center;
+}
+
+#uservoice .swiper-pagination-bullet {
+    background: #ccc;
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+#uservoice .swiper-pagination-bullet-active {
+    background: #888;
+    transform: scale(1.3);
+}
+
 /* ornament用のスタイルは不要（インラインスタイルで制御） */
 
-/* スライダー（縦並び3カード） */
+/* スライダー設定 */
 .uservoice-slider {
     margin: 60px 0;
     position: relative;
+}
+
+.uservoice-slider .swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.uservoice-slider .swiper-slide {
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* フィードバックカード */
+.feedback-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 顧客画像 */
+.feedback-image {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.customer-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f0f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* フィードバックタイトル */
+.feedback-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+/* フィードバック内容 */
+.feedback-content {
+    margin-bottom: 25px;
+    flex: 1;
+}
+
+.feedback-content p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #444;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+/* 作成者名 */
+.feedback-author {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* 評価星 */
+.feedback-rating {
+    color: #ffc107;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* MOREボタン - 独自スタイル */
+.ptl-uservoice__more {
+    display: flex; 
+    justify-content: center; 
+    margin: 40px 0 0; 
+}
+
+.ptl-uservoice .ptl-news__moreBtn {
+    color: #3C4043;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 2px solid #3C4043;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.ptl-uservoice .ptl-news__moreBtn:hover,
+.ptl-uservoice .ptl-news__moreBtn:focus-visible {
+    color: #5F6368;
+    border-color: #5F6368;
+}
+
+/* ===========================
+   レスポンシブ スライダー比率制御
+   PC: 5-30-30-30-5%
+   タブレット: 10-40-40-10%
+   スマホ: 10-80-10%
+   =========================== */
+
+/* PC (1024px以上): 5-30-30-30-5% */
+@media (min-width: 1024px) {
+    #uservoice.ptl-section.ptl-uservoice .uservoice-slider .swiper {
+        padding: 0 5% !important;
+    }
+    
+    #uservoice.ptl-section.ptl-uservoice .uservoice-slider .swiper-slide {
+        flex: 0 0 30% !important;
+        width: 30% !important;
+    }
+}
+
+/* タブレット (768-1023px): 10-40-40-10% */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #uservoice.ptl-section.ptl-uservoice .uservoice-slider .swiper {
+        padding: 0 10% !important;
+    }
+    
+    #uservoice.ptl-section.ptl-uservoice .uservoice-slider .swiper-slide {
+        flex: 0 0 40% !important;
+        width: 40% !important;
+    }
+}
+
+/* スマホ (767px以下): 10-80-10% */
+@media (max-width: 767px) {
+    #uservoice.ptl-section.ptl-uservoice .uservoice-slider .swiper {
+        padding: 0 10% !important;
+    }
+    
+    #uservoice.ptl-section.ptl-uservoice .uservoice-slider .swiper-slide {
+        flex: 0 0 80% !important;
+        width: 80% !important;
+    }
+    
+    .ptl-uservoice {
+        padding: 60px 0;
+    }
+    
+    .customer-img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .feedback-title {
+        font-size: 1.2rem;
+    }
+    
+    .feedback-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
 }
 
 .uservoice-slider .swiper-wrapper {
@@ -77,11 +271,12 @@
 
 /* フィードバックタイトル */
 .feedback-title {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #333;
+    color: #222;
     margin-bottom: 20px;
     line-height: 1.4;
+    letter-spacing: 0.02em;
 }
 
 /* フィードバック内容 */
@@ -90,9 +285,9 @@
 }
 
 .feedback-content p {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #666;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #444;
     margin: 0;
     letter-spacing: 0.02em;
 }
@@ -100,16 +295,16 @@
 /* 作成者名 */
 .feedback-author {
     font-weight: 600;
-    color: #4a90e2;
+    color: #444;
     margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 14px;
 }
 
 /* 評価星 */
 .feedback-rating {
     color: #ffc107;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
+    font-size: 16px;
+    letter-spacing: 1px;
 }
 
 .feedback-rating .fa-star {
@@ -142,43 +337,68 @@
     transform: scale(1.3);
 }
 
-/* MOREボタン */
+/* MOREボタン - NEWSセクションと統一スタイル */
 .ptl-uservoice .ptl-uservoice__more {
     display: flex;
     justify-content: center;
     margin: 40px 0 0;
 }
 
+.ptl-uservoice .ptl-news__moreBtn {
+    /* 調整用カスタムプロパティ（必要に応じて数値だけ変えればOK） */
+    --frame-slice: 120; /* 画像から切り出す縁の厚み(px) */
+    --frame-width: 12px; /* 実際の表示上の枠の太さ（小さめ） */
+    --frame-color: #111; /* 枠の色（ホバーで白に切替） */
 
-.ptl-uservoice__moreBtn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 15px 30px;
-    background: #4a90e2;
-    color: white;
+    /* ホバー時にも寸法が変わらないように、余計な固定寸法を外す */
+    box-sizing: border-box; /* 枠とパディングを寸法に含める */
+
+    display: inline-grid;
+    grid-auto-flow: column;
+    place-items: center; /* 中央寄せ（縦横） */
+    gap: 10px;
     text-decoration: none;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+    color: #3C4043; /* 通常は少し濃いグレー */
+    letter-spacing: .08em;
+    font-weight: 600; /* NEWS見出しと統一 */
+    padding: 6px 14px; /* 文字に近いサイズ感へ（従来比 ~70%） */
+    white-space: nowrap; /* 改行を防ぎ、サイズの安定化 */
+    position: relative; /* 疑似要素フレームの基準 */
+    border: none; /* レイアウトに影響を与えない */
+
+    /* お知らせ（サブタイトル）と完全連動 */
+    font-size: var(--ptl-subtitle-size);
+
+    transition: background-color .2s ease, color .2s ease;
 }
 
-.ptl-uservoice__moreLabel {
-    font-weight: 600;
+.ptl-uservoice .ptl-news__moreBtn::before {
+    content: "";
+    position: absolute;
+    /* 枠を外側に描画し、要素サイズを変えない */
+    inset: calc(var(--frame-width) * -1);
+    pointer-events: none; /* クリック透過 */
+    background: var(--frame-color);
+    /* マスクでフレーム形状を切り抜き、色だけ差し替える */
+    -webkit-mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
+    mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
 }
 
-.ptl-uservoice__moreArrow {
-    font-size: 1.2rem;
-    transition: transform 0.3s;
+.ptl-uservoice .ptl-news__moreArrow { 
+    display: inline-block; 
+    transform: translateX(0); 
+    transition: transform .2s ease; 
 }
 
-.ptl-uservoice__moreBtn:hover .ptl-uservoice__moreArrow {
-    transform: translateX(5px);
+/* ホバーは文字色のみ変更（背景・枠は不変） */
+.ptl-uservoice .ptl-news__moreBtn:hover,
+.ptl-uservoice .ptl-news__moreBtn:focus-visible { 
+    color: #5F6368; 
 }
-.ptl-uservoice__moreBtn:hover {
-    background: #357abd;
-    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-    color: white;
+
+.ptl-uservoice .ptl-news__moreBtn:hover .ptl-news__moreArrow,
+.ptl-uservoice .ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { 
+    transform: translateX(4px); 
 }
 
 /* レスポンシブ対応 */
@@ -213,12 +433,12 @@
     }
     
     .feedback-author {
-        font-size: 1rem;
+        font-size: 14px;
         margin-bottom: 12px;
     }
     
     .feedback-rating {
-        font-size: 1.1rem;
+        font-size: 15px;
     }
 }
 
@@ -253,12 +473,12 @@
     }
     
     .feedback-author {
-        font-size: 0.95rem;
+        font-size: 13px;
         margin-bottom: 10px;
     }
     
     .feedback-rating {
-        font-size: 1rem;
+        font-size: 14px;
         letter-spacing: 1px;
     }
     

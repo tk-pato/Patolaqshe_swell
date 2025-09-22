@@ -337,6 +337,7 @@ html, body { overflow-x: hidden; }
     gap: 10px;
     text-decoration: none;
     color: #3C4043; /* 通常は少し濃いグレー */
+    background: #fff;
     letter-spacing: .08em;
     font-weight: 600; /* NEWS見出しと統一 */
     padding: 6px 14px; /* 文字に近いサイズ感へ（従来比 ~70%） */
@@ -366,7 +367,7 @@ html, body { overflow-x: hidden; }
 .ptl-news__moreBtn:hover,
 .ptl-news__moreBtn:focus-visible,
 .ptl-reasons__more:hover,
-.ptl-reasons__more:focus-visible { color: #5F6368; }
+.ptl-reasons__more:focus-visible { background: #fff; color: #5F6368; }
 .ptl-news__moreBtn:hover .ptl-news__moreArrow,
 .ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { transform: translateX(4px); }
 

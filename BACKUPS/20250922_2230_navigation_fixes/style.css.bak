@@ -1,79 +1,3 @@
-
-/* STEP1: issue→commitment と commitment→navigation の間だけ調整 */
-#bust-issues .ptl-section__inner{ padding-bottom: clamp(12px,3vw,24px) !important; } /* issueの下だけ詰める */
-#section-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
-
-:root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
-
-#section-commitment .ptl-section__inner{ padding-top: var(--gap-base) !important; }
-#section-commitment .ptl-section__title{ margin-top: 0 !important; }
-#bust-issues{ margin-bottom: 0 !important; } /* パララックスの高さは維持し、外側だけ詰める */
-
-/* 各セクション個別の余白を無効化してグランド統一管理 */
-.ptl-section,
-#news, #section-commitment, #section-navigation, #section-services, #uservoice,
-#bust-issues, #section-reasons{
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* 各セクションの内部コンテンツ余白をグランドで統一 */
-.ptl-section .ptl-section__inner,
-#news .ptl-section__inner,
-#section-commitment .ptl-section__inner,
-#section-navigation .ptl-section__inner,
-#section-services .ptl-section__inner,
-#bust-issues .ptl-section__inner,
-#section-reasons .ptl-section__inner{
-  padding: 80px 20px !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-}
-
-/* セクション間の統一マージン */
-#news + #section-commitment,
-#section-commitment + #section-navigation,
-#section-navigation + #section-services,
-#uservoice + #bust-issues{
-  margin-top: 96px !important;
-}
-
-/* 全セクションの見えているコンテンツ部分を①のNEWSセクション境界に統一 */
-:root{ --section-padding: 80px 0; --section-inner-width: 1200px; }
-
-/* 各セクションのコンテンツ部分を統一（パララックス背景は維持） */
-.ptl-section .ptl-section__inner,
-#section-commitment .ptl-section__inner,
-#section-navigation .ptl-section__inner,
-#section-services .ptl-section__inner{
-  max-width: var(--section-inner-width) !important;
-  margin: 0 auto !important;
-  padding: 80px 20px !important;
-}
-
-/* NEWSセクションのパディングを基準として他も合わせる */
-#news .ptl-section__inner{ padding: 80px 20px !important; }
-
-/* パララックス画像幅は維持、コンテンツのみ統一 */
-#bust-issues .ptl-section__inner,
-#section-reasons .ptl-section__inner{
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
-}
-
-:root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
-
-/* セクション間の外側マージンを統一（内部のパララックス高さは不変） */
-#section-issue + #section-commitment,
-#section-commitment + #section-navigation,
-#section-navigation + #section-services{
-    margin-top: var(--gap-base) !important;
-}
-
-/* 視覚補正：パララックス境界だけ少し詰める（表示領域は削らない） */
-#section-issue + #section-commitment{ margin-top: var(--gap-parallax) !important; }
 /*
 Theme Name: SWELL CHILD
 Template: swell
@@ -91,8 +15,50 @@ License URI: http://www.gnu.org/licenses/gpl.html
 /* フルブリード(100vw)での横ズレ防止 */
 html, body { overflow-x: hidden; }
 
-/* ヒーロー中央ロゴを大きく・レスポンシブ */
-.hero-logo {
+/* ヒーロー中央ロゴを大きく・レスポ/* COMMITMENT セクション（Reason/* 画像エリ/* COMMITMENT セクション（Reasons）のボタンカスタマイズ */
+.ptl-reason__btn {
+  display: flex;
+  flex-direction: column;
+  min-height: 380px !important;
+  padding: 20px !important;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}reason__photo {
+  width: calc(100@media (max-width: 767px) {
+  .ptl-reason__btn {
+    min-height: 260px !important; /* 290pxから260pxに縮小 */
+  }
+  .ptl-pageNavHero__label {
+    font-size: 14px;
+  }
+  .ptl-reason__subtext {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+}  margin: -20px -20px 18px -20px; /* 下余白を24pxから18pxに縮小 */
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ptl-reason__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ptl-reason__btn {
+  display: flex;
+  flex-direction: column;
+  min-height: 340px !important; /* 縦幅を縮めてバランス調整 */
+  padding: 20px !important;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}ro-logo {
     width: 800px;
     max-width: 90vw;
     height: auto;
@@ -101,82 +67,7 @@ html, body { overflow-x: hidden; }
 }
 
 /* 追加の見た目調整はここに記述（必要最小限） */
-
-/* PCでのMENUボタン非表示（最優先） */
-@media screen and (min-width: 768px) {
-    #page-navigation .ptl-nav-toggle,
-    .ptl-pageNavHero .ptl-nav-toggle,
-    section[id="page-navigation"] button.ptl-nav-toggle {
-        display: none !important;
-    }
-}
-
-/* SPでのMENUボタン表示（最優先） */
-@media screen and (max-width: 767px) {
-    #page-navigation .ptl-nav-toggle,
-    #bust-issues .ptl-nav-toggle {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        margin: 8px auto 16px;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-weight: 600;
-        color: #fff;
-        letter-spacing: 0.1em;
-    }
-    
-    .ptl-nav-toggle__icon {
-        position: relative;
-        width: 20px;
-        height: 2px;
-        background: #fff;
-        transition: all 0.3s ease;
-    }
-    
-    .ptl-nav-toggle__icon::before,
-    .ptl-nav-toggle__icon::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: #fff;
-        transition: all 0.3s ease;
-    }
-    
-    .ptl-nav-toggle__icon::before { top: -6px; }
-    .ptl-nav-toggle__icon::after { bottom: -6px; }
-    
-    /* 開いたときのアイコン */
-    .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon {
-        background: transparent;
-    }
-    
-    .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon::before {
-        top: 0;
-        transform: rotate(45deg);
-    }
-    
-    .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon::after {
-        bottom: 0;
-        transform: rotate(-45deg);
-    }
-    
-    /* 折りたたみメニュー */
-    .ptl-nav-collapsible {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease;
-    }
-    
-    .ptl-nav-collapsible.is-open {
-        max-height: 1000px;
-    }
-}
+/* 例: 必要ならここに追記 */
 
 /* ヒーローロゴ：ふわっと出て、少し表示して、ふわっと消える（ホーム/フロントページ） */
 .home .p-mainVisual .hero-logo,
@@ -248,6 +139,7 @@ html, body { overflow-x: hidden; }
      ----------------------------------------------------- */
 /* COMMITMENT（ptl-reasons）: 既定の .ptl-section と同値の上下余白を明示 */
 .ptl-reasons { padding: clamp(40px, 6vw, 80px) 0; }
+.ptl-reasons > .ptl-section__inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 
 .ptl-reasons__grid {
     display: grid;
@@ -259,15 +151,17 @@ html, body { overflow-x: hidden; }
     padding: 0; /* 余計な内側余白を削除してNAVと同幅に */
 }
 @media (min-width: 700px) { .ptl-reasons__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 960px) { .ptl-reasons__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 960px) { .ptl-reasons__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .ptl-reason-card {
     background: rgba(255,255,255,0.92);
     border: 1px solid rgba(0,0,0,0.06);
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     padding: 16px; /* 丸みのある白ベースを維持しつつ、画像は後述のネガティブマージンでフル幅に */
+    box-sizing: border-box; /* グリッドトラック幅に厳密一致させる */
     height: 100%;
+    width: 100%;
     transition: transform .25s ease, box-shadow .25s ease;
 }
 
@@ -293,12 +187,15 @@ html, body { overflow-x: hidden; }
 /* REASONS: MORE ボタンの配置（NEWSと共通デザインに統一） */
 .ptl-reasons__actions { display: flex; justify-content: center; margin-top: 28px; }
 
+/* COMMITMENT グリッド: NAVのグリッドクラスを流用しても上余白は従来値に */
+.ptl-reasons .ptl-pageNavHero__grid { margin-top: clamp(16px, 2.4vw, 28px); }
+
 /* =====================================================
     NEWS / SERVICE NAV / STORE NAV スタイル
     ----------------------------------------------------- */
 .ptl-section { --ptl-heading-size: clamp(22px, 2.8vw, 28px); }
 .ptl-section { --ptl-heading-size: clamp(22px, 2.8vw, 28px); --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
-.ptl-section { padding: 80px 0; }
+.ptl-section { padding: clamp(48px, 6vw, 96px) 0; }
 .ptl-section__inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 .ptl-section__title { text-align: center; letter-spacing: .08em; font-weight: 600; margin-bottom: 28px; font-size: var(--ptl-heading-size); }
 
@@ -312,9 +209,40 @@ html, body { overflow-x: hidden; }
 /* NEWS（タイトルのみ）*/
 .ptl-news { --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
 .ptl-news .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+.ptl-news .ptl-section__subtitleLine {
+    /* ロココ調の飾りライン画像（子テーマ img/bg_1.png） */
+    width: clamp(180px, 28vw, 560px);
+    height: clamp(16px, 3.2vw, 28px);
+    margin: 10px auto 26px;
+    background: url('./img/bg_1.png') center/contain no-repeat;
+}
 
-/* REASONS（サブタイトル）*/
+/* REASONS（サブタイトル＆飾りライン）*/
 .ptl-reasons .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+.ptl-reasons .ptl-section__subtitleLine {
+    width: clamp(180px, 28vw, 560px);
+    height: clamp(16px, 3.2vw, 28px);
+    margin: 10px auto 26px;
+    background: url('./img/bg_1.png') center/contain no-repeat;
+}
+
+/* COMMITMENT (section-reason.php) のサブタイトル＆飾りラインをNEWSと同調 */
+#reasons .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+#reasons .ptl-section__subtitleLine {
+    width: clamp(180px, 28vw, 560px);
+    height: clamp(16px, 3.2vw, 28px);
+    margin: 10px auto 26px;
+    background: url('./img/bg_1.png') center/contain no-repeat;
+}
+/* 強制センタリングと余白最適化（.ptl-pageNavHero の大きな上下パディングを抑える） */
+#reasons.ptl-pageNavHero .ptl-section__inner { padding-top: clamp(28px, 5vw, 56px); padding-bottom: clamp(24px, 4vw, 48px); position: relative; z-index: 1; }
+#reasons .ptl-section__subtitle { display: block; margin-left: auto; margin-right: auto; text-align: center; }
+#reasons .ptl-section__subtitleLine { display: block; }
+
+/* STEP2: COMMITMENTのホバー効果を無効化（同一ページに誘導のため視覚アフォーダンスを減らす） */
+#reasons .ptl-pageNavHero__btn { transition: none; }
+#reasons .ptl-pageNavHero__btn:hover,
+#reasons .ptl-pageNavHero__btn:active { transform: none; box-shadow: 0 10px 26px rgba(0,0,0,.12); border-color: rgba(0,0,0,.08); }
 .ptl-news__list.is-titleOnly { max-width: 980px; margin: 0 auto; }
 .ptl-news__list.is-titleOnly .ptl-news__item { padding: 18px 0; border-bottom: 1px solid #e5e5e5; }
 .ptl-news__title { text-decoration: none; font-weight: 700; letter-spacing: .01em; }
@@ -337,6 +265,7 @@ html, body { overflow-x: hidden; }
     gap: 10px;
     text-decoration: none;
     color: #3C4043; /* 通常は少し濃いグレー */
+    background: #fff;
     letter-spacing: .08em;
     font-weight: 600; /* NEWS見出しと統一 */
     padding: 6px 14px; /* 文字に近いサイズ感へ（従来比 ~70%） */
@@ -366,7 +295,7 @@ html, body { overflow-x: hidden; }
 .ptl-news__moreBtn:hover,
 .ptl-news__moreBtn:focus-visible,
 .ptl-reasons__more:hover,
-.ptl-reasons__more:focus-visible { color: #5F6368; }
+.ptl-reasons__more:focus-visible { background: #fff; color: #5F6368; }
 .ptl-news__moreBtn:hover .ptl-news__moreArrow,
 .ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { transform: translateX(4px); }
 
@@ -420,19 +349,211 @@ html, body { overflow-x: hidden; }
 .ptl-pageNavHero .ptl-section__inner { position: relative; z-index: 1; padding-top: clamp(64px, 10vw, 160px); padding-bottom: clamp(64px, 10vw, 160px); }
 .ptl-pageNavHero .ptl-section__title { /* 通常色 */ color: inherit; text-shadow: none; font-size: var(--ptl-heading-size); }
 .ptl-pageNavHero.has-bg .ptl-section__title { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
-.ptl-pageNavHero__grid { list-style: none; margin: clamp(32px, 3vw, 56px) auto 0; padding: 0; display: grid; row-gap: clamp(40px, 4.6vw, 80px); column-gap: clamp(16px, 2vw, 24px); grid-template-columns: repeat(2, 1fr); }
-@media (min-width: 700px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 960px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(4, 1fr); } }
-.ptl-pageNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.ptl-pageNavHero__grid { list-style: none; margin: clamp(32px, 3vw, 56px) auto 0; padding: 0; display: grid; row-gap: clamp(40px, 4.6vw, 80px); column-gap: clamp(16px, 2vw, 24px); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 700px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ptl-pageNavHero__grid > * { min-width: 0; }
+.ptl-reasons__grid > * { min-width: 0; }
+.ptl-pageNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; box-sizing: border-box; }
 .ptl-pageNavHero__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.18); border-color: rgba(0,0,0,.15); }
 .ptl-pageNavHero__btn:active { transform: translateY(-1px); }
 .ptl-pageNavHero__icon { width: clamp(44px, 5vw, 56px); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: clamp(2px, 0.5vw, 6px); }
 .ptl-pageNavHero__icon svg, .ptl-pageNavHero__icon img { width: 100%; height: 100%; display: block; object-fit: contain; transform: scale(var(--icon-scale, 1)); }
 .ptl-pageNavHero__label { font-size: clamp(13px, 1.4vw, 16px); text-align: center; }
+.ptl-pageNavHero__btn.is-photo { grid-template-rows: auto auto; padding: clamp(10px, 1.8vw, 16px); }
+.ptl-pageNavHero__photo { display: block; width: 100%; border-radius: 8px; overflow: hidden; }
+.ptl-pageNavHero__photo img { display: block; width: 100%; height: clamp(120px, 12vw, 180px); object-fit: cover; }
+.ptl-pageNavHero__sub { font-size: 0.9em; color: #666; font-weight: 500; margin-top: -6px; text-align: center; }
+
+/* COMMITMENTをNAVボタン構造に切替えた場合の微調整 */
+.ptl-reasons.is-navstyle .ptl-section__title { margin-bottom: 18px; }
+.ptl-reasons.is-navstyle .ptl-section__subtitleLine { margin: 6px auto 18px; }
+.ptl-reasons.is-navstyle .ptl-pageNavHero__grid { margin-top: clamp(18px, 2.4vw, 28px); width: 100%; row-gap: clamp(40px, 4.6vw, 80px); column-gap: clamp(16px, 2vw, 24px); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 700px) { .ptl-reasons.is-navstyle .ptl-pageNavHero__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .ptl-reasons.is-navstyle .ptl-pageNavHero__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ptl-reasons.is-navstyle .ptl-pageNavHero__grid > * { min-width: 0; }
+.ptl-reasons.is-navstyle .ptl-pageNavHero__btn { padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; }
+/* 画像高さをカスタマイズしたい場合は変数で調整可能 */
+.ptl-reasons.is-navstyle .ptl-pageNavHero__photo img { height: var(--reasons-photo-h, clamp(120px, 12vw, 180px)); }
 /* 背景が無い場合はオーバーレイ無効化 */
 .ptl-pageNavHero:not(.has-bg) .ptl-pageNavHero__overlay { display: none; }
 
-/* ===== NEWS: 白ベタを画面端まで（グローバル背景の有無に依存しない） ===== */
+/* --- Mobile tuning (<= 767px): ボタンを半分サイズに --- */
+@media (max-width: 767px) {
+    .ptl-pageNavHero .ptl-section__inner { padding-top: clamp(24px, 6vw, 32px); padding-bottom: clamp(24px, 6vw, 32px); }
+    .ptl-pageNavHero__grid { row-gap: clamp(16px, 3vw, 20px); column-gap: clamp(10px, 2.4vw, 14px); }
+    .ptl-pageNavHero__btn { min-height: 85px; padding: clamp(10px, 2.8vw, 14px) clamp(8px, 2.4vw, 12px); }
+    .ptl-pageNavHero__icon { width: clamp(26px, 6vw, 32px); padding: 0; }
+    .ptl-pageNavHero__label { font-size: clamp(11px, 2.8vw, 12px); }
+    .ptl-pageNavHero__photo img { height: clamp(64px, 16vw, 80px); }
+}
+
+/* NAVIGATION 折り畳み用スタイル（SP専用） */
+/* PCでは常に表示、SPでのみ折り畳み */
+@media (min-width: 768px) {
+  .ptl-pageNavHero__toggle {
+    display: none; /* PCでは折り畳みボタンを非表示 */
+  }
+  .ptl-pageNavHero__grid.is-collapsible {
+    height: auto !important; /* PCではグリッドを常に表示 */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    grid-template-rows: 1fr !important;
+    display: grid !important;
+  }
+}
+
+/* スマホ用ボタンスタイル（768px未満） */
+@media (max-width: 767px) {
+  .ptl-pageNavHero__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px auto 16px auto;
+    padding: 0;
+    font-size: 0.9em;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity .18s;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,.25);
+  }
+  .ptl-pageNavHero__toggle:hover {
+    opacity: .8;
+  }
+  .ptl-pageNavHero__toggleText {
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: inherit;
+  }
+  
+  /* ハンバーガーアイコン（三本線） */
+  .ptl-pageNavHero__toggleIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 18px;
+    height: 14px;
+  }
+  .ptl-pageNavHero__toggleIcon span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    transition: transform .25s ease, opacity .25s;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  }
+}
+
+/* COMMITMENT セクション（Reasons）のボタンカスタマイズ */
+.ptl-reason__btn {
+  display: flex;
+  flex-direction: column;
+  min-height: 340px !important;
+  padding: 20px !important;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ptl-reason__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* 画像エリア */
+.ptl-reason__photo {
+  width: calc(100% + 40px);
+  margin: -20px -20px 18px -20px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ptl-reason__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* タイトル */
+.ptl-pageNavHero__label {
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 6px; /* 8pxから6pxに縮小 */
+  color: #333;
+  padding: 0 8px;
+  text-transform: uppercase;
+}
+
+/* 説明文 */
+.ptl-reason__subtext {
+  font-size: clamp(12px, 1.3vw, 14px);
+  font-weight: 400;
+  color: #666;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  padding: 0 8px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 767px) {
+  .ptl-reason__btn {
+    min-height: 260px !important;
+  }
+  .ptl-pageNavHero__label {
+    font-size: 14px;
+  }
+  .ptl-reason__subtext {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+}
+
+/* PagelayerのクレジットをCSSで非表示 */
+a[href*="pagelayer.com/?from=theme-credit"] {
+    display: none !important;
+}
+
+/* クリックでXに変形 - SPのみ適用 */
+@media (max-width: 767px) {
+  [aria-expanded="true"] .ptl-pageNavHero__toggleIcon span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+  [aria-expanded="true"] .ptl-pageNavHero__toggleIcon span:nth-child(2) {
+    opacity: 0;
+  }
+  [aria-expanded="true"] .ptl-pageNavHero__toggleIcon span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+
+  /* 折り畳み・展開のアニメーション */
+  .ptl-pageNavHero__grid.is-collapsible {
+    height: 0;
+    overflow: hidden;
+    display: grid;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: height .3s ease, opacity .25s ease, transform .25s ease;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+  }
+
+  .ptl-pageNavHero__grid.is-collapsible.is-expanded {
+    height: auto;
+    opacity: 1;
+    transform: translateY(0);
+    grid-template-rows: 1fr;
+    visibility: visible;
+    margin-top: 10px;
+  }
+}/* ===== NEWS: 白ベタを画面端まで（グローバル背景の有無に依存しない） ===== */
 /* 親ラッパがfull-bleedをクリップしないように */
 .l-mainContent, .l-contents, .l-container { overflow: visible; }
 
@@ -481,6 +602,7 @@ html, body { overflow-x: hidden; }
     margin: 10px auto 26px;
     background: url('./img/bg_1.png') center/contain no-repeat;
 }
+.ptl-bustIssues__card { background: #fff; border-radius: 10px; box-shadow: 0 10px 28px rgba(0,0,0,.08); padding: clamp(16px, 2.6vw, 26px); max-width: 1160px; margin: 0 auto; }
 .ptl-bustIssues__list { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 0; padding: 0; list-style: none; }
 @media (min-width: 900px) { .ptl-bustIssues__list { grid-template-columns: repeat(2, 1fr); } }
 .ptl-bustIssues__item { display: grid; grid-template-columns: 28px 1fr; align-items: center; column-gap: 10px; padding: 10px 8px; border-bottom: 1px dashed #ddd; }
@@ -516,39 +638,5 @@ html, body { overflow-x: hidden; }
 .ptl-serviceFeature__cardMedia > img,
 .ptl-phsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-@media (max-width: 767px) {
-  .l-header,
-  .p-headerBar,
-  .l-fixHeader {
-    background: rgba(0,0,0,0.85) !important;
-  }
-}
 
-/* より高い詳細度でBUST-ISSUESカードを確実に白不透明に保つ */
-#bust-issues .ptl-bustIssues__card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 28px rgba(0,0,0,.08);
-  padding: clamp(16px, 2.6vw, 26px);
-  max-width: 1160px;
-  margin: 0 auto;
-}
-
-/* === Canonical container lock (global, matches navigation) === */
-:root { --ptl-container-max: 1160px; --ptl-container-pad: 20px; }
-.ptl-section > .ptl-section__inner{
-  max-width: var(--ptl-container-max) !important;
-  margin-inline: auto !important;
-  padding-inline: var(--ptl-container-pad) !important;
-  width: auto !important;
-  box-sizing: border-box;
-}
-/* Optional safety: if a section wrapper tries to re-define width */
-.ptl-section [class*="__inner"],
-.ptl-section [class*="__wrap"],
-.ptl-section [class*="__container"]{
-  max-width: none !important;
-  width: auto !important;
-  box-sizing: border-box;
-}
 

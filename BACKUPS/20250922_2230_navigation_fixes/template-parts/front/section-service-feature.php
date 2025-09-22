@@ -82,7 +82,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
             <div class="ptl-news__more">
                 <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
-                    <span class="ptl-news__moreLabel">MORE</span>
+                    <span class="ptl-news__moreLabel">More</span>
                     <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
                 </a>
             </div>

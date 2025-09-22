@@ -1,0 +1,446 @@
+/* === MENU Section (Rococo Style) 統合分 === */
+#section-services .ptl-menu__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+#section-services .ptl-menu__main {
+  position: relative;
+  height: 100%;
+}
+#section-services .ptl-menu__mainContent {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#section-services .ptl-menu__mainContent:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+#section-services .ptl-menu__mainLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+#section-services .ptl-menu__mainImage {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+#section-services .ptl-menu__mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+#section-services .ptl-menu__mainContent:hover .ptl-menu__mainImage img {
+  transform: scale(1.05);
+}
+#section-services .ptl-menu__mainText {
+  padding: 20px 30px;
+  background: #fff;
+}
+#section-services .ptl-menu__mainTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 15px 0;
+  line-height: 1.3;
+}
+#section-services .ptl-menu__mainDesc {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+#section-services .ptl-menu__mainCta {
+  display: inline-block;
+  padding: 0;
+  background: transparent;
+  color: #007bff;
+  border: none;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  transition: color 0.3s ease;
+  text-decoration: underline;
+}
+#section-services .ptl-menu__mainCta:hover {
+  color: #0056b3;
+}
+#section-services .ptl-menu__sub {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#section-services .ptl-menu__subGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+#section-services .ptl-menu__subItem {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#section-services .ptl-menu__subItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+#section-services .ptl-menu__subLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+#section-services .ptl-menu__subImage {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+#section-services .ptl-menu__subImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+#section-services .ptl-menu__subItem:hover .ptl-menu__subImage img {
+  transform: scale(1.1);
+}
+#section-services .ptl-menu__subTitle {
+  padding: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  text-align: center;
+  background: #fff;
+  transition: background 0.3s ease;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#section-services .ptl-menu__subItem:hover .ptl-menu__subTitle {
+  background: #f8f9fa;
+}
+#section-services .ptl-menu__more {
+  text-align: center;
+  margin-top: 50px;
+}
+#section-services .ptl-menu__moreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+#section-services .ptl-menu__moreBtn:hover {
+  background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+  color: #fff;
+  text-decoration: none;
+}
+#section-services .ptl-menu__moreLabel {
+  font-weight: 600;
+}
+#section-services .ptl-menu__moreArrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+#section-services .ptl-menu__moreBtn:hover .ptl-menu__moreArrow {
+  transform: translateX(5px);
+}
+/* レスポンシブ統合 */
+@media (max-width: 992px) {
+  #section-services .ptl-menu__content { grid-template-columns: 1fr; gap: 30px; }
+  #section-services .ptl-menu__subGrid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  #section-services .ptl-menu__title { font-size: 2.2rem; }
+}
+@media (max-width: 768px) {
+  #section-services .ptl-menu__mainImage { height: 200px; }
+  #section-services .ptl-menu__mainText { padding: 20px; }
+  #section-services .ptl-menu__mainTitle { font-size: 1.3rem; }
+  #section-services .ptl-menu__mainDesc { font-size: 0.9rem; }
+  #section-services .ptl-menu__subImage { height: 100px; }
+  #section-services .ptl-menu__subTitle { padding: 12px 15px; font-size: 0.9rem; }
+  #section-services .ptl-menu__more { margin-top: 40px; }
+  #section-services .ptl-menu__moreBtn { padding: 12px 25px; font-size: 1rem; }
+}
+@media (max-width: 480px) {
+  #section-services .ptl-menu__mainImage { height: 180px; }
+  #section-services .ptl-menu__mainText { padding: 15px; }
+  #section-services .ptl-menu__mainTitle { font-size: 1.2rem; }
+  #section-services .ptl-menu__subImage { height: 80px; }
+  #section-services .ptl-menu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
+}
+#section-services .ptl-reasonsHero__boxTitle {
+  /* ナビの .ptl-pageNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-weight: 600;
+  color: #333 !important;
+  text-align: center;
+  /* 余白を詰める */
+  margin-top: 10px;
+  margin-bottom: 6px;
+  letter-spacing: .08em;
+}
+
+#section-services .ptl-reasonsHero__boxDesc {
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 300;
+  color: #333 !important;
+  line-height: 1.65;
+  margin-top: 4px;
+  margin-bottom: 0;
+  text-align: center;
+}
+/* コミットメントセクション（Reasons）のスタイル */
+.ptl-reasonsHero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;
+  --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+  --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: clamp(520px, 60vh, 720px);
+}
+
+.ptl-reasonsHero.is-translucent {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+.ptl-reasonsHero.has-bg {
+  color: #fff;
+}
+
+.ptl-reasonsHero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: transparent;
+  transform-origin: center center;
+}
+
+.ptl-reasonsHero__video,
+.ptl-reasonsHero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: center center;
+}
+
+.ptl-reasonsHero__video {
+  object-fit: cover;
+}
+
+.ptl-reasonsHero__image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+}
+
+.ptl-reasonsHero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--overlay, .2));
+}
+
+.ptl-reasonsHero .ptl-section__inner {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(64px, 10vw, 160px);
+  padding-bottom: clamp(64px, 10vw, 160px);
+}
+
+.ptl-reasonsHero .ptl-section__title {
+  /* NEWSセクションと同様のスタイル */
+  text-align: center;
+  letter-spacing: .08em;
+  font-weight: 600;
+  margin-bottom: 28px;
+  font-size: var(--ptl-heading-size);
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.ptl-reasonsHero .ptl-section__subtitle {
+  text-align: center;
+  color: #777 !important;
+  margin-top: -4px;
+  font-size: var(--ptl-subtitle-size);
+  display: block !important;
+}
+
+.ptl-reasonsHero .ptl-section__subtitleLine {
+  width: 100px;
+  height: 1px;
+  background-color: #ddd;
+  margin: 24px auto;
+}
+
+/* 背景がある場合もシャドウなしで統一 */
+.ptl-reasonsHero.has-bg .ptl-section__title {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.ptl-reasonsHero.has-bg .ptl-section__subtitle {
+  color: #777 !important;
+  text-shadow: none !important;
+}
+
+.ptl-reasonsHero__grid {
+  list-style: none;
+  margin: clamp(32px, 3vw, 56px) auto 0;
+  padding: 0;
+  display: grid;
+  row-gap: clamp(40px, 4.6vw, 80px);
+  column-gap: clamp(16px, 2vw, 24px);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 700px) {
+  .ptl-reasonsHero__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .ptl-reasonsHero__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#section-services .ptl-reasonsHero__btn {
+  display: grid;
+  grid-template-rows: auto auto;
+  /* 全体の行間隔を詰める */
+  row-gap: 8px;
+  justify-items: center;
+  color: #333 !important;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  /* 内側の余白をやや減らす */
+  padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 20px);
+  min-height: 170px;
+  /* 見出しのみ太字にするため、コンテナでの太字指定はしない */
+  font-weight: 400;
+  letter-spacing: .02em;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+#section-services .ptl-reasonsHero__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+#section-services .ptl-reasonsHero__icon {
+  /* 写真カードとしてフル幅表示 */
+  width: 100%;
+  /* 画像下の余白を詰める */
+  margin: 0 0 8px;
+  display: block;
+  padding: 0;
+}
+
+#section-services .ptl-reasonsHero__icon svg,
+#section-services .ptl-reasonsHero__icon img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.ptl-reasonsHero__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333 !important;
+  text-align: center;
+}
+
+/* レスポンシブ調整 */
+@media screen and (max-width: 767px) {
+  .ptl-reasonsHero {
+    padding: 40px 0;
+  }
+
+  .ptl-reasonsHero__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .ptl-reasonsHero__label {
+    font-size: 14px;
+  }
+}
+
+/* ファイル末尾 */
+#section-services .ptl-menu__mainImage img {
+  width: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  border-radius: 16px 16px 0 0 !important;
+  /* 最小260px ↔ 最大420px。足りない場合は420→440に調整 */
+  height: clamp(260px, 35vw, 420px) !important;
+  max-height: none !important;
+  min-height: 260px !important;
+}
+
+#section-services .ptl-menu__mainTitle {
+  margin-bottom: 28px !important; /* 既存24px→28px */
+}
+
+#section-services .ptl-menu__mainDesc {
+  margin-top: 4px !important; /* 既存0→4px */
+}
+
+/* FIX: 左メイン画像の縦量を確保してカバー表示 */
+#section-services .ptl-menu__main .ptl-menu__mainContent { display: flex !important; flex-direction: column !important; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink { display: flex !important; flex-direction: column !important; height: 100% !important; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage{ max-width:none !important; width:100% !important; flex: 0 0 68% !important; /* 上下幅の68%に戻す */ margin-bottom: 24px !important; /* 写真とタイトルの間の余白を拡張 */ }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage img{ width:100% !important; height:100% !important; object-fit:cover !important; display:block !important; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainText { flex: 0 0 32% !important; /* 残り32%をテキストに */ padding-top: 12px !important; /* テキスト上部の余白も拡張 */ }

@@ -1,2 +1,0 @@
-# Changed files list for nav inline patch (2025-09-11)
-swell_child/functions.php

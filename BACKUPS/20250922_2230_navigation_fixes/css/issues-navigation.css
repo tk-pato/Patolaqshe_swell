@@ -1,0 +1,25 @@
+/* BUST-ISSUES — 点線のみ表示（実線削除） */
+#bust-issues .ptl-bustIssues__list{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	/* 点線のみで表現 */
+}
+
+/* 親テーマの個別ボーダー指定を無効化 */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item{
+	border: 0;
+}
+
+/* 項目間の実線も削除 */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item + li.ptl-bustIssues__item{
+	border-top: none;
+}
+
+/* BUST-ISSUES: 点線のみの下線 */
+#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
+	border-bottom: 1px dashed rgba(0,0,0,.18) !important;
+}
+
+/* （任意のデバッグ）この枠が出たらCSSは確実に読めている */
+#bust-issues { outline: 3px solid magenta !important; }
