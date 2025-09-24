@@ -96,13 +96,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-  #page-navigation .ptl-pageNavHero__icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   .ptl-pageNavHero__label {
     font-size: 14px;
   }
