@@ -2,7 +2,7 @@
 if (! defined('ABSPATH')) exit;
 
 // 専用CSSを後読みで確実に読み込む
-
+echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() . '/css/section-service-feature.css' ) . '" media="all">';
 
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
@@ -22,7 +22,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
 <section id="section-services" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title">MENU</h2>
+        <h2 class="ptl-section__title is-onImage" style="color:#222; text-shadow:none;">MENU</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種メニュー</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
@@ -82,7 +82,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
             <div class="ptl-news__more">
                 <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
-                    <span class="ptl-news__moreLabel">MORE</span>
+                    <span class="ptl-news__moreLabel">More</span>
                     <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
                 </a>
             </div>

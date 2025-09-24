@@ -1,79 +1,3 @@
-
-/* STEP1: issue→commitment と commitment→navigation の間だけ調整 */
-#bust-issues .ptl-section__inner{ padding-bottom: clamp(12px,3vw,24px) !important; } /* issueの下だけ詰める */
-#section-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
-
-:root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
-
-#section-commitment .ptl-section__inner{ padding-top: var(--gap-base) !important; }
-#section-commitment .ptl-section__title{ margin-top: 0 !important; }
-#bust-issues{ margin-bottom: 0 !important; } /* パララックスの高さは維持し、外側だけ詰める */
-
-/* 各セクション個別の余白を無効化してグランド統一管理 */
-.ptl-section,
-#news, #section-commitment, #section-navigation, #section-services, #uservoice,
-#bust-issues, #section-reasons{
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* 各セクションの内部コンテンツ余白をグランドで統一 */
-.ptl-section .ptl-section__inner,
-#news .ptl-section__inner,
-#section-commitment .ptl-section__inner,
-#section-navigation .ptl-section__inner,
-#section-services .ptl-section__inner,
-#bust-issues .ptl-section__inner,
-#section-reasons .ptl-section__inner{
-  padding: 80px 20px !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-}
-
-/* セクション間の統一マージン */
-#news + #section-commitment,
-#section-commitment + #section-navigation,
-#section-navigation + #section-services,
-#uservoice + #bust-issues{
-  margin-top: 96px !important;
-}
-
-/* 全セクションの見えているコンテンツ部分を①のNEWSセクション境界に統一 */
-:root{ --section-padding: 80px 0; --section-inner-width: 1200px; }
-
-/* 各セクションのコンテンツ部分を統一（パララックス背景は維持） */
-.ptl-section .ptl-section__inner,
-#section-commitment .ptl-section__inner,
-#section-navigation .ptl-section__inner,
-#section-services .ptl-section__inner{
-  max-width: var(--section-inner-width) !important;
-  margin: 0 auto !important;
-  padding: 80px 20px !important;
-}
-
-/* NEWSセクションのパディングを基準として他も合わせる */
-#news .ptl-section__inner{ padding: 80px 20px !important; }
-
-/* パララックス画像幅は維持、コンテンツのみ統一 */
-#bust-issues .ptl-section__inner,
-#section-reasons .ptl-section__inner{
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
-}
-
-:root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
-
-/* セクション間の外側マージンを統一（内部のパララックス高さは不変） */
-#section-issue + #section-commitment,
-#section-commitment + #section-navigation,
-#section-navigation + #section-services{
-    margin-top: var(--gap-base) !important;
-}
-
-/* 視覚補正：パララックス境界だけ少し詰める（表示領域は削らない） */
-#section-issue + #section-commitment{ margin-top: var(--gap-parallax) !important; }
 /*
 Theme Name: SWELL CHILD
 Template: swell
@@ -243,14 +167,62 @@ html, body { overflow-x: hidden; }
     }
 }
 
+/* =====================================================
+     選ばれる理由（4カード） - パターン用スタイル
+     ----------------------------------------------------- */
+/* COMMITMENT（ptl-reasons）: 既定の .ptl-section と同値の上下余白を明示 */
+.ptl-reasons { padding: clamp(40px, 6vw, 80px) 0; }
 
+.ptl-reasons__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: clamp(16px, 2.4vw, 28px);
+    column-gap: clamp(16px, 2vw, 24px); /* NAVと同じ列間隔 */
+    width: 100%; /* 内側コンテナ幅いっぱいに */
+    margin: 0;
+    padding: 0; /* 余計な内側余白を削除してNAVと同幅に */
+}
+@media (min-width: 700px) { .ptl-reasons__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .ptl-reasons__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.ptl-reason-card {
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 16px; /* 丸みのある白ベースを維持しつつ、画像は後述のネガティブマージンでフル幅に */
+    height: 100%;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.ptl-reason-card:hover { /* 既定はほんの少し浮く */ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
+.ptl-reason-card.is-static:hover { transform: none; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+.ptl-reason-card__media a { display:block; }
+.ptl-ph {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #ddd; /* グレープレースホルダー */
+}
+.ptl-reason-card__media { position: relative; border-radius: 12px 12px 0 0; overflow: hidden; margin: -16px; margin-bottom: 12px; }
+.ptl-reason-card__media::before { content: ""; display: block; padding-top: 75%; }
+.ptl-reason-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.ptl-reason-card__title { text-align: center; margin: 12px 4px 4px; font-weight: 600; letter-spacing: .02em; }
+.ptl-reason-card__title a { text-decoration: none; }
+.ptl-reason-card__title a:hover { opacity: .85; }
+/* テキストの左右余白は個別に確保し、画像はフルブリード */
+.ptl-reason-card__desc { margin: 0 4px 12px; }
+
+/* REASONS: MORE ボタンの配置（NEWSと共通デザインに統一） */
+.ptl-reasons__actions { display: flex; justify-content: center; margin-top: 28px; }
 
 /* =====================================================
     NEWS / SERVICE NAV / STORE NAV スタイル
     ----------------------------------------------------- */
 .ptl-section { --ptl-heading-size: clamp(22px, 2.8vw, 28px); }
 .ptl-section { --ptl-heading-size: clamp(22px, 2.8vw, 28px); --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
-.ptl-section { padding: 80px 0; }
+.ptl-section { padding: clamp(48px, 6vw, 96px) 0; }
 .ptl-section__inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 .ptl-section__title { text-align: center; letter-spacing: .08em; font-weight: 600; margin-bottom: 28px; font-size: var(--ptl-heading-size); }
 
@@ -264,9 +236,22 @@ html, body { overflow-x: hidden; }
 /* NEWS（タイトルのみ）*/
 .ptl-news { --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
 .ptl-news .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+.ptl-news .ptl-section__subtitleLine {
+    /* ロココ調の飾りライン画像（子テーマ img/bg_1.png） */
+    width: clamp(180px, 18vw, 240px);
+    height: clamp(16px, 2.4vw, 20px);
+    margin: 10px auto 26px;
+    background: url('./img/bg_1.png') center/contain no-repeat;
+}
 
-/* REASONS（サブタイトル）*/
+/* REASONS（サブタイトル＆飾りライン）*/
 .ptl-reasons .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+.ptl-reasons .ptl-section__subtitleLine {
+    width: clamp(180px, 28vw, 560px);
+    height: clamp(16px, 3.2vw, 28px);
+    margin: 10px auto 26px;
+    background: url('./img/bg_1.png') center/contain no-repeat;
+}
 .ptl-news__list.is-titleOnly { max-width: 980px; margin: 0 auto; }
 .ptl-news__list.is-titleOnly .ptl-news__item { padding: 18px 0; border-bottom: 1px solid #e5e5e5; }
 .ptl-news__title { text-decoration: none; font-weight: 700; letter-spacing: .01em; }
@@ -322,15 +307,6 @@ html, body { overflow-x: hidden; }
 .ptl-reasons__more:focus-visible { background: #fff; color: #5F6368; }
 .ptl-news__moreBtn:hover .ptl-news__moreArrow,
 .ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { transform: translateX(4px); }
-
-/* USERVOICEセクションのMOREボタンだけ背景を透明に */
-#uservoice .ptl-news__moreBtn {
-    background: transparent;
-}
-#uservoice .ptl-news__moreBtn:hover,
-#uservoice .ptl-news__moreBtn:focus-visible {
-    background: transparent;
-}
 
 /* SERVICE NAV - 背景動画＋アイコンカード */
 /* 旧: 画像差し替えによる枠変更は廃止（マスク方式へ） */
