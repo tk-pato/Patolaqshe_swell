@@ -419,20 +419,20 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     'transport'         => 'refresh',
     'sanitize_callback' => function ($v) {
       $f = floatval($v);
-      if ($f < 0.1) $f = 0.1;
-      if ($f > 2.0) $f = 2.0;
+      if ($f < 0) $f = 0.0;
+      if ($f > 1) $f = 1.0;
       return $f;
     },
     'default'           => 0.6,
   ]);
   $wp_customize->add_control('ptl_nav_parallax_speed', [
-    'label'       => 'パララックス速度（0.1〜2.0）',
+    'label'       => 'パララックス速度（0〜1、1で追従なし）',
     'section'     => 'ptl_navigation',
     'type'        => 'number',
     'input_attrs' => [
-      'min'  => 0.1,
-      'max'  => 2.0,
-      'step' => 0.01,
+      'min'  => 0,
+      'max'  => 1,
+      'step' => 0.05,
     ],
   ]);
 });
@@ -521,20 +521,20 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     'transport'         => 'refresh',
     'sanitize_callback' => function ($v) {
       $f = floatval($v);
-      if ($f < 0.1) $f = 0.1;
-      if ($f > 2.0) $f = 2.0;
+      if ($f < 0) $f = 0.0;
+      if ($f > 1) $f = 1.0;
       return $f;
     },
     'default'           => 0.92,
   ]);
   $wp_customize->add_control('ptl_bust_issues_parallax_speed', [
-    'label'       => 'パララックス速度（0.1〜2.0）',
+    'label'       => 'パララックス速度（0〜1、1で追従なし）',
     'section'     => 'ptl_bust_issues',
     'type'        => 'number',
     'input_attrs' => [
-      'min'  => 0.1,
-      'max'  => 2.0,
-      'step' => 0.01,
+      'min'  => 0,
+      'max'  => 1,
+      'step' => 0.05,
     ],
   ]);
 
