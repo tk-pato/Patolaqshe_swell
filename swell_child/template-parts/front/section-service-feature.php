@@ -1,91 +1,82 @@
 <?php
 if (! defined('ABSPATH')) exit;
 
-// 専用CSSを後読みで確実に読み込む
+// メイン（バストアップ）と下段3カードはフィルターで差し替え可能
+$main = apply_filters('ptl_service_feature_main', [
+    'title' => 'BUST UP',
+    'desc'  => '姿勢・筋膜・リンパのアプローチで土台から美しく。お一人お一人の体質に合わせて無理なく導きます。（ダミーテキスト）',
+    'url'   => home_url('/service/bust-up/'),
+    'img'   => '', // 未指定時はプレースホルダー
+]);
 
+$cards = apply_filters('ptl_service_feature_cards', [
+    ['label' => 'FACIAL',    'url' => home_url('/service/facial/'),    'img' => ''],
+    ['label' => 'SLIMMING',  'url' => home_url('/service/slimming/'),  'img' => ''],
+    ['label' => 'BODY CARE', 'url' => home_url('/service/bodycare/'),  'img' => ''],
+]);
 
-// 共通セクション背景（Customizer）を取得
-$bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
-    'video_url' => '',
-    'bg_pc'     => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
-    'bg_sp'     => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
-    'overlay'   => 0.25,
-];
-$video_url = (string) ($bg['video_url'] ?? '');
-$bg_pc     = (string) ($bg['bg_pc'] ?? '');
-$bg_sp     = (string) ($bg['bg_sp'] ?? '');
-$overlay   = (float)   ($bg['overlay'] ?? 0.25);
-$p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
-
-$has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
+function ptl_svg_ph_box($ratio = '4/5')
+{
+    // シンプルなグレープレースホルダー（SVG）を返す
+    $svg  = '<svg viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="ptl-phsvg" aria-hidden="true">';
+    $svg .= '<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#EAEAEA"/><stop offset="100%" stop-color="#D8D8D8"/></linearGradient></defs>';
+    $svg .= '<rect x="0" y="0" width="1200" height="1200" fill="url(#g)"/>';
+    $svg .= '<rect x="40" y="40" width="1120" height="1120" fill="none" stroke="#CFCFCF" stroke-width="4" stroke-dasharray="12 10"/>';
+    $svg .= '</svg>';
+    return $svg;
+}
 ?>
 
-<section id="section-services" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
+<section id="service-feature" class="ptl-section ptl-serviceFeature">
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title">MENU</h2>
-        <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種メニュー</div>
-        <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
-        </div>
-
-        <!-- MENU Content (Rococo Style) -->
-        <div class="ptl-menu__content">
-            <!-- メインコンテンツ -->
-            <div class="ptl-menu__main">
-                <div class="ptl-menu__mainContent">
-                    <a href="<?php echo esc_url(home_url('/lp03/')); ?>" class="ptl-menu__mainLink">
-                        <div class="ptl-menu__mainImage">
-                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
-                        </div>
-                        <div class="ptl-menu__mainText">
-                            <h3 class="ptl-menu__mainTitle">テキストテキストテキスト</h3>
-                            <p class="ptl-menu__mainDesc">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキスト。</p>
-                        </div>
+        <!-- 上段：大きなバストアップ（左：画像 / 右：テキスト） -->
+        <div class="ptl-serviceFeature__hero">
+            <div class="ptl-serviceFeature__heroMedia" style="--ratio: 16/9">
+                <?php if (!empty($main['url'])): ?>
+                    <a href="<?php echo esc_url($main['url']); ?>" class="ptl-serviceFeature__heroLink" aria-label="<?php echo esc_attr($main['title'] ?: 'BUST UP'); ?>">
+                        <?php if (!empty($main['img'])): ?>
+                            <img src="<?php echo esc_url($main['img']); ?>" alt="" loading="lazy" decoding="async">
+                        <?php else: ?>
+                            <?php echo ptl_svg_ph_box('16/9'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                            ?>
+                        <?php endif; ?>
                     </a>
-                </div>
+                <?php else: ?>
+                    <?php if (!empty($main['img'])): ?>
+                        <img src="<?php echo esc_url($main['img']); ?>" alt="" loading="lazy" decoding="async">
+                    <?php else: ?>
+                        <?php echo ptl_svg_ph_box('16/9'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                        ?>
+                    <?php endif; ?>
+                <?php endif; ?>
             </div>
-
-            <!-- サブメニュー -->
-            <div class="ptl-menu__sub">
-                <div class="ptl-menu__subGrid">
-                    <div class="ptl-menu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/sizeup/')); ?>" class="ptl-menu__subLink">
-                            <div class="ptl-menu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="サイズアップ" loading="lazy" decoding="async">
-                            </div>
-                            <h4 class="ptl-menu__subTitle">サイズアップ</h4>
-                        </a>
-                    </div>
-
-                    <div class="ptl-menu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/down/')); ?>" class="ptl-menu__subLink">
-                            <div class="ptl-menu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="下垂ケア" loading="lazy" decoding="async">
-                            </div>
-                            <h4 class="ptl-menu__subTitle">下垂ケア</h4>
-                        </a>
-                    </div>
-
-                    <div class="ptl-menu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/distance/')); ?>" class="ptl-menu__subLink">
-                            <div class="ptl-menu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="離れバストケア" loading="lazy" decoding="async">
-                            </div>
-                            <h4 class="ptl-menu__subTitle">離れバストケア</h4>
-                        </a>
-                    </div>
-                </div>
+            <div class="ptl-serviceFeature__heroBody">
+                <h2 class="ptl-serviceFeature__title"><?php echo esc_html($main['title'] ?: 'BUST UP'); ?></h2>
+                <p class="ptl-serviceFeature__desc"><?php echo esc_html($main['desc'] ?: 'Description'); ?></p>
+                <?php if (!empty($main['url'])): ?>
+                    <a class="ptl-arrowLink" href="<?php echo esc_url($main['url']); ?>">
+                        <span class="ptl-arrowLink__label">VIEW MENU</span>
+                        <span class="ptl-arrowLink__arrow" aria-hidden="true">→</span>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
 
-        <!-- MORE ボタン -->
-        <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <div class="ptl-news__more">
-                <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
-                    <span class="ptl-news__moreLabel">MORE</span>
-                    <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
+        <!-- 下段：小さめの3カード（フェイシャル・痩身・ボディケア） -->
+        <div class="ptl-serviceFeature__grid">
+            <?php foreach ($cards as $c): $href = $c['url'] ?? '#'; ?>
+                <a class="ptl-serviceFeature__card" href="<?php echo esc_url($href); ?>">
+                    <span class="ptl-serviceFeature__cardMedia" style="--ratio: 4/3">
+                        <?php if (!empty($c['img'])): ?>
+                            <img src="<?php echo esc_url($c['img']); ?>" alt="" loading="lazy" decoding="async">
+                        <?php else: ?>
+                            <?php echo ptl_svg_ph_box('4/3'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                            ?>
+                        <?php endif; ?>
+                    </span>
+                    <span class="ptl-serviceFeature__cardLabel"><?php echo esc_html($c['label'] ?? ''); ?></span>
                 </a>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

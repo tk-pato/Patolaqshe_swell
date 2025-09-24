@@ -1,8 +1,13 @@
 <?php
 if (! defined('ABSPATH')) exit;
 
-// NAV背景メディアを取得
-$bg = ptl_get_nav_background();
+// 共通セクション背景（Customizer）を取得
+$bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
+    'video_url' => '',
+    'bg_pc'     => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+    'bg_sp'     => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
+    'overlay'   => 0.25,
+];
 $video_url = (string) ($bg['video_url'] ?? '');
 $bg_pc     = (string) ($bg['bg_pc'] ?? '');
 $bg_sp     = (string) ($bg['bg_sp'] ?? '');
@@ -62,11 +67,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title is-onImage">NAVIGATION</h2>
-        <button type="button" class="ptl-nav-toggle" aria-expanded="false" aria-controls="ptl-nav-menu">
-            <span class="ptl-nav-toggle__icon"></span>
-            <span class="ptl-nav-toggle__text" style="font-family: serif;">MENU</span>
-        </button>
-        <div id="ptl-nav-menu" class="ptl-pageNavHero__grid ptl-nav-collapsible">
+        <div class="ptl-pageNavHero__grid">
             <?php
             // 子テーマ内のアイコン格納場所（PNG想定）
             $icon_dir_rel = '/img/nav';

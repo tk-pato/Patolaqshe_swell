@@ -20,6 +20,7 @@
 }
 /* 幅は .l-container 共有で自動一致。独自max-width指定はしない */
 /* === commitment ⇔ navigation 幅/レイアウト統一 === */
+.ptl-commitment .l-container{max-width:inherit;margin:0 auto}
 .ptl-commitment .cards{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -67,15 +68,35 @@
 .ptl-commitment .card .title{font-weight:700;letter-spacing:.02em;margin:.75rem 0 .25rem}
 .ptl-commitment .card .excerpt{font-size:14px;line-height:1.75;color:#444}
 /* 共通コンテナ幅（navigationと同期） */
-.ptl-container{
-  max-width: var(--ptl-container-max,1160px);
+.ptl-container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding-left: var(--ptl-container-pad,20px);
-  padding-right: var(--ptl-container-pad,20px);
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-/* （重複削除）.ptl-commitment .cards の再定義とメディアクエリは先頭を残して削除 */
-/* （重複削除）.ptl-commitment .card の再定義は先頭を残して削除 */
+/* commitmentカードのグリッド（navigationと同じ列数・gap） */
+.ptl-commitment .cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .ptl-commitment .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .ptl-commitment .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ptl-commitment .card {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
 .ptl-commitment .card .thumb {
   width: 100%;
   aspect-ratio: 4/3;

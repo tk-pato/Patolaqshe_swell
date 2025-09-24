@@ -1,15 +1,20 @@
 <?php
 if (! defined('ABSPATH')) exit;
 
-// BUST-ISSUES専用背景（Customizer）を取得
-$bg = ptl_get_bust_issues_background();
-$video_url = isset($bg['video_url']) ? $bg['video_url'] : '';
-$bg_pc     = $bg['bg_pc'];
-$bg_sp     = $bg['bg_sp'];
-$overlay   = $bg['overlay_opacity'];
-$p_speed   = $bg['parallax_speed'];
+// 画像ディレクトリのパス/URIを定義（子テーマ内）
+$img_dir = trailingslashit(get_stylesheet_directory()) . 'img';
+$img_uri = trailingslashit(get_stylesheet_directory_uri()) . 'img';
 
-// 8つの悩み（バックアップの$itemsを移植）
+// チェックアイコン: 子テーマ img/check.png があれば使用、無ければSVGで代替
+$check_rel = 'check.png';
+$check_path = trailingslashit($img_dir) . $check_rel;
+$check_uri  = file_exists($check_path) ? (trailingslashit($img_uri) . $check_rel) : '';
+
+function ptl_check_svg_fallback()
+{
+    return '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="24" height="24"><circle cx="12" cy="12" r="11" fill="#E9A7BE"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+}
+
 $items = [
     'バストが小さい',
     '左右で大きさが違う',
@@ -20,61 +25,30 @@ $items = [
     '谷間を作りたい',
     '加齢や授乳による下垂など',
 ];
-
-// チェックアイコン（img/check.png が無ければSVG）
-if (!function_exists('ptl_check_svg_fallback')) {
-    function ptl_check_svg_fallback()
-    {
-        return '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    }
-}
-$check_rel = 'img/check.png';
-$check_path = trailingslashit(get_stylesheet_directory()) . $check_rel;
-$check_uri  = trailingslashit(get_stylesheet_directory_uri()) . $check_rel;
-$has_check_img = file_exists($check_path);
-
-$has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 ?>
 
-<section id="bust-issues" class="ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="0.92" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
-    <?php if ($has_bg): ?>
-        <div class="ptl-pageNavHero__bg" aria-hidden="true">
-            <?php if ($video_url): ?>
-                <video class="ptl-pageNavHero__video" src="<?php echo esc_url($video_url); ?>" autoplay muted loop playsinline></video>
-            <?php else: ?>
-                <picture class="ptl-pageNavHero__image">
-                    <?php if (! empty($bg_sp)): ?>
-                        <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
-                    <?php endif; ?>
-                    <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" decoding="async">
-                </picture>
-            <?php endif; ?>
-            <div class="ptl-pageNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
-        </div>
-    <?php endif; ?>
-
+<section id="bust-issues" class="ptl-section ptl-bustIssues is-translucent">
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage">BUST-ISSUES</h2>
-
-        <!-- 新：8つの悩みチェックリスト -->
+        <div class="ptl-bustIssues__head">
+            <h2 class="ptl-section__title">BUST-ISSUES</h2>
+            <div class="ptl-section__subtitle">バストのお悩みを解決</div>
+            <div class="ptl-section__subtitleLine" aria-hidden="true"></div>
+        </div>
         <div class="ptl-bustIssues__card">
-            <ul class="ptl-bustIssues__list" role="list">
-                <?php foreach ($items as $text): if (!is_string($text) || $text === '') continue; ?>
+            <ul class="ptl-bustIssues__list">
+                <?php foreach ($items as $text): ?>
                     <li class="ptl-bustIssues__item">
-                        <span class="ptl-bustIssues__icon" aria-hidden="true">
-                            <?php echo $has_check_img ? '<img src="' . esc_url($check_uri) . '" alt="" loading="lazy" decoding="async">' : ptl_check_svg_fallback(); ?>
+                        <span class="ptl-bustIssues__check" aria-hidden="true">
+                            <?php if ($check_uri): ?>
+                                <img src="<?php echo esc_url($check_uri); ?>" alt="" loading="lazy" decoding="async">
+                            <?php else: echo ptl_check_svg_fallback(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                            ?>
+                            <?php endif; ?>
                         </span>
                         <span class="ptl-bustIssues__text"><?php echo esc_html($text); ?></span>
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <!-- MORE: NEWSセクションと同意匠 -->
-            <div class="ptl-news__more">
-              <a class="ptl-news__moreBtn" href="<?php echo esc_url( home_url( '/reason/' ) ); ?>">
-                <span class="ptl-news__moreLabel">MORE</span>
-                <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
-              </a>
-            </div>
         </div>
     </div>
 </section>
