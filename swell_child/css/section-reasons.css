@@ -1,0 +1,271 @@
+@charset "UTF-8";
+/* REASONS unified: merged reasons-styles.css + section-reasons.css (2025-09-23) */
+
+/* ===== base ===== */
+#section-reasons,
+.ptl-reasons {
+    --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+}
+
+#section-reasons .ptl-reasonsHero__boxTitle {
+    font-size: clamp(13px, 1.4vw, 16px);
+    font-weight: 600;
+    color: #444;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    letter-spacing: .08em;
+}
+
+#section-reasons .ptl-reasonsHero__boxDesc {
+    font-size: clamp(13px, 1.2vw, 15px);
+    font-weight: 300;
+    color: #444;
+    line-height: 1.65;
+    margin-top: 4px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.ptl-reasons .ptl-section__subtitle {
+    text-align: center;
+    color: #777;
+    margin-top: -4px;
+    font-size: var(--ptl-subtitle-size);
+}
+
+.ptl-reasonsHero .ptl-section__title {
+    text-align: center;
+    letter-spacing: .08em;
+    font-weight: 600;
+    margin-bottom: 28px;
+    font-size: var(--ptl-heading-size);
+    color: #333;
+    text-shadow: none;
+}
+
+.ptl-reasonsHero .ptl-section__subtitle {
+    text-align: center;
+    color: #777;
+    margin-top: -4px;
+    font-size: var(--ptl-subtitle-size);
+    display: block;
+}
+
+.ptl-reasonsHero .ptl-section__subtitleLine {
+    width: 100px;
+    height: 1px;
+    background-color: #ddd;
+    margin: 24px auto;
+}
+
+.ptl-reasonsHero__label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+/* ===== layout ===== */
+.ptl-reasonsHero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    min-height: clamp(520px, 60vh, 720px);
+    padding: 64px 0;
+}
+
+.ptl-reasonsHero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: transparent;
+    transform-origin: center center;
+}
+
+.ptl-reasonsHero__video,
+.ptl-reasonsHero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: center center;
+}
+
+.ptl-reasonsHero__video {
+    object-fit: cover;
+}
+
+.ptl-reasonsHero__image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform-origin: center center;
+}
+
+.ptl-reasonsHero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--overlay, .2));
+}
+
+.ptl-reasonsHero .ptl-section__inner {
+    position: relative;
+    z-index: 1;
+    padding-top: clamp(64px, 10vw, 160px);
+    padding-bottom: clamp(64px, 10vw, 160px);
+}
+
+.ptl-reasonsHero__grid {
+    list-style: none;
+    margin: clamp(32px, 3vw, 56px) auto 0;
+    padding: 0;
+    display: grid;
+    row-gap: clamp(40px, 4.6vw, 80px);
+    column-gap: clamp(16px, 2vw, 24px);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ===== components ===== */
+#section-reasons .ptl-reasonsHero__btn {
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 8px;
+    justify-items: center;
+    color: #111;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 10px;
+    padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 20px);
+    min-height: 170px;
+    font-weight: 400;
+    letter-spacing: .02em;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .12);
+}
+
+#section-reasons .ptl-reasonsHero__icon {
+    width: 100%;
+    margin: 0 0 8px;
+    display: block;
+    padding: 0;
+}
+
+#section-reasons .ptl-reasonsHero__icon svg,
+#section-reasons .ptl-reasonsHero__icon img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ===== states ===== */
+.ptl-reasonsHero.is-translucent {
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+.ptl-reasonsHero.has-bg {
+    color: #fff;
+}
+
+.ptl-reasonsHero.has-bg .ptl-section__title {
+    color: #333;
+    text-shadow: none;
+}
+
+.ptl-reasonsHero.has-bg .ptl-section__subtitle {
+    color: #777;
+    text-shadow: none;
+}
+
+/* ===== utilities ===== */
+/* utilities (現在は該当なし) */
+
+/* ===== media ===== */
+@media (min-width: 700px) {
+    .ptl-reasonsHero__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 960px) {
+    .ptl-reasonsHero__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ptl-reasonsHero {
+        padding: 40px 0;
+    }
+
+    .ptl-reasonsHero__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .ptl-reasonsHero__label {
+        font-size: 14px;
+    }
+}
+
+/* === MOVED FROM style.css (REASONS) — 2025-09-24 === */
+
+/* REASONS専用MOREボタン */
+.ptl-reasons__more {
+    /* 調整用カスタムプロパティ（必要に応じて数値だけ変えればOK） */
+    --frame-slice: 120; /* 画像から切り出す縁の厚み(px) */
+    --frame-width: 12px; /* 実際の表示上の枠の太さ（小さめ） */
+    --frame-color: #111; /* 枠の色（ホバーで白に切替） */
+
+    /* ホバー時にも寸法が変わらないように、余計な固定寸法を外す */
+    box-sizing: border-box; /* 枠とパディングを寸法に含める */
+
+    display: inline-grid;
+    grid-auto-flow: column;
+    place-items: center; /* 中央寄せ（縦横） */
+    gap: 10px;
+    text-decoration: none;
+    color: #3C4043; /* 通常は少し濃いグレー */
+    background: #fff;
+    letter-spacing: .08em;
+    font-weight: 600; /* NEWS見出しと統一 */
+    padding: 6px 14px; /* 文字に近いサイズ感へ（従来比 ~70%） */
+    white-space: nowrap; /* 改行を防ぎ、サイズの安定化 */
+    position: relative; /* 疑似要素フレームの基準 */
+    border: none; /* レイアウトに影響を与えない */
+
+    /* お知らせ（サブタイトル）と完全連動 */
+    font-size: var(--ptl-subtitle-size);
+
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.ptl-reasons__more::before {
+    content: "";
+    position: absolute;
+    /* 枠を外側に描画し、要素サイズを変えない */
+    inset: calc(var(--frame-width) * -1);
+    pointer-events: none; /* クリック透過 */
+    background: var(--frame-color);
+    /* マスクでフレーム形状を切り抜き、色だけ差し替える */
+    -webkit-mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
+    mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
+}
+
+.ptl-reasons__more:hover,
+.ptl-reasons__more:focus-visible { 
+    background: #fff; 
+    color: #5F6368; 
+}
+
