@@ -3,7 +3,7 @@ if (! defined('ABSPATH')) exit;
 
 /* 子テーマのfunctions.phpは、親テーマのfunctions.phpより先に読み込まれることに注意してください。 */
 
-/* （削除）グローバル動画背景の強制OFFスイッチと関連機能は撤去しました */
+/* （削除）グローバル動背景の強制OFFスイッチと関連機能は撤去しました */
 
 // bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
 add_filter('body_class', function ($classes) {
@@ -15,58 +15,87 @@ add_filter('body_class', function ($classes) {
 /* === PTL Header Visibility Guard (Plan B) | 非表示だけ無効化。見た目は変更しない === */
 add_action('wp_footer', function () {
   if (is_admin()) return;
-  ?>
+?>
   <script id="ptl-header-guard">
-  (()=>{
-    'use strict';
-    // 1) ヘッダー候補を取得（構造変更なし）
-    const sels=['[data-header]','#masthead','.l-header','header.site-header','header[role="banner"]','header'];
-    let header=null; for(const s of sels){const el=document.querySelector(s); if(el){header=el;break;}}
-    if(!header){console.warn('[PTL] header not found');return;}
-    header.setAttribute('data-ptl-guard','');
-
-    // 2) 非表示化だけを無効化（display/visibilityのみ）。opacity/transform/色は触らない＝デザイン不変
-    const forceShow=()=>{
-      try{
-        // inlineのdisplay/visibilityを強制上書き（!important）
-        header.style.setProperty('display','block','important');
-        header.style.setProperty('visibility','visible','important');
-        // 万一親要素でvisibility隠蔽がある場合は最小限で剥がす
-        let p=header.parentElement, hop=0;
-        while(p && hop<3){ // 直近の親3階層まで
-          const pv=getComputedStyle(p);
-          if(pv.visibility==='hidden') p.style.setProperty('visibility','visible','important');
-          p=p.parentElement; hop++;
+    (() => {
+      'use strict';
+      // 1) ヘッダー候補を取得（構造変更なし）
+      const sels = ['[data-header]', '#masthead', '.l-header', 'header.site-header', 'header[role="banner"]', 'header'];
+      let header = null;
+      for (const s of sels) {
+        const el = document.querySelector(s);
+        if (el) {
+          header = el;
+          break;
         }
-      }catch(e){}
-    };
-
-    // 3) 初期適用
-    const apply=()=>forceShow();
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply,{once:true}); else apply();
-    window.addEventListener('load',apply,{once:true});
-
-    // 4) 監視：class/styleの変更で隠されたら即座に解除
-    const mo=new MutationObserver(muts=>{
-      for(const m of muts){
-        if(m.type==='attributes' && (m.attributeName==='class' || m.attributeName==='style')){ forceShow(); }
       }
-    });
-    mo.observe(header,{attributes:true,attributeFilter:['class','style']});
+      if (!header) {
+        console.warn('[PTL] header not found');
+        return;
+      }
+      header.setAttribute('data-ptl-guard', '');
 
-    // 5) スクロール/リサイズ時も最小負荷で確認
-    let ticking=false;
-    const tick=()=>{ if(ticking) return; ticking=true;
-      (window.requestAnimationFrame||setTimeout)(()=>{ forceShow(); ticking=false; },0);
-    };
-    window.addEventListener('scroll',tick,{passive:true});
-    window.addEventListener('resize',tick);
+      // 2) 非表示化だけを無効化（display/visibilityのみ）。opacity/transform/色は触らない＝デザイン不変
+      const forceShow = () => {
+        try {
+          // inlineでdisplay/visibilityを強制上書き（!important）
+          header.style.setProperty('display', 'block', 'important');
+          header.style.setProperty('visibility', 'visible', 'important');
+          // 万一親要素でvisibility隠蔽がある場合は最小限で剥がす
+          let p = header.parentElement,
+            hop = 0;
+          while (p && hop < 3) { // 直近の親3階層まで
+            const pv = getComputedStyle(p);
+            if (pv.visibility === 'hidden') p.style.setProperty('visibility', 'visible', 'important');
+            p = p.parentElement;
+            hop++;
+          }
+        } catch (e) {}
+      };
 
-    // 6) 予防：外部JSがdisplay:noneを直書きしても勝てるように、周期的に軽く再適用
-    setInterval(forceShow, 1500);
-  })();
+      // 3) 初期適用
+      const apply = () => forceShow();
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, {
+        once: true
+      });
+      else apply();
+      window.addEventListener('load', apply, {
+        once: true
+      });
+
+      // 4) 監視：class/styleの変更で隠されたら即座に解除
+      const mo = new MutationObserver(muts => {
+        for (const m of muts) {
+          if (m.type === 'attributes' && (m.attributeName === 'class' || m.attributeName === 'style')) {
+            forceShow();
+          }
+        }
+      });
+      mo.observe(header, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+      });
+
+      // 5) スクロール/リサイズ時も最小負荷で確認
+      let ticking = false;
+      const tick = () => {
+        if (ticking) return;
+        ticking = true;
+        (window.requestAnimationFrame || setTimeout)(() => {
+          forceShow();
+          ticking = false;
+        }, 0);
+      };
+      window.addEventListener('scroll', tick, {
+        passive: true
+      });
+      window.addEventListener('resize', tick);
+
+      // 6) 予防：外部JSがdisplay:noneを直書きしても勝てるように、周期的に軽く再適用
+      setInterval(forceShow, 1500);
+    })();
   </script>
-  <?php
+<?php
 }, 9999);
 
 /**
@@ -79,12 +108,21 @@ add_action('wp_enqueue_scripts', function () {
   // 親テーマ main.css のハンドルは 'main_style'（SWELL）
   wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
 
+  // ptl-layout.css（commitment/navigation幅・カードレイアウト同期用）
+  wp_enqueue_style('ptl_layout', get_stylesheet_directory_uri() . '/css/ptl-layout.css', ['child_style'], wp_get_theme()->get('Version'));
+
+  // reasons-styles.css（コミットメントセクション用）
+  wp_enqueue_style('ptl_reasons_styles', get_stylesheet_directory_uri() . '/css/reasons-styles.css', ['child_style'], time());
+
+  // commitment-grid.css - 一時無効化
+  // wp_enqueue_style('ptl_commitment_grid', get_stylesheet_directory_uri() . '/css/commitment-grid.css', ['child_style'], wp_get_theme()->get('Version'));
+
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
-  // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読込でも軽量
+  // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読み込みでも軽量
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
@@ -462,3 +500,22 @@ add_shortcode('ptl_sns_buttons', function ($atts) {
 <?php
   return ob_get_clean();
 });
+
+/**
+ * NAVIGATION セクション専用のCSS/JSを子テーマからのみ読み込み
+ * - 親テーマは不改変
+ * - 読み込み順: 親 → 子 → セクション（このフックは既存の enqueue 後に実行される想定）
+ */
+add_action('wp_enqueue_scripts', function () {
+  if (!is_front_page()) return; // DOM側で対象セレクタ存在チェックもJS側で実施
+
+  // CSS（最後に読ませる）
+  $nav_css_path = get_stylesheet_directory() . '/css/navigation.css';
+  $nav_css_ver  = file_exists($nav_css_path) ? date('Ymdgis', filemtime($nav_css_path)) : null;
+  wp_enqueue_style('ptl-navigation-style', get_stylesheet_directory_uri() . '/css/navigation.css', [], $nav_css_ver);
+
+  // JS（jQuery依存、フッター）
+  $nav_js_path = get_stylesheet_directory() . '/js/navigation.js';
+  $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
+  wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
+}, 20);

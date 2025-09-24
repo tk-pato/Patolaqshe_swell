@@ -18,65 +18,23 @@
 
 /* BUST-ISSUES: 点線のみの下線 */
 #bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
-	border-bottom: 1px dashed rgba(0,0,0,.18);
+	border-bottom: 1px dashed rgba(0,0,0,.18) !important;
 }
 
-/* === ISSUES align to NAV — 2025-09-24 === */
-#bust-issues{
-  position: relative;
-  min-height: 720px; /* debug: NAVと同じ高さを強制 */
-  outline: 2px solid magenta !important; /* debug: 視覚比較用 */
+
+
+/* === ISSUES: 高さを調整（NAVIGATIONのptl-pageNavHeroクラスを継承） === */
+#bust-issues {
+  min-height: clamp(720px, 80vh, 900px);
+  display: flex;
+  align-items: center;  /* min-height内で垂直中央配置 */
 }
-#bust-issues .ptl-bustIssues{
-  padding: clamp(64px, 10vw, 160px) 0;
-  position: relative;
-  box-sizing: border-box;
+#bust-issues .ptl-section__inner {
+  width: 100%;
 }
 
-#bust-issues > .ptl-section__inner {
-  max-width: 1200px;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-}
-#bust-issues > .ptl-section__inner{
-  padding-top: 0;
-  padding-bottom: 0;
-  position: relative;
-  z-index: 1;
-}
-/* 背景レイヤは全域を覆う（存在するクラスにヒット） */
-#bust-issues :is(.ptl-bustIssues__bg,.ptl-pageNavHero__bg,.ptl-reasonsHero__bg){ position:absolute; inset:0; z-index:0; }
-#bust-issues :is(.ptl-bustIssues__overlay,.ptl-pageNavHero__overlay,.ptl-reasonsHero__overlay){ position:absolute; inset:0; }
-/* === /ISSUES align === */
+/* 背景レイヤを全域に */
+#bust-issues :is(.ptl-bustIssues__bg){ position:absolute; inset:0; z-index:0; }
+#bust-issues :is(.ptl-bustIssues__overlay){ position:absolute; inset:0; }
 
-/* === DEBUG: CSS読み込み確認用アウトライン === */
- #bust-issues {
-  outline: 6px solid lime !important;
-}
-/* === /DEBUG === */
-
-/* === ISSUES: match NAV inner gap (2025-09-24) === */
-/* NAVの .ptl-pageNavHero__grid と同じ上端マージンを付与 */
-#bust-issues .ptl-bustIssues__list,
-#bust-issues .ptl-bustIssues__head,     /* 見出しブロックが先頭の場合の保険 */
-#bust-issues .ptl-bustIssues__content { /* リストでない先頭ブロック用 */
-  margin-top: clamp(32px, 3vw, 56px);
-}
-
-/* 既に上端余白を持つ場合は二重化しないよう微調整（任意） */
-#bust-issues .ptl-bustIssues__list:first-child,
-#bust-issues .ptl-bustIssues__head:first-child,
-#bust-issues .ptl-bustIssues__content:first-child {
-  margin-top: clamp(32px, 3vw, 56px);
-}
-/* === /ISSUES: match NAV inner gap === */
-
-/* === ISSUES: bottom compensation to match NAV (2025-09-24) === */
-/* NAV側のコンテンツ総高さ > min-height となっているケースに追随するため
-  最終子要素に下端余白を追加して見かけ高さを揃える（上端は既に付与済み） */
-#bust-issues .ptl-bustIssues{ display:flex; flex-direction:column; }
-#bust-issues .ptl-bustIssues > :last-child{ margin-bottom: clamp(32px, 3vw, 56px); }
-/* === /ISSUES: bottom compensation === */
+/* === /baseline === */

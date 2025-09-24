@@ -39,30 +39,3 @@
 .ptl-news__title:focus-visible { 
     color: #3C4043; 
 }
-
-/* === FIX: NEWS more button center & flow (2025-09-24) === */
-#news .ptl-news__more,
-.ptl-news .ptl-news__more{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: clamp(20px, 3vw, 32px);
-  position: static;   /* 以前の absolute/relative を無効化 */
-  clear: both;        /* float 残骸の影響を遮断 */
-}
-
-#news .ptl-news__more a,
-.ptl-news .ptl-news__more a{
-  display: inline-flex;   /* 矢印アイコンとテキストを水平整列 */
-  align-items: center;
-  gap: .5em;
-  text-decoration: none;
-}
-
-/* リスト終端に余白を確保（重なり回避） */
-#news .ptl-news__list,
-.ptl-news .ptl-news__list{
-  margin-bottom: clamp(12px, 2vw, 20px);
-}
-/* === /FIX === */

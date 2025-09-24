@@ -259,16 +259,3 @@
 #bust-issues .ptl-news__moreBtn {
   /* カスタマイズ追加（ここは既存スタイルを上書きしたい場合のみ使用） */
 }
-
-/* === NAV baseline — 2025-09-24 === */
-.ptl-pageNavHero{
-  min-height: clamp(520px, 60vh, 720px);
-  padding: clamp(64px, 10vw, 160px) 0;
-}
-.ptl-pageNavHero .ptl-section__inner{
-  padding-top: 0;
-  padding-bottom: 0;
-  position: relative;
-  z-index: 1;
-}
-/* === /NAV baseline === */

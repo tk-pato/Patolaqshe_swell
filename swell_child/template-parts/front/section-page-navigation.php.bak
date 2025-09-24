@@ -69,7 +69,6 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
         <h2 class="ptl-section__title is-onImage">NAVIGATION</h2>
         <div class="ptl-pageNavHero__grid">
             <?php
-            // 子テーマ内のアイコン格納場所（PNG想定）
             $icon_dir_rel = '/img/nav';
             $icon_dir_abs = trailingslashit(get_stylesheet_directory() . $icon_dir_rel);
             $icon_dir_uri = trailingslashit(get_stylesheet_directory_uri() . $icon_dir_rel);
