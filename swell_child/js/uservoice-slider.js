@@ -31,8 +31,12 @@ function initUserVoiceSlider() {
         new Swiper('.uservoice-slider', {
             direction: 'horizontal',
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 16,
             loop: true,
+            centeredSlides: false,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+            grabCursor: true,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
@@ -42,11 +46,18 @@ function initUserVoiceSlider() {
                 el: '.uservoice-slider .swiper-pagination',
                 clickable: true,
             },
-            navigation: { nextEl: '.uservoice-slider .swiper-button-next', prevEl: '.uservoice-slider .swiper-button-prev' },
+            navigation: {
+                nextEl: '.uservoice-slider .swiper-button-next',
+                prevEl: '.uservoice-slider .swiper-button-prev'
+            },
             breakpoints: {
                 320: {
                     slidesPerView: 1,
-                    spaceBetween: 20,
+                    spaceBetween: 16,
+                },
+                600: {
+                    slidesPerView: 1,
+                    spaceBetween: 16,
                 },
                 768: {
                     slidesPerView: 2,
@@ -54,13 +65,16 @@ function initUserVoiceSlider() {
                 },
                 1024: {
                     slidesPerView: 3,
-                    spaceBetween: 30,
+                    spaceBetween: 32,
                 }
             },
             keyboard: {
                 enabled: true,
                 onlyInViewport: true,
             },
+            watchOverflow: true,
+            observer: true,
+            observeParents: true,
         });
     } catch (error) {
         console.error('Swiper initialization failed:', error);
