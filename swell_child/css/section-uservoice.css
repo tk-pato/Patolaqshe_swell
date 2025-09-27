@@ -39,16 +39,21 @@
 }
 /* === /DEBUG === */
 /* arrows */
+/* arrows (updated) */
 #uservoice .swiper-button-prev,
 #uservoice .swiper-button-next{
     position:absolute; top:50%; transform:translateY(-50%);
     width:44px; height:44px; display:flex; align-items:center; justify-content:center;
-    z-index:5; pointer-events:auto; opacity:1;
+    z-index:10; pointer-events:auto; opacity:1;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-#uservoice .swiper-button-prev{ left:8px; }
-#uservoice .swiper-button-next{ right:8px; }
+#uservoice .swiper-button-prev{ left:10px; }
+#uservoice .swiper-button-next{ right:10px; }
 /* ページネーション余白 */
-#uservoice .swiper-pagination{ margin-top:16px; }
+/* pagination spacing (updated) */
+#uservoice .swiper-pagination{ margin-top:24px; }
 /* デバッグは任意で残す */
 /* ===========================
    User's Voice Section Styles
@@ -87,16 +92,20 @@
 .uservoice-slider {
     margin: 60px 0;
     position: relative;
+    overflow: visible;
 }
 
 .uservoice-slider .swiper-wrapper {
     display: flex;
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: row; /* 横並び */
+    align-items: stretch; /* 高さ統一 */
+    gap: 0 !important; /* Swiperが制御 */
 }
 
 .uservoice-slider .swiper-slide {
     height: auto;
+    display: flex !important;
+    align-items: stretch !important;
 }
 
 /* フィードバックカード */
@@ -338,17 +347,19 @@
 #uservoice .ptl-section__subtitle{margin-top:8px !important;text-align:center !important;}
 #uservoice .ptl-section__ornament{margin:12px 0 40px !important;text-align:center !important;} /* inline styleに勝つため !important */
 
-/* stop full-bleed shift only for this section */
-#uservoice .uservoice-slider{width:100% !important;max-width:1100px;margin:24px auto 0 !important;margin-left:0 !important;}
+/* stop full-bleed shift only for this section (disabled to allow full-bleed) */
+/* #uservoice .uservoice-slider{width:100% !important;max-width:1100px;margin:24px auto 0 !important;margin-left:0 !important;} */
 
-#uservoice .uservoice-slider .swiper-wrapper{display:flex !important; flex-direction:row !important;}
-#uservoice .uservoice-slider .swiper{min-height:1px;} /* ラッパーの高さゼロ回避 */
+#uservoice .uservoice-slider .swiper-wrapper{display:flex !important; flex-direction:row !important; align-items: stretch !important;}
+#uservoice .uservoice-slider .swiper{min-height:450px; position: relative; padding: 0 60px;} /* ラッパーの高さゼロ回避とナビ用余白 */
 
 #uservoice .uservoice-slider{
-  width:100vw !important;
-  margin-left:calc(50% - 50vw) !important;
-  margin-right:0 !important;
-  max-width:none !important;
+    width:100vw !important;
+    margin-left:calc(50% - 50vw) !important;
+    margin-right:0 !important;
+    max-width:none !important;
+    position: relative;
+    overflow: hidden;
 }
 
 /* .feedback-card rules removed per request */
@@ -375,10 +386,55 @@
     border: none !important;
 }
 
+/* カードの統一デザイン（killルールよりも高い特異性で上書き） */
+#uservoice .feedback-card {
+    background: #fff !important;
+    border-radius: 12px !important;
+    padding: 24px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+    text-align: center !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    border: none !important;
+    min-height: 350px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* 最終的な統一設定（パララックス画像下との距離調整） */
 #uservoice.ptl-section .ptl-section__inner {
     padding: 20px 20px 80px !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    #uservoice .uservoice-slider {
+        margin-left: calc(50% - 50vw) !important;
+        width: 100vw !important;
+    }
+
+    #uservoice .uservoice-slider .swiper { padding: 0 50px; }
+
+    #uservoice .feedback-card {
+        padding: 20px !important;
+        margin: 0 10px; /* SP時の左右マージン */
+        min-height: 300px;
+    }
+
+    #uservoice .swiper-button-prev { left: 10px; }
+    #uservoice .swiper-button-next { right: 10px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* タブレット時の3枚表示調整 */
+    #uservoice .feedback-card {
+        margin: 0 8px;
+        padding: 22px !important;
+        min-height: 320px;
+    }
 }
 
