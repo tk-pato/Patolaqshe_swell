@@ -425,18 +425,7 @@ html, body { overflow-x: hidden; }
 .ptl-pageNavHero .ptl-section__inner { position: relative; z-index: 1; padding-top: clamp(64px, 10vw, 160px); padding-bottom: clamp(64px, 10vw, 160px); }
 .ptl-pageNavHero .ptl-section__title { /* 通常色 */ color: inherit; text-shadow: none; font-size: var(--ptl-heading-size); }
 .ptl-pageNavHero.has-bg .ptl-section__title { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
-.ptl-pageNavHero__grid { 
-  list-style: none; 
-  margin: clamp(32px, 3vw, 56px) auto 0; 
-  padding: 0; 
-  display: grid; 
-  row-gap: clamp(40px, 4.6vw, 80px); 
-  column-gap: clamp(16px, 2vw, 24px); 
-  grid-template-columns: repeat(2, 1fr);
-  max-width: var(--ptl-container-max);
-  margin-left: auto;
-  margin-right: auto;
-}
+.ptl-pageNavHero__grid { list-style: none; margin: clamp(32px, 3vw, 56px) auto 0; padding: 0; display: grid; row-gap: clamp(40px, 4.6vw, 80px); column-gap: clamp(16px, 2vw, 24px); grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 700px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(4, 1fr); } }
 .ptl-pageNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }

@@ -44,12 +44,14 @@
   z-index: 1;
 }
 
-/* グリッド設定はstyle.cssのグランド統一設定に委譲
- * - SP: 2列
- * - タブレット（700px-959px）: 2列 ※縦4行×横2列の8項目配置
- * - PC（960px~）: 4列
- * - コンテナ幅: COMMITMENTセクションと統一（--ptl-container-max: 1160px）
- */
+.ptl-pageNavHero__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
 
 .ptl-pageNavHero__btn {
   display: flex;
@@ -90,8 +92,10 @@
   .ptl-pageNavHero {
     padding: 40px 0;
   }
-  /* グリッド設定はstyle.cssで統一管理 */
-}
+  .ptl-pageNavHero__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
   #page-navigation .ptl-pageNavHero__icon {
     width: 48px;
     height: 48px;
