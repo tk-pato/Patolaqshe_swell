@@ -410,6 +410,12 @@
     margin: 0 auto !important;
 }
 
+/* ページネーションの色をロゴのグレーに統一 */
+#uservoice .swiper-pagination-bullet,
+#uservoice .swiper-pagination-bullet-active {
+    background: #777 !important; /* 必要に応じてロゴの正確なグレーに調整可 */
+}
+
 /* レスポンシブ調整 */
 @media (max-width: 768px) {
     #uservoice .uservoice-slider {
