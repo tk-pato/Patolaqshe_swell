@@ -342,12 +342,12 @@
     background-color: transparent !important;
 }
 
-/* カードの統一デザイン（killルールよりも高い特異性で上書き） */
+/* カードの統一デザイン（シャドウ削除版） */
 #uservoice .feedback-card {
     background: #fff !important;
     border-radius: 12px !important;
     padding: 24px !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+    box-shadow: none !important; /* シャドウ完全削除 */
     text-align: center !important;
     height: 100% !important;
     display: flex !important;
@@ -357,6 +357,30 @@
     min-height: 350px;
     width: 100%;
     box-sizing: border-box;
+    position: relative; /* 疑似要素用 */
+}
+
+/* PC・タブレット用カード間グレー線 */
+@media (min-width: 769px) {
+    #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
+        content: '';
+        position: absolute;
+        top: 10%;
+        right: -1px;
+        bottom: 10%;
+        width: 1px;
+        background-color: #e0e0e0;
+        z-index: 1;
+    }
+}
+
+/* タブレット時の線の調整 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
+        background-color: #d0d0d0;
+        top: 8%;
+        bottom: 8%;
+    }
 }
 
 /* 最終的な統一設定（パララックス画像下との距離調整） */
@@ -395,6 +419,11 @@
         padding: 20px !important;
         margin: 0 10px; /* SP時の左右マージン */
         min-height: 300px;
+    }
+
+    /* SP時はグレー線を確実に非表示 */
+    #uservoice .feedback-card::after {
+        display: none !important;
     }
 
     #uservoice .swiper-button-prev { left: 10px; }

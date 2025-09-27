@@ -109,7 +109,7 @@
 
 /* 作成者名 */
 .feedback-author {
-    font-size: clamp(13px, 1.4vw, 16px); /* タイトルと同一サイズに統一 */
+    font-size: clamp(12px, 1vw, 14px);
     font-weight: 300;
     color: #444;
     text-align: center;
@@ -120,7 +120,7 @@
 /* 評価星 */
 .feedback-rating {
     color: #ffc107;
-    font-size: 0.8rem; /* 80%に縮小 */
+    font-size: 1rem;
     letter-spacing: 2px;
     text-align: center;
     display: flex;
@@ -305,7 +305,7 @@
     
     /* ディスクリプション：REASONSのboxDescと完全統一 */
     #uservoice .feedback-content {
-        font-size: clamp(12px, 1.2vw, 14px) !important; /* タイトルより1〜2px小 */
+        font-size: clamp(13px, 1.2vw, 15px) !important;
         font-weight: 300 !important;
         color: #444 !important;
         line-height: 1.65 !important;
@@ -315,7 +315,7 @@
     }
     
     #uservoice .feedback-content p {
-        font-size: clamp(12px, 1.2vw, 14px) !important; /* タイトルより1〜2px小 */
+        font-size: clamp(13px, 1.2vw, 15px) !important;
         font-weight: 300 !important;
         color: #444 !important;
         line-height: 1.65 !important;
@@ -325,7 +325,7 @@
     
     /* 顧客名：REASONSのlabelスタイルベース */
     #uservoice .feedback-author {
-        font-size: clamp(13px, 1.4vw, 16px) !important; /* タイトルと統一 */
+        font-size: 16px !important;
         font-weight: 600 !important;
         color: #222 !important;
         text-align: center !important;
@@ -336,7 +336,7 @@
     /* 星評価：視認性保持 */
     #uservoice .feedback-rating {
         color: #ffc107 !important;
-        font-size: 0.88rem !important; /* 80%縮小（1.1rem → 0.88rem） */
+        font-size: 1.1rem !important;
         letter-spacing: 2px !important;
         text-align: center !important;
         display: flex !important;
