@@ -293,42 +293,7 @@
   padding-bottom: clamp(64px, 10vw, 160px);
 }
 
-.ptl-reasonsHero .ptl-section__title {
-  /* NEWSセクションと同様のスタイル */
-  text-align: center;
-  letter-spacing: .08em;
-  font-weight: 600;
-  margin-bottom: 28px;
-  font-size: var(--ptl-heading-size);
-  color: #333 !important;
-  text-shadow: none !important;
-}
-
-.ptl-reasonsHero .ptl-section__subtitle {
-  text-align: center;
-  color: #777 !important;
-  margin-top: -4px;
-  font-size: var(--ptl-subtitle-size);
-  display: block !important;
-}
-
-.ptl-reasonsHero .ptl-section__subtitleLine {
-  width: 100px;
-  height: 1px;
-  background-color: #ddd;
-  margin: 24px auto;
-}
-
-/* 背景がある場合もシャドウなしで統一 */
-.ptl-reasonsHero.has-bg .ptl-section__title {
-  color: #333 !important;
-  text-shadow: none !important;
-}
-
-.ptl-reasonsHero.has-bg .ptl-section__subtitle {
-  color: #777 !important;
-  text-shadow: none !important;
-}
+/* h2スタイルはstyle.cssで統一管理 */
 
 .ptl-reasonsHero__grid {
   list-style: none;

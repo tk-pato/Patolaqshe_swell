@@ -1,5 +1,12 @@
 @charset "UTF-8";
-/* REASONS unified: merged reasons-styles.css + section-reasons.css (2025-09-23) */
+/* ===========================
+   REASONS Section Styles - 統合完了版
+   選ばれる理由セクション専用スタイル
+   
+   統合履歴:
+   - 2025-09-23: section-reasons.css + reasons-styles.css 初回統合
+   - 2025-09-27: CSS統合最適化完了、@import依存削除
+   =========================== */
 
 /* ===== base ===== */
 #section-reasons,
@@ -28,37 +35,7 @@
     text-align: center;
 }
 
-.ptl-reasons .ptl-section__subtitle {
-    text-align: center;
-    color: #777;
-    margin-top: -4px;
-    font-size: var(--ptl-subtitle-size);
-}
-
-.ptl-reasonsHero .ptl-section__title {
-    text-align: center;
-    letter-spacing: .08em;
-    font-weight: 600;
-    margin-bottom: 28px;
-    font-size: var(--ptl-heading-size);
-    color: #333;
-    text-shadow: none;
-}
-
-.ptl-reasonsHero .ptl-section__subtitle {
-    text-align: center;
-    color: #777;
-    margin-top: -4px;
-    font-size: var(--ptl-subtitle-size);
-    display: block;
-}
-
-.ptl-reasonsHero .ptl-section__subtitleLine {
-    width: 100px;
-    height: 1px;
-    background-color: #ddd;
-    margin: 24px auto;
-}
+/* h2スタイルはstyle.cssで統一管理（.ptl-section__title, .ptl-section__subtitle, .ptl-section__subtitleLine） */
 
 .ptl-reasonsHero__label {
     font-size: 16px;
@@ -178,18 +155,10 @@
     color: #fff;
 }
 
-.ptl-reasonsHero.has-bg .ptl-section__title {
-    color: #333;
-    text-shadow: none;
-}
-
-.ptl-reasonsHero.has-bg .ptl-section__subtitle {
-    color: #777;
-    text-shadow: none;
-}
+/* 背景付き時のh2スタイルもstyle.cssで統一管理 */
 
 /* ===== utilities ===== */
-/* utilities (現在は該当なし) */
+/* パフォーマンス最適化: @import削除により直接読み込み効率化 */
 
 /* ===== media ===== */
 @media (min-width: 700px) {

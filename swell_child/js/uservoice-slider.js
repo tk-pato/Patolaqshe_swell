@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initUserVoiceSlider() {
     const sliderElement = document.querySelector('.uservoice-slider');
     if (!sliderElement) {
-        console.warn('USER VOICE: .uservoice-slider not found');
         return;
     }
 
@@ -70,31 +69,15 @@ function initUserVoiceSlider() {
             keyboard: {
                 enabled: true,
                 onlyInViewport: true,
-            },
-            on: {
-                init: function() {
-                    console.log('USER VOICE Swiper initialized successfully');
-                    console.log('Slides count:', this.slides.length);
-                    console.log('Current settings:', {
-                        slidesPerView: this.params.slidesPerView,
-                        centeredSlides: this.params.centeredSlides,
-                        spaceBetween: this.params.spaceBetween
-                    });
-                },
-                slideChange: function() {
-                    console.log('Slide changed to:', this.activeIndex);
-                }
             }
         });
     } catch (error) {
-        console.error('Swiper initialization failed:', error);
         const wrapper = document.querySelector('.uservoice-slider .swiper-wrapper');
         if (wrapper) {
             wrapper.style.display = 'flex';
             wrapper.style.flexDirection = 'row';
             wrapper.style.gap = '30px';
             wrapper.style.justifyContent = 'center';
-            console.log('Fallback layout applied');
         }
     }
 }

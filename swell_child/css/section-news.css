@@ -3,18 +3,7 @@
    NEWSセクション専用スタイル
    =========================== */
 
-/* NEWSセクション基本設定 */
-.ptl-news { 
-    --ptl-subtitle-size: clamp(16px, 2vw, 18px); 
-}
-
-/* サブタイトル */
-.ptl-news .ptl-section__subtitle { 
-    text-align: center; 
-    color: #777; 
-    margin-top: -4px; 
-    font-size: var(--ptl-subtitle-size); 
-}
+/* h2スタイルはstyle.cssで統一管理 */
 
 /* ニュースリスト */
 .ptl-news__list.is-titleOnly { 

@@ -110,9 +110,9 @@
 
 /* MOREボタンのスタイル統一（NEWS、BUST-ISSUES共通） */
 .ptl-moreButton--news {
-  --frame-slice: 120; /* 画像から切り出す縁の厚み(px) */
-  --frame-width: 12px; /* 実際の表示上の枠の太さ（小さめ） */
-  --frame-color: #111; /* 枠の色（ホバーで白に切替） */
+  --frame-slice: 120;
+  --frame-width: 12px;
+  --frame-color: #111;
   box-sizing: border-box;
   display: inline-grid;
   grid-auto-flow: column;
@@ -129,6 +129,29 @@
   border: none;
   font-size: var(--ptl-subtitle-size, 16px);
   transition: background-color .2s ease, color .2s ease;
+}
+
+/* ===========================
+   NAVIGATION・BUST-ISSUES: 背景メディア対応h2スタイル
+   背景動画/画像上での視認性向上専用
+   =========================== */
+
+/* h2タイトル: 白文字+シャドウで背景メディア上の視認性向上 */
+#page-navigation .ptl-section__title,
+#section-navigation .ptl-section__title,
+#bust-issues .ptl-section__title,
+.ptl-pageNavHero.has-bg .ptl-section__title {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
+}
+
+/* h2サブタイトル: 白文字+シャドウで背景メディア上の視認性向上 */
+#page-navigation .ptl-section__subtitle,
+#section-navigation .ptl-section__subtitle,
+#bust-issues .ptl-section__subtitle,
+.ptl-pageNavHero.has-bg .ptl-section__subtitle {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
 }
 .ptl-moreButton--news::before {
   content: "";
