@@ -12,7 +12,7 @@
 /* 各セクション個別の余白を無効化してグランド統一管理 */
 .ptl-section,
 #news, #section-commitment, #section-navigation, #section-services, #uservoice,
-#bust-issues, #section-reasons{
+#bust-issues, #section-reasons, #salon{
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   padding-top: 0 !important;
@@ -26,7 +26,8 @@
 #section-navigation .ptl-section__inner,
 #section-services .ptl-section__inner,
 #bust-issues .ptl-section__inner,
-#section-reasons .ptl-section__inner{
+#section-reasons .ptl-section__inner,
+#salon .ptl-section__inner{
   padding: 80px 20px !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
@@ -36,7 +37,8 @@
 #news + #section-commitment,
 #section-commitment + #section-navigation,
 #section-navigation + #section-services,
-#uservoice + #bust-issues{
+#uservoice + #bust-issues,
+#uservoice + #salon{
   margin-top: 96px !important;
 }
 
@@ -44,14 +46,6 @@
 :root{ --section-padding: 80px 0; --section-inner-width: 1200px; }
 
 /* 各セクションのコンテンツ部分を統一（パララックス背景は維持） */
-.ptl-section .ptl-section__inner,
-#section-commitment .ptl-section__inner,
-#section-navigation .ptl-section__inner,
-#section-services .ptl-section__inner{
-  max-width: var(--section-inner-width) !important;
-  margin: 0 auto !important;
-  padding: 80px 20px !important;
-}
 
 /* NEWSセクションのパディングを基準として他も合わせる */
 #news .ptl-section__inner{ padding: 80px 20px !important; }
@@ -551,7 +545,7 @@ html, body { overflow-x: hidden; }
 }
 
 /* === Canonical container lock (global, matches navigation) === */
-:root { --ptl-container-max: 1160px; --ptl-container-pad: 20px; }
+:root { --ptl-container-max: 1200px; --ptl-container-pad: 20px; }
 .ptl-section > .ptl-section__inner{
   max-width: var(--ptl-container-max) !important;
   margin-inline: auto !important;
@@ -567,4 +561,6 @@ html, body { overflow-x: hidden; }
   width: auto !important;
   box-sizing: border-box;
 }
+
+/* SALONは section-salon.css 側でフルブリード＋inner制御に統一 */
 

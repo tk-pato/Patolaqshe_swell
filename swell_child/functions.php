@@ -229,6 +229,17 @@ add_action('wp_enqueue_scripts', function () {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
     wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
   }
+  
+  // SALON セクション用CSS/JS（REASONSベース再構築）
+  $salon_css = get_stylesheet_directory() . '/css/section-salon.css';
+  if (file_exists($salon_css)) {
+    wp_enqueue_style('ptl_section_salon', get_stylesheet_directory_uri() . '/css/section-salon.css', ['child_style'], filemtime($salon_css));
+  }
+  $salon_js = get_stylesheet_directory() . '/js/section-salon.js';
+  if (file_exists($salon_js)) {
+    wp_enqueue_script('ptl_section_salon', get_stylesheet_directory_uri() . '/js/section-salon.js', [], filemtime($salon_js), true);
+  }
+  
 }, 20);
 /* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
 
