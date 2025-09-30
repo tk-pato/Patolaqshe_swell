@@ -16,7 +16,7 @@
 }
 
 #section-reasons .ptl-reasonsHero__boxTitle {
-    font-size: clamp(14px, 1.4vw, 16px); /* SPバランス: 最小 13→14 */
+    font-size: clamp(13px, 1.4vw, 16px);
     font-weight: 600;
     color: #444;
     text-align: center;
@@ -26,7 +26,7 @@
 }
 
 #section-reasons .ptl-reasonsHero__boxDesc {
-    font-size: clamp(14px, 1.2vw, 15px); /* SPバランス: 最小 13→14 */
+    font-size: clamp(13px, 1.2vw, 15px);
     font-weight: 300;
     color: #444;
     line-height: 1.65;
@@ -96,12 +96,11 @@
     background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-/* 余白統一: 上0・下は全体基準（style.cssの80px）に委譲 */
 .ptl-reasonsHero .ptl-section__inner {
     position: relative;
     z-index: 1;
-    padding-top: 0; /* 統一: 上0 */
-    padding-bottom: 0; /* 統一: 下はstyle.cssで 80px を付与 */
+    padding-top: clamp(64px, 10vw, 160px);
+    padding-bottom: clamp(64px, 10vw, 160px);
 }
 
 .ptl-reasonsHero__grid {
@@ -175,7 +174,9 @@
 }
 
 @media screen and (max-width: 767px) {
-    .ptl-reasonsHero { padding: 0; } /* セクション上下は0に統一 */
+    .ptl-reasonsHero {
+        padding: 40px 0;
+    }
 
     .ptl-reasonsHero__grid {
         grid-template-columns: repeat(2, 1fr);
@@ -185,9 +186,4 @@
     .ptl-reasonsHero__label {
         font-size: 14px;
     }
-}
-
-/* 余白統一: .ptl-section__inner は上0・下80を明示 */
-#section-reasons .ptl-section__inner{
-    padding: 0 20px 80px !important;
 }

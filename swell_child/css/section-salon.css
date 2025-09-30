@@ -1,10 +1,7 @@
 @charset "UTF-8";
 /* ===========================
-   SALON Section Styles - COMMITMENT準拠版
-   サロンセクション専用スタイル
-   
-   REASONSセクションをベースに作成
-   2025-09-30 作成開始
+   SALON Section Styles - REASONSベース複製
+   段階的再構築: Step1 完了版（Step2: 2列表示）
    =========================== */
 
 /* ===== base ===== */
@@ -15,7 +12,7 @@
 }
 
 #salon .ptl-salonHero__boxTitle {
-    font-size: clamp(14px, 1.4vw, 16px); /* SPバランス: 最小 13→14 */
+    font-size: clamp(13px, 1.4vw, 16px);
     font-weight: 600;
     color: #444;
     text-align: center;
@@ -25,7 +22,7 @@
 }
 
 #salon .ptl-salonHero__boxDesc {
-    font-size: clamp(14px, 1.2vw, 15px); /* SPバランス: 最小 13→14 */
+    font-size: clamp(13px, 1.2vw, 15px);
     font-weight: 300;
     color: #444;
     line-height: 1.65;
@@ -56,51 +53,18 @@
     padding: 64px 0;
 }
 
-.ptl-salonHero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    background: transparent;
-    transform-origin: center center;
-}
-
+.ptl-salonHero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: transparent; transform-origin: center center; }
 .ptl-salonHero__video,
-.ptl-salonHero__image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    transform-origin: center center;
-}
+.ptl-salonHero__image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transform-origin: center center; }
+.ptl-salonHero__video { object-fit: cover; }
+.ptl-salonHero__image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center center; }
+.ptl-salonHero__overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, var(--overlay, .2)); }
 
-.ptl-salonHero__video {
-    object-fit: cover;
-}
-
-.ptl-salonHero__image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transform-origin: center center;
-}
-
-.ptl-salonHero__overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, var(--overlay, .2));
-}
-
-/* 余白統一: 上0・下は全体基準（style.cssの80px）に委譲 */
 .ptl-salonHero .ptl-section__inner {
     position: relative;
     z-index: 1;
-    padding-top: 0; /* 統一: 上0 */
-    padding-bottom: 0; /* 統一: 下はstyle.cssで 80px を付与 */
+    padding-top: clamp(64px, 10vw, 160px);
+    padding-bottom: clamp(64px, 10vw, 160px);
 }
 
 .ptl-salonHero__grid {
@@ -109,23 +73,8 @@
     padding: 0;
     display: grid;
     row-gap: clamp(40px, 4.6vw, 80px);
-    column-gap: 0; /* グレー線のため間隔を削除 */
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%; /* ①コンテナ幅一杯に表示 */
-    position: relative; /* グレー線用 */
-}
-
-/* ②サロンカード間のグレー縦線 */
-.ptl-salonHero__grid::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: #ddd;
-    transform: translateX(-50%);
-    z-index: 1;
+    column-gap: clamp(16px, 2vw, 24px);
+    grid-template-columns: repeat(2, 1fr); /* Step2: 常に2列 */
 }
 
 /* ===== components ===== */
@@ -136,167 +85,296 @@
     justify-items: center;
     color: #111;
     background: #fff;
-    border: none; /* ①枠線削除 */
+    border: 1px solid rgba(0, 0, 0, .08);
     border-radius: 10px;
     padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 20px);
     min-height: 170px;
     font-weight: 400;
     letter-spacing: .02em;
-    /* box-shadow: 0 10px 26px rgba(0, 0, 0, .12); */ /* ⑥要件：影を削除 */
-    margin: 0 clamp(12px, 2vw, 24px); /* グレー線からの距離を確保 */
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .12);
 }
 
-#salon .ptl-salonHero__icon {
-    width: 100%;
-    margin: 0 0 8px;
-    display: block;
-    padding: 0;
-}
-
+#salon .ptl-salonHero__icon { width: 100%; margin: 0 0 8px; display: block; padding: 0; }
 #salon .ptl-salonHero__icon svg,
-#salon .ptl-salonHero__icon img {
-    width: 100%;
-    display: block;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 8px;
-}
+#salon .ptl-salonHero__icon img { width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
 
 /* ===== states ===== */
-.ptl-salonHero.is-translucent {
-    background-color: rgba(255, 255, 255, 0.92);
-}
-
-.ptl-salonHero.has-bg {
-    color: #fff;
-}
-
-/* 背景付き時のh2スタイルもstyle.cssで統一管理 */
-
-/* ===== utilities ===== */
-/* パフォーマンス最適化: @import削除により直接読み込み効率化 */
+.ptl-salonHero.is-translucent { background-color: rgba(255, 255, 255, 0.92); }
+.ptl-salonHero.has-bg { color: #fff; }
 
 /* ===== media ===== */
-@media (max-width: 768px) {
-    .ptl-salonHero__grid {
-        grid-template-columns: 1fr; /* SP: 1列表示 */
-    }
-    
-    /* SP: グレー縦線を非表示 */
-    .ptl-salonHero__grid::after {
-        display: none;
-    }
-    
-    /* SP: カードマージン調整 */
-    #salon .ptl-salonHero__btn {
-        margin: 0; /* SP時はマージン不要 */
-    }
+@media (min-width: 700px) {
+    .ptl-salonHero__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (min-width: 769px) {
-    .ptl-salonHero__grid {
-        grid-template-columns: repeat(2, 1fr); /* PC/タブレット: 2列表示 */
-    }
+@media (min-width: 960px) {
+    .ptl-salonHero__grid { grid-template-columns: repeat(2, 1fr); } /* Step2: 4→2 */
 }
 
 @media screen and (max-width: 767px) {
-    .ptl-salonHero { padding: 0; } /* セクション上下は0に統一 */
+    .ptl-salonHero { padding: 40px 0; }
+    .ptl-salonHero__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .ptl-salonHero__label { font-size: 14px; }
+}
+/* SALON セクション */
 
-    .ptl-salonHero__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-
-    .ptl-salonHero__label {
-        font-size: 14px;
-    }
+#salon .salon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 将来: repeat(3, 1fr) */
+  gap: 0; /* 縦線をカード内で描くので列間ギャップは0 */
 }
 
-/* 余白統一: .ptl-section__inner は上0・下80を明示 */
-#salon .ptl-section__inner{
-    padding: 0 20px 80px !important;
+/* ===== 緊急修正: SALONセクション幅統一（優先度強化） ===== */
+
+/* パターンA: 直接的な幅設定（最高優先度） */
+#salon.ptl-section {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 80px 20px !important;
+  box-sizing: border-box !important;
 }
 
-/* ===== サロン画像のスタイリングとキラキラ演出 ===== */
-.salon-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    display: block;
+/* パターンB: inner要素の詳細度強化 */
+#salon.ptl-section .ptl-section__inner {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 80px 20px !important;
+  box-sizing: border-box !important;
 }
 
-.salon-image {
-    width: 100%;
-    display: block;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+/* パターンC: 最強詳細度での強制適用 */
+section#salon.ptl-section.ptl-salon {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 80px 20px !important;
+  box-sizing: border-box !important;
 }
 
-.salon-image-link {
-    display: block;
-    text-decoration: none;
-    position: relative;
+section#salon.ptl-section.ptl-salon .ptl-section__inner {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 80px 20px !important;
+  box-sizing: border-box !important;
 }
 
-/* ④キラキラ演出（ホバー禁止、カーソル乗った瞬間のみ） */
-.salon-image-wrapper::after {
+
+#salon .salon-card {
+  position: relative;
+  padding: clamp(16px, 2.4vw, 28px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 画像 */
+#salon .salon-image {
+  width: 100%;
+  margin-bottom: clamp(10px, 1.6vw, 16px);
+}
+#salon .salon-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* 店舗名 */
+#salon .salon-name {
+  font-weight: 600;
+  font-size: clamp(14px, 1.6vw, 18px);
+  margin: 4px 0 8px;
+}
+
+/* 店舗名 + LINEアイコン（横並び） */
+#salon .salon-nameRow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+#salon .salon-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px; /* 22 → 28 */
+}
+#salon .salon-line-img { width: 24px; height: 24px; display: block; } /* 20 → 24 */
+#salon .salon-line-ico {
+  width: 24px; height: 24px; display: inline-block; border-radius: 6px; background: #06C755; position: relative; /* 20 → 24 */
+}
+#salon .salon-line-ico::after {
+  content: 'L'; color: #fff; font-weight: 800; font-size: 14px; line-height: 1; /* 12 → 14 */
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -52%);
+}
+
+/* TEL */
+#salon .salon-contact {
+  margin-bottom: 10px;
+}
+#salon .salon-tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color .2s ease;
+}
+#salon .salon-tel:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+#salon .salon-tel .tel-label {
+  font-size: .9em;
+  opacity: .8;
+}
+#salon .salon-tel .tel-number {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* 営業時間 */
+#salon .salon-hours {
+  width: 100%;
+  max-width: 420px;
+  margin: 6px auto 14px;
+}
+#salon .salon-hours__row {
+  display: flex;
+  justify-content: center; /* 中央揃えでMMMのズレ感を解消 */
+  gap: 14px;
+  line-height: 1.9;
+}
+#salon .salon-hours dt {
+  min-width: 4em;
+  text-align: right;
+  opacity: .88;
+}
+#salon .salon-hours dd {
+  margin: 0;
+}
+
+/* 住所/定休日/アクセス */
+#salon .salon-meta { width: 100%; max-width: 560px; margin: 4px auto 10px; }
+#salon .salon-address { margin: 4px 0 10px; }
+#salon .salon-closed, #salon .salon-access { margin: 6px 0; }
+#salon .meta-label { display: inline-block; min-width: 5em; opacity: .85; }
+#salon .meta-value { margin-left: .25em; }
+
+/* LINEボタン */
+#salon .salon-actions { margin-top: 4px; }
+#salon .salon-line-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background-color: #06C755; /* LINE公式カラー */
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  min-width: 180px;
+  transition: transform .08s ease, filter .2s ease;
+}
+#salon .salon-line-btn:hover { filter: brightness(1.05); }
+#salon .salon-line-btn:active { transform: translateY(1px); }
+#salon .salon-line-btn .line-icon {
+  width: 18px; height: 18px; border-radius: 4px; background: #fff;
+  position: relative; display: inline-block;
+}
+#salon .salon-line-btn .line-icon::after {
+  content: '';
+  position: absolute; inset: 3px; background: #06C755; border-radius: 2px;
+}
+
+/* PC/Tablet: 列間のグレー縦線（ユーザーボイス風） */
+@media (min-width: 769px) {
+  /* 2カラム時、左のカードにのみ縦線を描画（nth-child(odd)） */
+  #salon .salon-card:nth-child(odd)::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.8) 50%, transparent 70%);
-    transform: translateX(-100%) translateY(-100%) rotate(45deg);
-    transition: transform 0.6s ease-out;
-    pointer-events: none;
-    opacity: 0;
+    top: 10%;
+    right: -1px;
+    bottom: 10%;
+    width: 1px;
+    background-color: #e0e0e0;
+    z-index: 1;
+  }
 }
 
-.salon-image-wrapper:hover::after {
-    transform: translateX(100%) translateY(100%) rotate(45deg);
-    opacity: 1;
-}
-
-/* ホバー時の変形を禁止 */
-.salon-image-wrapper:hover .salon-image {
-    transform: none;
-}
-
-/* ===== SP専用フォント統一設定（User's Voiceセクションと統一⑦） ===== */
+/* SP: 1列・縦線非表示・タップ領域を確保 */
 @media (max-width: 768px) {
-    /* 店舗名：User's Voice/REASONSのboxTitleと完全統一 */
-    #salon .ptl-salonHero__boxTitle {
-        font-size: clamp(13px, 1.4vw, 16px) !important;
-        font-weight: 600 !important;
-        color: #444 !important; /* User's Voiceと統一 */
-        text-align: center !important;
-        margin-top: 10px !important;
-        margin-bottom: 6px !important;
-        letter-spacing: .08em !important;
-        font-family: inherit !important;
-    }
-    
-    /* 店舗詳細：User's Voice/REASONSのboxDescと完全統一 */
-    #salon .ptl-salonHero__boxDesc {
-        font-size: clamp(13px, 1.2vw, 15px) !important;
-        font-weight: 300 !important;
-        color: #444 !important;
-        line-height: 1.65 !important;
-        text-align: center !important;
-        margin-top: 4px !important;
-        margin-bottom: 0 !important;
-        font-family: inherit !important;
-    }
-    
-    /* 店舗詳細内のpタグも統一 */
-    #salon .ptl-salonHero__boxDesc p {
-        font-size: clamp(13px, 1.2vw, 15px) !important;
-        font-weight: 300 !important;
-        color: #444 !important;
-        line-height: 1.65 !important;
-        letter-spacing: 0.02em !important;
-    }
+  #salon .salon-grid { grid-template-columns: 1fr; }
+  #salon .salon-card::after { display: none; }
+  #salon .salon-line-btn { min-width: 200px; padding: 12px 18px; }
+
+  /* 各店舗に上下の区切り線を追加 */
+  #salon .salon-card {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: clamp(20px, 3vw, 32px);
+    margin-bottom: clamp(16px, 2.5vw, 24px);
+  }
+  #salon .salon-card:first-child {
+    border-top: 1px solid #e0e0e0;
+    padding-top: clamp(20px, 3vw, 32px);
+    margin-top: clamp(16px, 2.5vw, 24px);
+  }
+  #salon .salon-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+/* ===== SALON セクション統一修正 ===== */
+/* 他セクションと同じパターンに統一 */
+
+/* 1. 既存の max-width 設定をすべて削除 */
+#salon.ptl-section,
+#salon.ptl-section .ptl-section__inner,
+section#salon.ptl-section.ptl-salon,
+section#salon.ptl-section.ptl-salon .ptl-section__inner {
+  max-width: none !important;
+  margin: initial !important;
+  padding: initial !important;
+}
+
+/* 2. 他セクションと同じフルブリード設定を追加 */
+#salon.ptl-section {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3. コンテナ制御は .ptl-section__inner に一元化 */
+#salon .ptl-section__inner {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 80px 20px !important;
+  width: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* 4. グリッド要素の幅制御 */
+#salon .salon-grid {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 5. レスポンシブ対応 */
+@media (max-width: 1240px) {
+  #salon .ptl-section__inner {
+    max-width: calc(100vw - 40px) !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }

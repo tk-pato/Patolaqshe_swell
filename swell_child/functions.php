@@ -229,7 +229,7 @@ add_action('wp_enqueue_scripts', function () {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
     wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
   }
-
+  
   // SALON セクション用CSS/JS（REASONSベース再構築）
   $salon_css = get_stylesheet_directory() . '/css/section-salon.css';
   if (file_exists($salon_css)) {
@@ -239,6 +239,7 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($salon_js)) {
     wp_enqueue_script('ptl_section_salon', get_stylesheet_directory_uri() . '/js/section-salon.js', [], filemtime($salon_js), true);
   }
+  
 }, 20);
 /* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
 
@@ -1152,13 +1153,12 @@ add_action('add_meta_boxes', function () {
   );
 });
 
-function ptl_post_type_selector_callback($post)
-{
+function ptl_post_type_selector_callback($post) {
   wp_nonce_field('ptl_post_type_selector', 'ptl_post_type_selector_nonce');
-
+  
   $post_category = get_post_meta($post->ID, '_post_category', true);
   if (!$post_category) $post_category = 'news'; // デフォルトはニュース
-
+  
   echo '<select name="post_category" id="post_category_select" style="width:100%;">';
   echo '<option value="news"' . selected($post_category, 'news', false) . '>📰 ニュース</option>';
   echo '<option value="uservoice"' . selected($post_category, 'uservoice', false) . '>⭐ お客様の声</option>';
@@ -1182,31 +1182,30 @@ add_action('add_meta_boxes', function () {
   );
 });
 
-function ptl_uservoice_conditional_meta_box_callback($post)
-{
+function ptl_uservoice_conditional_meta_box_callback($post) {
   wp_nonce_field('ptl_uservoice_conditional_meta', 'ptl_uservoice_conditional_nonce');
-
+  
   $post_category = get_post_meta($post->ID, '_post_category', true);
   $customer_name = get_post_meta($post->ID, '_customer_name', true);
   $rating = get_post_meta($post->ID, '_rating', true);
   $customer_image = get_post_meta($post->ID, '_customer_image', true);
   $uservoice_title = get_post_meta($post->ID, '_uservoice_title', true);
-
+  
   echo '<div id="uservoice-fields" style="display:' . ($post_category === 'uservoice' ? 'block' : 'none') . ';">';
   echo '<table class="form-table">';
-
+  
   // 顧客名
   echo '<tr>';
   echo '<th><label for="customer_name">お客様名</label></th>';
   echo '<td><input type="text" id="customer_name" name="customer_name" value="' . esc_attr($customer_name) . '" style="width:100%;" /></td>';
   echo '</tr>';
-
+  
   // 見出し
   echo '<tr>';
   echo '<th><label for="uservoice_title">見出し</label></th>';
   echo '<td><input type="text" id="uservoice_title" name="uservoice_title" value="' . esc_attr($uservoice_title) . '" style="width:100%;" placeholder="例: 一緒に働けて良かった！" /></td>';
   echo '</tr>';
-
+  
   // 星評価
   echo '<tr>';
   echo '<th><label for="rating">星評価</label></th>';
@@ -1219,7 +1218,7 @@ function ptl_uservoice_conditional_meta_box_callback($post)
   echo '</select>';
   echo '</td>';
   echo '</tr>';
-
+  
   // 顧客画像
   echo '<tr>';
   echo '<th><label for="customer_image">お客様画像</label></th>';
@@ -1237,10 +1236,10 @@ function ptl_uservoice_conditional_meta_box_callback($post)
   echo '</div>';
   echo '</td>';
   echo '</tr>';
-
+  
   echo '</table>';
   echo '</div>';
-
+  
   // JavaScript for conditional display and image upload
   echo '<script>
 jQuery(document).ready(function($) {
@@ -1293,7 +1292,7 @@ add_action('save_post', function ($post_id) {
       }
     }
   }
-
+  
   // お客様の声詳細の保存
   if (isset($_POST['ptl_uservoice_conditional_nonce']) && wp_verify_nonce($_POST['ptl_uservoice_conditional_nonce'], 'ptl_uservoice_conditional_meta')) {
     if (!defined('DOING_AUTOSAVE') || !DOING_AUTOSAVE) {
@@ -1349,7 +1348,7 @@ add_action('manage_posts_custom_column', function ($column, $post_id) {
 }, 10, 2);
 
 // 記事種別でのフィルタリング機能
-add_action('restrict_manage_posts', function () {
+add_action('restrict_manage_posts', function() {
   global $typenow;
   if ($typenow === 'post') {
     $selected = isset($_GET['post_category']) ? $_GET['post_category'] : '';
@@ -1363,7 +1362,7 @@ add_action('restrict_manage_posts', function () {
 });
 
 // フィルタリングクエリ
-add_filter('parse_query', function ($query) {
+add_filter('parse_query', function($query) {
   global $pagenow;
   if ($pagenow === 'edit.php' && isset($_GET['post_category']) && $_GET['post_category'] !== '') {
     $query->query_vars['meta_key'] = '_post_category';
@@ -1372,8 +1371,7 @@ add_filter('parse_query', function ($query) {
 });
 
 // フロントエンド表示振り分け関数
-function ptl_get_news_posts($limit = 5)
-{
+function ptl_get_news_posts($limit = 5) {
   return get_posts([
     'post_type' => 'post',
     'posts_per_page' => $limit,
@@ -1390,8 +1388,7 @@ function ptl_get_news_posts($limit = 5)
   ]);
 }
 
-function ptl_get_blog_posts($limit = 10)
-{
+function ptl_get_blog_posts($limit = 10) {
   return get_posts([
     'post_type' => 'post',
     'posts_per_page' => $limit,
@@ -1408,8 +1405,7 @@ function ptl_get_blog_posts($limit = 10)
   ]);
 }
 
-function ptl_get_uservoice_posts($limit = 6)
-{
+function ptl_get_uservoice_posts($limit = 6) {
   return get_posts([
     'post_type' => 'post',
     'posts_per_page' => $limit,
@@ -1426,8 +1422,7 @@ function ptl_get_uservoice_posts($limit = 6)
   ]);
 }
 
-function ptl_get_all_uservoice_posts($limit = 6)
-{
+function ptl_get_all_uservoice_posts($limit = 6) {
   // 新しい投稿（_post_category = 'uservoice'）と既存のuservoiceカスタム投稿タイプを統合
   $new_uservoice = ptl_get_uservoice_posts($limit);
   $old_uservoice = get_posts([
@@ -1437,18 +1432,18 @@ function ptl_get_all_uservoice_posts($limit = 6)
     'orderby' => 'date',
     'order' => 'DESC'
   ]);
-
+  
   // 両方の投稿を日付でソートして統合
   $all_posts = array_merge($new_uservoice, $old_uservoice);
-  usort($all_posts, function ($a, $b) {
+  usort($all_posts, function($a, $b) {
     return strtotime($b->post_date) - strtotime($a->post_date);
   });
-
+  
   return array_slice($all_posts, 0, $limit);
 }
 
 // 既存uservoice投稿の移行用管理画面
-add_action('admin_menu', function () {
+add_action('admin_menu', function() {
   add_management_page(
     'お客様の声移行ツール',
     'お客様の声移行',
@@ -1458,16 +1453,15 @@ add_action('admin_menu', function () {
   );
 });
 
-function ptl_uservoice_migration_page()
-{
+function ptl_uservoice_migration_page() {
   if (isset($_POST['migrate_uservoice']) && wp_verify_nonce($_POST['migrate_nonce'], 'migrate_uservoice')) {
     ptl_migrate_uservoice_posts();
     echo '<div class="notice notice-success"><p>お客様の声の移行が完了しました。</p></div>';
   }
-
+  
   $old_uservoice_count = wp_count_posts('uservoice')->publish;
   $new_uservoice_count = count(ptl_get_uservoice_posts(-1));
-
+  
   echo '<div class="wrap">';
   echo '<h1>お客様の声移行ツール</h1>';
   echo '<p>既存のuservoiceカスタム投稿タイプから新しい投稿システムへの移行を行います。</p>';
@@ -1475,7 +1469,7 @@ function ptl_uservoice_migration_page()
   echo '<tr><th>既存のuservoice投稿数</th><td>' . $old_uservoice_count . '件</td></tr>';
   echo '<tr><th>新システムのお客様の声投稿数</th><td>' . $new_uservoice_count . '件</td></tr>';
   echo '</table>';
-
+  
   if ($old_uservoice_count > 0) {
     echo '<form method="post">';
     wp_nonce_field('migrate_uservoice', 'migrate_nonce');
@@ -1485,14 +1479,13 @@ function ptl_uservoice_migration_page()
   echo '</div>';
 }
 
-function ptl_migrate_uservoice_posts()
-{
+function ptl_migrate_uservoice_posts() {
   $uservoice_posts = get_posts([
     'post_type' => 'uservoice',
     'posts_per_page' => -1,
     'post_status' => 'publish'
   ]);
-
+  
   foreach ($uservoice_posts as $post) {
     // 新しい標準投稿として作成
     $new_post = [
@@ -1511,15 +1504,15 @@ function ptl_migrate_uservoice_posts()
         '_migrated_from_uservoice' => $post->ID
       ]
     ];
-
+    
     $new_post_id = wp_insert_post($new_post);
-
+    
     // アイキャッチ画像も移行
     $thumbnail_id = get_post_thumbnail_id($post->ID);
     if ($thumbnail_id) {
       set_post_thumbnail($new_post_id, $thumbnail_id);
     }
-
+    
     // 元の投稿にマークを付ける
     update_post_meta($post->ID, '_migrated_to_post', $new_post_id);
   }
