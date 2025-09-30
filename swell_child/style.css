@@ -12,7 +12,8 @@
 /* 各セクション個別の余白を無効化してグランド統一管理 */
 .ptl-section,
 #news, #section-commitment, #section-navigation, #section-services, #uservoice,
-#bust-issues, #section-reasons, #salon{
+#bust-issues, #section-reasons{
+  /* #salon は削除（section-salon.css で個別管理） */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   padding-top: 0 !important;
@@ -26,8 +27,8 @@
 #section-navigation .ptl-section__inner,
 #section-services .ptl-section__inner,
 #bust-issues .ptl-section__inner,
-#section-reasons .ptl-section__inner,
-#salon .ptl-section__inner{
+#section-reasons .ptl-section__inner{
+  /* #salon は削除（section-salon.css で個別管理） */
   padding: 80px 20px !important;
   max-width: 1200px !important;
   margin: 0 auto !important;

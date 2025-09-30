@@ -45,6 +45,11 @@ get_header();
 		?>
 
 		<?php
+		// 5.5) SALON（2店舗横並びセクション）
+		get_template_part('template-parts/front/section', 'salon');
+		?>
+
+		<?php
 		// 6) 店舗ナビ（PHP）
 		get_template_part('template-parts/front/section', 'store-nav');
 		?>
