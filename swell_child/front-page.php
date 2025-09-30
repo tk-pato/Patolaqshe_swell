@@ -17,6 +17,11 @@ get_header();
 	get_template_part('template-parts/front/section', 'news');
 	?>
 
+	<?php
+	// 2.5) INTRO（ブランド紹介セクション）: フルブリード
+	get_template_part('template-parts/front/section', 'intro');
+	?>
+
 	<div class="l-mainContent__inner">
 		<?php
 		// 3) バストのお悩み（バナー＋チェックリスト）

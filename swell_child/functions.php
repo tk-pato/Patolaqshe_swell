@@ -1743,4 +1743,212 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($js) && ! wp_script_is('ptl-uservoice', 'enqueued')) {
     wp_enqueue_script('ptl-uservoice', get_stylesheet_directory_uri() . '/js/uservoice-slider.js', ['swiper'], filemtime($js), true);
   }
+
+  // INTRO Section CSS
+  $intro_css = get_stylesheet_directory() . '/css/section-intro.css';
+  if (file_exists($intro_css)) {
+    wp_enqueue_style(
+      'ptl_section_intro',
+      get_stylesheet_directory_uri() . '/css/section-intro.css',
+      ['child_style'],
+      filemtime($intro_css)
+    );
+  }
 }, 30);
+
+// INTRO Section - Customizer Registration
+add_action('customize_register', 'ptl_intro_register_customizer');
+function ptl_intro_register_customizer($wp_customize)
+{
+  // Add Patolaqshe Panel if not exists
+  if (!$wp_customize->get_panel('patolaqshe_panel')) {
+    $wp_customize->add_panel('patolaqshe_panel', [
+      'title' => 'Patolaqshe',
+      'priority' => 30,
+    ]);
+  }
+
+  // Add INTRO Section
+  $wp_customize->add_section('ptl_intro_section', [
+    'title' => 'INTRO',
+    'panel' => 'patolaqshe_panel',
+    'priority' => 20,
+  ]);
+
+  // Show/Hide Control
+  $wp_customize->add_setting('ptl_intro_show', [
+    'default' => true,
+    'sanitize_callback' => 'ptl_sanitize_checkbox',
+  ]);
+  $wp_customize->add_control('ptl_intro_show', [
+    'type' => 'checkbox',
+    'section' => 'ptl_intro_section',
+    'label' => 'セクションを表示',
+  ]);
+
+  // Media Type Toggle
+  $wp_customize->add_setting('ptl_intro_use_video', [
+    'default' => false,
+    'sanitize_callback' => 'ptl_sanitize_checkbox',
+  ]);
+  $wp_customize->add_control('ptl_intro_use_video', [
+    'type' => 'checkbox',
+    'section' => 'ptl_intro_section',
+    'label' => '動画を使用',
+  ]);
+
+  // Background Image
+  $wp_customize->add_setting('ptl_intro_bg_image', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_intro_bg_image', [
+    'label' => '背景画像',
+    'section' => 'ptl_intro_section',
+  ]));
+
+  // Background Video
+  $wp_customize->add_setting('ptl_intro_bg_video', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  $wp_customize->add_control('ptl_intro_bg_video', [
+    'type' => 'url',
+    'section' => 'ptl_intro_section',
+    'label' => '背景動画URL',
+  ]);
+
+  // Brand Text
+  $wp_customize->add_setting('ptl_intro_brand_text', [
+    'default' => 'Patolaqshe',
+    'sanitize_callback' => 'sanitize_text_field',
+  ]);
+  $wp_customize->add_control('ptl_intro_brand_text', [
+    'type' => 'text',
+    'section' => 'ptl_intro_section',
+    'label' => 'ブランド名',
+  ]);
+
+  // Subtitle
+  $wp_customize->add_setting('ptl_intro_subtitle', [
+    'default' => 'BEAUTY & WELLNESS',
+    'sanitize_callback' => 'sanitize_text_field',
+  ]);
+  $wp_customize->add_control('ptl_intro_subtitle', [
+    'type' => 'text',
+    'section' => 'ptl_intro_section',
+    'label' => 'サブタイトル',
+  ]);
+
+  // Title
+  $wp_customize->add_setting('ptl_intro_title', [
+    'default' => 'あなたの美しさを<br>最大限に引き出す',
+    'sanitize_callback' => 'wp_kses_post',
+  ]);
+  $wp_customize->add_control('ptl_intro_title', [
+    'type' => 'textarea',
+    'section' => 'ptl_intro_section',
+    'label' => 'メインタイトル',
+  ]);
+
+  // Description
+  $wp_customize->add_setting('ptl_intro_description', [
+    'default' => '私たちは一人ひとりのお客様に寄り添い、個別のニーズに合わせた最高の美容体験をご提供いたします。最新の技術と豊富な経験により、あなたの理想を現実に変えるお手伝いをさせていただきます。',
+    'sanitize_callback' => 'wp_kses_post',
+  ]);
+  $wp_customize->add_control('ptl_intro_description', [
+    'type' => 'textarea',
+    'section' => 'ptl_intro_section',
+    'label' => '説明文',
+  ]);
+
+  // CTA Text
+  $wp_customize->add_setting('ptl_intro_cta_text', [
+    'default' => '詳しく見る',
+    'sanitize_callback' => 'sanitize_text_field',
+  ]);
+  $wp_customize->add_control('ptl_intro_cta_text', [
+    'type' => 'text',
+    'section' => 'ptl_intro_section',
+    'label' => 'ボタンテキスト',
+  ]);
+
+  // CTA URL
+  $wp_customize->add_setting('ptl_intro_cta_url', [
+    'default' => '#',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  $wp_customize->add_control('ptl_intro_cta_url', [
+    'type' => 'url',
+    'section' => 'ptl_intro_section',
+    'label' => 'ボタンリンク先',
+  ]);
+
+  // Overlay Opacity
+  $wp_customize->add_setting('ptl_intro_overlay_opacity', [
+    'default' => 30,
+    'sanitize_callback' => function($value) {
+      return max(0, min(100, intval($value)));
+    },
+  ]);
+  $wp_customize->add_control('ptl_intro_overlay_opacity', [
+    'type' => 'range',
+    'section' => 'ptl_intro_section',
+    'label' => 'オーバーレイの透明度（%）',
+    'input_attrs' => [
+      'min' => 0,
+      'max' => 100,
+    ],
+  ]);
+
+  // Margin Top
+  $wp_customize->add_setting('ptl_intro_margin_top', [
+    'default' => 80,
+    'sanitize_callback' => function($value) {
+      return max(0, min(300, intval($value)));
+    },
+  ]);
+  $wp_customize->add_control('ptl_intro_margin_top', [
+    'type' => 'number',
+    'section' => 'ptl_intro_section',
+    'label' => '上部余白（px）',
+    'input_attrs' => [
+      'min' => 0,
+      'max' => 300,
+    ],
+  ]);
+
+  // Margin Bottom
+  $wp_customize->add_setting('ptl_intro_margin_bottom', [
+    'default' => 120,
+    'sanitize_callback' => function($value) {
+      return max(0, min(300, intval($value)));
+    },
+  ]);
+  $wp_customize->add_control('ptl_intro_margin_bottom', [
+    'type' => 'number',
+    'section' => 'ptl_intro_section',
+    'label' => '下部余白（px）',
+    'input_attrs' => [
+      'min' => 0,
+      'max' => 300,
+    ],
+  ]);
+}
+
+// INTRO Section - Shortcode
+add_shortcode('ptl_intro', 'ptl_intro_shortcode');
+function ptl_intro_shortcode($atts = [])
+{
+  ob_start();
+  get_template_part('template-parts/front/section', 'intro');
+  return ob_get_clean();
+}
+
+// Sanitize checkbox helper
+if (!function_exists('ptl_sanitize_checkbox')) {
+  function ptl_sanitize_checkbox($checked)
+  {
+    return ((isset($checked) && true == $checked) ? true : false);
+  }
+}
