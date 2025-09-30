@@ -300,3 +300,203 @@
         letter-spacing: 0.02em !important;
     }
 }
+
+/* ===== コンテナ幅統一（REASONSセクションと完全一致） ===== */
+/* 余白統一: .ptl-section__inner は上0・下80を明示（REASONSと同じパターン） */
+#salon .ptl-section__inner{
+    padding: 0 20px 80px !important;
+}
+
+/* ===== デバッグ用：コンテナ境界線の可視化 ===== */
+/* 使用後は必ず削除してください */
+
+/* SALONセクション全体の外枠（フルブリード領域） */
+#salon,
+.ptl-salonHero {
+    outline: 3px solid red !important;
+    outline-offset: -3px;
+}
+
+/* コンテンツコンテナ（1200px制約がかかるべき領域） */
+#salon .ptl-section__inner,
+.ptl-salonHero .ptl-section__inner {
+    outline: 3px solid blue !important;
+    outline-offset: -3px;
+    background: rgba(0, 0, 255, 0.05) !important;
+}
+
+/* グリッドコンテナ（カードの親要素） */
+.ptl-salonHero__grid {
+    outline: 3px solid green !important;
+    outline-offset: -3px;
+    background: rgba(0, 255, 0, 0.05) !important;
+}
+
+/* 個別カード（.ptl-salonHero__btn） */
+#salon .ptl-salonHero__btn {
+    outline: 2px solid orange !important;
+    outline-offset: -2px;
+    background: rgba(255, 165, 0, 0.05) !important;
+}
+
+/* 画像ラッパー */
+.salon-image-wrapper {
+    outline: 2px solid purple !important;
+    outline-offset: -2px;
+}
+
+/* 比較用：REASONSセクションも同時に可視化 */
+#section-reasons .ptl-section__inner {
+    outline: 3px dashed cyan !important;
+    outline-offset: -3px;
+    background: rgba(0, 255, 255, 0.05) !important;
+}
+
+#section-reasons .ptl-reasonsHero__grid {
+    outline: 3px dashed magenta !important;
+    outline-offset: -3px;
+}
+
+/* デバッグ情報をページ上部に表示 */
+#salon::before {
+    content: "🔍 SALON DEBUG MODE";
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: #ff0000;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    z-index: 9999;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#section-reasons::before {
+    content: "✅ REASONS (正常)";
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    background: #00ff00;
+    color: black;
+    padding: 10px 15px;
+    font-weight: bold;
+    z-index: 9999;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* ===== 修正：画像を95%に縮小し、左右端は維持、中央に余白を生成 ===== */
+
+/* グリッドを負のマージンで左右20pxずつ外側に押し出す */
+.ptl-salonHero__grid {
+    width: calc(100% + 40px) !important;
+    max-width: none !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    padding: 0 !important;
+    column-gap: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* カードをフレックスコンテナに変更 */
+#salon .ptl-salonHero__btn {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+}
+
+/* 左カード（1番目）：画像を左寄せ、95%幅 */
+#salon .ptl-salonHero__btn:nth-child(1) .ptl-salonHero__icon {
+    width: 95% !important;
+    margin: 0 !important;
+    margin-right: auto !important; /* 左寄せ */
+    padding: 0 !important;
+}
+
+/* 右カード（2番目）：画像を右寄せ、95%幅 */
+#salon .ptl-salonHero__btn:nth-child(2) .ptl-salonHero__icon {
+    width: 95% !important;
+    margin: 0 !important;
+    margin-left: auto !important; /* 右寄せ */
+    padding: 0 !important;
+}
+
+/* 画像本体のスタイル */
+#salon .ptl-salonHero__icon svg,
+#salon .ptl-salonHero__icon img,
+.salon-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+    display: block !important;
+}
+
+/* テキスト部分を画像に対してセンタリング */
+#salon .ptl-salonHero__boxTitle,
+#salon .ptl-salonHero__boxDesc {
+    width: 95% !important; /* 画像と同じ幅 */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 10px 20px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+#salon .ptl-salonHero__boxTitle {
+    padding-top: 12px !important;
+    padding-bottom: 6px !important;
+}
+
+#salon .ptl-salonHero__boxDesc {
+    padding-top: 4px !important;
+    padding-bottom: 16px !important;
+}
+
+/* グレー縦線を画面中央に配置 */
+@media (min-width: 769px) {
+    .ptl-salonHero__grid::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+/* SP時は通常表示に戻す */
+@media (max-width: 768px) {
+    .ptl-salonHero__grid {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    #salon .ptl-salonHero__btn {
+        background: #fff !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+    }
+    
+    #salon .ptl-salonHero__btn:nth-child(1) .ptl-salonHero__icon,
+    #salon .ptl-salonHero__btn:nth-child(2) .ptl-salonHero__icon {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    #salon .ptl-salonHero__boxTitle,
+    #salon .ptl-salonHero__boxDesc {
+        width: 100% !important;
+    }
+    
+    #salon .ptl-salonHero__icon img,
+    .salon-image {
+        border-radius: 8px !important;
+    }
+}
