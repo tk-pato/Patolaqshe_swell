@@ -1,19 +1,22 @@
 
-/* STEP1: issue→commitment と commitment→navigation の間だけ調整 */
-#bust-issues .ptl-section__inner{ padding-bottom: clamp(12px,3vw,24px) !important; } /* issueの下だけ詰める */
-#section-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
+/* STEP1: セクション間余白調整 */
+/* #bust-issues の余白は issues-navigation.css で NAVIGATIONと完全統一管理 */
+#page-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
 
 :root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
 
-#section-commitment .ptl-section__inner{ padding-top: var(--gap-base) !important; }
-#section-commitment .ptl-section__title{ margin-top: 0 !important; }
-#bust-issues{ margin-bottom: 0 !important; } /* パララックスの高さは維持し、外側だけ詰める */
+/* ISSUES セクションの下に96px余白を確保 */
+#bust-issues{ margin-bottom: 96px !important; }
+
+#section-reasons .ptl-section__inner{ padding-top: var(--gap-base) !important; }
+#section-reasons .ptl-section__title{ margin-top: 0 !important; }
 
 /* 各セクション個別の余白を無効化してグランド統一管理 */
 .ptl-section,
-#news, #section-commitment, #section-navigation, #section-services, #uservoice,
-#bust-issues, #section-reasons{
-  /* #salon は削除（section-salon.css で個別管理） */
+#news, #section-reasons, #page-navigation, #section-services, #uservoice,
+#section-reasons{
+  /* #salon は削除(section-salon.css で個別管理） */
+  /* #bust-issues も削除（issues-navigation.css で独立管理） */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   padding-top: 0 !important;
@@ -23,21 +26,21 @@
 /* 各セクションの内部コンテンツ余白をグランドで統一 */
 .ptl-section .ptl-section__inner,
 #news .ptl-section__inner,
-#section-commitment .ptl-section__inner,
-#section-navigation .ptl-section__inner,
+#section-reasons .ptl-section__inner,
+#page-navigation .ptl-section__inner,
 #section-services .ptl-section__inner,
-#bust-issues .ptl-section__inner,
 #section-reasons .ptl-section__inner{
   /* #salon は削除（section-salon.css で個別管理） */
+  /* #bust-issues も削除（issues-navigation.css で独立管理） */
   padding: 80px 20px !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
 }
 
 /* セクション間の統一マージン */
-#news + #section-commitment,
-#section-commitment + #section-navigation,
-#section-navigation + #section-services,
+#news + #section-reasons,
+#section-reasons + #page-navigation,
+#page-navigation + #section-services,
 #uservoice + #bust-issues,
 #uservoice + #salon{
   margin-top: 96px !important;
@@ -52,7 +55,7 @@
 #news .ptl-section__inner{ padding: 80px 20px !important; }
 
 /* パララックス画像幅は維持、コンテンツのみ統一 */
-#bust-issues .ptl-section__inner,
+/* #bust-issues は issues-navigation.css で独立管理 */
 #section-reasons .ptl-section__inner{
   padding-top: 64px !important;
   padding-bottom: 64px !important;
@@ -61,14 +64,14 @@
 :root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
 
 /* セクション間の外側マージンを統一（内部のパララックス高さは不変） */
-#section-issue + #section-commitment,
-#section-commitment + #section-navigation,
-#section-navigation + #section-services{
+#section-issue + #section-reasons,
+#section-reasons + #page-navigation,
+#page-navigation + #section-services{
     margin-top: var(--gap-base) !important;
 }
 
-/* 視覚補正：パララックス境界だけ少し詰める（表示領域は削らない） */
-#section-issue + #section-commitment{ margin-top: var(--gap-parallax) !important; }
+/* 視覚補正:パララックス境界だけ少し詰める（表示領域は削らない） */
+#section-issue + #section-reasons{ margin-top: var(--gap-parallax) !important; }
 /*
 Theme Name: SWELL CHILD
 Template: swell

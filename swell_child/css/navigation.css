@@ -134,7 +134,6 @@
 
 /* h2タイトル: 白文字+シャドウで背景メディア上の視認性向上 */
 #page-navigation .ptl-section__title,
-#section-navigation .ptl-section__title,
 #bust-issues .ptl-section__title,
 .ptl-pageNavHero.has-bg .ptl-section__title {
   color: #fff !important;
@@ -143,7 +142,6 @@
 
 /* h2サブタイトル: 白文字+シャドウで背景メディア上の視認性向上 */
 #page-navigation .ptl-section__subtitle,
-#section-navigation .ptl-section__subtitle,
 #bust-issues .ptl-section__subtitle,
 .ptl-pageNavHero.has-bg .ptl-section__subtitle {
   color: #fff !important;
@@ -235,11 +233,11 @@
 
 /* ===== BUST-ISSUES 調整：幅合わせ・不透明化・MORE統一 ===== */
 #bust-issues .ptl-section__inner{
-  /* 下段（COMMITMENT 4ボックス）と同幅に揃える */
-  max-width: 1180px; /* 必要なら下段と同値へ変更 */
+  /* NAVIGATIONと完全一致 */
+  max-width: var(--ptl-container-max) !important; /* 1200px */
   margin: 0 auto;
-  padding-left: clamp(16px,4vw,24px);
-  padding-right: clamp(16px,4vw,24px);
+  padding-left: var(--ptl-container-pad) !important; /* 20px */
+  padding-right: var(--ptl-container-pad) !important; /* 20px */
   position: relative;
   isolation: isolate; /* 背景パララックスの透過影響を遮断 */
 }
