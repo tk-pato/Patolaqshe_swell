@@ -1887,7 +1887,7 @@ function ptl_intro_register_customizer($wp_customize)
   // Overlay Opacity
   $wp_customize->add_setting('ptl_intro_overlay_opacity', [
     'default' => 30,
-    'sanitize_callback' => function($value) {
+    'sanitize_callback' => function ($value) {
       return max(0, min(100, intval($value)));
     },
   ]);
@@ -1904,7 +1904,7 @@ function ptl_intro_register_customizer($wp_customize)
   // Margin Top
   $wp_customize->add_setting('ptl_intro_margin_top', [
     'default' => 80,
-    'sanitize_callback' => function($value) {
+    'sanitize_callback' => function ($value) {
       return max(0, min(300, intval($value)));
     },
   ]);
@@ -1921,7 +1921,7 @@ function ptl_intro_register_customizer($wp_customize)
   // Margin Bottom
   $wp_customize->add_setting('ptl_intro_margin_bottom', [
     'default' => 120,
-    'sanitize_callback' => function($value) {
+    'sanitize_callback' => function ($value) {
       return max(0, min(300, intval($value)));
     },
   ]);

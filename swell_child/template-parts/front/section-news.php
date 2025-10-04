@@ -15,10 +15,18 @@ $more_url  = apply_filters('ptl_news_more_url', (function () {
 // 一時的にダミー3件を強制表示したい場合は、このフィルターを true に
 $force_fallback = (bool) apply_filters('ptl_news_force_fallback', false);
 
+// ニュース記事のみを取得（_post_category = 'news'）
 $query_args = [
     'post_type'           => 'post',
     'posts_per_page'      => $per_page,
     'ignore_sticky_posts' => true,
+    'meta_query' => [
+        [
+            'key' => '_post_category',
+            'value' => 'news',
+            'compare' => '='
+        ]
+    ]
 ];
 if (!empty($category)) $query_args['category_name'] = $category;
 

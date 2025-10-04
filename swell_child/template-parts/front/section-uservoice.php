@@ -13,14 +13,11 @@ if (!defined('ABSPATH')) exit;
         <div class="uservoice-slider swiper">
             <div class="swiper-wrapper">
                 <?php
-                $args = array(
-                    'post_type' => 'uservoice',
-                    'posts_per_page' => 12,
-                    'post_status' => 'publish',
-                );
-                $uservoice_query = new WP_Query($args);
-                if ($uservoice_query->have_posts()):
-                    while ($uservoice_query->have_posts()): $uservoice_query->the_post();
+                // 新旧統合のお客様の声を取得
+                $uservoice_posts = ptl_get_all_uservoice_posts(12);
+                if (!empty($uservoice_posts)):
+                    foreach ($uservoice_posts as $post):
+                        setup_postdata($post);
                         $customer_name = get_post_meta(get_the_ID(), '_customer_name', true);
                         $rating = (int)get_post_meta(get_the_ID(), '_rating', true);
                         $customer_image = get_post_meta(get_the_ID(), '_customer_image', true);
@@ -57,7 +54,7 @@ if (!defined('ABSPATH')) exit;
                             </div>
                         </div>
                     <?php
-                    endwhile;
+                    endforeach;
                     wp_reset_postdata();
                 else:
                     ?>

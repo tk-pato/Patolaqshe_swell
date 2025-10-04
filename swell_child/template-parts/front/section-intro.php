@@ -1,4 +1,5 @@
 <?php
+
 /**
  * INTRO Section Template
  * 
@@ -56,7 +57,7 @@ $overlay_style = sprintf('background: rgba(0, 0, 0, %.2f);', $overlay_opacity);
 ?>
 
 <section id="intro" class="ptl-intro-section" style="<?php echo esc_attr($section_style); ?>">
-    
+
     <!-- Left: Media Area -->
     <div class="ptl-intro__media" <?php if ($media_style) echo 'style="' . esc_attr($media_style) . '"'; ?>>
         <?php if ($use_video && !empty($bg_video)) : ?>
@@ -64,44 +65,44 @@ $overlay_style = sprintf('background: rgba(0, 0, 0, %.2f);', $overlay_opacity);
                 <source src="<?php echo esc_url($bg_video); ?>" type="video/mp4">
             </video>
         <?php endif; ?>
-        
+
         <?php if ($has_media) : ?>
             <div class="ptl-intro__overlay" style="<?php echo esc_attr($overlay_style); ?>"></div>
         <?php endif; ?>
     </div>
-    
+
     <!-- Right: Content Area -->
     <div class="ptl-intro__content">
         <div class="ptl-intro__content-inner">
-            
+
             <?php if (!empty($brand_text)) : ?>
                 <div class="ptl-intro__brand">
                     <div class="ptl-intro__brand-text"><?php echo esc_html($brand_text); ?></div>
                     <div class="ptl-intro__brand-ornament"></div>
                 </div>
             <?php endif; ?>
-            
+
             <?php if (!empty($subtitle)) : ?>
                 <div class="ptl-intro__subtitle"><?php echo esc_html($subtitle); ?></div>
             <?php endif; ?>
-            
+
             <?php if (!empty($title)) : ?>
                 <h2 class="ptl-intro__title"><?php echo wp_kses_post($title); ?></h2>
             <?php endif; ?>
-            
+
             <?php if (!empty($description)) : ?>
                 <div class="ptl-intro__desc">
                     <?php echo wp_kses_post(wpautop($description)); ?>
                 </div>
             <?php endif; ?>
-            
+
             <?php if (!empty($cta_text) && !empty($cta_url)) : ?>
                 <a href="<?php echo esc_url($cta_url); ?>" class="ptl-intro__cta-button">
                     <?php echo esc_html($cta_text); ?>
                 </a>
             <?php endif; ?>
-            
+
         </div>
     </div>
-    
+
 </section>
