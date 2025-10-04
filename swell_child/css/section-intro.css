@@ -9,12 +9,12 @@
     min-height: clamp(500px, 60vh, 700px);
 }
 
-/* 左側: 背景画像 (70%) */
+/* 左側: 背景画像 (80%) */
 #intro .ptl-intro__media {
     position: absolute;
     top: 0;
     left: 0;
-    width: 70%;
+    width: 80%;
     height: 100%;
     overflow: hidden;
     background-size: cover;
@@ -51,14 +51,14 @@
     pointer-events: none;
 }
 
-/* 右側: テキスト (60%開始、40%幅) */
+/* 右側: テキスト (背景なし、画像の上に直接配置) */
 #intro .ptl-intro__content {
     position: absolute;
     top: 0;
-    left: 60%;
-    width: 40%;
+    right: 0;
+    width: 50%;
     height: 100%;
-    background: #ffffff;
+    background: none;
     display: flex;
     align-items: center;
     justify-content: center;
