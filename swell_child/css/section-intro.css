@@ -9,12 +9,12 @@
     min-height: clamp(500px, 60vh, 700px);
 }
 
-/* 左側: 背景画像 (80%) */
+/* 左側: 背景画像 (70%) */
 #intro .ptl-intro__media {
     position: absolute;
     top: 0;
     left: 0;
-    width: 80%;
+    width: 70%;
     height: 100%;
     overflow: hidden;
     background-size: cover;
@@ -51,7 +51,7 @@
     pointer-events: none;
 }
 
-/* 右側: テキスト (背景なし、画像の上に直接配置) */
+/* 右側: テキスト (背景なし、画像の上に30%重なる) */
 #intro .ptl-intro__content {
     position: absolute;
     top: 0;
@@ -130,25 +130,52 @@
     margin-bottom: 0;
 }
 
-/* CTAボタン */
+/* CTAボタン - NEWSセクションのMOREボタンと完全統一 */
 #intro .ptl-intro__cta-button {
-    display: inline-block;
-    background: transparent;
-    color: #333;
-    padding: clamp(14px, 2.2vw, 18px) clamp(32px, 5vw, 48px);
+    --frame-width: 12px;
+    --frame-color: #111;
+    
+    box-sizing: border-box;
+    display: inline-grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 10px;
     text-decoration: none;
-    border: 2px solid #333;
+    color: #3C4043;
+    letter-spacing: .08em;
     font-weight: 600;
-    font-size: clamp(14px, 2vw, 16px);
-    letter-spacing: 0.08em;
-    transition: all 0.3s ease;
+    padding: 6px 14px;
+    white-space: nowrap;
+    position: relative;
+    border: none;
+    font-size: var(--ptl-subtitle-size);
+    transition: background-color .2s ease, color .2s ease;
+}
+
+#intro .ptl-intro__cta-button::before {
+    content: "";
+    position: absolute;
+    inset: calc(var(--frame-width) * -1);
+    pointer-events: none;
+    background: var(--frame-color);
+    -webkit-mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
+    mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
+}
+
+/* 矢印アイコン（NEWSと統一） */
+#intro .ptl-intro__cta-arrow {
+    display: inline-block;
+    transform: translateX(0);
+    transition: transform .2s ease;
 }
 
 #intro .ptl-intro__cta-button:hover {
-    background: #333;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: none;
+    color: #5F6368;
+}
+
+#intro .ptl-intro__cta-button:hover .ptl-intro__cta-arrow {
+    transform: translateX(4px);
 }
 
 /* モバイル */

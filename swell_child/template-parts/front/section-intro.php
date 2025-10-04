@@ -23,8 +23,8 @@ $brand_text = get_theme_mod('ptl_intro_brand_text', 'Patolaqshe');
 $subtitle = get_theme_mod('ptl_intro_subtitle', 'BEAUTY & WELLNESS');
 $title = get_theme_mod('ptl_intro_title', 'あなたの美しさを<br>最大限に引き出す');
 $description = get_theme_mod('ptl_intro_description', '私たちは一人ひとりのお客様に寄り添い、個別のニーズに合わせた最高の美容体験をご提供いたします。最新の技術と豊富な経験により、あなたの理想を現実に変えるお手伝いをさせていただきます。');
-$cta_text = get_theme_mod('ptl_intro_cta_text', '詳しく見る');
 $cta_url = get_theme_mod('ptl_intro_cta_url', '#');
+$overlay_color = get_theme_mod('ptl_intro_overlay_color', 'white');
 $overlay_opacity = get_theme_mod('ptl_intro_overlay_opacity', 30) / 100;
 $margin_top = get_theme_mod('ptl_intro_margin_top', 80);
 $margin_bottom = get_theme_mod('ptl_intro_margin_bottom', 120);
@@ -53,7 +53,8 @@ $section_style = sprintf(
 );
 
 // オーバーレイスタイル
-$overlay_style = sprintf('background: rgba(0, 0, 0, %.2f);', $overlay_opacity);
+$overlay_rgb = $overlay_color === 'black' ? '0, 0, 0' : '255, 255, 255';
+$overlay_style = sprintf('background: rgba(%s, %.2f);', $overlay_rgb, $overlay_opacity);
 ?>
 
 <section id="intro" class="ptl-intro-section" style="<?php echo esc_attr($section_style); ?>">
@@ -96,9 +97,10 @@ $overlay_style = sprintf('background: rgba(0, 0, 0, %.2f);', $overlay_opacity);
                 </div>
             <?php endif; ?>
 
-            <?php if (!empty($cta_text) && !empty($cta_url)) : ?>
+            <?php if (!empty($cta_url)) : ?>
                 <a href="<?php echo esc_url($cta_url); ?>" class="ptl-intro__cta-button">
-                    <?php echo esc_html($cta_text); ?>
+                    <span class="ptl-intro__cta-label">MORE</span>
+                    <span class="ptl-intro__cta-arrow">→</span>
                 </a>
             <?php endif; ?>
 

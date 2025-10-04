@@ -1771,7 +1771,6 @@ function ptl_intro_register_customizer($wp_customize)
   // Add INTRO Section
   $wp_customize->add_section('ptl_intro_section', [
     'title' => 'INTRO',
-    'panel' => 'patolaqshe_panel',
     'priority' => 20,
   ]);
 
@@ -1862,16 +1861,7 @@ function ptl_intro_register_customizer($wp_customize)
     'label' => '説明文',
   ]);
 
-  // CTA Text
-  $wp_customize->add_setting('ptl_intro_cta_text', [
-    'default' => '詳しく見る',
-    'sanitize_callback' => 'sanitize_text_field',
-  ]);
-  $wp_customize->add_control('ptl_intro_cta_text', [
-    'type' => 'text',
-    'section' => 'ptl_intro_section',
-    'label' => 'ボタンテキスト',
-  ]);
+
 
   // CTA URL
   $wp_customize->add_setting('ptl_intro_cta_url', [
@@ -1882,6 +1872,23 @@ function ptl_intro_register_customizer($wp_customize)
     'type' => 'url',
     'section' => 'ptl_intro_section',
     'label' => 'ボタンリンク先',
+  ]);
+
+  // Overlay Color Type
+  $wp_customize->add_setting('ptl_intro_overlay_color', [
+    'default' => 'white',
+    'sanitize_callback' => function ($value) {
+      return in_array($value, ['white', 'black']) ? $value : 'white';
+    },
+  ]);
+  $wp_customize->add_control('ptl_intro_overlay_color', [
+    'type' => 'select',
+    'section' => 'ptl_intro_section',
+    'label' => 'オーバーレイの色',
+    'choices' => [
+      'white' => '白',
+      'black' => '黒',
+    ],
   ]);
 
   // Overlay Opacity
@@ -1895,9 +1902,11 @@ function ptl_intro_register_customizer($wp_customize)
     'type' => 'range',
     'section' => 'ptl_intro_section',
     'label' => 'オーバーレイの透明度（%）',
+    'description' => '0%=完全透明、100%=完全不透明',
     'input_attrs' => [
       'min' => 0,
       'max' => 100,
+      'step' => 5,
     ],
   ]);
 
