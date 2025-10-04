@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+/* セクション全体 - デモサイト準拠 */
+body section#intro.ptl-intro-section {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: 0;
+    margin-bottom: 120px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: clamp(500px, 60vh, 700px);
+}
+
+/* 左側: 背景画像 (50%) */
+body .ptl-intro-section .ptl-intro__media {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex: 1;
+    min-height: 100%;
+}
+
+/* インライン style 属性サポート */
+.ptl-intro-section .ptl-intro__media[style*="background-image"] {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* デフォルトグラデーション */
+body .ptl-intro-section .ptl-intro__media:not([style*="background-image"]) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 動画 */
+body .ptl-intro-section .ptl-intro__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* オーバーレイ */
+body .ptl-intro-section .ptl-intro__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* 右側: テキスト (50%) - シャドウなし */
+body .ptl-intro-section .ptl-intro__content {
+    position: relative;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(40px, 6vw, 80px) clamp(40px, 6vw, 80px);
+    flex: 1;
+    min-height: 100%;
+}
+
+body .ptl-intro-section .ptl-intro__content-inner {
+    width: 100%;
+    max-width: 560px;
+}
+
+/* ブランド */
+body .ptl-intro-section .ptl-intro__brand {
+    margin-bottom: clamp(20px, 3vw, 28px);
+    text-align: right;
+}
+
+body .ptl-intro-section .ptl-intro__brand-text {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 300;
+    color: #8B7355;
+    letter-spacing: 0.12em;
+    font-style: italic;
+}
+
+body .ptl-intro-section .ptl-intro__brand-ornament {
+    width: 80px;
+    height: 1px;
+    background: #8B7355;
+    margin: 10px 0 0 auto;
+}
+
+/* サブタイトル */
+body .ptl-intro-section .ptl-intro__subtitle {
+    font-size: clamp(11px, 1.8vw, 13px);
+    color: #8B7355;
+    letter-spacing: 0.25em;
+    margin-bottom: clamp(16px, 2.5vw, 20px);
+    font-weight: 400;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+/* タイトル */
+body .ptl-intro-section .ptl-intro__title {
+    font-size: clamp(28px, 4.5vw, 40px);
+    font-weight: 700;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: clamp(24px, 4vw, 36px);
+    letter-spacing: 0.03em;
+}
+
+/* 説明文 */
+body .ptl-intro-section .ptl-intro__desc {
+    font-size: clamp(14px, 2.2vw, 16px);
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: clamp(28px, 4.5vw, 44px);
+}
+
+body .ptl-intro-section .ptl-intro__desc p {
+    margin-bottom: 1.2em;
+}
+
+body .ptl-intro-section .ptl-intro__desc p:last-child {
+    margin-bottom: 0;
+}
+
+/* CTAボタン */
+body .ptl-intro-section .ptl-intro__cta-button {
+    display: inline-block;
+    background: transparent;
+    color: #333;
+    padding: clamp(14px, 2.2vw, 18px) clamp(32px, 5vw, 48px);
+    text-decoration: none;
+    border: 2px solid #333;
+    font-weight: 600;
+    font-size: clamp(14px, 2vw, 16px);
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+}
+
+body .ptl-intro-section .ptl-intro__cta-button:hover {
+    background: #333;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* モバイル */
+@media (max-width: 768px) {
+    body section#intro.ptl-intro-section {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    body .ptl-intro-section .ptl-intro__media {
+        min-height: clamp(320px, 55vh, 450px);
+    }
+    
+    body .ptl-intro-section .ptl-intro__content {
+        padding: clamp(36px, 7vw, 64px) clamp(24px, 5vw, 44px);
+    }
+    
+    body .ptl-intro-section .ptl-intro__content-inner {
+        max-width: none;
+    }
+    
+    body .ptl-intro-section .ptl-intro__brand {
+        text-align: left;
+    }
+    
+    body .ptl-intro-section .ptl-intro__brand-ornament {
+        margin-left: 0;
+    }
+}
+
+/* タブレット */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body .ptl-intro-section .ptl-intro__content {
+        padding: clamp(36px, 6vw, 72px);
+    }
+    
+    body .ptl-intro-section .ptl-intro__content-inner {
+        max-width: 480px;
+    }
+}

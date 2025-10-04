@@ -1,0 +1,126 @@
+<?php
+if (!defined('ABSPATH')) exit;
+
+// 実際の店舗データ構造（修正版）
+$salons = [
+  [
+    'name' => '恵比寿・代官山本店',
+    'image' => 'img/daikanyama.jpg',
+    'address' => '〒150-0034 東京都渋谷区代官山町18-8 堀井代官山ビル3F',
+    'tel' => '03-5489-7118',
+    'line_icon' => 'img/line.png', // 任意：存在しなければCSSアイコンにフォールバック
+    'line_url' => 'https://line.me/R/ti/p/@xxx',
+    'business_hours' => [
+      '平日' => '12:00-20:00',
+      '土日祝' => '11:00-19:00',
+    ],
+    'closed' => '金曜日（その他不定休アリ）',
+    'access' => 'JR恵比寿駅 徒歩6分 / 東急東横線代官山駅 徒歩2分',
+  ],
+  [
+    'name' => '銀座店',
+    'image' => 'img/ginza.jpg',
+    'address' => '〒104-0061 東京都中央区銀座1-6-6 GINZA ARROWS 6F',
+    'tel' => '03-6264-4343',
+    'line_icon' => 'img/line.png',
+    'line_url' => 'https://line.me/R/ti/p/@yyy',
+    'business_hours' => [
+      '平日' => '13:00-21:00',
+      '土日祝' => '11:00-19:00',
+    ],
+    'closed' => '金曜日（その他不定休アリ）',
+    'access' => 'JR有楽町駅 徒歩5分 / 東京メトロ有楽町線銀座一丁目駅 徒歩1分',
+  ],
+];
+?>
+
+<section id="salon" class="ptl-section ptl-salon">
+  <div class="ptl-section__inner">
+    <h2 class="ptl-section__title">SALON</h2>
+    <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">サロン</div>
+    <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
+      <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/bg_1.png'); ?>" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
+    </div>
+
+    <div class="salon-grid" role="list">
+      <?php foreach ($salons as $index => $shop): ?>
+        <?php
+          $name = (string) ($shop['name'] ?? '店舗名');
+          $img_rel = (string) ($shop['image'] ?? '');
+          $img_abs = $img_rel ? trailingslashit(get_stylesheet_directory()) . ltrim($img_rel, '/') : '';
+          $img_url = ($img_rel && file_exists($img_abs))
+            ? trailingslashit(get_stylesheet_directory_uri()) . ltrim($img_rel, '/')
+            : trailingslashit(get_stylesheet_directory_uri()) . 'img/nav/salon.png'; // フォールバック
+
+          $address = (string) ($shop['address'] ?? '');
+          $tel_raw = (string) ($shop['tel'] ?? '');
+          $tel_href = $tel_raw ? 'tel:' . preg_replace('/[^0-9+]/', '', $tel_raw) : '';
+
+          $line_url = (string) ($shop['line_url'] ?? '');
+          $line_icon_rel = (string) ($shop['line_icon'] ?? '');
+          $li_abs = $line_icon_rel ? trailingslashit(get_stylesheet_directory()) . ltrim($line_icon_rel, '/') : '';
+          $line_icon_url = ($line_icon_rel && file_exists($li_abs))
+            ? trailingslashit(get_stylesheet_directory_uri()) . ltrim($line_icon_rel, '/')
+            : '';
+
+          $biz = (array) ($shop['business_hours'] ?? []);
+          $closed = (string) ($shop['closed'] ?? '');
+          $access = (string) ($shop['access'] ?? '');
+        ?>
+
+        <article class="salon-card" role="listitem">
+          <div class="salon-image">
+            <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($name); ?> 店内写真" loading="lazy" />
+          </div>
+
+          <div class="salon-nameRow">
+            <h3 class="salon-name"><?php echo esc_html($name); ?></h3>
+            <?php if ($line_url): ?>
+              <a class="salon-line" href="<?php echo esc_url($line_url); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr($name . 'のLINEを開く'); ?>">
+                <?php if ($line_icon_url): ?>
+                  <img class="salon-line-img" src="<?php echo esc_url($line_icon_url); ?>" alt="LINE" loading="lazy" />
+                <?php else: ?>
+                  <span class="salon-line-ico" aria-hidden="true"></span>
+                <?php endif; ?>
+              </a>
+            <?php endif; ?>
+          </div>
+
+          <div class="salon-meta">
+            <?php if ($address): ?>
+              <p class="salon-address"><?php echo esc_html($address); ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($biz)): ?>
+              <dl class="salon-hours" aria-label="営業時間">
+                <?php foreach ($biz as $label => $time): ?>
+                  <div class="salon-hours__row">
+                    <dt><?php echo esc_html($label); ?></dt>
+                    <dd><?php echo esc_html($time); ?></dd>
+                  </div>
+                <?php endforeach; ?>
+              </dl>
+            <?php endif; ?>
+
+            <?php if ($closed): ?>
+              <p class="salon-closed"><span class="meta-label">定休日</span><span class="meta-value"><?php echo esc_html($closed); ?></span></p>
+            <?php endif; ?>
+
+            <?php if ($access): ?>
+              <p class="salon-access"><span class="meta-label">アクセス</span><span class="meta-value"><?php echo esc_html($access); ?></span></p>
+            <?php endif; ?>
+          </div>
+
+          <?php if ($tel_href): ?>
+            <div class="salon-contact">
+              <a class="salon-tel" href="<?php echo esc_attr($tel_href); ?>" aria-label="<?php echo esc_attr($name . 'に電話'); ?>">
+                <span class="tel-label">TEL</span>
+                <span class="tel-number"><?php echo esc_html($tel_raw); ?></span>
+              </a>
+            </div>
+          <?php endif; ?>
+        </article>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
