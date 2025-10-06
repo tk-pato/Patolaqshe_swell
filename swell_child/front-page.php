@@ -61,6 +61,11 @@ get_header();
 	get_template_part('template-parts/front/section', 'infohub');
 	?>
 
+	<?php
+	// 5.8) BLOG（自動横スクロールブログカード）
+	get_template_part('template-parts/front/section', 'blog');
+	?>
+
 	<div class="l-mainContent__inner">
 
 		<?php

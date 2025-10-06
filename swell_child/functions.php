@@ -2156,3 +2156,93 @@ if (!function_exists('ptl_sanitize_checkbox')) {
     return ((isset($checked) && true == $checked) ? true : false);
   }
 }
+
+/* ========================================
+   BLOG セクション
+======================================== */
+
+// CSS/JSのエンキュー
+add_action('wp_enqueue_scripts', function() {
+  if (!is_front_page()) return;
+  
+  // CSS
+  $blog_css = get_stylesheet_directory() . '/css/section-blog.css';
+  if (file_exists($blog_css)) {
+    wp_enqueue_style(
+      'ptl-blog',
+      get_stylesheet_directory_uri() . '/css/section-blog.css',
+      ['child_style'],
+      filemtime($blog_css)
+    );
+  }
+  
+  // JS
+  $blog_js = get_stylesheet_directory() . '/js/section-blog.js';
+  if (file_exists($blog_js)) {
+    wp_enqueue_script(
+      'ptl-blog',
+      get_stylesheet_directory_uri() . '/js/section-blog.js',
+      [],
+      filemtime($blog_js),
+      true
+    );
+  }
+}, 30);
+
+// テスト用仮記事の自動生成（初回のみ実行）
+add_action('after_switch_theme', function() {
+  // 既にブログ記事が存在する場合はスキップ
+  $existing = get_posts(['post_type' => 'post', 'posts_per_page' => 1]);
+  if (!empty($existing)) return;
+  
+  // 5件の仮記事を作成
+  $titles = [
+    'バストアップマッサージの正しいやり方と効果',
+    '美しいデコルテを作る3つの習慣',
+    'バストケアに効果的な食事とサプリメント',
+    '姿勢改善でバストラインを美しく保つ方法',
+    'ホームケアで始めるバストアップ習慣',
+  ];
+  
+  $spa_image_path = get_stylesheet_directory() . '/img/spa.jpg';
+  $attachment_id = null;
+  
+  // spa.jpgをメディアライブラリに登録
+  if (file_exists($spa_image_path)) {
+    require_once(ABSPATH . 'wp-admin/includes/file.php');
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+    require_once(ABSPATH . 'wp-admin/includes/media.php');
+    
+    $filetype = wp_check_filetype(basename($spa_image_path), null);
+    $upload_dir = wp_upload_dir();
+    
+    $attachment = [
+      'guid' => $upload_dir['url'] . '/' . basename($spa_image_path),
+      'post_mime_type' => $filetype['type'],
+      'post_title' => 'Spa Image',
+      'post_content' => '',
+      'post_status' => 'inherit'
+    ];
+    
+    $attach_id = wp_insert_attachment($attachment, $spa_image_path);
+    $attach_data = wp_generate_attachment_metadata($attach_id, $spa_image_path);
+    wp_update_attachment_metadata($attach_id, $attach_data);
+    $attachment_id = $attach_id;
+  }
+  
+  // 記事を生成
+  foreach ($titles as $title) {
+    $post_id = wp_insert_post([
+      'post_title' => $title,
+      'post_content' => '<p>こちらは仮のブログ記事です。実際のコンテンツに置き換えてください。</p>',
+      'post_status' => 'publish',
+      'post_type' => 'post',
+      'post_author' => 1,
+    ]);
+    
+    // アイキャッチ画像を設定
+    if ($post_id && $attachment_id) {
+      set_post_thumbnail($post_id, $attachment_id);
+    }
+  }
+});
