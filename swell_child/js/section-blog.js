@@ -6,22 +6,21 @@
   
   const track = document.querySelector('.ptl-blog__track');
   if (!track) return;
-
+  
   const cards = Array.from(track.querySelectorAll('.ptl-blog__card'));
   const cardCount = cards.length;
-
-  if (cardCount <= 4) {
-    // 4枚以下：中央配置、静止
-    track.classList.add('is-static');
-    track.classList.remove('is-animated');
-  } else {
-    // 5枚以上：無限スクロール
+  
+  // 5記事以上の場合のみアニメーション有効
+  if (cardCount >= 5) {
     track.classList.add('is-animated');
-    track.classList.remove('is-static');
-    // カードを複製して無限ループ
+    
+    // 無限ループのためカードを複製
     cards.forEach(card => {
       const clone = card.cloneNode(true);
       track.appendChild(clone);
     });
+  } else {
+    // 4記事以下は中央固定表示
+    track.classList.add('is-static');
   }
 })();
