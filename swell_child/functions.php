@@ -15,18 +15,6 @@ add_action('wp_head', function () {
   echo '<style>#bust-issues .ptl-bustIssues__list{list-style:none;margin:0;padding:0}#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item{border-bottom:1px dashed rgba(0,0,0,.18) !important;border-top:0;border-left:0;border-right:0;}</style>' . "\n";
 }, 9999);
 
-// INFO HUB: 固定背景画像をCSS変数として出力
-add_action('wp_head', function() {
-  if (!is_front_page()) return;
-  
-  $bg_image = get_theme_mod('ptl_infohub_bg_image', '');
-  if (!$bg_image) return;
-  
-  echo '<style id="ptl-infohub-bg-vars">';
-  echo ':root { --infohub-bg-image: url(' . esc_url($bg_image) . '); }';
-  echo '</style>';
-}, 100);
-
 // NAV背景メディアを取得
 function ptl_get_nav_background(): array
 {
@@ -609,16 +597,51 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     'type' => 'text',
   ]);
 
-  // 固定背景画像（PC/SP共通）
-  $wp_customize->add_setting('ptl_infohub_bg_image', [
+  // 動画使用ON/OFF
+  $wp_customize->add_setting('ptl_infohub_use_video', [
+    'default' => false,
+    'sanitize_callback' => function($v) { return (bool)$v; },
+  ]);
+  $wp_customize->add_control('ptl_infohub_use_video', [
+    'label' => '動画を使用',
+    'section' => 'ptl_infohub',
+    'type' => 'checkbox',
+  ]);
+
+  // 背景動画URL
+  $wp_customize->add_setting('ptl_infohub_bg_video', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Media_Control')) {
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_infohub_bg_video', [
+      'label' => '背景動画（MP4推奨）',
+      'section' => 'ptl_infohub',
+      'mime_type' => 'video',
+    ]));
+  }
+
+  // PC用背景画像
+  $wp_customize->add_setting('ptl_infohub_bg_pc', [
     'default' => '',
     'sanitize_callback' => 'esc_url_raw',
   ]);
   if (class_exists('WP_Customize_Image_Control')) {
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_bg_image', [
-      'label' => '固定背景画像（推奨: 1920x1080px以上）',
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_bg_pc', [
+      'label' => 'PC用背景画像',
       'section' => 'ptl_infohub',
-      'description' => '背景はスクロール時に固定され、コンテンツのみが動きます。',
+    ]));
+  }
+
+  // SP用背景画像
+  $wp_customize->add_setting('ptl_infohub_bg_sp', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_bg_sp', [
+      'label' => 'SP用背景画像',
+      'section' => 'ptl_infohub',
     ]));
   }
 
@@ -637,6 +660,25 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     'input_attrs' => [
       'min' => 0,
       'max' => 0.8,
+      'step' => 0.05,
+    ],
+  ]);
+
+  // パララックス速度
+  $wp_customize->add_setting('ptl_infohub_parallax_speed', [
+    'default' => 0.6,
+    'sanitize_callback' => function($v) {
+      $f = (float)$v;
+      return max(0, min(1, $f));
+    },
+  ]);
+  $wp_customize->add_control('ptl_infohub_parallax_speed', [
+    'label' => 'パララックス速度（0〜1）',
+    'section' => 'ptl_infohub',
+    'type' => 'number',
+    'input_attrs' => [
+      'min' => 0,
+      'max' => 1,
       'step' => 0.05,
     ],
   ]);
