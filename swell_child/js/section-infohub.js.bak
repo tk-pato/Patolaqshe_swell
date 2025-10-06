@@ -1,0 +1,59 @@
+/**
+ * INFO HUB セクション パララックス制御
+ * navigation/BUST-ISSUESと同じロジック
+ */
+(function() {
+  'use strict';
+  
+  const selector = '.ptl-infohub';
+  const elements = document.querySelectorAll(selector);
+  
+  if (!elements.length) return;
+  
+  const isPC = window.matchMedia('(min-width: 769px)');
+  const FACTOR = 0.35;
+  let ticking = false;
+  
+  // 初期化: 動画/画像の有無でクラスを付与
+  elements.forEach(el => {
+    const video = el.querySelector('.ptl-infohub__bg video');
+    const image = el.querySelector('.ptl-infohub__bg img');
+    
+    if (video) el.classList.add('ptl-has-video');
+    if (image) el.classList.add('ptl-has-image');
+  });
+  
+  function updateParallax() {
+    if (!isPC.matches && window.innerWidth > 768) {
+      // タブレット帯域はスキップ
+      elements.forEach(el => {
+        el.style.removeProperty('--ptl-parallax');
+      });
+      return;
+    }
+    
+    elements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const center = rect.top + rect.height / 2 - vh / 2;
+      const move = -center * FACTOR;
+      
+      el.style.setProperty('--ptl-parallax', move.toFixed(2) + 'px');
+    });
+  }
+  
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateParallax();
+      ticking = false;
+    });
+  }
+  
+  ['scroll', 'resize'].forEach(event => {
+    window.addEventListener(event, onScroll, { passive: true });
+  });
+  
+  updateParallax();
+})();

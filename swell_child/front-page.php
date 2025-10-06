@@ -49,28 +49,22 @@ get_header();
 		get_template_part('template-parts/front/section', 'uservoice');
 		?>
 
-		<?php
-		// 5.5) SALON（2店舗横並びセクション）
-		get_template_part('template-parts/front/section', 'salon');
-		?>
+	</div>
+
+	<?php
+	// 5.5) SALON（2店舗横並びセクション）: フルブリード
+	get_template_part('template-parts/front/section', 'salon');
+	?>
+
+	<?php
+	// 5.7) INFO HUB（3カードレイアウト：BRIDAL / INFORMATION / FAQ）: フルブリード
+	get_template_part('template-parts/front/section', 'infohub');
+	?>
+
+	<div class="l-mainContent__inner">
 
 		<?php
-		// 6) 店舗ナビ（PHP）
-		get_template_part('template-parts/front/section', 'store-nav');
-		?>
-
-		<?php
-		// 7) ブライダルナビ（ブロック・アンカー: bridal-nav）
-		ptl_render_block_slot('bridal-nav');
-		?>
-
-		<?php
-		// 8) FAQ（ブロック・アンカー: faq）
-		ptl_render_block_slot('faq');
-		?>
-
-		<?php
-		// 9) お問合せ（ブロック・アンカー: contact）
+		// 6) お問合せ（ブロック・アンカー: contact）
 		ptl_render_block_slot('contact');
 		?>
 

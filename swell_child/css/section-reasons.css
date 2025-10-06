@@ -8,6 +8,18 @@
    - 2025-09-27: CSS統合最適化完了、@import依存削除
    =========================== */
 
+/* 🟡 デバッグ: REASONSセクション全体の範囲確認 */
+#section-reasons {
+    outline: 3px solid orange !important;
+    outline-offset: -3px;
+}
+
+/* 🟣 デバッグ: REASONSコンテンツエリアの範囲確認 */
+#section-reasons .ptl-section__inner {
+    outline: 3px solid purple !important;
+    outline-offset: -3px;
+}
+
 /* ===== base ===== */
 #section-reasons,
 .ptl-reasons {

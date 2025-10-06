@@ -177,7 +177,7 @@
     border-radius: 8px;
 }
 
-/* キラっと光る演出（カーソルが止まってから発動） */
+/* キラっと光る演出 */
 #salon .ptl-salonHero__icon::before {
     content: '';
     position: absolute;
@@ -192,7 +192,7 @@
         rgba(255, 255, 255, 0) 100%
     );
     transform: skewX(-25deg);
-    transition: left 0.6s ease 0.3s; /* 0.3秒待機してから光る */
+    transition: left 0.6s ease;
     z-index: 1;
     pointer-events: none;
 }

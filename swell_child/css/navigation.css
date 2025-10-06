@@ -1,4 +1,19 @@
 /* === nav-adjustments.css 統合分 === */
+
+/* 🟤 デバッグ: NAVIGATIONセクション全体の範囲確認 */
+#page-navigation,
+.ptl-pageNavHero {
+  outline: 3px solid brown !important;
+  outline-offset: -3px;
+}
+
+/* 🔴 デバッグ: NAVIGATIONコンテンツエリアの範囲確認 */
+#page-navigation .ptl-section__inner,
+.ptl-pageNavHero .ptl-section__inner {
+  outline: 3px solid cyan !important;
+  outline-offset: -3px;
+}
+
 .ptl-pageNavHero {
   position: relative;
   padding: 64px 0;
@@ -135,6 +150,7 @@
 /* h2タイトル: 白文字+シャドウで背景メディア上の視認性向上 */
 #page-navigation .ptl-section__title,
 #bust-issues .ptl-section__title,
+#section-infohub .ptl-section__title,
 .ptl-pageNavHero.has-bg .ptl-section__title {
   color: #fff !important;
   text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
@@ -143,6 +159,7 @@
 /* h2サブタイトル: 白文字+シャドウで背景メディア上の視認性向上 */
 #page-navigation .ptl-section__subtitle,
 #bust-issues .ptl-section__subtitle,
+#section-infohub .ptl-section__subtitle,
 .ptl-pageNavHero.has-bg .ptl-section__subtitle {
   color: #fff !important;
   text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;

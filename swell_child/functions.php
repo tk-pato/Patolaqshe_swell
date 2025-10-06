@@ -558,6 +558,188 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
   ]);
   if (class_exists('WP_Customize_Media_Control')) {
     $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_nav_video', [
+      'label'     => '背景動画（推奨: MP4）',
+      'section'   => 'ptl_navigation',
+      'mime_type' => 'video',
+    ]));
+  }
+});
+
+// ===========================================
+// INFO HUB セクション カスタマイザー設定
+// ===========================================
+add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
+  // セクション
+  $wp_customize->add_section('ptl_infohub', [
+    'title'    => 'INFO HUB',
+    'priority' => 162,
+  ]);
+
+  // セクション表示/非表示
+  $wp_customize->add_setting('ptl_infohub_show', [
+    'default' => true,
+    'sanitize_callback' => function($v) { return (bool)$v; },
+  ]);
+  $wp_customize->add_control('ptl_infohub_show', [
+    'label' => 'セクションを表示',
+    'section' => 'ptl_infohub',
+    'type' => 'checkbox',
+  ]);
+
+  // メインタイトル
+  $wp_customize->add_setting('ptl_infohub_title', [
+    'default' => 'INFO HUB',
+    'sanitize_callback' => 'sanitize_text_field',
+  ]);
+  $wp_customize->add_control('ptl_infohub_title', [
+    'label' => 'メインタイトル',
+    'section' => 'ptl_infohub',
+    'type' => 'text',
+  ]);
+
+  // 動画使用ON/OFF
+  $wp_customize->add_setting('ptl_infohub_use_video', [
+    'default' => false,
+    'sanitize_callback' => function($v) { return (bool)$v; },
+  ]);
+  $wp_customize->add_control('ptl_infohub_use_video', [
+    'label' => '動画を使用',
+    'section' => 'ptl_infohub',
+    'type' => 'checkbox',
+  ]);
+
+  // 背景動画URL
+  $wp_customize->add_setting('ptl_infohub_bg_video', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Media_Control')) {
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_infohub_bg_video', [
+      'label' => '背景動画（MP4推奨）',
+      'section' => 'ptl_infohub',
+      'mime_type' => 'video',
+    ]));
+  }
+
+  // PC用背景画像
+  $wp_customize->add_setting('ptl_infohub_bg_pc', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_bg_pc', [
+      'label' => 'PC用背景画像',
+      'section' => 'ptl_infohub',
+    ]));
+  }
+
+  // SP用背景画像
+  $wp_customize->add_setting('ptl_infohub_bg_sp', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_bg_sp', [
+      'label' => 'SP用背景画像',
+      'section' => 'ptl_infohub',
+    ]));
+  }
+
+  // オーバーレイ濃度
+  $wp_customize->add_setting('ptl_infohub_overlay', [
+    'default' => 0.25,
+    'sanitize_callback' => function($v) {
+      $f = (float)$v;
+      return max(0, min(0.8, $f));
+    },
+  ]);
+  $wp_customize->add_control('ptl_infohub_overlay', [
+    'label' => 'オーバーレイ濃度（0〜0.8）',
+    'section' => 'ptl_infohub',
+    'type' => 'number',
+    'input_attrs' => [
+      'min' => 0,
+      'max' => 0.8,
+      'step' => 0.05,
+    ],
+  ]);
+
+  // パララックス速度
+  $wp_customize->add_setting('ptl_infohub_parallax_speed', [
+    'default' => 0.6,
+    'sanitize_callback' => function($v) {
+      $f = (float)$v;
+      return max(0, min(1, $f));
+    },
+  ]);
+  $wp_customize->add_control('ptl_infohub_parallax_speed', [
+    'label' => 'パララックス速度（0〜1）',
+    'section' => 'ptl_infohub',
+    'type' => 'number',
+    'input_attrs' => [
+      'min' => 0,
+      'max' => 1,
+      'step' => 0.05,
+    ],
+  ]);
+
+  // カード1画像（BRIDAL）
+  $wp_customize->add_setting('ptl_infohub_card1_image', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_card1_image', [
+      'label' => 'カード1画像（BRIDAL）',
+      'section' => 'ptl_infohub',
+    ]));
+  }
+
+  // カード2画像（INFORMATION）
+  $wp_customize->add_setting('ptl_infohub_card2_image', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_card2_image', [
+      'label' => 'カード2画像（INFORMATION）',
+      'section' => 'ptl_infohub',
+    ]));
+  }
+
+  // カード3画像（FAQ）
+  $wp_customize->add_setting('ptl_infohub_card3_image', [
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+  ]);
+  if (class_exists('WP_Customize_Image_Control')) {
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_card3_image', [
+      'label' => 'カード3画像（FAQ）',
+      'section' => 'ptl_infohub',
+    ]));
+  }
+});
+
+// ===========================================
+// BUST-ISSUES セクション カスタマイザー設定
+// ===========================================
+add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
+
+  $wp_customize->add_section('ptl_bust_issues', [
+    'title'    => 'BUST-ISSUES',
+    'priority' => 161,
+  ]);
+
+  // 動画（メディア）
+  $wp_customize->add_setting('ptl_nav_video', [
+    'type'              => 'theme_mod',
+    'transport'         => 'refresh',
+    'sanitize_callback' => function ($v) {
+      return is_numeric($v) ? (int)$v : esc_url_raw($v);
+    },
+  ]);
+  if (class_exists('WP_Customize_Media_Control')) {
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_nav_video', [
       'label'     => 'セクション背景動画（MP4推奨）',
       'section'   => 'ptl_navigation',
       'mime_type' => 'video',
@@ -817,11 +999,24 @@ add_action('wp_enqueue_scripts', function () {
   $nav_css_ver  = file_exists($nav_css_path) ? date('Ymdgis', filemtime($nav_css_path)) : null;
   wp_enqueue_style('ptl-navigation-style', get_stylesheet_directory_uri() . '/css/navigation.css', [], $nav_css_ver);
 
-  // JS（jQuery依存、フッター）
+  // JS（統合版：navigation.js に ptl-nav-fix.js を統合済み）
   $nav_js_path = get_stylesheet_directory() . '/js/navigation.js';
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
   wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
-  wp_enqueue_script('ptl-nav-fix', get_stylesheet_directory_uri() . '/js/ptl-nav-fix.js', [], date('YmdHis'), true);
+
+  // INFO HUB セクション用CSS/JS
+  $infohub_css = get_stylesheet_directory() . '/css/section-infohub.css';
+  if (file_exists($infohub_css)) {
+    wp_enqueue_style('ptl-infohub', get_stylesheet_directory_uri() . '/css/section-infohub.css', ['child_style'], filemtime($infohub_css));
+  }
+  $infohub_js = get_stylesheet_directory() . '/js/section-infohub.js';
+  if (file_exists($infohub_js)) {
+    wp_enqueue_script('ptl-infohub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
+  }
+  $bust_issues_js = get_stylesheet_directory() . '/js/section-bust-issues.js';
+  if (file_exists($bust_issues_js)) {
+    wp_enqueue_script('ptl-bust-issues', get_stylesheet_directory_uri() . '/js/section-bust-issues.js', [], filemtime($bust_issues_js), true);
+  }
 }, 20);
 
 /**

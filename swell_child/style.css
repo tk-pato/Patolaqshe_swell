@@ -13,10 +13,9 @@
 
 /* 各セクション個別の余白を無効化してグランド統一管理 */
 .ptl-section,
-#news, #section-reasons, #page-navigation, #section-services, #uservoice,
+#news, #section-reasons, #page-navigation, #section-services, #uservoice, #section-infohub, #salon,
 #section-reasons{
-  /* #salon は削除(section-salon.css で個別管理） */
-  /* #bust-issues も削除（issues-navigation.css で独立管理） */
+  /* #bust-issues は削除（issues-navigation.css で独立管理） */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   padding-top: 0 !important;
@@ -29,9 +28,10 @@
 #section-reasons .ptl-section__inner,
 #page-navigation .ptl-section__inner,
 #section-services .ptl-section__inner,
+#section-infohub .ptl-section__inner,
+#salon .ptl-section__inner,
 #section-reasons .ptl-section__inner{
-  /* #salon は削除（section-salon.css で個別管理） */
-  /* #bust-issues も削除（issues-navigation.css で独立管理） */
+  /* #bust-issues は削除（issues-navigation.css で独立管理） */
   padding: 80px 20px !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
@@ -42,7 +42,9 @@
 #section-reasons + #page-navigation,
 #page-navigation + #section-services,
 #uservoice + #bust-issues,
-#uservoice + #salon{
+#uservoice + #salon,
+#bust-issues + #section-infohub,
+#salon + #section-infohub{
   margin-top: 96px !important;
 }
 
