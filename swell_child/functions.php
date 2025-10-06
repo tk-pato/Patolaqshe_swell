@@ -1402,18 +1402,62 @@ function ptl_uservoice_conditional_meta_box_callback($post)
   echo '<td><input type="text" id="uservoice_title" name="uservoice_title" value="' . esc_attr($uservoice_title) . '" style="width:100%;" placeholder="例: 一緒に働けて良かった！" /></td>';
   echo '</tr>';
 
-  // 星評価
+  // 星評価（クリック式の5つ星UI）
   echo '<tr>';
   echo '<th><label for="rating">星評価</label></th>';
   echo '<td>';
-  echo '<select id="rating" name="rating">';
+  echo '<input type="hidden" id="rating" name="rating" value="' . esc_attr($rating) . '" />';
+  echo '<div class="ptl-star-rating" style="display: flex; gap: 5px; font-size: 28px; cursor: pointer;">';
   for ($i = 1; $i <= 5; $i++) {
-    $selected = ($rating == $i) ? 'selected' : '';
-    echo '<option value="' . $i . '" ' . $selected . '>' . $i . '個 (' . str_repeat('★', $i) . ')</option>';
+    $filled = ($i <= $rating) ? 'filled' : '';
+    echo '<span class="ptl-star ' . $filled . '" data-value="' . $i . '" style="color: ' . ($i <= $rating ? '#FFD700' : '#ddd') . '; transition: color 0.2s;">★</span>';
   }
-  echo '</select>';
+  echo '</div>';
+  echo '<p style="margin-top: 8px; color: #666; font-size: 13px;">星をクリックして評価を選択してください（現在: <span id="rating-display">' . ($rating ? $rating : '0') . '</span>個）</p>';
   echo '</td>';
   echo '</tr>';
+  
+  // 星評価のJavaScript
+  echo '<script>
+  (function($) {
+    $(document).ready(function() {
+      const stars = $(".ptl-star");
+      const ratingInput = $("#rating");
+      const ratingDisplay = $("#rating-display");
+      
+      // 星をクリック
+      stars.on("click", function() {
+        const value = $(this).data("value");
+        ratingInput.val(value);
+        ratingDisplay.text(value);
+        updateStars(value);
+      });
+      
+      // 星にホバー
+      stars.on("mouseenter", function() {
+        const value = $(this).data("value");
+        updateStars(value);
+      });
+      
+      // ホバー解除で元に戻す
+      $(".ptl-star-rating").on("mouseleave", function() {
+        const currentValue = ratingInput.val();
+        updateStars(currentValue);
+      });
+      
+      // 星の表示を更新
+      function updateStars(value) {
+        stars.each(function(index) {
+          if (index < value) {
+            $(this).css("color", "#FFD700").addClass("filled");
+          } else {
+            $(this).css("color", "#ddd").removeClass("filled");
+          }
+        });
+      }
+    });
+  })(jQuery);
+  </script>';
 
   // 顧客画像
   echo '<tr>';
@@ -1722,36 +1766,60 @@ function ptl_migrate_uservoice_posts()
 
 /* === 既存お客様の声 カスタム投稿タイプ（統合管理用に保持） === */
 
-// お客様の声カスタム投稿タイプを登録
+// お客様の声カスタム投稿タイプを登録（優先度を上げて確実に登録）
 add_action('init', function () {
-  register_post_type('uservoice', [
+  $labels = [
+    'name' => 'お客様の声',
+    'singular_name' => 'お客様の声',
+    'menu_name' => 'お客様の声',
+    'add_new' => '新規追加',
+    'add_new_item' => '新しいお客様の声を追加',
+    'edit_item' => 'お客様の声を編集',
+    'new_item' => '新しいお客様の声',
+    'view_item' => 'お客様の声を表示',
+    'view_items' => 'お客様の声一覧',
+    'search_items' => 'お客様の声を検索',
+    'not_found' => 'お客様の声が見つかりませんでした',
+    'not_found_in_trash' => 'ゴミ箱にお客様の声が見つかりませんでした',
+    'all_items' => 'お客様の声一覧',
+  ];
+  
+  $args = [
     'label' => 'お客様の声',
-    'labels' => [
-      'name' => 'お客様の声',
-      'singular_name' => 'お客様の声',
-      'menu_name' => 'お客様の声',
-      'add_new' => '新規追加',
-      'add_new_item' => '新しいお客様の声を追加',
-      'edit_item' => 'お客様の声を編集',
-      'new_item' => '新しいお客様の声',
-      'view_item' => 'お客様の声を表示',
-      'search_items' => 'お客様の声を検索',
-      'not_found' => 'お客様の声が見つかりませんでした',
-      'not_found_in_trash' => 'ゴミ箱にお客様の声が見つかりませんでした',
-    ],
+    'labels' => $labels,
+    'description' => 'お客様からいただいた声を管理します',
     'public' => true,
+    'publicly_queryable' => true,
     'show_ui' => true,
     'show_in_menu' => true,
     'show_in_admin_bar' => true,
-    'show_in_nav_menus' => false,
+    'show_in_nav_menus' => true,
     'show_in_rest' => true,
     'has_archive' => false,
     'hierarchical' => false,
+    'rewrite' => ['slug' => 'uservoice', 'with_front' => false],
+    'query_var' => true,
     'menu_position' => 5,
     'menu_icon' => 'dashicons-star-filled',
     'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
     'capability_type' => 'post',
-  ]);
+    'capabilities' => [
+      'edit_post' => 'edit_posts',
+      'edit_posts' => 'edit_posts',
+      'edit_others_posts' => 'edit_others_posts',
+      'publish_posts' => 'publish_posts',
+      'read_post' => 'read',
+      'read_private_posts' => 'read_private_posts',
+      'delete_post' => 'delete_posts',
+    ],
+  ];
+  
+  register_post_type('uservoice', $args);
+}, 0); // 優先度0で最優先実行
+
+// パーマリンク設定の更新（テーマ有効化時）
+add_action('after_switch_theme', function() {
+  flush_rewrite_rules();
 });
 
 // お客様の声のメタボックスを追加
@@ -1790,18 +1858,62 @@ function ptl_uservoice_meta_box_callback($post)
   echo '<td><input type="text" id="uservoice_title" name="uservoice_title" value="' . esc_attr($uservoice_title) . '" style="width:100%;" placeholder="例: Amazing customer service！" /></td>';
   echo '</tr>';
 
-  // 星評価
+  // 星評価（クリック式の5つ星UI - カスタム投稿タイプ用）
   echo '<tr>';
-  echo '<th><label for="rating">星評価</label></th>';
+  echo '<th><label for="rating_uservoice">星評価</label></th>';
   echo '<td>';
-  echo '<select id="rating" name="rating">';
+  echo '<input type="hidden" id="rating_uservoice" name="rating" value="' . esc_attr($rating) . '" />';
+  echo '<div class="ptl-star-rating-uservoice" style="display: flex; gap: 5px; font-size: 28px; cursor: pointer;">';
   for ($i = 1; $i <= 5; $i++) {
-    $selected = ($rating == $i) ? 'selected' : '';
-    echo '<option value="' . $i . '" ' . $selected . '>' . $i . '個 (' . str_repeat('★', $i) . ')</option>';
+    $filled = ($i <= $rating) ? 'filled' : '';
+    echo '<span class="ptl-star-uv ' . $filled . '" data-value="' . $i . '" style="color: ' . ($i <= $rating ? '#FFD700' : '#ddd') . '; transition: color 0.2s;">★</span>';
   }
-  echo '</select>';
+  echo '</div>';
+  echo '<p style="margin-top: 8px; color: #666; font-size: 13px;">星をクリックして評価を選択してください（現在: <span id="rating-display-uv">' . ($rating ? $rating : '0') . '</span>個）</p>';
   echo '</td>';
   echo '</tr>';
+  
+  // 星評価のJavaScript（カスタム投稿タイプ用）
+  echo '<script>
+  (function($) {
+    $(document).ready(function() {
+      const stars = $(".ptl-star-uv");
+      const ratingInput = $("#rating_uservoice");
+      const ratingDisplay = $("#rating-display-uv");
+      
+      // 星をクリック
+      stars.on("click", function() {
+        const value = $(this).data("value");
+        ratingInput.val(value);
+        ratingDisplay.text(value);
+        updateStars(value);
+      });
+      
+      // 星にホバー
+      stars.on("mouseenter", function() {
+        const value = $(this).data("value");
+        updateStars(value);
+      });
+      
+      // ホバー解除で元に戻す
+      $(".ptl-star-rating-uservoice").on("mouseleave", function() {
+        const currentValue = ratingInput.val();
+        updateStars(currentValue);
+      });
+      
+      // 星の表示を更新
+      function updateStars(value) {
+        stars.each(function(index) {
+          if (index < value) {
+            $(this).css("color", "#FFD700").addClass("filled");
+          } else {
+            $(this).css("color", "#ddd").removeClass("filled");
+          }
+        });
+      }
+    });
+  })(jQuery);
+  </script>';
 
   // 顧客画像
   echo '<tr>';
@@ -2246,3 +2358,231 @@ add_action('after_switch_theme', function() {
     }
   }
 });
+
+/* ========================================
+   投稿画面の日本語化とUI改善
+======================================== */
+
+// タイトルプレースホルダーを日本語化
+add_filter('enter_title_here', function($title) {
+  $screen = get_current_screen();
+  if ($screen && $screen->post_type === 'post') {
+    return 'タイトルを入力してください（例：バストアップマッサージの効果的な方法）';
+  }
+  return $title;
+});
+
+// デフォルトコンテンツを日本語に
+add_filter('default_content', function($content, $post) {
+  if ($post->post_type === 'post') {
+    return "ここに本文を入力してください。\n\n読者にとって役立つ情報を、わかりやすく書きましょう。";
+  }
+  return $content;
+}, 10, 2);
+
+// 投稿画面に説明を追加
+add_action('edit_form_after_title', function($post) {
+  if ($post->post_type !== 'post') return;
+  ?>
+  <div style="background: #f0f6fc; border-left: 4px solid #0073aa; padding: 12px 16px; margin: 16px 0; font-size: 14px; line-height: 1.6;">
+    <strong>📝 投稿の書き方</strong><br>
+    <ul style="margin: 8px 0 0 20px; padding: 0;">
+      <li><strong>タイトル：</strong>記事の内容が一目でわかるタイトルを付けましょう</li>
+      <li><strong>本文：</strong>読者にとって役立つ情報を、わかりやすく書きましょう</li>
+      <li><strong>アイキャッチ画像：</strong>記事のイメージに合った画像を設定しましょう（右下の「アイキャッチ画像」から設定）</li>
+    </ul>
+  </div>
+  <?php
+});
+
+/* ========================================
+   投稿画面の不要項目を非表示
+======================================== */
+
+// 不要なメタボックスを削除
+add_action('admin_menu', function() {
+  // カスタムフィールド（混乱を避けるため）
+  // remove_meta_box('postcustom', 'post', 'normal');
+  
+  // トラックバック（古い機能）
+  remove_meta_box('trackbacksdiv', 'post', 'normal');
+  
+  // スラッグ編集（通常不要）
+  remove_meta_box('slugdiv', 'post', 'normal');
+  
+  // コメント機能を使わない場合
+  // remove_meta_box('commentsdiv', 'post', 'normal');
+  
+  // 作成者（単一運営者の場合）
+  // remove_meta_box('authordiv', 'post', 'normal');
+});
+
+/* ========================================
+   SEO設定メタボックス
+======================================== */
+
+// SEOメタボックスを追加
+add_action('add_meta_boxes', function() {
+  add_meta_box(
+    'ptl_seo_meta_box',
+    '📊 SEO設定',
+    'ptl_seo_meta_box_callback',
+    'post',
+    'normal',
+    'high'
+  );
+});
+
+// SEOメタボックスのHTML
+function ptl_seo_meta_box_callback($post) {
+  wp_nonce_field('ptl_seo_meta_box', 'ptl_seo_meta_box_nonce');
+  
+  $meta_description = get_post_meta($post->ID, '_ptl_meta_description', true);
+  $meta_keywords = get_post_meta($post->ID, '_ptl_meta_keywords', true);
+  
+  ?>
+  <div style="padding: 10px 0;">
+    <p style="margin: 0 0 8px; color: #666; font-size: 13px;">
+      検索エンジンに表示される情報を設定します。適切に設定することで、検索結果からのアクセスが増える可能性があります。
+    </p>
+    
+    <table class="form-table">
+      <tr>
+        <th style="width: 200px;">
+          <label for="ptl_meta_description">メタディスクリプション</label>
+        </th>
+        <td>
+          <textarea 
+            id="ptl_meta_description" 
+            name="ptl_meta_description" 
+            rows="3" 
+            style="width: 100%; max-width: 600px;"
+            placeholder="記事の内容を120〜160文字程度で要約してください"
+          ><?php echo esc_textarea($meta_description); ?></textarea>
+          <p class="description">
+            検索結果に表示される説明文です。<strong>120〜160文字</strong>が推奨です。<br>
+            現在の文字数: <strong><span id="desc-count">0</span></strong>文字
+          </p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <label for="ptl_meta_keywords">キーワード</label>
+        </th>
+        <td>
+          <input 
+            type="text" 
+            id="ptl_meta_keywords" 
+            name="ptl_meta_keywords" 
+            value="<?php echo esc_attr($meta_keywords); ?>" 
+            style="width: 100%; max-width: 600px;"
+            placeholder="バストアップ, マッサージ, 美容"
+          />
+          <p class="description">
+            記事に関連するキーワードをカンマ区切りで入力してください。<strong>3〜5個程度</strong>が推奨です。<br>
+            例：バストアップ, マッサージ, 美容, ホームケア
+          </p>
+        </td>
+      </tr>
+    </table>
+    
+    <script>
+    (function() {
+      const textarea = document.getElementById('ptl_meta_description');
+      const counter = document.getElementById('desc-count');
+      
+      function updateCount() {
+        const count = textarea.value.length;
+        counter.textContent = count;
+        counter.style.color = (count >= 120 && count <= 160) ? '#46b450' : (count > 160 ? '#dc3232' : '#999');
+      }
+      
+      textarea.addEventListener('input', updateCount);
+      updateCount();
+    })();
+    </script>
+  </div>
+  <?php
+}
+
+// SEOメタデータの保存
+add_action('save_post', function($post_id) {
+  // Nonce チェック
+  if (!isset($_POST['ptl_seo_meta_box_nonce']) || !wp_verify_nonce($_POST['ptl_seo_meta_box_nonce'], 'ptl_seo_meta_box')) {
+    return;
+  }
+  
+  // 自動保存の場合は処理しない
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    return;
+  }
+  
+  // 権限チェック
+  if (!current_user_can('edit_post', $post_id)) {
+    return;
+  }
+  
+  // メタディスクリプションを保存
+  if (isset($_POST['ptl_meta_description'])) {
+    update_post_meta($post_id, '_ptl_meta_description', sanitize_textarea_field($_POST['ptl_meta_description']));
+  }
+  
+  // キーワードを保存
+  if (isset($_POST['ptl_meta_keywords'])) {
+    update_post_meta($post_id, '_ptl_meta_keywords', sanitize_text_field($_POST['ptl_meta_keywords']));
+  }
+});
+
+/* ========================================
+   緊急修正：カスタム投稿タイプの強制登録
+======================================== */
+
+// 管理画面アクセス時に一度だけパーマリンクを強制更新
+add_action('admin_init', function() {
+  $flush_flag = get_option('ptl_uservoice_flush_rewrite');
+  
+  if ($flush_flag !== 'done_v2') {
+    flush_rewrite_rules(false);
+    update_option('ptl_uservoice_flush_rewrite', 'done_v2');
+    
+    // デバッグ用：登録されているカスタム投稿タイプを確認
+    error_log('PTL: Rewrite rules flushed. Registered post types: ' . print_r(get_post_types(['_builtin' => false]), true));
+  }
+});
+
+// デバッグ：カスタム投稿タイプが正しく登録されているか確認
+add_action('admin_notices', function() {
+  if (current_user_can('manage_options')) {
+    $post_types = get_post_types(['_builtin' => false], 'objects');
+    
+    if (!isset($post_types['uservoice'])) {
+      echo '<div class="notice notice-error"><p><strong>⚠️ デバッグ情報：</strong> カスタム投稿タイプ "uservoice" が登録されていません。</p></div>';
+    } else {
+      // 成功メッセージ（一度だけ表示）
+      $shown = get_transient('ptl_uservoice_success_shown');
+      if (!$shown) {
+        echo '<div class="notice notice-success is-dismissible"><p><strong>✅ カスタム投稿タイプ "uservoice" が正常に登録されました。</strong> 左サイドバーに「お客様の声」メニューが表示されるはずです。</p></div>';
+        set_transient('ptl_uservoice_success_shown', true, 60);
+      }
+    }
+  }
+});
+
+// SEOメタタグを<head>に出力
+add_action('wp_head', function() {
+  if (is_single()) {
+    global $post;
+    
+    $meta_description = get_post_meta($post->ID, '_ptl_meta_description', true);
+    $meta_keywords = get_post_meta($post->ID, '_ptl_meta_keywords', true);
+    
+    if ($meta_description) {
+      echo '<meta name="description" content="' . esc_attr($meta_description) . '">' . "\n";
+    }
+    
+    if ($meta_keywords) {
+      echo '<meta name="keywords" content="' . esc_attr($meta_keywords) . '">' . "\n";
+    }
+  }
+}, 1);
