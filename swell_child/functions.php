@@ -10,10 +10,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 }, 999);
 
-add_action('wp_head', function () {
-  echo "<!-- ptl-issues inline armed -->\n";
-  echo '<style>#bust-issues .ptl-bustIssues__list{list-style:none;margin:0;padding:0}#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item{border-bottom:1px dashed rgba(0,0,0,.18) !important;border-top:0;border-left:0;border-right:0;}</style>' . "\n";
-}, 9999);
+// BUST-ISSUESスタイルはissues-navigation.cssで完全管理
 
 // NAV背景メディアを取得
 function ptl_get_nav_background(): array
@@ -55,7 +52,7 @@ function ptl_get_bust_issues_background(): array
   $bg_pc     = (string) get_theme_mod('ptl_bust_issues_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
   $bg_sp     = (string) get_theme_mod('ptl_bust_issues_bg_sp', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
   $overlay   = (float) get_theme_mod('ptl_bust_issues_overlay', 0.25);
-  $p_speed   = (float) get_theme_mod('ptl_bust_issues_parallax_speed', 0.92);
+  $p_speed   = (float) get_theme_mod('ptl_bust_issues_parallax_speed', 0.6);
 
   // 結果を組み立て
   $result = [
@@ -535,7 +532,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
       if ($f > 1) $f = 1.0;
       return $f;
     },
-    'default'           => 0.92,
+    'default'           => 0.6,
   ]);
   $wp_customize->add_control('ptl_bust_issues_parallax_speed', [
     'label'       => 'パララックス速度（0〜1、1で追従なし）',
@@ -1009,10 +1006,11 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($infohub_js)) {
     wp_enqueue_script('ptl-infohub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
   }
-  $bust_issues_js = get_stylesheet_directory() . '/js/section-bust-issues.js';
-  if (file_exists($bust_issues_js)) {
-    wp_enqueue_script('ptl-bust-issues', get_stylesheet_directory_uri() . '/js/section-bust-issues.js', [], filemtime($bust_issues_js), true);
-  }
+  // BUST-ISSUESは共通のsection-parallax.jsを使用（ptl-pageNavHeroクラス併用）
+  // $bust_issues_js = get_stylesheet_directory() . '/js/section-bust-issues.js';
+  // if (file_exists($bust_issues_js)) {
+  //   wp_enqueue_script('ptl-bust-issues', get_stylesheet_directory_uri() . '/js/section-bust-issues.js', [], filemtime($bust_issues_js), true);
+  // }
 }, 20);
 
 /**

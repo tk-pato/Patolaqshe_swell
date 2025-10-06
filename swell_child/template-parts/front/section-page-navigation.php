@@ -43,7 +43,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 }
 ?>
 
-<section id="page-navigation" class="ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="0.92" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
+<section id="page-navigation" class="ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="<?php echo esc_attr($p_speed); ?>" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
     <?php if ($has_bg): ?>
         <div class="ptl-pageNavHero__bg" aria-hidden="true">
             <?php if ($video_url): ?>

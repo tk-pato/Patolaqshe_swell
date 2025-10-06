@@ -486,22 +486,7 @@ html, body { overflow-x: hidden; }
 .ptl-sns__btn i { font-size: 18px; }
 
 /* --- Bust Issues banner --- */
-.ptl-bustIssues { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); overflow: visible; }
-.ptl-bustIssues .ptl-section__inner { position: relative; padding-top: clamp(36px, 6vw, 80px); padding-bottom: clamp(24px, 5vw, 60px); }
-.ptl-bustIssues__head { text-align: center; margin-bottom: clamp(12px, 3vw, 20px); }
-.ptl-bustIssues .ptl-section__title { text-align: center; letter-spacing: .08em; font-weight: 600; margin-bottom: 28px; font-size: var(--ptl-heading-size); }
-.ptl-bustIssues .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
-.ptl-bustIssues .ptl-section__subtitleLine {
-    width: clamp(180px, 28vw, 560px);
-    height: clamp(16px, 3.2vw, 28px);
-    margin: 10px auto 26px;
-    background: url('./img/bg_1.png') center/contain no-repeat;
-}
-.ptl-bustIssues__list { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 0; padding: 0; list-style: none; }
-@media (min-width: 900px) { .ptl-bustIssues__list { grid-template-columns: repeat(2, 1fr); } }
-.ptl-bustIssues__item { display: grid; grid-template-columns: 28px 1fr; align-items: center; column-gap: 10px; padding: 10px 8px; border-bottom: 1px dashed #ddd; }
-.ptl-bustIssues__check img { width: 22px; height: 22px; display: block; object-fit: contain; }
-.ptl-bustIssues__text { color: #333; }
+/* BUST-ISSUESスタイルはissues-navigation.cssで完全管理 */
 
 /* --- Service Feature (bust-up hero + 3 cards) --- */
 .ptl-serviceFeature__hero { display: grid; gap: clamp(14px, 2vw, 24px); grid-template-columns: 1fr; align-items: center; }

@@ -36,20 +36,20 @@ $has_check_img = file_exists($check_path);
 $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 ?>
 
-<section id="bust-issues" class="ptl-bustIssues is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-bustIssues__bg" data-parallax-speed="0.92" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
+<section id="bust-issues" class="ptl-bustIssues ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="<?php echo esc_attr($p_speed); ?>" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
     <?php if ($has_bg): ?>
-        <div class="ptl-bustIssues__bg" aria-hidden="true">
+        <div class="ptl-bustIssues__bg ptl-pageNavHero__bg" aria-hidden="true">
             <?php if ($video_url): ?>
-                <video class="ptl-bustIssues__video" src="<?php echo esc_url($video_url); ?>" autoplay muted loop playsinline></video>
+                <video class="ptl-bustIssues__video ptl-pageNavHero__video" src="<?php echo esc_url($video_url); ?>" autoplay muted loop playsinline></video>
             <?php else: ?>
-                <picture class="ptl-bustIssues__image">
+                <picture class="ptl-bustIssues__image ptl-pageNavHero__image">
                     <?php if (! empty($bg_sp)): ?>
                         <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
                     <?php endif; ?>
                     <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" decoding="async">
                 </picture>
             <?php endif; ?>
-            <div class="ptl-bustIssues__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
+            <div class="ptl-bustIssues__overlay ptl-pageNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
         </div>
     <?php endif; ?>
 

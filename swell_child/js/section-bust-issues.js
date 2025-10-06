@@ -17,14 +17,14 @@
 
     for (var i = 0; i < nodeList.length; i++) {
       var sec = nodeList[i];
-      // 速度: 0..1（1で追従なし）
-      var speed = parseFloat(sec.getAttribute('data-parallax-speed') || '0.92');
-      if (!isFinite(speed)) speed = 0.92;
+      // 速度: 0..1（1で追従なし）- navigationと同じ値に統一
+      var speed = parseFloat(sec.getAttribute('data-parallax-speed') || '0.6');
+      if (!isFinite(speed)) speed = 0.6;
       speed = Math.max(0, Math.min(1, speed));
 
-      // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）
-      var clampRatio = parseFloat(sec.getAttribute('data-parallax-clamp') || '0.18');
-      if (!isFinite(clampRatio)) clampRatio = 0.18;
+      // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）- navigationと同じ値に統一
+      var clampRatio = parseFloat(sec.getAttribute('data-parallax-clamp') || '0.12');
+      if (!isFinite(clampRatio)) clampRatio = 0.12;
       clampRatio = Math.max(0, Math.min(0.3, clampRatio));
 
       // 絶対最大移動量（px）で上書き可能（例: data-parallax-distance="240"）
