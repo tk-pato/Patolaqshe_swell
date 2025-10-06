@@ -56,15 +56,15 @@ get_header();
 	get_template_part('template-parts/front/section', 'salon');
 	?>
 
-	<?php /* BLOGセクションは下部へ移動済み */ ?>
+	<?php
+	// 5.7) BLOG（自動横スクロールブログカード）
+	get_template_part('template-parts/front/section', 'blog');
+	?>
 
 	<?php
 	// 5.8) INFO HUB（3カードレイアウト：BRIDAL / INFORMATION / FAQ）: フルブリード
 	get_template_part('template-parts/front/section', 'infohub');
 	?>
-
-	<?php /* BLOGセクション 正しい順序へ再配置 */ ?>
-	<?php get_template_part('template-parts/front/section', 'blog'); ?>
 
 	<div class="l-mainContent__inner">
 

@@ -630,6 +630,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_infohub_bg_pc', [
       'label' => 'PC用背景画像',
       'section' => 'ptl_infohub',
+      'description' => '🔴 固定背景モード：スクロール時に背景が固定されます（推奨: 1920x1080px以上）',
     ]));
   }
 
@@ -664,24 +665,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     ],
   ]);
 
-  // パララックス速度
-  $wp_customize->add_setting('ptl_infohub_parallax_speed', [
-    'default' => 0.6,
-    'sanitize_callback' => function($v) {
-      $f = (float)$v;
-      return max(0, min(1, $f));
-    },
-  ]);
-  $wp_customize->add_control('ptl_infohub_parallax_speed', [
-    'label' => 'パララックス速度（0〜1）',
-    'section' => 'ptl_infohub',
-    'type' => 'number',
-    'input_attrs' => [
-      'min' => 0,
-      'max' => 1,
-      'step' => 0.05,
-    ],
-  ]);
+
 
   // カード1画像（BRIDAL）
   $wp_customize->add_setting('ptl_infohub_card1_image', [
@@ -719,6 +703,18 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     ]));
   }
 });
+
+// INFO HUB: 固定背景画像をCSS変数として出力
+add_action('wp_head', function() {
+  if (!is_front_page()) return;
+  
+  $bg_image = get_theme_mod('ptl_infohub_bg_pc', '');
+  if (!$bg_image) return;
+  
+  echo '<style id="ptl-infohub-fixed-bg">';
+  echo '.ptl-infohub { --infohub-bg-image: url(' . esc_url($bg_image) . '); }';
+  echo '</style>' . "\n";
+}, 101);
 
 // ===========================================
 // BUST-ISSUES セクション カスタマイザー設定

@@ -9,6 +9,19 @@
 .ptl-infohub {
   outline: 3px solid red !important;
   outline-offset: -3px;
+  /* 🔴 固定背景の実装 */
+  background-image: var(--infohub-bg-image, none);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* SP対応：モバイルでは固定背景を無効化 */
+@media (max-width: 768px) {
+  .ptl-infohub {
+    background-attachment: scroll;
+  }
 }
 
 /* 🔵 デバッグ: コンテンツエリアの範囲確認 */
@@ -35,25 +48,25 @@
   isolation: isolate;
 }
 
-/* パララックス背景 */
-.ptl-infohub__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  transform-origin: center center;
+/* 🔴 固定背景の実装 */
+.ptl-infohub {
+  background-image: var(--infohub-bg-image, none);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-.ptl-infohub__bg video,
-.ptl-infohub__bg picture,
-.ptl-infohub__bg img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform-origin: center center;
+/* SP対応：モバイルでは固定背景を無効化 */
+@media (max-width: 768px) {
+  .ptl-infohub {
+    background-attachment: scroll;
+  }
+}
+
+/* 固定背景では不要（DOM要素としての背景は非表示） */
+.ptl-infohub__bg {
+  display: none !important;
 }
 
 /* パララックスはJSで完全制御（section-parallax.jsと統一） */

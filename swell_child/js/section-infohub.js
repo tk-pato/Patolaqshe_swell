@@ -6,6 +6,11 @@
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
   if (rm && rm.matches) return;
 
+  // 🔴 固定背景モードではパララックス無効化
+  // data-parallax="bg" 属性がない要素は処理しない
+  var hasBgParallax = document.querySelector('.ptl-infohub[data-parallax="bg"]');
+  if (!hasBgParallax) return;
+
   // セクション情報のキャッシュ（速度・クランプ・ターゲット要素など）
   var items = [];
   var ticking = false;
