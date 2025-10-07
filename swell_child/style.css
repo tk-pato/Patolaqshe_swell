@@ -213,37 +213,6 @@ html, body { overflow-x: hidden; }
     }
 }
 
-/* ========================================
-   PCセクション余白統一
-   ----------------------------------------
-   - 上: 0px（NEWSのみヒーローとの間に80px）
-   - 下: 80px
-======================================== */
-@media (min-width: 960px) {
-    :root {
-        --ptl-section-gap-first: 80px;
-        --ptl-section-gap-bottom: 80px;
-    }
-
-    #news,
-    #intro,
-    #bust-issues,
-    #section-reasons,
-    #page-navigation,
-    #section-services,
-    #uservoice,
-    #salon,
-    #section-infohub,
-    #section-blog {
-        margin-top: 0 !important;
-        margin-bottom: var(--ptl-section-gap-bottom) !important;
-    }
-
-    #news {
-        margin-top: var(--ptl-section-gap-first) !important;
-    }
-}
-
 /* ヒーローロゴの表示はカスタマイザーの中央テキストで制御します（非表示にしたい場合はここにルールを追加） */
 
 /* ヘッダー：サブメニュー（ドロップダウン）の背景を透過に */
