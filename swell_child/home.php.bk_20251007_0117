@@ -1,6 +1,0 @@
-<?php
-if (! defined('ABSPATH')) exit;
-
-// ブログページ専用のテンプレート（front-page.phpは使わない）
-// 親テーマのindex.phpを使用してブログ一覧を表示
-include get_template_directory() . '/index.php';
