@@ -55,9 +55,9 @@
   width: 100% !important;
   position: relative !important;
   z-index: 1 !important;
-  /* NAVIGATIONと完全一致する上下余白 */
-  padding-top: clamp(64px, 10vw, 160px) !important;
-  padding-bottom: clamp(64px, 10vw, 160px) !important;
+  /* NAVIGATIONと完全一致する上下余白（固定64px） */
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
   /* 左右余白はグローバル変数を使用 */
   padding-left: var(--ptl-container-pad, 20px) !important;
   padding-right: var(--ptl-container-pad, 20px) !important;

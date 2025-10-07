@@ -2211,39 +2211,6 @@ function ptl_intro_register_customizer($wp_customize)
     ],
   ]);
 
-  // Margin Top
-  $wp_customize->add_setting('ptl_intro_margin_top', [
-    'default' => 80,
-    'sanitize_callback' => function ($value) {
-      return max(0, min(300, intval($value)));
-    },
-  ]);
-  $wp_customize->add_control('ptl_intro_margin_top', [
-    'type' => 'number',
-    'section' => 'ptl_intro_section',
-    'label' => '上部余白（px）',
-    'input_attrs' => [
-      'min' => 0,
-      'max' => 300,
-    ],
-  ]);
-
-  // Margin Bottom
-  $wp_customize->add_setting('ptl_intro_margin_bottom', [
-    'default' => 120,
-    'sanitize_callback' => function ($value) {
-      return max(0, min(300, intval($value)));
-    },
-  ]);
-  $wp_customize->add_control('ptl_intro_margin_bottom', [
-    'type' => 'number',
-    'section' => 'ptl_intro_section',
-    'label' => '下部余白（px）',
-    'input_attrs' => [
-      'min' => 0,
-      'max' => 300,
-    ],
-  ]);
 }
 
 // INTRO Section - Shortcode
