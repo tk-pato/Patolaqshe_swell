@@ -41,21 +41,26 @@ $news_q = $force_fallback ? null : new WP_Query($query_args);
         </div>
 
         <ul class="ptl-news__list is-titleOnly">
-            <?php if (!$force_fallback && $news_q && $news_q->have_posts()): while ($news_q->have_posts()): $news_q->the_post(); ?>
-                    <li class="ptl-news__item">
-                        <a class="ptl-news__title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                    </li>
-                <?php endwhile;
-            else: ?>
-                <?php
-                // 投稿が無いときは仮の3件を表示（プレビュー用）
+            <?php
+            $count = 0;
+            if (!$force_fallback && $news_q && $news_q->have_posts()):
+                while ($news_q->have_posts()): $news_q->the_post();
+                    if ($count >= 5) break;
+            ?>
+                <li class="ptl-news__item">
+                  <span class="ptl-news__date"><?php echo esc_html(get_the_date('Y/m/d')); ?></span>
+                  <span class="ptl-news__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
+                </li>
+            <?php $count++; endwhile;
+            else:
                 $fallback = apply_filters('ptl_news_fallback_items', ['○○○○', '××××', '△△△△']);
                 foreach ($fallback as $title): ?>
                     <li class="ptl-news__item is-placeholder">
-                        <a class="ptl-news__title" href="<?php echo esc_url($more_url); ?>"><?php echo esc_html($title); ?></a>
+                      <span class="ptl-news__date">2025/10/07</span>
+                      <span class="ptl-news__title"><a href="<?php echo esc_url($more_url); ?>"><?php echo esc_html($title); ?></a></span>
                     </li>
-                <?php endforeach; ?>
-            <?php endif;
+                <?php endforeach;
+            endif;
             if ($news_q) wp_reset_postdata(); ?>
         </ul>
 
