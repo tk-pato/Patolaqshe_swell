@@ -575,7 +575,9 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
   // セクション表示/非表示
   $wp_customize->add_setting('ptl_infohub_show', [
     'default' => true,
-    'sanitize_callback' => function($v) { return (bool)$v; },
+    'sanitize_callback' => function ($v) {
+      return (bool)$v;
+    },
   ]);
   $wp_customize->add_control('ptl_infohub_show', [
     'label' => 'セクションを表示',
@@ -597,7 +599,9 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
   // 動画使用ON/OFF
   $wp_customize->add_setting('ptl_infohub_use_video', [
     'default' => false,
-    'sanitize_callback' => function($v) { return (bool)$v; },
+    'sanitize_callback' => function ($v) {
+      return (bool)$v;
+    },
   ]);
   $wp_customize->add_control('ptl_infohub_use_video', [
     'label' => '動画を使用',
@@ -646,7 +650,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
   // オーバーレイ濃度
   $wp_customize->add_setting('ptl_infohub_overlay', [
     'default' => 0.25,
-    'sanitize_callback' => function($v) {
+    'sanitize_callback' => function ($v) {
       $f = (float)$v;
       return max(0, min(0.8, $f));
     },
@@ -702,12 +706,12 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
 });
 
 // INFO HUB: 固定背景画像をCSS変数として出力
-add_action('wp_head', function() {
+add_action('wp_head', function () {
   if (!is_front_page()) return;
-  
+
   $bg_image = get_theme_mod('ptl_infohub_bg_pc', '');
   if (!$bg_image) return;
-  
+
   echo '<style id="ptl-infohub-fixed-bg">';
   echo '.ptl-infohub { --infohub-bg-image: url(' . esc_url($bg_image) . '); }';
   echo '</style>' . "\n";
@@ -1410,7 +1414,7 @@ function ptl_uservoice_conditional_meta_box_callback($post)
   echo '<p style="margin-top: 8px; color: #666; font-size: 13px;">星をクリックして評価を選択してください（現在: <span id="rating-display">' . ($rating ? $rating : '0') . '</span>個）</p>';
   echo '</td>';
   echo '</tr>';
-  
+
   // 星評価のJavaScript
   echo '<script>
   (function($) {
@@ -1777,7 +1781,7 @@ add_action('init', function () {
     'not_found_in_trash' => 'ゴミ箱にお客様の声が見つかりませんでした',
     'all_items' => 'お客様の声一覧',
   ];
-  
+
   $args = [
     'label' => 'お客様の声',
     'labels' => $labels,
@@ -1807,12 +1811,12 @@ add_action('init', function () {
       'delete_post' => 'delete_posts',
     ],
   ];
-  
+
   register_post_type('uservoice', $args);
 }, 0); // 優先度0で最優先実行
 
 // パーマリンク設定の更新（テーマ有効化時）
-add_action('after_switch_theme', function() {
+add_action('after_switch_theme', function () {
   flush_rewrite_rules();
 });
 
@@ -1866,7 +1870,7 @@ function ptl_uservoice_meta_box_callback($post)
   echo '<p style="margin-top: 8px; color: #666; font-size: 13px;">星をクリックして評価を選択してください（現在: <span id="rating-display-uv">' . ($rating ? $rating : '0') . '</span>個）</p>';
   echo '</td>';
   echo '</tr>';
-  
+
   // 星評価のJavaScript（カスタム投稿タイプ用）
   echo '<script>
   (function($) {
@@ -2268,9 +2272,9 @@ if (!function_exists('ptl_sanitize_checkbox')) {
 ======================================== */
 
 // CSS/JSのエンキュー
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
   if (!is_front_page()) return;
-  
+
   // CSS
   $blog_css = get_stylesheet_directory() . '/css/section-blog.css';
   if (file_exists($blog_css)) {
@@ -2281,7 +2285,7 @@ add_action('wp_enqueue_scripts', function() {
       filemtime($blog_css)
     );
   }
-  
+
   // JS
   $blog_js = get_stylesheet_directory() . '/js/section-blog.js';
   if (file_exists($blog_js)) {
@@ -2295,70 +2299,12 @@ add_action('wp_enqueue_scripts', function() {
   }
 }, 30);
 
-// テスト用仮記事の自動生成（初回のみ実行）
-add_action('after_switch_theme', function() {
-  // 既にブログ記事が存在する場合はスキップ
-  $existing = get_posts(['post_type' => 'post', 'posts_per_page' => 1]);
-  if (!empty($existing)) return;
-  
-  // 5件の仮記事を作成
-  $titles = [
-    'バストアップマッサージの正しいやり方と効果',
-    '美しいデコルテを作る3つの習慣',
-    'バストケアに効果的な食事とサプリメント',
-    '姿勢改善でバストラインを美しく保つ方法',
-    'ホームケアで始めるバストアップ習慣',
-  ];
-  
-  $spa_image_path = get_stylesheet_directory() . '/img/spa.jpg';
-  $attachment_id = null;
-  
-  // spa.jpgをメディアライブラリに登録
-  if (file_exists($spa_image_path)) {
-    require_once(ABSPATH . 'wp-admin/includes/file.php');
-    require_once(ABSPATH . 'wp-admin/includes/image.php');
-    require_once(ABSPATH . 'wp-admin/includes/media.php');
-    
-    $filetype = wp_check_filetype(basename($spa_image_path), null);
-    $upload_dir = wp_upload_dir();
-    
-    $attachment = [
-      'guid' => $upload_dir['url'] . '/' . basename($spa_image_path),
-      'post_mime_type' => $filetype['type'],
-      'post_title' => 'Spa Image',
-      'post_content' => '',
-      'post_status' => 'inherit'
-    ];
-    
-    $attach_id = wp_insert_attachment($attachment, $spa_image_path);
-    $attach_data = wp_generate_attachment_metadata($attach_id, $spa_image_path);
-    wp_update_attachment_metadata($attach_id, $attach_data);
-    $attachment_id = $attach_id;
-  }
-  
-  // 記事を生成
-  foreach ($titles as $title) {
-    $post_id = wp_insert_post([
-      'post_title' => $title,
-      'post_content' => '<p>こちらは仮のブログ記事です。実際のコンテンツに置き換えてください。</p>',
-      'post_status' => 'publish',
-      'post_type' => 'post',
-      'post_author' => 1,
-    ]);
-    
-    // アイキャッチ画像を設定
-    if ($post_id && $attachment_id) {
-      set_post_thumbnail($post_id, $attachment_id);
-    }
-  }
-});
-
 /* ========================================
    投稿画面の日本語化とUI改善
 ======================================== */
 
 // タイトルプレースホルダーを日本語化
-add_filter('enter_title_here', function($title) {
+add_filter('enter_title_here', function ($title) {
   $screen = get_current_screen();
   if ($screen && $screen->post_type === 'post') {
     return 'タイトルを入力してください（例：バストアップマッサージの効果的な方法）';
@@ -2367,7 +2313,7 @@ add_filter('enter_title_here', function($title) {
 });
 
 // デフォルトコンテンツを日本語に
-add_filter('default_content', function($content, $post) {
+add_filter('default_content', function ($content, $post) {
   if ($post->post_type === 'post') {
     return "ここに本文を入力してください。\n\n読者にとって役立つ情報を、わかりやすく書きましょう。";
   }
@@ -2375,9 +2321,9 @@ add_filter('default_content', function($content, $post) {
 }, 10, 2);
 
 // 投稿画面に説明を追加
-add_action('edit_form_after_title', function($post) {
+add_action('edit_form_after_title', function ($post) {
   if ($post->post_type !== 'post') return;
-  ?>
+?>
   <div style="background: #f0f6fc; border-left: 4px solid #0073aa; padding: 12px 16px; margin: 16px 0; font-size: 14px; line-height: 1.6;">
     <strong>📝 投稿の書き方</strong><br>
     <ul style="margin: 8px 0 0 20px; padding: 0;">
@@ -2386,7 +2332,7 @@ add_action('edit_form_after_title', function($post) {
       <li><strong>アイキャッチ画像：</strong>記事のイメージに合った画像を設定しましょう（右下の「アイキャッチ画像」から設定）</li>
     </ul>
   </div>
-  <?php
+<?php
 });
 
 /* ========================================
@@ -2394,19 +2340,19 @@ add_action('edit_form_after_title', function($post) {
 ======================================== */
 
 // 不要なメタボックスを削除
-add_action('admin_menu', function() {
+add_action('admin_menu', function () {
   // カスタムフィールド（混乱を避けるため）
   // remove_meta_box('postcustom', 'post', 'normal');
-  
+
   // トラックバック（古い機能）
   remove_meta_box('trackbacksdiv', 'post', 'normal');
-  
+
   // スラッグ編集（通常不要）
   remove_meta_box('slugdiv', 'post', 'normal');
-  
+
   // コメント機能を使わない場合
   // remove_meta_box('commentsdiv', 'post', 'normal');
-  
+
   // 作成者（単一運営者の場合）
   // remove_meta_box('authordiv', 'post', 'normal');
 });
@@ -2416,7 +2362,7 @@ add_action('admin_menu', function() {
 ======================================== */
 
 // SEOメタボックスを追加
-add_action('add_meta_boxes', function() {
+add_action('add_meta_boxes', function () {
   add_meta_box(
     'ptl_seo_meta_box',
     '📊 SEO設定',
@@ -2428,51 +2374,50 @@ add_action('add_meta_boxes', function() {
 });
 
 // SEOメタボックスのHTML
-function ptl_seo_meta_box_callback($post) {
+function ptl_seo_meta_box_callback($post)
+{
   wp_nonce_field('ptl_seo_meta_box', 'ptl_seo_meta_box_nonce');
-  
+
   $meta_description = get_post_meta($post->ID, '_ptl_meta_description', true);
   $meta_keywords = get_post_meta($post->ID, '_ptl_meta_keywords', true);
-  
-  ?>
+
+?>
   <div style="padding: 10px 0;">
     <p style="margin: 0 0 8px; color: #666; font-size: 13px;">
       検索エンジンに表示される情報を設定します。適切に設定することで、検索結果からのアクセスが増える可能性があります。
     </p>
-    
+
     <table class="form-table">
       <tr>
         <th style="width: 200px;">
           <label for="ptl_meta_description">メタディスクリプション</label>
         </th>
         <td>
-          <textarea 
-            id="ptl_meta_description" 
-            name="ptl_meta_description" 
-            rows="3" 
+          <textarea
+            id="ptl_meta_description"
+            name="ptl_meta_description"
+            rows="3"
             style="width: 100%; max-width: 600px;"
-            placeholder="記事の内容を120〜160文字程度で要約してください"
-          ><?php echo esc_textarea($meta_description); ?></textarea>
+            placeholder="記事の内容を120〜160文字程度で要約してください"><?php echo esc_textarea($meta_description); ?></textarea>
           <p class="description">
             検索結果に表示される説明文です。<strong>120〜160文字</strong>が推奨です。<br>
             現在の文字数: <strong><span id="desc-count">0</span></strong>文字
           </p>
         </td>
       </tr>
-      
+
       <tr>
         <th>
           <label for="ptl_meta_keywords">キーワード</label>
         </th>
         <td>
-          <input 
-            type="text" 
-            id="ptl_meta_keywords" 
-            name="ptl_meta_keywords" 
-            value="<?php echo esc_attr($meta_keywords); ?>" 
+          <input
+            type="text"
+            id="ptl_meta_keywords"
+            name="ptl_meta_keywords"
+            value="<?php echo esc_attr($meta_keywords); ?>"
             style="width: 100%; max-width: 600px;"
-            placeholder="バストアップ, マッサージ, 美容"
-          />
+            placeholder="バストアップ, マッサージ, 美容" />
           <p class="description">
             記事に関連するキーワードをカンマ区切りで入力してください。<strong>3〜5個程度</strong>が推奨です。<br>
             例：バストアップ, マッサージ, 美容, ホームケア
@@ -2480,48 +2425,48 @@ function ptl_seo_meta_box_callback($post) {
         </td>
       </tr>
     </table>
-    
+
     <script>
-    (function() {
-      const textarea = document.getElementById('ptl_meta_description');
-      const counter = document.getElementById('desc-count');
-      
-      function updateCount() {
-        const count = textarea.value.length;
-        counter.textContent = count;
-        counter.style.color = (count >= 120 && count <= 160) ? '#46b450' : (count > 160 ? '#dc3232' : '#999');
-      }
-      
-      textarea.addEventListener('input', updateCount);
-      updateCount();
-    })();
+      (function() {
+        const textarea = document.getElementById('ptl_meta_description');
+        const counter = document.getElementById('desc-count');
+
+        function updateCount() {
+          const count = textarea.value.length;
+          counter.textContent = count;
+          counter.style.color = (count >= 120 && count <= 160) ? '#46b450' : (count > 160 ? '#dc3232' : '#999');
+        }
+
+        textarea.addEventListener('input', updateCount);
+        updateCount();
+      })();
     </script>
   </div>
-  <?php
+<?php
 }
 
 // SEOメタデータの保存
-add_action('save_post', function($post_id) {
+add_action('save_post', function ($post_id) {
   // Nonce チェック
   if (!isset($_POST['ptl_seo_meta_box_nonce']) || !wp_verify_nonce($_POST['ptl_seo_meta_box_nonce'], 'ptl_seo_meta_box')) {
     return;
   }
-  
+
   // 自動保存の場合は処理しない
   if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
     return;
   }
-  
+
   // 権限チェック
   if (!current_user_can('edit_post', $post_id)) {
     return;
   }
-  
+
   // メタディスクリプションを保存
   if (isset($_POST['ptl_meta_description'])) {
     update_post_meta($post_id, '_ptl_meta_description', sanitize_textarea_field($_POST['ptl_meta_description']));
   }
-  
+
   // キーワードを保存
   if (isset($_POST['ptl_meta_keywords'])) {
     update_post_meta($post_id, '_ptl_meta_keywords', sanitize_text_field($_POST['ptl_meta_keywords']));
@@ -2533,48 +2478,27 @@ add_action('save_post', function($post_id) {
 ======================================== */
 
 // 管理画面アクセス時に一度だけパーマリンクを強制更新
-add_action('admin_init', function() {
+add_action('admin_init', function () {
   $flush_flag = get_option('ptl_uservoice_flush_rewrite');
-  
+
   if ($flush_flag !== 'done_v2') {
     flush_rewrite_rules(false);
     update_option('ptl_uservoice_flush_rewrite', 'done_v2');
-    
-    // デバッグ用：登録されているカスタム投稿タイプを確認
-    error_log('PTL: Rewrite rules flushed. Registered post types: ' . print_r(get_post_types(['_builtin' => false]), true));
-  }
-});
-
-// デバッグ：カスタム投稿タイプが正しく登録されているか確認
-add_action('admin_notices', function() {
-  if (current_user_can('manage_options')) {
-    $post_types = get_post_types(['_builtin' => false], 'objects');
-    
-    if (!isset($post_types['uservoice'])) {
-      echo '<div class="notice notice-error"><p><strong>⚠️ デバッグ情報：</strong> カスタム投稿タイプ "uservoice" が登録されていません。</p></div>';
-    } else {
-      // 成功メッセージ（一度だけ表示）
-      $shown = get_transient('ptl_uservoice_success_shown');
-      if (!$shown) {
-        echo '<div class="notice notice-success is-dismissible"><p><strong>✅ カスタム投稿タイプ "uservoice" が正常に登録されました。</strong> 左サイドバーに「お客様の声」メニューが表示されるはずです。</p></div>';
-        set_transient('ptl_uservoice_success_shown', true, 60);
-      }
-    }
   }
 });
 
 // SEOメタタグを<head>に出力
-add_action('wp_head', function() {
+add_action('wp_head', function () {
   if (is_single()) {
     global $post;
-    
+
     $meta_description = get_post_meta($post->ID, '_ptl_meta_description', true);
     $meta_keywords = get_post_meta($post->ID, '_ptl_meta_keywords', true);
-    
+
     if ($meta_description) {
       echo '<meta name="description" content="' . esc_attr($meta_description) . '">' . "\n";
     }
-    
+
     if ($meta_keywords) {
       echo '<meta name="keywords" content="' . esc_attr($meta_keywords) . '">' . "\n";
     }
@@ -2606,11 +2530,11 @@ add_action('template_redirect', function () {
     remove_all_actions('swell_front_bottom');
     remove_all_actions('swell_home_content');
     remove_all_actions('swell_post_list');
-    
+
     // 投稿リスト出力関数を無効化
     add_filter('swell_show_home_posts', '__return_false');
     add_filter('swell_show_post_list', '__return_false');
-    
+
     // カスタマイザー設定を強制無効化
     add_filter('theme_mod_show_new_tab', '__return_false');
     add_filter('theme_mod_show_ranking_tab', '__return_false');
@@ -2639,7 +2563,7 @@ add_filter('the_content', function ($content) {
   if (is_front_page() && in_the_loop() && is_main_query()) {
     return '';
   }
-  
+
   // 投稿リスト系ブロックを含む場合は空にする
   if (
     strpos($content, 'wp-block-query') !== false ||
@@ -2649,14 +2573,14 @@ add_filter('the_content', function ($content) {
   ) {
     return '';
   }
-  
+
   return $content;
 }, 1);
 
 // フロントだけ投稿系ブロックを無効化（ダブル保険）
 add_filter('render_block', function ($block_content, $block) {
   if (is_front_page() && is_page() && isset($block['blockName'])) {
-    $ban = ['core/query','core/latest-posts','core/posts-list','core/post-template','core/query-pagination'];
+    $ban = ['core/query', 'core/latest-posts', 'core/posts-list', 'core/post-template', 'core/query-pagination'];
     if (in_array($block['blockName'], $ban, true)) return '';
   }
   return $block_content;
@@ -2666,7 +2590,7 @@ add_filter('render_block', function ($block_content, $block) {
 // ========================================
 // フロントページのページネーション完全無効化（PHPレベル）
 // ========================================
-add_action('template_redirect', function() {
+add_action('template_redirect', function () {
   if (!is_front_page()) return;
   // SWELLのページネーション関数を無効化
   remove_action('swell_before_footer', 'swell_output_pagination');
@@ -2677,7 +2601,7 @@ add_action('template_redirect', function() {
   add_filter('paginate_links', '__return_empty_string', 999);
   add_filter('get_pagenum_link', '__return_false', 999);
   // ページ番号付きURLを無効化
-  add_filter('redirect_canonical', function($redirect_url, $requested_url) {
+  add_filter('redirect_canonical', function ($redirect_url, $requested_url) {
     if (is_front_page() && preg_match('/\/page\/\d+/', $requested_url)) {
       return false;
     }
@@ -2685,14 +2609,14 @@ add_action('template_redirect', function() {
   }, 10, 2);
 }, 5);
 
-add_filter('query_vars', function($vars) {
+add_filter('query_vars', function ($vars) {
   if (is_front_page()) {
     $vars = array_diff($vars, ['paged', 'page']);
   }
   return $vars;
 }, 999);
 
-add_filter('navigation_markup_template', function($template, $class) {
+add_filter('navigation_markup_template', function ($template, $class) {
   if (is_front_page()) {
     return '';
   }
@@ -2700,14 +2624,14 @@ add_filter('navigation_markup_template', function($template, $class) {
 }, 999, 2);
 
 // SWELLのページネーション設定を強制無効化
-add_filter('swell_pagination_args', function($args) {
+add_filter('swell_pagination_args', function ($args) {
   if (is_front_page()) {
     return false;
   }
   return $args;
 }, 999);
 
-add_filter('swell_post_list_args', function($args) {
+add_filter('swell_post_list_args', function ($args) {
   if (is_front_page()) {
     $args['posts_per_page'] = 0;
     $args['nopaging'] = true;
@@ -2715,9 +2639,9 @@ add_filter('swell_post_list_args', function($args) {
   return $args;
 }, 999);
 
-add_filter('body_class', function($classes) {
+add_filter('body_class', function ($classes) {
   if (is_front_page()) {
-    $classes = array_filter($classes, function($class) {
+    $classes = array_filter($classes, function ($class) {
       return strpos($class, 'paged') === false && strpos($class, 'page-numbers') === false;
     });
   }
@@ -2725,36 +2649,315 @@ add_filter('body_class', function($classes) {
 }, 999);
 
 // JSによるDOM削除（保険）
-add_action('wp_footer', function() {
+add_action('wp_footer', function () {
   if (!is_front_page()) return;
-  ?>
+?>
   <script>
-  (function() {
-    'use strict';
-    function removePaginationElements() {
-      const selectors = [
-        '.pagination', '.page-numbers', '.nav-links',
-        '.posts-navigation', '.post-navigation', '.paging-navigation',
-        '.p-paginationNav', '.p-pageNav', '.c-paginationNav',
-        '.wp-block-query-pagination', 'nav.navigation',
-        '.p-postList', '.c-postList', '.wp-block-query',
-        '.wp-block-latest-posts', '.wp-block-post-template'
-      ];
-      selectors.forEach(function(selector) {
-        document.querySelectorAll(selector).forEach(function(el) {
-          if (el && el.parentNode) el.parentNode.removeChild(el);
+    (function() {
+      'use strict';
+
+      function removePaginationElements() {
+        const selectors = [
+          '.pagination', '.page-numbers', '.nav-links',
+          '.posts-navigation', '.post-navigation', '.paging-navigation',
+          '.p-paginationNav', '.p-pageNav', '.c-paginationNav',
+          '.wp-block-query-pagination', 'nav.navigation',
+          '.p-postList', '.c-postList', '.wp-block-query',
+          '.wp-block-latest-posts', '.wp-block-post-template'
+        ];
+        selectors.forEach(function(selector) {
+          document.querySelectorAll(selector).forEach(function(el) {
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+          });
         });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', removePaginationElements);
+      } else {
+        removePaginationElements();
+      }
+      window.addEventListener('load', removePaginationElements);
+      const observer = new MutationObserver(removePaginationElements);
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
       });
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', removePaginationElements);
-    } else {
-      removePaginationElements();
-    }
-    window.addEventListener('load', removePaginationElements);
-    const observer = new MutationObserver(removePaginationElements);
-    observer.observe(document.body, {childList: true, subtree: true});
-  })();
+    })();
   </script>
-  <?php
+<?php
 }, 1);
+
+// ========================================
+// パフォーマンス基礎設定（開発中から実装）
+// ========================================
+// 作成日: 2025-10-07
+// 目的: 開発フェーズから実装しておくことで、完成後の最適化作業を効率化
+// 影響範囲: フロントエンドのみ（管理画面は影響なし）
+
+// ========================================
+// 1. 開発モード設定
+// ========================================
+// なぜ今やるべきか: CSS/JS変更時のブラウザキャッシュクリアの手間を削減
+
+/**
+ * 開発モード判定
+ * wp-config.phpで define('WP_ENVIRONMENT_TYPE', 'development'); を設定
+ */
+function ptl_perf_is_dev_mode()
+{
+  return defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'development';
+}
+
+/**
+ * 開発モード時はファイルバージョンにタイムスタンプ自動付与
+ */
+add_filter('style_loader_src', 'ptl_perf_add_version_to_assets', 10, 2);
+add_filter('script_loader_src', 'ptl_perf_add_version_to_assets', 10, 2);
+function ptl_perf_add_version_to_assets($src, $handle)
+{
+  if (!ptl_perf_is_dev_mode()) return $src;
+
+  // 外部URLは除外
+  if (strpos($src, site_url()) === false) return $src;
+
+  // 既にクエリパラメータがある場合は追加
+  $separator = (strpos($src, '?') === false) ? '?' : '&';
+  return $src . $separator . 'v=' . time();
+}
+
+// ========================================
+// 2. 画像の遅延読み込み（自動付与）
+// ========================================
+// なぜ今やるべきか: 今後追加する画像全てに自動適用、後から手動修正不要
+
+/**
+ * WordPress標準のwp_get_attachment_imageにloading="lazy"を自動付与
+ */
+add_filter('wp_get_attachment_image_attributes', 'ptl_perf_add_lazy_loading', 10, 3);
+function ptl_perf_add_lazy_loading($attr, $attachment, $size)
+{
+  // data-no-lazy属性がある場合は除外
+  if (isset($attr['data-no-lazy'])) {
+    unset($attr['data-no-lazy']);
+    return $attr;
+  }
+
+  // 既にloading属性がある場合はスキップ
+  if (!isset($attr['loading'])) {
+    $attr['loading'] = 'lazy';
+  }
+
+  // デコード最適化
+  if (!isset($attr['decoding'])) {
+    $attr['decoding'] = 'async';
+  }
+
+  return $attr;
+}
+
+/**
+ * コンテンツ内の画像にloading="lazy"を自動付与
+ */
+add_filter('the_content', 'ptl_perf_add_lazy_to_content_images', 20);
+add_filter('widget_text', 'ptl_perf_add_lazy_to_content_images', 20);
+function ptl_perf_add_lazy_to_content_images($content)
+{
+  if (is_admin() || is_feed()) return $content;
+
+  // data-no-lazy属性がある画像は除外
+  $content = preg_replace_callback(
+    '/<img([^>]+?)(?:\/?)>/i',
+    function ($matches) {
+      $img_tag = $matches[0];
+      $attributes = $matches[1];
+
+      // data-no-lazy がある場合はスキップ
+      if (strpos($attributes, 'data-no-lazy') !== false) {
+        return str_replace('data-no-lazy', '', $img_tag);
+      }
+
+      // 既にloading属性がある場合はスキップ
+      if (strpos($attributes, 'loading=') !== false) {
+        return $img_tag;
+      }
+
+      // loading="lazy" と decoding="async" を追加
+      $new_attributes = $attributes . ' loading="lazy" decoding="async"';
+      return '<img' . $new_attributes . '>';
+    },
+    $content
+  );
+
+  return $content;
+}
+
+// ========================================
+// 3. 画像サイズの自動最適化
+// ========================================
+// なぜ今やるべきか: 大きすぎる画像のアップロードを防ぎ、ストレージ節約
+
+/**
+ * アップロード時に画像を自動リサイズ（最大幅: 2560px）
+ */
+add_filter('wp_handle_upload_prefilter', 'ptl_perf_resize_uploaded_image');
+function ptl_perf_resize_uploaded_image($file)
+{
+  // 画像ファイル以外は処理しない
+  if (strpos($file['type'], 'image') === false) {
+    return $file;
+  }
+
+  $image_editor = wp_get_image_editor($file['tmp_name']);
+
+  if (is_wp_error($image_editor)) {
+    return $file;
+  }
+
+  $size = $image_editor->get_size();
+  $max_width = 2560; // PC用最大幅
+  $max_height = 2560;
+
+  // リサイズが必要な場合のみ実行
+  if ($size['width'] > $max_width || $size['height'] > $max_height) {
+    $image_editor->resize($max_width, $max_height, false);
+    $saved = $image_editor->save($file['tmp_name']);
+
+    if (!is_wp_error($saved)) {
+      $file['file'] = $saved['path'];
+    }
+  }
+
+  return $file;
+}
+
+// ========================================
+// 4. 不要なWordPress機能の無効化
+// ========================================
+// なぜ今やるべきか: 初回から不要なHTTPリクエストを削減、開発時も恩恵あり
+
+/**
+ * 絵文字スクリプトの無効化
+ */
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('admin_print_styles', 'print_emoji_styles');
+remove_filter('the_content_feed', 'wp_staticize_emoji');
+remove_filter('comment_text_rss', 'wp_staticize_emoji');
+remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+
+/**
+ * wp-embed.min.jsの無効化
+ */
+add_action('wp_footer', 'ptl_perf_dequeue_embed_script');
+function ptl_perf_dequeue_embed_script()
+{
+  wp_dequeue_script('wp-embed');
+}
+
+/**
+ * jQuery Migrateの無効化（互換性問題がなければ）
+ */
+add_action('wp_default_scripts', 'ptl_perf_remove_jquery_migrate');
+function ptl_perf_remove_jquery_migrate($scripts)
+{
+  if (!is_admin() && isset($scripts->registered['jquery'])) {
+    $script = $scripts->registered['jquery'];
+
+    if ($script->deps) {
+      $script->deps = array_diff($script->deps, ['jquery-migrate']);
+    }
+  }
+}
+
+/**
+ * フロントエンドでのDashicons無効化
+ */
+add_action('wp_enqueue_scripts', 'ptl_perf_dequeue_dashicons', 999);
+function ptl_perf_dequeue_dashicons()
+{
+  if (!is_admin() && !is_user_logged_in()) {
+    wp_dequeue_style('dashicons');
+    wp_deregister_style('dashicons');
+  }
+}
+
+/**
+ * Block Editor用CSS/JSの無効化（フロントエンド）
+ */
+add_action('wp_enqueue_scripts', 'ptl_perf_dequeue_block_library', 100);
+function ptl_perf_dequeue_block_library()
+{
+  // ブロックエディタを使用しない場合のみ無効化
+  if (!has_blocks()) {
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('wc-block-style'); // WooCommerce
+    wp_dequeue_style('global-styles');
+  }
+}
+
+/**
+ * 不要なREST APIエンドポイントの無効化
+ */
+add_filter('rest_endpoints', 'ptl_perf_disable_unused_rest_endpoints');
+function ptl_perf_disable_unused_rest_endpoints($endpoints)
+{
+  // oembed（埋め込み）を使わない場合
+  if (isset($endpoints['/oembed/1.0/embed'])) {
+    unset($endpoints['/oembed/1.0/embed']);
+  }
+
+  // ユーザー一覧を外部公開しない
+  if (isset($endpoints['/wp/v2/users'])) {
+    unset($endpoints['/wp/v2/users']);
+  }
+
+  return $endpoints;
+}
+
+// ========================================
+// 5. 将来の最適化準備
+// ========================================
+// なぜ今やるべきか: 後から構造変更すると手戻りが発生、今なら低コスト
+
+/**
+ * WebP用フォルダ構造の準備
+ */
+add_action('after_setup_theme', 'ptl_perf_prepare_webp_structure');
+function ptl_perf_prepare_webp_structure()
+{
+  $webp_dir = get_stylesheet_directory() . '/img/.webp';
+
+  if (!file_exists($webp_dir)) {
+    wp_mkdir_p($webp_dir);
+
+    // .htaccess作成（直接アクセス禁止）
+    $htaccess_content = "# WebP cache directory\n";
+    $htaccess_content .= "# Generated by PTL Performance Setup\n";
+    $htaccess_content .= "Order deny,allow\n";
+    $htaccess_content .= "Deny from all\n";
+
+    file_put_contents($webp_dir . '/.htaccess', $htaccess_content);
+  }
+}
+
+/**
+ * クリティカルCSS用のフックポイント予約
+ */
+add_action('wp_head', 'ptl_perf_critical_css_placeholder', 2);
+function ptl_perf_critical_css_placeholder()
+{
+  // 将来のクリティカルCSS実装用（今は何もしない）
+  // 完成後にここでクリティカルCSSをインライン出力
+  echo "\n<!-- Critical CSS Placeholder (Priority 2) -->\n";
+}
+
+/**
+ * パフォーマンス最適化用のグローバルフラグ
+ */
+if (!defined('PTL_PERF_OPTIMIZATION_READY')) {
+  define('PTL_PERF_OPTIMIZATION_READY', false); // 完成後にtrueに変更
+}
+
+

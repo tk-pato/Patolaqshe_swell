@@ -7,20 +7,6 @@
    2025-09-30 作成開始
    =========================== */
 
-/* 🟢 デバッグ: SALONセクション全体の範囲確認 */
-#salon,
-.ptl-salonHero {
-    outline: 3px solid lime !important;
-    outline-offset: -3px;
-}
-
-/* 🔵 デバッグ: SALONコンテンツエリアの範囲確認 */
-#salon .ptl-section__inner,
-.ptl-salonHero .ptl-section__inner {
-    outline: 3px solid aqua !important;
-    outline-offset: -3px;
-}
-
 /* ===== base ===== */
 #salon,
 .ptl-salon {

@@ -5,39 +5,14 @@
    navigation/BUST-ISSUESと完全統一
 ======================================== */
 
-/* 🔴 デバッグ: セクション全体の範囲確認 */
+/* セクション全体 */
 .ptl-infohub {
-  outline: 3px solid red !important;
-  outline-offset: -3px;
-  /* 🔴 固定背景の実装 */
+  /* 固定背景の実装 */
   background-image: var(--infohub-bg-image, none);
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-}
-
-/* SP対応：モバイルでは固定背景を無効化 */
-@media (max-width: 768px) {
-  .ptl-infohub {
-    background-attachment: scroll;
-  }
-}
-
-/* 🔵 デバッグ: コンテンツエリアの範囲確認 */
-.ptl-infohub .ptl-section__inner {
-  outline: 3px solid blue !important;
-  outline-offset: -3px;
-}
-
-/* 🟢 デバッグ: カードグリッドの範囲確認 */
-.ptl-infohub__grid {
-  outline: 3px solid green !important;
-  outline-offset: -3px;
-}
-
-/* セクション全体 */
-.ptl-infohub {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);

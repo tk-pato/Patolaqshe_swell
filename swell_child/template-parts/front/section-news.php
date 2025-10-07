@@ -47,19 +47,20 @@ $news_q = $force_fallback ? null : new WP_Query($query_args);
                 while ($news_q->have_posts()): $news_q->the_post();
                     if ($count >= 5) break;
             ?>
-                <li class="ptl-news__item">
-                  <span class="ptl-news__date"><?php echo esc_html(get_the_date('Y/m/d')); ?></span>
-                  <span class="ptl-news__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
-                </li>
-            <?php $count++; endwhile;
+                    <li class="ptl-news__item">
+                        <span class="ptl-news__date"><?php echo esc_html(get_the_date('Y/m/d')); ?></span>
+                        <span class="ptl-news__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
+                    </li>
+                <?php $count++;
+                endwhile;
             else:
                 $fallback = apply_filters('ptl_news_fallback_items', ['○○○○', '××××', '△△△△']);
                 foreach ($fallback as $title): ?>
                     <li class="ptl-news__item is-placeholder">
-                      <span class="ptl-news__date">2025/10/07</span>
-                      <span class="ptl-news__title"><a href="<?php echo esc_url($more_url); ?>"><?php echo esc_html($title); ?></a></span>
+                        <span class="ptl-news__date">2025/10/07</span>
+                        <span class="ptl-news__title"><a href="<?php echo esc_url($more_url); ?>"><?php echo esc_html($title); ?></a></span>
                     </li>
-                <?php endforeach;
+            <?php endforeach;
             endif;
             if ($news_q) wp_reset_postdata(); ?>
         </ul>

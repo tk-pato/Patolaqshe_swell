@@ -6,9 +6,10 @@ if (! defined('ABSPATH')) exit;
 ob_start();
 
 // SWELLフィルターを最高優先度で無効化
-function ptl_disable_all_posts($content) {
-    // 投稿リスト関連の出力を全て空にする
-    return '';
+function ptl_disable_all_posts($content)
+{
+	// 投稿リスト関連の出力を全て空にする
+	return '';
 }
 
 // 複数のフィルターで完全ブロック
@@ -18,8 +19,8 @@ add_filter('theme_mod_show_new_tab', '__return_false', 9999);
 add_filter('theme_mod_show_ranking_tab', '__return_false', 9999);
 
 // 投稿リスト系の出力を強制的に無効化
-add_action('wp_head', function() {
-    echo '<style>
+add_action('wp_head', function () {
+	echo '<style>
         /* 投稿リスト関連 */
         .p-postList, .c-postList, .wp-block-query, .wp-block-latest-posts,
         /* ページネーション関連 */
