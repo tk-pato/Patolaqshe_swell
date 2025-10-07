@@ -131,7 +131,7 @@
 /* カード */
 .ptl-infohub__card {
   display: block;
-  background: #fff;
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
   text-decoration: none;
@@ -139,21 +139,18 @@
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
   min-width: 0;
   width: 100%;
-  /* 🟡 デバッグ: カードの範囲確認（細線） */
-  outline: 1px solid yellow !important;
-  outline-offset: -1px;
+  aspect-ratio: 4/3;
 }
 
 /* カード画像 */
 .ptl-infohub__media {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding-top: 60%;
+  height: 100%;
   overflow: hidden;
   background: #f5f5f5;
-  /* 🟠 デバッグ: 画像エリアの範囲確認（細線） */
-  outline: 1px solid darkorange !important;
-  outline-offset: -1px;
 }
 
 .ptl-infohub__media img {
@@ -163,6 +160,24 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ダーケンオーバーレイ（テキストの視認性向上） */
+.ptl-infohub__media::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* キラっと光る演出（カーソルが止まってから発動） */
@@ -180,8 +195,8 @@
     rgba(255, 255, 255, 0) 100%
   );
   transform: skewX(-25deg);
-  transition: left 0.6s ease 0.3s; /* 0.3秒待機してから光る */
-  z-index: 1;
+  transition: left 0.6s ease 0.3s;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -189,41 +204,40 @@
   left: 150%;
 }
 
-/* カードコンテンツ */
+/* カードコンテンツ（画像の上に重ねる） */
 .ptl-infohub__content {
-  position: relative;
-  padding: 40px 8px 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 20px;
   text-align: center;
-  /* 🟣 デバッグ: コンテンツエリアの範囲確認（細線） */
-  outline: 1px solid magenta !important;
-  outline-offset: -1px;
+  z-index: 3;
 }
 
-/* カードタイトル */
+/* カードタイトル（視認性向上） */
 .ptl-infohub__title {
   position: relative;
-  font-size: clamp(15px, 1.5vw, 18px);
-  font-weight: 600;
-  color: #444;
-  margin-top: 10px;
-  margin-bottom: 6px;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px 0;
   letter-spacing: 0.08em;
-  /* 🔵 デバッグ: タイトルの範囲確認（細線） */
-  outline: 1px solid lightblue !important;
-  outline-offset: -1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+               0 0 8px rgba(0, 0, 0, 0.5);
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
 }
 
-/* カード説明文 */
+/* カード説明文（視認性向上） */
 .ptl-infohub__desc {
-  font-size: clamp(14px, 1.3vw, 16px);
-  font-weight: 300;
-  color: #444;
-  line-height: 1.65;
-  margin-top: 4px;
-  margin-bottom: 0;
-  /* 🟢 デバッグ: 説明文の範囲確認（細線） */
-  outline: 1px solid lightgreen !important;
-  outline-offset: -1px;
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.6;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8),
+               0 0 6px rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.2);
 }
 
 /* モバイル調整 */
