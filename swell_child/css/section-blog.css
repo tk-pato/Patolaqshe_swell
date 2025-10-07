@@ -53,7 +53,7 @@
 
 /* h2タイトルはstyle.cssの.ptl-section__titleで統一管理 */
 
-/* カードコンテナ - 全幅対応（フルブリード強制実装） */
+/* カードコンテナ - 全幅対応(フルブリード強制実装) */
 .ptl-blog__container {
   position: relative;
   width: 100vw !important;
@@ -63,7 +63,7 @@
   right: 0 !important;
   transform: translateX(0) !important;
   overflow: hidden;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 /* カードトラック（スクロールする部分） */
@@ -74,6 +74,10 @@
   margin-left: 0;
   padding-left: var(--ptl-container-pad, 20px);
   padding-right: var(--ptl-container-pad, 20px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* 5記事以上でアニメーション有効 */
@@ -180,7 +184,7 @@
 .ptl-blog__more {
   display: flex;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: 24px;
   max-width: var(--ptl-container-max, 1200px);
   margin-left: auto;
   margin-right: auto;

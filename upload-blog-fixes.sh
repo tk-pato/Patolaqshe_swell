@@ -14,8 +14,8 @@ REMOTE_BASE="/home/tk/patolaqshe.com/public_html/wp-content/themes/swell_child"
 
 # アップロード対象ファイル
 FILES=(
-  "home.php"
   "css/section-blog.css"
+  "js/section-blog.js"
 )
 
 echo "📁 修正ファイル一覧:"
