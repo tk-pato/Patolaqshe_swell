@@ -34,22 +34,28 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
             <div class="ptl-blog__container">
                 <div class="ptl-blog__track">
                     <?php foreach ($blog_posts as $post): setup_postdata($post); ?>
-                        <a href="<?php echo esc_url(get_permalink($post->ID)); ?>" class="ptl-blog__card">
-                            <div class="ptl-blog__media">
-                                <?php
-                                $thumbnail_id = get_post_thumbnail_id($post->ID);
-                                if ($thumbnail_id) {
-                                    echo wp_get_attachment_image($thumbnail_id, 'medium', false, [
-                                        'alt' => esc_attr(get_the_title($post)),
-                                        'loading' => 'lazy',
-                                    ]);
-                                } else {
-                                    echo '<img src="' . esc_url($default_image) . '" alt="' . esc_attr(get_the_title($post)) . '" loading="lazy">';
-                                }
-                                ?>
-                            </div>
-                            <h3 class="ptl-blog__title"><?php echo esc_html(get_the_title($post)); ?></h3>
-                        </a>
+                                                <div class="ptl-blog__item">
+                                                    <a href="<?php echo esc_url(get_permalink($post->ID)); ?>" class="ptl-blog__card">
+                                                        <div class="ptl-blog__media">
+                                                            <?php
+                                                            $thumbnail_id = get_post_thumbnail_id($post->ID);
+                                                            if ($thumbnail_id) {
+                                                                echo wp_get_attachment_image($thumbnail_id, 'medium', false, [
+                                                                    'alt' => esc_attr(get_the_title($post)),
+                                                                    'loading' => 'lazy',
+                                                                ]);
+                                                            } else {
+                                                                echo '<img src="' . esc_url($default_image) . '" alt="' . esc_attr(get_the_title($post)) . '" loading="lazy">';
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                    </a>
+                                                    <h3 class="ptl-blog__title">
+                                                        <a href="<?php echo esc_url(get_permalink($post->ID)); ?>">
+                                                            <?php echo esc_html(get_the_title($post)); ?>
+                                                        </a>
+                                                    </h3>
+                                                </div>
                     <?php endforeach;
                     wp_reset_postdata(); ?>
                 </div>
