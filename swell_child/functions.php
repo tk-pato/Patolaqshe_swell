@@ -2662,23 +2662,99 @@ add_filter('render_block', function ($block_content, $block) {
   return $block_content;
 }, 10, 2);
 
-// フロントページでページネーション関連を完全無効化（軽量版）
-add_action('wp_footer', function () {
+
+// ========================================
+// フロントページのページネーション完全無効化（PHPレベル）
+// ========================================
+add_action('template_redirect', function() {
+  if (!is_front_page()) return;
+  // SWELLのページネーション関数を無効化
+  remove_action('swell_before_footer', 'swell_output_pagination');
+  remove_action('swell_after_content', 'swell_output_pagination');
+  // WordPressのページネーション関数を上書き
+  add_filter('the_posts_pagination', '__return_empty_string', 999);
+  add_filter('get_the_posts_pagination', '__return_empty_string', 999);
+  add_filter('paginate_links', '__return_empty_string', 999);
+  add_filter('get_pagenum_link', '__return_false', 999);
+  // ページ番号付きURLを無効化
+  add_filter('redirect_canonical', function($redirect_url, $requested_url) {
+    if (is_front_page() && preg_match('/\/page\/\d+/', $requested_url)) {
+      return false;
+    }
+    return $redirect_url;
+  }, 10, 2);
+}, 5);
+
+add_filter('query_vars', function($vars) {
   if (is_front_page()) {
-    echo '<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // ページネーション要素を全て削除
-        const paginationSelectors = [
-            ".pagination", ".page-numbers", ".nav-links", ".posts-navigation",
-            ".post-navigation", ".paging-navigation", ".p-paginationNav",
-            ".p-pageNav", ".c-paginationNav", "*[class*=\"paginat\"]",
-            "*[class*=\"page-num\"]", "*[class*=\"nav-link\"]"
-        ];
-        
-        paginationSelectors.forEach(selector => {
-            document.querySelectorAll(selector).forEach(el => el.remove());
-        });
-    });
-    </script>';
+    $vars = array_diff($vars, ['paged', 'page']);
   }
+  return $vars;
 }, 999);
+
+add_filter('navigation_markup_template', function($template, $class) {
+  if (is_front_page()) {
+    return '';
+  }
+  return $template;
+}, 999, 2);
+
+// SWELLのページネーション設定を強制無効化
+add_filter('swell_pagination_args', function($args) {
+  if (is_front_page()) {
+    return false;
+  }
+  return $args;
+}, 999);
+
+add_filter('swell_post_list_args', function($args) {
+  if (is_front_page()) {
+    $args['posts_per_page'] = 0;
+    $args['nopaging'] = true;
+  }
+  return $args;
+}, 999);
+
+add_filter('body_class', function($classes) {
+  if (is_front_page()) {
+    $classes = array_filter($classes, function($class) {
+      return strpos($class, 'paged') === false && strpos($class, 'page-numbers') === false;
+    });
+  }
+  return $classes;
+}, 999);
+
+// JSによるDOM削除（保険）
+add_action('wp_footer', function() {
+  if (!is_front_page()) return;
+  ?>
+  <script>
+  (function() {
+    'use strict';
+    function removePaginationElements() {
+      const selectors = [
+        '.pagination', '.page-numbers', '.nav-links',
+        '.posts-navigation', '.post-navigation', '.paging-navigation',
+        '.p-paginationNav', '.p-pageNav', '.c-paginationNav',
+        '.wp-block-query-pagination', 'nav.navigation',
+        '.p-postList', '.c-postList', '.wp-block-query',
+        '.wp-block-latest-posts', '.wp-block-post-template'
+      ];
+      selectors.forEach(function(selector) {
+        document.querySelectorAll(selector).forEach(function(el) {
+          if (el && el.parentNode) el.parentNode.removeChild(el);
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', removePaginationElements);
+    } else {
+      removePaginationElements();
+    }
+    window.addEventListener('load', removePaginationElements);
+    const observer = new MutationObserver(removePaginationElements);
+    observer.observe(document.body, {childList: true, subtree: true});
+  })();
+  </script>
+  <?php
+}, 1);
