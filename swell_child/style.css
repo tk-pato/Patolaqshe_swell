@@ -1,3 +1,12 @@
+/* Top page: Remove gray band and space below hero */
+body.page-template-default .l-mainContent,
+body.home .l-mainContent,
+.l-mainContent,
+.l-article__body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    background: transparent !important;
+}
 
 /* STEP1: セクション間余白調整 */
 /* #bust-issues の余白は issues-navigation.css で NAVIGATIONと完全統一管理 */

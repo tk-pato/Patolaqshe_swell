@@ -2580,3 +2580,105 @@ add_action('wp_head', function() {
     }
   }
 }, 1);
+
+// 最強対策: すべてのWordPressフックでSWELL投稿リストを無効化
+add_action('init', function () {
+  if (is_front_page()) {
+    remove_all_actions('swell_front_top');
+    remove_all_actions('swell_front_bottom');
+    remove_all_actions('swell_home_content');
+    remove_all_actions('swell_post_list');
+  }
+}, 1);
+
+add_action('wp_loaded', function () {
+  if (is_front_page()) {
+    remove_all_actions('swell_front_top');
+    remove_all_actions('swell_front_bottom');
+    remove_all_actions('swell_home_content');
+    remove_all_actions('swell_post_list');
+  }
+}, 1);
+
+add_action('template_redirect', function () {
+  if (is_front_page()) {
+    remove_all_actions('swell_front_top');
+    remove_all_actions('swell_front_bottom');
+    remove_all_actions('swell_home_content');
+    remove_all_actions('swell_post_list');
+    
+    // 投稿リスト出力関数を無効化
+    add_filter('swell_show_home_posts', '__return_false');
+    add_filter('swell_show_post_list', '__return_false');
+    
+    // カスタマイザー設定を強制無効化
+    add_filter('theme_mod_show_new_tab', '__return_false');
+    add_filter('theme_mod_show_ranking_tab', '__return_false');
+  }
+}, 1);
+
+// フロントページでのクエリを固定ページのみに制限
+add_action('pre_get_posts', function ($query) {
+  if (is_admin() || !$query->is_main_query()) return;
+  if ($query->is_front_page()) {
+    // フロントページは固定ページ本体のみを対象にする
+    $front_id = (int) get_option('page_on_front');
+    if ($front_id > 0) {
+      $query->set('post_type', 'page');
+      $query->set('page_id', $front_id);
+    }
+    $query->set('posts_per_page', 1);
+    $query->set('no_found_rows', true);
+    $query->set('ignore_sticky_posts', true);
+  }
+});
+
+// フロントページでページコンテンツ出力を完全無効化
+add_filter('the_content', function ($content) {
+  // フロントページでは固定ページの本文を無効化
+  if (is_front_page() && in_the_loop() && is_main_query()) {
+    return '';
+  }
+  
+  // 投稿リスト系ブロックを含む場合は空にする
+  if (
+    strpos($content, 'wp-block-query') !== false ||
+    strpos($content, 'wp-block-latest-posts') !== false ||
+    strpos($content, 'wp-block-post-template') !== false ||
+    strpos($content, 'wp-block-archives') !== false
+  ) {
+    return '';
+  }
+  
+  return $content;
+}, 1);
+
+// フロントだけ投稿系ブロックを無効化（ダブル保険）
+add_filter('render_block', function ($block_content, $block) {
+  if (is_front_page() && is_page() && isset($block['blockName'])) {
+    $ban = ['core/query','core/latest-posts','core/posts-list','core/post-template','core/query-pagination'];
+    if (in_array($block['blockName'], $ban, true)) return '';
+  }
+  return $block_content;
+}, 10, 2);
+
+// フロントページでページネーション関連を完全無効化（軽量版）
+add_action('wp_footer', function () {
+  if (is_front_page()) {
+    echo '<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // ページネーション要素を全て削除
+        const paginationSelectors = [
+            ".pagination", ".page-numbers", ".nav-links", ".posts-navigation",
+            ".post-navigation", ".paging-navigation", ".p-paginationNav",
+            ".p-pageNav", ".c-paginationNav", "*[class*=\"paginat\"]",
+            "*[class*=\"page-num\"]", "*[class*=\"nav-link\"]"
+        ];
+        
+        paginationSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => el.remove());
+        });
+    });
+    </script>';
+  }
+}, 999);

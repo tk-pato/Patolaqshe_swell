@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+/* ========================================
+   INFO HUB セクション
+   navigation/BUST-ISSUESと完全統一
+======================================== */
+
+/* 🔴 デバッグ: セクション全体の範囲確認 */
+.ptl-infohub {
+  outline: 3px solid red !important;
+  outline-offset: -3px;
+}
+
+/* 🔵 デバッグ: コンテンツエリアの範囲確認 */
+.ptl-infohub .ptl-section__inner {
+  outline: 3px solid blue !important;
+  outline-offset: -3px;
+}
+
+/* 🟢 デバッグ: カードグリッドの範囲確認 */
+.ptl-infohub__grid {
+  outline: 3px solid green !important;
+  outline-offset: -3px;
+}
+
+/* セクション全体 */
+.ptl-infohub {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0 !important;
+  padding: 64px 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* パララックス背景 */
+.ptl-infohub__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+.ptl-infohub__bg video,
+.ptl-infohub__bg picture,
+.ptl-infohub__bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+}
+
+/* パララックスはJSで完全制御（section-parallax.jsと統一） */
+
+/* オーバーレイ */
+.ptl-infohub__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--overlay, 0.25));
+  z-index: 1;
+}
+
+/* コンテンツエリア（グローバルルールを上書き） */
+.ptl-infohub .ptl-section__inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--ptl-container-max, 1200px) !important;
+  margin: 0 auto !important;
+  padding: 80px 0 !important;
+  width: 100% !important;
+}
+
+/* ヘッダー（パディング追加） */
+.ptl-infohub__header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+}
+
+/* H2タイトルはstyle.cssのグローバルルールを使用 */
+/* navigation.cssで背景メディア上の白文字化を適用 */
+
+/* カードグリッド（パディング追加） */
+.ptl-infohub__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin: 0;
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+}
+
+@media (max-width: 959px) {
+  .ptl-infohub__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 699px) {
+  .ptl-infohub__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .ptl-infohub__header {
+    margin-bottom: 40px;
+  }
+}
+
+/* カード */
+.ptl-infohub__card {
+  display: block;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+  min-width: 0;
+  width: 100%;
+  /* 🟡 デバッグ: カードの範囲確認（細線） */
+  outline: 1px solid yellow !important;
+  outline-offset: -1px;
+}
+
+/* カード画像 */
+.ptl-infohub__media {
+  position: relative;
+  width: 100%;
+  padding-top: 60%;
+  overflow: hidden;
+  background: #f5f5f5;
+  /* 🟠 デバッグ: 画像エリアの範囲確認（細線） */
+  outline: 1px solid darkorange !important;
+  outline-offset: -1px;
+}
+
+.ptl-infohub__media img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* キラっと光る演出 */
+.ptl-infohub__media::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ptl-infohub__card:hover .ptl-infohub__media::before {
+  left: 150%;
+}
+
+/* カードコンテンツ */
+.ptl-infohub__content {
+  position: relative;
+  padding: 40px 8px 30px;
+  text-align: center;
+  /* 🟣 デバッグ: コンテンツエリアの範囲確認（細線） */
+  outline: 1px solid magenta !important;
+  outline-offset: -1px;
+}
+
+/* カードタイトル */
+.ptl-infohub__title {
+  position: relative;
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 600;
+  color: #444;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+  /* 🔵 デバッグ: タイトルの範囲確認（細線） */
+  outline: 1px solid lightblue !important;
+  outline-offset: -1px;
+}
+
+/* カード説明文 */
+.ptl-infohub__desc {
+  font-size: clamp(14px, 1.3vw, 16px);
+  font-weight: 300;
+  color: #444;
+  line-height: 1.65;
+  margin-top: 4px;
+  margin-bottom: 0;
+  /* 🟢 デバッグ: 説明文の範囲確認（細線） */
+  outline: 1px solid lightgreen !important;
+  outline-offset: -1px;
+}
+
+/* モバイル調整 */
+@media (max-width: 768px) {
+  .ptl-infohub__content {
+    padding: 30px 8px 24px;
+  }
+}
