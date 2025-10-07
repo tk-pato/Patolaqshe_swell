@@ -9,41 +9,58 @@ body.home .l-mainContent,
 }
 
 /* STEP1: セクション間余白調整 */
-/* #bust-issues の余白は issues-navigation.css で NAVIGATIONと完全統一管理 */
+/* #bust-issues の余白もstyle.cssでグローバル統一管理 */
 #page-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
 
 :root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
 
-/* ISSUES セクションの下に96px余白を確保 */
-#bust-issues{ margin-bottom: 96px !important; }
+/* ISSUES セクションの下に80px余白を確保（統一） */
+#bust-issues{ margin-bottom: 80px !important; }
 
 #section-reasons .ptl-section__inner{ padding-top: var(--gap-base) !important; }
 #section-reasons .ptl-section__title{ margin-top: 0 !important; }
 
 /* 各セクション個別の余白を無効化してグランド統一管理 */
-.ptl-section,
-#news, #section-reasons, #page-navigation, #section-services, #uservoice, #section-infohub, #salon,
-#section-reasons{
-  /* #bust-issues は削除（issues-navigation.css で独立管理） */
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+
+#news, #intro, #bust-issues, #section-reasons, #page-navigation, 
+#section-services, #uservoice, #section-infohub, #salon, #section-blog {
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
+/* 例外：NEWSはヒーロー直下のため上に余白 */
+#news { margin-top: 80px !important; }
+
 /* 各セクションの内部コンテンツ余白をグランドで統一 */
-.ptl-section .ptl-section__inner,
+
+/* 通常セクションの inner padding 統一 */
 #news .ptl-section__inner,
-#section-reasons .ptl-section__inner,
-#page-navigation .ptl-section__inner,
+#intro .ptl-section__inner,
 #section-services .ptl-section__inner,
-#section-infohub .ptl-section__inner,
+#section-blog .ptl-section__inner {
+    padding: 0 20px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* パララックスセクションの inner padding 統一 */
+#bust-issues .ptl-section__inner,
+#page-navigation .ptl-section__inner,
+#section-reasons .ptl-section__inner,
 #salon .ptl-section__inner,
-#section-reasons .ptl-section__inner{
-  /* #bust-issues は削除（issues-navigation.css で独立管理） */
-  padding: 80px 20px !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
+#uservoice .ptl-section__inner {
+    padding: 0 20px 80px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* 例外：INFO HUB（固定背景用の独自調整） */
+#section-infohub .ptl-section__inner {
+    padding: 80px 20px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
 }
 
 /* セクション間の統一マージン */
@@ -217,38 +234,52 @@ html, body { overflow-x: hidden; }
 
 /* ヘッダー：サブメニュー（ドロップダウン）の背景を透過に */
 @media (min-width: 960px) {
-    #gnav .sub-menu {
-        background-color: transparent !important; /* SWELL設定の背景色を上書き */
-        box-shadow: none !important;
-        border: none !important;
-        color: inherit; /* 親の色設定に追従 */
-    }
-    #gnav .sub-menu a {
-        background: transparent !important; /* 各項目の背景も透過 */
-        color: inherit !important; /* アンカー色も親色に追従 */
-        text-shadow: 0 1px 2px rgba(0,0,0,.25); /* 読みやすさ向上（任意） */
-    }
-    /* 読みやすさが落ちる場合はホバー時だけ薄く背景を付与（任意） */
-    #gnav .sub-menu a:hover {
-        background: rgba(255, 255, 255, 0.08) !important;
-        color: inherit !important;
+    /* 🔴 パララックスセクション本体のpadding復元 */
+    #bust-issues,
+    #page-navigation,
+    #section-reasons,
+    #salon,
+    #section-infohub {
+        padding: 64px 0 !important;
     }
 
-    /* 固定ヘッダー（スクロール追従）内のサブメニューも同じ挙動に */
-    .l-fixHeader .c-gnav .sub-menu {
-        background-color: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-        color: inherit;
+    /* クラスベースでも冗長指定（安全対策） */
+    .ptl-pageNavHero,
+    .ptl-reasonsHero,
+    .ptl-salonHero,
+    .ptl-infohub {
+        padding: 64px 0 !important;
     }
-    .l-fixHeader .c-gnav .sub-menu a {
-        background: transparent !important;
-        color: inherit !important;
-        text-shadow: 0 1px 2px rgba(0,0,0,.25);
+    :root {
+        --ptl-section-gap-top: 0px;
+        --ptl-section-gap-bottom: 80px;
     }
-    .l-fixHeader .c-gnav .sub-menu a:hover {
-        background: rgba(255,255,255,0.08) !important;
-        color: inherit !important;
+
+    /* 全セクションのマージン統一 */
+    #news,
+    #intro,
+    #bust-issues,
+    #section-reasons,
+    #page-navigation,
+    #section-services,
+    #uservoice,
+    #salon,
+    #section-infohub,
+    #section-blog {
+        margin-top: var(--ptl-section-gap-top) !important;
+        margin-bottom: var(--ptl-section-gap-bottom) !important;
+    }
+
+    /* 例外：NEWSのみ上に余白 */
+    #news {
+        margin-top: 80px !important;
+    }
+    
+    /* パララックスセクションのpadding保護（背景保護） */
+    #bust-issues, #page-navigation,
+    .ptl-reasonsHero, .ptl-salonHero,
+    #section-infohub {
+        padding: 64px 0 !important;
     }
 }
 
