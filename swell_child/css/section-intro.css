@@ -226,8 +226,8 @@
 #intro.ptl-intro-section {
     padding: 0 !important; /* カスタマイザーのpadding設定を無効化 */
     margin-top: 0 !important;
-        margin-bottom: 80px !important; /* 確実に80pxを設定 */
-    }
+    margin-bottom: 80px !important; /* 最高詳細度で80pxを強制 */
+}
 
 /* セクション内側のベース余白と横幅ロック（上下は #intro のmarginで管理） */
 #intro .ptl-section__inner {
@@ -239,12 +239,14 @@
 /* セクション余白（#intro 側で管理） */
 #intro {
     margin-top: 0 !important;
-        /* #intro 単体での余白管理は撤去（セレクタ統一） */
+    /* margin-bottomは#intro.ptl-intro-sectionで統一管理 */
 }
 
 /* SP専用余白統一 */
 @media (max-width: 768px) {
-    #intro.ptl-intro-section { margin-bottom: 40px !important; }
+    #intro.ptl-intro-section {
+        margin-bottom: 40px !important;
+    }
 }
 
 /* 強制ルール/擬似要素は撤去（余白は #intro の margin-bottom で管理） */
