@@ -192,6 +192,6 @@
 
 /* セクション余白 */
 #bust-issues {
-  margin-top: 0;
-  margin-bottom: 60px; /* issues⇔reasons 60厳守 */
+  margin-top: 0 !important;
+  margin-bottom: 80px !important; /* 見た目を80へ */
 }

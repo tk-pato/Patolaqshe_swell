@@ -239,6 +239,33 @@ add_action('wp_enqueue_scripts', function () {
 }, 20);
 /* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
 
+/* === Spacing Debug Toggle (front only) === */
+add_action('wp_footer', function(){
+  if (is_admin()) return; // 全公開ページで有効
+?>
+  <script id="ptl-spacing-debug" data-desc="Press Shift+D or use ?debug=spacing to toggle">
+    (function(){
+      try{
+        var enable = /[?#&]debug=spacing\b/.test(location.search) || /#debug-spacing\b/.test(location.hash);
+        var root = document.documentElement || document.body;
+        var apply = function(on){
+          if(!root) return;
+          if(on){ root.setAttribute('data-ptl-debug-spacing',''); }
+          else { root.removeAttribute('data-ptl-debug-spacing'); }
+        };
+        apply(enable);
+        window.addEventListener('keydown', function(e){
+          if(e.key.toLowerCase()==='d' && e.shiftKey){
+            var on = !root.hasAttribute('data-ptl-debug-spacing');
+            apply(on);
+          }
+        }, {passive:true});
+      }catch(_){/* noop */}
+    })();
+  </script>
+<?php
+}, 9999);
+
 // add_theme_support( 'post-thumbnails' );
 // JSON-LDやフック追加は、サイト固有要件が固まってから実装します。
 
@@ -1009,6 +1036,12 @@ add_action('wp_enqueue_scripts', function () {
   $infohub_js = get_stylesheet_directory() . '/js/section-infohub.js';
   if (file_exists($infohub_js)) {
     wp_enqueue_script('ptl-infohub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
+  }
+
+  // NEWS セクション用CSS（セクション個別管理へ移行）
+  $news_css = get_stylesheet_directory() . '/css/section-news.css';
+  if (file_exists($news_css)) {
+    wp_enqueue_style('ptl-news', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], filemtime($news_css));
   }
   // BUST-ISSUESは共通のsection-parallax.jsを使用（ptl-pageNavHeroクラス併用）
   // $bust_issues_js = get_stylesheet_directory() . '/js/section-bust-issues.js';

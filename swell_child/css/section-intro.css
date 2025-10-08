@@ -232,5 +232,5 @@
 /* セクション余白 */
 #intro {
     margin-top: 0;
-    margin-bottom: 130px !important; /* INTRO⇔issues を+30広げる（強制） */
+    margin-bottom: 80px !important; /* INTRO⇔issues を80の見え方へ */
 }

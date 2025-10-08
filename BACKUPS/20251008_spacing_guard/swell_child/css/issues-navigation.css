@@ -1,0 +1,197 @@
+/* BUST-ISSUES — 点線のみ表示（実線削除） */
+#bust-issues .ptl-bustIssues__list{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	/* 点線のみで表現 */
+}
+
+/* 親テーマの個別ボーダー指定を無効化 */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item{
+	border: 0;
+}
+
+/* 項目間の実線も削除 */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item + li.ptl-bustIssues__item{
+	border-top: none;
+}
+
+/* BUST-ISSUES: 点線のみの下線 */
+#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
+	border-bottom: 1px dashed rgba(0,0,0,.18) !important;
+}
+
+
+
+/* ===========================
+   ISSUES: NAVIGATIONと完全一致
+   =========================== */
+
+/* 基本構造 - NAVIGATIONと完全一致 */
+#bust-issues {
+  min-height: clamp(520px, 60vh, 720px); /* NAVIGATIONと一致 */
+  max-height: clamp(520px, 60vh, 720px) !important; /* 強制統一 */
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;
+  /* フルブリード設定 */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* PC専用: 高さ設定 */
+@media (min-width: 960px) {
+  #bust-issues { min-height: clamp(520px, 60vh, 720px); }
+}
+
+/* コンテンツ余白 - NAVIGATIONと完全一致（詳細度強化版） */
+/* style.cssのグローバルルールを確実に上書き */
+#bust-issues.ptl-bustIssues .ptl-section__inner,
+#bust-issues .ptl-bustIssues .ptl-section__inner,
+#bust-issues .ptl-section__inner {
+  width: 100% !important;
+  position: relative !important;
+  z-index: 1 !important;
+  /* NAVIGATIONと完全一致する上下余白 */
+  padding-top: clamp(64px, 10vw, 160px) !important;
+  padding-bottom: 0 !important; /* 下余白を削除: style.cssのmargin-bottom: 80pxで統一管理 */
+  /* 左右余白はグローバル変数を使用 */
+  padding-left: var(--ptl-container-pad, 20px) !important;
+  padding-right: var(--ptl-container-pad, 20px) !important;
+  /* コンテナ幅もNAVIGATIONと統一 */
+  max-width: var(--ptl-container-max, 1200px) !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+/* 背景レイヤ - NAVIGATIONと完全一致 */
+#bust-issues .ptl-bustIssues__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: transparent;
+  transform-origin: center center;
+}
+
+/* 背景メディア（動画/画像） - NAVIGATIONと完全一致 */
+#bust-issues .ptl-bustIssues__video,
+#bust-issues .ptl-bustIssues__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: center center;
+}
+
+#bust-issues .ptl-bustIssues__video { object-fit: cover; }
+
+#bust-issues .ptl-bustIssues__image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+}
+
+/* オーバーレイ - NAVIGATIONと完全一致 */
+#bust-issues .ptl-bustIssues__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* NAVIGATIONと同じ透明度 */
+}
+
+/* SP: パララックス効果 - NAVIGATIONと完全一致 */
+@media (max-width: 768px) {
+  #bust-issues .ptl-bustIssues__image img,
+  #bust-issues .ptl-bustIssues__video {
+    transform: translateY(var(--ptl-parallax)) scale(1.15);
+    transform-origin: center;
+    will-change: transform;
+  }
+  
+  #bust-issues {
+    overflow: clip; /* はみ出し抑止 */
+  }
+}
+
+/* === /完全一致 === */
+
+/* BUST-ISSUES: コンテンツ部分のスタイル（style.cssから移動） */
+.ptl-bustIssues__head { text-align: center; margin-bottom: clamp(8px, 2vw, 12px); } /* 12px→8px, 20px→12px に縮小 */
+.ptl-bustIssues .ptl-section__title { text-align: center; letter-spacing: .08em; font-weight: 600; margin-bottom: 16px !important; font-size: var(--ptl-heading-size); } /* 28px→16px に縮小 */
+.ptl-bustIssues .ptl-section__subtitle { text-align: center; color: #777; margin-top: -4px; font-size: var(--ptl-subtitle-size); }
+.ptl-bustIssues .ptl-section__subtitleLine {
+    width: clamp(180px, 28vw, 560px);
+    height: clamp(16px, 3.2vw, 28px);
+    margin: 10px auto 26px;
+    background: url('../img/bg_1.png') center/contain no-repeat;
+}
+
+/* カード内のコンテンツスタイル */
+.ptl-bustIssues__card { 
+  background: rgba(255,255,255,0.95); 
+  border-radius: 10px; 
+  box-shadow: 0 10px 28px rgba(0,0,0,.08); 
+  padding: clamp(12px, 2vw, 18px); /* 16px→12px, 26px→18px に縮小 */
+  max-width: 1100px; /* 1160px→1100px に縮小 */
+  margin: 0 auto; 
+  backdrop-filter: blur(8px);
+}
+
+.ptl-bustIssues__list { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 8px; /* 14px→8px に縮小 */
+  margin: 0; 
+  padding: 0; 
+  list-style: none; 
+}
+
+@media (min-width: 900px) { 
+  .ptl-bustIssues__list { 
+    grid-template-columns: repeat(2, 1fr); 
+  } 
+}
+
+.ptl-bustIssues__item { 
+  display: grid; 
+  grid-template-columns: 28px 1fr; 
+  align-items: center; 
+  column-gap: 10px; 
+  padding: 8px 6px; /* 10px→8px, 8px→6px に縮小 */
+  border-bottom: 1px dashed rgba(0,0,0,.18) !important;
+}
+
+.ptl-bustIssues__icon { 
+  width: 22px; 
+  height: 22px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ptl-bustIssues__icon img { 
+  width: 22px; 
+  height: 22px; 
+  display: block; 
+  object-fit: contain; 
+}
+
+.ptl-bustIssues__text { 
+  color: #333; 
+  font-weight: 500;
+}
+
+/* セクション余白 */
+#bust-issues {
+  margin-top: 0;
+  margin-bottom: 60px; /* issues⇔reasons 60厳守 */
+}

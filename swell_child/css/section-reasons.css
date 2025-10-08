@@ -1,7 +1,7 @@
 @charset "UTF-8";
 #section-reasons {
-    margin-top: 0;
-    margin-bottom: 60px; /* reasons⇔navigation 60厳守 */
+    margin-top: 0 !important;
+    margin-bottom: 80px !important; /* 見た目を80へ */
 }
 /* ===========================
    REASONS Section Styles - 統合完了版

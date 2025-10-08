@@ -1,0 +1,502 @@
+/* arrows */
+/* arrows (updated) */
+#uservoice .swiper-button-prev,
+#uservoice .swiper-button-next{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    z-index:10; pointer-events:auto; opacity:1;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+#uservoice .swiper-button-prev{ left:10px; }
+#uservoice .swiper-button-next{ right:10px; }
+/* ページネーション余白 */
+#uservoice .swiper-pagination{ margin-top:24px; }
+/* ===========================
+   User's Voice Section Styles
+   お客様の声セクション専用スタイル
+   =========================== */
+
+/* セクション基本設定 */
+.ptl-uservoice {
+    --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+    background: white;
+}
+
+.ptl-uservoice .ptl-section__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* h2スタイルはstyle.cssで統一管理 */
+
+/* ornament用のスタイルは不要（インラインスタイルで制御） */
+
+/* スライダー（縦並び3カード） */
+.uservoice-slider {
+    margin: 60px 0;
+    position: relative;
+    overflow: visible;
+}
+
+.uservoice-slider .swiper-wrapper {
+    display: flex;
+    flex-direction: row; /* 横並び */
+    align-items: stretch; /* 高さ統一 */
+    gap: 0 !important; /* Swiperが制御 */
+}
+
+.uservoice-slider .swiper-slide {
+    height: auto;
+    display: flex !important;
+    align-items: stretch !important;
+}
+
+/* フィードバックカード */
+
+/* 顧客画像 */
+.feedback-image {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f0f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* フィードバックタイトル */
+.feedback-title {
+    font-size: clamp(13px, 1.4vw, 16px);
+    font-weight: 600;
+    color: #444;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    letter-spacing: .08em;
+    font-family: inherit;
+}
+
+/* フィードバック内容 */
+.feedback-content {
+    font-size: clamp(12px, 1vw, 14px);
+    font-weight: 300;
+    color: #444;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: inherit;
+}
+
+.feedback-content p {
+    font-size: clamp(12px, 1vw, 14px);
+    line-height: 1.8;
+    color: #444;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+/* 作成者名 */
+.feedback-author {
+    font-size: clamp(13px, 1.4vw, 16px); /* タイトルと同一サイズに統一 */
+    font-weight: 300;
+    color: #444;
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+/* 評価星 */
+.feedback-rating {
+    color: #ffc107;
+    font-size: 0.8rem; /* 80%に縮小 */
+    letter-spacing: 2px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-rating .fa-star {
+    margin: 0 2px;
+}
+
+.feedback-rating .fa-star-o {
+    color: #ddd;
+}
+
+/* ページネーション */
+.uservoice-slider .swiper-pagination {
+    position: static;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.uservoice-slider .swiper-pagination-bullet {
+    background: #ccc;
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.uservoice-slider .swiper-pagination-bullet-active {
+    background: #4a90e2;
+    transform: scale(1.3);
+}
+
+/* MOREボタン */
+.ptl-uservoice .ptl-uservoice__more {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 0;
+}
+
+
+.ptl-uservoice__moreBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 30px;
+    color: #4a90e2;
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid #4a90e2;
+    font-weight: 600;
+    transition: border-color 0.3s, color 0.3s;
+    background: none !important;
+}
+
+.ptl-uservoice__moreLabel {
+    font-weight: 600;
+}
+
+.ptl-uservoice__moreArrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.ptl-uservoice__moreBtn:hover .ptl-uservoice__moreArrow {
+    transform: translateX(5px);
+}
+.ptl-uservoice__moreBtn:hover {
+    border-color: #357abd;
+    color: #357abd;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .ptl-uservoice {
+        padding: 60px 0;
+    }
+    
+    .uservoice-slider {
+        margin: 40px 0;
+    }
+    
+    .uservoice-slider .swiper-wrapper {
+        gap: 20px;
+    }
+    
+    /* .feedback-card rules removed */
+    
+    .customer-img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .feedback-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .feedback-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .feedback-author {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    
+    .feedback-rating {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ptl-uservoice {
+        padding: 50px 0;
+    }
+    
+    .uservoice-slider {
+        margin: 30px 0;
+    }
+    
+    .uservoice-slider .swiper-wrapper {
+        gap: 15px;
+    }
+    
+    /* .feedback-card padding removed per request */
+    
+    .customer-img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .feedback-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .feedback-content p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .feedback-author {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+    
+    .feedback-rating {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    .uservoice-slider .swiper-pagination {
+        margin-top: 30px;
+    }
+    
+    .uservoice-slider .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+    }
+}
+
+/* ===== SP専用フォント統一設定（REASONSセクションと統一） ===== */
+@media (max-width: 768px) {
+    /* タイトル：REASONSのboxTitleと完全統一 */
+    #uservoice .feedback-title {
+        font-size: clamp(13px, 1.4vw, 16px) !important;
+        font-weight: 600 !important;
+        color: #444 !important; /* REASONSと統一 */
+        text-align: center !important;
+        margin-top: 10px !important;
+        margin-bottom: 6px !important;
+        letter-spacing: .08em !important;
+        font-family: inherit !important;
+    }
+    
+    /* ディスクリプション：REASONSのboxDescと完全統一 */
+    #uservoice .feedback-content {
+        font-size: clamp(12px, 1.2vw, 14px) !important; /* タイトルより1〜2px小 */
+        font-weight: 300 !important;
+        color: #444 !important;
+        line-height: 1.65 !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+        font-family: inherit !important;
+    }
+    
+    #uservoice .feedback-content p {
+        font-size: clamp(12px, 1.2vw, 14px) !important; /* タイトルより1〜2px小 */
+        font-weight: 300 !important;
+        color: #444 !important;
+        line-height: 1.65 !important;
+        margin: 0 !important;
+        letter-spacing: 0.02em !important;
+    }
+    
+    /* 顧客名：REASONSのlabelスタイルベース */
+    #uservoice .feedback-author {
+        font-size: clamp(13px, 1.4vw, 16px) !important; /* タイトルと統一 */
+        font-weight: 600 !important;
+        color: #222 !important;
+        text-align: center !important;
+        margin-bottom: 15px !important;
+        font-family: inherit !important;
+    }
+    
+    /* 星評価：視認性保持 */
+    #uservoice .feedback-rating {
+        color: #ffc107 !important;
+        font-size: 0.88rem !important; /* 80%縮小（1.1rem → 0.88rem） */
+        letter-spacing: 2px !important;
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+
+/* オーナメント調整（h2統一管理により他は不要） */
+#uservoice .ptl-section__ornament{margin:12px 0 40px !important;text-align:center !important;} /* inline styleに勝つため !important */
+
+/* stop full-bleed shift only for this section (disabled to allow full-bleed) */
+/* #uservoice .uservoice-slider{width:100% !important;max-width:1100px;margin:24px auto 0 !important;margin-left:0 !important;} */
+
+#uservoice .uservoice-slider .swiper-wrapper{display:flex !important; flex-direction:row !important; align-items: stretch !important;}
+#uservoice .uservoice-slider .swiper{min-height:450px; position: relative; padding: 0 60px;} /* ラッパーの高さゼロ回避とナビ用余白 */
+
+#uservoice .uservoice-slider{
+    width:100vw !important;
+    margin-left:calc(50% - 50vw) !important;
+    margin-right:0 !important;
+    max-width:none !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* .feedback-card rules removed per request */
+
+
+/* kill boxes and shadows in USER'S VOICE */
+#uservoice .wp-block-group,
+#uservoice [class*="feedback"],
+#uservoice [class*="card"],
+#uservoice [class*="shadow"],
+#uservoice .swiper-slide{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+#uservoice .wp-block-group:hover,
+#uservoice [class*="card"]:hover,
+#uservoice [class*="feedback"]:hover,
+#uservoice [class*="shadow"]:hover,
+#uservoice .swiper-slide:hover {
+    box-shadow: none !important;
+    transform: none !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* USER'S VOICEセクション専用のMOREボタン背景削除 */
+#uservoice .ptl-uservoice__moreBtn {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+#uservoice .ptl-uservoice__moreBtn:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* カードの統一デザイン（シャドウ削除版） */
+#uservoice .feedback-card {
+    background: #fff !important;
+    border-radius: 12px !important;
+    padding: 24px !important;
+    box-shadow: none !important; /* シャドウ完全削除 */
+    text-align: center !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    border: none !important;
+    min-height: 350px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* 疑似要素用 */
+}
+
+/* PC・タブレット用カード間グレー線 */
+@media (min-width: 769px) {
+    #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
+        content: '';
+        position: absolute;
+        top: 10%;
+        right: -1px;
+        bottom: 10%;
+        width: 1px;
+        background-color: #e0e0e0;
+        z-index: 1;
+    }
+}
+
+/* タブレット時の線の調整 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
+        background-color: #d0d0d0;
+        top: 8%;
+        bottom: 8%;
+    }
+}
+
+/* 最終的な統一設定（パララックス画像下との距離調整） */
+#uservoice.ptl-section .ptl-section__inner {
+    padding: 20px 20px 0 !important; /* 下余白を削除 */
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
+}
+
+/* ページネーションの色分け（アクティブ/非アクティブ明確化） */
+#uservoice .swiper-pagination-bullet {
+    background: #ccc !important; /* 非アクティブ: 薄いグレー */
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+#uservoice .swiper-pagination-bullet-active {
+    background: #777 !important; /* アクティブ: 濃いグレー */
+    transform: scale(1.3);
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    #uservoice .uservoice-slider {
+        margin-left: calc(50% - 50vw) !important;
+        width: 100vw !important;
+    }
+
+    #uservoice .uservoice-slider .swiper { padding: 0 50px; }
+
+    #uservoice .feedback-card {
+        padding: 20px !important;
+        margin: 0 10px; /* SP時の左右マージン */
+        min-height: 300px;
+    }
+
+    /* SP時はグレー線を確実に非表示 */
+    #uservoice .feedback-card::after {
+        display: none !important;
+    }
+
+    #uservoice .swiper-button-prev { left: 10px; }
+    #uservoice .swiper-button-next { right: 10px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* タブレット時の3枚表示調整 */
+    #uservoice .feedback-card {
+        margin: 0 8px;
+        padding: 22px !important;
+        min-height: 320px;
+    }
+}
+
+/* セクション余白 */
+#uservoice {
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+

@@ -1,0 +1,60 @@
+/* ===========================
+   NEWS Section Styles
+   NEWSセクション専用スタイル
+   =========================== */
+
+/* h2スタイルはstyle.cssで統一管理 */
+
+/* ニュースリスト */
+.ptl-news__list.is-titleOnly {
+  max-width: 980px;
+  margin: 0 auto;
+}
+.ptl-news__list.is-titleOnly .ptl-news__item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 28px 0 28px 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: clamp(14px, 2.2vw, 16px);
+}
+
+.ptl-news__date {
+  min-width: 120px;
+  color: #555;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: right;
+  font-size: clamp(14px, 2.2vw, 16px);
+  line-height: 1.8;
+}
+.ptl-news__title {
+  flex: 1;
+  color: #555;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+  font-size: clamp(14px, 2.2vw, 16px);
+  text-align: left;
+  line-height: 1.8;
+}
+.ptl-news__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.ptl-news__title a:hover {
+  color: #bfa18c;
+}
+
+@media (max-width: 900px) {
+  .ptl-news__list.is-titleOnly .ptl-news__item {
+    padding: 18px 0 18px 0;
+    gap: 18px;
+  }
+}
+
+/* セクション余白 */
+#news {
+  margin-top: 60px;      /* ヒーロー⇔NEWS 60厳守 */
+  margin-bottom: 70px;   /* NEWS⇔INTRO 10詰め（現状維持） */
+}

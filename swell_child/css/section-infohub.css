@@ -243,3 +243,9 @@
   min-width: 0 !important;
   box-sizing: border-box !important;
 }
+
+/* セクション外側余白の原則管理（上0・下80） */
+#section-infohub {
+  margin-top: 0 !important;
+  margin-bottom: 80px !important;
+}

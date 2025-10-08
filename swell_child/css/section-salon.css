@@ -452,6 +452,6 @@
 
 /* セクション余白 */
 #salon {
-    margin-top: 0;
-    margin-bottom: 60px; /* SALON⇔INFOHUB 60厳守 */
+    margin-top: 0 !important;
+    margin-bottom: 80px !important; /* 要望: 80へ拡大 */
 }

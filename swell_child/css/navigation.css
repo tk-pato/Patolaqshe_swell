@@ -289,6 +289,6 @@
 
 /* セクション余白 */
 #page-navigation {
-    margin-top: 0;
-    margin-bottom: 80px;
+  margin-top: 0 !important;
+  margin-bottom: 80px !important; /* 上書きに負けないよう強制 */
 }

@@ -8,34 +8,15 @@ body.home .l-mainContent,
     background: transparent !important;
 }
 
-/* STEP1: セクション間余白調整 */
-/* #bust-issues の余白もstyle.cssでグローバル統一管理 */
-#page-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
+/* STEP1: セクション間余白調整（グローバル管理は撤去、各セクションCSSで管理） */
+/* 旧: #page-navigation の上寄せ（負のmargin）は廃止。navigation.cssで margin-top:0 を定義 */
 
 :root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
 
-/* ISSUES セクションの下に80px余白を確保（統一） */
-#bust-issues{ margin-bottom: 80px !important; }
-
-#section-reasons .ptl-section__inner{ padding-top: var(--gap-base) !important; }
 #section-reasons .ptl-section__title{ margin-top: 0 !important; }
 
-/* 各セクション個別の余白を無効化してグランド統一管理 */
-
-#news, #intro, #bust-issues, #section-reasons, #page-navigation, 
-#section-services, #uservoice, #section-infohub, #salon, #section-blog {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* 例外：NEWSはヒーロー直下のため上に余白 */
-#news { margin-top: 80px !important; }
-
-/* 各セクションの内部コンテンツ余白をグランドで統一 */
-
-/* 通常セクションの inner padding 統一 */
+/* 各セクションの内部コンテンツ余白（必要箇所のみ最小限） */
+/* 通常セクションの inner padding */
 #news .ptl-section__inner,
 #intro .ptl-section__inner,
 #section-services .ptl-section__inner,
@@ -45,7 +26,7 @@ body.home .l-mainContent,
     margin: 0 auto !important;
 }
 
-/* パララックスセクションの inner padding 統一 */
+/* パララックスセクションの inner padding */
 #bust-issues .ptl-section__inner,
 #page-navigation .ptl-section__inner,
 #section-reasons .ptl-section__inner,
@@ -55,32 +36,19 @@ body.home .l-mainContent,
     max-width: 1200px !important;
     margin: 0 auto !important;
 }
-}
+/* ↑ 余計な閉じカッコを削除 */
 
-/* 例外：INFO HUB（固定背景用の独自調整） */
+/* INFO HUB（固定背景用の独自調整） */
 #section-infohub .ptl-section__inner {
     padding: 40px 20px 0 !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
 }
-}
+/* ↑ 余計な閉じカッコを削除 */
 
-/* セクション間の統一マージン */
-#news + #section-reasons,
-#section-reasons + #page-navigation,
-#page-navigation + #section-services,
-#uservoice + #bust-issues,
-#uservoice + #salon,
-#bust-issues + #section-infohub,
-#salon + #section-infohub{
-    margin-top: 80px !important; /* 96px→80px に統一 */
-}
+/* セクション間の統一マージンは撤去（各セクションCSSで個別管理） */
 
-/* INTROセクション個別調整：カスタマイザー設定を上書きして80pxに統一 */
-#intro {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-}
+/* INTROセクション個別調整：カスタマイザー設定のpaddingのみ無効化（余白は各CSSで管理） */
 #intro.ptl-intro-section {
     padding: 0 !important; /* カスタマイザーのpadding設定を無効化 */
 }
@@ -104,22 +72,11 @@ body.home .l-mainContent,
 
 /* パララックス画像幅は維持、コンテンツのみ統一 */
 /* #bust-issues は issues-navigation.css で独立管理 */
-#section-reasons .ptl-section__inner{
-  padding-top: 64px !important;
-  padding-bottom: 64px !important;
-}
+/* #section-reasons の .ptl-section__inner へのpadding指定は削除（重複のため） */
 
 :root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
 
-/* セクション間の外側マージンを統一（内部のパララックス高さは不変） */
-#section-issue + #section-reasons,
-#section-reasons + #page-navigation,
-#page-navigation + #section-services{
-    margin-top: var(--gap-base) !important;
-}
-
-/* 視覚補正:パララックス境界だけ少し詰める（表示領域は削らない） */
-#section-issue + #section-reasons{ margin-top: var(--gap-parallax) !important; }
+/* セクション間の外側マージン統一ロジックは撤去（各セクションCSSで管理） */
 /*
 Theme Name: SWELL CHILD
 Template: swell
@@ -596,4 +553,64 @@ html, body { overflow-x: hidden; }
 }
 
 /* SALONは section-salon.css 側でフルブリード＋inner制御に統一 */
+
+/* =====================================================
+     Spacing Debug (toggleable)
+     body[data-ptl-debug-spacing] で有効化
+     - 各セクション（ヒーロー含む）のmargin-top/bottom境界に破線
+     ----------------------------------------------------- */
+[data-ptl-debug-spacing] .p-mainVisual,
+[data-ptl-debug-spacing] section[id],
+[data-ptl-debug-spacing] #news,
+[data-ptl-debug-spacing] #intro,
+[data-ptl-debug-spacing] #bust-issues,
+[data-ptl-debug-spacing] #section-reasons,
+[data-ptl-debug-spacing] #page-navigation,
+[data-ptl-debug-spacing] #section-services,
+[data-ptl-debug-spacing] #uservoice,
+[data-ptl-debug-spacing] #salon,
+[data-ptl-debug-spacing] #section-infohub,
+[data-ptl-debug-spacing] #section-blog {
+    position: relative;
+}
+
+[data-ptl-debug-spacing] .p-mainVisual::before,
+[data-ptl-debug-spacing] section[id]::before,
+[data-ptl-debug-spacing] #news::before,
+[data-ptl-debug-spacing] #intro::before,
+[data-ptl-debug-spacing] #bust-issues::before,
+[data-ptl-debug-spacing] #section-reasons::before,
+[data-ptl-debug-spacing] #page-navigation::before,
+[data-ptl-debug-spacing] #section-services::before,
+[data-ptl-debug-spacing] #uservoice::before,
+[data-ptl-debug-spacing] #salon::before,
+[data-ptl-debug-spacing] #section-infohub::before,
+[data-ptl-debug-spacing] #section-blog::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    border-top: 2px dashed rgba(255, 64, 160, .85); /* margin-top下端（境界） */
+    pointer-events: none;
+    z-index: 9999;
+}
+
+[data-ptl-debug-spacing] .p-mainVisual::after,
+[data-ptl-debug-spacing] section[id]::after,
+[data-ptl-debug-spacing] #news::after,
+[data-ptl-debug-spacing] #intro::after,
+[data-ptl-debug-spacing] #bust-issues::after,
+[data-ptl-debug-spacing] #section-reasons::after,
+[data-ptl-debug-spacing] #page-navigation::after,
+[data-ptl-debug-spacing] #section-services::after,
+[data-ptl-debug-spacing] #uservoice::after,
+[data-ptl-debug-spacing] #salon::after,
+[data-ptl-debug-spacing] #section-infohub::after,
+[data-ptl-debug-spacing] #section-blog::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    border-bottom: 2px dashed rgba(64, 128, 255, .85); /* margin-bottom上端（境界） */
+    pointer-events: none;
+    z-index: 9999;
+}
 

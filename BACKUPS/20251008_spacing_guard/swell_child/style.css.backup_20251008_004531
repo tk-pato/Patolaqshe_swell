@@ -1,0 +1,597 @@
+/* Top page: Remove gray band and space below hero */
+body.page-template-default .l-mainContent,
+body.home .l-mainContent,
+.l-mainContent,
+.l-article__body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    background: transparent !important;
+}
+
+/* STEP1: セクション間余白調整 */
+/* #bust-issues の余白もstyle.cssでグローバル統一管理 */
+#page-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
+
+:root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
+
+/* ISSUES セクションの下に80px余白を確保（統一） */
+#bust-issues{ margin-bottom: 80px !important; }
+
+#section-reasons .ptl-section__inner{ padding-top: var(--gap-base) !important; }
+#section-reasons .ptl-section__title{ margin-top: 0 !important; }
+
+/* 各セクション個別の余白を無効化してグランド統一管理 */
+
+#news, #intro, #bust-issues, #section-reasons, #page-navigation, 
+#section-services, #uservoice, #section-infohub, #salon, #section-blog {
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* 例外：NEWSはヒーロー直下のため上に余白 */
+#news { margin-top: 80px !important; }
+
+/* 各セクションの内部コンテンツ余白をグランドで統一 */
+
+/* 通常セクションの inner padding 統一 */
+#news .ptl-section__inner,
+#intro .ptl-section__inner,
+#section-services .ptl-section__inner,
+#section-blog .ptl-section__inner {
+    padding: 0 20px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* パララックスセクションの inner padding 統一 */
+#bust-issues .ptl-section__inner,
+#page-navigation .ptl-section__inner,
+#section-reasons .ptl-section__inner,
+#salon .ptl-section__inner,
+#uservoice .ptl-section__inner {
+    padding: 0 20px 80px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* 例外：INFO HUB（固定背景用の独自調整） */
+#section-infohub .ptl-section__inner {
+    padding: 80px 20px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* セクション間の統一マージン */
+#news + #section-reasons,
+#section-reasons + #page-navigation,
+#page-navigation + #section-services,
+#uservoice + #bust-issues,
+#uservoice + #salon,
+#bust-issues + #section-infohub,
+#salon + #section-infohub{
+  margin-top: 96px !important;
+}
+
+/* 全セクションの見えているコンテンツ部分を①のNEWSセクション境界に統一 */
+:root{ --section-padding: 80px 0; --section-inner-width: 1200px; }
+
+/* 各セクションのコンテンツ部分を統一（パララックス背景は維持） */
+
+/* NEWSセクションのパディングを基準として他も合わせる */
+#news .ptl-section__inner{ padding: 80px 20px !important; }
+
+/* パララックス画像幅は維持、コンテンツのみ統一 */
+/* #bust-issues は issues-navigation.css で独立管理 */
+#section-reasons .ptl-section__inner{
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+:root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
+
+/* セクション間の外側マージンを統一（内部のパララックス高さは不変） */
+#section-issue + #section-reasons,
+#section-reasons + #page-navigation,
+#page-navigation + #section-services{
+    margin-top: var(--gap-base) !important;
+}
+
+/* 視覚補正:パララックス境界だけ少し詰める（表示領域は削らない） */
+#section-issue + #section-reasons{ margin-top: var(--gap-parallax) !important; }
+/*
+Theme Name: SWELL CHILD
+Template: swell
+Theme URI: https://swell-theme.com/
+Description: SWELLの子テーマ
+Version: 1.0.0
+Author: LOOS WEB STUDIO
+Author URI: https://loos-web-studio.com/
+License: GNU General Public License
+License URI: http://www.gnu.org/licenses/gpl.html
+*/
+
+/* 子テーマ: 最小カスタム（親テーマのヒーロー機能を使用） */
+
+/* フルブリード(100vw)での横ズレ防止 */
+html, body { overflow-x: hidden; }
+
+/* ヒーロー中央ロゴを大きく・レスポンシブ */
+.hero-logo {
+    width: 800px;
+    max-width: 90vw;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* 追加の見た目調整はここに記述（必要最小限） */
+
+/* PCでのMENUボタン非表示（最優先） */
+@media screen and (min-width: 768px) {
+    #page-navigation .ptl-nav-toggle,
+    .ptl-pageNavHero .ptl-nav-toggle,
+    section[id="page-navigation"] button.ptl-nav-toggle {
+        display: none !important;
+    }
+}
+
+/* SPでのMENUボタン表示（最優先） */
+@media screen and (max-width: 767px) {
+    #page-navigation .ptl-nav-toggle,
+    #bust-issues .ptl-nav-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        margin: 8px auto 16px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.1em;
+    }
+    
+    .ptl-nav-toggle__icon {
+        position: relative;
+        width: 20px;
+        height: 2px;
+        background: #fff;
+        transition: all 0.3s ease;
+    }
+    
+    .ptl-nav-toggle__icon::before,
+    .ptl-nav-toggle__icon::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        transition: all 0.3s ease;
+    }
+    
+    .ptl-nav-toggle__icon::before { top: -6px; }
+    .ptl-nav-toggle__icon::after { bottom: -6px; }
+    
+    /* 開いたときのアイコン */
+    .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon {
+        background: transparent;
+    }
+    
+    .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    
+    .ptl-nav-toggle[aria-expanded="true"] .ptl-nav-toggle__icon::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+    }
+    
+    /* 折りたたみメニュー */
+    .ptl-nav-collapsible {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    
+    .ptl-nav-collapsible.is-open {
+        max-height: 1000px;
+    }
+}
+
+/* ヒーローロゴ：ふわっと出て、少し表示して、ふわっと消える（ホーム/フロントページ） */
+.home .p-mainVisual .hero-logo,
+.front-page .p-mainVisual .hero-logo {
+    /* 初期状態（CSSアニメでフェードイン開始） */
+    opacity: 0;
+    animation: heroLogoInOut 5s ease-in-out 0s forwards; /* 総時間: 5s（調整可） */
+    will-change: opacity, transform, filter;
+}
+
+/* 構成: 0-15% フェードイン → 15-60% 表示キープ → 60-100% フェードアウト */
+@keyframes heroLogoInOut {
+    0% { opacity: 0; transform: translateY(6px) scale(0.98); filter: blur(2px); }
+    15% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    60% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    100% { opacity: 0; transform: translateY(8px) scale(0.985); filter: blur(1px); visibility: hidden; }
+}
+
+/* アニメーションを控える環境配慮 */
+@media (prefers-reduced-motion: reduce) {
+    .home .p-mainVisual .hero-logo,
+    .front-page .p-mainVisual .hero-logo {
+    animation: none;
+    opacity: 1; /* 動きを抑制する環境では表示のままに */
+    }
+}
+
+/* ヒーローロゴの表示はカスタマイザーの中央テキストで制御します（非表示にしたい場合はここにルールを追加） */
+
+/* ヘッダー：サブメニュー（ドロップダウン）の背景を透過に */
+@media (min-width: 960px) {
+    /* 🔴 パララックスセクション本体のpadding復元 */
+    #bust-issues,
+    #page-navigation,
+    #section-reasons,
+    #salon,
+    #section-infohub {
+        padding: 64px 0 !important;
+    }
+
+    /* クラスベースでも冗長指定（安全対策） */
+    .ptl-pageNavHero,
+    .ptl-reasonsHero,
+    .ptl-salonHero,
+    .ptl-infohub {
+        padding: 64px 0 !important;
+    }
+    :root {
+        --ptl-section-gap-top: 0px;
+        --ptl-section-gap-bottom: 80px;
+    }
+
+    /* 全セクションのマージン統一 */
+    #news,
+    #intro,
+    #bust-issues,
+    #section-reasons,
+    #page-navigation,
+    #section-services,
+    #uservoice,
+    #salon,
+    #section-infohub,
+    #section-blog {
+        margin-top: var(--ptl-section-gap-top) !important;
+        margin-bottom: var(--ptl-section-gap-bottom) !important;
+    }
+
+    /* 例外：NEWSのみ上に余白 */
+    #news {
+        margin-top: 80px !important;
+    }
+    
+    /* パララックスセクションのpadding保護（背景保護） */
+    #bust-issues, #page-navigation,
+    .ptl-reasonsHero, .ptl-salonHero,
+    #section-infohub {
+        padding: 64px 0 !important;
+    }
+}
+
+
+
+/* =====================================================
+    H2統一管理: 全セクションのタイトル・サブタイトル
+    ----------------------------------------------------- */
+:root {
+    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+    --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+    --ptl-title-color: #333;
+    --ptl-subtitle-color: #777;
+    --ptl-title-margin: 28px;
+    --ptl-subtitle-margin: -4px;
+}
+
+/* 全セクション共通のタイトルスタイル */
+.ptl-section__title,
+.ptl-news .ptl-section__title,
+.ptl-uservoice .ptl-section__title,
+.ptl-reasons .ptl-section__title,
+.ptl-reasonsHero .ptl-section__title {
+    text-align: center !important;
+    letter-spacing: .08em !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--ptl-title-margin) !important;
+    font-size: var(--ptl-heading-size) !important;
+    color: var(--ptl-title-color) !important;
+    text-shadow: none !important;
+    margin-top: 0 !important;
+}
+
+/* 全セクション共通のサブタイトルスタイル */
+.ptl-section__subtitle,
+.ptl-news .ptl-section__subtitle,
+.ptl-uservoice .ptl-section__subtitle,
+.ptl-reasons .ptl-section__subtitle,
+.ptl-reasonsHero .ptl-section__subtitle {
+    text-align: center !important;
+    color: var(--ptl-subtitle-color) !important;
+    margin-top: var(--ptl-subtitle-margin) !important;
+    font-size: var(--ptl-subtitle-size) !important;
+    text-shadow: none !important;
+    display: block !important;
+}
+
+/* 背景付きセクションでもh2統一（テキストシャドウなし） */
+.ptl-reasonsHero.has-bg .ptl-section__title {
+    color: var(--ptl-title-color) !important;
+    text-shadow: none !important;
+}
+
+.ptl-reasonsHero.has-bg .ptl-section__subtitle {
+    color: var(--ptl-subtitle-color) !important;
+    text-shadow: none !important;
+}
+
+/* オーナメント統一 */
+.ptl-section__subtitleLine,
+.ptl-reasonsHero .ptl-section__subtitleLine {
+    width: 100px;
+    height: 1px;
+    background-color: #ddd;
+    margin: 24px auto;
+}
+
+/* =====================================================
+    NEWS / SERVICE NAV / STORE NAV スタイル（統一後）
+    ----------------------------------------------------- */
+.ptl-section { padding: 80px 0; }
+.ptl-section__inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+
+/* NEWS */
+.ptl-news__list { list-style: none; padding: 0; margin: 0 auto; max-width: 860px; }
+.ptl-news__item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee; align-items: baseline; }
+.ptl-news__date { color: #888; min-width: 8em; font-variant-numeric: tabular-nums; }
+.ptl-news__link { text-decoration: none; }
+.ptl-news__link:hover { text-decoration: underline; }
+.ptl-news__list.is-titleOnly { max-width: 980px; margin: 0 auto; }
+.ptl-news__list.is-titleOnly .ptl-news__item { padding: 18px 0; border-bottom: 1px solid #e5e5e5; }
+.ptl-news__title { text-decoration: none; font-weight: 700; letter-spacing: .01em; }
+.ptl-news__title { color: #5F6368; }
+.ptl-news__title:hover,
+.ptl-news__title:focus-visible { color: #3C4043; }
+.ptl-news__more { display: flex; justify-content: center; margin-top: 28px; }
+.ptl-news__moreBtn, .ptl-reasons__more {
+    /* 調整用カスタムプロパティ（必要に応じて数値だけ変えればOK） */
+    --frame-slice: 120; /* 画像から切り出す縁の厚み(px) */
+    --frame-width: 12px; /* 実際の表示上の枠の太さ（小さめ） */
+    --frame-color: #111; /* 枠の色（ホバーで白に切替） */
+
+    /* ホバー時にも寸法が変わらないように、余計な固定寸法を外す */
+    box-sizing: border-box; /* 枠とパディングを寸法に含める */
+
+    display: inline-grid;
+    grid-auto-flow: column;
+    place-items: center; /* 中央寄せ（縦横） */
+    gap: 10px;
+    text-decoration: none;
+    color: #3C4043; /* 通常は少し濃いグレー */
+    /* background: #fff; 削除済み - 全セクションでMOREボタン背景を透明化 */
+    letter-spacing: .08em;
+    font-weight: 600; /* NEWS見出しと統一 */
+    padding: 6px 14px; /* 文字に近いサイズ感へ（従来比 ~70%） */
+    white-space: nowrap; /* 改行を防ぎ、サイズの安定化 */
+    position: relative; /* 疑似要素フレームの基準 */
+    border: none; /* レイアウトに影響を与えない */
+
+    /* お知らせ（サブタイトル）と完全連動 */
+    font-size: var(--ptl-subtitle-size);
+
+    transition: background-color .2s ease, color .2s ease;
+}
+.ptl-news__moreBtn::before, .ptl-reasons__more::before {
+    content: "";
+    position: absolute;
+    /* 枠を外側に描画し、要素サイズを変えない */
+    inset: calc(var(--frame-width) * -1);
+    pointer-events: none; /* クリック透過 */
+    background: var(--frame-color);
+    /* マスクでフレーム形状を切り抜き、色だけ差し替える */
+    -webkit-mask: url('./img/bg_frame_bk.png') center/100% 100% no-repeat;
+    mask: url('./img/bg_frame_bk.png') center/100% 100% no-repeat;
+}
+.ptl-news__moreArrow { display: inline-block; transform: translateX(0); transition: transform .2s ease; }
+
+/* ホバーは文字色のみ変更（背景・枠は不変） */
+.ptl-news__moreBtn:hover,
+.ptl-news__moreBtn:focus-visible,
+.ptl-reasons__more:hover,
+.ptl-reasons__more:focus-visible { background: #fff; color: #5F6368; }
+.ptl-news__moreBtn:hover .ptl-news__moreArrow,
+.ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { transform: translateX(4px); }
+
+/* SERVICE NAV - 背景動画＋アイコンカード */
+/* 旧: 画像差し替えによる枠変更は廃止（マスク方式へ） */
+.ptl-serviceNav { position: relative; }
+.ptl-serviceNav__bg { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+.ptl-serviceNav__video { width: 100%; height: 100%; object-fit: cover; filter: brightness(.6); }
+.ptl-serviceNav__overlay { position: absolute; inset: 0; background: rgba(0,0,0,.25); }
+.ptl-serviceNav .ptl-section__inner { position: relative; z-index: 1; }
+.ptl-serviceNav__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2vw, 24px); margin-top: 20px; }
+@media (min-width: 900px) { .ptl-serviceNav__grid { grid-template-columns: repeat(4, 1fr); } }
+.ptl-serviceNav__card { display: grid; place-items: center; text-align: center; background: rgba(255,255,255,.95); border-radius: 8px; padding: clamp(20px, 3vw, 32px); text-decoration: none; color: inherit; box-shadow: 0 6px 24px rgba(0,0,0,.12); transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
+.ptl-serviceNav__icon { font-size: clamp(28px, 4.5vw, 44px); margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 1em; height: 1em; }
+.ptl-serviceNav__label { font-weight: 600; letter-spacing: .02em; }
+.ptl-serviceNav__card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.18); }
+.ptl-serviceNav__card:active { transform: translateY(-1px); }
+
+/* アイコンの“動き”サンプル: 小さく跳ねて回転 -> 好みで差し替え可 */
+.ptl-serviceNav__card:hover .ptl-serviceNav__icon { animation: ptlIconPop .5s ease both; }
+@keyframes ptlIconPop {
+    0% { transform: scale(1) rotate(0); }
+    40% { transform: scale(1.15) rotate(-8deg); }
+    70% { transform: scale(0.98) rotate(6deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+/* STORE NAV */
+.ptl-storeNav .ptl-section__title { font-size: var(--ptl-heading-size); line-height: 1.2; }
+.ptl-storeNav__grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px; }
+@media (min-width: 700px) { .ptl-storeNav__grid { grid-template-columns: repeat(2, 1fr); } }
+.ptl-storeNav__card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 8px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
+.ptl-storeNav__card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
+.ptl-storeNav__label { font-weight: 600; }
+.ptl-storeNav__meta { display: block; margin-top: 6px; color: #666; font-size: .95em; }
+
+/* NAVIGATION HERO（背景動画/画像＋8ボタン）*/
+.ptl-pageNavHero { position: relative; overflow: hidden; isolation: isolate; background: transparent; --ptl-heading-size: clamp(22px, 2.8vw, 28px); --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
+.ptl-pageNavHero { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+@media (min-width: 960px) {
+    .ptl-pageNavHero { min-height: clamp(520px, 60vh, 720px); }
+}
+.ptl-pageNavHero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: transparent; transform-origin: center center; }
+/* 背景メディアは領域いっぱいにフィット */
+.ptl-pageNavHero__video,
+.ptl-pageNavHero__image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transform-origin: center center; }
+.ptl-pageNavHero__video { object-fit: cover; }
+/* picture要素内のimgにobject-fitを適用（Safari含む互換対応） */
+.ptl-pageNavHero__image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center center; }
+.ptl-pageNavHero__overlay { position: absolute; inset: 0; background: rgba(0,0,0,var(--overlay, .2)); }
+.ptl-pageNavHero .ptl-section__inner { position: relative; z-index: 1; padding-top: clamp(64px, 10vw, 160px); padding-bottom: clamp(64px, 10vw, 160px); }
+.ptl-pageNavHero .ptl-section__title { /* 通常色 */ color: inherit; text-shadow: none; font-size: var(--ptl-heading-size); }
+.ptl-pageNavHero.has-bg .ptl-section__title { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+.ptl-pageNavHero__grid { 
+  list-style: none; 
+  margin: clamp(32px, 3vw, 56px) auto 0; 
+  padding: 0; 
+  display: grid; 
+  row-gap: clamp(40px, 4.6vw, 80px); 
+  column-gap: clamp(16px, 2vw, 24px); 
+  grid-template-columns: repeat(2, 1fr);
+  max-width: var(--ptl-container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 700px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(4, 1fr); } }
+.ptl-pageNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.ptl-pageNavHero__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.18); border-color: rgba(0,0,0,.15); }
+.ptl-pageNavHero__btn:active { transform: translateY(-1px); }
+.ptl-pageNavHero__icon { width: clamp(44px, 5vw, 56px); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: clamp(2px, 0.5vw, 6px); }
+.ptl-pageNavHero__icon svg, .ptl-pageNavHero__icon img { width: 100%; height: 100%; display: block; object-fit: contain; transform: scale(var(--icon-scale, 1)); }
+.ptl-pageNavHero__label { font-size: clamp(13px, 1.4vw, 16px); text-align: center; }
+/* 背景が無い場合はオーバーレイ無効化 */
+.ptl-pageNavHero:not(.has-bg) .ptl-pageNavHero__overlay { display: none; }
+
+/* ===== NEWS: 白ベタを画面端まで（グローバル背景の有無に依存しない） ===== */
+/* 親ラッパがfull-bleedをクリップしないように */
+.l-mainContent, .l-contents, .l-container { overflow: visible; }
+
+/* NEWS 本体の後ろに100vwの白帯を敷く（常時）。内容幅はそのまま */
+#news { position: relative; z-index: 1; background: transparent; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); display: flow-root; }
+#news::before {
+    content: "";
+    position: absolute; inset: 0 auto 0 50%; transform: translateX(-50%);
+    width: 100vw; background: #fff; z-index: -1;
+    top: -2px; bottom: 0; /* extend upward to hide 1px seams */
+}
+
+/* ヒーロー直下の余白を最小化 */
+.p-mainVisual { margin-bottom: 0; }
+
+/* NEWS セクションの上下余白を COMMITMENT と同値に統一（上下同値） */
+#news.ptl-section { padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(40px, 6vw, 80px); }
+/* NEWS 見出しの上側を詰めて、上下バランスを視覚的にフラット化 */
+#news .ptl-section__title { margin-top: 0; }
+
+/* 統一ルールに合わせるため、特別な詰めは撤回（既定の各セクション余白へ） */
+
+/* --- Marquee gallery (shortcode) --- */
+.ptl-marquee { position: relative; overflow: hidden; width: 100%; height: var(--height, 200px); }
+.ptl-marquee__track { position: absolute; inset: 0; display: flex; align-items: center; gap: var(--gap, 24px); will-change: transform; animation: ptl-marquee var(--duration, 30s) linear infinite; }
+.ptl-marquee__item { flex: 0 0 auto; height: calc(var(--height, 200px) - 8px); display: flex; align-items: center; }
+.ptl-marquee__item img { height: 100%; width: auto; display: block; object-fit: cover; filter: drop-shadow(0 4px 12px rgba(0,0,0,.12)); border-radius: 6px; }
+@keyframes ptl-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ptl-marquee__track { animation: none; } }
+
+/* --- SNS buttons (shortcode) --- */
+.ptl-sns { display: flex; gap: 12px; justify-content: center; padding: 0; margin: 16px 0 0; list-style: none; }
+.ptl-sns__btn { width: 44px; height: 44px; display: grid; place-items: center; color: #fff; background: #111; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 18px rgba(0,0,0,.15); transition: transform .16s ease, background .16s ease; }
+.ptl-sns__btn:hover { transform: translateY(-1px); background: #333; }
+.ptl-sns__btn i { font-size: 18px; }
+
+/* --- Bust Issues banner --- */
+/* BUST-ISSUESスタイルはissues-navigation.cssで完全管理 */
+
+/* --- Service Feature (bust-up hero + 3 cards) --- */
+.ptl-serviceFeature__hero { display: grid; gap: clamp(14px, 2vw, 24px); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 980px) { .ptl-serviceFeature__hero { grid-template-columns: 6fr 5fr; } }
+.ptl-serviceFeature__heroMedia { position: relative; border-radius: 12px; overflow: hidden; background: #ddd; }
+.ptl-serviceFeature__heroLink { display: block; width: 100%; height: 100%; cursor: pointer; }
+.ptl-serviceFeature__heroLink:focus-visible { outline: 3px solid rgba(17,17,17,.35); outline-offset: 3px; }
+.ptl-serviceFeature__heroMedia img, .ptl-serviceFeature__cardMedia img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+.ptl-serviceFeature__heroBody { padding: clamp(2px, 0.8vw, 8px) clamp(6px, 1.4vw, 10px); }
+.ptl-serviceFeature__title { font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: .03em; margin-bottom: 6px; }
+.ptl-serviceFeature__desc { color: #555; line-height: 1.75; margin-bottom: 10px; }
+.ptl-arrowLink { display: inline-grid; grid-auto-flow: column; align-items: center; gap: 8px; text-decoration: none; color: #3C4043; font-weight: 600; }
+.ptl-arrowLink__arrow { display: inline-block; transform: translateX(0); transition: transform .2s ease; }
+.ptl-arrowLink:hover .ptl-arrowLink__arrow, .ptl-arrowLink:focus-visible .ptl-arrowLink__arrow { transform: translateX(4px); }
+
+.ptl-serviceFeature__grid { margin-top: clamp(18px, 3vw, 26px); display: grid; gap: clamp(14px, 2vw, 22px); grid-template-columns: 1fr; }
+@media (min-width: 720px) { .ptl-serviceFeature__grid { grid-template-columns: repeat(3, 1fr); } }
+.ptl-serviceFeature__card { display: grid; gap: 10px; text-decoration: none; color: inherit; background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 10px; padding: 10px; box-shadow: 0 6px 18px rgba(0,0,0,.08); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
+.ptl-serviceFeature__cardMedia { position: relative; display: block; border-radius: 8px; overflow: hidden; background: #e2e2e2; }
+.ptl-serviceFeature__cardLabel { font-weight: 700; letter-spacing: .02em; text-align: center; padding: 2px 6px 8px; }
+.ptl-serviceFeature__card:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.12); }
+.ptl-serviceFeature__card:hover img { transform: scale(1.04); }
+
+/* generic aspect-ratio helper via CSS var (fallback safe) */
+.ptl-serviceFeature__heroMedia::before,
+.ptl-serviceFeature__cardMedia::before { content: ""; display: block; padding-top: calc(100% / (var(--ratio, 4/5))); }
+.ptl-serviceFeature__heroMedia > img,
+.ptl-serviceFeature__cardMedia > img,
+.ptl-phsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+@media (max-width: 767px) {
+  .l-header,
+  .p-headerBar,
+  .l-fixHeader {
+    background: rgba(0,0,0,0.85) !important;
+  }
+}
+
+/* より高い詳細度でBUST-ISSUESカードを確実に白不透明に保つ */
+#bust-issues .ptl-bustIssues__card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+  padding: clamp(16px, 2.6vw, 26px);
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* === Canonical container lock (global, matches navigation) === */
+:root { --ptl-container-max: 1200px; --ptl-container-pad: 20px; }
+.ptl-section > .ptl-section__inner{
+  max-width: var(--ptl-container-max) !important;
+  margin-inline: auto !important;
+  padding-inline: var(--ptl-container-pad) !important;
+  width: auto !important;
+  box-sizing: border-box;
+}
+/* Optional safety: if a section wrapper tries to re-define width */
+.ptl-section [class*="__inner"],
+.ptl-section [class*="__wrap"],
+.ptl-section [class*="__container"]{
+  max-width: none !important;
+  width: auto !important;
+  box-sizing: border-box;
+}
+
+/* SALONは section-salon.css 側でフルブリード＋inner制御に統一 */
+

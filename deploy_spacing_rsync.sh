@@ -30,6 +30,8 @@ BACKUP_DIR="$BASE_DIR/BACKUPS/20251008_spacing_guard/swell_child"
 
 # 転送対象（相対パス）
 FILES=(
+  "swell_child/style.css"
+  "swell_child/functions.php"
   "swell_child/css/section-news.css"
   "swell_child/css/issues-navigation.css"
   "swell_child/css/section-reasons.css"
@@ -101,8 +103,19 @@ rsync_push_from_backup() {
 
 verify_remote() {
   echo "[STEP] verify remote files"
-  ssh "${SSH_OPTS[@]}" "$SSH_USER_HOST" \
-    "set -e; for f in ${FILES[@]}; do p=\"$REMOTE_THEME_BASE/$f\"; if [ -f \"$p\" ]; then stat -c '%n %s %y' \"$p\"; else echo 'MISSING ' \"$p\"; fi; done"
+  for f in "${FILES[@]}"; do
+    remote_path="$REMOTE_THEME_BASE/$f"
+    ssh "${SSH_OPTS[@]}" "$SSH_USER_HOST" /bin/sh -s -- "$remote_path" <<'EOSH'
+p="$1"
+if [ -f "$p" ]; then
+  stat -c '%n %s %y' "$p" 2>/dev/null \
+  || stat -f '%N %z %Sm' -t '%Y-%m-%d %H:%M:%S' "$p" 2>/dev/null \
+  || ls -l "$p"
+else
+  echo "MISSING $p"
+fi
+EOSH
+  done
 }
 
 case "$MODE" in
