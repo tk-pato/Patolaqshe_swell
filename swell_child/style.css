@@ -44,9 +44,16 @@ body.home .l-mainContent,
 
 /* セクション間の統一マージンは撤去（各セクションCSSで個別管理） */
 
-/* INTROセクション個別調整：カスタマイザー設定のpaddingのみ無効化（余白は各CSSで管理） */
+/* INTROセクション個別調整：padding無効化 + 余白を明示（section-intro.css と統一） */
 #intro.ptl-intro-section {
     padding: 0 !important; /* カスタマイザーのpadding設定を無効化 */
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
+}
+
+/* SP専用余白統一（INTRO） */
+@media (max-width: 768px) {
+    #intro.ptl-intro-section { margin-bottom: 40px !important; }
 }
 
 /* パララックスセクション本体の上下padding保護 */
