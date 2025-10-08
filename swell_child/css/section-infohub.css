@@ -5,34 +5,20 @@
    navigation/BUST-ISSUESと完全統一
 ======================================== */
 
-/* セクション全体 */
+/* セクション全体 - NAVIGATIONと完全統一 */
+#section-infohub,
 .ptl-infohub {
-  /* 固定背景の実装 */
-  background-image: var(--infohub-bg-image, none);
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-top: 0 !important;
-  padding: 120px 0;
+  margin-bottom: 80px !important;
+  /* NAVIGATIONと同じpadding */
+  padding: 64px 0 !important;
   overflow: hidden;
   isolation: isolate;
-/* --- 末尾の不要な閉じカッコを削除 --- */
-
-/* セクション余白（統一） */
-#section-infohub { margin-top: 0 !important; margin-bottom: 80px !important; }
-
-/* パララックス背景領域の保護（PC） */
-@media (min-width: 960px) {
-  #section-infohub, .ptl-infohub { padding: 140px 0 !important; }
-/* --- 末尾の不要な閉じカッコを削除 --- */
-
-/* 🔴 固定背景の実装 */
-.ptl-infohub {
+  /* 固定背景の実装 */
   background-image: var(--infohub-bg-image, none);
   background-attachment: fixed;
   background-size: cover;
@@ -63,8 +49,7 @@
   z-index: 1;
 }
 
-/* コンテンツエリア（グローバルルールを上書き） */
-/* NAVIGATIONと完全統一：可変の上下余白 */
+/* コンテンツエリア - NAVIGATIONと統一 */
 .ptl-infohub .ptl-section__inner {
   position: relative;
   z-index: 2;
@@ -81,7 +66,6 @@
   margin-bottom: clamp(32px, 3vw, 56px);
   padding-left: 0;
   padding-right: 0;
-  /* padding-top: 40px; ← この行があれば削除 */
 }
 
 /* H2タイトルはstyle.cssのグローバルルールを使用 */
@@ -241,7 +225,6 @@
 
 /* セクション全体のID指定で詳細度を最大化 */
 /* 競合する余白削除ルールを撤去（.ptl-infohub .ptl-section__innerで統一管理） */
-}
 
 /* .ptl-section__innerで左右余白を管理するため不要 */
 /* SP専用余白統一 */
@@ -254,7 +237,7 @@
     padding-top: clamp(40px, 8vw, 80px) !important;
     padding-bottom: clamp(40px, 8vw, 80px) !important;
   }
-}
+/* 余分な閉じカッコを削除 */
 }
 
 /* カードを確実にグリッドセル幅いっぱいに */
@@ -265,9 +248,12 @@
   box-sizing: border-box !important;
 }
 
-/* セクション外側余白の原則管理（上0・下80） */
-/* セクション余白 */
-#section-infohub {
-  margin-top: 0 !important;
-  margin-bottom: 80px !important;
+/* SP専用余白統一 */
+@media (max-width: 768px) {
+  #section-infohub,
+  .ptl-infohub {
+    padding: 40px 0 !important;
+    margin-bottom: 40px !important;
+    background-attachment: scroll;
+  }
 }

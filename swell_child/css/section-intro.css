@@ -1,13 +1,3 @@
-/* セクション余白（詳細度を最大化） */
-#intro.ptl-intro-section {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-}
-
-/* 念のため追加：他のセレクタとの競合を完全に排除 */
-.ptl-intro-section#intro {
-    margin-bottom: 80px !important;
-}
 @charset "UTF-8";
 
 /* セクション全体 */
@@ -17,6 +7,10 @@
     margin-right: calc(50% - 50vw);
     position: relative;
     min-height: clamp(500px, 60vh, 700px);
+    /* 余白統一設定 */
+    padding: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
 }
 
 /* 左側: 背景画像 (70%) */
@@ -232,24 +226,11 @@
     }
 }
 
-/* 余白統一: 他セクションと同じルール（margin-bottom は #intro 側で管理） */
-#intro.ptl-intro-section {
-    padding: 0 !important; /* カスタマイザーのpadding設定を無効化 */
-    margin-top: 0 !important;
-    margin-bottom: 80px !important; /* 最高詳細度で80pxを強制 */
-}
-
-/* セクション内側のベース余白と横幅ロック（上下は #intro のmarginで管理） */
+/* セクション内側のベース余白と横幅ロック */
 #intro .ptl-section__inner {
     padding: 0 20px !important; /* 左右のみ */
     max-width: 1200px !important;
     margin: 0 auto !important;
-}
-
-/* セクション余白（#intro 側で管理） */
-#intro {
-    margin-top: 0 !important;
-    /* margin-bottomは#intro.ptl-intro-sectionで統一管理 */
 }
 
 /* SP専用余白統一 */

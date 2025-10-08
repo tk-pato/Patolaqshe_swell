@@ -8,6 +8,11 @@ body.home .l-mainContent,
     background: transparent !important;
 }
 
+/* 親テーマのpost_contentマージンを無効化（INTROセクション調整のため） */
+.l-mainContent__inner > .post_content {
+    margin: 0 !important; /* 親テーマの4em 0を無効化 */
+}
+
 /* STEP1: セクション間余白調整（グローバル管理は撤去、各セクションCSSで管理） */
 /* 旧: #page-navigation の上寄せ（負のmargin）は廃止。navigation.cssで margin-top:0 を定義 */
 
@@ -34,36 +39,35 @@ body.home .l-mainContent,
 }
 /* ↑ 余計な閉じカッコを削除 */
 
-/* INFO HUB（固定背景用の独自調整） */
-#section-infohub .ptl-section__inner {
-    padding: 40px 20px 0 !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
-/* ↑ 余計な閉じカッコを削除 */
+/* INFO HUB（section-infohub.cssに移管） */
 
 /* セクション間の統一マージンは撤去（各セクションCSSで個別管理） */
 
-/* INTROセクション個別調整：padding無効化 + 余白を明示（section-intro.css と統一） */
+/* INTROセクション個別調整：全ての外部padding/margin設定を無効化 */
+#intro,
 #intro.ptl-intro-section {
-    padding: 0 !important; /* カスタマイザーのpadding設定を無効化 */
+    padding: 0 !important; /* カスタマイザー・親テーマ設定を無効化 */
     margin-top: 0 !important;
-    margin-bottom: 80px !important;
+    margin-bottom: 80px !important; /* 子テーマレベルで強制設定 */
 }
 
-/* SP専用余白統一（INTRO） */
+/* SP専用INTRO余白 */
 @media (max-width: 768px) {
-    #intro.ptl-intro-section { margin-bottom: 40px !important; }
+    #intro,
+    #intro.ptl-intro-section {
+        margin-bottom: 40px !important;
+    }
 }
 
 /* パララックスセクション本体の上下padding保護 */
 #bust-issues,
 #page-navigation,
 #section-reasons,
-#salon,
-#section-infohub {
+#salon {
     padding: 64px 0 !important; /* パララックス背景領域の高さを保持 */
 }
+
+/* INFO HUBは独自の背景設定なので除外（section-infohub.cssで管理） */
 
 /* 全セクションの見えているコンテンツ部分の統一ルールは撤去（各セクションCSSで管理） */
 
@@ -223,8 +227,7 @@ html, body { overflow-x: hidden; }
     /* クラスベースでも冗長指定（安全対策） */
     .ptl-pageNavHero,
     .ptl-reasonsHero,
-    .ptl-salonHero,
-    .ptl-infohub {
+    .ptl-salonHero {
         padding: 64px 0 !important;
     }
     /* 余白用のCSS変数は撤去（各セクションCSSで個別管理） */
@@ -233,8 +236,7 @@ html, body { overflow-x: hidden; }
     
     /* パララックスセクションのpadding保護（背景保護） */
     #bust-issues, #page-navigation,
-    .ptl-reasonsHero, .ptl-salonHero,
-    #section-infohub {
+    .ptl-reasonsHero, .ptl-salonHero {
         padding: 64px 0 !important;
     }
 }
