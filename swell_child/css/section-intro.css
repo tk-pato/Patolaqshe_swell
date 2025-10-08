@@ -7,6 +7,7 @@
   margin-right: calc(50% - 50vw);
   position: relative;
   min-height: clamp(500px, 60vh, 700px);
+  margin-bottom: 160px;
 }
 
 /* 左側: 背景画像 (70%) */
@@ -179,9 +180,10 @@
 }
 
 /* モバイル */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #intro.ptl-intro-section {
     min-height: auto;
+    margin-bottom: 80px !important;
   }
   
   #intro .ptl-intro__media {
@@ -196,6 +198,7 @@
     width: 100%;
     height: auto;
     padding: clamp(36px, 7vw, 64px) clamp(24px, 5vw, 44px);
+    text-align: center;
   }
   
   #intro .ptl-intro__content-inner {
@@ -203,11 +206,16 @@
   }
   
   #intro .ptl-intro__brand {
-    text-align: left;
+    text-align: center;
   }
   
   #intro .ptl-intro__brand-ornament {
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #intro .ptl-intro__cta-button {
+    margin: 0 auto;
   }
 }
 
