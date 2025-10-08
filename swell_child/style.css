@@ -43,15 +43,17 @@ body.home .l-mainContent,
 
 /* セクション間の統一マージンは撤去（各セクションCSSで個別管理） */
 
-/* INTROセクション個別調整：全ての外部padding/margin設定を無効化 */
+/* INTROの余白定義（section-intro.cssから移管） */
 #intro,
 #intro.ptl-intro-section {
-    padding: 0 !important; /* カスタマイザー・親テーマ設定を無効化 */
+    padding: 0 !important;
     margin-top: 0 !important;
-    margin-bottom: 80px !important; /* 子テーマレベルで強制設定 */
+    margin-bottom: 80px !important;
+    /* パララックス侵食対策 */
+    isolation: isolate;
+    z-index: 1;
 }
 
-/* SP専用INTRO余白 */
 @media (max-width: 768px) {
     #intro,
     #intro.ptl-intro-section {
@@ -205,12 +207,13 @@ html, body { overflow-x: hidden; }
 /* ヒーローロゴの表示はカスタマイザーの中央テキストで制御します（非表示にしたい場合はここにルールを追加） */
 
 /* ===========================
-     ヒーローセクション余白
+     ヒーローセクション余白（修正版）
      =========================== */
+/* ヒーローの余白をゼロに（NEWSのpaddingで調整） */
 .p-mainVisual,
 .hero-section {
     margin-top: 0 !important;
-    margin-bottom: 80px !important;
+    margin-bottom: 0 !important;
 }
 
 /* ヘッダー：サブメニュー（ドロップダウン）の背景を透過に */
@@ -463,8 +466,19 @@ html, body { overflow-x: hidden; }
 /* ヒーロー直下の余白を最小化 */
 .p-mainVisual { margin-bottom: 0; }
 
-/* NEWS セクションの上下余白を COMMITMENT と同値に統一（上下同値） */
-#news.ptl-section { padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(40px, 6vw, 80px); }
+/* NEWSセクションの白背景用padding（固定値） */
+#news.ptl-section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+@media (max-width: 768px) {
+    #news.ptl-section {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+}
+
 /* NEWS 見出しの上側を詰めて、上下バランスを視覚的にフラット化 */
 #news .ptl-section__title { margin-top: 0; }
 
