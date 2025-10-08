@@ -226,11 +226,11 @@
 #intro.ptl-intro-section {
     padding: 0 !important; /* グローバル設定に統一 */
     margin-top: 0 !important;
-    margin-bottom: 80px !important;
+    /* margin-bottom は #intro 側で管理 */
 }
 
 /* セクション余白 */
 #intro {
     margin-top: 0;
-    margin-bottom: 130px; /* INTRO⇔issues を+30広げる */
+    margin-bottom: 130px !important; /* INTRO⇔issues を+30広げる（強制） */
 }

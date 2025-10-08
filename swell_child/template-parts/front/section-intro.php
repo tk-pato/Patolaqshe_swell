@@ -45,19 +45,14 @@ if ($use_video && !empty($bg_video)) {
     $media_style = sprintf('background-image: url(%s);', esc_url($bg_image));
 }
 
-// セクションスタイル
-$section_style = sprintf(
-    'margin-top: %dpx; margin-bottom: %dpx;',
-    absint($margin_top),
-    absint($margin_bottom)
-);
+// セクション外側の余白はCSSで統一管理するため、インラインmarginは付与しない
 
 // オーバーレイスタイル
 $overlay_rgb = $overlay_color === 'black' ? '0, 0, 0' : '255, 255, 255';
 $overlay_style = sprintf('background: rgba(%s, %.2f);', $overlay_rgb, $overlay_opacity);
 ?>
 
-<section id="intro" class="ptl-intro-section" style="<?php echo esc_attr($section_style); ?>">
+<section id="intro" class="ptl-intro-section">
 
     <!-- Left: Media Area -->
     <div class="ptl-intro__media" <?php if ($media_style) echo 'style="' . esc_attr($media_style) . '"'; ?>>
