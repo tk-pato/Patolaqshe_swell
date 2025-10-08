@@ -10,7 +10,7 @@
     /* 余白統一設定 */
     padding: 0 !important;
     margin-top: 0 !important;
-    margin-bottom: 120px !important; /* パララックス幅圧迫対応：80px→120px */
+    margin-bottom: 160px !important; /* パララックス効果で半分になるため、見え方80pxには160px必要 */
 }
 
 /* 左側: 背景画像 (70%) */
@@ -236,7 +236,7 @@
 /* SP専用INTRO余白 */
 @media (max-width: 768px) {
     #intro.ptl-intro-section {
-        margin-bottom: 60px !important; /* パララックス幅圧迫対応：40px→60px */
+        margin-bottom: 80px !important; /* SPでパララックス効果が弱い場合、見え方40pxには80px設定 */
     }
 }
 
