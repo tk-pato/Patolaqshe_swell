@@ -6,9 +6,9 @@
 	/* 点線のみで表現 */
 }
 
-/* セクション余白 */
+/* セクション余白 - パララックス背景侵食を考慮 */
 #bust-issues {
-  margin-top: 0 !important;
+  margin-top: 0 !important; /* パララックス幅による圧迫を防ぐため0に戻す */
   margin-bottom: 80px !important;
 }
 /* 親テーマの個別ボーダー指定を無効化 */

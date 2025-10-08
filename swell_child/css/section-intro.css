@@ -10,7 +10,7 @@
     /* 余白統一設定 */
     padding: 0 !important;
     margin-top: 0 !important;
-    margin-bottom: 80px !important;
+    margin-bottom: 120px !important; /* パララックス幅圧迫対応：80px→120px */
 }
 
 /* 左側: 背景画像 (70%) */
@@ -233,10 +233,10 @@
     margin: 0 auto !important;
 }
 
-/* SP専用余白統一 */
+/* SP専用INTRO余白 */
 @media (max-width: 768px) {
     #intro.ptl-intro-section {
-        margin-bottom: 40px !important;
+        margin-bottom: 60px !important; /* パララックス幅圧迫対応：40px→60px */
     }
 }
 
