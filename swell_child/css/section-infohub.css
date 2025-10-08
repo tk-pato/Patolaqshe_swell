@@ -6,8 +6,8 @@
 ======================================== */
 
 /* セクション全体 */
+/* 固定背景の実装 */
 .ptl-infohub {
-  /* 固定背景の実装 */
   background-image: var(--infohub-bg-image, none);
   background-attachment: fixed;
   background-size: cover;
@@ -21,15 +21,6 @@
   padding: 64px 0;
   overflow: hidden;
   isolation: isolate;
-}
-
-/* 🔴 固定背景の実装 */
-.ptl-infohub {
-  background-image: var(--infohub-bg-image, none);
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
 
 /* SP対応：モバイルでは固定背景を無効化 */

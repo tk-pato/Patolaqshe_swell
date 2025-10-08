@@ -50,6 +50,32 @@
   /* NAVIGATIONと完全一致：固定padding */
   padding: 64px 0 !important;
 }
+  /* ===========================
+     BUST-ISSUES: セクション本体（NAVIGATIONと完全統一）
+     =========================== */
+  #bust-issues {
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
+    min-height: clamp(520px, 60vh, 720px);
+    max-height: clamp(520px, 60vh, 720px) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 64px 0 !important;
+  }
+
+  @media (max-width: 768px) {
+    #bust-issues {
+      margin-bottom: 40px !important;
+    }
+  }
 
 /* PC専用: 高さ設定 */
 @media (min-width: 960px) {
