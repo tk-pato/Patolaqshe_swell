@@ -60,7 +60,7 @@
   z-index: 2;
   max-width: var(--ptl-container-max, 1200px) !important;
   margin: 0 auto !important;
-  padding: 40px 20px 0 !important; /* 上40px・下0pxに変更 */
+  padding: 80px 0 !important;
   width: 100% !important;
 }
 
@@ -228,7 +228,7 @@
 
 /* セクション全体のID指定で詳細度を最大化 */
 #section-infohub .ptl-section__inner {
-  padding: 0 !important; /* 上下余白を削除（グローバルルールに委譲） */
+  padding: 80px 0 !important;
 }
 
 #section-infohub .ptl-infohub__grid {

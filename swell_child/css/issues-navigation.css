@@ -58,7 +58,7 @@
   z-index: 1 !important;
   /* NAVIGATIONと完全一致する上下余白 */
   padding-top: clamp(64px, 10vw, 160px) !important;
-  padding-bottom: clamp(64px, 10vw, 160px) !important;
+  padding-bottom: 0 !important; /* 下余白を削除: style.cssのmargin-bottom: 80pxで統一管理 */
   /* 左右余白はグローバル変数を使用 */
   padding-left: var(--ptl-container-pad, 20px) !important;
   padding-right: var(--ptl-container-pad, 20px) !important;
@@ -188,4 +188,10 @@
 .ptl-bustIssues__text { 
   color: #333; 
   font-weight: 500;
+}
+
+/* セクション余白 */
+#bust-issues {
+  margin-top: 0;
+  margin-bottom: 60px; /* issues⇔reasons 60厳守 */
 }

@@ -414,3 +414,9 @@
 #section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage{ max-width:none !important; width:100% !important; flex: 0 0 68% !important; /* 上下幅の68%に戻す */ margin-bottom: 24px !important; /* 写真とタイトルの間の余白を拡張 */ }
 #section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage img{ width:100% !important; height:100% !important; object-fit:cover !important; display:block !important; }
 #section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainText { flex: 0 0 32% !important; /* 残り32%をテキストに */ padding-top: 12px !important; /* テキスト上部の余白も拡張 */ }
+
+/* セクション余白 */
+#section-services {
+    margin-top: 0;
+    margin-bottom: 80px;
+}

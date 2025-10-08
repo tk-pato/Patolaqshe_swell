@@ -224,13 +224,5 @@
 
 /* 余白統一: 他セクションと同じルール */
 #intro.ptl-intro-section {
-    padding: 0 !important; /* グローバル設定に統一 */
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-}
-
-/* セクション余白 */
-#intro {
-    margin-top: 0;
-    margin-bottom: 130px; /* INTRO⇔issues を+30広げる */
+    padding: 80px 0;
 }

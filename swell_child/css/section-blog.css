@@ -22,7 +22,7 @@
 /* セクション全体 - 全幅対応 */
 .ptl-blog {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; を削除 - MOREボタンが見切れる原因 */
   isolation: isolate;
   background: transparent;
   /* フルブリード実装 - 画面端まで表示 */
@@ -40,6 +40,7 @@
   margin: 0 auto;
   overflow: visible !important;
   max-width: none !important;
+  position: relative; /* MOREボタンの位置調整のため */
 }
 
 /* ヘッダー部分のみ最大幅適用 */
@@ -189,6 +190,9 @@
   margin-left: auto;
   margin-right: auto;
   padding: 0 var(--ptl-container-pad, 20px);
+  position: relative; /* 確実に表示されるよう設定 */
+  z-index: 10; /* 他の要素より前面に配置 */
+  width: 100%; /* 幅を確保 */
 }
 
 /* .ptl-blog__moreBtnはstyle.cssの.ptl-news__moreBtnと同じスタイルを使用 */

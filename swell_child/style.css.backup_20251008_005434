@@ -51,18 +51,16 @@ body.home .l-mainContent,
 #section-reasons .ptl-section__inner,
 #salon .ptl-section__inner,
 #uservoice .ptl-section__inner {
-    padding: 0 20px 0 !important;
+    padding: 0 20px 80px !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
-}
 }
 
 /* 例外：INFO HUB（固定背景用の独自調整） */
 #section-infohub .ptl-section__inner {
-    padding: 40px 20px 0 !important;
+    padding: 80px 20px !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
-}
 }
 
 /* セクション間の統一マージン */
@@ -74,24 +72,6 @@ body.home .l-mainContent,
 #bust-issues + #section-infohub,
 #salon + #section-infohub{
     margin-top: 80px !important; /* 96px→80px に統一 */
-}
-
-/* INTROセクション個別調整：カスタマイザー設定を上書きして80pxに統一 */
-#intro {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-}
-#intro.ptl-intro-section {
-    padding: 0 !important; /* カスタマイザーのpadding設定を無効化 */
-}
-
-/* パララックスセクション本体の上下padding保護 */
-#bust-issues,
-#page-navigation,
-#section-reasons,
-#salon,
-#section-infohub {
-    padding: 64px 0 !important; /* パララックス背景領域の高さを保持 */
 }
 
 /* 全セクションの見えているコンテンツ部分を①のNEWSセクション境界に統一 */
@@ -260,7 +240,7 @@ html, body { overflow-x: hidden; }
     #section-reasons,
     #salon,
     #section-infohub {
-        padding: 64px 0 0 !important;
+        padding: 64px 0 !important;
     }
 
     /* クラスベースでも冗長指定（安全対策） */
@@ -268,20 +248,38 @@ html, body { overflow-x: hidden; }
     .ptl-reasonsHero,
     .ptl-salonHero,
     .ptl-infohub {
-        padding: 64px 0 0 !important;
+        padding: 64px 0 !important;
     }
     :root {
         --ptl-section-gap-top: 0px;
         --ptl-section-gap-bottom: 80px;
     }
 
-    /* 全セクションのマージン統一は廃止（各セクションCSSで個別管理） */
+    /* 全セクションのマージン統一 */
+    #news,
+    #intro,
+    #bust-issues,
+    #section-reasons,
+    #page-navigation,
+    #section-services,
+    #uservoice,
+    #salon,
+    #section-infohub,
+    #section-blog {
+        margin-top: var(--ptl-section-gap-top) !important;
+        margin-bottom: var(--ptl-section-gap-bottom) !important;
+    }
+
+    /* 例外：NEWSのみ上に余白 */
+    #news {
+        margin-top: 80px !important;
+    }
     
     /* パララックスセクションのpadding保護（背景保護） */
     #bust-issues, #page-navigation,
     .ptl-reasonsHero, .ptl-salonHero,
     #section-infohub {
-        padding: 64px 0 0 !important;
+        padding: 64px 0 !important;
     }
 }
 

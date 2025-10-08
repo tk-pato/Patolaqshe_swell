@@ -286,3 +286,9 @@
 #bust-issues .ptl-news__moreBtn {
   /* カスタマイズ追加（ここは既存スタイルを上書きしたい場合のみ使用） */
 }
+
+/* セクション余白 */
+#page-navigation {
+    margin-top: 0;
+    margin-bottom: 80px;
+}

@@ -1,4 +1,8 @@
 @charset "UTF-8";
+#section-reasons {
+    margin-top: 0;
+    margin-bottom: 60px; /* reasons⇔navigation 60厳守 */
+}
 /* ===========================
    REASONS Section Styles - 統合完了版
    選ばれる理由セクション専用スタイル
@@ -100,8 +104,9 @@
 .ptl-reasonsHero .ptl-section__inner {
     position: relative;
     z-index: 1;
-    padding-top: 0; /* 統一: 上0 */
-    padding-bottom: 0; /* 統一: 下はstyle.cssで 80px を付与 */
+        padding-top: 0; /* 統一: 上0 */
+        padding-bottom: 0 !important; /* 下余白を削除 */
+        /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
 }
 
 .ptl-reasonsHero__grid {
@@ -189,5 +194,6 @@
 
 /* 余白統一: .ptl-section__inner は上0・下80を明示 */
 #section-reasons .ptl-section__inner{
-    padding: 0 20px 80px !important;
+    padding: 0 20px 0 !important; /* 下余白を削除 */
+    /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
 }

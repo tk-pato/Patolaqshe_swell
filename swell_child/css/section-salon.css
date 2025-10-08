@@ -239,7 +239,8 @@
 
 /* 余白統一: .ptl-section__inner は上0・下80を明示 */
 #salon .ptl-section__inner{
-    padding: 0 20px 80px !important;
+    padding: 0 20px 0 !important; /* 下余白を削除 */
+    /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
 }
 
 /* ===== サロン画像のスタイリングとキラキラ演出 ===== */
@@ -329,7 +330,8 @@
 /* ===== コンテナ幅統一（REASONSセクションと完全一致） ===== */
 /* 余白統一: .ptl-section__inner は上0・下80を明示（REASONSと同じパターン） */
 #salon .ptl-section__inner{
-    padding: 0 20px 80px !important;
+    padding: 0 20px 0 !important; /* 下余白を削除 */
+    /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
 }
 
 
@@ -446,4 +448,10 @@
         background: transparent !important;
         border-radius: 0 !important;
     }
+}
+
+/* セクション余白 */
+#salon {
+    margin-top: 0;
+    margin-bottom: 60px; /* SALON⇔INFOHUB 60厳守 */
 }
