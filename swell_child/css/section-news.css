@@ -54,6 +54,7 @@
 }
 
 /* セクション余白 */
+/* セクション余白: margin-bottomのみで管理 */
 #news {
   margin-top: 0 !important;
   margin-bottom: 80px !important;
