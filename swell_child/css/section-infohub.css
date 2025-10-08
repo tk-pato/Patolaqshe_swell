@@ -18,24 +18,9 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-top: 0 !important;
-  margin-bottom: 80px !important;
+  padding: 64px 0;
   overflow: hidden;
   isolation: isolate;
-}
-
-/* PC：パララックス背景領域の保護 - NAVIGATIONと完全一致 */
-@media (min-width: 960px) {
-  .ptl-infohub { 
-    padding: 64px 0 !important; 
-  }
-}
-
-/* SP：通常のpadding */
-@media (max-width: 959px) {
-  .ptl-infohub {
-    padding: 40px 0 !important;
-    margin-bottom: 40px !important;
-  }
 }
 
 /* 🔴 固定背景の実装 */

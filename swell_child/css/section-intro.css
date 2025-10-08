@@ -7,10 +7,6 @@
     margin-right: calc(50% - 50vw);
     position: relative;
     min-height: clamp(500px, 60vh, 700px);
-    /* 余白統一設定 */
-    padding: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 160px !important; /* パララックス効果で半分になるため、見え方80pxには160px必要 */
 }
 
 /* 左側: 背景画像 (70%) */
@@ -226,18 +222,7 @@
     }
 }
 
-/* セクション内側のベース余白と横幅ロック */
-#intro .ptl-section__inner {
-    padding: 0 20px !important; /* 左右のみ */
-    max-width: 1200px !important;
-    margin: 0 auto !important;
+/* 余白統一: 他セクションと同じルール */
+#intro.ptl-intro-section {
+    padding: 80px 0;
 }
-
-/* SP専用INTRO余白 */
-@media (max-width: 768px) {
-    #intro.ptl-intro-section {
-        margin-bottom: 80px !important; /* SPでパララックス効果が弱い場合、見え方40pxには80px設定 */
-    }
-}
-
-/* 強制ルール/擬似要素は撤去（余白は #intro の margin-bottom で管理） */
