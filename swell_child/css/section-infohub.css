@@ -18,18 +18,18 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   margin-top: 0 !important;
-  padding: 64px 0;
+  padding: 120px 0;
   overflow: hidden;
   isolation: isolate;
-}
+/* --- 末尾の不要な閉じカッコを削除 --- */
 
 /* セクション余白（統一） */
 #section-infohub { margin-top: 0 !important; margin-bottom: 80px !important; }
 
 /* パララックス背景領域の保護（PC） */
 @media (min-width: 960px) {
-  #section-infohub, .ptl-infohub { padding: 64px 0 !important; }
-}
+  #section-infohub, .ptl-infohub { padding: 140px 0 !important; }
+/* --- 末尾の不要な閉じカッコを削除 --- */
 
 /* 🔴 固定背景の実装 */
 .ptl-infohub {
@@ -43,6 +43,7 @@
 /* SP対応：モバイルでは固定背景を無効化 */
 @media (max-width: 768px) {
   .ptl-infohub {
+    padding: 80px 0;
     background-attachment: scroll;
   }
 }
@@ -63,35 +64,39 @@
 }
 
 /* コンテンツエリア（グローバルルールを上書き） */
+/* NAVIGATIONと完全統一：可変の上下余白 */
 .ptl-infohub .ptl-section__inner {
   position: relative;
   z-index: 2;
   max-width: var(--ptl-container-max, 1200px) !important;
   margin: 0 auto !important;
-  padding: 40px 20px 0 !important; /* 上40px・下0pxに変更 */
+  padding: 0 20px !important;
   width: 100% !important;
 }
 
 /* ヘッダー（パディング追加） */
+/* NAVIGATIONと統一：ヘッダー余白 */
 .ptl-infohub__header {
   text-align: center;
-  margin-bottom: 60px;
-  padding-left: var(--ptl-container-pad, 20px);
-  padding-right: var(--ptl-container-pad, 20px);
+  margin-bottom: clamp(32px, 3vw, 56px);
+  padding-left: 0;
+  padding-right: 0;
+  /* padding-top: 40px; ← この行があれば削除 */
 }
 
 /* H2タイトルはstyle.cssのグローバルルールを使用 */
 /* navigation.cssで背景メディア上の白文字化を適用 */
 
 /* カードグリッド（パディング追加） */
+/* NAVIGATIONと統一：グリッド余白 */
 .ptl-infohub__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
   margin: 0;
-  padding-left: var(--ptl-container-pad, 20px);
-  padding-right: var(--ptl-container-pad, 20px);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media (max-width: 959px) {
@@ -235,13 +240,21 @@
 ======================================== */
 
 /* セクション全体のID指定で詳細度を最大化 */
-#section-infohub .ptl-section__inner {
-  padding: 0 !important; /* 上下余白を削除（グローバルルールに委譲） */
+/* 競合する余白削除ルールを撤去（.ptl-infohub .ptl-section__innerで統一管理） */
 }
 
-#section-infohub .ptl-infohub__grid {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+/* .ptl-section__innerで左右余白を管理するため不要 */
+/* SP専用余白統一 */
+@media (max-width: 768px) {
+  #section-infohub {
+    margin-bottom: 40px !important;
+  }
+  /* SPでは内部余白を縮小 */
+  .ptl-infohub .ptl-section__inner {
+    padding-top: clamp(40px, 8vw, 80px) !important;
+    padding-bottom: clamp(40px, 8vw, 80px) !important;
+  }
+}
 }
 
 /* カードを確実にグリッドセル幅いっぱいに */

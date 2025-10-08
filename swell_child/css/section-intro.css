@@ -1,3 +1,13 @@
+/* セクション余白（詳細度を最大化） */
+#intro.ptl-intro-section {
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
+}
+
+/* 念のため追加：他のセレクタとの競合を完全に排除 */
+.ptl-intro-section#intro {
+    margin-bottom: 80px !important;
+}
 @charset "UTF-8";
 
 /* セクション全体 */
