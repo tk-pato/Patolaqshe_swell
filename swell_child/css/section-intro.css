@@ -222,15 +222,23 @@
     }
 }
 
-/* 余白統一: 他セクションと同じルール */
+/* 余白統一: 他セクションと同じルール（margin-bottom は #intro 側で管理） */
 #intro.ptl-intro-section {
-    padding: 0 !important; /* グローバル設定に統一 */
+    padding: 0 !important; /* カスタマイザーのpadding設定を無効化 */
     margin-top: 0 !important;
-    /* margin-bottom は #intro 側で管理 */
 }
 
-/* セクション余白 */
+/* セクション内側のベース余白と横幅ロック（上下は #intro のmarginで管理） */
+#intro .ptl-section__inner {
+    padding: 0 20px !important; /* 左右のみ */
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* セクション余白（#intro 側で管理） */
 #intro {
     margin-top: 0 !important;
     margin-bottom: 80px !important;
 }
+
+/* 強制ルール/擬似要素は撤去（余白は #intro の margin-bottom で管理） */

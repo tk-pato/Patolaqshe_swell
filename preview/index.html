@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>プレビュー | パトラケッシュ SWELL 子テーマ</title>
+  <link rel="stylesheet" href="../swell_child/style.css" />
+  <link rel="stylesheet" href="../swell_child/css/issues-navigation.css" />
+  <link rel="stylesheet" href="../swell_child/css/navigation.css" />
+  <link rel="stylesheet" href="../swell_child/css/section-reasons.css" />
+  <link rel="stylesheet" href="../swell_child/css/section-salon.css" />
+  <link rel="stylesheet" href="../swell_child/css/section-infohub.css" />
+  <link rel="stylesheet" href="../swell_child/css/section-intro.css" />
+  <link rel="stylesheet" href="../swell_child/css/section-news.css" />
+  <link rel="stylesheet" href="../swell_child/css/section-blog.css" />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans JP, sans-serif; line-height: 1.6; }
+    .preview-wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .note { background: #fff8e1; border: 1px solid #ffecb3; padding: 10px 12px; border-radius: 6px; margin: 16px 0; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .frame { border: 1px dashed #ccc; padding: 12px; border-radius: 8px; }
+    .dark { background: #111; color: #eee; }
+    .debug { position: fixed; bottom: 10px; right: 12px; background: #0008; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; }
+    @media (min-width: 960px) { .debug { display: block; } }
+  </style>
+</head>
+<body>
+  <div class="preview-wrap">
+    <h1>簡易プレビュー</h1>
+    <p class="note">このページは CSS の余白・パララックス padding をローカルで素早く確認するためのダミーです（WordPress のPHPやJSは動きません）。</p>
+
+    <div class="grid">
+      <section id="intro" class="ptl-intro-section frame">
+        <h2>Intro セクション</h2>
+        <p>margin-top: 0; margin-bottom: 80px; padding は 0 !important の想定。</p>
+      </section>
+
+      <section id="bust-issues" class="frame" style="background:#f5f5f5;">
+        <h2>Bust Issues</h2>
+        <p>PC幅で padding: 64px 0 !important が効くか確認。</p>
+      </section>
+
+      <section id="page-navigation" class="ptl-pageNavHero frame dark" style="background:#222;">
+        <h2>Page Navigation Hero</h2>
+        <p>PC幅で padding: 64px 0 !important。上下の外側余白は 0/80。</p>
+      </section>
+
+      <section id="section-reasons" class="ptl-reasonsHero frame" style="background:#eef7ff;">
+        <h2>Reasons Hero</h2>
+        <p>PC幅 padding: 64px 0 !important。</p>
+      </section>
+
+      <section id="salon" class="ptl-salonHero frame" style="background:#f2fff2;">
+        <h2>Salon Hero</h2>
+        <p>PC幅 padding: 64px 0 !important。</p>
+      </section>
+
+      <section id="section-infohub" class="ptl-infohub frame" style="background:#fff7f1;">
+        <h2>Infohub</h2>
+        <p>PC幅 padding: 64px 0 !important。</p>
+      </section>
+
+      <section id="news" class="frame">
+        <h2>News</h2>
+        <p>外側余白 0/80 のみ。</p>
+      </section>
+
+      <section id="blog" class="frame">
+        <h2>Blog</h2>
+        <p>外側余白 0/80、必要に応じて full-bleed を確認。</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="debug">幅に応じてパララックス padding を確認してください（960px 以上で 64px 0）。</div>
+</body>
+</html>
