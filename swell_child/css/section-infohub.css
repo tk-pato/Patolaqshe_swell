@@ -21,12 +21,14 @@
   padding: 64px 0;
   overflow: hidden;
   isolation: isolate;
+  margin-bottom: 80px !important; /* ← この行を追加 */
 }
 
 /* SP対応：モバイルでは固定背景を無効化 */
 @media (max-width: 768px) {
   .ptl-infohub {
     background-attachment: scroll;
+    margin-bottom: 40px !important; /* ← この行を追加 */
   }
 }
 

@@ -48,7 +48,7 @@ body.home .l-mainContent,
 #intro.ptl-intro-section {
     padding: 0 !important;
     margin-top: 0 !important;
-    margin-bottom: 80px !important;
+     margin-bottom: 160px !important; /* ← 80px → 160px に変更（パララックス侵食対策） */
     /* パララックス侵食対策 */
     isolation: isolate;
     z-index: 1;
@@ -57,7 +57,7 @@ body.home .l-mainContent,
 @media (max-width: 768px) {
     #intro,
     #intro.ptl-intro-section {
-        margin-bottom: 40px !important;
+          margin-bottom: 80px !important; /* ← 40px → 80px に変更（パララックス侵食対策） */
     }
 }
 
@@ -469,13 +469,13 @@ html, body { overflow-x: hidden; }
 /* NEWSセクションの白背景用padding（固定値） */
 #news.ptl-section {
     padding-top: 40px !important;
-    padding-bottom: 40px !important;
+    padding-bottom: 0 !important; /* ← 40px → 0px に変更 */
 }
 
 @media (max-width: 768px) {
     #news.ptl-section {
         padding-top: 30px !important;
-        padding-bottom: 30px !important;
+        padding-bottom: 0 !important; /* ← 30px → 0px に変更 */
     }
 }
 
