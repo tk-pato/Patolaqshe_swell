@@ -495,8 +495,9 @@
 }
 
 /* セクション余白 */
+/* セクション余白 */
 #uservoice {
     margin-top: 0 !important;
-    margin-bottom: 60px !important; /* 適性と判断のため据え置き */
+    margin-bottom: 80px !important;
 }
 

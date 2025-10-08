@@ -1,7 +1,13 @@
 @charset "UTF-8";
+/* セクション余白 */
 #section-reasons {
     margin-top: 0 !important;
     margin-bottom: 80px !important; /* 見た目を80へ */
+}
+
+/* パララックス背景領域の保護（PC） */
+@media (min-width: 960px) {
+    #section-reasons, .ptl-reasonsHero { padding: 64px 0 !important; }
 }
 /* ===========================
    REASONS Section Styles - 統合完了版

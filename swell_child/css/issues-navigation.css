@@ -6,6 +6,11 @@
 	/* 点線のみで表現 */
 }
 
+/* セクション余白 */
+#bust-issues {
+  margin-top: 0 !important;
+  margin-bottom: 80px !important;
+}
 /* 親テーマの個別ボーダー指定を無効化 */
 #bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item{
 	border: 0;
@@ -194,4 +199,9 @@
 #bust-issues {
   margin-top: 0 !important;
   margin-bottom: 80px !important; /* 見た目を80へ */
+}
+
+/* パララックス背景領域の保護（PC） */
+@media (min-width: 960px) {
+  #bust-issues { padding: 64px 0 !important; }
 }

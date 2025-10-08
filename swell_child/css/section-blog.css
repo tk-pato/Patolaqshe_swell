@@ -8,12 +8,17 @@
   background: transparent !important;
 }
 
+/* セクション余白 */
+#section-blog {
+  margin-top: 0 !important;
+  margin-bottom: 80px !important;
+}
 /* ヒーロー直後の帯（グレー背景）を強制非表示 */
 .hero-section + .l-mainContent__inner {
   background: transparent !important;
   border: none !important;
 }
-@charset "UTF-8";
+/* @charset removed: must appear at file top; redundant here */
 
 /* ========================================
    BLOG セクション（自動横スクロール）

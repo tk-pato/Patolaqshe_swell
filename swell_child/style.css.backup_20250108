@@ -11,6 +11,10 @@ body.home .l-mainContent,
 /* STEP1: セクション間余白調整（グローバル管理は撤去、各セクションCSSで管理） */
 /* 旧: #page-navigation の上寄せ（負のmargin）は廃止。navigation.cssで margin-top:0 を定義 */
 
+:root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
+
+#section-reasons .ptl-section__title{ margin-top: 0 !important; }
+
 /* 各セクションの内部コンテンツ余白（必要箇所のみ最小限） */
 /* 通常セクションの inner padding */
 #news .ptl-section__inner,
@@ -58,7 +62,19 @@ body.home .l-mainContent,
     padding: 64px 0 !important; /* パララックス背景領域の高さを保持 */
 }
 
-/* 全セクションの見えているコンテンツ部分の統一ルールは撤去（各セクションCSSで管理） */
+/* 全セクションの見えているコンテンツ部分を①のNEWSセクション境界に統一 */
+:root{ --section-padding: 80px 0; --section-inner-width: 1200px; }
+
+/* 各セクションのコンテンツ部分を統一（パララックス背景は維持） */
+
+/* NEWSセクションのパディングを基準として他も合わせる */
+#news .ptl-section__inner{ padding: 80px 20px !important; }
+
+/* パララックス画像幅は維持、コンテンツのみ統一 */
+/* #bust-issues は issues-navigation.css で独立管理 */
+/* #section-reasons の .ptl-section__inner へのpadding指定は削除（重複のため） */
+
+:root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
 
 /* セクション間の外側マージン統一ロジックは撤去（各セクションCSSで管理） */
 /*
@@ -193,15 +209,6 @@ html, body { overflow-x: hidden; }
 
 /* ヒーローロゴの表示はカスタマイザーの中央テキストで制御します（非表示にしたい場合はここにルールを追加） */
 
-/* ===========================
-     ヒーローセクション余白
-     =========================== */
-.p-mainVisual,
-.hero-section {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-}
-
 /* ヘッダー：サブメニュー（ドロップダウン）の背景を透過に */
 @media (min-width: 960px) {
     /* 🔴 パララックスセクション本体のpadding復元 */
@@ -210,7 +217,7 @@ html, body { overflow-x: hidden; }
     #section-reasons,
     #salon,
     #section-infohub {
-        padding: 64px 0 !important;
+        padding: 64px 0 0 !important;
     }
 
     /* クラスベースでも冗長指定（安全対策） */
@@ -218,9 +225,12 @@ html, body { overflow-x: hidden; }
     .ptl-reasonsHero,
     .ptl-salonHero,
     .ptl-infohub {
-        padding: 64px 0 !important;
+        padding: 64px 0 0 !important;
     }
-    /* 余白用のCSS変数は撤去（各セクションCSSで個別管理） */
+    :root {
+        --ptl-section-gap-top: 0px;
+        --ptl-section-gap-bottom: 80px;
+    }
 
     /* 全セクションのマージン統一は廃止（各セクションCSSで個別管理） */
     
@@ -228,7 +238,7 @@ html, body { overflow-x: hidden; }
     #bust-issues, #page-navigation,
     .ptl-reasonsHero, .ptl-salonHero,
     #section-infohub {
-        padding: 64px 0 !important;
+        padding: 64px 0 0 !important;
     }
 }
 
@@ -299,9 +309,8 @@ html, body { overflow-x: hidden; }
 /* =====================================================
     NEWS / SERVICE NAV / STORE NAV スタイル（統一後）
     ----------------------------------------------------- */
-/* グローバルでのセクション余白管理は廃止。各セクションCSSで管理 */
-/* 保持ルール: .ptl-section__inner は padding: 0 20px と最大幅のみ */
-.ptl-section__inner { max-width: 1200px !important; margin: 0 auto; padding: 0 20px !important; }
+.ptl-section { padding: 80px 0; }
+.ptl-section__inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 
 /* NEWS */
 .ptl-news__list { list-style: none; padding: 0; margin: 0 auto; max-width: 860px; }
@@ -526,8 +535,22 @@ html, body { overflow-x: hidden; }
 }
 
 /* === Canonical container lock (global, matches navigation) === */
-/* 変数を使わない固定指定に簡素化（内側paddingは保持） */
-/* ここでは .ptl-section__inner の保持ルールで十分なため追加のロックは削除 */
+:root { --ptl-container-max: 1200px; --ptl-container-pad: 20px; }
+.ptl-section > .ptl-section__inner{
+  max-width: var(--ptl-container-max) !important;
+  margin-inline: auto !important;
+  padding-inline: var(--ptl-container-pad) !important;
+  width: auto !important;
+  box-sizing: border-box;
+}
+/* Optional safety: if a section wrapper tries to re-define width */
+.ptl-section [class*="__inner"],
+.ptl-section [class*="__wrap"],
+.ptl-section [class*="__container"]{
+  max-width: none !important;
+  width: auto !important;
+  box-sizing: border-box;
+}
 
 /* SALONは section-salon.css 側でフルブリード＋inner制御に統一 */
 

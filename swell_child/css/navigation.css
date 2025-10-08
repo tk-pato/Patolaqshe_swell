@@ -92,7 +92,7 @@
     padding: 40px 0;
   }
   /* グリッド設定はstyle.cssで統一管理 */
-}
+
   #page-navigation .ptl-pageNavHero__icon {
     width: 48px;
     height: 48px;
@@ -178,17 +178,11 @@
    - 目的: 親/子のグローバルCSSを汚さずに、このセクションだけを上書き
    - 追記方針: 1ファイル1責務。後続タスクで具体スタイルを足す */
 
-/* 基本スコープ */
-.ptl-navigation {
-  /* セクション共通の最低限の初期化はここに */
-}
+/* 基本スコープ - 必要時に追記 */
+/* .ptl-navigation { } */
 
-/* スマホ調整 */
-@media (max-width: 768px) {
-  .ptl-navigation {
-    /* SP専用の調整はここに */
-  }
-}
+/* スマホ調整（必要時に追記） */
+/* @media (max-width: 768px) { .ptl-navigation { } } */
 
 /* ===== SP: パララックス可視化強化（速度はカスタマイザー制御のまま） ===== */
 @media (max-width: 768px) {
@@ -282,13 +276,15 @@
 /* NEWSの標準クラスをそのまま継承（style.cssに定義済み） */
 /* ptl-news__moreBtn, ptl-news__moreLabel, ptl-news__moreArrowクラスをそのまま使用 */
 
-/* オーバーライドが必要な場合は以下に追加 */
-#bust-issues .ptl-news__moreBtn {
-  /* カスタマイズ追加（ここは既存スタイルを上書きしたい場合のみ使用） */
-}
+/* オーバーライドが必要な場合は以下に追加（現状なし） */
 
 /* セクション余白 */
 #page-navigation {
   margin-top: 0 !important;
-  margin-bottom: 80px !important; /* 上書きに負けないよう強制 */
+  margin-bottom: 80px !important;
+}
+
+/* パララックス背景領域の保護（PC） */
+@media (min-width: 960px) {
+  #page-navigation, .ptl-pageNavHero { padding: 64px 0 !important; }
 }

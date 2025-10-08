@@ -231,6 +231,6 @@
 
 /* セクション余白 */
 #intro {
-    margin-top: 0;
-    margin-bottom: 80px !important; /* INTRO⇔issues を80の見え方へ */
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
 }

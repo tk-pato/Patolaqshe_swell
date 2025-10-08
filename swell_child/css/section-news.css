@@ -55,6 +55,6 @@
 
 /* セクション余白 */
 #news {
-  margin-top: 80px !important;       /* ヒーロー直下は80pxの見え方 */
-  margin-bottom: 80px !important;   /* NEWS⇔INTRO を80の見え方へ */
+  margin-top: 0 !important;
+  margin-bottom: 80px !important;
 }

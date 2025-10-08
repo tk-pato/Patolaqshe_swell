@@ -23,6 +23,14 @@
   isolation: isolate;
 }
 
+/* セクション余白（統一） */
+#section-infohub { margin-top: 0 !important; margin-bottom: 80px !important; }
+
+/* パララックス背景領域の保護（PC） */
+@media (min-width: 960px) {
+  #section-infohub, .ptl-infohub { padding: 64px 0 !important; }
+}
+
 /* 🔴 固定背景の実装 */
 .ptl-infohub {
   background-image: var(--infohub-bg-image, none);
@@ -245,6 +253,7 @@
 }
 
 /* セクション外側余白の原則管理（上0・下80） */
+/* セクション余白 */
 #section-infohub {
   margin-top: 0 !important;
   margin-bottom: 80px !important;
