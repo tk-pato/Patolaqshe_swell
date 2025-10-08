@@ -6,13 +6,11 @@
 	/* 点線のみで表現 */
 }
 
-/* ===========================
-   BUST-ISSUES: セクション構造
-   - 目的: NAVIGATIONと完全統一
-   - 上下余白: padding 64px（背景保護）
-   - セクション間隔: margin-bottom 80px
-   - 縦中央配置: .ptl-section__inner で実現
-   =========================== */
+/* セクション余白 - パララックス背景侵食を考慮 */
+#bust-issues {
+  margin-top: 0 !important; /* パララックス幅による圧迫を防ぐため0に戻す */
+  margin-bottom: 80px !important;
+}
 /* 親テーマの個別ボーダー指定を無効化 */
 #bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item{
 	border: 0;
@@ -34,65 +32,48 @@
    ISSUES: NAVIGATIONと完全一致
    =========================== */
 
-/* BUST-ISSUESセクション本体（NAVIGATIONと完全統一） */
+/* 基本構造 - NAVIGATIONと完全一致 */
 #bust-issues {
-  /* === 余白（NAVIGATIONと統一） === */
-  margin-top: 0 !important;
-  margin-bottom: 80px !important;
-  
-  /* === レイアウト（NAVIGATIONと統一） === */
+  min-height: clamp(520px, 60vh, 720px); /* NAVIGATIONと一致 */
+  max-height: clamp(520px, 60vh, 720px) !important; /* 強制統一 */
+  display: flex;
+  align-items: center; /* 縦中央 */
+  justify-content: center; /* 横中央 */
   position: relative;
-  overflow: hidden; /* パララックス背景の制御 */
-  
-  /* === サイズ（NAVIGATIONと統一） === */
-  min-height: clamp(520px, 60vh, 720px);
-  max-height: clamp(520px, 60vh, 720px) !important;
-  padding: 64px 0 !important; /* 背景領域の保護 */
-  
-  /* === フルブリード === */
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;
+  /* フルブリード設定 */
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  
-  /* === 背景設定 === */
-  background: transparent;
+  /* NAVIGATIONと完全一致：固定padding */
+  padding: 64px 0 !important;
 }
 
 /* PC専用: 高さ設定 */
 @media (min-width: 960px) {
-  #bust-issues { 
-    min-height: clamp(520px, 60vh, 720px); 
-  }
+  #bust-issues { min-height: clamp(520px, 60vh, 720px); }
 }
 
-/* SP専用: 余白調整 */
-@media (max-width: 768px) {
-  #bust-issues { 
-    margin-bottom: 40px !important; 
-  }
-}
-
-/* コンテンツエリア（NAVIGATIONと統一 + 縦中央配置） */
+/* コンテンツ余白 - NAVIGATIONと完全一致（詳細度強化版） */
+/* style.cssのグローバルルールを確実に上書き */
 #bust-issues.ptl-bustIssues .ptl-section__inner,
 #bust-issues .ptl-bustIssues .ptl-section__inner,
 #bust-issues .ptl-section__inner {
-  /* === NAVIGATIONと統一の設定 === */
   width: 100% !important;
   position: relative !important;
   z-index: 1 !important;
+  /* NAVIGATIONと完全一致：上下余白はセクション本体に委譲 */
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  /* 左右余白のみ設定 */
   padding-left: var(--ptl-container-pad, 20px) !important;
   padding-right: var(--ptl-container-pad, 20px) !important;
+  /* コンテナ幅 */
   max-width: var(--ptl-container-max, 1200px) !important;
   margin: 0 auto !important;
   box-sizing: border-box !important;
-  
-  /* === 縦中央配置（flexboxで実現） === */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%; /* 親の高さに合わせる */
 }
 
 /* 背景レイヤ - NAVIGATIONと完全一致 */
@@ -217,8 +198,15 @@
   font-weight: 500;
 }
 
-/* SP専用カード調整 */
+/* セクション余白 */
+#bust-issues {
+  margin-top: 0 !important;
+  margin-bottom: 80px !important; /* 見た目を80へ */
+}
+
+/* SP専用余白統一と内側の微調整 */
 @media (max-width: 768px) {
+  #bust-issues { margin-bottom: 40px !important; }
   .ptl-bustIssues__card {
     padding: 16px 12px !important;
     margin: 0 auto !important;
