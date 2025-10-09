@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+/* ========================================
+   フローティングメニュー - ガラスモーフィズム
+======================================== */
+
+/* コンテナ */
+.ptl-float-menu {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 12px;
+  pointer-events: none; /* コンテナ自体はクリック無効 */
+}
+
+/* ボタン共通スタイル */
+.ptl-float-menu__btn {
+  pointer-events: auto; /* ボタンのみクリック有効 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px 20px;
+  min-width: 140px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-decoration: none;
+  color: #8B4513;
+  
+  /* ガラスモーフィズム */
+  background: rgba(255, 240, 245, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 
+    0 8px 32px rgba(139, 69, 19, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  
+  /* アニメーション */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: right center;
+}
+
+/* ホバーエフェクト */
+.ptl-float-menu__btn:hover {
+  background: rgba(255, 240, 245, 0.95);
+  border-color: rgba(139, 69, 19, 0.3);
+  box-shadow: 
+    0 12px 48px rgba(139, 69, 19, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 192, 203, 0.4); /* 発光エフェクト */
+  transform: translateX(-8px) scale(1.05);
+  color: #6B3410;
+}
+
+/* アクティブ状態 */
+.ptl-float-menu__btn:active {
+  transform: translateX(-6px) scale(1.02);
+  transition-duration: 0.1s;
+}
+
+/* ボタンテキスト */
+.ptl-float-menu__btn-text {
+  display: block;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.1em;
+}
+
+/* ボタン個別カラー調整 */
+.ptl-float-menu__btn--daikanyama {
+  background: rgba(255, 240, 245, 0.75);
+}
+
+.ptl-float-menu__btn--ginza {
+  background: rgba(240, 248, 255, 0.75);
+}
+
+.ptl-float-menu__btn--mariage {
+  background: rgba(255, 250, 240, 0.75);
+}
+
+.ptl-float-menu__btn--daikanyama:hover {
+  background: rgba(255, 240, 245, 0.95);
+  box-shadow: 
+    0 12px 48px rgba(255, 182, 193, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 192, 203, 0.5);
+}
+
+.ptl-float-menu__btn--ginza:hover {
+  background: rgba(240, 248, 255, 0.95);
+  box-shadow: 
+    0 12px 48px rgba(173, 216, 230, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(176, 224, 230, 0.5);
+}
+
+.ptl-float-menu__btn--mariage:hover {
+  background: rgba(255, 250, 240, 0.95);
+  box-shadow: 
+    0 12px 48px rgba(255, 228, 181, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 228, 196, 0.5);
+}
+
+/* スクロールフェードイン効果 */
+.ptl-float-menu.is-visible {
+  animation: fadeInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* ========================================
+   レスポンシブ: SP表示（横並び）
+======================================== */
+@media (max-width: 767px) {
+  .ptl-float-menu {
+    right: 0;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    transform: none;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 12px 8px;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ptl-float-menu__btn {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  
+  .ptl-float-menu__btn-text {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+  }
+  
+  .ptl-float-menu__btn:hover {
+    transform: translateY(-4px) scale(1.05);
+  }
+  
+  .ptl-float-menu.is-visible {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* タブレット調整 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ptl-float-menu__btn {
+    min-width: 120px;
+    font-size: 13px;
+    padding: 14px 16px;
+  }
+}
+
+/* アニメーション軽減設定 */
+@media (prefers-reduced-motion: reduce) {
+  .ptl-float-menu__btn {
+    transition: none;
+  }
+  
+  .ptl-float-menu__btn:hover {
+    transform: none;
+  }
+  
+  .ptl-float-menu.is-visible {
+    animation: none;
+  }
+}

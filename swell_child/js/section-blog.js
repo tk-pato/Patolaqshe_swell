@@ -1,5 +1,5 @@
 /**
- * BLOG セクション - 自動スクロール制御
+ * BLOG セクション - 自動スクロール制御（スムーズな無限ループ）
  */
 (function() {
   'use strict';
@@ -8,28 +8,25 @@
     const track = document.querySelector('.ptl-blog__track');
     if (!track) return;
 
-    // .ptl-blog__item をクローン対象に変更
     const items = Array.from(track.querySelectorAll('.ptl-blog__item'));
     const itemCount = items.length;
-    const container = track.closest('.ptl-blog__container');
-    const containerWidth = container && container.offsetWidth ? container.offsetWidth : window.innerWidth;
 
     if (itemCount >= 5) {
-      track.classList.add('is-animated');
-      const baseWidth = track.scrollWidth;
-      let trackWidth = baseWidth;
-      let cloneCount = 0;
-      const maxClones = 20; // 無限ループ防止
-
-      // 2倍の幅になるまでクローン
-      while (trackWidth < baseWidth * 2 && cloneCount < maxClones) {
+      // 元のアイテムセットを3回複製（合計4セット = 元 + 複製3）
+      // これにより十分な長さを確保し、シームレスなループを実現
+      const fragment = document.createDocumentFragment();
+      
+      for (let i = 0; i < 3; i++) {
         items.forEach(item => {
-          track.appendChild(item.cloneNode(true));
+          fragment.appendChild(item.cloneNode(true));
         });
-        trackWidth = track.scrollWidth;
-        cloneCount++;
       }
+      
+      track.appendChild(fragment);
+      track.classList.add('is-animated');
+
     } else {
+      // 5件未満は静的表示
       track.classList.add('is-static');
     }
   };

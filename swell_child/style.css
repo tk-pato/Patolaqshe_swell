@@ -509,12 +509,13 @@ html, body { overflow-x: hidden; }
 
 /* 統一ルールに合わせるため、特別な詰めは撤回（既定の各セクション余白へ） */
 
-/* --- Marquee gallery (shortcode) --- */
+/* --- Marquee gallery (無限スライダー) - 最適化版 --- */
 .ptl-marquee { position: relative; overflow: hidden; width: 100%; height: var(--height, 200px); }
 .ptl-marquee__track { position: absolute; inset: 0; display: flex; align-items: center; gap: var(--gap, 24px); will-change: transform; animation: ptl-marquee var(--duration, 30s) linear infinite; }
 .ptl-marquee__item { flex: 0 0 auto; height: calc(var(--height, 200px) - 8px); display: flex; align-items: center; }
 .ptl-marquee__item img { height: 100%; width: auto; display: block; object-fit: cover; filter: drop-shadow(0 4px 12px rgba(0,0,0,.12)); border-radius: 6px; }
-@keyframes ptl-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* スムーズな無限ループアニメーション（JSで4セット生成されるため、-25%で1周） */
+@keyframes ptl-marquee { from { transform: translateX(0); } to { transform: translateX(-25%); } }
 @media (prefers-reduced-motion: reduce) { .ptl-marquee__track { animation: none; } }
 
 /* --- SNS buttons (shortcode) --- */

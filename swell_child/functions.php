@@ -2961,4 +2961,63 @@ if (!defined('PTL_PERF_OPTIMIZATION_READY')) {
   define('PTL_PERF_OPTIMIZATION_READY', false); // 完成後にtrueに変更
 }
 
+/**
+ * フローティングメニューの読み込み
+ */
+add_action('wp_enqueue_scripts', function() {
+  // CSS
+  $css_path = get_stylesheet_directory() . '/css/float-menu.css';
+  if (file_exists($css_path)) {
+    wp_enqueue_style(
+      'ptl-float-menu',
+      get_stylesheet_directory_uri() . '/css/float-menu.css',
+      array(),
+      filemtime($css_path)
+    );
+  }
+  
+  // JavaScript
+  $js_path = get_stylesheet_directory() . '/js/float-menu.js';
+  if (file_exists($js_path)) {
+    wp_enqueue_script(
+      'ptl-float-menu',
+      get_stylesheet_directory_uri() . '/js/float-menu.js',
+      array(),
+      filemtime($js_path),
+      true
+    );
+  }
+}, 100);
+
+/**
+ * フローティングメニューのHTML出力
+ */
+add_action('wp_footer', function() {
+  ?>
+  <aside class="ptl-float-menu" aria-label="予約・お問い合わせメニュー">
+    <a href="https://beauty.hotpepper.jp/kr/slnH000263216/?utm_source=site&utm_medium=nav&utm_campaign=reserve" 
+       class="ptl-float-menu__btn ptl-float-menu__btn--daikanyama"
+       target="_blank"
+       rel="noopener noreferrer">
+      <span class="ptl-float-menu__btn-text">代官山店<br>ご予約はこちら</span>
+    </a>
+    
+    <a href="https://beauty.hotpepper.jp/kr/slnH000334472/?utm_source=site&utm_medium=nav&utm_campaign=reserve" 
+       class="ptl-float-menu__btn ptl-float-menu__btn--ginza"
+       target="_blank"
+       rel="noopener noreferrer">
+      <span class="ptl-float-menu__btn-text">銀座店<br>ご予約はこちら</span>
+    </a>
+    
+    <a href="https://tayori.com/form/6d4a08aa86803c6ad6212ff3118789ea2f0b1e61/" 
+       class="ptl-float-menu__btn ptl-float-menu__btn--mariage"
+       target="_blank"
+       rel="noopener noreferrer">
+      <span class="ptl-float-menu__btn-text">【結婚相談】<br>お問合せはこちら</span>
+    </a>
+  </aside>
+  <?php
+}, 100);
+
+
 
