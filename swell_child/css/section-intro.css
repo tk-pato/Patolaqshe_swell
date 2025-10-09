@@ -183,7 +183,7 @@
 @media (max-width: 767px) {
   #intro.ptl-intro-section {
     min-height: auto;
-    margin-bottom: 80px !important;
+    margin-bottom: 40px !important;
   }
   
   #intro .ptl-intro__media {

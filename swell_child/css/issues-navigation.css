@@ -57,12 +57,13 @@
 /* SP: パララックス効果とoverflow設定 */
 @media (max-width: 767px) {
   #bust-issues {
-    overflow: visible;
+    overflow: hidden;
     min-height: auto;
     max-height: none !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 80px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-top: 0 !important;
+    margin-bottom: 40px !important;
   }
   
   #bust-issues .ptl-bustIssues__image img,
@@ -219,7 +220,7 @@
 /* SP専用余白統一と内側の微調整 */
 @media (max-width: 767px) {
   .ptl-bustIssues__card {
-    padding: 24px 16px 32px !important;
+    padding: 32px 16px 32px !important;
     margin: 0 auto !important;
     max-width: calc(100% - 40px) !important;
   }
