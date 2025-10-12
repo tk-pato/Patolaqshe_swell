@@ -103,7 +103,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 $access = (string)($shop['access'] ?? '');
                 $map_embed = (string)($shop['map_embed'] ?? '');
                 $access_detail = (array)($shop['access_detail'] ?? []);
-
+                
                 // COMMITMENTベースの構造で店舗情報を表示、④各店舗ページリンク設定
                 if ($img_url) {
                     $icon_html = '<div class="salon-image-wrapper">';
@@ -120,12 +120,11 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 }
             ?>
                 <div class="ptl-salonHero__btn">
-                    <span class="ptl-salonHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-                                                        ?></span>
+                    <span class="ptl-salonHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
                     <div class="ptl-salonHero__boxTitle">
                         <?php if ($page_url): ?><a href="<?php echo esc_url($page_url); ?>" style="color:inherit;text-decoration:none;"><?php endif; ?>
-                            <?php echo esc_html($name); ?>
-                            <?php if ($page_url): ?></a><?php endif; ?>
+                        <?php echo esc_html($name); ?>
+                        <?php if ($page_url): ?></a><?php endif; ?>
                         <?php if ($line): ?>
                             <a href="<?php echo esc_url($line); ?>" target="_blank" rel="noopener" style="margin-left:10px;display:inline-block;width:1.8em;height:1.8em;">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/line.png'); ?>" alt="LINE" style="width:100%;height:100%;border-radius:4px;" loading="lazy" />
@@ -143,22 +142,22 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         <?php if ($tel_href): ?>
                             <p style="margin:4px 0;"><a href="<?php echo esc_attr($tel_href); ?>" style="color:#06C755;text-decoration:none;font-weight:600;">TEL: <?php echo esc_html($tel); ?></a></p>
                         <?php endif; ?>
-
+                        
                         <?php if ($map_embed): ?>
                             <!-- 📍 Googleマップ -->
                             <div class="salon-map">
-                                <iframe
+                                <iframe 
                                     src="<?php echo esc_url($map_embed); ?>"
-                                    width="600"
-                                    height="400"
-                                    style="border:0;"
-                                    allowfullscreen=""
-                                    loading="lazy"
+                                    width="600" 
+                                    height="400" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
                                     referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
                         <?php endif; ?>
-
+                        
                         <?php if (!empty($access_detail)): ?>
                             <!-- 🚃 最寄駅情報 -->
                             <div class="salon-access">
