@@ -240,27 +240,33 @@ add_action('wp_enqueue_scripts', function () {
 /* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
 
 /* === Spacing Debug Toggle (front only) === */
-add_action('wp_footer', function(){
+add_action('wp_footer', function () {
   if (is_admin()) return; // 全公開ページで有効
 ?>
   <script id="ptl-spacing-debug" data-desc="Press Shift+D or use ?debug=spacing to toggle">
-    (function(){
-      try{
+    (function() {
+      try {
         var enable = /[?#&]debug=spacing\b/.test(location.search) || /#debug-spacing\b/.test(location.hash);
         var root = document.documentElement || document.body;
-        var apply = function(on){
-          if(!root) return;
-          if(on){ root.setAttribute('data-ptl-debug-spacing',''); }
-          else { root.removeAttribute('data-ptl-debug-spacing'); }
+        var apply = function(on) {
+          if (!root) return;
+          if (on) {
+            root.setAttribute('data-ptl-debug-spacing', '');
+          } else {
+            root.removeAttribute('data-ptl-debug-spacing');
+          }
         };
         apply(enable);
-        window.addEventListener('keydown', function(e){
-          if(e.key.toLowerCase()==='d' && e.shiftKey){
+        window.addEventListener('keydown', function(e) {
+          if (e.key.toLowerCase() === 'd' && e.shiftKey) {
             var on = !root.hasAttribute('data-ptl-debug-spacing');
             apply(on);
           }
-        }, {passive:true});
-      }catch(_){/* noop */}
+        }, {
+          passive: true
+        });
+      } catch (_) {
+        /* noop */ }
     })();
   </script>
 <?php
@@ -2964,7 +2970,7 @@ if (!defined('PTL_PERF_OPTIMIZATION_READY')) {
 /**
  * フローティングメニューの読み込み
  */
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
   // CSS
   $css_path = get_stylesheet_directory() . '/css/float-menu.css';
   if (file_exists($css_path)) {
@@ -2975,7 +2981,7 @@ add_action('wp_enqueue_scripts', function() {
       filemtime($css_path)
     );
   }
-  
+
   // JavaScript
   $js_path = get_stylesheet_directory() . '/js/float-menu.js';
   if (file_exists($js_path)) {
@@ -2992,37 +2998,37 @@ add_action('wp_enqueue_scripts', function() {
 /**
  * フローティングメニューのHTML出力
  */
-add_action('wp_footer', function() {
-  ?>
+add_action('wp_footer', function () {
+?>
   <aside class="ptl-float-menu" aria-label="予約・お問い合わせメニュー">
-    <a href="https://beauty.hotpepper.jp/kr/slnH000263216/?utm_source=site&utm_medium=nav&utm_campaign=reserve" 
-       class="ptl-float-menu__btn ptl-float-menu__btn--daikanyama"
-       target="_blank"
-       rel="noopener noreferrer">
+    <a href="https://beauty.hotpepper.jp/kr/slnH000263216/?utm_source=site&utm_medium=nav&utm_campaign=reserve"
+      class="ptl-float-menu__btn ptl-float-menu__btn--daikanyama"
+      target="_blank"
+      rel="noopener noreferrer">
       <span class="ptl-float-menu__btn-text">代官山予約</span>
     </a>
-    
-    <a href="https://beauty.hotpepper.jp/kr/slnH000334472/?utm_source=site&utm_medium=nav&utm_campaign=reserve" 
-       class="ptl-float-menu__btn ptl-float-menu__btn--ginza"
-       target="_blank"
-       rel="noopener noreferrer">
+
+    <a href="https://beauty.hotpepper.jp/kr/slnH000334472/?utm_source=site&utm_medium=nav&utm_campaign=reserve"
+      class="ptl-float-menu__btn ptl-float-menu__btn--ginza"
+      target="_blank"
+      rel="noopener noreferrer">
       <span class="ptl-float-menu__btn-text">銀座予約</span>
     </a>
-    
-    <a href="https://tayori.com/form/6d4a08aa86803c6ad6212ff3118789ea2f0b1e61/" 
-       class="ptl-float-menu__btn ptl-float-menu__btn--mariage"
-       target="_blank"
-       rel="noopener noreferrer">
+
+    <a href="https://tayori.com/form/6d4a08aa86803c6ad6212ff3118789ea2f0b1e61/"
+      class="ptl-float-menu__btn ptl-float-menu__btn--mariage"
+      target="_blank"
+      rel="noopener noreferrer">
       <span class="ptl-float-menu__btn-text">マリアージュ予約</span>
     </a>
   </aside>
-  <?php
+<?php
 }, 100);
 
 /**
  * トップに戻るボタンの矢印を上向きに修正（修正3）
  */
-add_action('wp_head', function() {
+add_action('wp_head', function () {
   echo '<style id="ptl-pagetop-arrow-fix">
   /* トップに戻るボタンの矢印を上向きに */
   .c-pagetop__arrow,
@@ -3061,6 +3067,3 @@ add_action('wp_head', function() {
   }
   </style>';
 }, 100);
-
-
-

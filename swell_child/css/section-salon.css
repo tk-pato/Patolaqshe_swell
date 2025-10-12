@@ -23,6 +23,23 @@
     #salon, .ptl-salonHero { padding: 64px 0 !important; }
 }
 
+#salon .ptl-salonHero__boxTitle {
+    font-size: clamp(14px, 1.4vw, 16px); /* SPバランス: 最小 13→14 */
+    font-weight: 600;
+    color: #444;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    letter-spacing: .08em;
+}
+
+#salon .ptl-salonHero__boxDesc {
+    font-size: clamp(14px, 1.2vw, 15px); /* SPバランス: 最小 13→14 */
+    font-weight: 300;
+    color: #444;
+    line-height: 1.65;
+    margin-top: 4px;
+    margin-bottom: 0;
     text-align: center;
 }
 
@@ -429,29 +446,25 @@
     }
     
     #salon .ptl-salonHero__btn:nth-child(1) .ptl-salonHero__icon,
-
-    /* 左カード（1番目）：画像・地図・最寄駅を左端に寄せる */
-    #salon .ptl-salonHero__btn:nth-child(1) .ptl-salonHero__icon,
-    #salon .ptl-salonHero__btn:nth-child(1) .salon-map,
-    #salon .ptl-salonHero__btn:nth-child(1) .salon-access {
-        width: 95% !important;
+    #salon .ptl-salonHero__btn:nth-child(2) .ptl-salonHero__icon {
+        width: 100% !important;
         margin: 0 !important;
-        margin-right: auto !important;
-        padding: 0 !important;
     }
+    
+    #salon .ptl-salonHero__boxTitle,
+    #salon .ptl-salonHero__boxDesc {
+        width: 100% !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+    }
+}
 
-    /* 右カード（2番目）：画像・地図・最寄駅を右端に寄せる */
-    #salon .ptl-salonHero__btn:nth-child(2) .ptl-salonHero__icon,
-    #salon .ptl-salonHero__btn:nth-child(2) .salon-map,
-    #salon .ptl-salonHero__btn:nth-child(2) .salon-access {
-        width: 95% !important;
-        margin: 0 !important;
-        margin-left: auto !important;
-        padding: 0 !important;
-    }
+/* セクション余白 */
 #salon {
     margin-top: 0 !important;
     margin-bottom: 80px !important;
+}
+
 /* ===== PC時：左右カードの要素配置 ===== */
 @media (min-width: 769px) {
     /* 左カード（代官山店）：画像・地図・最寄駅を左端に寄せる */
@@ -463,6 +476,7 @@
         margin-right: auto !important;
         margin-left: 0 !important;
     }
+    
     /* 右カード（銀座店）：画像・地図・最寄駅を右端に寄せる */
     #salon .ptl-salonHero__btn:nth-child(2) .ptl-salonHero__icon,
     #salon .ptl-salonHero__btn:nth-child(2) .salon-map,
@@ -472,13 +486,6 @@
         margin-left: auto !important;
         margin-right: 0 !important;
     }
-
-    /* 左カード（代官山店）の地図のみ中央寄せに変更（依頼対応） */
-    #salon .ptl-salonHero__btn:nth-child(1) .salon-map {
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-}
 }
 
 /* ===== Googleマップ埋め込みスタイル（最優先ルール） ===== */
@@ -486,8 +493,8 @@
 /* 地図コンテナ：最高詳細度で強制適用 */
 
 #salon .salon-map {
-    width: 100% !important; /* 親要素（95%）の100% = 実質95% */
-    max-width: 100% !important;
+    width: 100% !important; /* 親要素の100%（親が95%なので実質95%） */
+    box-sizing: border-box !important;
     margin: 16px 0 !important;
     border-radius: 8px !important;
     overflow: hidden !important;
@@ -506,6 +513,8 @@
     display: block !important;
     border: none !important;
     border-radius: 8px !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
     /* iOS系で親のoverflowを無視する場合の保険 */
     clip-path: inset(0 round 8px) !important;
 }
