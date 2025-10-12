@@ -1,5 +1,6 @@
 /**
- * フローティングメニュー - 表示制御
+ * フローティングメニュー - ジェル風アニメーション制御
+ * ヘッダー表示タイミングと連動
  */
 (function() {
   'use strict';
@@ -8,18 +9,17 @@
     const menu = document.querySelector('.ptl-float-menu');
     if (!menu) return;
 
-    // 少しスクロールしたらフェードイン
-    let isVisible = false;
+    // シンプルなスクロール判定（200px以上で表示）
+    const isHeaderVisible = () => {
+      return window.scrollY > 200;
+    };
     
-    const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      
-      if (scrollY > 200 && !isVisible) {
+    // メニュー表示制御関数
+    const updateMenuVisibility = () => {
+      if (isHeaderVisible()) {
         menu.classList.add('is-visible');
-        isVisible = true;
-      } else if (scrollY <= 200 && isVisible) {
+      } else {
         menu.classList.remove('is-visible');
-        isVisible = false;
       }
     };
 
@@ -28,15 +28,17 @@
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          handleScroll();
+          updateMenuVisibility();
           ticking = false;
         });
         ticking = true;
       }
-    });
+    }, { passive: true });
 
-    // 初回チェック
-    handleScroll();
+    // 初回チェック（遅延実行）
+    setTimeout(() => {
+      updateMenuVisibility();
+    }, 100);
   };
 
   if (document.readyState === 'loading') {

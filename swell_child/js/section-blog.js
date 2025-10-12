@@ -12,18 +12,25 @@
     const itemCount = items.length;
 
     if (itemCount >= 5) {
-      // 元のアイテムセットを3回複製（合計4セット = 元 + 複製3）
-      // これにより十分な長さを確保し、シームレスなループを実現
+      // 元のアイテムセットを5回複製（合計6セット = 元 + 複製5）
+      // より長いトラックでスクロール安定化
       const fragment = document.createDocumentFragment();
       
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 5; i++) {
         items.forEach(item => {
-          fragment.appendChild(item.cloneNode(true));
+          const clone = item.cloneNode(true);
+          clone.setAttribute('data-clone-index', i + 1);
+          fragment.appendChild(clone);
         });
       }
       
       track.appendChild(fragment);
       track.classList.add('is-animated');
+      
+      // アニメーション終了時に位置をリセット（シームレスなループ）
+      track.addEventListener('animationiteration', () => {
+        track.style.transform = 'translateZ(0) translateX(0)';
+      });
 
     } else {
       // 5件未満は静的表示

@@ -82,13 +82,14 @@
   padding-right: var(--ptl-container-pad, 20px);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  transform: translateZ(0) translateX(0);
+  -webkit-transform: translateZ(0) translateX(0);
 }
 
 /* 5記事以上でアニメーション有効 */
 .ptl-blog__track.is-animated {
-  animation: blog-scroll 40s linear infinite;
+  animation: blog-scroll 60s linear infinite;
+  animation-fill-mode: forwards;
 }
 
 /* 4記事以下は中央揃え（アニメーションなし） */
@@ -99,8 +100,12 @@
 }
 
 @keyframes blog-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  0% { 
+    transform: translateZ(0) translateX(0); 
+  }
+  100% { 
+    transform: translateZ(0) translateX(-50%); 
+  }
 }
 
 

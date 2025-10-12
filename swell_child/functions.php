@@ -2999,24 +2999,67 @@ add_action('wp_footer', function() {
        class="ptl-float-menu__btn ptl-float-menu__btn--daikanyama"
        target="_blank"
        rel="noopener noreferrer">
-      <span class="ptl-float-menu__btn-text">代官山店<br>ご予約はこちら</span>
+      <span class="ptl-float-menu__btn-text">代官山予約</span>
     </a>
     
     <a href="https://beauty.hotpepper.jp/kr/slnH000334472/?utm_source=site&utm_medium=nav&utm_campaign=reserve" 
        class="ptl-float-menu__btn ptl-float-menu__btn--ginza"
        target="_blank"
        rel="noopener noreferrer">
-      <span class="ptl-float-menu__btn-text">銀座店<br>ご予約はこちら</span>
+      <span class="ptl-float-menu__btn-text">銀座予約</span>
     </a>
     
     <a href="https://tayori.com/form/6d4a08aa86803c6ad6212ff3118789ea2f0b1e61/" 
        class="ptl-float-menu__btn ptl-float-menu__btn--mariage"
        target="_blank"
        rel="noopener noreferrer">
-      <span class="ptl-float-menu__btn-text">【結婚相談】<br>お問合せはこちら</span>
+      <span class="ptl-float-menu__btn-text">マリアージュ予約</span>
     </a>
   </aside>
   <?php
+}, 100);
+
+/**
+ * トップに戻るボタンの矢印を上向きに修正（修正3）
+ */
+add_action('wp_head', function() {
+  echo '<style id="ptl-pagetop-arrow-fix">
+  /* トップに戻るボタンの矢印を上向きに */
+  .c-pagetop__arrow,
+  .p-pagetop__arrow,
+  #page_top .arrow,
+  #page_top::before,
+  #page_top::after,
+  #page-top .arrow,
+  .pagetop-btn::before,
+  .to-top::before,
+  .swell-block-button__arrow,
+  .c-pagetop::before,
+  .p-pagetop::before,
+  .c-btn__arrow {
+    transform: rotate(-90deg) !important;
+  }
+  
+  /* FontAwesome使用時 */
+  #page_top .fa-chevron-right,
+  #page_top .fa-angle-right,
+  #page-top .fa-chevron-right,
+  #page-top .fa-angle-right,
+  .c-pagetop .fa-chevron-right,
+  .p-pagetop .fa-chevron-right,
+  .fa-chevron-right,
+  .fa-angle-right {
+    transform: rotate(-90deg) !important;
+  }
+  
+  /* SWELL標準のトップボタン位置確保 */
+  #page_top,
+  #page-top,
+  .c-pagetop,
+  .p-pagetop {
+    z-index: 9999 !important;
+  }
+  </style>';
 }, 100);
 
 
