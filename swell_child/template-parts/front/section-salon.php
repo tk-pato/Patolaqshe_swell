@@ -32,6 +32,11 @@ $salons = [
         ],
         'closed' => '金曜日（その他不定休アリ）',
         'access' => 'JR恵比寿駅 徒歩6分 / 東急東横線代官山駅 徒歩2分',
+        'map_embed' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6484.221539213697!2d139.70183847746247!3d35.64964243170576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b445709a3c1%3A0x35eb00ab309a5d3b!2z44OQ44K544OI44Ki44OD44OX5bCC6ZaA44OR44OI44Op44Kv44K344Kn5oG15q-U5a-/44O75Luj5a6Y5bGx5bqX!5e0!3m2!1sja!2sjp!4v1760258953479!5m2!1sja!2sjp',
+        'access_detail' => [
+            '🚃 東急東横線「代官山駅」徒歩3分',
+            '🚃 JR山手線「恵比寿駅」徒歩7分',
+        ],
     ],
     [
         'name' => '銀座店',
@@ -46,6 +51,11 @@ $salons = [
         ],
         'closed' => '金曜日（その他不定休アリ）',
         'access' => 'JR有楽町駅 徒歩5分 / 東京メトロ有楽町線銀座一丁目駅 徒歩1分',
+        'map_embed' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.09822089716!2d139.76511987746315!3d35.67458343033636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188be478257ced%3A0xb37166046454590d!2z44OQ44K544OI44Ki44OD44OX5bCC6ZaA44OR44OI44Op44Kv44K344Kn6YqA5bqn5bqX!5e0!3m2!1sja!2sjp!4v1760259119878!5m2!1sja!2sjp',
+        'access_detail' => [
+            '🚃 東京メトロ銀座線「銀座駅」徒歩2分',
+            '🚃 JR有楽町線「有楽町駅」徒歩5分',
+        ],
     ],
 ];
 $items = apply_filters('ptl_page_nav_items', $default_items);
@@ -91,6 +101,8 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 $biz  = (array)($shop['business_hours'] ?? []);
                 $closed = (string)($shop['closed'] ?? '');
                 $access = (string)($shop['access'] ?? '');
+                $map_embed = (string)($shop['map_embed'] ?? '');
+                $access_detail = (array)($shop['access_detail'] ?? []);
                 
                 // COMMITMENTベースの構造で店舗情報を表示、④各店舗ページリンク設定
                 if ($img_url) {
@@ -129,6 +141,30 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         <?php if ($closed): ?><p style="margin:2px 0;font-size:0.9em;">定休日: <?php echo esc_html($closed); ?></p><?php endif; ?>
                         <?php if ($tel_href): ?>
                             <p style="margin:4px 0;"><a href="<?php echo esc_attr($tel_href); ?>" style="color:#06C755;text-decoration:none;font-weight:600;">TEL: <?php echo esc_html($tel); ?></a></p>
+                        <?php endif; ?>
+                        
+                        <?php if ($map_embed): ?>
+                            <!-- 📍 Googleマップ -->
+                            <div class="salon-map">
+                                <iframe 
+                                    src="<?php echo esc_url($map_embed); ?>"
+                                    width="600" 
+                                    height="400" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($access_detail)): ?>
+                            <!-- 🚃 最寄駅情報 -->
+                            <div class="salon-access">
+                                <?php foreach ($access_detail as $access_line): ?>
+                                    <p><?php echo esc_html($access_line); ?></p>
+                                <?php endforeach; ?>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>

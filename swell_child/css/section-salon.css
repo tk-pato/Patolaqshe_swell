@@ -7,6 +7,39 @@
    2025-09-30 作成開始
    =========================== */
 
+/* ===== デバッグ用境界線 ===== */
+/* 店舗写真の幅を可視化 */
+#salon .salon-image-wrapper {
+    border: 3px solid red !important;
+    box-sizing: border-box !important;
+}
+
+#salon .salon-image {
+    border: 2px dashed blue !important;
+}
+
+/* 地図の幅を可視化 */
+#salon .salon-map {
+    border: 3px solid green !important;
+    box-sizing: border-box !important;
+}
+
+#salon .salon-map iframe {
+    border: 2px dashed orange !important;
+}
+
+/* 最寄駅情報の幅を可視化 */
+#salon .salon-access {
+    border: 3px solid purple !important;
+    box-sizing: border-box !important;
+}
+
+/* 店舗カード全体の幅を可視化 */
+#salon .ptl-salonHero__btn {
+    border: 2px solid cyan !important;
+    box-sizing: border-box !important;
+}
+
 /* ===== base ===== */
 #salon,
 .ptl-salon {
@@ -462,4 +495,62 @@
 #salon {
     margin-top: 0 !important;
     margin-bottom: 80px !important;
+}
+
+/* ===== Googleマップ埋め込みスタイル ===== */
+
+/* 地図コンテナ */
+.salon-map {
+    width: 100% !important; /* 店舗写真と同じ幅 */
+    margin: 16px auto !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 地図iframe */
+.salon-map iframe {
+    width: 100% !important;
+    height: 400px !important;
+    display: block !important;
+    border: none !important;
+}
+
+/* 最寄駅情報 */
+.salon-access {
+    width: 100% !important; /* 地図と同じ幅 */
+    margin: 12px auto !important;
+    padding: 12px 16px !important;
+    background-color: #f9f9f9 !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+}
+
+.salon-access p {
+    font-size: 14px !important;
+    color: #444 !important;
+    line-height: 1.8 !important;
+    margin: 4px 0 !important;
+}
+
+/* SP対応 */
+@media (max-width: 768px) {
+    .salon-map {
+        width: 100% !important;
+        margin: 12px 0 !important;
+    }
+    
+    .salon-map iframe {
+        height: 280px !important; /* SP時は高さを抑える */
+    }
+    
+    .salon-access {
+        width: 100% !important;
+        margin: 10px 0 !important;
+        padding: 10px 12px !important;
+    }
+    
+    .salon-access p {
+        font-size: 13px !important;
+    }
 }
