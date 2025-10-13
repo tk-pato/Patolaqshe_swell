@@ -232,11 +232,6 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($salon_css)) {
     wp_enqueue_style('ptl_section_salon', get_stylesheet_directory_uri() . '/css/section-salon.css', ['child_style'], filemtime($salon_css));
   }
-  // アコーディオンJSは不要になったため読み込み停止
-  // $salon_js = get_stylesheet_directory() . '/js/section-salon.js';
-  // if (file_exists($salon_js)) {
-  //   wp_enqueue_script('ptl_section_salon', get_stylesheet_directory_uri() . '/js/section-salon.js', [], filemtime($salon_js), true);
-  // }
 }, 20);
 /* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
 
