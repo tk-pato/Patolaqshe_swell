@@ -1,8 +1,6 @@
 <?php
-if (! defined('ABSPATH')) exit;
 
-// 専用CSSを後読みで確実に読み込む
-echo '<link rel="stylesheet" href="' . esc_url(get_stylesheet_directory_uri() . '/css/section-salon.css') . '" media="all">';
+if (! defined('ABSPATH')) exit;
 
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
@@ -20,7 +18,7 @@ $p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
 // サロン店舗データ（バックアップから復元）
 $salons = [
     [
-    'name' => '恵比寿・代官山店',
+        'name' => '恵比寿・代官山店',
         'page_url' => '/salon/ebisu-daikanyama/',
         'image' => get_stylesheet_directory_uri() . '/img/daikanyama.jpg',
         'address' => '〒150-0034 東京都渋谷区代官山町18-8 堀井代官山ビル3F',
@@ -33,6 +31,10 @@ $salons = [
         'closed' => '金曜日（その他不定休アリ）',
         'access' => 'JR恵比寿駅 徒歩6分 / 東急東横線代官山駅 徒歩2分',
         'map_embed' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6484.221539213697!2d139.70183847746247!3d35.64964243170576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b445709a3c1%3A0x35eb00ab309a5d3b!2z44OQ44K544OI44Ki44OD44OX5bCC6ZaA44OR44OI44Op44Kv44K344Kn5oG15q-U5a-/44O75Luj5a6Y5bGx5bqX!5e0!3m2!1sja!2sjp!4v1760258953479!5m2!1sja!2sjp',
+        'access_detail' => [
+            '🚃 東急東横線「代官山駅」徒歩2分',
+            '🚃 JR山手線「恵比寿駅」徒歩6分',
+        ],
         'access_detail' => [
             '🚃 東急東横線「代官山駅」徒歩2分',
             '🚃 JR山手線「恵比寿駅」徒歩6分',
@@ -54,6 +56,10 @@ $salons = [
         'map_embed' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.09822089716!2d139.76511987746315!3d35.67458343033636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188be478257ced%3A0xb37166046454590d!2z44OQ44K544OI44Ki44OD44OX5bCC6ZaA44OR44OI44Op44Kv44K344Kn6YqA5bqn5bqX!5e0!3m2!1sja!2sjp!4v1760259119878!5m2!1sja!2sjp',
         'access_detail' => [
             '🚃 東京メトロ銀座線「銀座一丁目駅」徒歩2分',
+            '🚃 JR山手線「有楽町駅」徒歩5分',
+        ],
+        'access_detail' => [
+            '🚃 有楽町線「銀座一丁目駅」徒歩2分',
             '🚃 JR山手線「有楽町駅」徒歩5分',
         ],
     ],
@@ -90,8 +96,11 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 $name = (string)($shop['name'] ?? '');
                 // SP表示用の店名に置き換え（indexで2店舗を判定）
                 $name_sp = $name;
-                if ($index === 0) { $name_sp = '恵比寿・代官山'; }
-                elseif ($index === 1) { $name_sp = 'GINZA'; }
+                if ($index === 0) {
+                    $name_sp = '恵比寿・代官山';
+                } elseif ($index === 1) {
+                    $name_sp = 'GINZA';
+                }
                 $img_url = (string)($shop['image'] ?? '');
                 $addr = (string)($shop['address'] ?? '');
                 $tel  = (string)($shop['tel'] ?? '');
@@ -139,7 +148,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                             <a href="<?php echo esc_url($line); ?>" target="_blank" rel="noopener" class="salon-line-link" style="margin-left:10px;display:inline-block;width:1.8em;height:1.8em;">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/line.png'); ?>" alt="LINE" style="width:100%;height:100%;border-radius:4px;" loading="lazy" />
                             </a>
-<?php endif; ?>
+                        <?php endif; ?>
                     </div>
                     <div class="ptl-salonHero__boxDesc">
                         <?php if ($addr): ?><p style="margin:4px 0;"><?php echo esc_html($addr); ?></p><?php endif; ?>
@@ -164,10 +173,10 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                                 </iframe>
                             </div>
                             <!-- SP時: Googleマップリンクバナー（アイコン画像＋テキスト） -->
-                            <a href="<?php echo esc_url($maps_link); ?>" 
-                                 class="salon-map-link" 
-                                 target="_blank" 
-                                 rel="noopener noreferrer">
+                            <a href="<?php echo esc_url($maps_link); ?>"
+                                class="salon-map-link"
+                                target="_blank"
+                                rel="noopener noreferrer">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/placeholder.png'); ?>" alt="Googleマップ" loading="lazy" />
                                 <span class="salon-map-link__text">map</span>
                             </a>

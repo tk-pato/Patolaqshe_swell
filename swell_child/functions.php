@@ -262,7 +262,8 @@ add_action('wp_footer', function () {
           passive: true
         });
       } catch (_) {
-        /* noop */ }
+        /* noop */
+      }
     })();
   </script>
 <?php
