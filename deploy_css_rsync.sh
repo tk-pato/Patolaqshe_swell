@@ -18,6 +18,8 @@ FILES_LIST="${TMPDIR:-/tmp}/rsync_files.txt"
 cat >"$FILES_LIST" <<'EOF'
 swell_child/css/section-salon.css
 swell_child/css/section-reasons.css
+swell_child/css/float-menu.css
+swell_child/js/float-menu.js
 EOF
 
 # 接続情報
@@ -74,10 +76,12 @@ fi
 echo "[step] 転送後のリモート確認"
 REMOTE_FILE1="${REMOTE_THEME_BASE}swell_child/css/section-salon.css"
 REMOTE_FILE2="${REMOTE_THEME_BASE}swell_child/css/section-reasons.css"
+REMOTE_FILE3="${REMOTE_THEME_BASE}swell_child/css/float-menu.css"
+REMOTE_FILE4="${REMOTE_THEME_BASE}swell_child/js/float-menu.js"
 
 # GNU/Linux を想定して stat のフォーマットを使用
 ssh "${SSH_OPTS[@]}" "$SSH_USER_HOST" \
-  "set -e; for f in '$REMOTE_FILE1' '$REMOTE_FILE2'; do if [ -f \"$f\" ]; then stat -c '%n %s %y' \"$f\"; else echo 'MISSING ' \"$f\"; fi; done"
+  "/bin/sh -c 'set -e; for f in \"$REMOTE_FILE1\" \"$REMOTE_FILE2\" \"$REMOTE_FILE3\" \"$REMOTE_FILE4\"; do if [ -f \"\$f\" ]; then ls -l \"\$f\"; else echo MISSING \"\$f\"; fi; done'"
 
 if [[ $DO_CLEANUP -eq 1 ]]; then
   echo "[step] 不要ファイルの掃除を実行: (.DS_Store, *.bak, *.fixed, *.target)"

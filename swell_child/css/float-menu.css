@@ -88,6 +88,11 @@
   color: #000;
 }
 
+/* 重要: パッシブ状態（SPヒーロー重なり時など）はタップを透過させる */
+.ptl-float-menu.is-passive .ptl-float-menu__btn {
+  pointer-events: none;
+}
+
 /* アクティブ状態 */
 .ptl-float-menu__btn:active {
   transform: translateX(-4px) scale(1.01);
