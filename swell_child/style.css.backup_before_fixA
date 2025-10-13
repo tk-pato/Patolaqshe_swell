@@ -22,17 +22,22 @@ body.home .l-mainContent,
 
 /* 各セクション個別の余白を無効化してグランド統一管理 */
 
-/* 各セクション個別の余白を無効化してグランド統一管理 */
 #news, #bust-issues, #section-reasons, #page-navigation, 
-#section-services, #uservoice, #section-infohub, #section-blog {
+#section-services, #uservoice, #section-infohub, #salon, #section-blog {
     margin-top: 0 !important;
     margin-bottom: 80px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
 
-/* SALONは section-salon.css で独立管理(PCは80px、SPは40px) */
-
+/* SP時のみ#salonの下余白を40pxに例外指定（section-salon.cssと協調） */
+@media (max-width: 768px) {
+    #salon,
+    section#salon,
+    #salon.ptl-salonHero {
+        margin-bottom: 40px !important;
+    }
+}
 
 /* 例外：NEWSはヒーロー直下のため上に余白 */
 #news { margin-top: 80px !important; }
@@ -52,6 +57,7 @@ body.home .l-mainContent,
 #bust-issues .ptl-section__inner,
 #page-navigation .ptl-section__inner,
 #section-reasons .ptl-section__inner,
+#salon .ptl-section__inner,
 #uservoice .ptl-section__inner {
     padding: 0 20px 80px !important;
     max-width: 1200px !important;
@@ -264,6 +270,7 @@ html, body { overflow-x: hidden; }
     #page-navigation,
     #section-services,
     #uservoice,
+    #salon,
     #section-infohub,
     #section-blog {
         margin-top: var(--ptl-section-gap-top) !important;
