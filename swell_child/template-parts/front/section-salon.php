@@ -88,6 +88,10 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
         <div class="ptl-salonHero__grid">
             <?php foreach ($salons as $index => $shop):
                 $name = (string)($shop['name'] ?? '');
+                // SP表示用の店名に置き換え（indexで2店舗を判定）
+                $name_sp = $name;
+                if ($index === 0) { $name_sp = '恵比寿・代官山'; }
+                elseif ($index === 1) { $name_sp = 'GINZA'; }
                 $img_url = (string)($shop['image'] ?? '');
                 $addr = (string)($shop['address'] ?? '');
                 $tel  = (string)($shop['tel'] ?? '');
@@ -128,7 +132,8 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                                                         ?></span>
                     <div class="ptl-salonHero__boxTitle">
                         <?php if ($page_url): ?><a href="<?php echo esc_url($page_url); ?>" style="color:inherit;text-decoration:none;"><?php endif; ?>
-                            <?php echo esc_html($name); ?>
+                            <span class="shop-name shop-name--pc"><?php echo esc_html($name); ?></span>
+                            <span class="shop-name shop-name--sp"><?php echo esc_html($name_sp); ?></span>
                             <?php if ($page_url): ?></a><?php endif; ?>
                         <?php if ($line): ?>
                             <a href="<?php echo esc_url($line); ?>" target="_blank" rel="noopener" class="salon-line-link" style="margin-left:10px;display:inline-block;width:1.8em;height:1.8em;">

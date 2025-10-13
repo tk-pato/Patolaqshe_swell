@@ -27,6 +27,13 @@
     #salon { margin-bottom: 40px !important; }
 }
 
+/* ===== 店名のPC/SP切替 ===== */
+.shop-name--sp { display: none; }
+@media (max-width: 768px) {
+    .shop-name--pc { display: none; }
+    .shop-name--sp { display: inline; }
+}
+
 @media (max-width: 768px) {
     #salon .salon-map { display: none; }
     .salon-map-link {
