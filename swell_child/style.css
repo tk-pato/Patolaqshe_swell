@@ -1,143 +1,27 @@
-@media (max-width: 767px) {
-    /* ...既存SP調整... */
-    #uservoice {
-        margin-top: 0 !important;
+
+/* ========================================
+   パララックスセクションの背景保護padding（PC）
+======================================== */
+@media (min-width: 960px) {
+    #page-navigation,
+    #bust-issues,
+    #section-reasons,
+    #salon,
+    #section-infohub {
+        padding: 64px 0 !important;
     }
 }
-        padding: 0 !important;
-        margin-top: 0 !important;
-        margin-bottom: 160px !important; /* パララックス侵食対策：PC時のみ視覚的に80pxになる */
-        isolation: isolate;
-        z-index: 1;
-    }
-}
-/* Top page: Remove gray band and space below hero */
-body.page-template-default .l-mainContent,
-body.home .l-mainContent,
-.l-mainContent,
-.l-article__body {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    background: transparent !important;
-}
 
-/* STEP1: セクション間余白調整 */
-/* #bust-issues の余白もstyle.cssでグローバル統一管理 */
-#page-navigation{ margin-top: clamp(-48px,-6vw,-24px) !important; } /* ナビヒーローを上に寄せる。高さは不変 */
-
-:root{ --gap-base: 96px; } /* ヒーロー→NEWSの見た目に合わせて数値だけ調整可 */
-
-/* ISSUES セクションの下に80px余白を確保（統一） */
-#bust-issues{ margin-bottom: 80px !important; }
-
-#section-reasons .ptl-section__inner{ padding-top: var(--gap-base) !important; }
-#section-reasons .ptl-section__title{ margin-top: 0 !important; }
-
-/* 各セクション個別の余白を無効化してグランド統一管理 */
-
-
-/* 各セクションの内部コンテンツ余白をグランドで統一 */
-
-/* 通常セクションの inner padding 統一 */
-#news .ptl-section__inner,
-#section-services .ptl-section__inner,
-#section-blog .ptl-section__inner {
-    padding: 0 20px !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
-
-/* パララックスセクションの inner padding 統一 */
-#bust-issues .ptl-section__inner,
-#page-navigation .ptl-section__inner,
-#section-reasons .ptl-section__inner,
-#uservoice .ptl-section__inner {
-    padding: 0 20px 80px !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
-
-/* 例外：INFO HUB（固定背景用の独自調整） */
-#section-infohub .ptl-section__inner {
-#page-navigation + #section-services,
-#uservoice + #bust-issues,
-#uservoice + #salon,
-  margin-top: 96px !important;
-}
-
-/* 全セクションの見えているコンテンツ部分を①のNEWSセクション境界に統一 */
-:root{ --section-padding: 80px 0; --section-inner-width: 1200px; }
-
-/* 各セクションのコンテンツ部分を統一（パララックス背景は維持） */
-
-/* NEWSセクションのパディングを基準として他も合わせる */
-#news .ptl-section__inner{ padding: 80px 20px !important; }
-
-/* パララックス画像幅は維持、コンテンツのみ統一 */
-/* #bust-issues は issues-navigation.css で独立管理 */
-#section-reasons .ptl-section__inner{
-  padding-top: 64px !important;
-  padding-bottom: 64px !important;
-}
-
-:root{ --gap-base:96px; --gap-parallax:72px; } /* NEWS→ISSUEに合わせた基準、後で数値だけ調整可 */
-
-/* セクション間の外側マージンを統一（内部のパララックス高さは不変） */
-#section-issue + #section-reasons,
-#section-reasons + #page-navigation,
-#page-navigation + #section-services{
-    margin-top: var(--gap-base) !important;
-}
-
-/* 視覚補正:パララックス境界だけ少し詰める（表示領域は削らない） */
-#section-issue + #section-reasons{ margin-top: var(--gap-parallax) !important; }
-
-/* SP調整: 見た目の間隔を40px基準に統一 */
-@media (max-width: 767px) {
-    /* NEWS 内側の下パディングを縮小（白帯を詰める） */
-    #news .ptl-section__inner {
-        padding-top: 48px !important;
-        padding-bottom: 32px !important;
-    }
-
-        /* bust-issues の直後（REASONS）の上マージンを調整（見た目を広げる） */
-Theme Name: SWELL CHILD
-Template: swell
-Theme URI: https://swell-theme.com/
-Description: SWELLの子テーマ
-Version: 1.0.0
-*/
-
-/* 子テーマ: 最小カスタム（親テーマのヒーロー機能を使用） */
-
-/* フルブリード(100vw)での横ズレ防止 */
-html, body { overflow-x: hidden; }
-
-    margin: 0 auto;
-}
-
-/* INTROセクション余白（パララックス侵食対策） */
-#intro,
-#intro.ptl-intro-section {
-    padding: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 160px !important; /* パララックス侵食対策：PC時のみ視覚的に80pxになる */
-    isolation: isolate;
-    z-index: 1;
-}
-
-/* SP画面は既存の40pxを維持（変更しない） */
+/* ========================================
+   パララックスセクションの背景保護padding（SP）
+======================================== */
 @media (max-width: 768px) {
-    #intro,
-    #intro.ptl-intro-section {
-        margin-bottom: 40px !important;
-    }
-}
-
-/* USER'S VOICEの余白定義（パララックス侵食対策） */
-@media (min-width: 769px) {
-    #uservoice {
-        margin-bottom: 160px !important; /* パララックス侵食対策：PC時のみ視覚的に80pxになる */
+    #page-navigation,
+    #bust-issues,
+    #section-reasons,
+    #salon,
+    #section-infohub {
+        padding: 40px 0 !important;
     }
 }
 

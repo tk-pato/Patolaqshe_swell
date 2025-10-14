@@ -2,8 +2,12 @@
 /* SP専用: サービスセクション下余白40px */
 @media (max-width: 768px) {
   #section-services {
-    margin-bottom: 40px !important;
+    margin-bottom: 40px;
   }
+}
+/* PC用余白 */
+#section-services {
+  margin-bottom: 80px;
 }
 /* === MENU Section (Rococo Style) 統合分 === */
 #section-services .ptl-menu__content {

@@ -498,31 +498,14 @@
 /* ===== SP Spacing Override ===== */
 /* SP専用: ユーザーボイスセクション下余白40px */
 @media (max-width: 768px) {
-    #uservoice {
-        margin-bottom: 40px !important;
-    }
-}
-/* ===== SP Spacing Override ===== */
-/* SP専用: ユーザーボイスセクション下余白40px */
-@media (max-width: 768px) {
-    #uservoice {
-        margin-bottom: 40px !important;
-    }
-}
-/* セクション余白 */
+/* セクション余白（margin-bottomのみ管理） */
 #uservoice {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
+  margin-bottom: 80px;
 }
 
-/* セクション余白（独自管理・パララックス侵食対策） */
-#uservoice {
-    margin-top: 0;
-    margin-bottom: 160px; /* パララックス侵食で視覚的に80pxになる（PC時） */
-}
 @media (max-width: 768px) {
-    #uservoice {
-        margin-bottom: 40px;
-    }
+  #uservoice {
+    margin-bottom: 40px;
+  }
 }
 

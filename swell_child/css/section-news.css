@@ -57,24 +57,12 @@
 /* セクション余白: margin-bottomのみで管理 */
 
 #news {
-  margin-top: 0 !important;
-  margin-bottom: 80px !important;
+  margin-bottom: 80px;
 }
 
 @media (max-width: 768px) {
   #news {
-    margin-bottom: 40px !important;
+    margin-bottom: 40px;
   }
 }
 
-/* セクション余白（独自管理） */
-#news {
-    margin-top: 80px;
-    margin-bottom: 80px;
-}
-@media (max-width: 768px) {
-    #news {
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
-}

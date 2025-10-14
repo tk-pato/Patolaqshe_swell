@@ -10,8 +10,14 @@
 
 /* セクション余白 */
 #section-blog {
-  margin-top: 0 !important;
-  margin-bottom: 80px !important;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  #section-blog {
+    margin-bottom: 40px;
+  }
+}
 }
 /* ヒーロー直後の帯（グレー背景）を強制非表示 */
 .hero-section + .l-mainContent__inner {

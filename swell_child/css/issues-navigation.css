@@ -26,8 +26,7 @@
 
 /* セクション余白 */
 #bust-issues {
-  margin-top: 0 !important;
-  margin-bottom: 80px !important;
+  margin-bottom: 80px;
 }
 
 /* 基本構造 - NAVIGATIONと完全一致 */
@@ -62,8 +61,7 @@
     max-height: none !important;
     padding-top: 48px !important;
     padding-bottom: 48px !important;
-    margin-top: 0 !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 40px;
   }
   
   #bust-issues .ptl-bustIssues__image img,

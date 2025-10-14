@@ -1,8 +1,14 @@
 @charset "UTF-8";
 /* セクション余白 */
 #section-reasons {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important; /* 見た目を80へ */
+    margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+    #section-reasons {
+        margin-bottom: 40px;
+    }
+}
 }
 
 /* パララックス背景領域の保護（PC） */

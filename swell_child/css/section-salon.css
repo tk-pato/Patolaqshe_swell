@@ -86,13 +86,12 @@
 
 /* セクション余白（統一） - PCのみ80px、SPは後述の@media内で40pxに上書き */
 #salon { 
-    margin-top: 0 !important; 
-    margin-bottom: 80px !important; 
+        margin-bottom: 80px;
 }
 
 /* ===== SP専用: セクション下余白を40pxに統一（最優先） ===== */
 @media (max-width: 768px) {
-  #salon { margin-bottom: 40px !important; }
+    #salon { margin-bottom: 40px; }
 }
 
 /* パララックス背景領域の保護（PC） */
