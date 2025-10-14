@@ -183,6 +183,19 @@
   transform: translateX(4px);
 }
 
+/* セクション余白（独自管理・パララックス侵食対策） */
+#intro,
+#intro.ptl-intro-section {
+    margin-top: 0;
+    margin-bottom: 160px; /* パララックス侵食で視覚的に80pxになる */
+}
+@media (max-width: 768px) {
+    #intro,
+    #intro.ptl-intro-section {
+        margin-bottom: 40px;
+    }
+}
+
 /* モバイル */
 @media (max-width: 767px) {
   #intro.ptl-intro-section {

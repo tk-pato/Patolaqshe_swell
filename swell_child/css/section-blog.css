@@ -219,6 +219,18 @@
 }
 
 
+/* セクション余白（独自管理） */
+#section-blog {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+@media (max-width: 768px) {
+    #section-blog {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
+
 /* タブレット対応 */
 @media (max-width: 959px) {
   .ptl-blog__item {

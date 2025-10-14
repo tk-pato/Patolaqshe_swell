@@ -428,10 +428,14 @@
   margin-bottom: 80px !important;
 }
 
-/* ===== SP Spacing Override ===== */
-/* SP専用: サービスセクション下余白40px */
+/* セクション余白（独自管理） */
+#section-services {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
 @media (max-width: 768px) {
-  #section-services {
-    margin-bottom: 40px !important;
-  }
+    #section-services {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
 }

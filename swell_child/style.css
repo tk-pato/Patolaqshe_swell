@@ -73,19 +73,9 @@ body.home .l-mainContent,
 
 /* 例外：INFO HUB（固定背景用の独自調整） */
 #section-infohub .ptl-section__inner {
-    padding: 80px 20px !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-}
-
-/* セクション間の統一マージン */
-#news + #section-reasons,
-#section-reasons + #page-navigation,
 #page-navigation + #section-services,
 #uservoice + #bust-issues,
 #uservoice + #salon,
-#bust-issues + #section-infohub,
-#salon + #section-infohub{
   margin-top: 96px !important;
 }
 
@@ -125,25 +115,11 @@ body.home .l-mainContent,
     }
 
         /* bust-issues の直後（REASONS）の上マージンを調整（見た目を広げる） */
-        #bust-issues + #section-reasons {
-            margin-top: 56px !important;
-        }
-
-    /* サービス特集の下マージンを40pxに */
-    #section-services {
-        margin-bottom: 40px !important;
-    }
-}
-/*
 Theme Name: SWELL CHILD
 Template: swell
 Theme URI: https://swell-theme.com/
 Description: SWELLの子テーマ
 Version: 1.0.0
-Author: LOOS WEB STUDIO
-Author URI: https://loos-web-studio.com/
-License: GNU General Public License
-License URI: http://www.gnu.org/licenses/gpl.html
 */
 
 /* 子テーマ: 最小カスタム（親テーマのヒーロー機能を使用） */
@@ -151,16 +127,8 @@ License URI: http://www.gnu.org/licenses/gpl.html
 /* フルブリード(100vw)での横ズレ防止 */
 html, body { overflow-x: hidden; }
 
-/* ヒーロー中央ロゴを大きく・レスポンシブ */
-.hero-logo {
-    width: 800px;
-    max-width: 90vw;
-    height: auto;
-    display: block;
     margin: 0 auto;
 }
-
-/* 追加の見た目調整はここに記述（必要最小限） */
 
 /* INTROセクション余白（パララックス侵食対策） */
 #intro,

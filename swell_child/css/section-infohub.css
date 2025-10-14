@@ -236,3 +236,16 @@
   min-width: 0 !important;
   box-sizing: border-box !important;
 }
+
+/* セクション余白（独自管理） */
+#section-infohub,
+.ptl-infohub {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+@media (max-width: 768px) {
+    #section-infohub,
+    .ptl-infohub {
+        margin-bottom: 40px;
+    }
+}

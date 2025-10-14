@@ -203,3 +203,15 @@
     padding: 0 20px 0 !important; /* 下余白を削除 */
     /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
 }
+
+/* セクション余白（独自管理） */
+#section-reasons {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+@media (max-width: 768px) {
+    #section-reasons {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
