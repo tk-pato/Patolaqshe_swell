@@ -35,20 +35,6 @@ body.home .l-mainContent,
 
 /* 各セクション個別の余白を無効化してグランド統一管理 */
 
-/* 各セクション個別の余白を無効化してグランド統一管理 */
-#news, #bust-issues, #section-reasons, #page-navigation, 
-#section-services, #uservoice, #section-infohub, #section-blog {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* SALONは section-salon.css で独立管理(PCは80px、SPは40px) */
-
-
-/* 例外：NEWSはヒーロー直下のため上に余白 */
-#news { margin-top: 80px !important; }
 
 /* 各セクションの内部コンテンツ余白をグランドで統一 */
 
