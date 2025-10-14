@@ -40,9 +40,12 @@
   padding-bottom: 0; /* セクション下余白はmargin-bottomで管理 */
   overflow: hidden;
   isolation: isolate;
+  
+  /* NAVIGATIONと完全一致: 高さ設定 */
+  min-height: clamp(520px, 60vh, 720px);
 }
 
-/* SP対応：モバイルでは固定背景を無効化 */
+/* SP対応:モバイルでは固定背景を無効化 */
 @media (max-width: 768px) {
   .ptl-infohub {
     background-attachment: scroll;

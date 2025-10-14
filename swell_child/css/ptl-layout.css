@@ -92,3 +92,17 @@
   box-shadow: inherit;
   opacity: 1;
 }
+
+/* セクション余白(独自管理) */
+#section-commitment-tiles,
+.ptl-commitment {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+@media (max-width: 768px) {
+    #section-commitment-tiles,
+    .ptl-commitment {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}

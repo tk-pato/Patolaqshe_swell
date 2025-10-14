@@ -22,3 +22,19 @@
 .ptl-commitment-grid > .l-container{max-width:inherit;margin:0 auto}
 /* nav側が .l-container に max-width を当てていないテーマ設定の場合、下記をコメント解除して固定値で同期
    .ptl-commitment-grid > .l-container{max-width:1200px;padding:0 16px} */
+
+/* セクション余白(独自管理) */
+#section-commitment,
+.ptl-commitment,
+.ptl-commitment-grid {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+@media (max-width: 768px) {
+    #section-commitment,
+    .ptl-commitment,
+    .ptl-commitment-grid {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
