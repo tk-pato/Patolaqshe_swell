@@ -278,6 +278,11 @@
 
 /* オーバーライドが必要な場合は以下に追加（現状なし） */
 
+/* セクション余白 */
+#page-navigation {
+  margin-top: 0 !important;
+  margin-bottom: 80px !important;
+}
 
 /* セクション余白（独自管理） */
 #page-navigation {

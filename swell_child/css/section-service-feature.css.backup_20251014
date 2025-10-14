@@ -428,7 +428,7 @@
   margin-bottom: 80px !important;
 }
 
-/* ===== セクション余白（独自管理） ===== */
+/* セクション余白（独自管理） */
 #section-services {
     margin-top: 0;
     margin-bottom: 80px;
