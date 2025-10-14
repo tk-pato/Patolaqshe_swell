@@ -1,3 +1,20 @@
+/* ===========================
+   User's Voice Section Styles
+   お客様の声セクション専用スタイル
+   =========================== */
+
+/* セクション余白 */
+#uservoice {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+    #uservoice {
+        margin-bottom: 40px;
+    }
+}
+
 /* arrows */
 /* arrows (updated) */
 #uservoice .swiper-button-prev,
@@ -13,10 +30,6 @@
 #uservoice .swiper-button-next{ right:10px; }
 /* ページネーション余白 */
 #uservoice .swiper-pagination{ margin-top:24px; }
-/* ===========================
-   User's Voice Section Styles
-   お客様の声セクション専用スタイル
-   =========================== */
 
 /* セクション基本設定 */
 .ptl-uservoice {

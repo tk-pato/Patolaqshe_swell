@@ -2,7 +2,7 @@
 
 .ptl-pageNavHero {
   position: relative;
-  padding: 64px 0;
+  padding: 64px 0 0 0; /* 下余白はmargin-bottomで管理 */
   overflow: hidden;
 }
 
@@ -291,5 +291,5 @@
 
 /* パララックス背景領域の保護（PC） */
 @media (min-width: 960px) {
-  #page-navigation, .ptl-pageNavHero { padding: 64px 0 !important; }
+  #page-navigation, .ptl-pageNavHero { padding-top: 64px !important; padding-bottom: 0 !important; } /* セクション下余白はmargin-bottomで管理 */
 }

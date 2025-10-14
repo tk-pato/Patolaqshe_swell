@@ -3,13 +3,14 @@
 .hero-section + .l-mainContent__inner,
 .l-mainContent,
 .l-article__body {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  background: transparent !important;
+  padding-top: 0;
+  margin-top: 0;
+  background: transparent;
 }
 
 /* セクション余白 */
 #section-blog {
+  margin-top: 0;
   margin-bottom: 80px;
 }
 
@@ -18,11 +19,11 @@
     margin-bottom: 40px;
   }
 }
-}
+
 /* ヒーロー直後の帯（グレー背景）を強制非表示 */
 .hero-section + .l-mainContent__inner {
-  background: transparent !important;
-  border: none !important;
+  background: transparent;
+  border: none;
 }
 /* @charset removed: must appear at file top; redundant here */
 
@@ -37,13 +38,13 @@
   isolation: isolate;
   background: transparent;
   /* フルブリード実装 - 画面端まで表示 */
-  width: 100vw !important;
-  margin-left: calc(50% - 50vw) !important;
-  margin-right: calc(50% - 50vw) !important;
-  left: 0 !important;
-  right: 0 !important;
-  transform: translateX(0) !important;
-  padding: 64px 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  left: 0;
+  right: 0;
+  transform: translateX(0);
+  /* padding設定削除: 余白はmargin-bottomで管理 */
 }
 
 /* ヘッダー部分のみコンテナ幅で制限 */

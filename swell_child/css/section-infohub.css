@@ -5,6 +5,18 @@
    navigation/BUST-ISSUESと完全統一
 ======================================== */
 
+/* セクション余白 */
+#section-infohub {
+  margin-top: 0;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  #section-infohub {
+    margin-bottom: 40px;
+  }
+}
+
 /* セクション全体 */
 /* 固定背景の実装 */
 .ptl-infohub {
@@ -17,24 +29,22 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  margin-top: 0 !important;
-  padding: 64px 0;
+  padding-top: 64px;
+  padding-bottom: 0; /* セクション下余白はmargin-bottomで管理 */
   overflow: hidden;
   isolation: isolate;
-  margin-bottom: 80px !important; /* ← この行を追加 */
 }
 
 /* SP対応：モバイルでは固定背景を無効化 */
 @media (max-width: 768px) {
   .ptl-infohub {
     background-attachment: scroll;
-    margin-bottom: 40px !important; /* ← この行を追加 */
   }
 }
 
 /* 固定背景では不要（DOM要素としての背景は非表示） */
 .ptl-infohub__bg {
-  display: none !important;
+  display: none;
 }
 
 /* パララックスはJSで完全制御（section-parallax.jsと統一） */
@@ -51,10 +61,10 @@
 .ptl-infohub .ptl-section__inner {
   position: relative;
   z-index: 2;
-  max-width: var(--ptl-container-max, 1200px) !important;
-  margin: 0 auto !important;
-  padding: 80px 0 !important;
-  width: 100% !important;
+  max-width: var(--ptl-container-max, 1200px);
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
 }
 
 /* ヘッダー（パディング追加） */

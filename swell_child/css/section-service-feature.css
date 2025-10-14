@@ -1,14 +1,15 @@
-/* ===== SP Spacing Override ===== */
-/* SP専用: サービスセクション下余白40px */
+/* セクション余白 */
+#section-services {
+  margin-top: 0;
+  margin-bottom: 80px;
+}
+
 @media (max-width: 768px) {
   #section-services {
     margin-bottom: 40px;
   }
 }
-/* PC用余白 */
-#section-services {
-  margin-bottom: 80px;
-}
+
 /* === MENU Section (Rococo Style) 統合分 === */
 #section-services .ptl-menu__content {
   display: grid;
@@ -306,7 +307,7 @@
   position: relative;
   z-index: 1;
   padding-top: clamp(64px, 10vw, 160px);
-  padding-bottom: clamp(64px, 10vw, 160px);
+  padding-bottom: 0; /* セクション下余白はmargin-bottomで管理 */
 }
 
 /* h2スタイルはstyle.cssで統一管理 */

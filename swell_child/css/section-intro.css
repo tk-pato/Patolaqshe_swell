@@ -7,7 +7,8 @@
   margin-right: calc(50% - 50vw);
   position: relative;
   min-height: clamp(500px, 60vh, 700px);
-  margin-bottom: 160px;
+  margin-top: 0;
+  margin-bottom: 160px; /* パララックス補正で意図的に大きく */
 }
 
 /* 左側: 背景画像 (70%) */

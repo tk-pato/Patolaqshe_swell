@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* セクション余白 */
 #section-reasons {
+    margin-top: 0;
     margin-bottom: 80px;
 }
 
@@ -9,11 +10,10 @@
         margin-bottom: 40px;
     }
 }
-}
 
 /* パララックス背景領域の保護（PC） */
 @media (min-width: 960px) {
-    #section-reasons, .ptl-reasonsHero { padding: 64px 0 !important; }
+    #section-reasons, .ptl-reasonsHero { padding-top: 64px !important; padding-bottom: 0 !important; } /* セクション下余白はmargin-bottomで管理 */
 }
 /* ===========================
    REASONS Section Styles - 統合完了版
@@ -70,7 +70,7 @@
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     min-height: clamp(520px, 60vh, 720px);
-    padding: 64px 0;
+    /* padding設定はメディアクエリ内で管理 */
 }
 
 .ptl-reasonsHero__bg {
