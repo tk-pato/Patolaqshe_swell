@@ -24,11 +24,6 @@
    ISSUES: NAVIGATIONと完全一致
    =========================== */
 
-/* セクション余白 */
-#bust-issues {
-  margin-bottom: 80px;
-}
-
 /* 基本構造 - NAVIGATIONと完全一致 */
 #bust-issues {
   min-height: clamp(520px, 60vh, 720px);
@@ -43,34 +38,6 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: 64px 0 !important;
-}
-
-/* PC専用: 高さ設定 */
-/* 注: padding-topは背景表示用、セクション下余白はmargin-bottomで管理 */
-@media (min-width: 960px) {
-  #bust-issues {
-    min-height: clamp(520px, 60vh, 720px);
-  }
-}
-
-/* SP: パララックス効果とoverflow設定 */
-@media (max-width: 767px) {
-  #bust-issues {
-    overflow: hidden;
-    min-height: auto;
-    max-height: none !important;
-    padding-top: 48px !important;
-    padding-bottom: 48px !important;
-    margin-bottom: 40px;
-  }
-  
-  #bust-issues .ptl-bustIssues__image img,
-  #bust-issues .ptl-bustIssues__video {
-    transform: translateY(var(--ptl-parallax)) scale(1.15);
-    transform-origin: center;
-    will-change: transform;
-  }
 }
 
 /* コンテンツ余白 - NAVIGATIONと完全一致 */
@@ -131,15 +98,11 @@
   background: rgba(0,0,0,0.25);
 }
 
-/* === /完全一致 === */
-
 /* BUST-ISSUES: コンテンツ部分のスタイル */
 .ptl-bustIssues__head {
   text-align: center;
   margin-bottom: clamp(8px, 2vw, 12px);
 }
-
-/* h2スタイルはstyle.cssで統一管理（.ptl-section__title, .ptl-section__subtitle, .ptl-section__subtitleLine） */
 
 .ptl-bustIssues .ptl-section__subtitleLine {
   width: clamp(180px, 28vw, 560px);
@@ -203,27 +166,48 @@
   font-weight: 500;
 }
 
-/* SP専用余白統一と内側の微調整 */
-@media (max-width: 767px) {
-  .ptl-bustIssues__card {
-    padding: 32px 16px 32px !important;
-    margin: 0 auto !important;
-    max-width: calc(100% - 40px) !important;
-  }
-  
-  .ptl-bustIssues__item {
-    padding: 10px 6px !important;
-  }
+/* ========================================
+   セクション余白（独自管理）
+======================================== */
+
+/* PC: 背景保護padding + 下余白 */
+@media (min-width: 960px) {
+    #bust-issues {
+        padding-top: 64px;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
+    }
 }
 
-/* セクション余白（独自管理） */
-#bust-issues {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-@media (max-width: 768px) {
+/* SP: 背景保護padding + 下余白 + パララックス設定 */
+@media (max-width: 959px) {
     #bust-issues {
+        padding-top: 40px;
+        padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 40px;
+        overflow: hidden;
+        min-height: auto;
+        max-height: none !important;
+    }
+    
+    /* SPパララックス効果 */
+    #bust-issues .ptl-bustIssues__image img,
+    #bust-issues .ptl-bustIssues__video {
+        transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
+        transform-origin: center;
+        will-change: transform;
+    }
+    
+    /* カード余白調整 */
+    .ptl-bustIssues__card {
+        padding: 32px 16px !important;
+        margin: 0 auto !important;
+        max-width: calc(100% - 40px) !important;
+    }
+    
+    .ptl-bustIssues__item {
+        padding: 10px 6px !important;
     }
 }

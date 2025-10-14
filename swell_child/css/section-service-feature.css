@@ -1,15 +1,3 @@
-/* セクション余白 */
-#section-services {
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-  #section-services {
-    margin-bottom: 40px;
-  }
-}
-
 /* === MENU Section (Rococo Style) 統合分 === */
 #section-services .ptl-menu__content {
   display: grid;
@@ -427,13 +415,9 @@
 #section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage img{ width:100% !important; height:100% !important; object-fit:cover !important; display:block !important; }
 #section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainText { flex: 0 0 32% !important; /* 残り32%をテキストに */ padding-top: 12px !important; /* テキスト上部の余白も拡張 */ }
 
-/* セクション余白 */
-#section-services {
-  margin-top: 0 !important;
-  margin-bottom: 80px !important;
-}
-
-/* ===== セクション余白（独自管理） ===== */
+/* ========================================
+   セクション余白（独自管理）
+======================================== */
 #section-services {
     margin-top: 0;
     margin-bottom: 80px;

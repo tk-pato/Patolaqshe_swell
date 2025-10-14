@@ -1,28 +1,7 @@
 @charset "UTF-8";
-/* セクション余白 */
-#section-reasons {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-    #section-reasons {
-        margin-bottom: 40px;
-    }
-}
-
-/* パララックス背景領域の保護（PC） */
-/* 注: padding-topは背景表示用、セクション下余白はmargin-bottomで管理 */
-@media (min-width: 960px) {
-    #section-reasons, .ptl-reasonsHero { padding-top: 64px !important; padding-bottom: 0 !important; } /* セクション下余白はmargin-bottomで管理 */
-}
 /* ===========================
    REASONS Section Styles - 統合完了版
    選ばれる理由セクション専用スタイル
-   
-   統合履歴:
-   - 2025-09-23: section-reasons.css + reasons-styles.css 初回統合
-   - 2025-09-27: CSS統合最適化完了、@import依存削除
    =========================== */
 
 /* ===== base ===== */
@@ -33,7 +12,7 @@
 }
 
 #section-reasons .ptl-reasonsHero__boxTitle {
-    font-size: clamp(14px, 1.4vw, 16px); /* SPバランス: 最小 13→14 */
+    font-size: clamp(14px, 1.4vw, 16px);
     font-weight: 600;
     color: #444;
     text-align: center;
@@ -43,7 +22,7 @@
 }
 
 #section-reasons .ptl-reasonsHero__boxDesc {
-    font-size: clamp(14px, 1.2vw, 15px); /* SPバランス: 最小 13→14 */
+    font-size: clamp(14px, 1.2vw, 15px);
     font-weight: 300;
     color: #444;
     line-height: 1.65;
@@ -51,8 +30,6 @@
     margin-bottom: 0;
     text-align: center;
 }
-
-/* h2スタイルはstyle.cssで統一管理（.ptl-section__title, .ptl-section__subtitle, .ptl-section__subtitleLine） */
 
 .ptl-reasonsHero__label {
     font-size: 16px;
@@ -71,7 +48,6 @@
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     min-height: clamp(520px, 60vh, 720px);
-    /* padding設定はメディアクエリ内で管理 */
 }
 
 .ptl-reasonsHero__bg {
@@ -113,13 +89,10 @@
     background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-/* 余白統一: 上0・下は全体基準（style.cssの80px）に委譲 */
 .ptl-reasonsHero .ptl-section__inner {
     position: relative;
     z-index: 1;
-        padding-top: 0; /* 統一: 上0 */
-        padding-bottom: 0 !important; /* 下余白を削除 */
-        /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
+    padding: 0 20px !important;
 }
 
 .ptl-reasonsHero__grid {
@@ -174,11 +147,6 @@
     color: #fff;
 }
 
-/* 背景付き時のh2スタイルもstyle.cssで統一管理 */
-
-/* ===== utilities ===== */
-/* パフォーマンス最適化: @import削除により直接読み込み効率化 */
-
 /* ===== media ===== */
 @media (min-width: 700px) {
     .ptl-reasonsHero__grid {
@@ -192,9 +160,29 @@
     }
 }
 
-@media screen and (max-width: 767px) {
-    .ptl-reasonsHero { padding: 0; } /* セクション上下は0に統一 */
+/* ========================================
+   セクション余白（独自管理）
+======================================== */
 
+/* PC: 背景保護padding + 下余白 */
+@media (min-width: 960px) {
+    #section-reasons {
+        padding-top: 64px;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
+    }
+}
+
+/* SP: 背景保護padding + 下余白 */
+@media (max-width: 959px) {
+    #section-reasons {
+        padding-top: 40px;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    
     .ptl-reasonsHero__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
@@ -202,23 +190,5 @@
 
     .ptl-reasonsHero__label {
         font-size: 14px;
-    }
-}
-
-/* 余白統一: .ptl-section__inner は上0・下80を明示 */
-#section-reasons .ptl-section__inner{
-    padding: 0 20px 0 !important; /* 下余白を削除 */
-    /* padding-bottom は削除: style.css の margin-bottom: 80px で統一管理 */
-}
-
-/* セクション余白（独自管理） */
-#section-reasons {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-@media (max-width: 768px) {
-    #section-reasons {
-        margin-top: 0;
-        margin-bottom: 40px;
     }
 }

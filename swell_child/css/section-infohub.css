@@ -5,27 +5,7 @@
    navigation/BUST-ISSUESと完全統一
 ======================================== */
 
-/* セクション余白 */
-#section-infohub {
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-  #section-infohub {
-    margin-bottom: 40px;
-  }
-}
-
-/* セクション基本設定 */
-#section-infohub,
-.ptl-infohub {
-  --ptl-heading-size: clamp(22px, 2.8vw, 28px);
-  --ptl-subtitle-size: clamp(16px, 2vw, 18px);
-}
-
 /* セクション全体 */
-/* 固定背景の実装 */
 .ptl-infohub {
   background-image: var(--infohub-bg-image, none);
   background-attachment: fixed;
@@ -36,17 +16,17 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-top: 64px;
-  padding-bottom: 0; /* セクション下余白はmargin-bottomで管理 */
   overflow: hidden;
   isolation: isolate;
   
-  /* NAVIGATIONと完全一致: 高さ設定 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: clamp(520px, 60vh, 720px);
 }
 
-/* SP対応:モバイルでは固定背景を無効化 */
-@media (max-width: 768px) {
+/* SP対応：モバイルでは固定背景を無効化 */
+@media (max-width: 959px) {
   .ptl-infohub {
     background-attachment: scroll;
   }
@@ -54,10 +34,8 @@
 
 /* 固定背景では不要（DOM要素としての背景は非表示） */
 .ptl-infohub__bg {
-  display: none;
+  display: none !important;
 }
-
-/* パララックスはJSで完全制御（section-parallax.jsと統一） */
 
 /* オーバーレイ */
 .ptl-infohub__overlay {
@@ -67,36 +45,31 @@
   z-index: 1;
 }
 
-/* コンテンツエリア（グローバルルールを上書き） */
+/* コンテンツエリア（上下中央配置を維持） */
 .ptl-infohub .ptl-section__inner {
   position: relative;
   z-index: 2;
-  max-width: var(--ptl-container-max, 1200px);
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
+  max-width: var(--ptl-container-max, 1200px) !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  width: 100% !important;
+  box-sizing: border-box;
 }
 
 /* ヘッダー（パディング追加） */
 .ptl-infohub__header {
   text-align: center;
   margin-bottom: 60px;
-  padding-left: var(--ptl-container-pad, 20px);
-  padding-right: var(--ptl-container-pad, 20px);
 }
 
-/* H2タイトルはstyle.cssのグローバルルールを使用 */
-/* navigation.cssで背景メディア上の白文字化を適用 */
-
-/* カードグリッド（パディング追加） */
+/* カードグリッド */
 .ptl-infohub__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
   margin: 0;
-  padding-left: var(--ptl-container-pad, 20px);
-  padding-right: var(--ptl-container-pad, 20px);
+  padding: 0;
 }
 
 @media (max-width: 959px) {
@@ -229,7 +202,7 @@
 }
 
 /* モバイル調整 */
-@media (max-width: 768px) {
+@media (max-width: 959px) {
   .ptl-infohub__content {
     padding: 30px 8px 24px;
   }
@@ -239,14 +212,6 @@
    緊急修正：カードを確実に最大幅に拡張
 ======================================== */
 
-/* セクション全体のID指定で詳細度を最大化 */
-/* .ptl-section__innerのpadding設定は削除: セクション余白はmargin-bottomで管理 */
-
-#section-infohub .ptl-infohub__grid {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
-
 /* カードを確実にグリッドセル幅いっぱいに */
 #section-infohub .ptl-infohub__card {
   width: 100% !important;
@@ -255,14 +220,28 @@
   box-sizing: border-box !important;
 }
 
-/* セクション余白（独自管理） */
-#section-infohub,
-.ptl-infohub {
-  margin-bottom: 80px;
+/* ========================================
+   セクション余白（独自管理）
+======================================== */
+
+/* PC: 背景保護padding + 下余白 */
+@media (min-width: 960px) {
+    #section-infohub,
+    .ptl-infohub {
+        padding-top: 64px;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
+    }
 }
-@media (max-width: 768px) {
-  #section-infohub,
-  .ptl-infohub {
-    margin-bottom: 40px;
-  }
+
+/* SP: 背景保護padding + 下余白 */
+@media (max-width: 959px) {
+    #section-infohub,
+    .ptl-infohub {
+        padding-top: 40px;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
 }
