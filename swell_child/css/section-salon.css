@@ -73,60 +73,21 @@
    サロンセクション専用スタイル
    
    REASONSセクションをベースに作成
-   2025-09-30 作成開始
-   =========================== */
-
-
-/* ===== base ===== */
-#salon,
-.ptl-salon {
-    --ptl-subtitle-size: clamp(16px, 2vw, 18px);
-    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
-}
-
-/* ========================================
-   セクション余白（独自管理）
-======================================== */
-
-/* PC: padding削除、margin-bottomのみで管理 */
-@media (min-width: 960px) {
-    #salon,
-    .ptl-salonHero {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 80px;
-    }
-}
-
-/* SP: padding削除、margin-bottomのみで管理 */
-@media (max-width: 959px) {
-    #salon,
-    .ptl-salonHero {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-}
-
-/* h2スタイルはstyle.cssで統一管理（.ptl-section__title, .ptl-section__subtitle, .ptl-section__subtitleLine） */
-
-.ptl-salonHero__label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #222;
-    text-align: center;
-}
-
-/* ===== layout ===== */
-.ptl-salonHero {
     position: relative;
     overflow: hidden;
     isolation: isolate;
     background: transparent;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    min-height: clamp(520px, 60vh, 720px);
+    padding: 64px 0 0 0; /* 下余白はmargin-bottomで管理 */
+}
+
+        padding-top: 0;
+    .ptl-salonHero {
+        margin-bottom: 40px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
     margin-right: calc(50% - 50vw);
     min-height: clamp(520px, 60vh, 720px);
     padding: 64px 0 0 0; /* 下余白はmargin-bottomで管理 */
@@ -148,21 +109,16 @@
     width: 100%;
     height: 100%;
     display: block;
-    transform-origin: center center;
 }
-
-.ptl-salonHero__video {
-    object-fit: cover;
-}
-
-.ptl-salonHero__image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transform-origin: center center;
+    img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transform-origin: center center;
+    }
 }
 
 .ptl-salonHero__overlay {
