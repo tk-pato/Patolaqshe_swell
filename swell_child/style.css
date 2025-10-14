@@ -4,11 +4,11 @@
         margin-top: 0 !important;
     }
 }
-@media (max-width: 767px) {
-    /* ...既存SP調整... */
-    /* service-feature（#section-services）とuservoiceの間隔を40pxに */
-    #section-services + #uservoice {
-        margin-top: 40px !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 160px !important; /* パララックス侵食対策：PC時のみ視覚的に80pxになる */
+        isolation: isolate;
+        z-index: 1;
     }
 }
 /* Top page: Remove gray band and space below hero */
@@ -161,6 +161,31 @@ html, body { overflow-x: hidden; }
 }
 
 /* 追加の見た目調整はここに記述（必要最小限） */
+
+/* INTROセクション余白（パララックス侵食対策） */
+#intro,
+#intro.ptl-intro-section {
+    padding: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 160px !important; /* パララックス侵食対策：PC時のみ視覚的に80pxになる */
+    isolation: isolate;
+    z-index: 1;
+}
+
+/* SP画面は既存の40pxを維持（変更しない） */
+@media (max-width: 768px) {
+    #intro,
+    #intro.ptl-intro-section {
+        margin-bottom: 40px !important;
+    }
+}
+
+/* USER'S VOICEの余白定義（パララックス侵食対策） */
+@media (min-width: 769px) {
+    #uservoice {
+        margin-bottom: 160px !important; /* パララックス侵食対策：PC時のみ視覚的に80pxになる */
+    }
+}
 
 /* PCでのMENUボタン非表示（最優先） */
 @media screen and (min-width: 768px) {
