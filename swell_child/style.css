@@ -1,3 +1,16 @@
+@media (max-width: 767px) {
+    /* ...既存SP調整... */
+    #uservoice {
+        margin-top: 0 !important;
+    }
+}
+@media (max-width: 767px) {
+    /* ...既存SP調整... */
+    /* service-feature（#section-services）とuservoiceの間隔を40pxに */
+    #section-services + #uservoice {
+        margin-top: 40px !important;
+    }
+}
 /* Top page: Remove gray band and space below hero */
 body.page-template-default .l-mainContent,
 body.home .l-mainContent,
@@ -102,6 +115,25 @@ body.home .l-mainContent,
 
 /* 視覚補正:パララックス境界だけ少し詰める（表示領域は削らない） */
 #section-issue + #section-reasons{ margin-top: var(--gap-parallax) !important; }
+
+/* SP調整: 見た目の間隔を40px基準に統一 */
+@media (max-width: 767px) {
+    /* NEWS 内側の下パディングを縮小（白帯を詰める） */
+    #news .ptl-section__inner {
+        padding-top: 48px !important;
+        padding-bottom: 32px !important;
+    }
+
+        /* bust-issues の直後（REASONS）の上マージンを調整（見た目を広げる） */
+        #bust-issues + #section-reasons {
+            margin-top: 56px !important;
+        }
+
+    /* サービス特集の下マージンを40pxに */
+    #section-services {
+        margin-bottom: 40px !important;
+    }
+}
 /*
 Theme Name: SWELL CHILD
 Template: swell
