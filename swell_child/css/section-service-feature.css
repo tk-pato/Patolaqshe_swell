@@ -1,3 +1,10 @@
+/* ===== SP Spacing Override ===== */
+/* SP専用: サービスセクション下余白40px */
+@media (max-width: 768px) {
+  #section-services {
+    margin-bottom: 40px !important;
+  }
+}
 /* === MENU Section (Rococo Style) 統合分 === */
 #section-services .ptl-menu__content {
   display: grid;
@@ -419,4 +426,12 @@
 #section-services {
   margin-top: 0 !important;
   margin-bottom: 80px !important;
+}
+
+/* ===== SP Spacing Override ===== */
+/* SP専用: サービスセクション下余白40px */
+@media (max-width: 768px) {
+  #section-services {
+    margin-bottom: 40px !important;
+  }
 }

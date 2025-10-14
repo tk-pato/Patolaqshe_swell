@@ -94,25 +94,18 @@
   margin: 10px 0 0 auto;
 }
 
-/* サブタイトル */
+/* サブタイトル - 統一システムに準拠 */
 #intro .ptl-intro__subtitle {
-  font-size: clamp(11px, 1.8vw, 13px);
-  color: #8B7355;
-  letter-spacing: 0.25em;
-  margin-bottom: clamp(16px, 2.5vw, 20px);
+  /* style.cssの統一ルールに委譲するため、競合しない個別プロパティのみ残す */
   font-weight: 400;
   line-height: 1.6;
   text-transform: uppercase;
 }
 
-/* タイトル */
+/* タイトル - 統一システムに準拠 */
 #intro .ptl-intro__title {
-  font-size: clamp(28px, 4.5vw, 40px);
-  font-weight: 700;
-  color: #333;
+  /* style.cssの統一ルールに委譲するため、競合しない個別プロパティのみ残す */
   line-height: 1.4;
-  margin-bottom: clamp(24px, 4vw, 36px);
-  letter-spacing: 0.03em;
 }
 
 /* 説明文 */

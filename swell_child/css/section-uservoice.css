@@ -495,6 +495,20 @@
 }
 
 /* セクション余白 */
+/* ===== SP Spacing Override ===== */
+/* SP専用: ユーザーボイスセクション下余白40px */
+@media (max-width: 768px) {
+    #uservoice {
+        margin-bottom: 40px !important;
+    }
+}
+/* ===== SP Spacing Override ===== */
+/* SP専用: ユーザーボイスセクション下余白40px */
+@media (max-width: 768px) {
+    #uservoice {
+        margin-bottom: 40px !important;
+    }
+}
 /* セクション余白 */
 #uservoice {
     margin-top: 0 !important;

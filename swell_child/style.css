@@ -288,18 +288,7 @@ html, body { overflow-x: hidden; }
         --ptl-section-gap-bottom: 80px;
     }
 
-    /* 全セクションのマージン統一 */
-    #news,
-    #bust-issues,
-    #section-reasons,
-    #page-navigation,
-    #section-services,
-    #uservoice,
-    #section-infohub,
-    #section-blog {
-        margin-top: var(--ptl-section-gap-top) !important;
-        margin-bottom: var(--ptl-section-gap-bottom) !important;
-    }
+    /* 全セクションのマージン統一（意図した指定なしのため削除） */
 
     /* 例外：NEWSのみ上に余白 */
     #news {
@@ -333,15 +322,16 @@ html, body { overflow-x: hidden; }
 .ptl-news .ptl-section__title,
 .ptl-uservoice .ptl-section__title,
 .ptl-reasons .ptl-section__title,
-.ptl-reasonsHero .ptl-section__title {
-    text-align: center !important;
-    letter-spacing: .08em !important;
-    font-weight: 600 !important;
-    margin-bottom: var(--ptl-title-margin) !important;
-    font-size: var(--ptl-heading-size) !important;
-    color: var(--ptl-title-color) !important;
-    text-shadow: none !important;
-    margin-top: 0 !important;
+.ptl-reasonsHero .ptl-section__title,
+#intro .ptl-intro__title {
+    text-align: center;
+    letter-spacing: .08em;
+    font-weight: 600;
+    margin-bottom: var(--ptl-title-margin);
+    font-size: var(--ptl-heading-size);
+    color: var(--ptl-title-color);
+    text-shadow: none;
+    margin-top: 0;
 }
 
 /* 全セクション共通のサブタイトルスタイル */
@@ -349,24 +339,41 @@ html, body { overflow-x: hidden; }
 .ptl-news .ptl-section__subtitle,
 .ptl-uservoice .ptl-section__subtitle,
 .ptl-reasons .ptl-section__subtitle,
-.ptl-reasonsHero .ptl-section__subtitle {
-    text-align: center !important;
-    color: var(--ptl-subtitle-color) !important;
-    margin-top: var(--ptl-subtitle-margin) !important;
-    font-size: var(--ptl-subtitle-size) !important;
-    text-shadow: none !important;
-    display: block !important;
+.ptl-reasonsHero .ptl-section__subtitle,
+#intro .ptl-intro__subtitle {
+    text-align: center;
+    color: var(--ptl-subtitle-color);
+    margin-top: var(--ptl-subtitle-margin);
+    font-size: var(--ptl-subtitle-size);
+    text-shadow: none;
+    display: block;
 }
 
 /* 背景付きセクションでもh2統一（テキストシャドウなし） */
 .ptl-reasonsHero.has-bg .ptl-section__title {
-    color: var(--ptl-title-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-title-color);
+    text-shadow: none;
 }
 
 .ptl-reasonsHero.has-bg .ptl-section__subtitle {
-    color: var(--ptl-subtitle-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-subtitle-color);
+    text-shadow: none;
+}
+
+/* SALON（.ptl-salonHero）でも背景の有無に関わらず見出しを常に可視（白被り防止） */
+.ptl-salonHero .ptl-section__title {
+    color: var(--ptl-title-color);
+    text-shadow: none;
+}
+.ptl-salonHero .ptl-section__subtitle {
+    color: var(--ptl-subtitle-color);
+    text-shadow: none;
+}
+.ptl-salonHero.has-bg .ptl-section__title {
+    color: var(--ptl-title-color);
+}
+.ptl-salonHero.has-bg .ptl-section__subtitle {
+    color: var(--ptl-subtitle-color);
 }
 
 /* オーナメント統一 */
