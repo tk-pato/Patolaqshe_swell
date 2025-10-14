@@ -275,6 +275,8 @@
 }
 
 /* パララックス背景領域の保護（PC） */
+/* 注: padding-topは背景表示用、セクション下余白はmargin-bottomで管理 */
 @media (min-width: 960px) {
   #page-navigation, .ptl-pageNavHero { padding-top: 64px !important; padding-bottom: 0 !important; } /* セクション下余白はmargin-bottomで管理 */
 }
+

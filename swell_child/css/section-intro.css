@@ -15,7 +15,7 @@
   position: relative;
   min-height: clamp(500px, 60vh, 700px);
   margin-top: 0;
-  margin-bottom: 160px; /* パララックス補正で意図的に大きく */
+  margin-bottom: 80px; /* 統一ルールに準拠 */
 }
 
 /* 左側: 背景画像 (70%) */

@@ -47,6 +47,7 @@
 }
 
 /* PC専用: 高さ設定 */
+/* 注: padding-topは背景表示用、セクション下余白はmargin-bottomで管理 */
 @media (min-width: 960px) {
   #bust-issues {
     min-height: clamp(520px, 60vh, 720px);
