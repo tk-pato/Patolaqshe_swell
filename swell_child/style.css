@@ -147,24 +147,7 @@
         padding: 64px 0 !important;
     }
     :root {
-        --ptl-section-gap-top: 0px;
-        --ptl-section-gap-bottom: 80px;
-    }
 
-    /* 全セクションのマージン統一（意図した指定なしのため削除） */
-
-    /* 例外：NEWSのみ上に余白 */
-    #news {
-        margin-top: 80px !important;
-    }
-    
-    /* パララックスセクションのpadding保護（背景保護） */
-    #bust-issues, #page-navigation,
-    .ptl-reasonsHero, .ptl-salonHero,
-    #section-infohub {
-        padding: 64px 0 !important;
-    }
-}
 
 
 
@@ -187,14 +170,14 @@
 .ptl-reasons .ptl-section__title,
 .ptl-reasonsHero .ptl-section__title,
 #intro .ptl-intro__title {
-    text-align: center;
-    letter-spacing: .08em;
-    font-weight: 600;
-    margin-bottom: var(--ptl-title-margin);
-    font-size: var(--ptl-heading-size);
-    color: var(--ptl-title-color);
-    text-shadow: none;
-    margin-top: 0;
+    text-align: center !important;
+    letter-spacing: .08em !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--ptl-title-margin) !important;
+    font-size: var(--ptl-heading-size) !important;
+    color: var(--ptl-title-color) !important;
+    text-shadow: none !important;
+    margin-top: 0 !important;
 }
 
 /* 全セクション共通のサブタイトルスタイル */
@@ -204,39 +187,41 @@
 .ptl-reasons .ptl-section__subtitle,
 .ptl-reasonsHero .ptl-section__subtitle,
 #intro .ptl-intro__subtitle {
-    text-align: center;
-    color: var(--ptl-subtitle-color);
-    margin-top: var(--ptl-subtitle-margin);
-    font-size: var(--ptl-subtitle-size);
-    text-shadow: none;
-    display: block;
+    text-align: center !important;
+    color: var(--ptl-subtitle-color) !important;
+    margin-top: var(--ptl-subtitle-margin) !important;
+    font-size: var(--ptl-subtitle-size) !important;
+    text-shadow: none !important;
+    display: block !important;
 }
 
 /* 背景付きセクションでもh2統一（テキストシャドウなし） */
 .ptl-reasonsHero.has-bg .ptl-section__title {
-    color: var(--ptl-title-color);
-    text-shadow: none;
+    color: var(--ptl-title-color) !important;
+    text-shadow: none !important;
 }
 
 .ptl-reasonsHero.has-bg .ptl-section__subtitle {
-    color: var(--ptl-subtitle-color);
-    text-shadow: none;
+    color: var(--ptl-subtitle-color) !important;
+    text-shadow: none !important;
 }
 
 /* SALON（.ptl-salonHero）でも背景の有無に関わらず見出しを常に可視（白被り防止） */
 .ptl-salonHero .ptl-section__title {
-    color: var(--ptl-title-color);
-    text-shadow: none;
+    color: var(--ptl-title-color) !important;
+    text-shadow: none !important;
 }
 .ptl-salonHero .ptl-section__subtitle {
-    color: var(--ptl-subtitle-color);
-    text-shadow: none;
+    color: var(--ptl-subtitle-color) !important;
+    text-shadow: none !important;
 }
 .ptl-salonHero.has-bg .ptl-section__title {
-    color: var(--ptl-title-color);
+    color: var(--ptl-title-color) !important;
+    text-shadow: none !important;
 }
 .ptl-salonHero.has-bg .ptl-section__subtitle {
-    color: var(--ptl-subtitle-color);
+    color: var(--ptl-subtitle-color) !important;
+    text-shadow: none !important;
 }
 
 /* オーナメント統一 */

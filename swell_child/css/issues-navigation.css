@@ -138,20 +138,7 @@
   margin-bottom: clamp(8px, 2vw, 12px);
 }
 
-.ptl-bustIssues .ptl-section__title {
-  text-align: center;
-  letter-spacing: .08em;
-  font-weight: 600;
-  margin-bottom: 16px !important;
-  font-size: var(--ptl-heading-size);
-}
-
-.ptl-bustIssues .ptl-section__subtitle {
-  text-align: center;
-  color: #777;
-  margin-top: -4px;
-  font-size: var(--ptl-subtitle-size);
-}
+/* h2スタイルはstyle.cssで統一管理（.ptl-section__title, .ptl-section__subtitle, .ptl-section__subtitleLine） */
 
 .ptl-bustIssues .ptl-section__subtitleLine {
   width: clamp(180px, 28vw, 560px);
