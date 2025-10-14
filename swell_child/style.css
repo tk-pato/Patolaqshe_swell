@@ -127,8 +127,8 @@
 .ptl-section__title,
 .ptl-news .ptl-section__title,
 .ptl-uservoice .ptl-section__title,
-.ptl-reasons .ptl-section__title,
-.ptl-reasonsHero .ptl-section__title,
+.ptl-commitment .ptl-section__title,
+.ptl-commitmentHero .ptl-section__title,
 #intro .ptl-intro__title {
     text-align: center !important;
     letter-spacing: .08em !important;
@@ -144,8 +144,8 @@
 .ptl-section__subtitle,
 .ptl-news .ptl-section__subtitle,
 .ptl-uservoice .ptl-section__subtitle,
-.ptl-reasons .ptl-section__subtitle,
-.ptl-reasonsHero .ptl-section__subtitle,
+.ptl-commitment .ptl-section__subtitle,
+.ptl-commitmentHero .ptl-section__subtitle,
 #intro .ptl-intro__subtitle {
     text-align: center !important;
     color: var(--ptl-subtitle-color) !important;
@@ -156,12 +156,12 @@
 }
 
 /* 背景付きセクションでもh2統一（テキストシャドウなし） */
-.ptl-reasonsHero.has-bg .ptl-section__title {
+.ptl-commitmentHero.has-bg .ptl-section__title {
     color: var(--ptl-title-color) !important;
     text-shadow: none !important;
 }
 
-.ptl-reasonsHero.has-bg .ptl-section__subtitle {
+.ptl-commitmentHero.has-bg .ptl-section__subtitle {
     color: var(--ptl-subtitle-color) !important;
     text-shadow: none !important;
 }
@@ -203,7 +203,7 @@
 
 /* オーナメント統一 */
 .ptl-section__subtitleLine,
-.ptl-reasonsHero .ptl-section__subtitleLine {
+.ptl-commitmentHero .ptl-section__subtitleLine {
     width: 100px;
     height: 1px;
     background-color: #ddd;
@@ -229,7 +229,7 @@
 .ptl-news__title:hover,
 .ptl-news__title:focus-visible { color: #3C4043; }
 .ptl-news__more { display: flex; justify-content: center; margin-top: 28px; }
-.ptl-news__moreBtn, .ptl-reasons__more {
+.ptl-news__moreBtn, .ptl-commitment__more {
     /* 調整用カスタムプロパティ（必要に応じて数値だけ変えればOK） */
     --frame-slice: 120; /* 画像から切り出す縁の厚み(px) */
     --frame-width: 12px; /* 実際の表示上の枠の太さ（小さめ） */
@@ -257,7 +257,7 @@
 
     transition: background-color .2s ease, color .2s ease;
 }
-.ptl-news__moreBtn::before, .ptl-reasons__more::before {
+.ptl-news__moreBtn::before, .ptl-commitment__more::before {
     content: "";
     position: absolute;
     /* 枠を外側に描画し、要素サイズを変えない */
@@ -273,8 +273,8 @@
 /* ホバーは文字色のみ変更（背景・枠は不変） */
 .ptl-news__moreBtn:hover,
 .ptl-news__moreBtn:focus-visible,
-.ptl-reasons__more:hover,
-.ptl-reasons__more:focus-visible { background: #fff; color: #5F6368; }
+.ptl-commitment__more:hover,
+.ptl-commitment__more:focus-visible { background: #fff; color: #5F6368; }
 .ptl-news__moreBtn:hover .ptl-news__moreArrow,
 .ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { transform: translateX(4px); }
 

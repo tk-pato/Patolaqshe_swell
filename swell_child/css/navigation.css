@@ -260,20 +260,20 @@
    セクション余白（独自管理）
 ======================================== */
 
-/* PC: 背景保護padding + 下余白 */
+/* PC: padding削除、margin-bottomのみで管理 */
 @media (min-width: 960px) {
     #page-navigation {
-        padding-top: 64px;
+        padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 80px;
     }
 }
 
-/* SP: 背景保護padding + 下余白 */
+/* SP: padding削除、margin-bottomのみで管理 */
 @media (max-width: 959px) {
     #page-navigation {
-        padding-top: 40px;
+        padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 40px;

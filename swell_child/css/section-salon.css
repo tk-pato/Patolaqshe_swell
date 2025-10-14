@@ -84,21 +84,30 @@
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
 }
 
-/* セクション余白 */
-#salon {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
+/* ========================================
+   セクション余白（独自管理）
+======================================== */
 
-@media (max-width: 768px) {
-    #salon {
-        margin-bottom: 40px;
+/* PC: padding削除、margin-bottomのみで管理 */
+@media (min-width: 960px) {
+    #salon,
+    .ptl-salonHero {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
     }
 }
 
-/* パララックス背景領域の保護（PC） */
-@media (min-width: 960px) {
-    #salon, .ptl-salonHero { padding-top: 64px; padding-bottom: 0; } /* セクション下余白はmargin-bottomで管理 */
+/* SP: padding削除、margin-bottomのみで管理 */
+@media (max-width: 959px) {
+    #salon,
+    .ptl-salonHero {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
 }
 
 /* h2スタイルはstyle.cssで統一管理（.ptl-section__title, .ptl-section__subtitle, .ptl-section__subtitleLine） */

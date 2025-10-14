@@ -122,6 +122,14 @@
   backdrop-filter: blur(8px);
 }
 
+/* PCでもカードに上下余白を追加（背景との接地防止） */
+@media (min-width: 960px) {
+    .ptl-bustIssues__card {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+}
+
 .ptl-bustIssues__list {
   display: grid;
   grid-template-columns: 1fr;
@@ -170,20 +178,20 @@
    セクション余白（独自管理）
 ======================================== */
 
-/* PC: 背景保護padding + 下余白 */
+/* PC: padding削除、margin-bottomのみで管理 */
 @media (min-width: 960px) {
     #bust-issues {
-        padding-top: 64px;
+        padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 80px;
     }
 }
 
-/* SP: 背景保護padding + 下余白 + パララックス設定 */
+/* SP: padding削除、margin-bottomのみで管理 + パララックス設定 */
 @media (max-width: 959px) {
     #bust-issues {
-        padding-top: 40px;
+        padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 40px;
@@ -200,10 +208,10 @@
         will-change: transform;
     }
     
-    /* カード余白調整 */
+    /* カード余白調整: 上下に40pxの余白を追加 */
     .ptl-bustIssues__card {
         padding: 32px 16px !important;
-        margin: 0 auto !important;
+        margin: 40px auto !important; /* 上下40px追加 */
         max-width: calc(100% - 40px) !important;
     }
     

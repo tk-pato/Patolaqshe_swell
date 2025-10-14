@@ -171,7 +171,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 30px 20px;
+  padding: 30px 20px 40px 20px;
   text-align: center;
   z-index: 3;
 }
@@ -204,7 +204,7 @@
 /* モバイル調整 */
 @media (max-width: 959px) {
   .ptl-infohub__content {
-    padding: 30px 8px 24px;
+    padding: 30px 8px 36px 8px;
   }
 }
 
@@ -224,22 +224,22 @@
    セクション余白（独自管理）
 ======================================== */
 
-/* PC: 背景保護padding + 下余白 */
+/* PC: padding削除、margin-bottomのみで管理 */
 @media (min-width: 960px) {
     #section-infohub,
     .ptl-infohub {
-        padding-top: 64px;
+        padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 80px;
     }
 }
 
-/* SP: 背景保護padding + 下余白 */
+/* SP: padding削除、margin-bottomのみで管理 */
 @media (max-width: 959px) {
     #section-infohub,
     .ptl-infohub {
-        padding-top: 40px;
+        padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 40px;

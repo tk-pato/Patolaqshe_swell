@@ -73,7 +73,7 @@ echo $header_output;
 		get_template_part('template-parts/front/section', 'bust-issues');
 
 		// 3.5) 選ばれる理由（PHP）
-		get_template_part('template-parts/front/section', 'reasons');
+		get_template_part('template-parts/front/section', 'commitment');
 		?>
 	</div>
 

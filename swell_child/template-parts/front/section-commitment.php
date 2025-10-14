@@ -2,7 +2,7 @@
 if (! defined('ABSPATH')) exit;
 
 // 専用CSSを後読みで確実に読み込む
-echo '<link rel="stylesheet" href="' . esc_url(get_stylesheet_directory_uri() . '/css/section-reasons.css') . '" media="all">';
+echo '<link rel="stylesheet" href="' . esc_url(get_stylesheet_directory_uri() . '/css/section-commitment.css') . '" media="all">';
 
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
@@ -43,7 +43,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 }
 ?>
 
-<section id="section-reasons" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
+<section id="section-commitment" class="ptl-commitmentHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
 
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title">COMMITMENT</h2>
@@ -51,7 +51,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>
-        <div class="ptl-reasonsHero__grid">
+        <div class="ptl-commitmentHero__grid">
             <?php
             // 子テーマ内のアイコン格納場所（PNG想定）
             $icon_dir_rel = '/img/nav';
@@ -87,11 +87,11 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     $icon_html = '<img src="' . esc_url($image_src) . '" alt="' . esc_attr($label) . '" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;border-radius:8px;" loading="lazy" decoding="async">';
                 }
             ?>
-                <div class="ptl-reasonsHero__btn">
-                    <span class="ptl-reasonsHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                <div class="ptl-commitmentHero__btn">
+                    <span class="ptl-commitmentHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                                         ?></span>
-                    <div class="ptl-reasonsHero__boxTitle">HAIR STYLING</div>
-                    <div class="ptl-reasonsHero__boxDesc">Beautiful, healthy hair and a great style is a trademark for Hairdresser. Professional care and awesome attention to details and your needs defines us.</div>
+                    <div class="ptl-commitmentHero__boxTitle">HAIR STYLING</div>
+                    <div class="ptl-commitmentHero__boxDesc">Beautiful, healthy hair and a great style is a trademark for Hairdresser. Professional care and awesome attention to details and your needs defines us.</div>
                 </div>
             <?php endforeach; ?>
         </div>

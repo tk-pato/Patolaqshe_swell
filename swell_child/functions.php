@@ -179,21 +179,18 @@ add_action('wp_enqueue_scripts', function () {
   // 親テーマ main.css のハンドルは 'main_style'（SWELL）
   wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
 
-  // ptl-layout.css（commitment/navigation幅・カードレイアウト同期用）
-  wp_enqueue_style('ptl_layout', get_stylesheet_directory_uri() . '/css/ptl-layout.css', ['child_style'], wp_get_theme()->get('Version'));
-
-  // reasons - 統合CSS（ptl-reasons 1ハンドルに集約）
+  // commitment - 統合CSS（ptl-commitment 1ハンドルに集約）
   add_action('wp_enqueue_scripts', function () {
     // 旧ハンドルクリーンアップ
-    foreach (['ptl_reasons_styles', 'ptl-section-reasons'] as $handle) {
+    foreach (['ptl_commitment_styles', 'ptl-section-commitment'] as $handle) {
       wp_dequeue_style($handle);
       wp_deregister_style($handle);
     }
     // 統合ハンドル
-    $rel = '/css/section-reasons.css';
+    $rel = '/css/section-commitment.css';
     $abs = get_stylesheet_directory() . $rel;
     if (file_exists($abs)) {
-      wp_enqueue_style('ptl-reasons', get_stylesheet_directory_uri() . $rel, [], filemtime($abs));
+      wp_enqueue_style('ptl-commitment', get_stylesheet_directory_uri() . $rel, [], filemtime($abs));
     }
   }, 99);
 
@@ -212,9 +209,6 @@ add_action('wp_enqueue_scripts', function () {
   }
 
 
-  // commitment-grid.css - 一時無効化
-  // wp_enqueue_style('ptl_commitment_grid', get_stylesheet_directory_uri() . '/css/commitment-grid.css', ['child_style'], wp_get_theme()->get('Version'));
-
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
@@ -227,7 +221,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
   }
 
-  // SALON セクション用CSS/JS（REASONSベース再構築）
+  // SALON セクション用CSS/JS（COMMITMENTベース再構築）
   $salon_css = get_stylesheet_directory() . '/css/section-salon.css';
   if (file_exists($salon_css)) {
     wp_enqueue_style('ptl_section_salon', get_stylesheet_directory_uri() . '/css/section-salon.css', ['child_style'], filemtime($salon_css));
@@ -285,14 +279,14 @@ add_action('init', function () {
 
   $reason_url = home_url('/reason/'); // 後で変更可（現在は /media/reason/ 相当）
 
-  $content = '<!-- wp:group {"tagName":"section","className":"ptl-reasons","anchor":"brand-reason"} -->
-  <section class="wp-block-group ptl-reasons" id="brand-reason"><div class="wp-block-group__inner-container">
+  $content = '<!-- wp:group {"tagName":"section","className":"ptl-commitment","anchor":"brand-reason"} -->
+  <section class="wp-block-group ptl-commitment" id="brand-reason"><div class="wp-block-group__inner-container">
   <!-- wp:heading {"textAlign":"center"} -->
   <h2 class="has-text-align-center">選ばれる理由</h2>
   <!-- /wp:heading -->
 
-  <!-- wp:columns {"className":"ptl-reasons__grid"} -->
-  <div class="wp-block-columns ptl-reasons__grid">
+  <!-- wp:columns {"className":"ptl-commitment__grid"} -->
+  <div class="wp-block-columns ptl-commitment__grid">
 
     <!-- wp:column -->
     <div class="wp-block-column">
@@ -358,13 +352,13 @@ add_action('init', function () {
   <!-- /wp:columns -->
 
   <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-  <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link ptl-reasons__more" href="' . esc_url($reason_url) . '">MORE</a></div></div>
+  <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link ptl-commitment__more" href="' . esc_url($reason_url) . '">MORE</a></div></div>
   <!-- /wp:buttons -->
 
   </div></section>
   <!-- /wp:group -->';
 
-  register_block_pattern('patolaqshe/reasons-4', [
+  register_block_pattern('patolaqshe/commitment-4', [
     'title'       => '選ばれる理由（4カード）',
     'description' => 'グレープレースホルダー画像付きの4カード。Moreボタン・各カードから「選ばれる理由・施術の流れ」へリンクします。',
     'categories'  => ['patolaqshe'],
