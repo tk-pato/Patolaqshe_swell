@@ -17,6 +17,13 @@
   }
 }
 
+/* セクション基本設定 */
+#section-infohub,
+.ptl-infohub {
+  --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+  --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+}
+
 /* セクション全体 */
 /* 固定背景の実装 */
 .ptl-infohub {
@@ -230,9 +237,7 @@
 ======================================== */
 
 /* セクション全体のID指定で詳細度を最大化 */
-#section-infohub .ptl-section__inner {
-  padding: 80px 0 !important;
-}
+/* .ptl-section__innerのpadding設定は削除: セクション余白はmargin-bottomで管理 */
 
 #section-infohub .ptl-infohub__grid {
   padding-left: 20px !important;

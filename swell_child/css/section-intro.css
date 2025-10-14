@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+/* セクション基本設定 */
+#intro,
+.ptl-intro-section {
+  --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+  --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+}
+
 /* セクション全体 */
 #intro.ptl-intro-section {
   width: 100vw;

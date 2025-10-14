@@ -133,23 +133,8 @@
    背景動画/画像上での視認性向上専用
    =========================== */
 
-/* h2タイトル: 白文字+シャドウで背景メディア上の視認性向上 */
-#page-navigation .ptl-section__title,
-#bust-issues .ptl-section__title,
-#section-infohub .ptl-section__title,
-.ptl-pageNavHero.has-bg .ptl-section__title {
-  color: #fff !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
-}
+/* h2タイトル・サブタイトル: style.cssで統一管理 */
 
-/* h2サブタイトル: 白文字+シャドウで背景メディア上の視認性向上 */
-#page-navigation .ptl-section__subtitle,
-#bust-issues .ptl-section__subtitle,
-#section-infohub .ptl-section__subtitle,
-.ptl-pageNavHero.has-bg .ptl-section__subtitle {
-  color: #fff !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
-}
 .ptl-moreButton--news::before {
   content: "";
   position: absolute;

@@ -109,13 +109,7 @@
 /* ヒーローロゴの表示はカスタマイザーの中央テキストで制御します（非表示にしたい場合はここにルールを追加） */
 
 /* ヘッダー：サブメニュー（ドロップダウン）の背景を透過に */
-@media (min-width: 960px) {
-    /* パララックスセクションのpadding設定は各独自CSSで管理 */
-    
-    :root {
-
-
-
+/* パララックスセクションのpadding設定は各独自CSSで管理 */
 
 /* =====================================================
     H2統一管理: 全セクションのタイトル・サブタイトル
@@ -170,6 +164,23 @@
 .ptl-reasonsHero.has-bg .ptl-section__subtitle {
     color: var(--ptl-subtitle-color) !important;
     text-shadow: none !important;
+}
+
+/* NAVIGATION/INFOHUB: 背景メディア上では白文字+シャドウで視認性確保 */
+#page-navigation .ptl-section__title,
+#bust-issues .ptl-section__title,
+#section-infohub .ptl-section__title,
+.ptl-pageNavHero.has-bg .ptl-section__title {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
+}
+
+#page-navigation .ptl-section__subtitle,
+#bust-issues .ptl-section__subtitle,
+#section-infohub .ptl-section__subtitle,
+.ptl-pageNavHero.has-bg .ptl-section__subtitle {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
 }
 
 /* SALON（.ptl-salonHero）でも背景の有無に関わらず見出しを常に可視（白被り防止） */

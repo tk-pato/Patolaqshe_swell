@@ -33,6 +33,7 @@
 
 /* セクション基本設定 */
 .ptl-uservoice {
+    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     background: white;
 }
