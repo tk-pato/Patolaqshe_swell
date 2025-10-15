@@ -13,8 +13,36 @@
   background-color: rgba(255, 255, 255, 0.92);
 }
 
+.ptl-pageNavHero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
 
+.ptl-pageNavHero__bg video,
+.ptl-pageNavHero__bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
+.ptl-pageNavHero__bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
 
 .ptl-pageNavHero__btn {
   display: flex;
@@ -229,62 +257,25 @@
 }
 
 /* ========================================
-   セクション余白（独自管理）- 完全修正版
+   セクション余白（独自管理）
 ======================================== */
 
-/* セクション自体のクラス名で直接指定 */
-#page-navigation.ptl-pageNavHero {
-    margin-top: 0 !important;
-    margin-bottom: 80px !important;
-}
-
-/* PC: 背景コンテナの中央配置 */
+/* PC: padding削除、margin-bottomのみで管理 */
 @media (min-width: 960px) {
-    #page-navigation.ptl-pageNavHero {
-        min-height: clamp(520px, 60vh, 720px) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 64px 0 !important;
-    }
-    
-    #page-navigation.ptl-pageNavHero .ptl-section__inner {
-        padding: 0 var(--ptl-container-pad, 20px) !important;
-        width: 100% !important;
-        max-width: var(--ptl-container-max, 1200px) !important;
-        margin: 0 auto !important;
-    }
-    
-    #page-navigation.ptl-pageNavHero .ptl-pageNavHero__grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: clamp(40px, 4.6vw, 80px) clamp(16px, 2vw, 24px) !important;
-        margin: 0 !important;
-        padding: 0 !important;
+    #page-navigation {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
     }
 }
 
-/* SP: 下部余白を強化 */
+/* SP: padding削除、margin-bottomのみで管理 */
 @media (max-width: 959px) {
-    #page-navigation.ptl-pageNavHero {
-        margin-bottom: 40px !important;
-        padding: 40px 0 80px 0 !important;
-        min-height: auto !important;
-    }
-    
-    #page-navigation.ptl-pageNavHero .ptl-section__inner {
-        padding: 0 var(--ptl-container-pad, 20px) !important;
-    }
-    
-    #page-navigation.ptl-pageNavHero .ptl-pageNavHero__grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 16px !important;
-        margin: clamp(32px, 3vw, 56px) auto 20px auto !important;
-        padding: 0 !important;
-    }
-    
-    #page-navigation.ptl-pageNavHero .ptl-pageNavHero__label {
-        font-size: 14px !important;
+    #page-navigation {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
     }
 }
