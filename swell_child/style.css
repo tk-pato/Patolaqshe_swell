@@ -460,3 +460,55 @@
 /* SFTP自動アップロード成功テスト */
 /* SFTP test */
 
+/* ========================================
+     共通パターン（複数セクションで使用）
+     個別の余白管理は各セクションCSSで行う
+======================================== */
+
+/* === パターン1: フルブリード（画面端まで拡張） === */
+.ptl-fullbleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+/* === パターン2: パララックス背景の共通構造 === */
+.ptl-parallax-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: transparent;
+    transform-origin: center center;
+}
+
+.ptl-parallax-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform-origin: center center;
+}
+
+.ptl-parallax-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--overlay-opacity, 0.25));
+    z-index: 1;
+}
+
+/* === パターン3: コンテナ内側の共通padding === */
+.ptl-inner-pad {
+    padding-left: var(--ptl-container-pad, 20px);
+    padding-right: var(--ptl-container-pad, 20px);
+    box-sizing: border-box;
+}
+
+/* === パターン4: z-indexの階層管理 === */
+.ptl-content-layer {
+    position: relative;
+    z-index: 2;
+}
+
