@@ -438,6 +438,9 @@
 
 /* === Canonical container lock (global, matches navigation) === */
 :root { --ptl-container-max: 1200px; --ptl-container-pad: 20px; }
+
+/* ❌ この部分がコメントアウトされていない */
+/*
 .ptl-section > .ptl-section__inner{
   max-width: var(--ptl-container-max) !important;
   margin-inline: auto !important;
@@ -445,7 +448,10 @@
   width: auto !important;
   box-sizing: border-box;
 }
+*/
+
 /* Optional safety: if a section wrapper tries to re-define width */
+/*
 .ptl-section [class*="__inner"],
 .ptl-section [class*="__wrap"],
 .ptl-section [class*="__container"]{
@@ -453,6 +459,7 @@
   width: auto !important;
   box-sizing: border-box;
 }
+*/
 
 /* SALONは section-salon.css 側でフルブリード＋inner制御に統一 */
 
