@@ -57,12 +57,12 @@
     .salon-map-link__text { font-size: 15px; font-weight: 500; }
     /* LINEアイコンを改行表示 */
     #salon .salon-line-link {
-        display: block !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        margin-top: 8px !important;
-        width: 1.8em !important;
-        height: 1.8em !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 8px;
+        width: 1.8em;
+        height: 1.8em;
     }
     /* 画像版のGoogleマップバナー（横並び用は上で定義） */
 }
@@ -173,14 +173,14 @@
 
 /* ===== bottom spacing unify ===== */
 /* セクションの下余白は margin-bottom:80px のみに統一するため、padding-bottom を無効化 */
-#salon.ptl-salonHero { padding-bottom: 0 !important; }
+#salon.ptl-salonHero { padding-bottom: 0; }
 
 /* 余白統一: style.cssのグローバルルールに完全準拠（padding: 80px 20px） */
 /* 余白は margin-bottom のみで制御（padding-bottomは0） */
 .ptl-salonHero .ptl-section__inner {
     position: relative;
     z-index: 1;
-    padding: 0 20px 0 !important;
+    padding: 0 20px 0;
 }
 
 .ptl-salonHero__grid {

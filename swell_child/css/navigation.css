@@ -75,7 +75,7 @@
 @media screen and (min-width: 768px) {
   /* PCモードでハンバーガーボタンを非表示 */
   body:not(.sp-view) .ptl-nav-toggle {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -131,10 +131,10 @@
 
 /* ===== BUST-ISSUES 調整：幅合わせ・不透明化・MORE統一 ===== */
 #bust-issues .ptl-section__inner{
-  max-width: var(--ptl-container-max) !important;
+  max-width: var(--ptl-container-max);
   margin: 0 auto;
-  padding-left: var(--ptl-container-pad) !important;
-  padding-right: var(--ptl-container-pad) !important;
+  padding-left: var(--ptl-container-pad);
+  padding-right: var(--ptl-container-pad);
   position: relative;
   isolation: isolate;
 }
