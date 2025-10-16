@@ -34,7 +34,7 @@
 
 /* 固定背景では不要（DOM要素としての背景は非表示） */
 .ptl-infohub__bg {
-  display: none !important;
+  display: none;
 }
 
 /* オーバーレイ */
@@ -49,10 +49,10 @@
 .ptl-infohub .ptl-section__inner {
   position: relative;
   z-index: 2;
-  max-width: var(--ptl-container-max, 1200px) !important;
-  margin: 0 auto !important;
-  padding: 0 20px !important;
-  width: 100% !important;
+  max-width: var(--ptl-container-max, 1200px);
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -214,10 +214,10 @@
 
 /* カードを確実にグリッドセル幅いっぱいに */
 #section-infohub .ptl-infohub__card {
-  width: 100% !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* ========================================
