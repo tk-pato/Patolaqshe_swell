@@ -10,3 +10,4 @@ __MACOSX/
 # IDE
 .vscode/
 .idea/
+.DS_Store
