@@ -11,3 +11,4 @@ __MACOSX/
 .vscode/
 .idea/
 .DS_Store
+scripts/*.exp
