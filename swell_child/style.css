@@ -9,7 +9,7 @@
     #page-navigation .ptl-nav-toggle,
     .ptl-pageNavHero .ptl-nav-toggle,
     section[id="page-navigation"] button.ptl-nav-toggle {
-        display: none !important;
+        display: none;
     }
 }
 
@@ -17,7 +17,7 @@
 @media screen and (max-width: 767px) {
     #page-navigation .ptl-nav-toggle,
     #bust-issues .ptl-nav-toggle {
-        display: flex !important;
+        display: flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
@@ -130,14 +130,14 @@
 .ptl-commitment .ptl-section__title,
 .ptl-commitmentHero .ptl-section__title,
 #intro .ptl-intro__title {
-    text-align: center !important;
-    letter-spacing: .08em !important;
-    font-weight: 600 !important;
-    margin-bottom: var(--ptl-title-margin) !important;
-    font-size: var(--ptl-heading-size) !important;
-    color: var(--ptl-title-color) !important;
-    text-shadow: none !important;
-    margin-top: 0 !important;
+    text-align: center;
+    letter-spacing: .08em;
+    font-weight: 600;
+    margin-bottom: var(--ptl-title-margin);
+    font-size: var(--ptl-heading-size);
+    color: var(--ptl-title-color);
+    text-shadow: none;
+    margin-top: 0;
 }
 
 /* 全セクション共通のサブタイトルスタイル */
@@ -147,23 +147,23 @@
 .ptl-commitment .ptl-section__subtitle,
 .ptl-commitmentHero .ptl-section__subtitle,
 #intro .ptl-intro__subtitle {
-    text-align: center !important;
-    color: var(--ptl-subtitle-color) !important;
-    margin-top: var(--ptl-subtitle-margin) !important;
-    font-size: var(--ptl-subtitle-size) !important;
-    text-shadow: none !important;
-    display: block !important;
+    text-align: center;
+    color: var(--ptl-subtitle-color);
+    margin-top: var(--ptl-subtitle-margin);
+    font-size: var(--ptl-subtitle-size);
+    text-shadow: none;
+    display: block;
 }
 
 /* 背景付きセクションでもh2統一（テキストシャドウなし） */
 .ptl-commitmentHero.has-bg .ptl-section__title {
-    color: var(--ptl-title-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-title-color);
+    text-shadow: none;
 }
 
 .ptl-commitmentHero.has-bg .ptl-section__subtitle {
-    color: var(--ptl-subtitle-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-subtitle-color);
+    text-shadow: none;
 }
 
 /* NAVIGATION/INFOHUB: 背景メディア上では白文字+シャドウで視認性確保 */
@@ -171,34 +171,34 @@
 #bust-issues .ptl-section__title,
 #section-infohub .ptl-section__title,
 .ptl-pageNavHero.has-bg .ptl-section__title {
-    color: #fff !important;
-    text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 
 #page-navigation .ptl-section__subtitle,
 #bust-issues .ptl-section__subtitle,
 #section-infohub .ptl-section__subtitle,
 .ptl-pageNavHero.has-bg .ptl-section__subtitle {
-    color: #fff !important;
-    text-shadow: 0 2px 8px rgba(0,0,0,.35) !important;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 
 /* SALON（.ptl-salonHero）でも背景の有無に関わらず見出しを常に可視（白被り防止） */
 .ptl-salonHero .ptl-section__title {
-    color: var(--ptl-title-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-title-color);
+    text-shadow: none;
 }
 .ptl-salonHero .ptl-section__subtitle {
-    color: var(--ptl-subtitle-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-subtitle-color);
+    text-shadow: none;
 }
 .ptl-salonHero.has-bg .ptl-section__title {
-    color: var(--ptl-title-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-title-color);
+    text-shadow: none;
 }
 .ptl-salonHero.has-bg .ptl-section__subtitle {
-    color: var(--ptl-subtitle-color) !important;
-    text-shadow: none !important;
+    color: var(--ptl-subtitle-color);
+    text-shadow: none;
 }
 
 /* オーナメント統一 */
@@ -422,7 +422,7 @@
   .l-header,
   .p-headerBar,
   .l-fixHeader {
-    background: rgba(0,0,0,0.85) !important;
+    background: rgba(0,0,0,0.85);
   }
 }
 
@@ -442,10 +442,10 @@
 /* ❌ この部分がコメントアウトされていない */
 /*
 .ptl-section > .ptl-section__inner{
-  max-width: var(--ptl-container-max) !important;
-  margin-inline: auto !important;
-  padding-inline: var(--ptl-container-pad) !important;
-  width: auto !important;
+  max-width: var(--ptl-container-max);
+  margin-inline: auto;
+  padding-inline: var(--ptl-container-pad);
+  width: auto;
   box-sizing: border-box;
 }
 */
@@ -455,8 +455,8 @@
 .ptl-section [class*="__inner"],
 .ptl-section [class*="__wrap"],
 .ptl-section [class*="__container"]{
-  max-width: none !important;
-  width: auto !important;
+  max-width: none;
+  width: auto;
   box-sizing: border-box;
 }
 */
