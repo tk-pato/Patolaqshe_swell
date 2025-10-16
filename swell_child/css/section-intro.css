@@ -204,6 +204,11 @@
     }
 }
 
+#intro {
+  margin-top: 0;
+  margin-bottom: 80px;
+}
+
 /* モバイル */
 @media (max-width: 767px) {
   #intro.ptl-intro-section {

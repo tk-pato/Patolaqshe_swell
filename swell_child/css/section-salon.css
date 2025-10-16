@@ -587,3 +587,8 @@
         font-size: 14px;
     }
 }
+
+#salon {
+  margin-top: 0;
+  margin-bottom: 80px;
+}

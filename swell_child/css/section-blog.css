@@ -245,6 +245,11 @@
     }
 }
 
+#section-blog {
+  margin-top: 0;
+  margin-bottom: 80px;
+}
+
 /* タブレット対応 */
 @media (max-width: 959px) {
   .ptl-blog__item {
