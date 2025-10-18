@@ -15,8 +15,8 @@
   border-top: none;
 }
 
-/* BUST-ISSUES: 点線のみの下線 */
-#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
+/* BUST-ISSUES: 点線のみの下線（詳細度を上げて確実に表示） */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item {
   border-bottom: 1px dashed rgba(0,0,0,.18);
 }
 
