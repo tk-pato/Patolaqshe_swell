@@ -1,23 +1,8 @@
-/* BUST-ISSUES — 点線のみ表示（実線削除） */
+/* BUST-ISSUES: リストの基本スタイル */
 #bust-issues .ptl-bustIssues__list {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-/* 親テーマの個別ボーダー指定を無効化 */
-#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item {
-  border: 0;
-}
-
-/* 項目間の実線も削除 */
-#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item + li.ptl-bustIssues__item {
-  border-top: none;
-}
-
-/* BUST-ISSUES: 点線のみの下線 */
-#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
-  border-bottom: 1px dashed rgba(0,0,0,.18);
 }
 
 /* ===========================
@@ -145,13 +130,16 @@
   }
 }
 
-.ptl-bustIssues__item {
+/* ISSUES項目のスタイル（詳細度を上げてボーダーを確実に表示） */
+#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item {
   display: grid;
   grid-template-columns: 28px 1fr;
   align-items: center;
   column-gap: 10px;
   padding: 8px 6px;
-  border-bottom: 1px dashed rgba(0,0,0,.18);
+  border: none;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
 }
 
 .ptl-bustIssues__icon {
@@ -215,11 +203,14 @@
         max-width: calc(100% - 40px);
     }
     
-    .ptl-bustIssues__item {
+    /* SP時も点線ボーダーを確実に表示 */
+    #bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item {
         padding: 10px 6px;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.18);
     }
 }
 
+/* セクション余白（PC） */
 #bust-issues {
   margin-top: 0;
   margin-bottom: 80px;

@@ -1,12 +1,12 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-/* BUST-ISSUES: 統合CSSを最終読込＋動作マーカー */
+/* BUST-ISSUES: 統合CSSを最終読込（親テーマより後に読み込み） */
 add_action('wp_enqueue_scripts', function () {
   $rel  = '/css/issues-navigation.css';
   $path = get_stylesheet_directory() . $rel;
   if (file_exists($path)) {
-    wp_enqueue_style('ptl-issues-bundle', get_stylesheet_directory_uri() . $rel, [], filemtime($path));
+    wp_enqueue_style('ptl-issues-bundle', get_stylesheet_directory_uri() . $rel, ['main_style'], filemtime($path));
   }
 }, 999);
 
