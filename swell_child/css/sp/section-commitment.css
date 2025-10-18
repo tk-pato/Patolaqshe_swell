@@ -1,0 +1,397 @@
+/* section-commitment.css - SP専用 - Phase④ */
+
+  #section-commitment .ptl-commitment-grid .cmt-cards,
+
+  #section-commitment .ptl-commitment-grid .cmt-cards,
+
+  #section-commitment-tiles .ptl-pageNavHero__grid,
+
+  #section-commitment-tiles .ptl-pageNavHero__grid,
+
+    #section-commitment,
+
+@charset "UTF-8";
+/* ===========================
+   COMMITMENT Section Styles - 統合完了版
+   選ばれる理由セクション専用スタイル
+   =========================== */
+
+/* Phase②-B: セクション基本設定（完全独立） */
+#section-commitment {
+    --ptl-subtitle-size: clamp(16px, 2vw, 18px);
+    --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+}
+
+#section-commitment .ptl-commitmentHero__boxTitle {
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 600;
+    color: #444;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    letter-spacing: .08em;
+}
+
+#section-commitment .ptl-commitmentHero__boxDesc {
+    font-size: clamp(14px, 1.2vw, 15px);
+    font-weight: 300;
+    color: #444;
+    line-height: 1.65;
+    margin-top: 4px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#section-commitment .ptl-commitmentHero__label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+/* ===== layout ===== */
+#section-commitment .ptl-commitmentHero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent;
+    min-height: clamp(520px, 60vh, 720px);
+}
+
+#section-commitment .ptl-commitmentHero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: transparent;
+    transform-origin: center center;
+}
+
+#section-commitment .ptl-commitmentHero__video,
+#section-commitment .ptl-commitmentHero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: center center;
+}
+
+#section-commitment .ptl-commitmentHero__video {
+    object-fit: cover;
+}
+
+#section-commitment .ptl-commitmentHero__image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform-origin: center center;
+}
+
+#section-commitment .ptl-commitmentHero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--overlay, .2));
+}
+
+#section-commitment .ptl-commitmentHero .ptl-section__inner {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: var(--ptl-container-pad, 20px);
+    padding-right: var(--ptl-container-pad, 20px);
+    max-width: var(--ptl-container-max, 1200px);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#section-commitment .ptl-commitmentHero__grid {
+    list-style: none;
+    margin: clamp(32px, 3vw, 56px) auto 0;
+    padding: 0;
+    display: grid;
+    row-gap: clamp(40px, 4.6vw, 80px);
+    column-gap: clamp(16px, 2vw, 24px);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ===== components ===== */
+#section-commitment .ptl-commitmentHero__btn {
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 8px;
+    justify-items: center;
+    color: #111;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 10px;
+    padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 20px);
+    min-height: 170px;
+    font-weight: 400;
+    letter-spacing: .02em;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .12);
+}
+
+#section-commitment .ptl-commitmentHero__icon {
+    width: 100%;
+    margin: 0 0 8px;
+    display: block;
+    padding: 0;
+}
+
+#section-commitment .ptl-commitmentHero__icon svg,
+#section-commitment .ptl-commitmentHero__icon img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ===== states ===== */
+#section-commitment .ptl-commitmentHero.is-translucent {
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+#section-commitment .ptl-commitmentHero.has-bg {
+    color: #fff;
+}
+
+/* ===== media ===== */
+}
+
+}
+
+/* ========================================
+   グリッド・カード設定（旧commitment-grid.css統合）
+======================================== */
+
+/* グローバルコンテナ幅 */
+.ptl-container{
+  max-width: var(--ptl-container-max,1160px);
+  margin: 0 auto;
+  padding-left: var(--ptl-container-pad,20px);
+  padding-right: var(--ptl-container-pad,20px);
+}
+
+/* グリッド版レイアウト */
+#section-commitment .ptl-commitment-grid .cmt-cards,
+#section-commitment .ptl-commitment .cards {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
+}
+  #section-commitment .ptl-commitment .cards {
+    grid-template-columns:repeat(3,1fr)
+  }
+}
+  #section-commitment .ptl-commitment .cards {
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+
+/* カードスタイル */
+#section-commitment .ptl-commitment-grid .cmt-card,
+#section-commitment .ptl-commitment .card {
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 4px 24px rgba(0,0,0,.06);
+  padding:24px;
+  text-align:center;
+}
+
+#section-commitment .ptl-commitment-grid .cmt-thumb,
+#section-commitment .ptl-commitment .card .thumb {
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  display:block;
+  border-radius:8px;
+  margin:0 auto 16px;
+}
+
+#section-commitment .ptl-commitment-grid .cmt-title,
+#section-commitment .ptl-commitment .card .title {
+  font-weight:700;
+  letter-spacing:.02em;
+  margin:.5rem 0 .25rem;
+}
+
+#section-commitment .ptl-commitment-grid .cmt-excerpt,
+#section-commitment .ptl-commitment .card .excerpt {
+  font-size:14px;
+  line-height:1.75;
+  color:#444;
+  margin:0;
+}
+
+/* リンク無効化 */
+#section-commitment .ptl-commitment-grid .cmt-card a,
+#section-commitment .ptl-commitment-grid .cmt-card:hover,
+#section-commitment .ptl-commitment .card a.thumb-link,
+#section-commitment .ptl-commitment .card a.is-static {
+  pointer-events:none;
+  cursor:default;
+  transform:none;
+  box-shadow:none;
+  opacity:1;
+}
+
+#section-commitment .ptl-commitment .card:hover {
+  transform:none;
+  box-shadow:inherit;
+  opacity:1;
+}
+
+/* ========================================
+   Navigation風タイル版（旧ptl-layout.css統合）
+======================================== */
+
+#section-commitment-tiles .ptl-pageNavHero__grid,
+#section-commitment-tiles .ptl-pageNavHero__grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
+}
+
+  #section-commitment-tiles .ptl-pageNavHero__grid {
+    grid-template-columns:repeat(3,1fr)
+  }
+}
+
+  #section-commitment-tiles .ptl-pageNavHero__grid {
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+
+#section-commitment-tiles .ptl-pageNavHero__btn,
+#section-commitment-tiles .ptl-pageNavHero__btn {
+  padding:24px;
+  text-align:center;
+}
+
+#section-commitment-tiles .ptl-pageNavHero__icon,
+#section-commitment-tiles .ptl-pageNavHero__icon {
+  width:100%;
+  margin:0 0 16px;
+}
+
+#section-commitment-tiles .ptl-pageNavHero__icon img,
+#section-commitment-tiles .ptl-pageNavHero__icon img {
+  width:100%;
+  display:block;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+#section-commitment-tiles .ptl-pageNavHero__btn a,
+#section-commitment-tiles .ptl-pageNavHero__btn a {
+  pointer-events:none;
+  cursor:default;
+}
+
+#section-commitment-tiles .ptl-pageNavHero__btn:hover,
+#section-commitment-tiles .ptl-pageNavHero__btn:hover {
+  transform:none;
+  box-shadow:none;
+  opacity:1;
+}
+
+#section-commitment-tiles .nav-text,
+#section-commitment-tiles .nav-text {
+  font-size:14px;
+  line-height:1.75;
+  color:#444;
+  margin:4px 0 0;
+  text-align:center;
+}
+
+/* ========================================
+   セクション余白（独自管理）
+======================================== */
+
+/* PC: padding削除、margin-bottomのみで管理 */
+    #section-commitment-tiles,
+    #section-commitment .ptl-commitment,
+    #section-commitment .ptl-commitment-grid {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
+    }
+    
+    /* Phase③: Parallax高さ統一（60vh最小高） */
+    #section-commitment .ptl-commitmentHero {
+        min-height: 60vh;
+    }
+}
+
+/* SP: padding削除、margin-bottomのみで管理 */
+    #section-commitment-tiles,
+    #section-commitment .ptl-commitment,
+    #section-commitment .ptl-commitment-grid {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    
+    #section-commitment .ptl-commitmentHero__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    #section-commitment .ptl-commitmentHero__label {
+        font-size: 14px;
+    }
+}
+
+
+/* ========================================
+   COMMITMENT独自スタイル（style.cssから移動）
+======================================== */
+#section-commitment .ptl-section__title,
+#section-commitment .ptl-commitmentHero .ptl-section__title {
+    text-align: center;
+    letter-spacing: .08em;
+    font-weight: 600;
+    margin-bottom: var(--ptl-title-margin);
+    font-size: var(--ptl-heading-size);
+    color: var(--ptl-title-color);
+    text-shadow: none;
+    margin-top: 0;
+}
+
+#section-commitment .ptl-section__subtitle,
+#section-commitment .ptl-commitmentHero .ptl-section__subtitle {
+    text-align: center;
+    color: var(--ptl-subtitle-color);
+    margin-top: var(--ptl-subtitle-margin);
+    font-size: var(--ptl-subtitle-size);
+    text-shadow: none;
+    display: block;
+}
+
+#section-commitment .ptl-commitmentHero.has-bg .ptl-section__title {
+    color: var(--ptl-title-color);
+    text-shadow: none;
+}
+
+#section-commitment .ptl-commitmentHero.has-bg .ptl-section__subtitle {
+    color: var(--ptl-subtitle-color);
+    text-shadow: none;
+}
+
+#section-commitment .ptl-section__subtitleLine,
+#section-commitment .ptl-commitmentHero .ptl-section__subtitleLine {
+    width: 100px;
+    height: 1px;
+    background-color: #ddd;
+    margin: 24px auto;
+}
