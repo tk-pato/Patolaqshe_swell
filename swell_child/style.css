@@ -183,20 +183,20 @@
     text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 
-/* SALON（.ptl-salonHero）でも背景の有無に関わらず見出しを常に可視（白被り防止） */
-.ptl-salonHero .ptl-section__title {
+/* SALON（.ptlSalonHero）でも背景の有無に関わらず見出しを常に可視（白被り防止） */
+.ptlSalonHero .ptl-section__title {
     color: var(--ptl-title-color);
     text-shadow: none;
 }
-.ptl-salonHero .ptl-section__subtitle {
+.ptlSalonHero .ptl-section__subtitle {
     color: var(--ptl-subtitle-color);
     text-shadow: none;
 }
-.ptl-salonHero.has-bg .ptl-section__title {
+.ptlSalonHero.has-bg .ptl-section__title {
     color: var(--ptl-title-color);
     text-shadow: none;
 }
-.ptl-salonHero.has-bg .ptl-section__subtitle {
+.ptlSalonHero.has-bg .ptl-section__subtitle {
     color: var(--ptl-subtitle-color);
     text-shadow: none;
 }

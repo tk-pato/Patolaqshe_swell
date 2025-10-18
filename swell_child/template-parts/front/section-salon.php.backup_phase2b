@@ -83,7 +83,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 }
 ?>
 
-<section id="salon" class="ptlSalonHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
+<section id="salon" class="ptl-salonHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
 
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title">SALON</h2>
@@ -91,7 +91,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>
-        <div class="ptlSalonHero__grid">
+        <div class="ptl-salonHero__grid">
             <?php foreach ($salons as $index => $shop):
                 $name = (string)($shop['name'] ?? '');
                 // SP表示用の店名に置き換え（indexで2店舗を判定）
@@ -123,11 +123,11 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 
                 // COMMITMENTベースの構造で店舗情報を表示、④各店舗ページリンク設定
                 if ($img_url) {
-                    $icon_html = '<div class="ptlSalon-image-wrapper">';
+                    $icon_html = '<div class="salon-image-wrapper">';
                     if ($page_url) {
-                        $icon_html .= '<a href="' . esc_url($page_url) . '" class="ptlSalon-image-link">';
+                        $icon_html .= '<a href="' . esc_url($page_url) . '" class="salon-image-link">';
                     }
-                    $icon_html .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($name) . '" class="ptlSalon-image" loading="lazy" decoding="async">';
+                    $icon_html .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($name) . '" class="salon-image" loading="lazy" decoding="async">';
                     if ($page_url) {
                         $icon_html .= '</a>';
                     }
@@ -136,21 +136,21 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     $icon_html = ptl_nav_placeholder_svg($name);
                 }
             ?>
-                <div class="ptlSalonHero__btn">
-                    <span class="ptlSalonHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                <div class="ptl-salonHero__btn">
+                    <span class="ptl-salonHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                                         ?></span>
-                    <div class="ptlSalonHero__boxTitle">
+                    <div class="ptl-salonHero__boxTitle">
                         <?php if ($page_url): ?><a href="<?php echo esc_url($page_url); ?>" style="color:inherit;text-decoration:none;"><?php endif; ?>
                             <span class="shop-name shop-name--pc"><?php echo esc_html($name); ?></span>
                             <span class="shop-name shop-name--sp"><?php echo esc_html($name_sp); ?></span>
                             <?php if ($page_url): ?></a><?php endif; ?>
                         <?php if ($line): ?>
-                            <a href="<?php echo esc_url($line); ?>" target="_blank" rel="noopener" class="ptlSalon-line-link" style="margin-left:10px;display:inline-block;width:1.8em;height:1.8em;">
+                            <a href="<?php echo esc_url($line); ?>" target="_blank" rel="noopener" class="salon-line-link" style="margin-left:10px;display:inline-block;width:1.8em;height:1.8em;">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/line.png'); ?>" alt="LINE" style="width:100%;height:100%;border-radius:4px;" loading="lazy" />
                             </a>
                         <?php endif; ?>
                     </div>
-                    <div class="ptlSalonHero__boxDesc">
+                    <div class="ptl-salonHero__boxDesc">
                         <?php if ($addr): ?><p style="margin:4px 0;"><?php echo esc_html($addr); ?></p><?php endif; ?>
                         <?php if (!empty($biz)): ?>
                             <?php foreach ($biz as $label => $time): ?>
@@ -161,7 +161,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 
                         <?php if ($map_embed): ?>
                             <!-- PC時: 埋め込み地図 -->
-                            <div class="ptlSalon-map">
+                            <div class="salon-map">
                                 <iframe
                                     src="<?php echo esc_url($map_embed); ?>"
                                     width="600"
@@ -174,15 +174,15 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                             </div>
                             <!-- SP時: Googleマップリンクバナー（アイコン画像＋テキスト） -->
                             <a href="<?php echo esc_url($maps_link); ?>"
-                                class="ptlSalon-map-link"
+                                class="salon-map-link"
                                 target="_blank"
                                 rel="noopener noreferrer">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/placeholder.png'); ?>" alt="Googleマップ" loading="lazy" />
-                                <span class="ptlSalon-map-link__text">map</span>
+                                <span class="salon-map-link__text">map</span>
                             </a>
                         <?php endif; ?>
                         <?php if (!empty($access_detail)): ?>
-                            <div class="ptlSalon-access">
+                            <div class="salon-access">
                                 <?php foreach ($access_detail as $access_line): ?>
                                     <p><?php echo esc_html($access_line); ?></p>
                                 <?php endforeach; ?>
