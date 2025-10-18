@@ -11,6 +11,15 @@
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
 }
 
+/* コンテナ幅統一設定 */
+#section-commitment .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 #section-commitment .ptl-commitmentHero__boxTitle {
     font-size: clamp(14px, 1.4vw, 16px);
     font-weight: 600;

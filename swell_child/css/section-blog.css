@@ -54,6 +54,15 @@
   /* padding設定削除: 余白はmargin-bottomで管理 */
 }
 
+/* コンテナ幅統一設定 */
+#section-blog .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* ヘッダー部分のみコンテナ幅で制限 */
 .ptl-blog .ptl-section__inner {
   margin: 0 auto;

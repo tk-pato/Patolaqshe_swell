@@ -12,6 +12,15 @@
 
 /* h2スタイルはstyle.cssで統一管理 */
 
+/* コンテナ幅統一設定 */
+#news .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* ニュースリスト */
 .ptl-news__list.is-titleOnly {
   max-width: 980px;

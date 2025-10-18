@@ -7,6 +7,15 @@
   --ptl-subtitle-size: clamp(16px, 2vw, 18px);
 }
 
+/* コンテナ幅統一設定 */
+#intro .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* セクション全体 */
 #intro.ptl-intro-section {
   width: 100vw;
