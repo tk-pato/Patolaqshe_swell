@@ -254,6 +254,54 @@
 }
 .ptl-news__moreArrow { display: inline-block; transform: translateX(0); transition: transform .2s ease; }
 
+/* ホバーは文字色のみ変更（背景・枠は不変） */
+.ptl-news__moreBtn:hover,
+.ptl-news__moreBtn:focus-visible,
+.ptl-commitment__more:hover,
+.ptl-commitment__more:focus-visible { background: #fff; color: #5F6368; }
+.ptl-news__moreBtn:hover .ptl-news__moreArrow,
+.ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { transform: translateX(4px); }
+
+/* =====================================================
+    NEWS: 白ベタ背景を画面端まで（グローバル背景の有無に依存しない）
+    ----------------------------------------------------- */
+/* 親ラッパがfull-bleedをクリップしないように */
+.l-mainContent, .l-contents, .l-container { overflow: visible; }
+
+/* NEWS 本体の後ろに100vwの白帯を敷く（常時）。内容幅はそのまま */
+#news { position: relative; z-index: 1; background: transparent; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); display: flow-root; }
+#news::before {
+    content: "";
+    position: absolute; inset: 0 auto 0 50%; transform: translateX(-50%);
+    width: 100vw; background: #fff; z-index: -1;
+    top: -2px; bottom: 0; /* extend upward to hide 1px seams */
+}
+
+/* ヒーロー直下の余白を最小化 */
+.p-mainVisual { margin-bottom: 0; }
+
+/* NEWSセクションの余白は section-news.css で管理 */
+#news .ptl-section__title { margin-top: 0; }
+
+/* =====================================================
+    ヘッダー背景（SP用）
+    ----------------------------------------------------- */
+@media (max-width: 767px) {
+  .l-header,
+  .p-headerBar,
+  .l-fixHeader {
+    background: rgba(0,0,0,0.85);
+  }
+}
+
+/* =====================================================
+    コンテナ幅のグローバル設定
+    ----------------------------------------------------- */
+:root { --ptl-container-max: 1200px; --ptl-container-pad: 20px; }
+
+/* SFTP自動アップロード成功テスト */
+/* SFTP test */
+
 /* =====================================================
     NAVIGATION HERO（背景動画/画像＋8ボタン）
     ※詳細はnavigation.cssで管理
