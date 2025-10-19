@@ -9,6 +9,19 @@
 .ptlCommit {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+    /* 全画面サイズで余白統一 */
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+
+/* SP用余白調整 */
+@media (max-width: 959px) {
+    #section-commitment,
+    .ptlCommit {
+        margin-bottom: 40px;
+    }
 }
 
 /* コンテナ幅統一設定 */
@@ -175,7 +188,7 @@
 
 /* グローバルコンテナ幅 */
 .ptl-container{
-  max-width: var(--ptl-container-max,1160px);
+  max-width: var(--ptl-container-max,1200px);
   margin: 0 auto;
   padding-left: var(--ptl-container-pad,20px);
   padding-right: var(--ptl-container-pad,20px);
@@ -326,14 +339,9 @@
    セクション余白（独自管理）- 接地問題修正版
 ======================================== */
 
-/* PC: padding削除、margin-bottomのみで管理 */
+/* PC用追加スタイル */
 @media (min-width: 960px) {
-    #section-commitment,
-    #section-commitment,
     #section-commitment-tiles,
-    #section-commitment-tiles,
-    .ptlCommit,
-    .ptlCommit,
     .ptlCommit-grid {
         padding-top: 0;
         padding-bottom: 0;
@@ -342,14 +350,9 @@
     }
 }
 
-/* SP: padding削除、margin-bottomのみで管理 */
+/* SP用追加スタイル */
 @media (max-width: 959px) {
-    #section-commitment,
-    #section-commitment,
     #section-commitment-tiles,
-    #section-commitment-tiles,
-    .ptlCommit,
-    .ptlCommit,
     .ptlCommit-grid {
         padding-top: 0;
         padding-bottom: 0;
@@ -365,9 +368,4 @@
     .ptlCommitHero__label {
         font-size: 14px;
     }
-}
-
-#section-commitment {
-  margin-top: 0;
-  margin-bottom: 80px;
 }

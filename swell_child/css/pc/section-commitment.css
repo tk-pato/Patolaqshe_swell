@@ -10,6 +10,11 @@
 #section-commitment {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+    /* PC用余白設定 */
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 80px;
 }
 
 #section-commitment .ptlCommit ero__boxTitle {

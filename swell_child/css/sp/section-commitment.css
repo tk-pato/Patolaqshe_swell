@@ -20,6 +20,11 @@
 #section-commitment {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
+    /* SP用余白設定 */
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 40px;
 }
 
 #section-commitment .ptl-commitmentHero__boxTitle {
