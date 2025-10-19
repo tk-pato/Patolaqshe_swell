@@ -348,36 +348,6 @@ section#section-commitment {
 }
 
 /* ========================================
-   セクション余白（独自管理）- 接地問題修正版
+   ※ セクション余白設定は23行目に移動済み（重複削除）
+   ※ タイル版・グリッド版の余白は不要（メイン設定で統一管理）
 ======================================== */
-
-/* PC用追加スタイル */
-@media (min-width: 960px) {
-    #section-commitment-tiles,
-    .ptlCommit-grid {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 80px;
-    }
-}
-
-/* SP用追加スタイル */
-@media (max-width: 959px) {
-    #section-commitment-tiles,
-    .ptlCommit-grid {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-    
-    .ptlCommitHero__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-
-    .ptlCommitHero__label {
-        font-size: 14px;
-    }
-}
