@@ -41,9 +41,7 @@
 #bust-issues {
   /* Phase③修正前: min-height: clamp(520px, 60vh, 720px); */
   /* Phase③修正前: max-height: clamp(520px, 60vh, 720px); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block; /* flexからblockに変更 */
   position: relative;
   overflow: hidden;
   isolation: isolate;

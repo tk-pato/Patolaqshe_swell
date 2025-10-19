@@ -55,7 +55,7 @@
     overflow: hidden;
     isolation: isolate;
     background: transparent;
-    min-height: clamp(520px, 60vh, 720px);
+    min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
 }
 
 #section-commitment .ptl-commitmentHero__bg {

@@ -1,4 +1,14 @@
-/* section-commitment.css - PC専用 - Phase④ */
+/* section-commitment.css - SP専用 - Phase④ */
+
+  #section-commitment .ptl-commitment-grid .cmt-cards,
+
+  #section-commitment .ptl-commitment-grid .cmt-cards,
+
+  #section-commitment-tiles .ptl-pageNavHero__grid,
+
+  #section-commitment-tiles .ptl-pageNavHero__grid,
+
+    #section-commitment,
 
 @charset "UTF-8";
 /* ===========================
@@ -12,7 +22,7 @@
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
 }
 
-#section-commitment .ptlCommit ero__boxTitle {
+#section-commitment .ptl-commitmentHero__boxTitle {
     font-size: clamp(14px, 1.4vw, 16px);
     font-weight: 600;
     color: #444;
@@ -22,7 +32,7 @@
     letter-spacing: .08em;
 }
 
-#section-commitment .ptlCommit ero__boxDesc {
+#section-commitment .ptl-commitmentHero__boxDesc {
     font-size: clamp(14px, 1.2vw, 15px);
     font-weight: 300;
     color: #444;
@@ -32,7 +42,7 @@
     text-align: center;
 }
 
-#section-commitment .ptlCommit ero__label {
+#section-commitment .ptl-commitmentHero__label {
     font-size: 16px;
     font-weight: 600;
     color: #222;
@@ -40,15 +50,15 @@
 }
 
 /* ===== layout ===== */
-#section-commitment .ptlCommit ero {
+#section-commitment .ptl-commitmentHero {
     position: relative;
     overflow: hidden;
     isolation: isolate;
     background: transparent;
-    min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
+    min-height: clamp(520px, 60vh, 720px);
 }
 
-#section-commitment .ptlCommit ero__bg {
+#section-commitment .ptl-commitmentHero__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -57,8 +67,8 @@
     transform-origin: center center;
 }
 
-#section-commitment .ptlCommit ero__video,
-#section-commitment .ptlCommit ero__image {
+#section-commitment .ptl-commitmentHero__video,
+#section-commitment .ptl-commitmentHero__image {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -67,11 +77,11 @@
     transform-origin: center center;
 }
 
-#section-commitment .ptlCommit ero__video {
+#section-commitment .ptl-commitmentHero__video {
     object-fit: cover;
 }
 
-#section-commitment .ptlCommit ero__image img {
+#section-commitment .ptl-commitmentHero__image img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -81,13 +91,13 @@
     transform-origin: center center;
 }
 
-#section-commitment .ptlCommit ero__overlay {
+#section-commitment .ptl-commitmentHero__overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-#section-commitment .ptlCommit ero .ptl-section__inner {
+#section-commitment .ptl-commitmentHero .ptl-section__inner {
     width: 100%;
     position: relative;
     z-index: 1;
@@ -100,7 +110,7 @@
     box-sizing: border-box;
 }
 
-#section-commitment .ptlCommit ero__grid {
+#section-commitment .ptl-commitmentHero__grid {
     list-style: none;
     margin: clamp(32px, 3vw, 56px) auto 0;
     padding: 0;
@@ -108,12 +118,10 @@
     row-gap: clamp(40px, 4.6vw, 80px);
     column-gap: clamp(16px, 2vw, 24px);
     grid-template-columns: repeat(2, 1fr);
-    max-width: 100%;
-    width: 100%;
 }
 
 /* ===== components ===== */
-#section-commitment .ptlCommit ero__btn {
+#section-commitment .ptl-commitmentHero__btn {
     display: grid;
     grid-template-rows: auto auto;
     row-gap: 8px;
@@ -129,15 +137,15 @@
     box-shadow: 0 10px 26px rgba(0, 0, 0, .12);
 }
 
-#section-commitment .ptlCommit ero__icon {
+#section-commitment .ptl-commitmentHero__icon {
     width: 100%;
     margin: 0 0 8px;
     display: block;
     padding: 0;
 }
 
-#section-commitment .ptlCommit ero__icon svg,
-#section-commitment .ptlCommit ero__icon img {
+#section-commitment .ptl-commitmentHero__icon svg,
+#section-commitment .ptl-commitmentHero__icon img {
     width: 100%;
     display: block;
     aspect-ratio: 4 / 3;
@@ -146,11 +154,11 @@
 }
 
 /* ===== states ===== */
-#section-commitment .ptlCommit ero.is-translucent {
+#section-commitment .ptl-commitmentHero.is-translucent {
     background-color: rgba(255, 255, 255, 0.92);
 }
 
-#section-commitment .ptlCommit ero.has-bg {
+#section-commitment .ptl-commitmentHero.has-bg {
     color: #fff;
 }
 
@@ -165,23 +173,31 @@
 
 /* グローバルコンテナ幅 */
 .ptl-container{
-  max-width: var(--ptl-container-max, 1200px);
+  max-width: var(--ptl-container-max,1160px);
   margin: 0 auto;
-  padding-left: var(--ptl-container-pad, 20px);
-  padding-right: var(--ptl-container-pad, 20px);
+  padding-left: var(--ptl-container-pad,20px);
+  padding-right: var(--ptl-container-pad,20px);
 }
 
 /* グリッド版レイアウト */
 #section-commitment .ptl-commitment-grid .cmt-cards,
-#section-commitment .ptlCommit .cards {
+#section-commitment .ptl-commitment .cards {
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:24px;
 }
+  #section-commitment .ptl-commitment .cards {
+    grid-template-columns:repeat(3,1fr)
+  }
+}
+  #section-commitment .ptl-commitment .cards {
+    grid-template-columns:repeat(2,1fr)
+  }
+}
 
 /* カードスタイル */
 #section-commitment .ptl-commitment-grid .cmt-card,
-#section-commitment .ptlCommit .card {
+#section-commitment .ptl-commitment .card {
   background:#fff;
   border-radius:12px;
   box-shadow:0 4px 24px rgba(0,0,0,.06);
@@ -190,7 +206,7 @@
 }
 
 #section-commitment .ptl-commitment-grid .cmt-thumb,
-#section-commitment .ptlCommit .card .thumb {
+#section-commitment .ptl-commitment .card .thumb {
   width:100%;
   aspect-ratio:4/3;
   object-fit:cover;
@@ -200,14 +216,14 @@
 }
 
 #section-commitment .ptl-commitment-grid .cmt-title,
-#section-commitment .ptlCommit .card .title {
+#section-commitment .ptl-commitment .card .title {
   font-weight:700;
   letter-spacing:.02em;
   margin:.5rem 0 .25rem;
 }
 
 #section-commitment .ptl-commitment-grid .cmt-excerpt,
-#section-commitment .ptlCommit .card .excerpt {
+#section-commitment .ptl-commitment .card .excerpt {
   font-size:14px;
   line-height:1.75;
   color:#444;
@@ -217,8 +233,8 @@
 /* リンク無効化 */
 #section-commitment .ptl-commitment-grid .cmt-card a,
 #section-commitment .ptl-commitment-grid .cmt-card:hover,
-#section-commitment .ptlCommit .card a.thumb-link,
-#section-commitment .ptlCommit .card a.is-static {
+#section-commitment .ptl-commitment .card a.thumb-link,
+#section-commitment .ptl-commitment .card a.is-static {
   pointer-events:none;
   cursor:default;
   transform:none;
@@ -226,7 +242,7 @@
   opacity:1;
 }
 
-#section-commitment .ptlCommit .card:hover {
+#section-commitment .ptl-commitment .card:hover {
   transform:none;
   box-shadow:inherit;
   opacity:1;
@@ -236,27 +252,37 @@
    Navigation風タイル版（旧ptl-layout.css統合）
 ======================================== */
 
-#section-commitment-tiles .ptlNavHero__grid,
-#section-commitment-tiles .ptlNavHero__grid {
+#section-commitment-tiles .ptl-pageNavHero__grid,
+#section-commitment-tiles .ptl-pageNavHero__grid {
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:24px;
 }
 
-#section-commitment-tiles .ptlNavHero__btn,
-#section-commitment-tiles .ptlNavHero__btn {
+  #section-commitment-tiles .ptl-pageNavHero__grid {
+    grid-template-columns:repeat(3,1fr)
+  }
+}
+
+  #section-commitment-tiles .ptl-pageNavHero__grid {
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+
+#section-commitment-tiles .ptl-pageNavHero__btn,
+#section-commitment-tiles .ptl-pageNavHero__btn {
   padding:24px;
   text-align:center;
 }
 
-#section-commitment-tiles .ptlNavHero__icon,
-#section-commitment-tiles .ptlNavHero__icon {
+#section-commitment-tiles .ptl-pageNavHero__icon,
+#section-commitment-tiles .ptl-pageNavHero__icon {
   width:100%;
   margin:0 0 16px;
 }
 
-#section-commitment-tiles .ptlNavHero__icon img,
-#section-commitment-tiles .ptlNavHero__icon img {
+#section-commitment-tiles .ptl-pageNavHero__icon img,
+#section-commitment-tiles .ptl-pageNavHero__icon img {
   width:100%;
   display:block;
   aspect-ratio:4/3;
@@ -264,14 +290,14 @@
   border-radius:8px;
 }
 
-#section-commitment-tiles .ptlNavHero__btn a,
-#section-commitment-tiles .ptlNavHero__btn a {
+#section-commitment-tiles .ptl-pageNavHero__btn a,
+#section-commitment-tiles .ptl-pageNavHero__btn a {
   pointer-events:none;
   cursor:default;
 }
 
-#section-commitment-tiles .ptlNavHero__btn:hover,
-#section-commitment-tiles .ptlNavHero__btn:hover {
+#section-commitment-tiles .ptl-pageNavHero__btn:hover,
+#section-commitment-tiles .ptl-pageNavHero__btn:hover {
   transform:none;
   box-shadow:none;
   opacity:1;
@@ -292,7 +318,7 @@
 
 /* PC: padding削除、margin-bottomのみで管理 */
     #section-commitment-tiles,
-    #section-commitment .ptlCommit 
+    #section-commitment .ptl-commitment,
     #section-commitment .ptl-commitment-grid {
         padding-top: 0;
         padding-bottom: 0;
@@ -301,14 +327,14 @@
     }
     
     /* Phase③: Parallax高さ統一（60vh最小高） */
-    #section-commitment .ptlCommit ero {
+    #section-commitment .ptl-commitmentHero {
         min-height: 60vh;
     }
 }
 
 /* SP: padding削除、margin-bottomのみで管理 */
     #section-commitment-tiles,
-    #section-commitment .ptlCommit 
+    #section-commitment .ptl-commitment,
     #section-commitment .ptl-commitment-grid {
         padding-top: 0;
         padding-bottom: 0;
@@ -316,12 +342,12 @@
         margin-bottom: 40px;
     }
     
-    #section-commitment .ptlCommit ero__grid {
+    #section-commitment .ptl-commitmentHero__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
 
-    #section-commitment .ptlCommit ero__label {
+    #section-commitment .ptl-commitmentHero__label {
         font-size: 14px;
     }
 }
@@ -331,7 +357,7 @@
    COMMITMENT独自スタイル（style.cssから移動）
 ======================================== */
 #section-commitment .ptl-section__title,
-#section-commitment .ptlCommit ero .ptl-section__title {
+#section-commitment .ptl-commitmentHero .ptl-section__title {
     text-align: center;
     letter-spacing: .08em;
     font-weight: 600;
@@ -343,7 +369,7 @@
 }
 
 #section-commitment .ptl-section__subtitle,
-#section-commitment .ptlCommit ero .ptl-section__subtitle {
+#section-commitment .ptl-commitmentHero .ptl-section__subtitle {
     text-align: center;
     color: var(--ptl-subtitle-color);
     margin-top: var(--ptl-subtitle-margin);
@@ -352,18 +378,18 @@
     display: block;
 }
 
-#section-commitment .ptlCommit ero.has-bg .ptl-section__title {
+#section-commitment .ptl-commitmentHero.has-bg .ptl-section__title {
     color: var(--ptl-title-color);
     text-shadow: none;
 }
 
-#section-commitment .ptlCommit ero.has-bg .ptl-section__subtitle {
+#section-commitment .ptl-commitmentHero.has-bg .ptl-section__subtitle {
     color: var(--ptl-subtitle-color);
     text-shadow: none;
 }
 
 #section-commitment .ptl-section__subtitleLine,
-#section-commitment .ptlCommit ero .ptl-section__subtitleLine {
+#section-commitment .ptl-commitmentHero .ptl-section__subtitleLine {
     width: 100px;
     height: 1px;
     background-color: #ddd;

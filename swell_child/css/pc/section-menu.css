@@ -223,7 +223,7 @@
   background: transparent;
   --ptl-heading-size: clamp(22px, 2.8vw, 28px);
   --ptl-subtitle-size: clamp(16px, 2vw, 18px);
-  min-height: clamp(520px, 60vh, 720px);
+  min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
 }
 
 #menu .ptl-reasonsHero.is-translucent {

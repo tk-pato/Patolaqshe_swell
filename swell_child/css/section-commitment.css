@@ -56,7 +56,7 @@
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    min-height: clamp(520px, 60vh, 720px);
+    min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
 }
 
 .ptlCommitHero__bg {

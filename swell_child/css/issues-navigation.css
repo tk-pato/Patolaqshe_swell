@@ -26,11 +26,9 @@
 
 /* 基本構造 - NAVIGATIONと完全一致 */
 #bust-issues {
-  min-height: clamp(520px, 60vh, 720px);
-  max-height: clamp(520px, 60vh, 720px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
+  max-height: none; /* 最大高さ制限削除 */
+  display: block; /* flexからblockに変更 */
   position: relative;
   overflow: hidden;
   isolation: isolate;
