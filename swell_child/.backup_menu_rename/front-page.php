@@ -85,8 +85,8 @@ echo $header_output;
 	<div class="l-mainContent__inner">
 
 		<?php
-		// 4.5) メニューセクション（バストアップ大 + 下段3つ）
-		get_template_part('template-parts/front/section', 'menu');
+		// 4.5) サービス特集（バストアップ大 + 下段3つ）
+		get_template_part('template-parts/front/section', 'service-feature');
 		?>
 
 		<?php

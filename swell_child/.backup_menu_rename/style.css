@@ -431,6 +431,35 @@
 /* --- Bust Issues banner --- */
 /* BUST-ISSUESスタイルはissues-navigation.cssで完全管理 */
 
+/* --- Service Feature (bust-up hero + 3 cards) --- */
+.ptl-serviceFeature__hero { display: grid; gap: clamp(14px, 2vw, 24px); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 980px) { .ptl-serviceFeature__hero { grid-template-columns: 6fr 5fr; } }
+.ptl-serviceFeature__heroMedia { position: relative; border-radius: 12px; overflow: hidden; background: #ddd; }
+.ptl-serviceFeature__heroLink { display: block; width: 100%; height: 100%; cursor: pointer; }
+.ptl-serviceFeature__heroLink:focus-visible { outline: 3px solid rgba(17,17,17,.35); outline-offset: 3px; }
+.ptl-serviceFeature__heroMedia img, .ptl-serviceFeature__cardMedia img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+.ptl-serviceFeature__heroBody { padding: clamp(2px, 0.8vw, 8px) clamp(6px, 1.4vw, 10px); }
+.ptl-serviceFeature__title { font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: .03em; margin-bottom: 6px; }
+.ptl-serviceFeature__desc { color: #555; line-height: 1.75; margin-bottom: 10px; }
+.ptl-arrowLink { display: inline-grid; grid-auto-flow: column; align-items: center; gap: 8px; text-decoration: none; color: #3C4043; font-weight: 600; }
+.ptl-arrowLink__arrow { display: inline-block; transform: translateX(0); transition: transform .2s ease; }
+.ptl-arrowLink:hover .ptl-arrowLink__arrow, .ptl-arrowLink:focus-visible .ptl-arrowLink__arrow { transform: translateX(4px); }
+
+.ptl-serviceFeature__grid { margin-top: clamp(18px, 3vw, 26px); display: grid; gap: clamp(14px, 2vw, 22px); grid-template-columns: 1fr; }
+@media (min-width: 720px) { .ptl-serviceFeature__grid { grid-template-columns: repeat(3, 1fr); } }
+.ptl-serviceFeature__card { display: grid; gap: 10px; text-decoration: none; color: inherit; background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 10px; padding: 10px; box-shadow: 0 6px 18px rgba(0,0,0,.08); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
+.ptl-serviceFeature__cardMedia { position: relative; display: block; border-radius: 8px; overflow: hidden; background: #e2e2e2; }
+.ptl-serviceFeature__cardLabel { font-weight: 700; letter-spacing: .02em; text-align: center; padding: 2px 6px 8px; }
+.ptl-serviceFeature__card:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.12); }
+.ptl-serviceFeature__card:hover img { transform: scale(1.04); }
+
+/* generic aspect-ratio helper via CSS var (fallback safe) */
+.ptl-serviceFeature__heroMedia::before,
+.ptl-serviceFeature__cardMedia::before { content: ""; display: block; padding-top: calc(100% / (var(--ratio, 4/5))); }
+.ptl-serviceFeature__heroMedia > img,
+.ptl-serviceFeature__cardMedia > img,
+.ptl-phsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
 /* =====================================================
     ヘッダー背景（SP用）
     ----------------------------------------------------- */
