@@ -19,21 +19,7 @@
   box-sizing: border-box;
 }
 
-/* ========================================
-   セクション余白統一（詳細度最優先）
-   ======================================== */
-section#section-commitment {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-    section#section-commitment {
-        margin-bottom: 40px;
-    }
-}
+/* セクション余白は最後に設定（NAVIGATION/SALONと同じ構造） */
 
 #section-commitment .ptlCommitHero__boxTitle {
     font-size: clamp(14px, 1.4vw, 16px);
@@ -344,6 +330,31 @@ section#section-commitment {
 }
 
 /* ========================================
-   ※ セクション余白設定は23行目に移動済み（重複削除）
-   ※ タイル版・グリッド版の余白は不要（メイン設定で統一管理）
+   セクション余白設定（NAVIGATION/SALONと同じ構造）
 ======================================== */
+
+/* PC: padding削除、margin-bottomのみで管理 */
+@media (min-width: 960px) {
+    #section-commitment {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
+    }
+}
+
+/* SP: padding削除、margin-bottomのみで管理 */
+@media (max-width: 959px) {
+    #section-commitment {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
+
+/* デフォルト設定（メディアクエリ外） */
+#section-commitment {
+  margin-top: 0;
+  margin-bottom: 80px;
+}

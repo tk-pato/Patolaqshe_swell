@@ -12,21 +12,7 @@
   box-sizing: border-box;
 }
 
-/* ========================================
-   セクション余白統一（詳細度最優先）
-   ======================================== */
-section#uservoice {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-    section#uservoice {
-        margin-bottom: 40px;
-    }
-}
+/* セクション余白は最後に設定（NAVIGATION/SALONと同じ構造） */
 
 /* arrows */
 /* arrows (updated) */
@@ -483,5 +469,31 @@ section#uservoice {
 }
 
 /* ========================================
-   ※ セクション余白設定は16行目に移動済み（重複削除）
+   セクション余白設定（NAVIGATION/SALONと同じ構造）
 ======================================== */
+
+/* PC: padding削除、margin-bottomのみで管理 */
+@media (min-width: 960px) {
+    #uservoice {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
+    }
+}
+
+/* SP: padding削除、margin-bottomのみで管理 */
+@media (max-width: 959px) {
+    #uservoice {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
+
+/* デフォルト設定（メディアクエリ外） */
+#uservoice {
+  margin-top: 0;
+  margin-bottom: 80px;
+}
