@@ -125,10 +125,10 @@ if (!defined('ABSPATH')) exit;
         </div>
 
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <div class="ptl-news__more">
-                <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/uservoice/')); ?>">
-                    <span class="ptl-news__moreLabel">MORE</span>
-                    <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
+            <div class="ptlVoice__more">
+                <a class="ptlNews__moreBtn" href="<?php echo esc_url(home_url('/uservoice/')); ?>">
+                    <span class="ptlNews__moreLabel">MORE</span>
+                    <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>

@@ -220,7 +220,7 @@
   #section-services .ptlMenu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
 }
 #section-services .ptlMenuHero__boxTitle {
-  /* ナビの .ptlNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
+  /* ナビの .ptl-pageNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
   font-size: clamp(13px, 1.4vw, 16px);
   font-weight: 600;
   color: #333;

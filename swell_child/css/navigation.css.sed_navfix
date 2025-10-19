@@ -9,20 +9,20 @@
   box-sizing: border-box;
 }
 
-.ptlNavHero {
+.ptl-pageNavHero {
   position: relative;
   overflow: hidden;
 }
 
-.ptlNavHero.has-bg {
+.ptl-pageNavHero.has-bg {
   color: #fff;
 }
 
-.ptlNavHero.is-translucent {
+.ptl-pageNavHero.is-translucent {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
-.ptlNavHero__bg {
+.ptl-pageNavHero__bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -32,8 +32,8 @@
   overflow: hidden;
 }
 
-.ptlNavHero__bg video,
-.ptlNavHero__bg img {
+.ptl-pageNavHero__bg video,
+.ptl-pageNavHero__bg img {
   position: absolute;
   top: 0;
   left: 0;
@@ -42,7 +42,7 @@
   object-fit: cover;
 }
 
-.ptlNavHero__bg::after {
+.ptl-pageNavHero__bg::after {
   content: "";
   position: absolute;
   top: 0;
@@ -53,7 +53,7 @@
   z-index: 1;
 }
 
-.ptlNavHero__btn {
+.ptl-pageNavHero__btn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,11 +61,11 @@
   transition: transform 0.3s ease;
 }
 
-.ptlNavHero__btn:hover {
+.ptl-pageNavHero__btn:hover {
   transform: translateY(-4px);
 }
 
-.ptlNavHero__icon {
+.ptl-pageNavHero__icon {
   display: block;
   width: 80px;
   height: 80px;
@@ -74,7 +74,7 @@
   overflow: hidden;
 }
 
-.ptlNavHero__label {
+.ptl-pageNavHero__label {
   font-size: 16px;
   font-weight: 600;
   color: #222;
@@ -223,36 +223,36 @@
     will-change: background-position;
   }
 
-  .ptlNavHero.ptl-has-image .ptlNavHero__image img,
-  .ptlNavHero.ptl-has-video .ptlNavHero__video,
+  .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img,
+  .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
   .ptl-navigation.ptl-has-video video {
     transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
 
-  .ptlNavHero,
+  .ptl-pageNavHero,
   .ptl-navigation {
     overflow: clip;
   }
   
-  #page-navigation .ptlNavHero__image img,
-  #page-navigation .ptlNavHero__video,
-  #bust-issues .ptlNavHero__image img,
-  #bust-issues .ptlNavHero__video {
+  #page-navigation .ptl-pageNavHero__image img,
+  #page-navigation .ptl-pageNavHero__video,
+  #bust-issues .ptl-pageNavHero__image img,
+  #bust-issues .ptl-pageNavHero__video {
     transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
   
-  .ptlNavHero.has-bg .ptlNavHero__image img,
-  .ptlNavHero.has-bg .ptlNavHero__video {
+  .ptl-pageNavHero.has-bg .ptl-pageNavHero__image img,
+  .ptl-pageNavHero.has-bg .ptl-pageNavHero__video {
     transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
   
-  #page-navigation .ptlNavHero__icon {
+  #page-navigation .ptl-pageNavHero__icon {
     width: 48px;
     height: 48px;
     display: flex;
@@ -260,7 +260,7 @@
     justify-content: center;
   }
   
-  .ptlNavHero__label {
+  .ptl-pageNavHero__label {
     font-size: 14px;
   }
 }

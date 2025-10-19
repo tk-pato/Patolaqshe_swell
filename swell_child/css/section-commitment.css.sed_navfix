@@ -258,41 +258,41 @@
    Navigation風タイル版（旧ptl-layout.css統合）
 ======================================== */
 
-#section-commitment-tiles .ptlNavHero__grid,
-#section-commitment-tiles .ptlNavHero__grid {
+#section-commitment-tiles .ptl-pageNavHero__grid,
+#section-commitment-tiles .ptl-pageNavHero__grid {
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:24px;
 }
 
 @media(max-width:1024px){
-  #section-commitment-tiles .ptlNavHero__grid,
-  #section-commitment-tiles .ptlNavHero__grid {
+  #section-commitment-tiles .ptl-pageNavHero__grid,
+  #section-commitment-tiles .ptl-pageNavHero__grid {
     grid-template-columns:repeat(3,1fr)
   }
 }
 
 @media(max-width:767px){
-  #section-commitment-tiles .ptlNavHero__grid,
-  #section-commitment-tiles .ptlNavHero__grid {
+  #section-commitment-tiles .ptl-pageNavHero__grid,
+  #section-commitment-tiles .ptl-pageNavHero__grid {
     grid-template-columns:repeat(2,1fr)
   }
 }
 
-#section-commitment-tiles .ptlNavHero__btn,
-#section-commitment-tiles .ptlNavHero__btn {
+#section-commitment-tiles .ptl-pageNavHero__btn,
+#section-commitment-tiles .ptl-pageNavHero__btn {
   padding:24px;
   text-align:center;
 }
 
-#section-commitment-tiles .ptlNavHero__icon,
-#section-commitment-tiles .ptlNavHero__icon {
+#section-commitment-tiles .ptl-pageNavHero__icon,
+#section-commitment-tiles .ptl-pageNavHero__icon {
   width:100%;
   margin:0 0 16px;
 }
 
-#section-commitment-tiles .ptlNavHero__icon img,
-#section-commitment-tiles .ptlNavHero__icon img {
+#section-commitment-tiles .ptl-pageNavHero__icon img,
+#section-commitment-tiles .ptl-pageNavHero__icon img {
   width:100%;
   display:block;
   aspect-ratio:4/3;
@@ -300,14 +300,14 @@
   border-radius:8px;
 }
 
-#section-commitment-tiles .ptlNavHero__btn a,
-#section-commitment-tiles .ptlNavHero__btn a {
+#section-commitment-tiles .ptl-pageNavHero__btn a,
+#section-commitment-tiles .ptl-pageNavHero__btn a {
   pointer-events:none;
   cursor:default;
 }
 
-#section-commitment-tiles .ptlNavHero__btn:hover,
-#section-commitment-tiles .ptlNavHero__btn:hover {
+#section-commitment-tiles .ptl-pageNavHero__btn:hover,
+#section-commitment-tiles .ptl-pageNavHero__btn:hover {
   transform:none;
   box-shadow:none;
   opacity:1;

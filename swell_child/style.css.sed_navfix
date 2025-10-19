@@ -7,7 +7,7 @@
 /* PCでのMENUボタン非表示（最優先） */
 @media screen and (min-width: 768px) {
     #page-navigation .ptl-nav-toggle,
-    .ptlNavHero .ptl-nav-toggle,
+    .ptl-pageNavHero .ptl-nav-toggle,
     section[id="page-navigation"] button.ptl-nav-toggle {
         display: none;
     }
@@ -354,24 +354,24 @@
 .ptl-storeNav__meta { display: block; margin-top: 6px; color: #666; font-size: .95em; }
 
 /* NAVIGATION HERO（背景動画/画像＋8ボタン）*/
-.ptlNavHero { position: relative; overflow: hidden; isolation: isolate; background: transparent; --ptl-heading-size: clamp(22px, 2.8vw, 28px); --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
-.ptlNavHero { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+.ptl-pageNavHero { position: relative; overflow: hidden; isolation: isolate; background: transparent; --ptl-heading-size: clamp(22px, 2.8vw, 28px); --ptl-subtitle-size: clamp(16px, 2vw, 18px); }
+.ptl-pageNavHero { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 @media (min-width: 960px) {
-    .ptlNavHero { min-height: clamp(520px, 60vh, 720px); }
+    .ptl-pageNavHero { min-height: clamp(520px, 60vh, 720px); }
 }
-.ptlNavHero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: transparent; transform-origin: center center; }
+.ptl-pageNavHero__bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: transparent; transform-origin: center center; }
 /* 背景メディアは領域いっぱいにフィット */
-.ptlNavHero__video,
-.ptlNavHero__image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transform-origin: center center; }
-.ptlNavHero__video { object-fit: cover; }
+.ptl-pageNavHero__video,
+.ptl-pageNavHero__image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transform-origin: center center; }
+.ptl-pageNavHero__video { object-fit: cover; }
 /* picture要素内のimgにobject-fitを適用（Safari含む互換対応） */
-.ptlNavHero__image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center center; }
-.ptlNavHero__overlay { position: absolute; inset: 0; background: rgba(0,0,0,var(--overlay, .2)); }
+.ptl-pageNavHero__image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center center; }
+.ptl-pageNavHero__overlay { position: absolute; inset: 0; background: rgba(0,0,0,var(--overlay, .2)); }
 /* .ptl-section__inner の padding は navigation.css で管理 */
-.ptlNavHero .ptl-section__inner { position: relative; z-index: 1; }
-.ptlNavHero .ptl-section__title { /* 通常色 */ color: inherit; text-shadow: none; font-size: var(--ptl-heading-size); }
-.ptlNavHero.has-bg .ptl-section__title { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
-.ptlNavHero__grid { 
+.ptl-pageNavHero .ptl-section__inner { position: relative; z-index: 1; }
+.ptl-pageNavHero .ptl-section__title { /* 通常色 */ color: inherit; text-shadow: none; font-size: var(--ptl-heading-size); }
+.ptl-pageNavHero.has-bg .ptl-section__title { color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+.ptl-pageNavHero__grid { 
   list-style: none; 
   margin: clamp(32px, 3vw, 56px) auto 0; 
   padding: 0; 
@@ -383,16 +383,16 @@
   margin-left: auto;
   margin-right: auto;
 }
-@media (min-width: 700px) { .ptlNavHero__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 960px) { .ptlNavHero__grid { grid-template-columns: repeat(4, 1fr); } }
-.ptlNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-.ptlNavHero__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.18); border-color: rgba(0,0,0,.15); }
-.ptlNavHero__btn:active { transform: translateY(-1px); }
-.ptlNavHero__icon { width: clamp(44px, 5vw, 56px); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: clamp(2px, 0.5vw, 6px); }
-.ptlNavHero__icon svg, .ptlNavHero__icon img { width: 100%; height: 100%; display: block; object-fit: contain; transform: scale(var(--icon-scale, 1)); }
-.ptlNavHero__label { font-size: clamp(13px, 1.4vw, 16px); text-align: center; }
+@media (min-width: 700px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .ptl-pageNavHero__grid { grid-template-columns: repeat(4, 1fr); } }
+.ptl-pageNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.ptl-pageNavHero__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.18); border-color: rgba(0,0,0,.15); }
+.ptl-pageNavHero__btn:active { transform: translateY(-1px); }
+.ptl-pageNavHero__icon { width: clamp(44px, 5vw, 56px); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: clamp(2px, 0.5vw, 6px); }
+.ptl-pageNavHero__icon svg, .ptl-pageNavHero__icon img { width: 100%; height: 100%; display: block; object-fit: contain; transform: scale(var(--icon-scale, 1)); }
+.ptl-pageNavHero__label { font-size: clamp(13px, 1.4vw, 16px); text-align: center; }
 /* 背景が無い場合はオーバーレイ無効化 */
-.ptlNavHero:not(.has-bg) .ptlNavHero__overlay { display: none; }
+.ptl-pageNavHero:not(.has-bg) .ptl-pageNavHero__overlay { display: none; }
 
 /* ===== NEWS: 白ベタを画面端まで（グローバル背景の有無に依存しない） ===== */
 /* 親ラッパがfull-bleedをクリップしないように */
