@@ -78,11 +78,7 @@ section#section-commitment {
     min-height: auto;
 }
 
-@media (max-width: 768px) {
-    .ptlCommitHero {
-        /* margin-bottomは23行目で管理（重複回避） */
-    }
-}
+/* SP用のmargin-bottomは23行目で管理（重複回避のため削除） */
 
 .ptlCommitHero__bg {
     position: absolute;
