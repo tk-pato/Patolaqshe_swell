@@ -74,13 +74,13 @@ section#section-commitment {
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     margin-top: 0;
-    margin-bottom: 80px;
+    /* margin-bottomは23行目のsection#section-commitmentで管理（重複回避） */
     min-height: auto;
 }
 
 @media (max-width: 768px) {
     .ptlCommitHero {
-        margin-bottom: 40px;
+        /* margin-bottomは23行目で管理（重複回避） */
     }
 }
 
