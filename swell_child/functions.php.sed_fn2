@@ -736,8 +736,8 @@ add_action('wp_head', function () {
   $bg_image = get_theme_mod('ptl_infohub_bg_pc', '');
   if (!$bg_image) return;
 
-  echo '<style id="ptlHub-fixed-bg">';
-  echo '.ptlHub { --infohub-bg-image: url(' . esc_url($bg_image) . '); }';
+  echo '<style id="ptl-infohub-fixed-bg">';
+  echo '.ptl-infohub { --infohub-bg-image: url(' . esc_url($bg_image) . '); }';
   echo '</style>' . "\n";
 }, 101);
 
@@ -1028,19 +1028,19 @@ add_action('wp_enqueue_scripts', function () {
   // INFO HUB セクション用CSS/JS
   $infohub_css = get_stylesheet_directory() . '/css/section-infohub.css';
   if (file_exists($infohub_css)) {
-    wp_enqueue_style('ptlHub', get_stylesheet_directory_uri() . '/css/section-infohub.css', ['child_style'], filemtime($infohub_css));
+    wp_enqueue_style('ptl-infohub', get_stylesheet_directory_uri() . '/css/section-infohub.css', ['child_style'], filemtime($infohub_css));
   }
   $infohub_js = get_stylesheet_directory() . '/js/section-infohub.js';
   if (file_exists($infohub_js)) {
-    wp_enqueue_script('ptlHub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
+    wp_enqueue_script('ptl-infohub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
   }
 
   // NEWS セクション用CSS（セクション個別管理へ移行）
   $news_css = get_stylesheet_directory() . '/css/section-news.css';
   if (file_exists($news_css)) {
-    wp_enqueue_style('ptlNews', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], filemtime($news_css));
+    wp_enqueue_style('ptl-news', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], filemtime($news_css));
   }
-  // BUST-ISSUESは共通のsection-parallax.jsを使用（ptlNavHeroクラス併用）
+  // BUST-ISSUESは共通のsection-parallax.jsを使用（ptl-pageNavHeroクラス併用）
   // $bust_issues_js = get_stylesheet_directory() . '/js/section-bust-issues.js';
   // if (file_exists($bust_issues_js)) {
   //   wp_enqueue_script('ptl-bust-issues', get_stylesheet_directory_uri() . '/js/section-bust-issues.js', [], filemtime($bust_issues_js), true);
@@ -1074,10 +1074,10 @@ add_action('wp_enqueue_scripts', function () {
     will-change: transform;
   }
 
-  /* 子要素に video / image を持つ .ptlNavHero 用（既存DOMに追従） */
-  .ptlNavHero { --ptl-parallax: 0px; }
-  .ptlNavHero.ptl-has-video .ptlNavHero__video,
-  .ptlNavHero.ptl-has-image .ptlNavHero__image img {
+  /* 子要素に video / image を持つ .ptl-pageNavHero 用（既存DOMに追従） */
+  .ptl-pageNavHero { --ptl-parallax: 0px; }
+  .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
+  .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img {
     transform: translateY(var(--ptl-parallax)) scale(1.12);
     transform-origin: center;
     will-change: transform;
@@ -1087,7 +1087,7 @@ add_action('wp_enqueue_scripts', function () {
 @media (max-width: 768px) {
   /* ③ SPカード縮小（.ptl-nav-collapsible 配下のみ） */
   .ptl-navigation .ptl-nav-collapsible,
-  .ptlNavHero .ptl-nav-collapsible {
+  .ptl-pageNavHero .ptl-nav-collapsible {
     /* gapは30-40%縮小（例: 24px -> 12-16px） */
     --ptl-gap: 14px;
     gap: var(--ptl-gap);
@@ -1165,7 +1165,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   /* カード本体（既存命名に合わせて双方を網羅） */
-  .ptl-nav-collapsible .ptlNavHero__btn,
+  .ptl-nav-collapsible .ptl-pageNavHero__btn,
   .ptl-nav-collapsible .ptl-navCard {
     /* 縦パディング40-50%縮小＆タップ最小確保 */
     padding-block: 10px;
@@ -1173,7 +1173,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   /* アイコン縮小（35-45%） */
-  .ptl-nav-collapsible .ptlNavHero__icon,
+  .ptl-nav-collapsible .ptl-pageNavHero__icon,
   .ptl-nav-collapsible .ptl-navCard__icon {
     width: 26px;
     height: 26px;
@@ -1181,8 +1181,8 @@ add_action('wp_enqueue_scripts', function () {
     align-items: center;
     justify-content: center;
   }
-  .ptl-nav-collapsible .ptlNavHero__icon img,
-  .ptl-nav-collapsible .ptlNavHero__icon svg,
+  .ptl-nav-collapsible .ptl-pageNavHero__icon img,
+  .ptl-nav-collapsible .ptl-pageNavHero__icon svg,
   .ptl-nav-collapsible .ptl-navCard__icon img,
   .ptl-nav-collapsible .ptl-navCard__icon svg {
     width: 100%;
@@ -1191,7 +1191,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   /* テキスト可読性（12-14px, 行高1.25-1.35） */
-  .ptl-nav-collapsible .ptlNavHero__label,
+  .ptl-nav-collapsible .ptl-pageNavHero__label,
   .ptl-nav-collapsible .ptl-navCard__label {
     font-size: 13px;
     line-height: 1.3;
@@ -1202,7 +1202,7 @@ CSS;
   // JS（インライン）
   $js = <<<JS
 (function(){
-  var els = document.querySelectorAll('.ptl-navigation, .ptlNavHero');
+  var els = document.querySelectorAll('.ptl-navigation, .ptl-pageNavHero');
   if (!els.length) return;
 
   var isPC = window.matchMedia('(min-width: 769px)');
@@ -1211,8 +1211,8 @@ CSS;
 
   // 初期化: 各要素に動画/画像の有無でクラスを付与
   els.forEach(function(el){
-    var vid = el.querySelector('video, .ptlNavHero__video');
-    var img = el.querySelector('.ptlNavHero__image img');
+    var vid = el.querySelector('video, .ptl-pageNavHero__video');
+    var img = el.querySelector('.ptl-pageNavHero__image img');
     if (vid) el.classList.add('ptl-has-video');
     if (img) el.classList.add('ptl-has-image');
   });
