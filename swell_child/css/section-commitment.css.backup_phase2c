@@ -6,7 +6,7 @@
 
 /* ===== base ===== */
 #section-commitment,
-.ptlCommit {
+.ptl-commitment {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
 }
@@ -20,7 +20,7 @@
   box-sizing: border-box;
 }
 
-#section-commitment .ptlCommitHero__boxTitle {
+#section-commitment .ptl-commitmentHero__boxTitle {
     font-size: clamp(14px, 1.4vw, 16px);
     font-weight: 600;
     color: #444;
@@ -30,7 +30,7 @@
     letter-spacing: .08em;
 }
 
-#section-commitment .ptlCommitHero__boxDesc {
+#section-commitment .ptl-commitmentHero__boxDesc {
     font-size: clamp(14px, 1.2vw, 15px);
     font-weight: 300;
     color: #444;
@@ -40,7 +40,7 @@
     text-align: center;
 }
 
-.ptlCommitHero__label {
+.ptl-commitmentHero__label {
     font-size: 16px;
     font-weight: 600;
     color: #222;
@@ -48,7 +48,7 @@
 }
 
 /* ===== layout ===== */
-.ptlCommitHero {
+.ptl-commitmentHero {
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -59,7 +59,7 @@
     min-height: clamp(520px, 60vh, 720px);
 }
 
-.ptlCommitHero__bg {
+.ptl-commitmentHero__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -68,8 +68,8 @@
     transform-origin: center center;
 }
 
-.ptlCommitHero__video,
-.ptlCommitHero__image {
+.ptl-commitmentHero__video,
+.ptl-commitmentHero__image {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -78,11 +78,11 @@
     transform-origin: center center;
 }
 
-.ptlCommitHero__video {
+.ptl-commitmentHero__video {
     object-fit: cover;
 }
 
-.ptlCommitHero__image img {
+.ptl-commitmentHero__image img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -92,19 +92,19 @@
     transform-origin: center center;
 }
 
-.ptlCommitHero__overlay {
+.ptl-commitmentHero__overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-.ptlCommitHero .ptl-section__inner {
+.ptl-commitmentHero .ptl-section__inner {
     position: relative;
     z-index: 1;
     padding: 0 20px;
 }
 
-.ptlCommitHero__grid {
+.ptl-commitmentHero__grid {
     list-style: none;
     margin: clamp(32px, 3vw, 56px) auto 0;
     padding: 0;
@@ -115,7 +115,7 @@
 }
 
 /* ===== components ===== */
-#section-commitment .ptlCommitHero__btn {
+#section-commitment .ptl-commitmentHero__btn {
     display: grid;
     grid-template-rows: auto auto;
     row-gap: 8px;
@@ -131,15 +131,15 @@
     box-shadow: 0 10px 26px rgba(0, 0, 0, .12);
 }
 
-#section-commitment .ptlCommitHero__icon {
+#section-commitment .ptl-commitmentHero__icon {
     width: 100%;
     margin: 0 0 8px;
     display: block;
     padding: 0;
 }
 
-#section-commitment .ptlCommitHero__icon svg,
-#section-commitment .ptlCommitHero__icon img {
+#section-commitment .ptl-commitmentHero__icon svg,
+#section-commitment .ptl-commitmentHero__icon img {
     width: 100%;
     display: block;
     aspect-ratio: 4 / 3;
@@ -148,23 +148,23 @@
 }
 
 /* ===== states ===== */
-.ptlCommitHero.is-translucent {
+.ptl-commitmentHero.is-translucent {
     background-color: rgba(255, 255, 255, 0.92);
 }
 
-.ptlCommitHero.has-bg {
+.ptl-commitmentHero.has-bg {
     color: #fff;
 }
 
 /* ===== media ===== */
 @media (min-width: 700px) {
-    .ptlCommitHero__grid {
+    .ptl-commitmentHero__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 960px) {
-    .ptlCommitHero__grid {
+    .ptl-commitmentHero__grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }
@@ -182,28 +182,28 @@
 }
 
 /* グリッド版レイアウト */
-.ptlCommit-grid .cmt-cards,
-.ptlCommit .cards {
+.ptl-commitment-grid .cmt-cards,
+.ptl-commitment .cards {
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:24px;
 }
 @media(max-width:1024px){
-  .ptlCommit-grid .cmt-cards,
-  .ptlCommit .cards {
+  .ptl-commitment-grid .cmt-cards,
+  .ptl-commitment .cards {
     grid-template-columns:repeat(3,1fr)
   }
 }
 @media(max-width:767px){
-  .ptlCommit-grid .cmt-cards,
-  .ptlCommit .cards {
+  .ptl-commitment-grid .cmt-cards,
+  .ptl-commitment .cards {
     grid-template-columns:repeat(2,1fr)
   }
 }
 
 /* カードスタイル */
-.ptlCommit-grid .cmt-card,
-.ptlCommit .card {
+.ptl-commitment-grid .cmt-card,
+.ptl-commitment .card {
   background:#fff;
   border-radius:12px;
   box-shadow:0 4px 24px rgba(0,0,0,.06);
@@ -211,8 +211,8 @@
   text-align:center;
 }
 
-.ptlCommit-grid .cmt-thumb,
-.ptlCommit .card .thumb {
+.ptl-commitment-grid .cmt-thumb,
+.ptl-commitment .card .thumb {
   width:100%;
   aspect-ratio:4/3;
   object-fit:cover;
@@ -221,15 +221,15 @@
   margin:0 auto 16px;
 }
 
-.ptlCommit-grid .cmt-title,
-.ptlCommit .card .title {
+.ptl-commitment-grid .cmt-title,
+.ptl-commitment .card .title {
   font-weight:700;
   letter-spacing:.02em;
   margin:.5rem 0 .25rem;
 }
 
-.ptlCommit-grid .cmt-excerpt,
-.ptlCommit .card .excerpt {
+.ptl-commitment-grid .cmt-excerpt,
+.ptl-commitment .card .excerpt {
   font-size:14px;
   line-height:1.75;
   color:#444;
@@ -237,10 +237,10 @@
 }
 
 /* リンク無効化 */
-.ptlCommit-grid .cmt-card a,
-.ptlCommit-grid .cmt-card:hover,
-.ptlCommit .card a.thumb-link,
-.ptlCommit .card a.is-static {
+.ptl-commitment-grid .cmt-card a,
+.ptl-commitment-grid .cmt-card:hover,
+.ptl-commitment .card a.thumb-link,
+.ptl-commitment .card a.is-static {
   pointer-events:none;
   cursor:default;
   transform:none;
@@ -248,7 +248,7 @@
   opacity:1;
 }
 
-.ptlCommit .card:hover {
+.ptl-commitment .card:hover {
   transform:none;
   box-shadow:inherit;
   opacity:1;
@@ -332,9 +332,9 @@
     #section-commitment,
     #section-commitment-tiles,
     #section-commitment-tiles,
-    .ptlCommit,
-    .ptlCommit,
-    .ptlCommit-grid {
+    .ptl-commitment,
+    .ptl-commitment,
+    .ptl-commitment-grid {
         padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
@@ -348,21 +348,21 @@
     #section-commitment,
     #section-commitment-tiles,
     #section-commitment-tiles,
-    .ptlCommit,
-    .ptlCommit,
-    .ptlCommit-grid {
+    .ptl-commitment,
+    .ptl-commitment,
+    .ptl-commitment-grid {
         padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 40px;
     }
     
-    .ptlCommitHero__grid {
+    .ptl-commitmentHero__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
 
-    .ptlCommitHero__label {
+    .ptl-commitmentHero__label {
         font-size: 14px;
     }
 }

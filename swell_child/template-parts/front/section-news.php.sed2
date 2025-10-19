@@ -32,7 +32,7 @@ if (!empty($category)) $query_args['category_name'] = $category;
 
 $news_q = $force_fallback ? null : new WP_Query($query_args);
 ?>
-<section id="news" class="ptl-section ptlNews">
+<section id="news" class="ptl-section ptl-news">
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title">NEWS</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">お知らせ</div>
@@ -40,35 +40,35 @@ $news_q = $force_fallback ? null : new WP_Query($query_args);
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>
 
-        <ul class="ptlNews__list is-titleOnly">
+        <ul class="ptl-news__list is-titleOnly">
             <?php
             $count = 0;
             if (!$force_fallback && $news_q && $news_q->have_posts()):
                 while ($news_q->have_posts()): $news_q->the_post();
                     if ($count >= 5) break;
             ?>
-                    <li class="ptlNews__item">
-                        <span class="ptlNews__date"><?php echo esc_html(get_the_date('Y/m/d')); ?></span>
-                        <span class="ptlNews__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
+                    <li class="ptl-news__item">
+                        <span class="ptl-news__date"><?php echo esc_html(get_the_date('Y/m/d')); ?></span>
+                        <span class="ptl-news__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
                     </li>
                 <?php $count++;
                 endwhile;
             else:
                 $fallback = apply_filters('ptl_news_fallback_items', ['○○○○', '××××', '△△△△']);
                 foreach ($fallback as $title): ?>
-                    <li class="ptlNews__item is-placeholder">
-                        <span class="ptlNews__date">2025/10/07</span>
-                        <span class="ptlNews__title"><a href="<?php echo esc_url($more_url); ?>"><?php echo esc_html($title); ?></a></span>
+                    <li class="ptl-news__item is-placeholder">
+                        <span class="ptl-news__date">2025/10/07</span>
+                        <span class="ptl-news__title"><a href="<?php echo esc_url($more_url); ?>"><?php echo esc_html($title); ?></a></span>
                     </li>
             <?php endforeach;
             endif;
             if ($news_q) wp_reset_postdata(); ?>
         </ul>
 
-        <div class="ptlNews__more">
-            <a class="ptlNews__moreBtn" href="<?php echo esc_url($more_url); ?>">
-                <span class="ptlNews__moreLabel">MORE</span>
-                <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
+        <div class="ptl-news__more">
+            <a class="ptl-news__moreBtn" href="<?php echo esc_url($more_url); ?>">
+                <span class="ptl-news__moreLabel">MORE</span>
+                <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
             </a>
         </div>
     </div>

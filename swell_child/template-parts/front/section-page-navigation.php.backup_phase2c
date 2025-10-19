@@ -43,20 +43,20 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 }
 ?>
 
-<section id="page-navigation" class="ptlNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptlNavHero__bg" data-parallax-speed="<?php echo esc_attr($p_speed); ?>" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
+<section id="page-navigation" class="ptl-pageNavHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>" data-parallax="bg" data-parallax-target=".ptl-pageNavHero__bg" data-parallax-speed="<?php echo esc_attr($p_speed); ?>" data-parallax-clamp="0.18" data-parallax-distance="240" data-parallax-scale="1.55">
     <?php if ($has_bg): ?>
-        <div class="ptlNavHero__bg" aria-hidden="true">
+        <div class="ptl-pageNavHero__bg" aria-hidden="true">
             <?php if ($video_url): ?>
-                <video class="ptlNavHero__video" src="<?php echo esc_url($video_url); ?>" autoplay muted loop playsinline></video>
+                <video class="ptl-pageNavHero__video" src="<?php echo esc_url($video_url); ?>" autoplay muted loop playsinline></video>
             <?php else: ?>
-                <picture class="ptlNavHero__image">
+                <picture class="ptl-pageNavHero__image">
                     <?php if (! empty($bg_sp)): ?>
                         <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
                     <?php endif; ?>
                     <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" decoding="async">
                 </picture>
             <?php endif; ?>
-            <div class="ptlNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
+            <div class="ptl-pageNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
         </div>
     <?php endif; ?>
 
@@ -66,7 +66,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
             <span class="ptl-nav-toggle__icon"></span>
             <span class="ptl-nav-toggle__text" style="font-family: serif;">MENU</span>
         </button>
-        <div id="ptl-nav-menu" class="ptlNavHero__grid ptl-nav-collapsible">
+        <div id="ptl-nav-menu" class="ptl-pageNavHero__grid ptl-nav-collapsible">
             <?php
             // 子テーマ内のアイコン格納場所（PNG想定）
             $icon_dir_rel = '/img/nav';
@@ -88,10 +88,10 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     $icon_html = ptl_nav_placeholder_svg($label);
                 }
             ?>
-                <a class="ptlNavHero__btn" href="<?php echo esc_url($href); ?>">
-                    <span class="ptlNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                <a class="ptl-pageNavHero__btn" href="<?php echo esc_url($href); ?>">
+                    <span class="ptl-pageNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                                         ?></span>
-                    <span class="ptlNavHero__label"><?php echo esc_html($label); ?></span>
+                    <span class="ptl-pageNavHero__label"><?php echo esc_html($label); ?></span>
                 </a>
             <?php endforeach; ?>
         </div>

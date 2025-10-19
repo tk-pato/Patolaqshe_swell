@@ -9,17 +9,17 @@
   box-sizing: border-box;
 }
 
-#section-services .ptlMenu__content {
+#section-services .ptl-menu__content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 40px;
   align-items: stretch;
 }
-#section-services .ptlMenu__main {
+#section-services .ptl-menu__main {
   position: relative;
   height: 100%;
 }
-#section-services .ptlMenu__mainContent {
+#section-services .ptl-menu__mainContent {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -29,35 +29,35 @@
   display: flex;
   flex-direction: column;
 }
-#section-services .ptlMenu__mainContent:hover {
+#section-services .ptl-menu__mainContent:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
-#section-services .ptlMenu__mainLink {
+#section-services .ptl-menu__mainLink {
   display: block;
   text-decoration: none;
   color: inherit;
 }
-#section-services .ptlMenu__mainImage {
+#section-services .ptl-menu__mainImage {
   position: relative;
   width: 100%;
   height: 400px;
   overflow: hidden;
 }
-#section-services .ptlMenu__mainImage img {
+#section-services .ptl-menu__mainImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-#section-services .ptlMenu__mainContent:hover .ptlMenu__mainImage img {
+#section-services .ptl-menu__mainContent:hover .ptl-menu__mainImage img {
   transform: scale(1.05);
 }
-#section-services .ptlMenu__mainText {
+#section-services .ptl-menu__mainText {
   padding: 20px 30px;
   background: #fff;
 }
-#section-services .ptlMenu__mainTitle {
+#section-services .ptl-menu__mainTitle {
   font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 600;
   color: #444;
@@ -66,7 +66,7 @@
   text-align: center;
   letter-spacing: .08em;
 }
-#section-services .ptlMenu__mainDesc {
+#section-services .ptl-menu__mainDesc {
   font-size: clamp(14px, 1.2vw, 15px);
   font-weight: 300;
   color: #444;
@@ -74,7 +74,7 @@
   margin: 0 0 20px 0;
   text-align: center;
 }
-#section-services .ptlMenu__mainCta {
+#section-services .ptl-menu__mainCta {
   display: inline-block;
   padding: 0;
   background: transparent;
@@ -88,22 +88,22 @@
   transition: color 0.3s ease;
   text-decoration: underline;
 }
-#section-services .ptlMenu__mainCta:hover {
+#section-services .ptl-menu__mainCta:hover {
   color: #0056b3;
 }
-#section-services .ptlMenu__sub {
+#section-services .ptl-menu__sub {
   position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-#section-services .ptlMenu__subGrid {
+#section-services .ptl-menu__subGrid {
   display: flex;
   flex-direction: column;
   gap: 20px;
   height: 100%;
 }
-#section-services .ptlMenu__subItem {
+#section-services .ptl-menu__subItem {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
@@ -114,34 +114,34 @@
   display: flex;
   flex-direction: column;
 }
-#section-services .ptlMenu__subItem:hover {
+#section-services .ptl-menu__subItem:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
-#section-services .ptlMenu__subLink {
+#section-services .ptl-menu__subLink {
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
   height: 100%;
 }
-#section-services .ptlMenu__subImage {
+#section-services .ptl-menu__subImage {
   position: relative;
   width: 100%;
   height: 150px;
   overflow: hidden;
   flex-shrink: 0;
 }
-#section-services .ptlMenu__subImage img {
+#section-services .ptl-menu__subImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-#section-services .ptlMenu__subItem:hover .ptlMenu__subImage img {
+#section-services .ptl-menu__subItem:hover .ptl-menu__subImage img {
   transform: scale(1.1);
 }
-#section-services .ptlMenu__subTitle {
+#section-services .ptl-menu__subTitle {
   padding: 20px;
   font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 600;
@@ -156,14 +156,14 @@
   justify-content: center;
   letter-spacing: .08em;
 }
-#section-services .ptlMenu__subItem:hover .ptlMenu__subTitle {
+#section-services .ptl-menu__subItem:hover .ptl-menu__subTitle {
   background: #f8f9fa;
 }
-#section-services .ptlMenu__more {
+#section-services .ptl-menu__more {
   text-align: center;
   margin-top: 50px;
 }
-#section-services .ptlMenu__moreBtn {
+#section-services .ptl-menu__moreBtn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -179,47 +179,47 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
-#section-services .ptlMenu__moreBtn:hover {
+#section-services .ptl-menu__moreBtn:hover {
   background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
   color: #fff;
   text-decoration: none;
 }
-#section-services .ptlMenu__moreLabel {
+#section-services .ptl-menu__moreLabel {
   font-weight: 600;
 }
-#section-services .ptlMenu__moreArrow {
+#section-services .ptl-menu__moreArrow {
   font-size: 1.2rem;
   transition: transform 0.3s ease;
 }
-#section-services .ptlMenu__moreBtn:hover .ptlMenu__moreArrow {
+#section-services .ptl-menu__moreBtn:hover .ptl-menu__moreArrow {
   transform: translateX(5px);
 }
 /* レスポンシブ統合 */
 @media (max-width: 992px) {
-  #section-services .ptlMenu__content { grid-template-columns: 1fr; gap: 30px; }
-  #section-services .ptlMenu__subGrid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-  #section-services .ptlMenu__title { font-size: 2.2rem; }
+  #section-services .ptl-menu__content { grid-template-columns: 1fr; gap: 30px; }
+  #section-services .ptl-menu__subGrid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  #section-services .ptl-menu__title { font-size: 2.2rem; }
 }
 @media (max-width: 768px) {
-  #section-services .ptlMenu__mainImage { height: 200px; }
-  #section-services .ptlMenu__mainText { padding: 20px; }
-  #section-services .ptlMenu__mainTitle { font-size: 1.3rem; }
-  #section-services .ptlMenu__mainDesc { font-size: 0.9rem; }
-  #section-services .ptlMenu__subImage { height: 100px; }
-  #section-services .ptlMenu__subTitle { padding: 12px 15px; font-size: 0.9rem; }
-  #section-services .ptlMenu__more { margin-top: 40px; }
-  #section-services .ptlMenu__moreBtn { padding: 12px 25px; font-size: 1rem; }
+  #section-services .ptl-menu__mainImage { height: 200px; }
+  #section-services .ptl-menu__mainText { padding: 20px; }
+  #section-services .ptl-menu__mainTitle { font-size: 1.3rem; }
+  #section-services .ptl-menu__mainDesc { font-size: 0.9rem; }
+  #section-services .ptl-menu__subImage { height: 100px; }
+  #section-services .ptl-menu__subTitle { padding: 12px 15px; font-size: 0.9rem; }
+  #section-services .ptl-menu__more { margin-top: 40px; }
+  #section-services .ptl-menu__moreBtn { padding: 12px 25px; font-size: 1rem; }
 }
 @media (max-width: 480px) {
-  #section-services .ptlMenu__mainImage { height: 180px; }
-  #section-services .ptlMenu__mainText { padding: 15px; }
-  #section-services .ptlMenu__mainTitle { font-size: 1.2rem; }
-  #section-services .ptlMenu__subImage { height: 80px; }
-  #section-services .ptlMenu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
+  #section-services .ptl-menu__mainImage { height: 180px; }
+  #section-services .ptl-menu__mainText { padding: 15px; }
+  #section-services .ptl-menu__mainTitle { font-size: 1.2rem; }
+  #section-services .ptl-menu__subImage { height: 80px; }
+  #section-services .ptl-menu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
 }
-#section-services .ptlMenuHero__boxTitle {
+#section-services .ptl-reasonsHero__boxTitle {
   /* ナビの .ptl-pageNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
   font-size: clamp(13px, 1.4vw, 16px);
   font-weight: 600;
@@ -231,7 +231,7 @@
   letter-spacing: .08em;
 }
 
-#section-services .ptlMenuHero__boxDesc {
+#section-services .ptl-reasonsHero__boxDesc {
   font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 300;
   color: #333;
@@ -241,7 +241,7 @@
   text-align: center;
 }
 /* コミットメントセクション（Reasons）のスタイル */
-.ptlMenuHero {
+.ptl-reasonsHero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -254,15 +254,15 @@
   min-height: clamp(520px, 60vh, 720px);
 }
 
-.ptlMenuHero.is-translucent {
+.ptl-reasonsHero.is-translucent {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
-.ptlMenuHero.has-bg {
+.ptl-reasonsHero.has-bg {
   color: #fff;
 }
 
-.ptlMenuHero__bg {
+.ptl-reasonsHero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -271,8 +271,8 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__video,
-.ptlMenuHero__image {
+.ptl-reasonsHero__video,
+.ptl-reasonsHero__image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -281,11 +281,11 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__video {
+.ptl-reasonsHero__video {
   object-fit: cover;
 }
 
-.ptlMenuHero__image img {
+.ptl-reasonsHero__image img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -295,13 +295,13 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__overlay {
+.ptl-reasonsHero__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-.ptlMenuHero .ptl-section__inner {
+.ptl-reasonsHero .ptl-section__inner {
   position: relative;
   z-index: 1;
   padding-top: clamp(64px, 10vw, 160px);
@@ -310,7 +310,7 @@
 
 /* h2スタイルはstyle.cssで統一管理 */
 
-.ptlMenuHero__grid {
+.ptl-reasonsHero__grid {
   list-style: none;
   margin: clamp(32px, 3vw, 56px) auto 0;
   padding: 0;
@@ -321,18 +321,18 @@
 }
 
 @media (min-width: 700px) {
-  .ptlMenuHero__grid {
+  .ptl-reasonsHero__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 960px) {
-  .ptlMenuHero__grid {
+  .ptl-reasonsHero__grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-#section-services .ptlMenuHero__btn {
+#section-services .ptl-reasonsHero__btn {
   display: grid;
   grid-template-rows: auto auto;
   /* 全体の行間隔を詰める */
@@ -352,12 +352,12 @@
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
-#section-services .ptlMenuHero__btn:hover {
+#section-services .ptl-reasonsHero__btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
-#section-services .ptlMenuHero__icon {
+#section-services .ptl-reasonsHero__icon {
   /* 写真カードとしてフル幅表示 */
   width: 100%;
   /* 画像下の余白を詰める */
@@ -366,8 +366,8 @@
   padding: 0;
 }
 
-#section-services .ptlMenuHero__icon svg,
-#section-services .ptlMenuHero__icon img {
+#section-services .ptl-reasonsHero__icon svg,
+#section-services .ptl-reasonsHero__icon img {
   width: 100%;
   display: block;
   aspect-ratio: 4 / 3;
@@ -375,7 +375,7 @@
   border-radius: 8px;
 }
 
-.ptlMenuHero__label {
+.ptl-reasonsHero__label {
   font-size: 16px;
   font-weight: 600;
   color: #333;
@@ -384,22 +384,22 @@
 
 /* レスポンシブ調整 */
 @media screen and (max-width: 767px) {
-  .ptlMenuHero {
+  .ptl-reasonsHero {
     padding: 40px 0;
   }
 
-  .ptlMenuHero__grid {
+  .ptl-reasonsHero__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
-  .ptlMenuHero__label {
+  .ptl-reasonsHero__label {
     font-size: 14px;
   }
 }
 
 /* ファイル末尾 */
-#section-services .ptlMenu__mainImage img {
+#section-services .ptl-menu__mainImage img {
   width: 100%;
   display: block;
   object-fit: cover;
@@ -410,20 +410,20 @@
   min-height: 260px;
 }
 
-#section-services .ptlMenu__mainTitle {
+#section-services .ptl-menu__mainTitle {
   margin-bottom: 28px; /* 既存24px→28px */
 }
 
-#section-services .ptlMenu__mainDesc {
+#section-services .ptl-menu__mainDesc {
   margin-top: 4px; /* 既存0→4px */
 }
 
 /* FIX: 左メイン画像の縦量を確保してカバー表示 */
-#section-services .ptlMenu__main .ptlMenu__mainContent { display: flex; flex-direction: column; }
-#section-services .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink { display: flex; flex-direction: column; height: 100%; }
-#section-services .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainImage{ max-width:none; width:100%; flex: 0 0 68%; /* 上下幅の68%に戻す */ margin-bottom: 24px; /* 写真とタイトルの間の余白を拡張 */ }
-#section-services .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainImage img{ width:100%; height:100%; object-fit:cover; display:block; }
-#section-services .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainText { flex: 0 0 32%; /* 残り32%をテキストに */ padding-top: 12px; /* テキスト上部の余白も拡張 */ }
+#section-services .ptl-menu__main .ptl-menu__mainContent { display: flex; flex-direction: column; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink { display: flex; flex-direction: column; height: 100%; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage{ max-width:none; width:100%; flex: 0 0 68%; /* 上下幅の68%に戻す */ margin-bottom: 24px; /* 写真とタイトルの間の余白を拡張 */ }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage img{ width:100%; height:100%; object-fit:cover; display:block; }
+#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainText { flex: 0 0 32%; /* 残り32%をテキストに */ padding-top: 12px; /* テキスト上部の余白も拡張 */ }
 
 /* ========================================
    セクション余白（独自管理）

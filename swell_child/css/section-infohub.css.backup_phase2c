@@ -15,7 +15,7 @@
 }
 
 /* セクション全体 */
-.ptlHub {
+.ptl-infohub {
   background-image: var(--infohub-bg-image, none);
   background-attachment: fixed;
   background-size: cover;
@@ -36,18 +36,18 @@
 
 /* SP対応：モバイルでは固定背景を無効化 */
 @media (max-width: 959px) {
-  .ptlHub {
+  .ptl-infohub {
     background-attachment: scroll;
   }
 }
 
 /* 固定背景では不要（DOM要素としての背景は非表示） */
-.ptlHub__bg {
+.ptl-infohub__bg {
   display: none;
 }
 
 /* オーバーレイ */
-.ptlHub__overlay {
+.ptl-infohub__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, var(--overlay, 0.25));
@@ -55,7 +55,7 @@
 }
 
 /* コンテンツエリア（上下中央配置を維持） */
-.ptlHub .ptl-section__inner {
+.ptl-infohub .ptl-section__inner {
   position: relative;
   z-index: 2;
   max-width: var(--ptl-container-max, 1200px);
@@ -66,13 +66,13 @@
 }
 
 /* ヘッダー（パディング追加） */
-.ptlHub__header {
+.ptl-infohub__header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 /* カードグリッド */
-.ptlHub__grid {
+.ptl-infohub__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -82,24 +82,24 @@
 }
 
 @media (max-width: 959px) {
-  .ptlHub__grid {
+  .ptl-infohub__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 699px) {
-  .ptlHub__grid {
+  .ptl-infohub__grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
   
-  .ptlHub__header {
+  .ptl-infohub__header {
     margin-bottom: 40px;
   }
 }
 
 /* カード */
-.ptlHub__card {
+.ptl-infohub__card {
   display: block;
   position: relative;
   border-radius: 10px;
@@ -113,7 +113,7 @@
 }
 
 /* カード画像 */
-.ptlHub__media {
+.ptl-infohub__media {
   position: absolute;
   top: 0;
   left: 0;
@@ -123,7 +123,7 @@
   background: #f5f5f5;
 }
 
-.ptlHub__media img {
+.ptl-infohub__media img {
   position: absolute;
   top: 0;
   left: 0;
@@ -133,7 +133,7 @@
 }
 
 /* ダーケンオーバーレイ（テキストの視認性向上） */
-.ptlHub__media::after {
+.ptl-infohub__media::after {
   content: '';
   position: absolute;
   top: 0;
@@ -151,7 +151,7 @@
 }
 
 /* キラっと光る演出（カーソルが止まってから発動） */
-.ptlHub__media::before {
+.ptl-infohub__media::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -170,12 +170,12 @@
   pointer-events: none;
 }
 
-.ptlHub__card:hover .ptlHub__media::before {
+.ptl-infohub__card:hover .ptl-infohub__media::before {
   left: 150%;
 }
 
 /* カードコンテンツ（画像の上に重ねる） */
-.ptlHub__content {
+.ptl-infohub__content {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -186,7 +186,7 @@
 }
 
 /* カードタイトル（視認性向上） */
-.ptlHub__title {
+.ptl-infohub__title {
   position: relative;
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 700;
@@ -199,7 +199,7 @@
 }
 
 /* カード説明文（視認性向上） */
-.ptlHub__desc {
+.ptl-infohub__desc {
   font-size: clamp(13px, 1.4vw, 15px);
   font-weight: 400;
   color: #fff;
@@ -212,7 +212,7 @@
 
 /* モバイル調整 */
 @media (max-width: 959px) {
-  .ptlHub__content {
+  .ptl-infohub__content {
     padding: 30px 8px 36px 8px;
   }
 }
@@ -222,7 +222,7 @@
 ======================================== */
 
 /* カードを確実にグリッドセル幅いっぱいに */
-#section-infohub .ptlHub__card {
+#section-infohub .ptl-infohub__card {
   width: 100%;
   max-width: none;
   min-width: 0;
@@ -236,7 +236,7 @@
 /* PC: padding削除、margin-bottomのみで管理 */
 @media (min-width: 960px) {
     #section-infohub,
-    .ptlHub {
+    .ptl-infohub {
         padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
@@ -247,7 +247,7 @@
 /* SP: padding削除、margin-bottomのみで管理 */
 @media (max-width: 959px) {
     #section-infohub,
-    .ptlHub {
+    .ptl-infohub {
         padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;

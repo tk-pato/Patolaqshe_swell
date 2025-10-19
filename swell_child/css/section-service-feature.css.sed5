@@ -219,7 +219,7 @@
   #section-services .ptlMenu__subImage { height: 80px; }
   #section-services .ptlMenu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
 }
-#section-services .ptlMenuHero__boxTitle {
+#section-services .ptl-reasonsHero__boxTitle {
   /* ナビの .ptl-pageNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
   font-size: clamp(13px, 1.4vw, 16px);
   font-weight: 600;
@@ -231,7 +231,7 @@
   letter-spacing: .08em;
 }
 
-#section-services .ptlMenuHero__boxDesc {
+#section-services .ptl-reasonsHero__boxDesc {
   font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 300;
   color: #333;
@@ -241,7 +241,7 @@
   text-align: center;
 }
 /* コミットメントセクション（Reasons）のスタイル */
-.ptlMenuHero {
+.ptl-reasonsHero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -254,15 +254,15 @@
   min-height: clamp(520px, 60vh, 720px);
 }
 
-.ptlMenuHero.is-translucent {
+.ptl-reasonsHero.is-translucent {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
-.ptlMenuHero.has-bg {
+.ptl-reasonsHero.has-bg {
   color: #fff;
 }
 
-.ptlMenuHero__bg {
+.ptl-reasonsHero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -271,8 +271,8 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__video,
-.ptlMenuHero__image {
+.ptl-reasonsHero__video,
+.ptl-reasonsHero__image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -281,11 +281,11 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__video {
+.ptl-reasonsHero__video {
   object-fit: cover;
 }
 
-.ptlMenuHero__image img {
+.ptl-reasonsHero__image img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -295,13 +295,13 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__overlay {
+.ptl-reasonsHero__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-.ptlMenuHero .ptl-section__inner {
+.ptl-reasonsHero .ptl-section__inner {
   position: relative;
   z-index: 1;
   padding-top: clamp(64px, 10vw, 160px);
@@ -310,7 +310,7 @@
 
 /* h2スタイルはstyle.cssで統一管理 */
 
-.ptlMenuHero__grid {
+.ptl-reasonsHero__grid {
   list-style: none;
   margin: clamp(32px, 3vw, 56px) auto 0;
   padding: 0;
@@ -321,18 +321,18 @@
 }
 
 @media (min-width: 700px) {
-  .ptlMenuHero__grid {
+  .ptl-reasonsHero__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 960px) {
-  .ptlMenuHero__grid {
+  .ptl-reasonsHero__grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-#section-services .ptlMenuHero__btn {
+#section-services .ptl-reasonsHero__btn {
   display: grid;
   grid-template-rows: auto auto;
   /* 全体の行間隔を詰める */
@@ -352,12 +352,12 @@
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
-#section-services .ptlMenuHero__btn:hover {
+#section-services .ptl-reasonsHero__btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
-#section-services .ptlMenuHero__icon {
+#section-services .ptl-reasonsHero__icon {
   /* 写真カードとしてフル幅表示 */
   width: 100%;
   /* 画像下の余白を詰める */
@@ -366,8 +366,8 @@
   padding: 0;
 }
 
-#section-services .ptlMenuHero__icon svg,
-#section-services .ptlMenuHero__icon img {
+#section-services .ptl-reasonsHero__icon svg,
+#section-services .ptl-reasonsHero__icon img {
   width: 100%;
   display: block;
   aspect-ratio: 4 / 3;
@@ -375,7 +375,7 @@
   border-radius: 8px;
 }
 
-.ptlMenuHero__label {
+.ptl-reasonsHero__label {
   font-size: 16px;
   font-weight: 600;
   color: #333;
@@ -384,16 +384,16 @@
 
 /* レスポンシブ調整 */
 @media screen and (max-width: 767px) {
-  .ptlMenuHero {
+  .ptl-reasonsHero {
     padding: 40px 0;
   }
 
-  .ptlMenuHero__grid {
+  .ptl-reasonsHero__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
-  .ptlMenuHero__label {
+  .ptl-reasonsHero__label {
     font-size: 14px;
   }
 }

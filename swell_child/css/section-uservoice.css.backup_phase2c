@@ -41,13 +41,13 @@
 #uservoice .swiper-pagination{ margin-top:24px; }
 
 /* セクション基本設定 */
-.ptlVoice {
+.ptl-uservoice {
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     background: white;
 }
 
-.ptlVoice .ptl-section__inner {
+.ptl-uservoice .ptl-section__inner {
     max-width: 1100px;
     margin: 0 auto;
 }
@@ -180,14 +180,14 @@
 }
 
 /* MOREボタン */
-.ptlVoice .ptlVoice__more {
+.ptl-uservoice .ptl-uservoice__more {
     display: flex;
     justify-content: center;
     margin: 40px 0 0;
 }
 
 
-.ptlVoice__moreBtn {
+.ptl-uservoice__moreBtn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -201,26 +201,26 @@
     background: none;
 }
 
-.ptlVoice__moreLabel {
+.ptl-uservoice__moreLabel {
     font-weight: 600;
 }
 
-.ptlVoice__moreArrow {
+.ptl-uservoice__moreArrow {
     font-size: 1.2rem;
     transition: transform 0.3s;
 }
 
-.ptlVoice__moreBtn:hover .ptlVoice__moreArrow {
+.ptl-uservoice__moreBtn:hover .ptl-uservoice__moreArrow {
     transform: translateX(5px);
 }
-.ptlVoice__moreBtn:hover {
+.ptl-uservoice__moreBtn:hover {
     border-color: #357abd;
     color: #357abd;
 }
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
-    .ptlVoice {
+    .ptl-uservoice {
         padding: 60px 0;
     }
     
@@ -260,7 +260,7 @@
 }
 
 @media (max-width: 480px) {
-    .ptlVoice {
+    .ptl-uservoice {
         padding: 50px 0;
     }
     
@@ -409,12 +409,12 @@
 }
 
 /* USER'S VOICEセクション専用のMOREボタン背景削除 */
-#uservoice .ptlVoice__moreBtn {
+#uservoice .ptl-uservoice__moreBtn {
     background: transparent;
     background-color: transparent;
 }
 
-#uservoice .ptlVoice__moreBtn:hover {
+#uservoice .ptl-uservoice__moreBtn:hover {
     background: transparent;
     background-color: transparent;
 }

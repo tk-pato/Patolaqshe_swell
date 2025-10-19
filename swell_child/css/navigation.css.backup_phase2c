@@ -1,0 +1,295 @@
+/* === nav-adjustments.css 統合分 === */
+
+/* コンテナ幅統一設定 */
+#page-navigation .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ptl-pageNavHero {
+  position: relative;
+  overflow: hidden;
+}
+
+.ptl-pageNavHero.has-bg {
+  color: #fff;
+}
+
+.ptl-pageNavHero.is-translucent {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+.ptl-pageNavHero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.ptl-pageNavHero__bg video,
+.ptl-pageNavHero__bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ptl-pageNavHero__bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.ptl-pageNavHero__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.ptl-pageNavHero__btn:hover {
+  transform: translateY(-4px);
+}
+
+.ptl-pageNavHero__icon {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ptl-pageNavHero__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  /* PCモードでハンバーガーボタンを非表示 */
+  body:not(.sp-view) .ptl-nav-toggle {
+    display: none;
+  }
+}
+
+/* MOREボタンのスタイル統一（NEWS、BUST-ISSUES共通） */
+.ptl-moreButton--news {
+  --frame-slice: 120;
+  --frame-width: 12px;
+  --frame-color: #111;
+  box-sizing: border-box;
+  display: inline-grid;
+  grid-auto-flow: column;
+  place-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #3C4043;
+  background: #fff;
+  letter-spacing: .08em;
+  font-weight: 600;
+  padding: 6px 14px;
+  white-space: nowrap;
+  position: relative;
+  border: none;
+  font-size: var(--ptl-subtitle-size, 16px);
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.ptl-moreButton--news::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--frame-width) * -1);
+  pointer-events: none;
+  background: var(--frame-color);
+  -webkit-mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
+  mask: url('../img/bg_frame_bk.png') center/100% 100% no-repeat;
+}
+
+.ptl-moreButton--news:hover,
+.ptl-moreButton--news:focus-visible {
+  background: #fff;
+  color: #5F6368;
+}
+
+.ptl-moreButton--news .ptl-moreButton__arrow {
+  display: inline-block;
+  transform: translateX(0);
+  transition: transform .2s ease;
+}
+
+.ptl-moreButton--news:hover .ptl-moreButton__arrow,
+.ptl-moreButton--news:focus-visible .ptl-moreButton__arrow {
+  transform: translateX(4px);
+}
+
+/* ===== BUST-ISSUES 調整：幅合わせ・不透明化・MORE統一 ===== */
+#bust-issues .ptl-section__inner{
+  max-width: var(--ptl-container-max);
+  margin: 0 auto;
+  padding-left: var(--ptl-container-pad);
+  padding-right: var(--ptl-container-pad);
+  position: relative;
+  isolation: isolate;
+}
+
+#bust-issues .ptl-bustIssues__card{
+  width: 100%;
+  background: #fff;
+  backdrop-filter: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  padding: 16px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+#bust-issues .ptl-bustIssues__list{
+  list-style: none; 
+  margin: 0; 
+  padding: 0;
+  display: grid; 
+  grid-template-columns: 1fr; 
+  column-gap: 40px;
+}
+
+#bust-issues .ptl-bustIssues__item{
+  display: grid; 
+  grid-template-columns: 24px 1fr; 
+  align-items: center;
+  gap: 12px; 
+  padding: 18px 4px;
+  border-bottom: 1px dashed rgba(0,0,0,.12);
+}
+
+#bust-issues .ptl-bustIssues__icon{ 
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #666; 
+}
+
+#bust-issues .ptl-bustIssues__icon img{ 
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block; 
+}
+
+#bust-issues .ptl-bustIssues__text{ 
+  font-size: 16px; 
+  line-height: 1.9; 
+  letter-spacing: .02em; 
+  color: #222; 
+}
+
+/* PCは2カラム */
+@media (min-width: 768px){
+  #bust-issues .ptl-bustIssues__list{ 
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+/* ===== MOREボタン（NEWSと完全統一） ===== */
+#bust-issues .ptl-news__more { 
+  display: flex; 
+  justify-content: center; 
+  margin: 20px 0 4px; 
+}
+
+/* ===== SP: パララックス可視化強化 ===== */
+@media (max-width: 959px) {
+  .ptl-navigation {
+    --ptl-parallax: 0px;
+    background-position: 50% calc(50% + var(--ptl-parallax));
+    background-size: 135% auto;
+    will-change: background-position;
+  }
+
+  .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img,
+  .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
+  .ptl-navigation.ptl-has-video video {
+    transform: translateY(var(--ptl-parallax)) scale(1.28);
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .ptl-pageNavHero,
+  .ptl-navigation {
+    overflow: clip;
+  }
+  
+  #page-navigation .ptl-pageNavHero__image img,
+  #page-navigation .ptl-pageNavHero__video,
+  #bust-issues .ptl-pageNavHero__image img,
+  #bust-issues .ptl-pageNavHero__video {
+    transform: translateY(var(--ptl-parallax)) scale(1.28);
+    transform-origin: center;
+    will-change: transform;
+  }
+  
+  .ptl-pageNavHero.has-bg .ptl-pageNavHero__image img,
+  .ptl-pageNavHero.has-bg .ptl-pageNavHero__video {
+    transform: translateY(var(--ptl-parallax)) scale(1.28);
+    transform-origin: center;
+    will-change: transform;
+  }
+  
+  #page-navigation .ptl-pageNavHero__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ptl-pageNavHero__label {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   セクション余白（独自管理）
+======================================== */
+
+/* PC: padding削除、margin-bottomのみで管理 */
+@media (min-width: 960px) {
+    #page-navigation {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 80px;
+    }
+}
+
+/* SP: padding削除、margin-bottomのみで管理 */
+@media (max-width: 959px) {
+    #page-navigation {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
+
+#page-navigation {
+  margin-top: 0;
+  margin-bottom: 80px;
+}

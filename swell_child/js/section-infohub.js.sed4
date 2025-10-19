@@ -6,32 +6,37 @@
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
   if (rm && rm.matches) return;
 
+  // 🔴 固定背景モードではパララックス無効化
+  // data-parallax="bg" 属性がない要素は処理しない
+  var hasBgParallax = document.querySelector('.ptl-infohub[data-parallax="bg"]');
+  if (!hasBgParallax) return;
+
   // セクション情報のキャッシュ（速度・クランプ・ターゲット要素など）
   var items = [];
   var ticking = false;
 
   function collect() {
     items = [];
-    var nodeList = document.querySelectorAll('.ptlIssues[data-parallax="bg"]');
+    var nodeList = document.querySelectorAll('.ptl-infohub[data-parallax="bg"]');
     if (!nodeList || !nodeList.length) return;
 
     for (var i = 0; i < nodeList.length; i++) {
       var sec = nodeList[i];
-      // 速度: 0..1（1で追従なし）- navigationと同じ値に統一
+      // 速度: 0..1（1で追従なし）
       var speed = parseFloat(sec.getAttribute('data-parallax-speed') || '0.6');
       if (!isFinite(speed)) speed = 0.6;
       speed = Math.max(0, Math.min(1, speed));
 
-      // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）- navigationと同じ値に統一
+      // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）
       var clampRatio = parseFloat(sec.getAttribute('data-parallax-clamp') || '0.12');
       if (!isFinite(clampRatio)) clampRatio = 0.12;
       clampRatio = Math.max(0, Math.min(0.3, clampRatio));
 
-      // 絶対最大移動量（px）で上書き可能（例: data-parallax-distance="240"）
+      // 絶対最大移動量（px）で上書き可能（例: data-parallax-distance="120"）
       var maxDistancePx = parseFloat(sec.getAttribute('data-parallax-distance') || '');
       if (!isFinite(maxDistancePx)) maxDistancePx = null;
 
-      // 最小拡大率を指定可能（例: data-parallax-scale="1.55"）
+      // 最小拡大率を指定可能（例: data-parallax-scale="1.4"）
       var minScale = parseFloat(sec.getAttribute('data-parallax-scale') || '');
       if (!isFinite(minScale) || minScale <= 1) minScale = null;
 
@@ -41,10 +46,10 @@
       if (attrTarget) {
         try { target = sec.querySelector(attrTarget); } catch (e) { /* noop */ }
       }
-      var tVideo = target || sec.querySelector('.ptlIssues__video');
-      var tImg = (!tVideo && sec.querySelector('.ptlIssues__image img')) || null;
-      var tPic = (!tVideo && !tImg && sec.querySelector('.ptlIssues__image')) || null;
-      var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptlIssues__bg')) || null;
+      var tVideo = target || sec.querySelector('.ptl-infohub__video');
+      var tImg = (!tVideo && sec.querySelector('.ptl-infohub__image img')) || null;
+      var tPic = (!tVideo && !tImg && sec.querySelector('.ptl-infohub__image')) || null;
+      var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptl-infohub__bg')) || null;
       target = tVideo || tImg || tPic || tBg;
       if (!target) continue;
 
