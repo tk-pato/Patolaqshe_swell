@@ -24,11 +24,13 @@
    ISSUES: NAVIGATIONと完全一致
    =========================== */
 
-/* 基本構造 - NAVIGATIONと完全一致 */
+/* 基本構造 - パララックス用にflex垂直中央配置を維持 */
 #bust-issues {
-  min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
-  max-height: none; /* 最大高さ制限削除 */
-  display: block; /* flexからblockに変更 */
+  min-height: clamp(520px, 60vh, 720px); /* パララックス用の固定高さ */
+  max-height: clamp(520px, 60vh, 720px); /* パララックス用の固定高さ */
+  display: flex; /* 垂直中央配置のためにflex維持 */
+  align-items: center; /* 垂直中央配置 */
+  justify-content: center; /* 水平中央配置 */
   position: relative;
   overflow: hidden;
   isolation: isolate;
