@@ -303,7 +303,7 @@
   width: 100%;
   position: relative;
   z-index: 1;
-  padding-top: clamp(64px, 10vw, 160px);
+  padding-top: 0; /* セクション上余白削除 */
   padding-bottom: 0;
   padding-left: var(--ptl-container-pad, 20px);
   padding-right: var(--ptl-container-pad, 20px);

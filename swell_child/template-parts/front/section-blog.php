@@ -69,9 +69,9 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
 
         <!-- MOREボタン（常に表示） -->
         <div class="ptlBlog__more">
-            <a class="ptl-news__moreBtn" href="/blog/">
-                <span class="ptl-news__moreLabel">MORE</span>
-                <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
+            <a class="ptlNews__moreBtn" href="/blog/">
+                <span class="ptlNews__moreLabel">MORE</span>
+                <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
             </a>
         </div>
 

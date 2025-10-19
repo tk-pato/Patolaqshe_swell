@@ -1,25 +1,22 @@
-/* === MENU Section (Rococo Style) 統合分 === */
+/* section-menu.css - PC専用 - Phase④ */
 
-/* コンテナ幅統一設定 */
-#menu .ptl-section__inner {
-  max-width: var(--ptl-container-max, 1200px);
-  padding-left: var(--ptl-container-pad, 20px);
-  padding-right: var(--ptl-container-pad, 20px);
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-#menu .ptlMenu__content {
+@charset "UTF-8";/* === MENU Section (Rococo Style) 統合分 === */
+#menu .ptl-menu__content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 40px;
   align-items: stretch;
+  max-width: var(--ptl-container-max, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--ptl-container-pad, 20px);
+  width: 100%;
+  box-sizing: border-box;
 }
-#menu .ptlMenu__main {
+#menu .ptl-menu__main {
   position: relative;
   height: 100%;
 }
-#menu .ptlMenu__mainContent {
+#menu .ptl-menu__mainContent {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -29,35 +26,35 @@
   display: flex;
   flex-direction: column;
 }
-#menu .ptlMenu__mainContent:hover {
+#menu .ptl-menu__mainContent:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
-#menu .ptlMenu__mainLink {
+#menu .ptl-menu__mainLink {
   display: block;
   text-decoration: none;
   color: inherit;
 }
-#menu .ptlMenu__mainImage {
+#menu .ptl-menu__mainImage {
   position: relative;
   width: 100%;
   height: 400px;
   overflow: hidden;
 }
-#menu .ptlMenu__mainImage img {
+#menu .ptl-menu__mainImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-#menu .ptlMenu__mainContent:hover .ptlMenu__mainImage img {
+#menu .ptl-menu__mainContent:hover .ptl-menu__mainImage img {
   transform: scale(1.05);
 }
-#menu .ptlMenu__mainText {
+#menu .ptl-menu__mainText {
   padding: 20px 30px;
   background: #fff;
 }
-#menu .ptlMenu__mainTitle {
+#menu .ptl-menu__mainTitle {
   font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 600;
   color: #444;
@@ -66,7 +63,7 @@
   text-align: center;
   letter-spacing: .08em;
 }
-#menu .ptlMenu__mainDesc {
+#menu .ptl-menu__mainDesc {
   font-size: clamp(14px, 1.2vw, 15px);
   font-weight: 300;
   color: #444;
@@ -74,7 +71,7 @@
   margin: 0 0 20px 0;
   text-align: center;
 }
-#menu .ptlMenu__mainCta {
+#menu .ptl-menu__mainCta {
   display: inline-block;
   padding: 0;
   background: transparent;
@@ -88,22 +85,22 @@
   transition: color 0.3s ease;
   text-decoration: underline;
 }
-#menu .ptlMenu__mainCta:hover {
+#menu .ptl-menu__mainCta:hover {
   color: #0056b3;
 }
-#menu .ptlMenu__sub {
+#menu .ptl-menu__sub {
   position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-#menu .ptlMenu__subGrid {
+#menu .ptl-menu__subGrid {
   display: flex;
   flex-direction: column;
   gap: 20px;
   height: 100%;
 }
-#menu .ptlMenu__subItem {
+#menu .ptl-menu__subItem {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
@@ -114,34 +111,34 @@
   display: flex;
   flex-direction: column;
 }
-#menu .ptlMenu__subItem:hover {
+#menu .ptl-menu__subItem:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
-#menu .ptlMenu__subLink {
+#menu .ptl-menu__subLink {
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
   height: 100%;
 }
-#menu .ptlMenu__subImage {
+#menu .ptl-menu__subImage {
   position: relative;
   width: 100%;
   height: 150px;
   overflow: hidden;
   flex-shrink: 0;
 }
-#menu .ptlMenu__subImage img {
+#menu .ptl-menu__subImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-#menu .ptlMenu__subItem:hover .ptlMenu__subImage img {
+#menu .ptl-menu__subItem:hover .ptl-menu__subImage img {
   transform: scale(1.1);
 }
-#menu .ptlMenu__subTitle {
+#menu .ptl-menu__subTitle {
   padding: 20px;
   font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 600;
@@ -156,14 +153,14 @@
   justify-content: center;
   letter-spacing: .08em;
 }
-#menu .ptlMenu__subItem:hover .ptlMenu__subTitle {
+#menu .ptl-menu__subItem:hover .ptl-menu__subTitle {
   background: #f8f9fa;
 }
-#menu .ptlMenu__more {
+#menu .ptl-menu__more {
   text-align: center;
   margin-top: 50px;
 }
-#menu .ptlMenu__moreBtn {
+#menu .ptl-menu__moreBtn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -179,48 +176,26 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
-#menu .ptlMenu__moreBtn:hover {
+#menu .ptl-menu__moreBtn:hover {
   background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
   color: #fff;
   text-decoration: none;
 }
-#menu .ptlMenu__moreLabel {
+#menu .ptl-menu__moreLabel {
   font-weight: 600;
 }
-#menu .ptlMenu__moreArrow {
+#menu .ptl-menu__moreArrow {
   font-size: 1.2rem;
   transition: transform 0.3s ease;
 }
-#menu .ptlMenu__moreBtn:hover .ptlMenu__moreArrow {
+#menu .ptl-menu__moreBtn:hover .ptl-menu__moreArrow {
   transform: translateX(5px);
 }
-/* レスポンシブ統合 */
-@media (max-width: 992px) {
-  #menu .ptlMenu__content { grid-template-columns: 1fr; gap: 30px; }
-  #menu .ptlMenu__subGrid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-  #menu .ptlMenu__title { font-size: 2.2rem; }
-}
-@media (max-width: 768px) {
-  #menu .ptlMenu__mainImage { height: 200px; }
-  #menu .ptlMenu__mainText { padding: 20px; }
-  #menu .ptlMenu__mainTitle { font-size: 1.3rem; }
-  #menu .ptlMenu__mainDesc { font-size: 0.9rem; }
-  #menu .ptlMenu__subImage { height: 100px; }
-  #menu .ptlMenu__subTitle { padding: 12px 15px; font-size: 0.9rem; }
-  #menu .ptlMenu__more { margin-top: 40px; }
-  #menu .ptlMenu__moreBtn { padding: 12px 25px; font-size: 1rem; }
-}
-@media (max-width: 480px) {
-  #menu .ptlMenu__mainImage { height: 180px; }
-  #menu .ptlMenu__mainText { padding: 15px; }
-  #menu .ptlMenu__mainTitle { font-size: 1.2rem; }
-  #menu .ptlMenu__subImage { height: 80px; }
-  #menu .ptlMenu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
-}
-#menu .ptlMenuHero__boxTitle {
-  /* ナビの .ptlNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
+
+#menu .ptl-reasonsHero__boxTitle {
+  /* ナビの .ptl-pageNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
   font-size: clamp(13px, 1.4vw, 16px);
   font-weight: 600;
   color: #333;
@@ -231,7 +206,7 @@
   letter-spacing: .08em;
 }
 
-#menu .ptlMenuHero__boxDesc {
+#menu .ptl-reasonsHero__boxDesc {
   font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 300;
   color: #333;
@@ -241,28 +216,25 @@
   text-align: center;
 }
 /* コミットメントセクション（Reasons）のスタイル */
-.ptlMenuHero {
+#menu .ptl-reasonsHero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   background: transparent;
   --ptl-heading-size: clamp(22px, 2.8vw, 28px);
   --ptl-subtitle-size: clamp(16px, 2vw, 18px);
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
   min-height: clamp(520px, 60vh, 720px);
 }
 
-.ptlMenuHero.is-translucent {
+#menu .ptl-reasonsHero.is-translucent {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
-.ptlMenuHero.has-bg {
+#menu .ptl-reasonsHero.has-bg {
   color: #fff;
 }
 
-.ptlMenuHero__bg {
+#menu .ptl-reasonsHero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -271,8 +243,8 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__video,
-.ptlMenuHero__image {
+#menu .ptl-reasonsHero__video,
+#menu .ptl-reasonsHero__image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -281,11 +253,11 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__video {
+#menu .ptl-reasonsHero__video {
   object-fit: cover;
 }
 
-.ptlMenuHero__image img {
+#menu .ptl-reasonsHero__image img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -295,22 +267,28 @@
   transform-origin: center center;
 }
 
-.ptlMenuHero__overlay {
+#menu .ptl-reasonsHero__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-.ptlMenuHero .ptl-section__inner {
+#menu .ptl-reasonsHero .ptl-section__inner {
+  width: 100%;
   position: relative;
   z-index: 1;
-  padding-top: 0; /* セクション上余白は削除（margin-topで管理） */
-  padding-bottom: 0; /* セクション下余白はmargin-bottomで管理 */
+  padding-top: clamp(64px, 10vw, 160px);
+  padding-bottom: 0;
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  max-width: var(--ptl-container-max, 1200px);
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* h2スタイルはstyle.cssで統一管理 */
 
-.ptlMenuHero__grid {
+#menu .ptl-reasonsHero__grid {
   list-style: none;
   margin: clamp(32px, 3vw, 56px) auto 0;
   padding: 0;
@@ -320,19 +298,11 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-@media (min-width: 700px) {
-  .ptlMenuHero__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-@media (min-width: 960px) {
-  .ptlMenuHero__grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
-#menu .ptlMenuHero__btn {
+#menu .ptl-reasonsHero__btn {
   display: grid;
   grid-template-rows: auto auto;
   /* 全体の行間隔を詰める */
@@ -352,12 +322,12 @@
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
-#menu .ptlMenuHero__btn:hover {
+#menu .ptl-reasonsHero__btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
-#menu .ptlMenuHero__icon {
+#menu .ptl-reasonsHero__icon {
   /* 写真カードとしてフル幅表示 */
   width: 100%;
   /* 画像下の余白を詰める */
@@ -366,8 +336,8 @@
   padding: 0;
 }
 
-#menu .ptlMenuHero__icon svg,
-#menu .ptlMenuHero__icon img {
+#menu .ptl-reasonsHero__icon svg,
+#menu .ptl-reasonsHero__icon img {
   width: 100%;
   display: block;
   aspect-ratio: 4 / 3;
@@ -375,7 +345,7 @@
   border-radius: 8px;
 }
 
-.ptlMenuHero__label {
+#menu .ptl-reasonsHero__label {
   font-size: 16px;
   font-weight: 600;
   color: #333;
@@ -383,23 +353,19 @@
 }
 
 /* レスポンシブ調整 */
-@media screen and (max-width: 767px) {
-  .ptlMenuHero {
-    padding: 40px 0;
-  }
 
-  .ptlMenuHero__grid {
+  #menu .ptl-reasonsHero__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
-  .ptlMenuHero__label {
+  #menu .ptl-reasonsHero__label {
     font-size: 14px;
   }
 }
 
 /* ファイル末尾 */
-#menu .ptlMenu__mainImage img {
+#menu .ptl-menu__mainImage img {
   width: 100%;
   display: block;
   object-fit: cover;
@@ -410,36 +376,27 @@
   min-height: 260px;
 }
 
-#menu .ptlMenu__mainTitle {
+#menu .ptl-menu__mainTitle {
   margin-bottom: 28px; /* 既存24px→28px */
 }
 
-#menu .ptlMenu__mainDesc {
+#menu .ptl-menu__mainDesc {
   margin-top: 4px; /* 既存0→4px */
 }
 
 /* FIX: 左メイン画像の縦量を確保してカバー表示 */
-#menu .ptlMenu__main .ptlMenu__mainContent { display: flex; flex-direction: column; }
-#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink { display: flex; flex-direction: column; height: 100%; }
-#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainImage{ max-width:none; width:100%; flex: 0 0 68%; /* 上下幅の68%に戻す */ margin-bottom: 24px; /* 写真とタイトルの間の余白を拡張 */ }
-#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainImage img{ width:100%; height:100%; object-fit:cover; display:block; }
-#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainText { flex: 0 0 32%; /* 残り32%をテキストに */ padding-top: 12px; /* テキスト上部の余白も拡張 */ }
+#menu .ptl-menu__main .ptl-menu__mainContent { display: flex; flex-direction: column; }
+#menu .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink { display: flex; flex-direction: column; height: 100%; }
+#menu .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage{ max-width:none; width:100%; flex: 0 0 68%; /* 上下幅の68%に戻す */ margin-bottom: 24px; /* 写真とタイトルの間の余白を拡張 */ }
+#menu .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage img{ width:100%; height:100%; object-fit:cover; display:block; }
+#menu .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainText { flex: 0 0 32%; /* 残り32%をテキストに */ padding-top: 12px; /* テキスト上部の余白も拡張 */ }
 
 /* ========================================
    セクション余白（独自管理）
 ======================================== */
-#menu {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-@media (max-width: 768px) {
-    #menu {
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
+/* PC: margin-bottomのみで管理 */
 }
 
-#menu {
-  margin-top: 0;
-  margin-bottom: 80px;
+/* SP: margin-bottomのみで管理 */
 }
+

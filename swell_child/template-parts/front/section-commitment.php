@@ -96,12 +96,10 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
             <?php endforeach; ?>
         </div>
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <div class="ptlCommit__more">
-                <a class="ptlCommit__more" href="<?php echo esc_url(home_url('/reason/')); ?>">
-                    <span class="ptlNews__moreLabel">MORE</span>
-                    <span class="ptlNews__moreArrow" aria-hidden="true">&rarr;</span>
-                </a>
-            </div>
+            <a class="ptlCommit__more" href="<?php echo esc_url(home_url('/reason/')); ?>">
+                <span class="ptlNews__moreLabel">MORE</span>
+                <span class="ptlNews__moreArrow" aria-hidden="true">&rarr;</span>
+            </a>
         </div>
     </div>
 </section>
