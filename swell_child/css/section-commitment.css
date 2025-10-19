@@ -5,23 +5,9 @@
    =========================== */
 
 /* ===== base ===== */
-#section-commitment,
-.ptlCommit {
+#section-commitment {
     --ptl-subtitle-size: clamp(16px, 2vw, 18px);
     --ptl-heading-size: clamp(22px, 2.8vw, 28px);
-    /* 全画面サイズで余白統一 */
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-
-/* SP用余白調整 */
-@media (max-width: 959px) {
-    #section-commitment,
-    .ptlCommit {
-        margin-bottom: 40px;
-    }
 }
 
 /* コンテナ幅統一設定 */
@@ -31,6 +17,20 @@
   padding-right: var(--ptl-container-pad, 20px);
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+/* セクション余白統一（最優先） */
+#section-commitment {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
+}
+
+@media (max-width: 768px) {
+    #section-commitment {
+        margin-bottom: 40px !important;
+    }
 }
 
 #section-commitment .ptlCommitHero__boxTitle {
@@ -67,15 +67,16 @@
     isolation: isolate;
     background: transparent;
     width: 100vw;
+    padding-top: 0;
+    padding-bottom: 0;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     margin-top: 0;
-    margin-bottom: 80px; /* セクション間余白 */
-    min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
+    margin-bottom: 80px;
+    min-height: auto;
 }
 
-/* SP用余白調整 */
-@media (max-width: 959px) {
+@media (max-width: 768px) {
     .ptlCommitHero {
         margin-bottom: 40px;
     }

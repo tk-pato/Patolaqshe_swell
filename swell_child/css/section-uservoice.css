@@ -12,15 +12,15 @@
   box-sizing: border-box;
 }
 
-/* セクション余白 */
+/* セクション余白（最優先） */
 #uservoice {
-    margin-top: 0;
-    margin-bottom: 80px;
+    margin-top: 0 !important;
+    margin-bottom: 80px !important;
 }
 
 @media (max-width: 768px) {
     #uservoice {
-        margin-bottom: 40px;
+        margin-bottom: 40px !important;
     }
 }
 
@@ -478,12 +478,13 @@
     }
 }
 
-/* セクション余白 */
-/* ===== SP Spacing Override ===== */
-/* SP専用: ユーザーボイスセクション下余白40px */
-@media (max-width: 768px) {
-/* セクション余白（margin-bottomのみ管理） */
+/* ========================================
+   セクション余白統一（最終版）
+======================================== */
 #uservoice {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
   margin-bottom: 80px;
 }
 
@@ -492,9 +493,3 @@
     margin-bottom: 40px;
   }
 }
-
-#uservoice {
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
