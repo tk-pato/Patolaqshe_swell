@@ -378,16 +378,7 @@
     border: none;
 }
 
-/* USER'S VOICEセクション専用のMOREボタン背景削除 */
-#uservoice .ptlVoice__moreBtn {
-    background: transparent;
-    background-color: transparent;
-}
-
-#uservoice .ptlVoice__moreBtn:hover {
-    background: transparent;
-    background-color: transparent;
-}
+/* USER'S VOICEセクション: MOREボタンはstyle.cssで統一管理（独自スタイル削除） */
 
 /* カードの統一デザイン（シャドウ削除版） */
 #uservoice .feedback-card {
