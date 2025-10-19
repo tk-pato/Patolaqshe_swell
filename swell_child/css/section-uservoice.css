@@ -483,17 +483,5 @@ section#uservoice {
 }
 
 /* ========================================
-   セクション余白統一（最終版）
+   ※ セクション余白設定は16行目に移動済み（重複削除）
 ======================================== */
-#uservoice {
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-  #uservoice {
-    margin-bottom: 40px;
-  }
-}
