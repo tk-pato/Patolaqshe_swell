@@ -200,63 +200,13 @@
   transform: translateX(4px);
 }
 
-/* セクション余白（独自管理） */
+/* セクション余白（PC/SP共通ベース） */
 #intro,
 #intro.ptlIntro-section {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-@media (max-width: 768px) {
-    #intro,
-    #intro.ptlIntro-section {
-        margin-bottom: 40px;
-    }
-}
-
-#intro {
   margin-top: 0;
   margin-bottom: 80px;
 }
 
-/* モバイル */
-@media (max-width: 767px) {
-  #intro.ptlIntro-section {
-    min-height: auto;
-    margin-bottom: 40px;
-  }
-  
-  #intro .ptlIntro__media {
-    position: relative;
-    width: 100%;
-    height: clamp(320px, 55vh, 450px);
-  }
-  
-  #intro .ptlIntro__content {
-    position: relative;
-    left: 0;
-    width: 100%;
-    height: auto;
-    padding: clamp(36px, 7vw, 64px) clamp(24px, 5vw, 44px);
-    text-align: center;
-  }
-  
-  #intro .ptlIntro__content-inner {
-    max-width: none;
-  }
-  
-  #intro .ptlIntro__brand {
-    text-align: center;
-  }
-  
-  #intro .ptlIntro__brand-ornament {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  #intro .ptlIntro__cta-button {
-    margin: 0 auto;
-  }
-}
 
 /* タブレット */
 @media (min-width: 769px) and (max-width: 1024px) {

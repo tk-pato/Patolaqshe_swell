@@ -1986,7 +1986,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('ptl-uservoice', get_stylesheet_directory_uri() . '/js/uservoice-slider.js', ['swiper'], filemtime($js), true);
   }
 
-  // INTRO Section CSS
+  // INTRO Section CSS（PC/SP分離対応）
   $intro_css = get_stylesheet_directory() . '/css/section-intro.css';
   if (file_exists($intro_css)) {
     wp_enqueue_style(
@@ -1995,6 +1995,18 @@ add_action('wp_enqueue_scripts', function () {
       ['child_style'],
       filemtime($intro_css)
     );
+  }
+  
+  // INTRO - PC専用CSS
+  $intro_pc = get_stylesheet_directory() . '/css/pc/section-intro.css';
+  if (file_exists($intro_pc)) {
+    wp_enqueue_style('ptlIntro-pc', get_stylesheet_directory_uri() . '/css/pc/section-intro.css', ['ptl_section_intro'], filemtime($intro_pc), 'screen and (min-width: 960px)');
+  }
+  
+  // INTRO - SP専用CSS
+  $intro_sp = get_stylesheet_directory() . '/css/sp/section-intro.css';
+  if (file_exists($intro_sp)) {
+    wp_enqueue_style('ptlIntro-sp', get_stylesheet_directory_uri() . '/css/sp/section-intro.css', ['ptl_section_intro'], filemtime($intro_sp), 'screen and (max-width: 959px)');
   }
 }, 30);
 
