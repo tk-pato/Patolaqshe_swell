@@ -1,8 +1,8 @@
 /* ヒーロー直後のグレー帯・余白・背景色対策(2025-10-07) */
-/* COMMITMENT/USERVOICE等のセクション余白を保護するため、.l-mainContent__innerへの全体適用を削除 */
+/* COMMITMENT/USERVOICE等のセクション余白を保護するため、親テーマクラスへの全体適用を削除 */
+/* section-blog専用CSSなので、親テーマクラス（.l-mainContent, .l-article__body）は操作しない */
 .hero-section + .l-mainContent,
-.hero-section + .l-mainContent__inner,
-.l-article__body {
+.hero-section + .l-mainContent__inner {
   padding-top: 0;
   margin-top: 0;
   background: transparent;
