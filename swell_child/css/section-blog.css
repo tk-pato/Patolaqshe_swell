@@ -8,16 +8,10 @@
   background: transparent;
 }
 
-/* セクション余白 */
+/* セクション余白（PC/SP共通ベース） */
 #section-blog {
   margin-top: 0;
   margin-bottom: 80px;
-}
-
-@media (max-width: 768px) {
-  #section-blog {
-    margin-bottom: 40px;
-  }
 }
 
 /* セクション基本設定 */
@@ -239,47 +233,4 @@
   line-height: 1.8;
   max-width: var(--ptl-container-max, 1200px);
   margin: 0 auto;
-}
-
-
-/* セクション余白（独自管理） */
-#section-blog {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-@media (max-width: 768px) {
-    #section-blog {
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-}
-
-#section-blog {
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
-/* タブレット対応 */
-@media (max-width: 959px) {
-  .ptlBlog__item {
-    flex: 0 0 calc((100% - 48px) / 3);
-    min-width: 220px;
-    max-width: 320px;
-  }
-}
-
-
-/* モバイル対応 */
-@media (max-width: 699px) {
-  .ptlBlog__item {
-    flex: 0 0 calc((100% - 24px) / 2);
-    min-width: 160px;
-    max-width: 320px;
-  }
-  .ptlBlog__header {
-    margin-bottom: 40px;
-  }
-  .ptlBlog .ptl-section__ornament img {
-    width: 180px;
-  }
 }
