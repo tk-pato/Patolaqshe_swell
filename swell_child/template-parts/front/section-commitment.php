@@ -1,8 +1,8 @@
 <?php
 if (! defined('ABSPATH')) exit;
 
-// 専用CSSを後読みで確実に読み込む
-echo '<link rel="stylesheet" href="' . esc_url(get_stylesheet_directory_uri() . '/css/section-commitment.css') . '" media="all">';
+// 専用CSSはfunctions.phpで読み込み済み（重複削除 2025-01-XX）
+// echo '<link rel="stylesheet" href="' . esc_url(get_stylesheet_directory_uri() . '/css/section-commitment.css') . '" media="all">';
 
 // 共通セクション背景（Customizer）を取得
 $bg = function_exists('ptl_get_common_section_bg') ? ptl_get_common_section_bg() : [
