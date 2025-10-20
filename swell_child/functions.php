@@ -179,23 +179,19 @@ add_action('wp_enqueue_scripts', function () {
   // 親テーマ main.css のハンドルは 'main_style'（SWELL）
   wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
 
-  // commitment - 統合CSS（ptlCommit 1ハンドルに集約）
-  add_action('wp_enqueue_scripts', function () {
+  // COMMITMENT - 統合CSS（優先度最適化）
+  $commitment_css = get_stylesheet_directory() . '/css/section-commitment.css';
+  if (file_exists($commitment_css)) {
     // 旧ハンドルクリーンアップ
     foreach (['ptl_commitment_styles', 'ptl-section-commitment'] as $handle) {
-      wp_dequeue_style($handle);
-      wp_deregister_style($handle);
+      if (wp_style_is($handle, 'enqueued')) {
+        wp_dequeue_style($handle);
+        wp_deregister_style($handle);
+      }
     }
-    // 統合ハンドル
-    $rel = '/css/section-commitment.css';
-    $abs = get_stylesheet_directory() . $rel;
-    if (file_exists($abs)) {
-      wp_enqueue_style('ptlCommit', get_stylesheet_directory_uri() . $rel, [], filemtime($abs));
-    }
-  }, 99);
-
-  // section-menu.css（メニューセクション用）
-  wp_enqueue_style('ptl_section_menu', get_stylesheet_directory_uri() . '/css/section-menu.css', ['child_style'], time());
+    // child_style依存で読み込み
+    wp_enqueue_style('ptlCommit', get_stylesheet_directory_uri() . '/css/section-commitment.css', ['child_style'], filemtime($commitment_css));
+  }
 
   // section-menu.css（メニューセクション用）
   $sm_path = get_stylesheet_directory() . '/css/section-menu.css';
@@ -207,7 +203,6 @@ add_action('wp_enqueue_scripts', function () {
       filemtime($sm_path)
     );
   }
-
 
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
