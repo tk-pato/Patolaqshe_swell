@@ -216,15 +216,3 @@
   margin-top: 0;
   margin-bottom: 80px;
 }
-
-
-/* タブレット */
-@media (min-width: 769px) and (max-width: 1024px) {
-  #intro .ptlIntro__content {
-    padding: clamp(36px, 6vw, 72px);
-  }
-  
-  #intro .ptlIntro__content-inner {
-    max-width: 480px;
-  }
-}
