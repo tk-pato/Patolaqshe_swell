@@ -8,11 +8,37 @@
 @media (max-width: 959px) {
   .ptlHub {
     background-attachment: scroll;
+    min-height: auto; /* SP: 固定高さ解除、コンテンツベースに */
+    max-height: none; /* 最大高さ制限も解除 */
+    padding: 0; /* パディング削除（カード側で管理） */
+    display: block; /* flex解除、通常フローに */
+    overflow: hidden;
+  }
+  
+  /* コンテンツエリア - SP調整 */
+  .ptlHub .ptl-section__inner {
+    position: static; /* 通常フローに戻す */
+    padding: 0 20px;
+    padding-top: 40px; /* セクション上余白 */
+    padding-bottom: 40px; /* セクション下余白 */
+  }
+  
+  /* カード余白削除（グリッドのgapで管理） */
+  .ptlHub__card {
+    margin: 0; /* カード個別のmargin削除 */
   }
   
   /* グリッドレイアウト - タブレット */
   .ptlHub__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px; /* カード間の余白 */
+    margin: 0; /* グリッド外側のmargin削除 */
+  }
+  
+  /* ヘッダー余白調整 */
+  .ptlHub__header {
+    margin-top: 0;
+    margin-bottom: 32px; /* ヘッダーとグリッド間 */
   }
   
   /* コンテンツパディング調整 */
@@ -29,12 +55,18 @@
 
 /* モバイルレイアウト */
 @media (max-width: 699px) {
+  .ptlHub .ptl-section__inner {
+    padding: 32px 16px; /* モバイル: 上下左右余白削減 */
+  }
+  
   .ptlHub__grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px; /* カード間の余白 */
+    margin: 0;
   }
   
   .ptlHub__header {
-    margin-bottom: 40px;
+    margin-top: 0;
+    margin-bottom: 24px;
   }
 }
