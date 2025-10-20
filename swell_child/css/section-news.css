@@ -89,27 +89,8 @@
   margin-top: 28px; 
 }
 
-@media (max-width: 900px) {
-  .ptlNews__list.is-titleOnly .ptlNews__item {
-    padding: 18px 0 18px 0;
-    gap: 18px;
-  }
-}
-
-/* セクション余白 */
+/* セクション余白（PC/SP共通ベース） */
 #news {
   margin-top: 0;
   margin-bottom: 80px;
 }
-
-@media (max-width: 768px) {
-  #news {
-    margin-bottom: 40px;
-  }
-}
-
-#news {
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-

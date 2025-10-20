@@ -1,0 +1,20 @@
+/* ===========================
+   NEWS Section - SP Styles
+   NEWSセクション SP専用スタイル
+   適用条件: 959px以下
+   =========================== */
+
+/* タイトルのみ表示モード - タブレット/SP調整 */
+@media (max-width: 900px) {
+  .ptlNews__list.is-titleOnly .ptlNews__item {
+    padding: 18px 0 18px 0;
+    gap: 18px;
+  }
+}
+
+/* セクション余白 - SP調整 */
+@media (max-width: 768px) {
+  #news {
+    margin-bottom: 40px;
+  }
+}

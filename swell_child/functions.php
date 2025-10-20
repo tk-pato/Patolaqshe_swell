@@ -933,10 +933,22 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('ptlHub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
   }
 
-  // NEWS セクション用CSS（セクション個別管理へ移行）
+  // NEWS セクション用CSS（PC/SP分離対応）
   $news_css = get_stylesheet_directory() . '/css/section-news.css';
   if (file_exists($news_css)) {
     wp_enqueue_style('ptlNews', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], filemtime($news_css));
+  }
+  
+  // NEWS - PC専用CSS
+  $news_pc = get_stylesheet_directory() . '/css/pc/section-news.css';
+  if (file_exists($news_pc)) {
+    wp_enqueue_style('ptlNews-pc', get_stylesheet_directory_uri() . '/css/pc/section-news.css', ['ptlNews'], filemtime($news_pc), 'screen and (min-width: 960px)');
+  }
+  
+  // NEWS - SP専用CSS
+  $news_sp = get_stylesheet_directory() . '/css/sp/section-news.css';
+  if (file_exists($news_sp)) {
+    wp_enqueue_style('ptlNews-sp', get_stylesheet_directory_uri() . '/css/sp/section-news.css', ['ptlNews'], filemtime($news_sp), 'screen and (max-width: 959px)');
   }
 
   // BUST-ISSUESは共通のsection-parallax.jsを使用（ptlNavHeroクラス併用）
