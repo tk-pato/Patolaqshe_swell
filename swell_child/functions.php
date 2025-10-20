@@ -938,11 +938,8 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($news_css)) {
     wp_enqueue_style('ptlNews', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], filemtime($news_css));
   }
+
   // BUST-ISSUESは共通のsection-parallax.jsを使用（ptlNavHeroクラス併用）
-  // $bust_issues_js = get_stylesheet_directory() . '/js/section-bust-issues.js';
-  // if (file_exists($bust_issues_js)) {
-  //   wp_enqueue_script('ptl-bust-issues', get_stylesheet_directory_uri() . '/js/section-bust-issues.js', [], filemtime($bust_issues_js), true);
-  // }
 }, 20);
 
 /**
