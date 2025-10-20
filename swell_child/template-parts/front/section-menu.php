@@ -35,7 +35,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                 <div class="ptlMenu__mainContent">
                     <a href="<?php echo esc_url(home_url('/lp03/')); ?>" class="ptlMenu__mainLink">
                         <div class="ptlMenu__mainImage">
-                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
                         </div>
                         <div class="ptlMenu__mainText">
                             <h3 class="ptlMenu__mainTitle">テキストテキストテキスト</h3>
@@ -51,7 +51,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/menu/sizeup/')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="サイズアップ" loading="lazy" decoding="async">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="サイズアップ" loading="lazy" decoding="async">
                             </div>
                             <h4 class="ptlMenu__subTitle">サイズアップ</h4>
                         </a>
@@ -60,7 +60,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/menu/down/')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="下垂ケア" loading="lazy" decoding="async">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="下垂ケア" loading="lazy" decoding="async">
                             </div>
                             <h4 class="ptlMenu__subTitle">下垂ケア</h4>
                         </a>
@@ -69,7 +69,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/menu/distance/')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="離れバストケア" loading="lazy" decoding="async">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="離れバストケア" loading="lazy" decoding="async">
                             </div>
                             <h4 class="ptlMenu__subTitle">離れバストケア</h4>
                         </a>
