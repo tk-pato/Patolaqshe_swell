@@ -923,11 +923,24 @@ add_action('wp_enqueue_scripts', function () {
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
   wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
 
-  // INFO HUB セクション用CSS/JS
+  // INFO HUB セクション用CSS/JS（PC/SP分離対応）
   $infohub_css = get_stylesheet_directory() . '/css/section-infohub.css';
   if (file_exists($infohub_css)) {
     wp_enqueue_style('ptlHub', get_stylesheet_directory_uri() . '/css/section-infohub.css', ['child_style'], filemtime($infohub_css));
   }
+  
+  // INFO HUB - PC専用CSS
+  $infohub_pc = get_stylesheet_directory() . '/css/pc/section-infohub.css';
+  if (file_exists($infohub_pc)) {
+    wp_enqueue_style('ptlHub-pc', get_stylesheet_directory_uri() . '/css/pc/section-infohub.css', ['ptlHub'], filemtime($infohub_pc), 'screen and (min-width: 960px)');
+  }
+  
+  // INFO HUB - SP専用CSS
+  $infohub_sp = get_stylesheet_directory() . '/css/sp/section-infohub.css';
+  if (file_exists($infohub_sp)) {
+    wp_enqueue_style('ptlHub-sp', get_stylesheet_directory_uri() . '/css/sp/section-infohub.css', ['ptlHub'], filemtime($infohub_sp), 'screen and (max-width: 959px)');
+  }
+  
   $infohub_js = get_stylesheet_directory() . '/js/section-infohub.js';
   if (file_exists($infohub_js)) {
     wp_enqueue_script('ptlHub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);

@@ -34,13 +34,6 @@
   min-height: clamp(520px, 60vh, 720px);
 }
 
-/* SP対応：モバイルでは固定背景を無効化 */
-@media (max-width: 959px) {
-  .ptlHub {
-    background-attachment: scroll;
-  }
-}
-
 /* 固定背景では不要（DOM要素としての背景は非表示） */
 .ptlHub__bg {
   display: none;
@@ -79,23 +72,6 @@
   width: 100%;
   margin: 0;
   padding: 0;
-}
-
-@media (max-width: 959px) {
-  .ptlHub__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 699px) {
-  .ptlHub__grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .ptlHub__header {
-    margin-bottom: 40px;
-  }
 }
 
 /* カード */
@@ -210,13 +186,6 @@
   -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.2);
 }
 
-/* モバイル調整 */
-@media (max-width: 959px) {
-  .ptlHub__content {
-    padding: 30px 8px 36px 8px;
-  }
-}
-
 /* ========================================
    緊急修正：カードを確実に最大幅に拡張
 ======================================== */
@@ -233,29 +202,10 @@
    セクション余白（独自管理）
 ======================================== */
 
-/* PC: padding削除、margin-bottomのみで管理 */
-@media (min-width: 960px) {
-    #section-infohub,
-    .ptlHub {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 80px;
-    }
-}
-
-/* SP: padding削除、margin-bottomのみで管理 */
-@media (max-width: 959px) {
-    #section-infohub,
-    .ptlHub {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-}
-
-#section-infohub {
+#section-infohub,
+.ptlHub {
   margin-top: 0;
   margin-bottom: 80px;
+  padding-top: 0;
+  padding-bottom: 0;
 }

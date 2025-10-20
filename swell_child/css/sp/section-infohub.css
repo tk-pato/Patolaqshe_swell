@@ -1,0 +1,40 @@
+/* ===========================
+   INFO HUB Section - SP Styles
+   INFOHUBセクション SP専用スタイル
+   適用条件: 959px以下
+   =========================== */
+
+/* SP対応：モバイルでは固定背景を無効化 */
+@media (max-width: 959px) {
+  .ptlHub {
+    background-attachment: scroll;
+  }
+  
+  /* グリッドレイアウト - タブレット */
+  .ptlHub__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* コンテンツパディング調整 */
+  .ptlHub__content {
+    padding: 30px 8px 36px 8px;
+  }
+  
+  /* セクション余白 - SP設定 */
+  #section-infohub,
+  .ptlHub {
+    margin-bottom: 40px;
+  }
+}
+
+/* モバイルレイアウト */
+@media (max-width: 699px) {
+  .ptlHub__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .ptlHub__header {
+    margin-bottom: 40px;
+  }
+}
