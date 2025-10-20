@@ -222,7 +222,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptl_section_salon', get_stylesheet_directory_uri() . '/css/section-salon.css', ['child_style'], filemtime($salon_css));
   }
 }, 20);
-/* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
 
 /* === Spacing Debug Toggle (front only) === */
 add_action('wp_footer', function () {
@@ -257,9 +256,6 @@ add_action('wp_footer', function () {
   </script>
 <?php
 }, 9999);
-
-// add_theme_support( 'post-thumbnails' );
-// JSON-LDやフック追加は、サイト固有要件が固まってから実装します。
 
 // パターン: 選ばれる理由（4カード）
 add_action('init', function () {
@@ -779,11 +775,6 @@ function ptl_get_common_section_bg(): array
     'parallax_speed' => $p_speed,
   ];
 }
-
-/**
- * カスタマイザー: フロント共通の縦並び動画背景（最大4本）
- */
-/* （削除）グローバル動画背景のカスタマイザー（ptl_global_bg）は撤去しました */
 
 /**
  * ブロックエディタのコンテンツから、アンカーIDが一致するブロックを1つ探して描画するヘルパー。
