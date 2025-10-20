@@ -331,30 +331,31 @@
 
 /* ========================================
    セクション余白設定（NAVIGATION/SALONと同じ構造）
+   詳細度最大化: body + section IDで親テーマCSS上書き
 ======================================== */
 
 /* PC: padding削除、margin-bottomのみで管理 */
 @media (min-width: 960px) {
-    #section-commitment {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 80px;
+    body #section-commitment {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 80px !important;
     }
 }
 
 /* SP: padding削除、margin-bottomのみで管理 */
 @media (max-width: 959px) {
-    #section-commitment {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
+    body #section-commitment {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 40px !important;
     }
 }
 
 /* デフォルト設定（メディアクエリ外） */
-#section-commitment {
-  margin-top: 0;
-  margin-bottom: 80px;
+body #section-commitment {
+  margin-top: 0 !important;
+  margin-bottom: 80px !important;
 }
