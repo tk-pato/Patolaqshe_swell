@@ -71,14 +71,14 @@ $overlay_style = sprintf('background: rgba(%s, %.2f);', $overlay_rgb, $overlay_o
     <div class="ptlIntro__content">
         <div class="ptlIntro__content-inner">
 
-            <?php if (!empty($brand_text)) : ?>
-                <div class="ptlIntro__brand">
-                    <div class="ptlIntro__brand-text"><?php echo esc_html($brand_text); ?></div>
-                    <div class="ptlIntro__brand-ornament"></div>
-                </div>
-            <?php endif; ?>
-
-            <?php if (!empty($subtitle)) : ?>
+    <?php if (!empty($brand_text)) : ?>
+      <div class="ptlIntro__brand">
+        <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/intrologo.png'); ?>" 
+             alt="<?php echo esc_attr($brand_text); ?>" 
+             class="ptlIntro__brand-logo" />
+        <div class="ptlIntro__brand-ornament"></div>
+      </div>
+    <?php endif; ?>            <?php if (!empty($subtitle)) : ?>
                 <div class="ptlIntro__subtitle"><?php echo esc_html($subtitle); ?></div>
             <?php endif; ?>
 

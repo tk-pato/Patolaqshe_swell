@@ -42,6 +42,13 @@
     text-align: center;
   }
   
+  /* ブランドロゴ画像 - SP調整 */
+  #intro .ptlIntro__brand-logo {
+    max-width: 140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   #intro .ptlIntro__brand-ornament {
     margin-left: auto;
     margin-right: auto;
