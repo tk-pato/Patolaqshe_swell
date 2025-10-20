@@ -1987,10 +1987,22 @@ add_action('wp_enqueue_scripts', function () {
     wp_register_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', [], '8.4.7', true);
   }
 
-  // お客様の声 CSS
+  // お客様の声 CSS（PC/SP分離対応）
   $css = get_stylesheet_directory() . '/css/section-uservoice.css';
   if (file_exists($css) && ! wp_style_is('ptl-uservoice', 'enqueued')) {
     wp_enqueue_style('ptl-uservoice', get_stylesheet_directory_uri() . '/css/section-uservoice.css', ['child_style', 'swiper'], filemtime($css));
+  }
+  
+  // お客様の声 - PC専用CSS
+  $uservoice_pc = get_stylesheet_directory() . '/css/pc/section-uservoice.css';
+  if (file_exists($uservoice_pc)) {
+    wp_enqueue_style('ptl-uservoice-pc', get_stylesheet_directory_uri() . '/css/pc/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_pc), 'screen and (min-width: 960px)');
+  }
+  
+  // お客様の声 - SP専用CSS
+  $uservoice_sp = get_stylesheet_directory() . '/css/sp/section-uservoice.css';
+  if (file_exists($uservoice_sp)) {
+    wp_enqueue_style('ptl-uservoice-sp', get_stylesheet_directory_uri() . '/css/sp/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_sp), 'screen and (max-width: 959px)');
   }
 
   // お客様の声 JS（Swiperに依存）
