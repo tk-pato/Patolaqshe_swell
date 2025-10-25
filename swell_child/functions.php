@@ -3014,3 +3014,21 @@ add_action('wp_head', function () {
   }
   </style>';
 }, 100);
+
+/**
+ * SPヒーロー被さり効果: ヒーローにクラス追加（固定版）
+ */
+add_action('wp_head', function() {
+    if (!is_front_page()) return;
+    ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var hero = document.querySelector('.p-mainVisual');
+        if (hero) {
+            hero.classList.add('ptl-overlap-base');
+            document.body.classList.add('has-hero-overlap');
+        }
+    });
+    </script>
+    <?php
+}, 999);

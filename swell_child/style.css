@@ -391,3 +391,77 @@
 /* --- Bust Issues banner --- */
 /* BUST-ISSUESスタイルはissues-navigation.cssで完全管理 */
 
+/* =====================================================
+   SPヒーロー被さり効果 - 固定ヒーロー版
+   実装日: 2025-10-25
+   ヒーロー画像は固定、INTROが重なって覆う
+   ----------------------------------------------------- */
+
+/* === PC表示（768px以上）: 通常表示 === */
+@media (min-width: 768px) {
+  .ptl-overlap-base {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .ptl-overlap-layer,
+  .ptlIntro-section.ptl-overlap-layer {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* === SP表示（767px以下）: 被さり効果 === */
+@media (max-width: 767px) {
+  
+  /* ヒーロー: 固定背景レイヤー（動かない） */
+  body.has-hero-overlap .p-mainVisual,
+  .ptl-overlap-base {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    min-height: 100vh !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* ヒーロー後のスペーサー（スクロール可能にする） */
+  body.has-hero-overlap .l-mainContent {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* INTRO: 前面レイヤー（ヒーローに重なる） */
+  .ptl-overlap-layer,
+  .ptlIntro-section.ptl-overlap-layer {
+    position: relative !important;
+    z-index: 10 !important;
+    
+    /* ヒーローの高さ分余白を取って、その後上に重ねる */
+    margin-top: calc(100vh - 80px) !important;
+    
+    /* 白背景で覆う */
+    background: #ffffff !important;
+    
+    /* 上部を丸く */
+    border-radius: 24px 24px 0 0 !important;
+    
+    /* 浮いてる感じの影 */
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1) !important;
+    
+    /* 内部コンテンツの余白調整 */
+    padding-top: 60px !important;
+    padding-bottom: 80px !important;
+  }
+  
+  /* INTROの最初の子要素の余白削除 */
+  .ptl-overlap-layer > .ptlIntro__media,
+  .ptl-overlap-layer > .ptlIntro__content,
+  .ptlIntro-section.ptl-overlap-layer > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+

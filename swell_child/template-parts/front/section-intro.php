@@ -52,7 +52,7 @@ $overlay_rgb = $overlay_color === 'black' ? '0, 0, 0' : '255, 255, 255';
 $overlay_style = sprintf('background: rgba(%s, %.2f);', $overlay_rgb, $overlay_opacity);
 ?>
 
-<section id="intro" class="ptlIntro-section">
+<section id="intro" class="ptlIntro-section ptl-overlap-layer">
 
     <!-- Left: Media Area -->
     <div class="ptlIntro__media" <?php if ($media_style) echo 'style="' . esc_attr($media_style) . '"'; ?>>
