@@ -83,11 +83,16 @@
       if (move > max) move = max;
       if (move < -max) move = -max;
 
-  // 端見え防止のための拡大率を、必要最小限で自動算出
-  // 上下両端で最大移動量をカバーできるよう、2*max / 高さ をベースにマージンを足す
+  // 端見え防止のための拡大率を算出
+  // parallax移動量を完全にカバーするために、十分な拡大率を確保
   var needed = (2 * Math.abs(max)) / Math.max(1, rect.height);
-  var scale = 1 + Math.min(1.5, needed) + 0.04; // 上限+150%（+4%マージン）
+  var scale = 1 + needed + 0.15; // 移動量カバー + 15%の安全マージン
+      // 最小拡大率を1.3に設定（parallax効果に必要な最低限の拡大）
+      if (scale < 1.3) scale = 1.3;
+      // data-parallax-scale属性で指定された値があれば優先
       if (it.minScale && scale < it.minScale) scale = it.minScale;
+      // 過度な拡大を防ぐため上限を2.0に設定
+      if (scale > 2.0) scale = 2.0;
       it.target.style.transform = 'translate3d(0,' + move.toFixed(2) + 'px,0) scale(' + scale.toFixed(3) + ')';
       it.target.style.willChange = 'transform';
     }
