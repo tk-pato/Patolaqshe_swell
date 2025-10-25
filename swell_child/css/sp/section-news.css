@@ -4,6 +4,13 @@
    適用条件: 959px以下
    =========================== */
 
+/* PC/SP表示切り替え制御 - SPでは元の位置のみ表示 */
+@media (max-width: 959px) {
+  .ptl-news-pc-only {
+    display: none !important;
+  }
+}
+
 /* タイトルのみ表示モード - タブレット/SP調整 */
 @media (max-width: 900px) {
   .ptlNews__list.is-titleOnly .ptlNews__item {
