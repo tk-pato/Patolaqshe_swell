@@ -12,7 +12,7 @@
 
   function collect() {
     items = [];
-    var nodeList = document.querySelectorAll('.ptl-pageNavHero[data-parallax="bg"]');
+    var nodeList = document.querySelectorAll('.ptl-pageNavHero[data-parallax="bg"], .ptlIssues[data-parallax="bg"], .ptlNavHero[data-parallax="bg"]');
     if (!nodeList || !nodeList.length) return;
 
   for (var i = 0; i < nodeList.length; i++) {
@@ -41,10 +41,10 @@
       if (attrTarget) {
         try { target = sec.querySelector(attrTarget); } catch (e) { /* noop */ }
       }
-      var tVideo = target || sec.querySelector('.ptl-pageNavHero__video');
-      var tImg = (!tVideo && sec.querySelector('.ptl-pageNavHero__image img')) || null;
-      var tPic = (!tVideo && !tImg && sec.querySelector('.ptl-pageNavHero__image')) || null;
-      var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptl-pageNavHero__bg')) || null;
+      var tVideo = target || sec.querySelector('.ptl-pageNavHero__video, .ptlIssues__video, .ptlNavHero__video');
+      var tImg = (!tVideo && sec.querySelector('.ptl-pageNavHero__image img, .ptlIssues__image img, .ptlNavHero__image img')) || null;
+      var tPic = (!tVideo && !tImg && sec.querySelector('.ptl-pageNavHero__image, .ptlIssues__image, .ptlNavHero__image')) || null;
+      var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptl-pageNavHero__bg, .ptlIssues__bg, .ptlNavHero__bg')) || null;
       target = tVideo || tImg || tPic || tBg;
       if (!target) continue;
 
@@ -86,13 +86,16 @@
   // 端見え防止のための拡大率を算出
   // parallax移動量を完全にカバーするために、十分な拡大率を確保
   var needed = (2 * Math.abs(max)) / Math.max(1, rect.height);
-  var scale = 1 + needed + 0.15; // 移動量カバー + 15%の安全マージン
-      // 最小拡大率を1.3に設定（parallax効果に必要な最低限の拡大）
-      if (scale < 1.3) scale = 1.3;
-      // data-parallax-scale属性で指定された値があれば優先
-      if (it.minScale && scale < it.minScale) scale = it.minScale;
-      // 過度な拡大を防ぐため上限を2.0に設定
-      if (scale > 2.0) scale = 2.0;
+  var scale = 1 + needed + 0.18; // 移動量カバー + 18%の安全マージン
+      
+      // 最小拡大率を1.35に設定（parallax効果に必要な最低限の拡大）
+      if (scale < 1.35) scale = 1.35;
+      
+      // data-parallax-scale属性の指定値を最優先で適用
+      if (it.minScale && it.minScale > scale) scale = it.minScale;
+      
+      // 過度な拡大を防ぐため上限を2.5に設定
+      if (scale > 2.5) scale = 2.5;
       it.target.style.transform = 'translate3d(0,' + move.toFixed(2) + 'px,0) scale(' + scale.toFixed(3) + ')';
       it.target.style.willChange = 'transform';
     }
