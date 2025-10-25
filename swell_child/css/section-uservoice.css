@@ -438,15 +438,16 @@
 /* レスポンシブ調整 */
 @media (max-width: 768px) {
     #uservoice .uservoice-slider {
-        margin-left: calc(50% - 50vw);
-        width: 100vw;
+        margin-left: 0; /* calc(50% - 50vw)をキャンセル */
+        width: 100%; /* 100vwをキャンセル */
+        max-width: 100%;
     }
 
-    #uservoice .uservoice-slider .swiper { padding: 0 50px; }
+    #uservoice .uservoice-slider .swiper { padding: 0 40px; }
 
     #uservoice .feedback-card {
         padding: 20px;
-        margin: 0 10px; /* SP時の左右マージン */
+        margin: 0 8px; /* SP時の左右マージン */
         min-height: 300px;
     }
 
@@ -511,24 +512,5 @@ body #uservoice {
     background: #ffffff !important;
     padding-top: 60px !important;
     padding-bottom: 60px !important;
-  }
-  
-  /* 右ズレ修正: フルブリード解除 */
-  #uservoice .uservoice-slider {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    max-width: 100% !important;
-  }
-  
-  /* スライダー内部も確実に収める */
-  #uservoice .uservoice-slider .swiper {
-    padding: 0 40px !important;
-    max-width: 100% !important;
-  }
-  
-  /* カード左右マージン調整 */
-  #uservoice .feedback-card {
-    margin: 0 8px !important;
   }
 }
