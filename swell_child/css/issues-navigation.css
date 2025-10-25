@@ -234,3 +234,28 @@
   margin-top: 0;
   margin-bottom: 80px;
 }
+
+/* =====================================================
+   SP: BUST-ISSUES 背景透過
+   実装日: 2025-10-25
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 背景透過 */
+  #bust-issues,
+  .ptl-bustIssues,
+  .ptl-pageNavHero {
+    background: transparent !important;
+  }
+  
+  /* 背景動画/画像を非表示 */
+  .ptl-pageNavHero__bg,
+  .ptl-pageNavHero__overlay {
+    display: none !important;
+  }
+  
+  /* カード部分のみ半透明白背景 */
+  .ptl-bustIssues__card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+}

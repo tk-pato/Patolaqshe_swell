@@ -209,3 +209,38 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+/* =====================================================
+   SP: INFO HUB 背景透過
+   実装日: 2025-10-25
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 背景透過 */
+  #section-infohub,
+  .ptl-infohub,
+  .ptlHub {
+    background: transparent !important;
+  }
+  
+  /* 固定背景を無効化 */
+  .ptlHub {
+    background-attachment: scroll !important;
+    background-image: none !important;
+  }
+  
+  /* カード部分のみ半透明白背景 */
+  .ptlHub__card,
+  .ptlInfohubCard {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  
+  /* タイトルを黒文字に */
+  #section-infohub .ptl-section__title,
+  #section-infohub .ptl-section__subtitle,
+  .ptlHub__title,
+  .ptlHub__subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+}
