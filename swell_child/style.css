@@ -445,14 +445,14 @@
     /* 白背景で覆う */
     background: #ffffff !important;
     
-    /* 上部を丸く */
+    /* 上部のみ丸く（左右だけ、重なり部分は直角） */
     border-radius: 24px 24px 0 0 !important;
     
     /* 浮いてる感じの影 */
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1) !important;
     
-    /* 内部コンテンツの余白調整 */
-    padding-top: 60px !important;
+    /* 内部コンテンツの余白調整：上部余白を0に */
+    padding-top: 0 !important;
     padding-bottom: 80px !important;
   }
   
@@ -462,6 +462,19 @@
   .ptlIntro-section.ptl-overlap-layer > *:first-child {
     margin-top: 0 !important;
     padding-top: 0 !important;
+  }
+  
+  /* 角丸は表示される部分のみ（上80pxの見える部分だけ） */
+  .ptlIntro-section.ptl-overlap-layer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 24px 24px 0 0;
+    z-index: -1;
   }
 }
 
