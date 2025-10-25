@@ -512,4 +512,23 @@ body #uservoice {
     padding-top: 60px !important;
     padding-bottom: 60px !important;
   }
+  
+  /* 右ズレ修正: フルブリード解除 */
+  #uservoice .uservoice-slider {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  /* スライダー内部も確実に収める */
+  #uservoice .uservoice-slider .swiper {
+    padding: 0 40px !important;
+    max-width: 100% !important;
+  }
+  
+  /* カード左右マージン調整 */
+  #uservoice .feedback-card {
+    margin: 0 8px !important;
+  }
 }
