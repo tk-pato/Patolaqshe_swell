@@ -392,13 +392,13 @@
 /* BUST-ISSUESスタイルはissues-navigation.cssで完全管理 */
 
 /* =====================================================
-   SPヒーロー被さり効果 - 固定ヒーロー版
+   SPヒーロー被さり効果＋軽量化（パララックス無効）
    実装日: 2025-10-25
-   ヒーロー画像は固定、INTROが重なって覆う
    ----------------------------------------------------- */
 
-/* === PC表示（768px以上）: 通常表示 === */
+/* === PC表示（768px以上）: 通常表示（パララックス動作） === */
 @media (min-width: 768px) {
+  .p-mainVisual,
   .ptl-overlap-base {
     position: relative;
     z-index: 1;
@@ -408,73 +408,227 @@
   .ptlIntro-section.ptl-overlap-layer {
     position: relative;
     z-index: 2;
+    margin-top: 0 !important;
   }
 }
 
-/* === SP表示（767px以下）: 被さり効果 === */
+/* === SP表示（767px以下）: 被さり効果＋軽量化 === */
 @media (max-width: 767px) {
   
-  /* ヒーロー: 固定背景レイヤー（動かない） */
-  body.has-hero-overlap .p-mainVisual,
+  /* ========================================
+     ヒーロー固定
+     ======================================== */
+  
+  .p-mainVisual,
   .ptl-overlap-base {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    z-index: 1 !important;
-    min-height: 100vh !important;
-    margin-bottom: 0 !important;
     width: 100% !important;
+    height: 100vh !important;
+    z-index: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
-  /* ヒーロー後のスペーサー（スクロール可能にする） */
-  body.has-hero-overlap .l-mainContent {
-    position: relative;
-    z-index: 2;
+  .p-mainVisual__inner,
+  .p-mainVisual video,
+  .p-mainVisual img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
   
-  /* INTRO: 前面レイヤー（ヒーローに重なる） */
+  /* ========================================
+     INTRO: 被さり効果
+     ======================================== */
+  
   .ptl-overlap-layer,
   .ptlIntro-section.ptl-overlap-layer {
     position: relative !important;
     z-index: 10 !important;
-    
-    /* ヒーローの高さ分余白を取って、その後上に重ねる */
-    margin-top: calc(100vh - 80px) !important;
-    
-    /* 白背景で覆う */
+    margin-top: 100vh !important;
+    transform: translateY(-80px) !important;
     background: #ffffff !important;
-    
-    /* 上部のみ丸く（左右だけ、重なり部分は直角） */
     border-radius: 24px 24px 0 0 !important;
-    
-    /* 浮いてる感じの影 */
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1) !important;
-    
-    /* 内部コンテンツの余白調整：上部余白を0に */
-    padding-top: 0 !important;
-    padding-bottom: 80px !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
+    padding-top: 40px !important;
+    padding-bottom: 60px !important;
   }
   
-  /* INTROの最初の子要素の余白削除 */
-  .ptl-overlap-layer > .ptlIntro__media,
-  .ptl-overlap-layer > .ptlIntro__content,
-  .ptlIntro-section.ptl-overlap-layer > *:first-child {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+  /* ========================================
+     パララックス無効化（軽量化）
+     ======================================== */
+  
+  /* BUST-ISSUES: パララックス無効＋背景透過 */
+  #bust-issues,
+  .ptl-bustIssues {
+    position: relative !important;
+    z-index: 10 !important;
+    background: transparent !important;
   }
   
-  /* 角丸は表示される部分のみ（上80pxの見える部分だけ） */
-  .ptlIntro-section.ptl-overlap-layer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: #ffffff;
-    border-radius: 24px 24px 0 0;
-    z-index: -1;
+  #bust-issues .ptl-pageNavHero__bg,
+  .ptl-bustIssues .ptl-pageNavHero__bg {
+    display: none !important;
+  }
+  
+  #bust-issues .ptl-pageNavHero__overlay,
+  .ptl-bustIssues .ptl-pageNavHero__overlay {
+    display: none !important;
+  }
+  
+  /* カード部分だけ白背景 */
+  #bust-issues .ptl-bustIssues__card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  
+  /* ========================================
+     NAVIGATION: パララックス無効＋背景透過
+     ======================================== */
+  
+  #page-navigation,
+  .ptl-pageNavHero {
+    position: relative !important;
+    z-index: 10 !important;
+    background: transparent !important;
+    min-height: auto !important;
+  }
+  
+  #page-navigation .ptl-pageNavHero__bg,
+  .ptl-pageNavHero .ptl-pageNavHero__bg {
+    display: none !important;
+  }
+  
+  #page-navigation .ptl-pageNavHero__overlay,
+  .ptl-pageNavHero .ptl-pageNavHero__overlay {
+    display: none !important;
+  }
+  
+  /* タイトルを黒文字に（背景がないため） */
+  #page-navigation .ptl-section__title,
+  #page-navigation .ptl-section__subtitle,
+  .ptl-pageNavHero .ptl-section__title,
+  .ptl-pageNavHero .ptl-section__subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+  
+  /* ========================================
+     USER'S VOICE: 背景あり
+     ======================================== */
+  
+  #section-uservoice,
+  .ptl-uservoice {
+    position: relative !important;
+    z-index: 10 !important;
+    background: #ffffff !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+  
+  /* ========================================
+     INFO HUB: パララックス無効＋背景透過
+     ======================================== */
+  
+  #section-infohub,
+  .ptl-infohub {
+    position: relative !important;
+    z-index: 10 !important;
+    background: transparent !important;
+  }
+  
+  /* 固定背景を無効化 */
+  .ptl-infohub {
+    background-image: none !important;
+    background-attachment: scroll !important;
+  }
+  
+  /* カード部分だけ白背景 */
+  .ptl-infohub .ptl-infohubCard {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  
+  /* タイトルを黒文字に */
+  #section-infohub .ptl-section__title,
+  #section-infohub .ptl-section__subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+  
+  /* ========================================
+     BLOG: 背景あり（薄グレー）
+     ======================================== */
+  
+  #section-blog,
+  .ptl-blog {
+    position: relative !important;
+    z-index: 10 !important;
+    background: #f8f8f8 !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+  
+  /* ========================================
+     その他のセクション: 白背景
+     ======================================== */
+  
+  .l-mainContent,
+  .l-mainContent__inner {
+    position: relative !important;
+    z-index: 10 !important;
+    background: #ffffff !important;
+  }
+  
+  /* SALON, COMMITMENT, MENU等 */
+  #salon,
+  .ptl-salon,
+  .ptl-salonHero,
+  #section-commitment,
+  .ptl-commitment,
+  #section-menu,
+  .ptl-menu {
+    position: relative !important;
+    z-index: 10 !important;
+    background: #ffffff !important;
+  }
+  
+  /* ========================================
+     ヘッダー＋フッター
+     ======================================== */
+  
+  .l-header,
+  .p-headerBar,
+  .l-fixHeader {
+    position: fixed !important;
+    z-index: 100 !important;
+  }
+  
+  footer,
+  .l-footer {
+    position: relative !important;
+    z-index: 10 !important;
+    background: #ffffff !important;
+  }
+  
+  /* ========================================
+     パフォーマンス最適化
+     ======================================== */
+  
+  /* will-changeを削除（SP軽量化） */
+  * {
+    will-change: auto !important;
+  }
+  
+  /* アニメーションを削減 */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }
 
