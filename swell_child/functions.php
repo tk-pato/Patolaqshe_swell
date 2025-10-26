@@ -257,6 +257,13 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
+  // smooth-scroll.js（ヌルヌルスクロール - 全ページ適用）
+  $smooth_scroll_path = get_stylesheet_directory() . '/js/smooth-scroll.js';
+  if (file_exists($smooth_scroll_path)) {
+    $smooth_scroll_ver = date('Ymdgis', filemtime($smooth_scroll_path));
+    wp_enqueue_script('child_smooth_scroll', get_stylesheet_directory_uri() . '/js/smooth-scroll.js', [], $smooth_scroll_ver, true);
+  }
+
   // SPヒーロースクロールボタン → #intro スムーススクロール（インラインスクリプト）
   if (is_front_page()) {
     add_action('wp_footer', function () {
