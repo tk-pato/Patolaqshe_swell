@@ -1274,52 +1274,8 @@ CSS;
 
   // JS（インライン）
   $js = <<<JS
-(function(){
-  var els = document.querySelectorAll('.ptl-navigation, .ptlNavHero');
-  if (!els.length) return;
-
-  var isPC = window.matchMedia('(min-width: 769px)');
-  var FACTOR = 0.35; // 値を上げるほど移動量が増える
-  var ticking = false;
-
-  // 初期化: 各要素に動画/画像の有無でクラスを付与
-  els.forEach(function(el){
-    var vid = el.querySelector('video, .ptlNavHero__video');
-    var img = el.querySelector('.ptlNavHero__image img');
-    if (vid) el.classList.add('ptl-has-video');
-    if (img) el.classList.add('ptl-has-image');
-  });
-
-  function update(){
-    if (!isPC.matches) {
-      els.forEach(function(el){ el.style.removeProperty('--ptl-parallax'); });
-      return;
-    }
-    els.forEach(function(el){
-      var rect = el.getBoundingClientRect();
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      var center = rect.top + rect.height/2 - vh/2;   // ビューポート中心基準
-      var move = -center * FACTOR;
-      el.style.setProperty('--ptl-parallax', move.toFixed(2) + 'px');
-    });
-  }
-
-  function onScroll(){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      update();
-      ticking = false;
-    });
-  }
-
-  ['scroll','resize'].forEach(function(ev){
-    window.addEventListener(ev, onScroll, {passive:true});
-  });
-  update();
-})();
-
-// ③ SP向け：ナビ折り畳みの max-height 再計測（<=768pxのみ）
+// パララックス処理は section-parallax.js に一本化済み
+// SP向け：ナビ折り畳みの max-height 再計測（<=768pxのみ）
 (function(){
   var mqSP = window.matchMedia('(max-width: 768px)');
   
