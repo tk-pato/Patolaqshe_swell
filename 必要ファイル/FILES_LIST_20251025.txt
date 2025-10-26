@@ -1,216 +1,216 @@
 # ========================================
-# 主要ファイル（Commit: 0f2e3b3）
+# 主要ファイル（最新版）
 # ========================================
 
 # functions.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/functions.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/functions.php
 
 # style.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/style.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/style.css
 
 # front-page.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/front-page.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/front-page.php
 
 # page.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/page.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/page.php
 
 # page-landing.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/page-landing.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/page-landing.php
 
 # cache-bust.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/cache-bust.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/cache-bust.php
 
 # ========================================
-# CSS: グローバル（Commit: 0f2e3b3）
+# CSS: グローバル（最新版）
 # ========================================
 
 # css/header-lock.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/header-lock.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/header-lock.css
 
 # css/header-reset.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/header-reset.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/header-reset.css
 
 # css/float-menu.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/float-menu.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/float-menu.css
 
 # css/footer.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/footer.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/footer.css
 
 # ========================================
-# CSS: セクション（メイン - PC/SP統合版）（Commit: 0f2e3b3）
+# CSS: セクション（メイン - PC/SP統合版）（最新版）
 # ========================================
 
 # css/issues-navigation.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/issues-navigation.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/issues-navigation.css
 
 # css/navigation.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/navigation.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/navigation.css
 
 # css/section-intro.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-intro.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-intro.css
 
 # css/section-news.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-news.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-news.css
 
 # css/section-blog.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-blog.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-blog.css
 
 # css/section-menu.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-menu.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-menu.css
 
 # css/section-commitment.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-commitment.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-commitment.css
 
 # css/section-uservoice.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-uservoice.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-uservoice.css
 
 # css/section-salon.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-salon.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-salon.css
 
 # css/section-infohub.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/section-infohub.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/section-infohub.css
 
 # ========================================
-# CSS: PC専用（Phase2完全分離版）（Commit: 0f2e3b3）
+# CSS: PC専用（Phase2完全分離版）（最新版）
 # ========================================
 
 # css/pc/issues-navigation.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/issues-navigation.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/issues-navigation.css
 
 # css/pc/navigation.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/navigation.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/navigation.css
 
 # css/pc/section-intro.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-intro.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-intro.css
 
 # css/pc/section-news.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-news.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-news.css
 
 # css/pc/section-blog.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-blog.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-blog.css
 
 # css/pc/section-menu.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-menu.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-menu.css
 
 # css/pc/section-commitment.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-commitment.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-commitment.css
 
 # css/pc/section-uservoice.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-uservoice.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-uservoice.css
 
 # css/pc/section-salon.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-salon.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-salon.css
 
 # css/pc/section-infohub.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/pc/section-infohub.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-infohub.css
 
 # ========================================
-# CSS: SP専用（Phase2完全分離版）（Commit: 0f2e3b3）
+# CSS: SP専用（Phase2完全分離版）（最新版）
 # ========================================
 
 # css/sp/section-intro.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-intro.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-intro.css
 
 # css/sp/section-news.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-news.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-news.css
 
 # css/sp/section-blog.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-blog.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-blog.css
 
 # css/sp/section-menu.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-menu.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-menu.css
 
 # css/sp/section-commitment.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-commitment.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-commitment.css
 
 # css/sp/section-uservoice.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-uservoice.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-uservoice.css
 
 # css/sp/section-salon.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-salon.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-salon.css
 
 # css/sp/section-infohub.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-infohub.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-infohub.css
 
 # css/sp/footer-sp.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/footer-sp.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/footer-sp.css
 
 # css/sp/section-order.css
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/css/sp/section-order.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/section-order.css
 
 # ========================================
-# JavaScript（Commit: 0f2e3b3）
+# JavaScript（最新版）
 # ========================================
 
 # js/float-menu.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/float-menu.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/float-menu.js
 
 # js/head-toggle.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/head-toggle.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/head-toggle.js
 
 # js/navigation.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/navigation.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/navigation.js
 
 # js/section-parallax.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/section-parallax.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/section-parallax.js
 
 # js/section-bust-issues.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/section-bust-issues.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/section-bust-issues.js
 
 # js/section-blog.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/section-blog.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/section-blog.js
 
 # js/section-infohub.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/section-infohub.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/section-infohub.js
 
 # js/uservoice-slider.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/uservoice-slider.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/uservoice-slider.js
 
 # js/section-reasons-parallax.js
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/js/section-reasons-parallax.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/section-reasons-parallax.js
 
 # ========================================
-# テンプレートパーツ（Commit: 0f2e3b3）
+# テンプレートパーツ（最新版）
 # ========================================
 
 # template-parts/front/global-parallax-bg.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/global-parallax-bg.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/global-parallax-bg.php
 
 # template-parts/front/section-intro.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-intro.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-intro.php
 
 # template-parts/front/section-bust-issues.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-bust-issues.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-bust-issues.php
 
 # template-parts/front/section-blog.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-blog.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-blog.php
 
 # template-parts/front/section-commitment.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-commitment.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-commitment.php
 
 # template-parts/front/section-infohub.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-infohub.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-infohub.php
 
 # template-parts/front/section-news.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-news.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-news.php
 
 # template-parts/front/section-menu.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-menu.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-menu.php
 
 # template-parts/front/section-page-navigation.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-page-navigation.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-page-navigation.php
 
 # template-parts/front/section-salon.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-salon.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-salon.php
 
 # template-parts/front/section-uservoice.php
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/0f2e3b3/swell_child/template-parts/front/section-uservoice.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/section-uservoice.php
 
 # ========================================
 # 更新履歴
 # ========================================
-# 2025/10/27: Commit 0f2e3b3固定
+# 2025/10/27: main ブランチ参照（常に最新）
 # - Remove unnecessary .broken file
 # - .broken ファイルを削除
-# - main -> 0f2e3b3 固定参照に変更
+# - 常に最新の main ブランチを参照
 
