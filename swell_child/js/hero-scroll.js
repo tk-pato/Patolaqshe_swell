@@ -9,41 +9,61 @@
 (function() {
   'use strict';
   
+  console.log('=== HERO SCROLL JS LOADED ===');
+  
   // ウィンドウ幅が767px以下の場合のみ実行(SP)
   function initHeroScroll() {
+    console.log('Window width:', window.innerWidth);
+    
     // SP判定(767px以下)
     if (window.innerWidth > 767) {
+      console.log('PC mode - skip hero scroll modification');
       return; // PCの場合は何もしない
     }
+    
+    console.log('SP mode - modifying hero scroll button');
     
     // INTROセクションの存在確認
     const introSection = document.getElementById('intro');
     
     if (!introSection) {
-      console.warn('INTRO section (#intro) not found');
+      console.error('INTRO section (#intro) not found');
       return;
     }
+    
+    console.log('INTRO section found:', introSection);
     
     // ヒーロー内の全てのリンクとボタンを取得
     const heroSection = document.querySelector('.p-mainVisual');
     if (!heroSection) {
-      console.warn('Hero section not found');
+      console.error('Hero section (.p-mainVisual) not found');
       return;
     }
+    
+    console.log('Hero section found:', heroSection);
     
     // ホットペッパーへのリンクを全て取得
     const hotpepperLinks = heroSection.querySelectorAll('a[href*="hotpepper"]');
     
+    console.log('Hotpepper links found:', hotpepperLinks.length);
+    
     if (hotpepperLinks.length === 0) {
-      console.warn('No hotpepper links found in hero section');
+      console.warn('No hotpepper links found - trying all links');
+      // 全てのリンクを取得して確認
+      const allLinks = heroSection.querySelectorAll('a');
+      console.log('All links in hero:', allLinks.length);
+      allLinks.forEach(function(link, index) {
+        console.log('Link', index, ':', link.href, link.className);
+      });
       return;
     }
     
-    console.log('Found', hotpepperLinks.length, 'hotpepper link(s) in hero');
-    
     // 全てのホットペッパーリンクを#introスクロールに変更
-    hotpepperLinks.forEach(function(link) {
+    hotpepperLinks.forEach(function(link, index) {
+      console.log('Processing link', index, ':', link.href);
+      
       // 元のリンクを削除
+      const originalHref = link.href;
       link.href = '#intro';
       link.removeAttribute('target');
       link.removeAttribute('rel');
@@ -52,11 +72,13 @@
       
       // 新しいクリックイベントを設定
       link.addEventListener('click', function(e) {
+        console.log('Hero button clicked!');
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
         
         // INTROセクションへスムーススクロール
+        console.log('Scrolling to INTRO at:', introSection.offsetTop);
         window.scrollTo({
           top: introSection.offsetTop,
           behavior: 'smooth'
@@ -70,19 +92,30 @@
         return false;
       }, true);
       
-      console.log('Hero scroll link converted to #intro');
+      console.log('✓ Converted:', originalHref, '→ #intro');
     });
+    
+    console.log('=== HERO SCROLL MODIFICATION COMPLETE ===');
   }
   
   // ページ読み込み完了後に実行
   if (document.readyState === 'loading') {
+    console.log('Waiting for DOMContentLoaded...');
     document.addEventListener('DOMContentLoaded', initHeroScroll);
   } else {
+    console.log('DOM already loaded, executing now');
     initHeroScroll();
   }
   
   // 遅延読み込み対応
-  setTimeout(initHeroScroll, 1000);
-  setTimeout(initHeroScroll, 2000);
+  setTimeout(function() {
+    console.log('Retry after 1s...');
+    initHeroScroll();
+  }, 1000);
+  
+  setTimeout(function() {
+    console.log('Retry after 2s...');
+    initHeroScroll();
+  }, 2000);
   
 })();
