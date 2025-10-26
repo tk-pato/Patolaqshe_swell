@@ -1,6 +1,6 @@
 /**
  * Hero Scroll Button - SP専用スムーススクロール
- * SPヒーローのスクロールボタンのみを#introスムーススクロールに変更
+ * SPヒーローのスクロールボタンを#introスムーススクロールに変更
  * PC(768px以上)には影響なし
  * 
  * @package SWELL_CHILD
@@ -20,12 +20,13 @@
     const intro = document.getElementById('intro');
     if (!intro) return;
     
-    // ヒーローのスクロールボタンを特定
-    const scrollBtn = document.querySelector('.p-mainVisual__scrollBtn') ||
-                      document.querySelector('.swl-mainvisual__scrollBtn') ||
-                      document.querySelector('[class*="mainVisual"] [class*="scrollBtn"]') ||
-                      document.querySelector('.p-mainVisual a[href="#"]') ||
-                      document.querySelector('.p-mainVisual .c-scrollDown');
+    // ヒーローのスクロールボタンを特定（全パターン網羅）
+    const scrollBtn = document.querySelector('.p-mainVisual__scrollBtn a') ||
+                      document.querySelector('.p-mainVisual .c-scrollDown') ||
+                      document.querySelector('.swl-mainvisual__scrollBtn a') ||
+                      document.querySelector('.p-mainVisual a[href*="#"]') ||
+                      document.querySelector('[class*="mainVisual"] [class*="scroll"]') ||
+                      document.querySelector('.p-mainVisual__footer a');
     
     if (!scrollBtn) return;
     
@@ -35,12 +36,13 @@
     
     // href を #intro に変更
     newBtn.href = '#intro';
+    newBtn.removeAttribute('target');
+    newBtn.removeAttribute('rel');
     
     // click イベント設定
     newBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      e.stopImmediatePropagation();
       
       window.scrollTo({
         top: intro.offsetTop,
