@@ -1,6 +1,7 @@
 /**
- * Hero Scroll Button - SP専用スムーススクロール（修正版）
- * PC表示には影響なし
+ * Hero Scroll Button - SP専用スムーススクロール
+ * SPで全ホットペッパーリンクを#introスムーススクロールに変更
+ * PC(768px以上)には影響なし
  * 
  * @package SWELL_CHILD
  * @since 1.0.2
@@ -19,59 +20,42 @@
     const intro = document.getElementById('intro');
     if (!intro) return;
     
-    // SWELL標準のメインビジュアルボタン（全可能性をカバー）
-    const selectors = [
-      '#main_visual a',
-      '.p-mainVisual a',
-      '.swl-mainvisual a',
-      'div[id*="main"]div[id*="visual"] a',
-      'header ~ main a[href*="hotpepper"]',
-      'a[href*="beauty.hotpepper"]',
-      'body > a[href*="hotpepper"]',
-      'a.c-btn[href*="hotpepper"]',
-      'button[onclick*="hotpepper"]'
-    ];
+    // 全ホットペッパーリンクを取得
+    const links = document.querySelectorAll('a[href*="hotpepper"]');
+    if (links.length === 0) return;
     
-    let targetLink = null;
-    
-    for (let selector of selectors) {
-      targetLink = document.querySelector(selector);
-      if (targetLink && targetLink.href && targetLink.href.indexOf('hotpepper') > -1) {
-        break;
-      }
-    }
-    
-    if (!targetLink) {
-      return;
-    }
-    
-    // クローン＆置換で既存イベントを完全削除
-    const newLink = targetLink.cloneNode(true);
-    targetLink.parentNode.replaceChild(newLink, targetLink);
-    
-    // 新しいclick ハンドラを設定
-    newLink.onclick = null;
-    newLink.href = '#intro';
-    newLink.removeAttribute('target');
-    newLink.removeAttribute('rel');
-    newLink.removeAttribute('data-onclick');
-    
-    newLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
+    links.forEach(function(link) {
+      // 非表示要素を除外
+      if (link.offsetParent === null) return;
       
-      window.scrollTo({
-        top: intro.offsetTop,
-        behavior: 'smooth'
-      });
+      // 既存イベント削除用にクローン＆置換
+      const newLink = link.cloneNode(true);
+      link.parentNode.replaceChild(newLink, link);
       
-      setTimeout(function() {
-        history.pushState(null, null, '#intro');
-      }, 800);
+      // href を #intro に変更
+      newLink.href = '#intro';
+      newLink.removeAttribute('target');
+      newLink.removeAttribute('rel');
+      newLink.removeAttribute('data-onclick');
       
-      return false;
-    }, true);
+      // click イベント設定
+      newLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        window.scrollTo({
+          top: intro.offsetTop,
+          behavior: 'smooth'
+        });
+        
+        setTimeout(function() {
+          history.pushState(null, null, '#intro');
+        }, 800);
+        
+        return false;
+      }, true);
+    });
   }
   
   // 複数のタイミングで実行

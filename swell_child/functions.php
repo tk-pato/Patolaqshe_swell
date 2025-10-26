@@ -237,40 +237,13 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
-  // Hero Scroll Button - SP専用スムーススクロール（inline script）
-  add_action('wp_footer', function() {
-    if (is_front_page()) {
-      ?>
-<script>
-(function(){
-  if(window.innerWidth > 767) return;
-  function init() {
-    var intro = document.getElementById('intro');
-    if(!intro) return;
-    var links = document.querySelectorAll('a[href*="hotpepper"]');
-    links.forEach(function(link) {
-      if(link.offsetParent === null) return; // 非表示要素を除外
-      link.href = '#intro';
-      link.onclick = function(e) {
-        e.preventDefault();
-        window.scrollTo({top: intro.offsetTop, behavior: 'smooth'});
-        return false;
-      };
-    });
+  // hero-scroll.js（SPヒーロースクロールボタン制御）
+  $hero_js_path = get_stylesheet_directory() . '/js/hero-scroll.js';
+  if (file_exists($hero_js_path)) {
+    $hero_js_ver = date('Ymdgis', filemtime($hero_js_path));
+    wp_enqueue_script('child_hero_scroll', get_stylesheet_directory_uri() . '/js/hero-scroll.js', [], $hero_js_ver, true);
   }
-  if(document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-  setTimeout(init, 500);
-  window.addEventListener('load', init);
-})();
-</script>
-      <?php
-    }
-  }, 99);
-  
+
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
