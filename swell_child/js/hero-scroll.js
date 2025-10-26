@@ -24,63 +24,54 @@
       return;
     }
     
-    // 複数のセレクタでボタンを探す
-    const selectors = [
-      '.p-mainVisual__scroll',
-      '.p-mainVisual a[href*="hotpepper"]',
-      '.p-mainVisual button',
-      '.p-mainVisual .c-plainBtn',
-      'a[href*="hotpepper"][class*="scroll"]'
-    ];
-    
-    let heroButton = null;
-    for (let selector of selectors) {
-      heroButton = document.querySelector(selector);
-      if (heroButton) {
-        console.log('Hero button found with selector:', selector);
-        break;
-      }
-    }
-    
-    if (!heroButton) {
-      console.warn('Hero scroll button not found');
+    // ヒーロー内の全てのリンクとボタンを取得
+    const heroSection = document.querySelector('.p-mainVisual');
+    if (!heroSection) {
+      console.warn('Hero section not found');
       return;
     }
     
-    // ホットペッパーリンクを完全に削除
-    if (heroButton.tagName === 'A') {
-      heroButton.href = '#intro';
+    // ホットペッパーへのリンクを全て取得
+    const hotpepperLinks = heroSection.querySelectorAll('a[href*="hotpepper"]');
+    
+    if (hotpepperLinks.length === 0) {
+      console.warn('No hotpepper links found in hero section');
+      return;
     }
     
-    // 全ての属性を削除
-    heroButton.removeAttribute('data-onclick');
-    heroButton.removeAttribute('onclick');
-    heroButton.removeAttribute('target');
-    heroButton.removeAttribute('rel');
+    console.log('Found', hotpepperLinks.length, 'hotpepper link(s) in hero');
     
-    // クリックイベントを完全に上書き
-    const newButton = heroButton.cloneNode(true);
-    heroButton.parentNode.replaceChild(newButton, heroButton);
-    
-    // 新しいイベントを設定
-    newButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
+    // 全てのホットペッパーリンクを#introスクロールに変更
+    hotpepperLinks.forEach(function(link) {
+      // 元のリンクを削除
+      link.href = '#intro';
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+      link.removeAttribute('data-onclick');
+      link.removeAttribute('onclick');
       
-      // INTROセクションへスムーススクロール
-      window.scrollTo({
-        top: introSection.offsetTop,
-        behavior: 'smooth'
-      });
+      // 新しいクリックイベントを設定
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        // INTROセクションへスムーススクロール
+        window.scrollTo({
+          top: introSection.offsetTop,
+          behavior: 'smooth'
+        });
+        
+        // URLハッシュを更新
+        setTimeout(function() {
+          history.pushState(null, null, '#intro');
+        }, 800);
+        
+        return false;
+      }, true);
       
-      // URLハッシュを更新
-      setTimeout(function() {
-        history.pushState(null, null, '#intro');
-      }, 800);
-      
-      return false;
-    }, true);
+      console.log('Hero scroll link converted to #intro');
+    });
   }
   
   // ページ読み込み完了後に実行
@@ -92,5 +83,6 @@
   
   // 遅延読み込み対応
   setTimeout(initHeroScroll, 1000);
+  setTimeout(initHeroScroll, 2000);
   
 })();
