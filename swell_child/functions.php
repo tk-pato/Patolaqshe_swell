@@ -266,6 +266,26 @@ add_action('wp_enqueue_scripts', function () {
           history.replaceState(null, null, window.location.pathname + window.location.search);
           setTimeout(function() { window.scrollTo(0, 0); }, 1);
         }
+        
+        // SPヒーローボタンのリンク先を#introに強制変更
+        (function() {
+          function fixHeroLinks() {
+            var hero = document.querySelector('.p-mainVisual');
+            if (!hero) return;
+            var links = hero.querySelectorAll('a');
+            links.forEach(function(link) {
+              link.href = '#intro';
+              link.removeAttribute('target');
+              link.removeAttribute('rel');
+            });
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fixHeroLinks);
+          } else {
+            fixHeroLinks();
+          }
+          setTimeout(fixHeroLinks, 100);
+        })();
       </script>
   <?php
     }, 1);
