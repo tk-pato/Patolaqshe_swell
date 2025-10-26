@@ -451,7 +451,7 @@ Version: 1.0.0
   }
   
   /* ========================================
-     INTRO: 被さり効果（修正版）
+     INTRO: 被さり効果（SP専用）
      ======================================== */
   
   .ptl-overlap-layer,
@@ -459,7 +459,7 @@ Version: 1.0.0
     position: relative !important;
     z-index: 10 !important;
     
-    /* 修正: 画面1個分下に配置（transformは削除） */
+    /* SP専用: 画面1個分下に配置 */
     margin-top: 100vh !important;
     
     /* スクロール後に被さる効果 */
