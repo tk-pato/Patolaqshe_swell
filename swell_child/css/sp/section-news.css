@@ -1,27 +1,25 @@
 /* ===========================
    NEWS Section - SP Styles
    NEWSセクション SP専用スタイル
-   適用条件: 959px以下
+   適用条件: 767px以下
    =========================== */
 
 /* PC/SP表示切り替え制御 - SPでは元の位置のみ表示 */
-@media (max-width: 959px) {
+@media screen and (max-width: 767px) {
   .ptl-news-pc-only {
     display: none !important;
   }
 }
 
-/* タイトルのみ表示モード - タブレット/SP調整 */
-@media (max-width: 900px) {
-  .ptlNews__list.is-titleOnly .ptlNews__item {
-    padding: 18px 0 18px 0;
-    gap: 18px;
-  }
-}
-
 /* セクション余白 - SP調整 */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px) {
   #news {
     margin-bottom: 40px;
+  }
+  
+  /* タイトルのみ表示モード - SP調整 */
+  .ptlNews__list.is-titleOnly .ptlNews__item {
+    padding: 18px 0;
+    gap: 18px;
   }
 }

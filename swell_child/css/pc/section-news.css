@@ -1,11 +1,11 @@
 /* ===========================
    NEWS Section - PC Styles
    NEWSセクション PC専用スタイル
-   適用条件: 960px以上
+   適用条件: 768px以上
    =========================== */
 
 /* PC/SP表示切り替え制御 - PCではヒーロー直下のみ表示 */
-@media (min-width: 960px) {
+@media (min-width: 768px) {
   .ptl-news-sp-only {
     display: none !important;
   }
