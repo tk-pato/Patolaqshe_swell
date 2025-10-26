@@ -1,25 +1,63 @@
-/* issues-navigation.css - SP専用 */
+/* ===========================
+   ISSUES Section - SP Styles
+   ISSUESセクション SP専用スタイル
+   適用条件: 959px以下
+   =========================== */
 
-/* SP: padding削除、margin-bottomのみで管理 + 高さ自動 */
-#bust-issues {
-    margin-bottom: 40px;
+/* SP: padding削除、margin-bottomのみで管理 + パララックス設定 */
+@media (max-width: 959px) {
+    #bust-issues {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+        overflow: hidden;
+        min-height: auto;
+        max-height: none;
+    }
+    
+    /* SPパララックス効果 */
+    #bust-issues .ptl-bustIssues__image img,
+    #bust-issues .ptl-bustIssues__video {
+        transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
+        transform-origin: center;
+        will-change: transform;
+    }
+    
+    /* カード余白調整: 上下に40pxの余白を追加 */
+    #bust-issues .ptl-bustIssues__card {
+        padding: 32px 16px;
+        margin: 40px auto;
+        max-width: calc(100% - 40px);
+    }
+    
+    #bust-issues .ptl-bustIssues__item {
+        padding: 10px 6px;
+    }
 }
 
-/* SPパララックス効果 */
-#bust-issues .ptlIssues__image img,
-#bust-issues .ptlIssues__video {
-    transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
-    transform-origin: center;
-    will-change: transform;
+/* =====================================================
+   SP: BUST-ISSUES 背景透過
+   実装日: 2025-10-25
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 背景透過 */
+  #bust-issues,
+  .ptl-bustIssues,
+  .ptl-pageNavHero {
+    background: transparent !important;
+  }
+  
+  /* 背景動画/画像を非表示 */
+  .ptl-pageNavHero__bg,
+  .ptl-pageNavHero__overlay {
+    display: none !important;
+  }
+  
+  /* カード部分のみ半透明白背景 */
+  .ptl-bustIssues__card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
 }
 
-/* カード余白調整: 上下に40pxの余白を追加 */
-#bust-issues .ptlIssues__card {
-    padding: 32px 16px;
-    margin: 40px auto;
-    max-width: calc(100% - 40px);
-}
-
-#bust-issues .ptlIssues__item {
-    padding: 10px 6px;
-}

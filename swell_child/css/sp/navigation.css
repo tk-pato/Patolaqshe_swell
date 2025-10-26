@@ -1,0 +1,97 @@
+/* ===========================
+   NAVIGATION Section - SP Styles
+   NAVIGATIONセクション SP専用スタイル
+   適用条件: 959px以下
+   =========================== */
+
+/* SP: padding削除、margin-bottomのみで管理 */
+@media (max-width: 959px) {
+    #page-navigation {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
+
+/* ===== SP: パララックス可視化強化 ===== */
+@media (max-width: 959px) {
+  .ptl-navigation {
+    --ptl-parallax: 0px;
+    background-position: 50% calc(50% + var(--ptl-parallax));
+    background-size: 135% auto;
+    will-change: background-position;
+  }
+
+  .ptlNavHero.ptl-has-image .ptlNavHero__image img,
+  .ptlNavHero.ptl-has-video .ptlNavHero__video,
+  .ptl-navigation.ptl-has-video video {
+    transform: translateY(var(--ptl-parallax)) scale(1.28);
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  .ptlNavHero,
+  .ptl-navigation {
+    overflow: clip;
+  }
+  
+  #page-navigation .ptlNavHero__image img,
+  #page-navigation .ptlNavHero__video,
+  #bust-issues .ptlNavHero__image img,
+  #bust-issues .ptlNavHero__video {
+    transform: translateY(var(--ptl-parallax)) scale(1.28);
+    transform-origin: center;
+    will-change: transform;
+  }
+  
+  .ptlNavHero.has-bg .ptlNavHero__image img,
+  .ptlNavHero.has-bg .ptlNavHero__video {
+    transform: translateY(var(--ptl-parallax)) scale(1.28);
+    transform-origin: center;
+    will-change: transform;
+  }
+  
+  #page-navigation .ptlNavHero__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ptlNavHero__label {
+    font-size: 14px;
+  }
+}
+
+/* =====================================================
+   SP: NAVIGATION 背景透過
+   実装日: 2025-10-25
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 背景透過 */
+  #page-navigation,
+  .ptl-pageNavHero {
+    background: transparent !important;
+    min-height: auto !important;
+  }
+  
+  /* 背景動画/画像を非表示 */
+  #page-navigation .ptl-pageNavHero__bg,
+  #page-navigation .ptl-pageNavHero__overlay {
+    display: none !important;
+  }
+  
+  /* タイトルを黒文字に */
+  #page-navigation .ptl-section__title,
+  #page-navigation .ptl-section__subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+  
+  /* ボタンは白背景維持 */
+  .ptl-pageNavHero__btn {
+    background: #ffffff !important;
+  }
+}

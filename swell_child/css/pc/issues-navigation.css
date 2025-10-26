@@ -200,27 +200,5 @@
 
 /* PC: padding削除、margin-bottomのみで管理 + 高さ統一 */
 }
-
-/* SP: padding削除、margin-bottomのみで管理 + 高さ自動 */
-    
-    /* SPパララックス効果 */
-    #bust-issues .ptl-bustIssues__image img,
-    #bust-issues .ptl-bustIssues__video {
-        transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
-        transform-origin: center;
-        will-change: transform;
-    }
-    
-    /* カード余白調整: 上下に40pxの余白を追加 */
-    #bust-issues .ptl-bustIssues__card {
-        padding: 32px 16px;
-        margin: 40px auto; /* 上下40px追加 */
-        max-width: calc(100% - 40px);
-    }
-    
-    #bust-issues .ptl-bustIssues__item {
-        padding: 10px 6px;
-    }
-}
 } /* PC専用メディアクエリ終了 */
 
