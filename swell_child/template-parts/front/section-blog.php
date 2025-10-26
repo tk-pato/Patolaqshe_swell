@@ -17,11 +17,11 @@ $blog_posts = get_posts([
 $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
 ?>
 
-<section id="section-blog" class="ptl-blog">
+<section id="section-blog" class="ptlBlog">
     <div class="ptl-section__inner">
 
         <!-- ヘッダー（SALONと完全統一：タイトル、サブタイトル、オーナメント） -->
-        <div class="ptl-blog__header">
+        <div class="ptlBlog__header">
             <h2 class="ptl-section__title">BLOG</h2>
             <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">美容コラム</div>
             <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
@@ -31,12 +31,12 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
 
         <?php if (!empty($blog_posts)): ?>
             <!-- カードコンテナ -->
-            <div class="ptl-blog__container">
-                <div class="ptl-blog__track">
+            <div class="ptlBlog__container">
+                <div class="ptlBlog__track">
                     <?php foreach ($blog_posts as $post): setup_postdata($post); ?>
-                        <div class="ptl-blog__item">
-                            <a href="<?php echo esc_url(get_permalink($post->ID)); ?>" class="ptl-blog__card">
-                                <div class="ptl-blog__media">
+                        <div class="ptlBlog__item">
+                            <a href="<?php echo esc_url(get_permalink($post->ID)); ?>" class="ptlBlog__card">
+                                <div class="ptlBlog__media">
                                     <?php
                                     $thumbnail_id = get_post_thumbnail_id($post->ID);
                                     if ($thumbnail_id) {
@@ -50,7 +50,7 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
                                     ?>
                                 </div>
                             </a>
-                            <h3 class="ptl-blog__title">
+                            <h3 class="ptlBlog__title">
                                 <a href="<?php echo esc_url(get_permalink($post->ID)); ?>">
                                     <?php echo esc_html(get_the_title($post)); ?>
                                 </a>
@@ -62,16 +62,16 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
             </div>
         <?php else: ?>
             <!-- 投稿がない場合 -->
-            <div class="ptl-blog__empty">
+            <div class="ptlBlog__empty">
                 <p>ブログ記事は現在準備中です。<br>近日中に公開予定ですので、今しばらくお待ちください。</p>
             </div>
         <?php endif; ?>
 
         <!-- MOREボタン（常に表示） -->
-        <div class="ptl-blog__more">
-            <a class="ptl-news__moreBtn" href="/blog/">
-                <span class="ptl-news__moreLabel">MORE</span>
-                <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
+        <div class="ptlBlog__more">
+            <a class="ptlNews__moreBtn" href="/blog/">
+                <span class="ptlNews__moreLabel">MORE</span>
+                <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
             </a>
         </div>
 

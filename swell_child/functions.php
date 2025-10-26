@@ -1,12 +1,12 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-/* BUST-ISSUES: 統合CSSを最終読込＋動作マーカー */
+/* BUST-ISSUES: 統合CSSを最終読込（親テーマより後に読み込み） */
 add_action('wp_enqueue_scripts', function () {
   $rel  = '/css/issues-navigation.css';
   $path = get_stylesheet_directory() . $rel;
   if (file_exists($path)) {
-    wp_enqueue_style('ptl-issues-bundle', get_stylesheet_directory_uri() . $rel, [], filemtime($path));
+    wp_enqueue_style('ptl-issues-bundle', get_stylesheet_directory_uri() . $rel, ['main_style'], filemtime($path));
   }
 }, 999);
 
@@ -179,40 +179,72 @@ add_action('wp_enqueue_scripts', function () {
   // 親テーマ main.css のハンドルは 'main_style'（SWELL）
   wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
 
-  // commitment - 統合CSS（ptl-commitment 1ハンドルに集約）
-  add_action('wp_enqueue_scripts', function () {
+  // ========================================
+  // COMMITMENT - CSS読み込み（PC/SP分離対応）
+  // ========================================
+  
+  // COMMITMENT - ベースCSS
+  $commitment_css = get_stylesheet_directory() . '/css/section-commitment.css';
+  if (file_exists($commitment_css)) {
     // 旧ハンドルクリーンアップ
     foreach (['ptl_commitment_styles', 'ptl-section-commitment'] as $handle) {
-      wp_dequeue_style($handle);
-      wp_deregister_style($handle);
+      if (wp_style_is($handle, 'enqueued')) {
+        wp_dequeue_style($handle);
+        wp_deregister_style($handle);
+      }
     }
-    // 統合ハンドル
-    $rel = '/css/section-commitment.css';
-    $abs = get_stylesheet_directory() . $rel;
-    if (file_exists($abs)) {
-      wp_enqueue_style('ptl-commitment', get_stylesheet_directory_uri() . $rel, [], filemtime($abs));
-    }
-  }, 99);
-
-  // section-service-feature.css（サービス特徴セクション用）
-  wp_enqueue_style('ptl_section_service_feature', get_stylesheet_directory_uri() . '/css/section-service-feature.css', ['child_style'], time());
-
-  // section-service-feature.css（サービス特徴セクション用）
-  $ssf_path = get_stylesheet_directory() . '/css/section-service-feature.css';
-  if (file_exists($ssf_path)) {
+    // child_style依存で読み込み
+    wp_enqueue_style('ptlCommit', get_stylesheet_directory_uri() . '/css/section-commitment.css', ['child_style'], filemtime($commitment_css));
+  }
+  
+  // COMMITMENT - PC専用CSS
+  $commitment_pc = get_stylesheet_directory() . '/css/pc/section-commitment.css';
+  if (file_exists($commitment_pc)) {
     wp_enqueue_style(
-      'ptl_section_service_feature',
-      get_stylesheet_directory_uri() . '/css/section-service-feature.css',
-      ['child_style'],
-      filemtime($ssf_path)
+      'ptlCommit-pc',
+      get_stylesheet_directory_uri() . '/css/pc/section-commitment.css',
+      ['ptlCommit'],
+      filemtime($commitment_pc),
+      'screen and (min-width: 960px)'
+    );
+  }
+  
+  // COMMITMENT - SP専用CSS
+  $commitment_sp = get_stylesheet_directory() . '/css/sp/section-commitment.css';
+  if (file_exists($commitment_sp)) {
+    wp_enqueue_style(
+      'ptlCommit-sp',
+      get_stylesheet_directory_uri() . '/css/sp/section-commitment.css',
+      ['ptlCommit'],
+      filemtime($commitment_sp),
+      'screen and (max-width: 959px)'
     );
   }
 
+  // section-menu.css（メニューセクション用）
+  $sm_path = get_stylesheet_directory() . '/css/section-menu.css';
+  if (file_exists($sm_path)) {
+    wp_enqueue_style(
+      'ptl_section_menu',
+      get_stylesheet_directory_uri() . '/css/section-menu.css',
+      ['child_style'],
+      filemtime($sm_path)
+    );
+  }
 
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
+
+  // Hero Scroll Button - SP専用スムーススクロール（強制リロード v2）
+  wp_enqueue_script(
+    'ptl-hero-scroll', 
+    get_stylesheet_directory_uri() . '/js/hero-scroll.js?v=' . time(), 
+    [], 
+    null,
+    true
+  );
 
   // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読込でも軽量
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
@@ -227,7 +259,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptl_section_salon', get_stylesheet_directory_uri() . '/css/section-salon.css', ['child_style'], filemtime($salon_css));
   }
 }, 20);
-/* （削除）グローバル背景のDOM/CSS/JS出力とホットフィックス、専用bodyクラスは撤去しました */
 
 /* === Spacing Debug Toggle (front only) === */
 add_action('wp_footer', function () {
@@ -263,9 +294,6 @@ add_action('wp_footer', function () {
 <?php
 }, 9999);
 
-// add_theme_support( 'post-thumbnails' );
-// JSON-LDやフック追加は、サイト固有要件が固まってから実装します。
-
 // パターン: 選ばれる理由（4カード）
 add_action('init', function () {
   if (!function_exists('register_block_pattern')) return;
@@ -279,14 +307,14 @@ add_action('init', function () {
 
   $reason_url = home_url('/reason/'); // 後で変更可（現在は /media/reason/ 相当）
 
-  $content = '<!-- wp:group {"tagName":"section","className":"ptl-commitment","anchor":"brand-reason"} -->
-  <section class="wp-block-group ptl-commitment" id="brand-reason"><div class="wp-block-group__inner-container">
+  $content = '<!-- wp:group {"tagName":"section","className":"ptlCommit","anchor":"brand-reason"} -->
+  <section class="wp-block-group ptlCommit" id="brand-reason"><div class="wp-block-group__inner-container">
   <!-- wp:heading {"textAlign":"center"} -->
   <h2 class="has-text-align-center">選ばれる理由</h2>
   <!-- /wp:heading -->
 
-  <!-- wp:columns {"className":"ptl-commitment__grid"} -->
-  <div class="wp-block-columns ptl-commitment__grid">
+  <!-- wp:columns {"className":"ptlCommit__grid"} -->
+  <div class="wp-block-columns ptlCommit__grid">
 
     <!-- wp:column -->
     <div class="wp-block-column">
@@ -352,7 +380,7 @@ add_action('init', function () {
   <!-- /wp:columns -->
 
   <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-  <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link ptl-commitment__more" href="' . esc_url($reason_url) . '">MORE</a></div></div>
+  <div class="wp-block-buttons"><div class="wp-block-button"><a class="wp-block-button__link ptlCommit__more" href="' . esc_url($reason_url) . '">MORE</a></div></div>
   <!-- /wp:buttons -->
 
   </div></section>
@@ -736,103 +764,15 @@ add_action('wp_head', function () {
   $bg_image = get_theme_mod('ptl_infohub_bg_pc', '');
   if (!$bg_image) return;
 
-  echo '<style id="ptl-infohub-fixed-bg">';
-  echo '.ptl-infohub { --infohub-bg-image: url(' . esc_url($bg_image) . '); }';
+  echo '<style id="ptlHub-fixed-bg">';
+  echo '.ptlHub { --infohub-bg-image: url(' . esc_url($bg_image) . '); }';
   echo '</style>' . "\n";
 }, 101);
 
 // ===========================================
-// BUST-ISSUES セクション カスタマイザー設定
+// 【削除済み】BUST-ISSUES カスタマイザー重複（誤ってptl_nav_*を定義していた）
+// → 474行目の正規BUST-ISSUES定義を使用
 // ===========================================
-add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
-
-  $wp_customize->add_section('ptl_bust_issues', [
-    'title'    => 'BUST-ISSUES',
-    'priority' => 161,
-  ]);
-
-  // 動画（メディア）
-  $wp_customize->add_setting('ptl_nav_video', [
-    'type'              => 'theme_mod',
-    'transport'         => 'refresh',
-    'sanitize_callback' => function ($v) {
-      return is_numeric($v) ? (int)$v : esc_url_raw($v);
-    },
-  ]);
-  if (class_exists('WP_Customize_Media_Control')) {
-    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_nav_video', [
-      'label'     => 'セクション背景動画（MP4推奨）',
-      'section'   => 'ptl_navigation',
-      'mime_type' => 'video',
-    ]));
-  }
-
-  // PC画像
-  $wp_customize->add_setting('ptl_nav_bg_pc', [
-    'type'              => 'theme_mod',
-    'transport'         => 'refresh',
-    'sanitize_callback' => 'esc_url_raw',
-    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
-  ]);
-  if (class_exists('WP_Customize_Image_Control')) {
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_nav_bg_pc', [
-      'label'   => 'PC用セクション背景画像',
-      'section' => 'ptl_navigation',
-    ]));
-  }
-
-  // SP画像
-  $wp_customize->add_setting('ptl_nav_bg_sp', [
-    'type'              => 'theme_mod',
-    'transport'         => 'refresh',
-    'sanitize_callback' => 'esc_url_raw',
-    'default'           => get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg',
-  ]);
-  if (class_exists('WP_Customize_Image_Control')) {
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'ptl_nav_bg_sp', [
-      'label'   => 'SP用セクション背景画像',
-      'section' => 'ptl_navigation',
-    ]));
-  }
-
-  // オーバーレイ濃度（0〜0.8）
-  $wp_customize->add_setting('ptl_nav_overlay', [
-    'type'              => 'theme_mod',
-    'transport'         => 'refresh',
-    'sanitize_callback' => function ($v) {
-      $f = floatval($v);
-      if ($f < 0) $f = 0;
-      if ($f > 0.8) $f = 0.8;
-      return $f;
-    },
-    'default'           => 0.25,
-  ]);
-  $wp_customize->add_control('ptl_nav_overlay', [
-    'label'       => 'セクション背景のオーバーレイ濃度（0〜0.8）',
-    'section'     => 'ptl_navigation',
-    'type'        => 'number',
-    'input_attrs' => ['min' => 0, 'max' => 0.8, 'step' => 0.05],
-  ]);
-
-  // パララックス速度（0〜1、1で追従なし）
-  $wp_customize->add_setting('ptl_nav_parallax_speed', [
-    'type'              => 'theme_mod',
-    'transport'         => 'refresh',
-    'sanitize_callback' => function ($v) {
-      $f = floatval($v);
-      if ($f < 0) $f = 0;
-      if ($f > 1) $f = 1;
-      return $f;
-    },
-    'default'           => 0.6,
-  ]);
-  $wp_customize->add_control('ptl_nav_parallax_speed', [
-    'label'       => 'セクション背景のパララックス速度（0〜1、1で追従なし）',
-    'section'     => 'ptl_navigation',
-    'type'        => 'number',
-    'input_attrs' => ['min' => 0, 'max' => 1, 'step' => 0.05],
-  ]);
-});
 
 /**
  * 共通セクション背景設定を取得（将来は他セクションでも再利用）
@@ -872,11 +812,6 @@ function ptl_get_common_section_bg(): array
     'parallax_speed' => $p_speed,
   ];
 }
-
-/**
- * カスタマイザー: フロント共通の縦並び動画背景（最大4本）
- */
-/* （削除）グローバル動画背景のカスタマイザー（ptl_global_bg）は撤去しました */
 
 /**
  * ブロックエディタのコンテンツから、アンカーIDが一致するブロックを1つ探して描画するヘルパー。
@@ -1025,26 +960,87 @@ add_action('wp_enqueue_scripts', function () {
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
   wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
 
-  // INFO HUB セクション用CSS/JS
+  // INFO HUB セクション用CSS/JS（PC/SP分離対応）
   $infohub_css = get_stylesheet_directory() . '/css/section-infohub.css';
   if (file_exists($infohub_css)) {
-    wp_enqueue_style('ptl-infohub', get_stylesheet_directory_uri() . '/css/section-infohub.css', ['child_style'], filemtime($infohub_css));
-  }
-  $infohub_js = get_stylesheet_directory() . '/js/section-infohub.js';
-  if (file_exists($infohub_js)) {
-    wp_enqueue_script('ptl-infohub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
+    wp_enqueue_style('ptlHub', get_stylesheet_directory_uri() . '/css/section-infohub.css', ['child_style'], filemtime($infohub_css));
   }
 
-  // NEWS セクション用CSS（セクション個別管理へ移行）
+  // INFO HUB - PC専用CSS
+  $infohub_pc = get_stylesheet_directory() . '/css/pc/section-infohub.css';
+  if (file_exists($infohub_pc)) {
+    wp_enqueue_style('ptlHub-pc', get_stylesheet_directory_uri() . '/css/pc/section-infohub.css', ['ptlHub'], filemtime($infohub_pc), 'screen and (min-width: 960px)');
+  }
+
+  // INFO HUB - SP専用CSS
+  $infohub_sp = get_stylesheet_directory() . '/css/sp/section-infohub.css';
+  if (file_exists($infohub_sp)) {
+    wp_enqueue_style('ptlHub-sp', get_stylesheet_directory_uri() . '/css/sp/section-infohub.css', ['ptlHub'], filemtime($infohub_sp), 'screen and (max-width: 959px)');
+  }
+
+  $infohub_js = get_stylesheet_directory() . '/js/section-infohub.js';
+  if (file_exists($infohub_js)) {
+    wp_enqueue_script('ptlHub', get_stylesheet_directory_uri() . '/js/section-infohub.js', [], filemtime($infohub_js), true);
+  }
+
+  // NEWS セクション用CSS（PC/SP分離対応）
   $news_css = get_stylesheet_directory() . '/css/section-news.css';
   if (file_exists($news_css)) {
-    wp_enqueue_style('ptl-news', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], filemtime($news_css));
+    wp_enqueue_style('ptlNews', get_stylesheet_directory_uri() . '/css/section-news.css', ['child_style'], filemtime($news_css));
   }
-  // BUST-ISSUESは共通のsection-parallax.jsを使用（ptl-pageNavHeroクラス併用）
-  // $bust_issues_js = get_stylesheet_directory() . '/js/section-bust-issues.js';
-  // if (file_exists($bust_issues_js)) {
-  //   wp_enqueue_script('ptl-bust-issues', get_stylesheet_directory_uri() . '/js/section-bust-issues.js', [], filemtime($bust_issues_js), true);
-  // }
+
+  // NEWS - PC専用CSS
+  $news_pc = get_stylesheet_directory() . '/css/pc/section-news.css';
+  if (file_exists($news_pc)) {
+    wp_enqueue_style('ptlNews-pc', get_stylesheet_directory_uri() . '/css/pc/section-news.css', ['ptlNews'], filemtime($news_pc), 'screen and (min-width: 960px)');
+  }
+
+  // NEWS - SP専用CSS
+  $news_sp = get_stylesheet_directory() . '/css/sp/section-news.css';
+  if (file_exists($news_sp)) {
+    wp_enqueue_style('ptlNews-sp', get_stylesheet_directory_uri() . '/css/sp/section-news.css', ['ptlNews'], filemtime($news_sp), 'screen and (max-width: 959px)');
+  }
+
+  // ========================================
+  // FOOTER - CSS読み込み（PC/SP分離対応）
+  // ========================================
+  
+  // フッター - ベースCSS
+  $footer_css = get_stylesheet_directory() . '/css/footer.css';
+  if (file_exists($footer_css)) {
+    wp_enqueue_style(
+      'ptl-footer',
+      get_stylesheet_directory_uri() . '/css/footer.css',
+      ['child_style'],
+      filemtime($footer_css)
+    );
+  }
+  
+  // フッター - PC専用CSS
+  $footer_pc = get_stylesheet_directory() . '/css/pc/footer-pc.css';
+  if (file_exists($footer_pc)) {
+    wp_enqueue_style(
+      'ptl-footer-pc',
+      get_stylesheet_directory_uri() . '/css/pc/footer-pc.css',
+      ['ptl-footer'],
+      filemtime($footer_pc),
+      'screen and (min-width: 960px)'
+    );
+  }
+  
+  // フッター - SP専用CSS
+  $footer_sp = get_stylesheet_directory() . '/css/sp/footer-sp.css';
+  if (file_exists($footer_sp)) {
+    wp_enqueue_style(
+      'ptl-footer-sp',
+      get_stylesheet_directory_uri() . '/css/sp/footer-sp.css',
+      ['ptl-footer'],
+      filemtime($footer_sp),
+      'screen and (max-width: 959px)'
+    );
+  }
+
+  // BUST-ISSUESは共通のsection-parallax.jsを使用（ptlNavHeroクラス併用）
 }, 20);
 
 /**
@@ -1074,10 +1070,10 @@ add_action('wp_enqueue_scripts', function () {
     will-change: transform;
   }
 
-  /* 子要素に video / image を持つ .ptl-pageNavHero 用（既存DOMに追従） */
-  .ptl-pageNavHero { --ptl-parallax: 0px; }
-  .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
-  .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img {
+  /* 子要素に video / image を持つ .ptlNavHero 用（既存DOMに追従） */
+  .ptlNavHero { --ptl-parallax: 0px; }
+  .ptlNavHero.ptl-has-video .ptlNavHero__video,
+  .ptlNavHero.ptl-has-image .ptlNavHero__image img {
     transform: translateY(var(--ptl-parallax)) scale(1.12);
     transform-origin: center;
     will-change: transform;
@@ -1087,7 +1083,7 @@ add_action('wp_enqueue_scripts', function () {
 @media (max-width: 768px) {
   /* ③ SPカード縮小（.ptl-nav-collapsible 配下のみ） */
   .ptl-navigation .ptl-nav-collapsible,
-  .ptl-pageNavHero .ptl-nav-collapsible {
+  .ptlNavHero .ptl-nav-collapsible {
     /* gapは30-40%縮小（例: 24px -> 12-16px） */
     --ptl-gap: 14px;
     gap: var(--ptl-gap);
@@ -1165,7 +1161,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   /* カード本体（既存命名に合わせて双方を網羅） */
-  .ptl-nav-collapsible .ptl-pageNavHero__btn,
+  .ptl-nav-collapsible .ptlNavHero__btn,
   .ptl-nav-collapsible .ptl-navCard {
     /* 縦パディング40-50%縮小＆タップ最小確保 */
     padding-block: 10px;
@@ -1173,7 +1169,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   /* アイコン縮小（35-45%） */
-  .ptl-nav-collapsible .ptl-pageNavHero__icon,
+  .ptl-nav-collapsible .ptlNavHero__icon,
   .ptl-nav-collapsible .ptl-navCard__icon {
     width: 26px;
     height: 26px;
@@ -1181,8 +1177,8 @@ add_action('wp_enqueue_scripts', function () {
     align-items: center;
     justify-content: center;
   }
-  .ptl-nav-collapsible .ptl-pageNavHero__icon img,
-  .ptl-nav-collapsible .ptl-pageNavHero__icon svg,
+  .ptl-nav-collapsible .ptlNavHero__icon img,
+  .ptl-nav-collapsible .ptlNavHero__icon svg,
   .ptl-nav-collapsible .ptl-navCard__icon img,
   .ptl-nav-collapsible .ptl-navCard__icon svg {
     width: 100%;
@@ -1191,7 +1187,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   /* テキスト可読性（12-14px, 行高1.25-1.35） */
-  .ptl-nav-collapsible .ptl-pageNavHero__label,
+  .ptl-nav-collapsible .ptlNavHero__label,
   .ptl-nav-collapsible .ptl-navCard__label {
     font-size: 13px;
     line-height: 1.3;
@@ -1202,7 +1198,7 @@ CSS;
   // JS（インライン）
   $js = <<<JS
 (function(){
-  var els = document.querySelectorAll('.ptl-navigation, .ptl-pageNavHero');
+  var els = document.querySelectorAll('.ptl-navigation, .ptlNavHero');
   if (!els.length) return;
 
   var isPC = window.matchMedia('(min-width: 769px)');
@@ -1211,8 +1207,8 @@ CSS;
 
   // 初期化: 各要素に動画/画像の有無でクラスを付与
   els.forEach(function(el){
-    var vid = el.querySelector('video, .ptl-pageNavHero__video');
-    var img = el.querySelector('.ptl-pageNavHero__image img');
+    var vid = el.querySelector('video, .ptlNavHero__video');
+    var img = el.querySelector('.ptlNavHero__image img');
     if (vid) el.classList.add('ptl-has-video');
     if (img) el.classList.add('ptl-has-image');
   });
@@ -2067,10 +2063,22 @@ add_action('wp_enqueue_scripts', function () {
     wp_register_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', [], '8.4.7', true);
   }
 
-  // お客様の声 CSS
+  // お客様の声 CSS（PC/SP分離対応）
   $css = get_stylesheet_directory() . '/css/section-uservoice.css';
   if (file_exists($css) && ! wp_style_is('ptl-uservoice', 'enqueued')) {
     wp_enqueue_style('ptl-uservoice', get_stylesheet_directory_uri() . '/css/section-uservoice.css', ['child_style', 'swiper'], filemtime($css));
+  }
+
+  // お客様の声 - PC専用CSS
+  $uservoice_pc = get_stylesheet_directory() . '/css/pc/section-uservoice.css';
+  if (file_exists($uservoice_pc)) {
+    wp_enqueue_style('ptl-uservoice-pc', get_stylesheet_directory_uri() . '/css/pc/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_pc), 'screen and (min-width: 960px)');
+  }
+
+  // お客様の声 - SP専用CSS
+  $uservoice_sp = get_stylesheet_directory() . '/css/sp/section-uservoice.css';
+  if (file_exists($uservoice_sp)) {
+    wp_enqueue_style('ptl-uservoice-sp', get_stylesheet_directory_uri() . '/css/sp/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_sp), 'screen and (max-width: 959px)');
   }
 
   // お客様の声 JS（Swiperに依存）
@@ -2079,7 +2087,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('ptl-uservoice', get_stylesheet_directory_uri() . '/js/uservoice-slider.js', ['swiper'], filemtime($js), true);
   }
 
-  // INTRO Section CSS
+  // INTRO Section CSS（PC/SP分離対応）
   $intro_css = get_stylesheet_directory() . '/css/section-intro.css';
   if (file_exists($intro_css)) {
     wp_enqueue_style(
@@ -2088,6 +2096,18 @@ add_action('wp_enqueue_scripts', function () {
       ['child_style'],
       filemtime($intro_css)
     );
+  }
+
+  // INTRO - PC専用CSS
+  $intro_pc = get_stylesheet_directory() . '/css/pc/section-intro.css';
+  if (file_exists($intro_pc)) {
+    wp_enqueue_style('ptlIntro-pc', get_stylesheet_directory_uri() . '/css/pc/section-intro.css', ['ptl_section_intro'], filemtime($intro_pc), 'screen and (min-width: 960px)');
+  }
+
+  // INTRO - SP専用CSS
+  $intro_sp = get_stylesheet_directory() . '/css/sp/section-intro.css';
+  if (file_exists($intro_sp)) {
+    wp_enqueue_style('ptlIntro-sp', get_stylesheet_directory_uri() . '/css/sp/section-intro.css', ['ptl_section_intro'], filemtime($intro_sp), 'screen and (max-width: 959px)');
   }
 }, 30);
 
@@ -2273,7 +2293,7 @@ if (!function_exists('ptl_sanitize_checkbox')) {
 add_action('wp_enqueue_scripts', function () {
   if (!is_front_page()) return;
 
-  // CSS
+  // CSS（PC/SP分離対応）
   $blog_css = get_stylesheet_directory() . '/css/section-blog.css';
   if (file_exists($blog_css)) {
     wp_enqueue_style(
@@ -2282,6 +2302,18 @@ add_action('wp_enqueue_scripts', function () {
       ['child_style'],
       filemtime($blog_css)
     );
+  }
+
+  // BLOG - PC専用CSS
+  $blog_pc = get_stylesheet_directory() . '/css/pc/section-blog.css';
+  if (file_exists($blog_pc)) {
+    wp_enqueue_style('ptlBlog-pc', get_stylesheet_directory_uri() . '/css/pc/section-blog.css', ['ptl-blog'], filemtime($blog_pc), 'screen and (min-width: 960px)');
+  }
+
+  // BLOG - SP専用CSS
+  $blog_sp = get_stylesheet_directory() . '/css/sp/section-blog.css';
+  if (file_exists($blog_sp)) {
+    wp_enqueue_style('ptlBlog-sp', get_stylesheet_directory_uri() . '/css/sp/section-blog.css', ['ptl-blog'], filemtime($blog_sp), 'screen and (max-width: 959px)');
   }
 
   // JS
@@ -3058,3 +3090,21 @@ add_action('wp_head', function () {
   }
   </style>';
 }, 100);
+
+/**
+ * SPヒーロー被さり効果: ヒーローにクラス追加（固定版）
+ */
+add_action('wp_head', function () {
+  if (!is_front_page()) return;
+?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var hero = document.querySelector('.p-mainVisual');
+      if (hero) {
+        hero.classList.add('ptl-overlap-base');
+        document.body.classList.add('has-hero-overlap');
+      }
+    });
+  </script>
+<?php
+}, 999);

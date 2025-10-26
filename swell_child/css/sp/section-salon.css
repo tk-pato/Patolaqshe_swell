@@ -131,8 +131,8 @@
     overflow: hidden;
     text-align: center;
     z-index: 1;
-    min-height: clamp(520px, 60vh, 720px);
-    padding: 64px 0 0 0; /* 下余白はmargin-bottomで管理 */
+    min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
+    padding: 0; /* padding削除: margin-bottomで余白管理 */
 }
 
 #salon .ptl-salonHero__bg {

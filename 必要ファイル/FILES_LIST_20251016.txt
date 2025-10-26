@@ -22,11 +22,11 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/css/float-menu.css
 # css/section-blog.css 10/16 12:12
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/css/section-blog.css
-# css/section-service-feature.css 10/16 12:15
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/css/section-service-feature.css
-# css/section-uservoice.css 10/16 12:15
+# css/section-menu.css 10/20 01:05
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/css/section-menu.css
+# css/section-uservoice.css 10/20 01:05
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/css/section-uservoice.css
-# css/section-commitment.css 10/16 12:13
+# css/section-commitment.css 10/20 01:05
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/css/section-commitment.css
 # js/global-bg.js 10/16 12:17
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/js/global-bg.js
@@ -60,8 +60,8 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/template-parts/front/section-intro.php
 # template-parts/front/section-blog.php 10/16 12:26
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/template-parts/front/section-blog.php
-# template-parts/front/section-service-feature.php 10/16 12:36
-https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/template-parts/front/section-service-feature.php
+# template-parts/front/section-menu.php 10/19 15:11
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/template-parts/front/section-menu.php
 # template-parts/front/section-page-navigation.php 10/16 12:30
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/refs/heads/main/swell_child/template-parts/front/section-page-navigation.php
 # template-parts/front/section-uservoice.php 10/16 12:31

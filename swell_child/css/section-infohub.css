@@ -5,8 +5,17 @@
    navigation/BUST-ISSUESと完全統一
 ======================================== */
 
+/* コンテナ幅統一設定 */
+#section-infohub .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* セクション全体 */
-.ptl-infohub {
+.ptlHub {
   background-image: var(--infohub-bg-image, none);
   background-attachment: fixed;
   background-size: cover;
@@ -25,20 +34,13 @@
   min-height: clamp(520px, 60vh, 720px);
 }
 
-/* SP対応：モバイルでは固定背景を無効化 */
-@media (max-width: 959px) {
-  .ptl-infohub {
-    background-attachment: scroll;
-  }
-}
-
 /* 固定背景では不要（DOM要素としての背景は非表示） */
-.ptl-infohub__bg {
+.ptlHub__bg {
   display: none;
 }
 
 /* オーバーレイ */
-.ptl-infohub__overlay {
+.ptlHub__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, var(--overlay, 0.25));
@@ -46,7 +48,7 @@
 }
 
 /* コンテンツエリア（上下中央配置を維持） */
-.ptl-infohub .ptl-section__inner {
+.ptlHub .ptl-section__inner {
   position: relative;
   z-index: 2;
   max-width: var(--ptl-container-max, 1200px);
@@ -57,13 +59,13 @@
 }
 
 /* ヘッダー（パディング追加） */
-.ptl-infohub__header {
+.ptlHub__header {
   text-align: center;
   margin-bottom: 60px;
 }
 
 /* カードグリッド */
-.ptl-infohub__grid {
+.ptlHub__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -72,25 +74,8 @@
   padding: 0;
 }
 
-@media (max-width: 959px) {
-  .ptl-infohub__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 699px) {
-  .ptl-infohub__grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .ptl-infohub__header {
-    margin-bottom: 40px;
-  }
-}
-
 /* カード */
-.ptl-infohub__card {
+.ptlHub__card {
   display: block;
   position: relative;
   border-radius: 10px;
@@ -104,7 +89,7 @@
 }
 
 /* カード画像 */
-.ptl-infohub__media {
+.ptlHub__media {
   position: absolute;
   top: 0;
   left: 0;
@@ -114,7 +99,7 @@
   background: #f5f5f5;
 }
 
-.ptl-infohub__media img {
+.ptlHub__media img {
   position: absolute;
   top: 0;
   left: 0;
@@ -124,7 +109,7 @@
 }
 
 /* ダーケンオーバーレイ（テキストの視認性向上） */
-.ptl-infohub__media::after {
+.ptlHub__media::after {
   content: '';
   position: absolute;
   top: 0;
@@ -142,7 +127,7 @@
 }
 
 /* キラっと光る演出（カーソルが止まってから発動） */
-.ptl-infohub__media::before {
+.ptlHub__media::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -161,12 +146,12 @@
   pointer-events: none;
 }
 
-.ptl-infohub__card:hover .ptl-infohub__media::before {
+.ptlHub__card:hover .ptlHub__media::before {
   left: 150%;
 }
 
 /* カードコンテンツ（画像の上に重ねる） */
-.ptl-infohub__content {
+.ptlHub__content {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -177,7 +162,7 @@
 }
 
 /* カードタイトル（視認性向上） */
-.ptl-infohub__title {
+.ptlHub__title {
   position: relative;
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 700;
@@ -190,7 +175,7 @@
 }
 
 /* カード説明文（視認性向上） */
-.ptl-infohub__desc {
+.ptlHub__desc {
   font-size: clamp(13px, 1.4vw, 15px);
   font-weight: 400;
   color: #fff;
@@ -201,19 +186,12 @@
   -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.2);
 }
 
-/* モバイル調整 */
-@media (max-width: 959px) {
-  .ptl-infohub__content {
-    padding: 30px 8px 36px 8px;
-  }
-}
-
 /* ========================================
    緊急修正：カードを確実に最大幅に拡張
 ======================================== */
 
 /* カードを確実にグリッドセル幅いっぱいに */
-#section-infohub .ptl-infohub__card {
+#section-infohub .ptlHub__card {
   width: 100%;
   max-width: none;
   min-width: 0;
@@ -224,29 +202,45 @@
    セクション余白（独自管理）
 ======================================== */
 
-/* PC: padding削除、margin-bottomのみで管理 */
-@media (min-width: 960px) {
-    #section-infohub,
-    .ptl-infohub {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 80px;
-    }
-}
-
-/* SP: padding削除、margin-bottomのみで管理 */
-@media (max-width: 959px) {
-    #section-infohub,
-    .ptl-infohub {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-}
-
-#section-infohub {
+#section-infohub,
+.ptlHub {
   margin-top: 0;
   margin-bottom: 80px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* =====================================================
+   SP: INFO HUB 背景透過
+   実装日: 2025-10-25
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 背景透過 */
+  #section-infohub,
+  .ptl-infohub,
+  .ptlHub {
+    background: transparent !important;
+  }
+  
+  /* 固定背景を無効化 */
+  .ptlHub {
+    background-attachment: scroll !important;
+    background-image: none !important;
+  }
+  
+  /* カード部分のみ半透明白背景 */
+  .ptlHub__card,
+  .ptlInfohubCard {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+  
+  /* タイトルを黒文字に */
+  #section-infohub .ptl-section__title,
+  #section-infohub .ptl-section__subtitle,
+  .ptlHub__title,
+  .ptlHub__subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
 }

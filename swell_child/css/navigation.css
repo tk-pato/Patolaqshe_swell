@@ -1,19 +1,28 @@
 /* === nav-adjustments.css 統合分 === */
 
-.ptl-pageNavHero {
+/* コンテナ幅統一設定 */
+#page-navigation .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ptlNavHero {
   position: relative;
   overflow: hidden;
 }
 
-.ptl-pageNavHero.has-bg {
+.ptlNavHero.has-bg {
   color: #fff;
 }
 
-.ptl-pageNavHero.is-translucent {
+.ptlNavHero.is-translucent {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
-.ptl-pageNavHero__bg {
+.ptlNavHero__bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -23,8 +32,8 @@
   overflow: hidden;
 }
 
-.ptl-pageNavHero__bg video,
-.ptl-pageNavHero__bg img {
+.ptlNavHero__bg video,
+.ptlNavHero__bg img {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +42,7 @@
   object-fit: cover;
 }
 
-.ptl-pageNavHero__bg::after {
+.ptlNavHero__bg::after {
   content: "";
   position: absolute;
   top: 0;
@@ -44,7 +53,7 @@
   z-index: 1;
 }
 
-.ptl-pageNavHero__btn {
+.ptlNavHero__btn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,11 +61,11 @@
   transition: transform 0.3s ease;
 }
 
-.ptl-pageNavHero__btn:hover {
+.ptlNavHero__btn:hover {
   transform: translateY(-4px);
 }
 
-.ptl-pageNavHero__icon {
+.ptlNavHero__icon {
   display: block;
   width: 80px;
   height: 80px;
@@ -65,7 +74,7 @@
   overflow: hidden;
 }
 
-.ptl-pageNavHero__label {
+.ptlNavHero__label {
   font-size: 16px;
   font-weight: 600;
   color: #222;
@@ -139,7 +148,7 @@
   isolation: isolate;
 }
 
-#bust-issues .ptl-bustIssues__card{
+#bust-issues .ptlIssues__card{
   width: 100%;
   background: #fff;
   backdrop-filter: none;
@@ -150,7 +159,7 @@
   z-index: 1;
 }
 
-#bust-issues .ptl-bustIssues__list{
+#bust-issues .ptlIssues__list{
   list-style: none; 
   margin: 0; 
   padding: 0;
@@ -159,7 +168,7 @@
   column-gap: 40px;
 }
 
-#bust-issues .ptl-bustIssues__item{
+#bust-issues .ptlIssues__item{
   display: grid; 
   grid-template-columns: 24px 1fr; 
   align-items: center;
@@ -168,7 +177,7 @@
   border-bottom: 1px dashed rgba(0,0,0,.12);
 }
 
-#bust-issues .ptl-bustIssues__icon{ 
+#bust-issues .ptlIssues__icon{ 
   width: 24px;
   height: 24px;
   display: inline-flex;
@@ -177,14 +186,14 @@
   color: #666; 
 }
 
-#bust-issues .ptl-bustIssues__icon img{ 
+#bust-issues .ptlIssues__icon img{ 
   width: 20px;
   height: 20px;
   object-fit: contain;
   display: block; 
 }
 
-#bust-issues .ptl-bustIssues__text{ 
+#bust-issues .ptlIssues__text{ 
   font-size: 16px; 
   line-height: 1.9; 
   letter-spacing: .02em; 
@@ -193,13 +202,13 @@
 
 /* PCは2カラム */
 @media (min-width: 768px){
-  #bust-issues .ptl-bustIssues__list{ 
+  #bust-issues .ptlIssues__list{ 
     grid-template-columns: 1fr 1fr; 
   }
 }
 
 /* ===== MOREボタン（NEWSと完全統一） ===== */
-#bust-issues .ptl-news__more { 
+#bust-issues .ptlIssues__more { 
   display: flex; 
   justify-content: center; 
   margin: 20px 0 4px; 
@@ -214,36 +223,36 @@
     will-change: background-position;
   }
 
-  .ptl-pageNavHero.ptl-has-image .ptl-pageNavHero__image img,
-  .ptl-pageNavHero.ptl-has-video .ptl-pageNavHero__video,
+  .ptlNavHero.ptl-has-image .ptlNavHero__image img,
+  .ptlNavHero.ptl-has-video .ptlNavHero__video,
   .ptl-navigation.ptl-has-video video {
     transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
 
-  .ptl-pageNavHero,
+  .ptlNavHero,
   .ptl-navigation {
     overflow: clip;
   }
   
-  #page-navigation .ptl-pageNavHero__image img,
-  #page-navigation .ptl-pageNavHero__video,
-  #bust-issues .ptl-pageNavHero__image img,
-  #bust-issues .ptl-pageNavHero__video {
+  #page-navigation .ptlNavHero__image img,
+  #page-navigation .ptlNavHero__video,
+  #bust-issues .ptlNavHero__image img,
+  #bust-issues .ptlNavHero__video {
     transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
   
-  .ptl-pageNavHero.has-bg .ptl-pageNavHero__image img,
-  .ptl-pageNavHero.has-bg .ptl-pageNavHero__video {
+  .ptlNavHero.has-bg .ptlNavHero__image img,
+  .ptlNavHero.has-bg .ptlNavHero__video {
     transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
   
-  #page-navigation .ptl-pageNavHero__icon {
+  #page-navigation .ptlNavHero__icon {
     width: 48px;
     height: 48px;
     display: flex;
@@ -251,7 +260,7 @@
     justify-content: center;
   }
   
-  .ptl-pageNavHero__label {
+  .ptlNavHero__label {
     font-size: 14px;
   }
 }
@@ -283,4 +292,35 @@
 #page-navigation {
   margin-top: 0;
   margin-bottom: 80px;
+}
+
+/* =====================================================
+   SP: NAVIGATION 背景透過
+   実装日: 2025-10-25
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 背景透過 */
+  #page-navigation,
+  .ptl-pageNavHero {
+    background: transparent !important;
+    min-height: auto !important;
+  }
+  
+  /* 背景動画/画像を非表示 */
+  #page-navigation .ptl-pageNavHero__bg,
+  #page-navigation .ptl-pageNavHero__overlay {
+    display: none !important;
+  }
+  
+  /* タイトルを黒文字に */
+  #page-navigation .ptl-section__title,
+  #page-navigation .ptl-section__subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+  
+  /* ボタンは白背景維持 */
+  .ptl-pageNavHero__btn {
+    background: #ffffff !important;
+  }
 }

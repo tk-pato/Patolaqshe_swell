@@ -1,28 +1,22 @@
-/* ヒーロー直後のグレー帯・余白・背景色対策（2025-10-07） */
+/* ヒーロー直後のグレー帯・余白・背景色対策(2025-10-07) */
+/* COMMITMENT/USERVOICE等のセクション余白を保護するため、親テーマクラスへの全体適用を削除 */
+/* section-blog専用CSSなので、親テーマクラス（.l-mainContent, .l-article__body）は操作しない */
 .hero-section + .l-mainContent,
-.hero-section + .l-mainContent__inner,
-.l-mainContent,
-.l-article__body {
+.hero-section + .l-mainContent__inner {
   padding-top: 0;
   margin-top: 0;
   background: transparent;
 }
 
-/* セクション余白 */
+/* セクション余白（PC/SP共通ベース） */
 #section-blog {
   margin-top: 0;
   margin-bottom: 80px;
 }
 
-@media (max-width: 768px) {
-  #section-blog {
-    margin-bottom: 40px;
-  }
-}
-
 /* セクション基本設定 */
 #section-blog,
-.ptl-blog {
+.ptlBlog {
   --ptl-heading-size: clamp(22px, 2.8vw, 28px);
   --ptl-subtitle-size: clamp(16px, 2vw, 18px);
 }
@@ -39,7 +33,7 @@
 ======================================== */
 
 /* セクション全体 - 全幅対応 */
-.ptl-blog {
+.ptlBlog {
   position: relative;
   /* overflow: hidden; を削除 - MOREボタンが見切れる原因 */
   isolation: isolate;
@@ -54,8 +48,17 @@
   /* padding設定削除: 余白はmargin-bottomで管理 */
 }
 
+/* コンテナ幅統一設定 */
+#section-blog .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* ヘッダー部分のみコンテナ幅で制限 */
-.ptl-blog .ptl-section__inner {
+.ptlBlog .ptl-section__inner {
   margin: 0 auto;
   overflow: visible;
   max-width: none;
@@ -63,7 +66,7 @@
 }
 
 /* ヘッダー部分のみ最大幅適用 */
-.ptl-blog__header {
+.ptlBlog__header {
   max-width: var(--ptl-container-max, 1200px);
   margin: 0 auto 40px;
   padding: 0 var(--ptl-container-pad, 20px);
@@ -74,7 +77,7 @@
 /* h2タイトルはstyle.cssの.ptl-section__titleで統一管理 */
 
 /* カードコンテナ - 全幅対応(フルブリード強制実装) */
-.ptl-blog__container {
+.ptlBlog__container {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -87,7 +90,7 @@
 }
 
 /* カードトラック（スクロールする部分） */
-.ptl-blog__track {
+.ptlBlog__track {
   display: flex;
   gap: 24px;
   will-change: transform;
@@ -101,13 +104,13 @@
 }
 
 /* 5記事以上でアニメーション有効 */
-.ptl-blog__track.is-animated {
+.ptlBlog__track.is-animated {
   animation: blog-scroll 60s linear infinite;
   animation-fill-mode: forwards;
 }
 
 /* 4記事以下は中央揃え（アニメーションなし） */
-.ptl-blog__track.is-static {
+.ptlBlog__track.is-static {
   justify-content: center;
   max-width: var(--ptl-container-max, 1200px);
   margin: 0 auto;
@@ -124,7 +127,7 @@
 
 
 /* 🔴 新規追加: カードとタイトルのラッパー */
-.ptl-blog__item {
+.ptlBlog__item {
   flex: 0 0 calc((100% - 72px) / 4);
   min-width: 260px;
   max-width: 320px;
@@ -134,7 +137,7 @@
 }
 
 /* 🔴 変更: カードは画像のみ */
-.ptl-blog__card {
+.ptlBlog__card {
   flex: 0 0 auto;
   width: 100%;
   text-decoration: none;
@@ -147,13 +150,13 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.ptl-blog__card:hover {
+.ptlBlog__card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 /* カード画像 */
-.ptl-blog__media {
+.ptlBlog__media {
   position: relative;
   width: 100%;
   padding-top: 66.67%; /* 3:2 アスペクト比 */
@@ -161,7 +164,7 @@
   background: transparent;
 }
 
-.ptl-blog__media img {
+.ptlBlog__media img {
   position: absolute;
   top: 0;
   left: 0;
@@ -171,13 +174,13 @@
   transition: transform 0.4s ease;
 }
 
-.ptl-blog__card:hover .ptl-blog__media img {
+.ptlBlog__card:hover .ptlBlog__media img {
   transform: scale(1.08);
 }
 
 
 /* 🔴 変更: タイトルはカードの外に独立 */
-.ptl-blog__title {
+.ptlBlog__title {
   padding: 0;
   margin: 0;
   font-size: clamp(14px, 1.4vw, 16px);
@@ -195,18 +198,18 @@
 }
 
 /* 🔴 追加: タイトル内のリンク */
-.ptl-blog__title a {
+.ptlBlog__title a {
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.ptl-blog__title a:hover {
+.ptlBlog__title a:hover {
   color: #5F6368;
 }
 
 /* MOREボタン（NEWSと完全統一 - style.cssで定義） */
-.ptl-blog__more {
+.ptlBlog__more {
   display: flex;
   justify-content: center;
   margin-top: 24px;
@@ -219,10 +222,10 @@
   width: 100%; /* 幅を確保 */
 }
 
-/* .ptl-blog__moreBtnはstyle.cssの.ptl-news__moreBtnと同じスタイルを使用 */
+/* .ptlBlog__moreBtnはstyle.cssの.ptl-news__moreBtnと同じスタイルを使用 */
 
 /* 投稿がない場合のメッセージ */
-.ptl-blog__empty {
+.ptlBlog__empty {
   text-align: center;
   padding: 60px 20px;
   color: #777;
@@ -232,45 +235,17 @@
   margin: 0 auto;
 }
 
-
-/* セクション余白（独自管理） */
-#section-blog {
-    margin-top: 0;
-    margin-bottom: 80px;
-}
-@media (max-width: 768px) {
-    #section-blog {
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-}
-
-#section-blog {
-  margin-top: 0;
-  margin-bottom: 80px;
-}
-
-/* タブレット対応 */
-@media (max-width: 959px) {
-  .ptl-blog__item {
-    flex: 0 0 calc((100% - 48px) / 3);
-    min-width: 220px;
-    max-width: 320px;
-  }
-}
-
-
-/* モバイル対応 */
-@media (max-width: 699px) {
-  .ptl-blog__item {
-    flex: 0 0 calc((100% - 24px) / 2);
-    min-width: 160px;
-    max-width: 320px;
-  }
-  .ptl-blog__header {
-    margin-bottom: 40px;
-  }
-  .ptl-blog .ptl-section__ornament img {
-    width: 180px;
+/* =====================================================
+   SP: BLOG 薄グレー背景
+   実装日: 2025-10-25
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 薄グレー背景 */
+  #section-blog,
+  .ptl-blog,
+  .ptlBlog {
+    background: #f8f8f8 !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
   }
 }

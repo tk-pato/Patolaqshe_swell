@@ -70,7 +70,7 @@ $cards = [
 
 <section 
     id="section-infohub" 
-    class="ptl-infohub has-bg"
+    class="ptlHub has-bg"
     data-parallax="bg"
     data-parallax-speed="0.92"
     data-parallax-clamp="0.18"
@@ -78,43 +78,43 @@ $cards = [
     data-parallax-scale="1.55">
 
     <!-- パララックス背景 -->
-    <div class="ptl-infohub__bg">
+    <div class="ptlHub__bg">
         <?php if ($use_video && !empty($video_url)) : ?>
-            <video class="ptl-infohub__video" autoplay muted loop playsinline>
+            <video class="ptlHub__video" autoplay muted loop playsinline>
                 <source src="<?php echo esc_url($video_url); ?>" type="video/mp4">
             </video>
         <?php elseif (!empty($bg_pc) || !empty($bg_sp)) : ?>
-            <picture class="ptl-infohub__image">
+            <picture class="ptlHub__image">
                 <?php if (!empty($bg_sp)) : ?>
                     <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
                 <?php endif; ?>
                 <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="<?php echo esc_attr($main_title); ?>">
             </picture>
         <?php endif; ?>
-        <div class="ptl-infohub__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
+        <div class="ptlHub__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
     </div>
 
     <!-- コンテンツ -->
     <div class="ptl-section__inner">
         <!-- ヘッダー -->
-        <div class="ptl-infohub__header">
+        <div class="ptlHub__header">
             <?php if (!empty($main_title)) : ?>
                 <h2 class="ptl-section__title"><?php echo esc_html($main_title); ?></h2>
             <?php endif; ?>
         </div>
 
         <!-- カードグリッド -->
-        <div class="ptl-infohub__grid">
+        <div class="ptlHub__grid">
             <?php foreach ($cards as $index => $card) : ?>
-                <a href="<?php echo esc_url($card['url']); ?>" class="ptl-infohub__card">
-                    <div class="ptl-infohub__media">
+                <a href="<?php echo esc_url($card['url']); ?>" class="ptlHub__card">
+                    <div class="ptlHub__media">
                         <img src="<?php echo esc_url($card['image']); ?>" alt="<?php echo esc_attr($card['title']); ?>">
                     </div>
-                    <div class="ptl-infohub__content">
-                        <h3 class="ptl-infohub__title">
+                    <div class="ptlHub__content">
+                        <h3 class="ptlHub__title">
                             <?php echo esc_html($card['title']); ?>
                         </h3>
-                        <p class="ptl-infohub__desc"><?php echo esc_html($card['desc']); ?></p>
+                        <p class="ptlHub__desc"><?php echo esc_html($card['desc']); ?></p>
                     </div>
                 </a>
             <?php endforeach; ?>

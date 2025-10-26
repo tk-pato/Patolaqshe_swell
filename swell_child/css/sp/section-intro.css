@@ -1,0 +1,60 @@
+/* ===========================
+   INTRO Section - SP Styles
+   INTROセクション SP専用スタイル
+   適用条件: 959px以下
+   =========================== */
+
+/* セクション余白 - SP調整 */
+@media (max-width: 768px) {
+  #intro,
+  #intro.ptlIntro-section {
+    margin-bottom: 40px;
+  }
+}
+
+/* モバイルレイアウト（767px以下） */
+@media (max-width: 767px) {
+  #intro.ptlIntro-section {
+    min-height: auto;
+    margin-bottom: 40px;
+  }
+  
+  #intro .ptlIntro__media {
+    position: relative;
+    width: 100%;
+    height: clamp(320px, 55vh, 450px);
+  }
+  
+  #intro .ptlIntro__content {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: clamp(36px, 7vw, 64px) clamp(24px, 5vw, 44px);
+    text-align: center;
+  }
+  
+  #intro .ptlIntro__content-inner {
+    max-width: none;
+  }
+  
+  #intro .ptlIntro__brand {
+    text-align: center;
+  }
+  
+  /* ブランドロゴ画像 - SP調整 */
+  #intro .ptlIntro__brand-logo {
+    max-width: 140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #intro .ptlIntro__brand-ornament {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #intro .ptlIntro__cta-button {
+    margin: 0 auto;
+  }
+}

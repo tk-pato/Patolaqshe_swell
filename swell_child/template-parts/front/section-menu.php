@@ -20,7 +20,7 @@ $p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
 $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 ?>
 
-<section id="menu" class="ptl-reasonsHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
+<section id="menu" class="ptlMenuHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title">MENU</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種メニュー</div>
@@ -29,49 +29,49 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
         </div>
 
         <!-- MENU Content (Rococo Style) -->
-        <div class="ptl-menu__content">
+        <div class="ptlMenu__content">
             <!-- メインコンテンツ -->
-            <div class="ptl-menu__main">
-                <div class="ptl-menu__mainContent">
-                    <a href="<?php echo esc_url(home_url('/lp03/')); ?>" class="ptl-menu__mainLink">
-                        <div class="ptl-menu__mainImage">
-                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
+            <div class="ptlMenu__main">
+                <div class="ptlMenu__mainContent">
+                    <a href="<?php echo esc_url(home_url('/lp03/')); ?>" class="ptlMenu__mainLink">
+                        <div class="ptlMenu__mainImage">
+                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
                         </div>
-                        <div class="ptl-menu__mainText">
-                            <h3 class="ptl-menu__mainTitle">テキストテキストテキスト</h3>
-                            <p class="ptl-menu__mainDesc">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキスト。</p>
+                        <div class="ptlMenu__mainText">
+                            <h3 class="ptlMenu__mainTitle">テキストテキストテキスト</h3>
+                            <p class="ptlMenu__mainDesc">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキスト。</p>
                         </div>
                     </a>
                 </div>
             </div>
 
             <!-- サブメニュー -->
-            <div class="ptl-menu__sub">
-                <div class="ptl-menu__subGrid">
-                    <div class="ptl-menu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/sizeup/')); ?>" class="ptl-menu__subLink">
-                            <div class="ptl-menu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="サイズアップ" loading="lazy" decoding="async">
+            <div class="ptlMenu__sub">
+                <div class="ptlMenu__subGrid">
+                    <div class="ptlMenu__subItem">
+                        <a href="<?php echo esc_url(home_url('/menu/sizeup/')); ?>" class="ptlMenu__subLink">
+                            <div class="ptlMenu__subImage">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="サイズアップ" loading="lazy" decoding="async">
                             </div>
-                            <h4 class="ptl-menu__subTitle">サイズアップ</h4>
+                            <h4 class="ptlMenu__subTitle">サイズアップ</h4>
                         </a>
                     </div>
 
-                    <div class="ptl-menu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/down/')); ?>" class="ptl-menu__subLink">
-                            <div class="ptl-menu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="下垂ケア" loading="lazy" decoding="async">
+                    <div class="ptlMenu__subItem">
+                        <a href="<?php echo esc_url(home_url('/menu/down/')); ?>" class="ptlMenu__subLink">
+                            <div class="ptlMenu__subImage">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="下垂ケア" loading="lazy" decoding="async">
                             </div>
-                            <h4 class="ptl-menu__subTitle">下垂ケア</h4>
+                            <h4 class="ptlMenu__subTitle">下垂ケア</h4>
                         </a>
                     </div>
 
-                    <div class="ptl-menu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/distance/')); ?>" class="ptl-menu__subLink">
-                            <div class="ptl-menu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/仮バナーPC.png'); ?>" alt="離れバストケア" loading="lazy" decoding="async">
+                    <div class="ptlMenu__subItem">
+                        <a href="<?php echo esc_url(home_url('/menu/distance/')); ?>" class="ptlMenu__subLink">
+                            <div class="ptlMenu__subImage">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="離れバストケア" loading="lazy" decoding="async">
                             </div>
-                            <h4 class="ptl-menu__subTitle">離れバストケア</h4>
+                            <h4 class="ptlMenu__subTitle">離れバストケア</h4>
                         </a>
                     </div>
                 </div>
@@ -80,12 +80,10 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
         <!-- MORE ボタン -->
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <div class="ptl-news__more">
-                <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
-                    <span class="ptl-news__moreLabel">MORE</span>
-                    <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
-                </a>
-            </div>
+            <a class="ptlNews__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
+                <span class="ptlNews__moreLabel">MORE</span>
+                <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
+            </a>
         </div>
     </div>
 </section>

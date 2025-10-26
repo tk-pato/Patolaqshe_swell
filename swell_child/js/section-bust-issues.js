@@ -12,7 +12,7 @@
 
   function collect() {
     items = [];
-    var nodeList = document.querySelectorAll('.ptl-bustIssues[data-parallax="bg"]');
+    var nodeList = document.querySelectorAll('.ptlIssues[data-parallax="bg"]');
     if (!nodeList || !nodeList.length) return;
 
     for (var i = 0; i < nodeList.length; i++) {
@@ -41,10 +41,10 @@
       if (attrTarget) {
         try { target = sec.querySelector(attrTarget); } catch (e) { /* noop */ }
       }
-      var tVideo = target || sec.querySelector('.ptl-bustIssues__video');
-      var tImg = (!tVideo && sec.querySelector('.ptl-bustIssues__image img')) || null;
-      var tPic = (!tVideo && !tImg && sec.querySelector('.ptl-bustIssues__image')) || null;
-      var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptl-bustIssues__bg')) || null;
+      var tVideo = target || sec.querySelector('.ptlIssues__video');
+      var tImg = (!tVideo && sec.querySelector('.ptlIssues__image img')) || null;
+      var tPic = (!tVideo && !tImg && sec.querySelector('.ptlIssues__image')) || null;
+      var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptlIssues__bg')) || null;
       target = tVideo || tImg || tPic || tBg;
       if (!target) continue;
 

@@ -5,10 +5,10 @@
   'use strict';
 
   const init = () => {
-    const track = document.querySelector('.ptl-blog__track');
+    const track = document.querySelector('.ptlBlog__track');
     if (!track) return;
 
-    const items = Array.from(track.querySelectorAll('.ptl-blog__item'));
+    const items = Array.from(track.querySelectorAll('.ptlBlog__item'));
     const itemCount = items.length;
 
     if (itemCount >= 5) {

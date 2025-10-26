@@ -52,50 +52,50 @@ $overlay_rgb = $overlay_color === 'black' ? '0, 0, 0' : '255, 255, 255';
 $overlay_style = sprintf('background: rgba(%s, %.2f);', $overlay_rgb, $overlay_opacity);
 ?>
 
-<section id="intro" class="ptl-intro-section">
+<section id="intro" class="ptlIntro-section ptl-overlap-layer">
 
     <!-- Left: Media Area -->
-    <div class="ptl-intro__media" <?php if ($media_style) echo 'style="' . esc_attr($media_style) . '"'; ?>>
+    <div class="ptlIntro__media" <?php if ($media_style) echo 'style="' . esc_attr($media_style) . '"'; ?>>
         <?php if ($use_video && !empty($bg_video)) : ?>
-            <video class="ptl-intro__video" autoplay muted loop playsinline>
+            <video class="ptlIntro__video" autoplay muted loop playsinline>
                 <source src="<?php echo esc_url($bg_video); ?>" type="video/mp4">
             </video>
         <?php endif; ?>
 
         <?php if ($has_media) : ?>
-            <div class="ptl-intro__overlay" style="<?php echo esc_attr($overlay_style); ?>"></div>
+            <div class="ptlIntro__overlay" style="<?php echo esc_attr($overlay_style); ?>"></div>
         <?php endif; ?>
     </div>
 
     <!-- Right: Content Area -->
-    <div class="ptl-intro__content">
-        <div class="ptl-intro__content-inner">
+    <div class="ptlIntro__content">
+        <div class="ptlIntro__content-inner">
 
             <?php if (!empty($brand_text)) : ?>
-                <div class="ptl-intro__brand">
-                    <div class="ptl-intro__brand-text"><?php echo esc_html($brand_text); ?></div>
-                    <div class="ptl-intro__brand-ornament"></div>
+                <div class="ptlIntro__brand">
+                    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/intrologo.png'); ?>"
+                        alt="<?php echo esc_attr($brand_text); ?>"
+                        class="ptlIntro__brand-logo" />
+                    <div class="ptlIntro__brand-ornament"></div>
                 </div>
-            <?php endif; ?>
-
-            <?php if (!empty($subtitle)) : ?>
-                <div class="ptl-intro__subtitle"><?php echo esc_html($subtitle); ?></div>
+            <?php endif; ?> <?php if (!empty($subtitle)) : ?>
+                <div class="ptlIntro__subtitle"><?php echo esc_html($subtitle); ?></div>
             <?php endif; ?>
 
             <?php if (!empty($title)) : ?>
-                <h2 class="ptl-intro__title"><?php echo wp_kses_post($title); ?></h2>
+                <h2 class="ptlIntro__title"><?php echo wp_kses_post($title); ?></h2>
             <?php endif; ?>
 
             <?php if (!empty($description)) : ?>
-                <div class="ptl-intro__desc">
+                <div class="ptlIntro__desc">
                     <?php echo wp_kses_post(wpautop($description)); ?>
                 </div>
             <?php endif; ?>
 
             <?php if (!empty($cta_url)) : ?>
-                <a href="<?php echo esc_url($cta_url); ?>" class="ptl-intro__cta-button">
-                    <span class="ptl-intro__cta-label">MORE</span>
-                    <span class="ptl-intro__cta-arrow">→</span>
+                <a href="<?php echo esc_url($cta_url); ?>" class="ptlIntro__cta-button">
+                    <span class="ptlIntro__cta-label">MORE</span>
+                    <span class="ptlIntro__cta-arrow">→</span>
                 </a>
             <?php endif; ?>
 

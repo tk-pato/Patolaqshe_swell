@@ -58,12 +58,14 @@ echo $header_output;
 	</div>
 
 	<?php
-	// 2) NEWS（ヒーロー直下に復活）
-	get_template_part('template-parts/front/section', 'news');
+	// 1.5) NEWS（ニュースセクション - PC用）: フルブリード - PC表示のみヒーロー直下
 	?>
+	<div class="ptl-news-pc-only">
+		<?php get_template_part('template-parts/front/section', 'news'); ?>
+	</div>
 
 	<?php
-	// 2.5) INTRO（ブランド紹介セクション）: フルブリード
+	// 2) INTRO（ブランド紹介セクション）: フルブリード
 	get_template_part('template-parts/front/section', 'intro');
 	?>
 
@@ -85,8 +87,8 @@ echo $header_output;
 	<div class="l-mainContent__inner">
 
 		<?php
-		// 4.5) サービス特集（バストアップ大 + 下段3つ）
-		get_template_part('template-parts/front/section', 'service-feature');
+		// 4.5) メニューセクション（バストアップ大 + 下段3つ）
+		get_template_part('template-parts/front/section', 'menu');
 		?>
 
 		<?php
@@ -105,6 +107,13 @@ echo $header_output;
 	// 5.8) INFO HUB（3カードレイアウト：BRIDAL / INFORMATION / FAQ）: フルブリード
 	get_template_part('template-parts/front/section', 'infohub');
 	?>
+
+	<?php
+	// 5.9) NEWS（ニュースセクション - SP用）: フルブリード - SP表示のみここに配置
+	?>
+	<div class="ptl-news-sp-only">
+		<?php get_template_part('template-parts/front/section', 'news'); ?>
+	</div>
 
 	<?php /* BLOGセクション: INFOHUB の直後に配置（再表示） */ ?>
 	<?php get_template_part('template-parts/front/section', 'blog'); ?>

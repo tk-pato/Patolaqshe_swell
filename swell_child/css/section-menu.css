@@ -1,22 +1,25 @@
-/* section-service-feature.css - PC専用 - Phase④ */
+/* === MENU Section (Rococo Style) 統合分 === */
 
-@charset "UTF-8";/* === MENU Section (Rococo Style) 統合分 === */
-#section-services .ptl-menu__content {
+/* コンテナ幅統一設定 */
+#menu .ptl-section__inner {
+  max-width: var(--ptl-container-max, 1200px);
+  padding-left: var(--ptl-container-pad, 20px);
+  padding-right: var(--ptl-container-pad, 20px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#menu .ptlMenu__content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 40px;
   align-items: stretch;
-  max-width: var(--ptl-container-max, 1200px);
-  margin: 0 auto;
-  padding: 0 var(--ptl-container-pad, 20px);
-  width: 100%;
-  box-sizing: border-box;
 }
-#section-services .ptl-menu__main {
+#menu .ptlMenu__main {
   position: relative;
   height: 100%;
 }
-#section-services .ptl-menu__mainContent {
+#menu .ptlMenu__mainContent {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -26,35 +29,35 @@
   display: flex;
   flex-direction: column;
 }
-#section-services .ptl-menu__mainContent:hover {
+#menu .ptlMenu__mainContent:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
-#section-services .ptl-menu__mainLink {
+#menu .ptlMenu__mainLink {
   display: block;
   text-decoration: none;
   color: inherit;
 }
-#section-services .ptl-menu__mainImage {
+#menu .ptlMenu__mainImage {
   position: relative;
   width: 100%;
   height: 400px;
   overflow: hidden;
 }
-#section-services .ptl-menu__mainImage img {
+#menu .ptlMenu__mainImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-#section-services .ptl-menu__mainContent:hover .ptl-menu__mainImage img {
+#menu .ptlMenu__mainContent:hover .ptlMenu__mainImage img {
   transform: scale(1.05);
 }
-#section-services .ptl-menu__mainText {
+#menu .ptlMenu__mainText {
   padding: 20px 30px;
   background: #fff;
 }
-#section-services .ptl-menu__mainTitle {
+#menu .ptlMenu__mainTitle {
   font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 600;
   color: #444;
@@ -63,7 +66,7 @@
   text-align: center;
   letter-spacing: .08em;
 }
-#section-services .ptl-menu__mainDesc {
+#menu .ptlMenu__mainDesc {
   font-size: clamp(14px, 1.2vw, 15px);
   font-weight: 300;
   color: #444;
@@ -71,7 +74,7 @@
   margin: 0 0 20px 0;
   text-align: center;
 }
-#section-services .ptl-menu__mainCta {
+#menu .ptlMenu__mainCta {
   display: inline-block;
   padding: 0;
   background: transparent;
@@ -85,22 +88,22 @@
   transition: color 0.3s ease;
   text-decoration: underline;
 }
-#section-services .ptl-menu__mainCta:hover {
+#menu .ptlMenu__mainCta:hover {
   color: #0056b3;
 }
-#section-services .ptl-menu__sub {
+#menu .ptlMenu__sub {
   position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-#section-services .ptl-menu__subGrid {
+#menu .ptlMenu__subGrid {
   display: flex;
   flex-direction: column;
   gap: 20px;
   height: 100%;
 }
-#section-services .ptl-menu__subItem {
+#menu .ptlMenu__subItem {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
@@ -111,34 +114,34 @@
   display: flex;
   flex-direction: column;
 }
-#section-services .ptl-menu__subItem:hover {
+#menu .ptlMenu__subItem:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
-#section-services .ptl-menu__subLink {
+#menu .ptlMenu__subLink {
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
   height: 100%;
 }
-#section-services .ptl-menu__subImage {
+#menu .ptlMenu__subImage {
   position: relative;
   width: 100%;
   height: 150px;
   overflow: hidden;
   flex-shrink: 0;
 }
-#section-services .ptl-menu__subImage img {
+#menu .ptlMenu__subImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-#section-services .ptl-menu__subItem:hover .ptl-menu__subImage img {
+#menu .ptlMenu__subItem:hover .ptlMenu__subImage img {
   transform: scale(1.1);
 }
-#section-services .ptl-menu__subTitle {
+#menu .ptlMenu__subTitle {
   padding: 20px;
   font-size: clamp(14px, 1.4vw, 16px);
   font-weight: 600;
@@ -153,14 +156,14 @@
   justify-content: center;
   letter-spacing: .08em;
 }
-#section-services .ptl-menu__subItem:hover .ptl-menu__subTitle {
+#menu .ptlMenu__subItem:hover .ptlMenu__subTitle {
   background: #f8f9fa;
 }
-#section-services .ptl-menu__more {
+#menu .ptlMenu__more {
   text-align: center;
   margin-top: 50px;
 }
-#section-services .ptl-menu__moreBtn {
+#menu .ptlMenu__moreBtn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -176,26 +179,48 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
-#section-services .ptl-menu__moreBtn:hover {
+#menu .ptlMenu__moreBtn:hover {
   background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
   color: #fff;
   text-decoration: none;
 }
-#section-services .ptl-menu__moreLabel {
+#menu .ptlMenu__moreLabel {
   font-weight: 600;
 }
-#section-services .ptl-menu__moreArrow {
+#menu .ptlMenu__moreArrow {
   font-size: 1.2rem;
   transition: transform 0.3s ease;
 }
-#section-services .ptl-menu__moreBtn:hover .ptl-menu__moreArrow {
+#menu .ptlMenu__moreBtn:hover .ptlMenu__moreArrow {
   transform: translateX(5px);
 }
-
-#section-services .ptl-reasonsHero__boxTitle {
-  /* ナビの .ptl-pageNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
+/* レスポンシブ統合 */
+@media (max-width: 992px) {
+  #menu .ptlMenu__content { grid-template-columns: 1fr; gap: 30px; }
+  #menu .ptlMenu__subGrid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  #menu .ptlMenu__title { font-size: 2.2rem; }
+}
+@media (max-width: 768px) {
+  #menu .ptlMenu__mainImage { height: 200px; }
+  #menu .ptlMenu__mainText { padding: 20px; }
+  #menu .ptlMenu__mainTitle { font-size: 1.3rem; }
+  #menu .ptlMenu__mainDesc { font-size: 0.9rem; }
+  #menu .ptlMenu__subImage { height: 100px; }
+  #menu .ptlMenu__subTitle { padding: 12px 15px; font-size: 0.9rem; }
+  #menu .ptlMenu__more { margin-top: 40px; }
+  #menu .ptlMenu__moreBtn { padding: 12px 25px; font-size: 1rem; }
+}
+@media (max-width: 480px) {
+  #menu .ptlMenu__mainImage { height: 180px; }
+  #menu .ptlMenu__mainText { padding: 15px; }
+  #menu .ptlMenu__mainTitle { font-size: 1.2rem; }
+  #menu .ptlMenu__subImage { height: 80px; }
+  #menu .ptlMenu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
+}
+#menu .ptlMenuHero__boxTitle {
+  /* ナビの .ptlNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
   font-size: clamp(13px, 1.4vw, 16px);
   font-weight: 600;
   color: #333;
@@ -206,7 +231,7 @@
   letter-spacing: .08em;
 }
 
-#section-services .ptl-reasonsHero__boxDesc {
+#menu .ptlMenuHero__boxDesc {
   font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 300;
   color: #333;
@@ -216,25 +241,37 @@
   text-align: center;
 }
 /* コミットメントセクション（Reasons）のスタイル */
-#section-services .ptl-reasonsHero {
+.ptlMenuHero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   background: transparent;
   --ptl-heading-size: clamp(22px, 2.8vw, 28px);
   --ptl-subtitle-size: clamp(16px, 2vw, 18px);
-  min-height: clamp(520px, 60vh, 720px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0;
+  margin-bottom: 80px; /* セクション間余白 */
+  min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
 }
 
-#section-services .ptl-reasonsHero.is-translucent {
+/* SP用余白調整 */
+@media (max-width: 959px) {
+    .ptlMenuHero {
+        margin-bottom: 40px;
+    }
+}
+
+.ptlMenuHero.is-translucent {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
-#section-services .ptl-reasonsHero.has-bg {
+.ptlMenuHero.has-bg {
   color: #fff;
 }
 
-#section-services .ptl-reasonsHero__bg {
+.ptlMenuHero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -243,8 +280,8 @@
   transform-origin: center center;
 }
 
-#section-services .ptl-reasonsHero__video,
-#section-services .ptl-reasonsHero__image {
+.ptlMenuHero__video,
+.ptlMenuHero__image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -253,11 +290,11 @@
   transform-origin: center center;
 }
 
-#section-services .ptl-reasonsHero__video {
+.ptlMenuHero__video {
   object-fit: cover;
 }
 
-#section-services .ptl-reasonsHero__image img {
+.ptlMenuHero__image img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -267,28 +304,22 @@
   transform-origin: center center;
 }
 
-#section-services .ptl-reasonsHero__overlay {
+.ptlMenuHero__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, var(--overlay, .2));
 }
 
-#section-services .ptl-reasonsHero .ptl-section__inner {
-  width: 100%;
+.ptlMenuHero .ptl-section__inner {
   position: relative;
   z-index: 1;
-  padding-top: clamp(64px, 10vw, 160px);
-  padding-bottom: 0;
-  padding-left: var(--ptl-container-pad, 20px);
-  padding-right: var(--ptl-container-pad, 20px);
-  max-width: var(--ptl-container-max, 1200px);
-  margin: 0 auto;
-  box-sizing: border-box;
+  padding-top: 0; /* セクション上余白は削除（margin-topで管理） */
+  padding-bottom: 0; /* セクション下余白はmargin-bottomで管理 */
 }
 
 /* h2スタイルはstyle.cssで統一管理 */
 
-#section-services .ptl-reasonsHero__grid {
+.ptlMenuHero__grid {
   list-style: none;
   margin: clamp(32px, 3vw, 56px) auto 0;
   padding: 0;
@@ -298,11 +329,19 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+@media (min-width: 700px) {
+  .ptlMenuHero__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+@media (min-width: 960px) {
+  .ptlMenuHero__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-#section-services .ptl-reasonsHero__btn {
+#menu .ptlMenuHero__btn {
   display: grid;
   grid-template-rows: auto auto;
   /* 全体の行間隔を詰める */
@@ -322,12 +361,12 @@
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
-#section-services .ptl-reasonsHero__btn:hover {
+#menu .ptlMenuHero__btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
-#section-services .ptl-reasonsHero__icon {
+#menu .ptlMenuHero__icon {
   /* 写真カードとしてフル幅表示 */
   width: 100%;
   /* 画像下の余白を詰める */
@@ -336,8 +375,8 @@
   padding: 0;
 }
 
-#section-services .ptl-reasonsHero__icon svg,
-#section-services .ptl-reasonsHero__icon img {
+#menu .ptlMenuHero__icon svg,
+#menu .ptlMenuHero__icon img {
   width: 100%;
   display: block;
   aspect-ratio: 4 / 3;
@@ -345,7 +384,7 @@
   border-radius: 8px;
 }
 
-#section-services .ptl-reasonsHero__label {
+.ptlMenuHero__label {
   font-size: 16px;
   font-weight: 600;
   color: #333;
@@ -353,19 +392,23 @@
 }
 
 /* レスポンシブ調整 */
+@media screen and (max-width: 767px) {
+  .ptlMenuHero {
+    padding: 40px 0;
+  }
 
-  #section-services .ptl-reasonsHero__grid {
+  .ptlMenuHero__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
-  #section-services .ptl-reasonsHero__label {
+  .ptlMenuHero__label {
     font-size: 14px;
   }
 }
 
 /* ファイル末尾 */
-#section-services .ptl-menu__mainImage img {
+#menu .ptlMenu__mainImage img {
   width: 100%;
   display: block;
   object-fit: cover;
@@ -376,27 +419,36 @@
   min-height: 260px;
 }
 
-#section-services .ptl-menu__mainTitle {
+#menu .ptlMenu__mainTitle {
   margin-bottom: 28px; /* 既存24px→28px */
 }
 
-#section-services .ptl-menu__mainDesc {
+#menu .ptlMenu__mainDesc {
   margin-top: 4px; /* 既存0→4px */
 }
 
 /* FIX: 左メイン画像の縦量を確保してカバー表示 */
-#section-services .ptl-menu__main .ptl-menu__mainContent { display: flex; flex-direction: column; }
-#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink { display: flex; flex-direction: column; height: 100%; }
-#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage{ max-width:none; width:100%; flex: 0 0 68%; /* 上下幅の68%に戻す */ margin-bottom: 24px; /* 写真とタイトルの間の余白を拡張 */ }
-#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainImage img{ width:100%; height:100%; object-fit:cover; display:block; }
-#section-services .ptl-menu__main .ptl-menu__mainContent .ptl-menu__mainLink .ptl-menu__mainText { flex: 0 0 32%; /* 残り32%をテキストに */ padding-top: 12px; /* テキスト上部の余白も拡張 */ }
+#menu .ptlMenu__main .ptlMenu__mainContent { display: flex; flex-direction: column; }
+#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink { display: flex; flex-direction: column; height: 100%; }
+#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainImage{ max-width:none; width:100%; flex: 0 0 68%; /* 上下幅の68%に戻す */ margin-bottom: 24px; /* 写真とタイトルの間の余白を拡張 */ }
+#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainImage img{ width:100%; height:100%; object-fit:cover; display:block; }
+#menu .ptlMenu__main .ptlMenu__mainContent .ptlMenu__mainLink .ptlMenu__mainText { flex: 0 0 32%; /* 残り32%をテキストに */ padding-top: 12px; /* テキスト上部の余白も拡張 */ }
 
 /* ========================================
    セクション余白（独自管理）
 ======================================== */
-/* PC: margin-bottomのみで管理 */
+#menu {
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+@media (max-width: 768px) {
+    #menu {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
 }
 
-/* SP: margin-bottomのみで管理 */
+#menu {
+  margin-top: 0;
+  margin-bottom: 80px;
 }
-
