@@ -317,13 +317,13 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($salon_css)) {
     wp_enqueue_style('ptl_section_salon', get_stylesheet_directory_uri() . '/css/section-salon.css', ['child_style'], filemtime($salon_css));
   }
-  
+
   // SALON PC版CSS（960px以上）
   $salon_pc_css = get_stylesheet_directory() . '/css/pc/section-salon.css';
   if (file_exists($salon_pc_css)) {
     wp_enqueue_style('ptl_section_salon-pc', get_stylesheet_directory_uri() . '/css/pc/section-salon.css', ['ptl_section_salon'], filemtime($salon_pc_css), 'screen and (min-width: 960px)');
   }
-  
+
   // SALON SP版CSS（959px以下）
   $salon_sp_css = get_stylesheet_directory() . '/css/sp/section-salon.css';
   if (file_exists($salon_sp_css)) {
@@ -1025,7 +1025,7 @@ add_action('wp_enqueue_scripts', function () {
   $nav_css_path = get_stylesheet_directory() . '/css/navigation.css';
   $nav_css_ver  = file_exists($nav_css_path) ? date('Ymdgis', filemtime($nav_css_path)) : null;
   wp_enqueue_style('ptl-navigation-style', get_stylesheet_directory_uri() . '/css/navigation.css', [], $nav_css_ver);
-  
+
   // NAVIGATION PC版CSS（960px以上）
   $nav_pc_css = get_stylesheet_directory() . '/css/pc/navigation.css';
   if (file_exists($nav_pc_css)) {
@@ -1375,8 +1375,15 @@ CSS;
     return node;
   }
 
+  // スロットリング用変数
+  var recalcTimer = null;
+  var recalcRunning = false;
+
   function recalc(){
     if (!mqSP.matches) return;
+    if (recalcRunning) return; // 実行中は無視
+    
+    recalcRunning = true;
     document.querySelectorAll('.ptl-nav-collapsible').forEach(function(c){
       panelsIn(c).forEach(function(p){
         var el = ensurePanelElement(p);
@@ -1387,11 +1394,21 @@ CSS;
         } catch(e) {}
       });
     });
+    recalcRunning = false;
+  }
+
+  // スロットリング付きrecalc（300ms間隔で実行）
+  function throttledRecalc(){
+    if (recalcTimer) return;
+    recalcTimer = setTimeout(function(){
+      recalc();
+      recalcTimer = null;
+    }, 300);
   }
 
   // イベントフック：開閉・回転・リサイズ・フォント読み込み後
-  window.addEventListener('resize', recalc);
-  window.addEventListener('orientationchange', recalc);
+  window.addEventListener('resize', throttledRecalc);
+  window.addEventListener('orientationchange', throttledRecalc);
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function(){ recalc(); }).catch(function(){});
   }
