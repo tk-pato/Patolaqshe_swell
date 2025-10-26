@@ -2,6 +2,7 @@
  * Patolaqshe Smooth Scroll - Pure JS Implementation
  * アンカーリンククリック時のスムーズスクロール
  * 既存JS・パララックスに影響なし
+ * ページ読み込み時は自動スクロールしない
  */
 (function() {
   'use strict';
@@ -9,6 +10,13 @@
   // Reduce Motion対応
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
   if (rm && rm.matches) return;
+
+  // ページ読み込み時のURLハッシュによる自動スクロールを防止
+  if (window.location.hash) {
+    setTimeout(function() {
+      window.scrollTo(0, 0);
+    }, 1);
+  }
 
   // アンカーリンククリック時のスムーズスクロール
   document.addEventListener('click', function(e) {
