@@ -257,6 +257,20 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
+  // URLハッシュによる自動スクロール防止（ページ読み込み時は常にトップ表示）
+  if (is_front_page()) {
+    add_action('wp_footer', function () {
+  ?>
+      <script>
+        if (window.location.hash) {
+          history.replaceState(null, null, window.location.pathname + window.location.search);
+          setTimeout(function() { window.scrollTo(0, 0); }, 1);
+        }
+      </script>
+  <?php
+    }, 1);
+  }
+
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
