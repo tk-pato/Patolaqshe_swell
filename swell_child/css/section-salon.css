@@ -199,7 +199,6 @@
 .ptlSalonHero .ptl-section__inner {
     position: relative;
     z-index: 1;
-    padding: 0 20px 0;
 }
 
 .ptlSalonHero__grid {
@@ -248,7 +247,7 @@
 }
 
 #salon .ptlSalonHero__icon {
-    width: 95%;
+    width: 100%;
     margin: 0;
     display: block;
     padding: 0;
@@ -291,10 +290,10 @@
     left: 150%;
 }
 
-/* テキスト部分：画像幅（95%）に統一 */
+/* テキスト部分：画像幅（100%）に統一 */
 #salon .ptlSalonHero__boxTitle,
 #salon .ptlSalonHero__boxDesc {
-    width: 95%;
+    width: 100%;
     margin: 0;
     padding: 10px 16px;
     background: rgba(255, 255, 255, 0.98);
