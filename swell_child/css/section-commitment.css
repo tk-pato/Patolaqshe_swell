@@ -68,9 +68,18 @@
 /* PC版: 幅制限でセクション内に収める */
 @media (min-width: 960px) {
     .ptlCommitHero {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .ptlCommitHero .ptl-section__inner {
+        width: 100% !important;
+        max-width: var(--ptl-container-max, 1200px) !important;
     }
 }
 
