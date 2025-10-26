@@ -16,13 +16,6 @@
       return; // PCの場合は何もしない
     }
     
-    // ヒーロー内のボタンを取得
-    const heroButton = document.querySelector('.p-mainVisual__scroll');
-    
-    if (!heroButton) {
-      return;
-    }
-    
     // INTROセクションの存在確認
     const introSection = document.getElementById('intro');
     
@@ -31,16 +24,46 @@
       return;
     }
     
-    // data-onclick属性を削除（SWELL標準の動作を無効化）
-    heroButton.removeAttribute('data-onclick');
+    // 複数のセレクタでボタンを探す
+    const selectors = [
+      '.p-mainVisual__scroll',
+      '.p-mainVisual a[href*="hotpepper"]',
+      '.p-mainVisual button',
+      '.p-mainVisual .c-plainBtn',
+      'a[href*="hotpepper"][class*="scroll"]'
+    ];
     
-    // 既存のリンクがある場合は削除
-    if (heroButton.tagName === 'A') {
-      heroButton.removeAttribute('href');
+    let heroButton = null;
+    for (let selector of selectors) {
+      heroButton = document.querySelector(selector);
+      if (heroButton) {
+        console.log('Hero button found with selector:', selector);
+        break;
+      }
     }
     
-    // ボタンクリック時の動作を設定
-    heroButton.addEventListener('click', function(e) {
+    if (!heroButton) {
+      console.warn('Hero scroll button not found');
+      return;
+    }
+    
+    // ホットペッパーリンクを完全に削除
+    if (heroButton.tagName === 'A') {
+      heroButton.href = '#intro';
+    }
+    
+    // 全ての属性を削除
+    heroButton.removeAttribute('data-onclick');
+    heroButton.removeAttribute('onclick');
+    heroButton.removeAttribute('target');
+    heroButton.removeAttribute('rel');
+    
+    // クリックイベントを完全に上書き
+    const newButton = heroButton.cloneNode(true);
+    heroButton.parentNode.replaceChild(newButton, heroButton);
+    
+    // 新しいイベントを設定
+    newButton.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -57,7 +80,7 @@
       }, 800);
       
       return false;
-    }, true); // useCapture = true で最優先
+    }, true);
   }
   
   // ページ読み込み完了後に実行
@@ -66,5 +89,8 @@
   } else {
     initHeroScroll();
   }
+  
+  // 遅延読み込み対応
+  setTimeout(initHeroScroll, 1000);
   
 })();
