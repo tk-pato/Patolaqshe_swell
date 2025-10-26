@@ -1,0 +1,60 @@
+/* =====================================================
+   SP専用: セクション順序変更
+   NEWSをSALONの上に配置（PCは変更なし）
+   
+   現在の順序:
+   1. NEWS (ヒーロー直下)
+   2. INTRO
+   3. BUST-ISSUES + COMMITMENT
+   4. PAGE-NAVIGATION
+   5. MENU + USERVOICE
+   6. SALON ← ここ
+   7. INFOHUB
+   8. BLOG
+   
+   変更後の順序:
+   1. INTRO
+   2. BUST-ISSUES + COMMITMENT
+   3. PAGE-NAVIGATION
+   4. MENU + USERVOICE
+   5. NEWS ← SALONの上に移動
+   6. SALON
+   7. INFOHUB
+   8. BLOG
+   ----------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /* メインコンテンツをFlexコンテナに */
+  #main_content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 直接の子要素全てに適切なorderを指定 */
+  /* 1. ヒーロー用の空div */
+  #main_content > .l-mainContent__inner:nth-of-type(1) { order: 1; }
+  
+  /* 2. INTRO */
+  #intro { order: 2; }
+  
+  /* 3. BUST-ISSUES + COMMITMENT */
+  #main_content > .l-mainContent__inner:nth-of-type(2) { order: 3; }
+  
+  /* 4. PAGE-NAVIGATION */
+  #page-navigation { order: 4; }
+  
+  /* 5. MENU + USERVOICE */
+  #main_content > .l-mainContent__inner:nth-of-type(3) { order: 5; }
+  
+  /* 6. NEWS（USERVOICEとSALONの間） */
+  #news { order: 6; }
+  
+  /* 7. SALON */
+  #salon { order: 7; }
+  
+  /* 8. INFOHUB */
+  #section-infohub { order: 8; }
+  
+  /* 9. BLOG */
+  #section-blog { order: 9; }
+}
