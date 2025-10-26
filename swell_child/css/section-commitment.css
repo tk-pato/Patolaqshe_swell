@@ -118,6 +118,7 @@
     display: grid;
     row-gap: clamp(40px, 4.6vw, 80px);
     column-gap: clamp(16px, 2vw, 24px);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 /* ===== components ===== */
