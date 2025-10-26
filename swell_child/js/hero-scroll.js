@@ -29,12 +29,12 @@
         link.onclick = function(e) {
           e.preventDefault();
           // Get the absolute position of the intro element from the top of the document
-          var rect = intro.getBoundingClientRect();
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          var introTop = rect.top + scrollTop;
+          var introBoundingRect = intro.getBoundingClientRect();
+          var currentScrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+          var introAbsoluteTop = introBoundingRect.top + currentScrollPosition;
           
           window.scrollTo({
-            top: introTop,
+            top: introAbsoluteTop,
             behavior: 'smooth'
           });
           return false;
