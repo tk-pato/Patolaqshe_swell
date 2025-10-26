@@ -218,7 +218,7 @@ Version: 1.0.0
 /* =====================================================
     MOREボタン統一スタイル（全セクション共通）
     ----------------------------------------------------- */
-.ptlNews__moreBtn, .ptlCommit__more {
+.ptlNews__moreBtn, .ptl-news__moreBtn, .ptlCommit__more {
     /* 調整用カスタムプロパティ（必要に応じて数値だけ変えればOK） */
     --frame-slice: 120; /* 画像から切り出す縁の厚み(px) */
     --frame-width: 12px; /* 実際の表示上の枠の太さ（小さめ） */
@@ -246,7 +246,7 @@ Version: 1.0.0
 
     transition: background-color .2s ease, color .2s ease;
 }
-.ptlNews__moreBtn::before, .ptlCommit__more::before {
+.ptlNews__moreBtn::before, .ptl-news__moreBtn::before, .ptlCommit__more::before {
     content: "";
     position: absolute;
     /* 枠を外側に描画し、要素サイズを変えない */
@@ -257,15 +257,20 @@ Version: 1.0.0
     -webkit-mask: url('./img/bg_frame_bk.png') center/100% 100% no-repeat;
     mask: url('./img/bg_frame_bk.png') center/100% 100% no-repeat;
 }
-.ptlNews__moreArrow { display: inline-block; transform: translateX(0); transition: transform .2s ease; }
+.ptlNews__moreArrow, .ptl-news__moreArrow { display: inline-block; transform: translateX(0); transition: transform .2s ease; }
+.ptlNews__moreLabel, .ptl-news__moreLabel { display: inline-block; }
 
 /* ホバーは文字色のみ変更（背景・枠は不変） */
 .ptlNews__moreBtn:hover,
+.ptl-news__moreBtn:hover,
 .ptlNews__moreBtn:focus-visible,
+.ptl-news__moreBtn:focus-visible,
 .ptlCommit__more:hover,
 .ptlCommit__more:focus-visible { background: #fff; color: #5F6368; }
 .ptlNews__moreBtn:hover .ptlNews__moreArrow,
-.ptlNews__moreBtn:focus-visible .ptlNews__moreArrow { transform: translateX(4px); }
+.ptl-news__moreBtn:hover .ptl-news__moreArrow,
+.ptlNews__moreBtn:focus-visible .ptlNews__moreArrow,
+.ptl-news__moreBtn:focus-visible .ptl-news__moreArrow { transform: translateX(4px); }
 
 /* =====================================================
     NEWS: 白ベタ背景を画面端まで（グローバル背景の有無に依存しない）
