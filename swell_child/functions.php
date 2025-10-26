@@ -964,6 +964,45 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptlNews-sp', get_stylesheet_directory_uri() . '/css/sp/section-news.css', ['ptlNews'], filemtime($news_sp), 'screen and (max-width: 959px)');
   }
 
+  // ========================================
+  // FOOTER - CSS読み込み（PC/SP分離対応）
+  // ========================================
+  
+  // フッター - ベースCSS
+  $footer_css = get_stylesheet_directory() . '/css/footer.css';
+  if (file_exists($footer_css)) {
+    wp_enqueue_style(
+      'ptl-footer',
+      get_stylesheet_directory_uri() . '/css/footer.css',
+      ['child_style'],
+      filemtime($footer_css)
+    );
+  }
+  
+  // フッター - PC専用CSS
+  $footer_pc = get_stylesheet_directory() . '/css/pc/footer-pc.css';
+  if (file_exists($footer_pc)) {
+    wp_enqueue_style(
+      'ptl-footer-pc',
+      get_stylesheet_directory_uri() . '/css/pc/footer-pc.css',
+      ['ptl-footer'],
+      filemtime($footer_pc),
+      'screen and (min-width: 960px)'
+    );
+  }
+  
+  // フッター - SP専用CSS
+  $footer_sp = get_stylesheet_directory() . '/css/sp/footer-sp.css';
+  if (file_exists($footer_sp)) {
+    wp_enqueue_style(
+      'ptl-footer-sp',
+      get_stylesheet_directory_uri() . '/css/sp/footer-sp.css',
+      ['ptl-footer'],
+      filemtime($footer_sp),
+      'screen and (max-width: 959px)'
+    );
+  }
+
   // BUST-ISSUESは共通のsection-parallax.jsを使用（ptlNavHeroクラス併用）
 }, 20);
 
