@@ -17,8 +17,8 @@
     }
     
     // ヒーロー内のボタンを取得
-    // SWELLのヒーローボタンは `.p-mainVisual__btn` クラス
-    const heroButton = document.querySelector('.p-mainVisual__btn');
+    // SWELLのヒーロースクロールボタンは `.p-mainVisual__scroll` クラス
+    const heroButton = document.querySelector('.p-mainVisual__scroll');
     
     if (!heroButton) {
       return; // ボタンが見つからない場合は終了
@@ -36,6 +36,7 @@
     heroButton.addEventListener('click', function(e) {
       // デフォルトのリンク動作をキャンセル
       e.preventDefault();
+      e.stopPropagation();
       
       // INTROセクションへスムーススクロール
       introSection.scrollIntoView({
