@@ -12,13 +12,20 @@
   'use strict';
   
   function initHeroScroll() {
+    console.log('[HERO] Init called, width:', window.innerWidth);
+    
     // SP判定(767px以下)
     if (window.innerWidth > 767) {
+      console.log('[HERO] PC detected, skip');
       return;
     }
     
     const intro = document.getElementById('intro');
-    if (!intro) return;
+    if (!intro) {
+      console.log('[HERO] #intro not found');
+      return;
+    }
+    console.log('[HERO] #intro found');
     
     // ヒーローのスクロールボタンを特定（全パターン網羅）
     const scrollBtn = document.querySelector('.p-mainVisual__scrollBtn a') ||
@@ -28,7 +35,17 @@
                       document.querySelector('[class*="mainVisual"] [class*="scroll"]') ||
                       document.querySelector('.p-mainVisual__footer a');
     
-    if (!scrollBtn) return;
+    if (!scrollBtn) {
+      console.log('[HERO] Scroll button not found');
+      // 全aタグを確認
+      const allLinks = document.querySelectorAll('.p-mainVisual a, [class*="mainVisual"] a');
+      console.log('[HERO] All hero links:', allLinks.length);
+      allLinks.forEach((link, i) => {
+        console.log('[HERO] Link', i, ':', link.className, link.href);
+      });
+      return;
+    }
+    console.log('[HERO] Scroll button found:', scrollBtn.className, scrollBtn.href);
     
     // 既存イベント削除用にクローン＆置換
     const newBtn = scrollBtn.cloneNode(true);
