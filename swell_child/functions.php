@@ -257,55 +257,6 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
-  // SPヒーロースクロールボタン → #intro スムーススクロール（インラインスクリプト）
-  if (is_front_page()) {
-    add_action('wp_footer', function () {
-  ?>
-      <script>
-        (function() {
-          if (window.innerWidth > 767) return;
-
-          function init() {
-            var intro = document.getElementById('intro');
-            if (!intro) return;
-            var hero = document.querySelector('.p-mainVisual');
-            if (!hero) return;
-            var links = hero.querySelectorAll('a');
-            if (links.length === 0) return;
-            links.forEach(function(link) {
-              if (link.offsetParent === null) return;
-              var newLink = link.cloneNode(true);
-              link.parentNode.replaceChild(newLink, link);
-              newLink.href = '#intro';
-              newLink.removeAttribute('target');
-              newLink.removeAttribute('rel');
-              newLink.onclick = function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                  top: intro.offsetTop,
-                  behavior: 'smooth'
-                });
-                setTimeout(function() {
-                  history.pushState(null, null, '#intro')
-                }, 800);
-                return false;
-              };
-            });
-          }
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init)
-          } else {
-            init()
-          }
-          setTimeout(init, 500);
-          setTimeout(init, 1500);
-          window.addEventListener('load', init);
-        })();
-      </script>
-  <?php
-    }, 99);
-  }
-
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
