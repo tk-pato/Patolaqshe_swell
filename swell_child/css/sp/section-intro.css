@@ -30,7 +30,7 @@
     left: 0;
     width: 100%;
     height: auto;
-    padding: clamp(36px, 7vw, 64px) clamp(24px, 5vw, 44px);
+    padding: 0 clamp(24px, 5vw, 44px);
     text-align: center;
   }
   
