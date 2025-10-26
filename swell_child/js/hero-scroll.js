@@ -1,6 +1,7 @@
 /**
  * Hero Scroll Button - SP専用スムーススクロール
- * SPで全ホットペッパーリンクを#introスムーススクロールに変更
+ * SPで【ヒーローセクション内】の全ホットペッパーリンクを#introスムーススクロールに変更
+ * フローティングメニューは除外
  * PC(768px以上)には影響なし
  * 
  * @package SWELL_CHILD
@@ -18,15 +19,48 @@
     }
     
     const intro = document.getElementById('intro');
-    if (!intro) return;
+    if (!intro) {
+      console.log('[hero-scroll] #intro not found');
+      return;
+    }
     
-    // 全ホットペッパーリンクを取得
-    const links = document.querySelectorAll('a[href*="hotpepper"]');
+    // ヒーローセクション（メインビジュアル）を特定
+    const heroSelectors = [
+      '#main_visual',
+      '.p-mainVisual',
+      '.swl-mainvisual',
+      'header + .l-mainContent > .p-mainVisual',
+      '.l-mainContent > div:first-child'
+    ];
+    
+    let heroSection = null;
+    for (let selector of heroSelectors) {
+      heroSection = document.querySelector(selector);
+      if (heroSection) {
+        console.log('[hero-scroll] Hero section found:', selector);
+        break;
+      }
+    }
+    
+    if (!heroSection) {
+      console.log('[hero-scroll] Hero section not found, fallback to body');
+      heroSection = document.body;
+    }
+    
+    // ヒーローセクション内の全ホットペッパーリンクを取得（フローティングメニュー除外）
+    const links = heroSection.querySelectorAll('a[href*="hotpepper"]:not(.ptl-float-menu a)');
+    console.log('[hero-scroll] Found links:', links.length);
+    
     if (links.length === 0) return;
     
-    links.forEach(function(link) {
+    links.forEach(function(link, index) {
       // 非表示要素を除外
-      if (link.offsetParent === null) return;
+      if (link.offsetParent === null) {
+        console.log('[hero-scroll] Link', index, 'is hidden, skipped');
+        return;
+      }
+      
+      console.log('[hero-scroll] Processing link', index, ':', link.href);
       
       // 既存イベント削除用にクローン＆置換
       const newLink = link.cloneNode(true);
@@ -44,6 +78,8 @@
         e.stopPropagation();
         e.stopImmediatePropagation();
         
+        console.log('[hero-scroll] Scrolling to #intro');
+        
         window.scrollTo({
           top: intro.offsetTop,
           behavior: 'smooth'
@@ -55,6 +91,8 @@
         
         return false;
       }, true);
+      
+      console.log('[hero-scroll] Link', index, 'converted to #intro');
     });
   }
   
