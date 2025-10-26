@@ -237,7 +237,16 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
-  // Hero Scroll Button - SP専用スムーススクロール
+  // Hero Scroll Button - SP専用: ホットペッパーリンクを無効化してINTROスクロールに変更
+  // SWELL標準のスクロールボタンのリンク先を上書き
+  add_filter('swell_mv_scroll_btn_url', function($url) {
+    // SP表示時のみ #intro に変更
+    if (wp_is_mobile()) {
+      return '#intro';
+    }
+    return $url; // PC時はそのまま
+  }, 99);
+  
   $hero_scroll_path = get_stylesheet_directory() . '/js/hero-scroll.js';
   if (file_exists($hero_scroll_path)) {
     $hero_scroll_ver = date('Ymdgis', filemtime($hero_scroll_path));
