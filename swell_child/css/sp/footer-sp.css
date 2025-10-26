@@ -21,9 +21,9 @@
 }
 
 /* ===================================
-   SP専用CSS（768px以下）
+   SP専用CSS（767px以下）
 =================================== */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   
   /* PC用フッターを完全非表示 */
   .ptl-footer__container {
@@ -259,7 +259,7 @@
    - color: #bbbbbb
    - padding: 20px 20px 35px
 =================================== */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .ptl-footer__copyright {
     background-color: var(--sp-footer-bg-white);
     text-align: center;
@@ -280,7 +280,7 @@
 /* ===================================
    PC表示時はSP用フッター非表示
 =================================== */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .sp-footer,
   .sp-footer-reservation,
   .sp-footer-main-nav,
