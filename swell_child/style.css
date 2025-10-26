@@ -441,19 +441,24 @@
   }
   
   /* ========================================
-     INTRO: 被さり効果
+     INTRO: 被さり効果（修正版）
      ======================================== */
   
   .ptl-overlap-layer,
   .ptlIntro-section.ptl-overlap-layer {
     position: relative !important;
     z-index: 10 !important;
+    
+    /* 修正: 画面1個分下に配置（transformは削除） */
     margin-top: 100vh !important;
-    transform: translateY(-80px) !important;
+    
+    /* スクロール後に被さる効果 */
     background: #ffffff !important;
-    border-radius: 0 !important;
+    border-radius: 24px 24px 0 0 !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
-    padding-top: 0 !important;
+    
+    /* 内部余白 */
+    padding-top: 60px !important;
     padding-bottom: 60px !important;
   }
   
