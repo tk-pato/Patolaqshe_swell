@@ -263,13 +263,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
   }
 
-  // スムーススクロール（全ページ対応）
-  $smooth_scroll_path = get_stylesheet_directory() . '/js/smooth-scroll.js';
-  if (file_exists($smooth_scroll_path)) {
-    $smooth_scroll_ver = date('Ymdgis', filemtime($smooth_scroll_path));
-    wp_enqueue_script('ptl_smooth_scroll', get_stylesheet_directory_uri() . '/js/smooth-scroll.js', [], $smooth_scroll_ver, true);
-  }
-
   // SALON セクション用CSS/JS（COMMITMENTベース再構築）
   $salon_css = get_stylesheet_directory() . '/css/section-salon.css';
   if (file_exists($salon_css)) {
