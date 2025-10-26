@@ -258,27 +258,6 @@ add_action('wp_enqueue_scripts', function () {
   }
 }, 20);
 
-// Hero Scroll Button - SP専用: ホットペッパーリンクを強制的に #intro に変更
-add_filter('swell_mv_scroll_btn_url', function($url) {
-  if (wp_is_mobile()) {
-    return '#intro';
-  }
-  return $url;
-}, 9999);
-
-// Hero Scroll Button - HTML出力を強制的に書き換え
-add_filter('swell_output_main_visual', function($html) {
-  if (wp_is_mobile()) {
-    // ホットペッパーのURLを #intro に置換
-    $html = preg_replace(
-      '/(href=["\']https:\/\/beauty\.hotpepper\.jp[^"\']*["\'])/i',
-      'href="#intro"',
-      $html
-    );
-  }
-  return $html;
-}, 9999);
-
 /* === Spacing Debug Toggle (front only) === */
 add_action('wp_footer', function () {
   if (is_admin()) return; // 全公開ページで有効
