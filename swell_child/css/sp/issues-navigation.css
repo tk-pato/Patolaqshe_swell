@@ -1,0 +1,25 @@
+/* issues-navigation.css - SP専用 */
+
+/* SP: padding削除、margin-bottomのみで管理 + 高さ自動 */
+#bust-issues {
+    margin-bottom: 40px;
+}
+
+/* SPパララックス効果 */
+#bust-issues .ptlIssues__image img,
+#bust-issues .ptlIssues__video {
+    transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
+    transform-origin: center;
+    will-change: transform;
+}
+
+/* カード余白調整: 上下に40pxの余白を追加 */
+#bust-issues .ptlIssues__card {
+    padding: 32px 16px;
+    margin: 40px auto;
+    max-width: calc(100% - 40px);
+}
+
+#bust-issues .ptlIssues__item {
+    padding: 10px 6px;
+}
