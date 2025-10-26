@@ -137,7 +137,14 @@
     display: grid;
     row-gap: clamp(40px, 4.6vw, 80px);
     column-gap: clamp(16px, 2vw, 24px);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* SP: 2列 */
+}
+
+/* PC版グリッド: 4列表示 */
+@media (min-width: 960px) {
+    .ptlCommitHero__grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
 }
 
 /* ===== components ===== */
