@@ -64,6 +64,15 @@
     min-height: auto;
 }
 
+/* PC版: 幅制限でセクション内に収める */
+@media (min-width: 960px) {
+    .ptlCommitHero {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 /* SP用のmargin-bottomは23行目で管理（重複回避のため削除） */
 
 .ptlCommitHero__bg {
