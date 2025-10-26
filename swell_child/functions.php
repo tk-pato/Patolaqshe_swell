@@ -237,6 +237,13 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
+  // Hero Scroll Button - SP専用スムーススクロール
+  $hero_scroll_path = get_stylesheet_directory() . '/js/hero-scroll.js';
+  if (file_exists($hero_scroll_path)) {
+    $hero_scroll_ver = date('Ymdgis', filemtime($hero_scroll_path));
+    wp_enqueue_script('ptl-hero-scroll', get_stylesheet_directory_uri() . '/js/hero-scroll.js', [], $hero_scroll_ver, true);
+  }
+
   // section-parallax.js（NAV背景パララックス用）: セレクタ存在チェックで早期returnするため全ページ読込でも軽量
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
