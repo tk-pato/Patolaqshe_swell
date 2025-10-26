@@ -179,7 +179,11 @@ add_action('wp_enqueue_scripts', function () {
   // 親テーマ main.css のハンドルは 'main_style'（SWELL）
   wp_enqueue_style('child_style', get_stylesheet_directory_uri() . '/style.css', ['main_style'], $style_ver);
 
-  // COMMITMENT - 統合CSS（優先度最適化）
+  // ========================================
+  // COMMITMENT - CSS読み込み（PC/SP分離対応）
+  // ========================================
+  
+  // COMMITMENT - ベースCSS
   $commitment_css = get_stylesheet_directory() . '/css/section-commitment.css';
   if (file_exists($commitment_css)) {
     // 旧ハンドルクリーンアップ
@@ -191,6 +195,30 @@ add_action('wp_enqueue_scripts', function () {
     }
     // child_style依存で読み込み
     wp_enqueue_style('ptlCommit', get_stylesheet_directory_uri() . '/css/section-commitment.css', ['child_style'], filemtime($commitment_css));
+  }
+  
+  // COMMITMENT - PC専用CSS
+  $commitment_pc = get_stylesheet_directory() . '/css/pc/section-commitment.css';
+  if (file_exists($commitment_pc)) {
+    wp_enqueue_style(
+      'ptlCommit-pc',
+      get_stylesheet_directory_uri() . '/css/pc/section-commitment.css',
+      ['ptlCommit'],
+      filemtime($commitment_pc),
+      'screen and (min-width: 960px)'
+    );
+  }
+  
+  // COMMITMENT - SP専用CSS
+  $commitment_sp = get_stylesheet_directory() . '/css/sp/section-commitment.css';
+  if (file_exists($commitment_sp)) {
+    wp_enqueue_style(
+      'ptlCommit-sp',
+      get_stylesheet_directory_uri() . '/css/sp/section-commitment.css',
+      ['ptlCommit'],
+      filemtime($commitment_sp),
+      'screen and (max-width: 959px)'
+    );
   }
 
   // section-menu.css（メニューセクション用）
