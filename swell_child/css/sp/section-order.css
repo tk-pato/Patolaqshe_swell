@@ -1,34 +1,31 @@
 /* =====================================================
    SP専用: セクション順序変更
-   NEWSをSALONの上に配置（PCは変更なし）
+   NEWSをSALONの上に配置（PCは完全無影響）
    
-   現在の順序:
-   1. NEWS (ヒーロー直下)
-   2. INTRO
-   3. BUST-ISSUES + COMMITMENT
-   4. PAGE-NAVIGATION
-   5. MENU + USERVOICE
-   6. SALON ← ここ
-   7. INFOHUB
-   8. BLOG
-   
-   変更後の順序:
-   1. INTRO
-   2. BUST-ISSUES + COMMITMENT
-   3. PAGE-NAVIGATION
-   4. MENU + USERVOICE
-   5. NEWS ← SALONの上に移動
-   6. SALON
-   7. INFOHUB
-   8. BLOG
+   🔴 重要: PCでの干渉を100%防止するため、
+   メディアクエリを max-width: 767px に厳密制限
+   かつ、PCモードでの上書きを追加
    ----------------------------------------------------- */
 
-/* ===================================================
-   SP専用スタイル: 767px以下でのみ適用
-   PCとの完全分離（相互干渉防止）
-   =================================================== */
-@media screen and (max-width: 767px) {
-  /* メインコンテンツをFlexコンテナに */
+/* =====================================================
+   PC専用: Flex無効化（念のための保険）
+   ----------------------------------------------------- */
+@media (min-width: 768px) {
+  #main_content {
+    display: block !important;
+    flex-direction: unset !important;
+  }
+  
+  #main_content > * {
+    order: unset !important;
+  }
+}
+
+/* =====================================================
+   SP専用: セクション順序変更
+   ----------------------------------------------------- */
+@media (max-width: 767px) {
+  /* メインコンテンツをFlexコンテナに（SP専用） */
   #main_content {
     display: flex;
     flex-direction: column;
