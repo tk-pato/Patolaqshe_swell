@@ -237,13 +237,6 @@ add_action('wp_enqueue_scripts', function () {
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
   wp_enqueue_script('child_head_toggle', get_stylesheet_directory_uri() . '/js/head-toggle.js', [], $head_js_ver, true);
 
-  // hero-scroll.js（SPヒーロースクロールボタン制御）
-  $hero_js_path = get_stylesheet_directory() . '/js/hero-scroll.js';
-  if (file_exists($hero_js_path)) {
-    $hero_js_ver = date('Ymdgis', filemtime($hero_js_path));
-    wp_enqueue_script('child_hero_scroll', get_stylesheet_directory_uri() . '/js/hero-scroll.js', [], $hero_js_ver, true);
-  }
-
   $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
