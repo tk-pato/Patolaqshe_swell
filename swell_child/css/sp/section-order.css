@@ -23,7 +23,11 @@
    8. BLOG
    ----------------------------------------------------- */
 
-@media (max-width: 767px) {
+/* ===================================================
+   SP専用スタイル: 767px以下でのみ適用
+   PCとの完全分離（相互干渉防止）
+   =================================================== */
+@media screen and (max-width: 767px) {
   /* メインコンテンツをFlexコンテナに */
   #main_content {
     display: flex;
@@ -57,4 +61,12 @@
   
   /* 9. BLOG */
   #section-blog { order: 9; }
+  
+  /* BUST-ISSUES: MOREボタン（SP用・カード外配置） */
+  #bust-issues .ptl-news__more {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
 }

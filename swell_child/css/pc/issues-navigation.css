@@ -1,5 +1,11 @@
 /* issues-navigation.css - PC専用 - Phase④ */
 
+/* ===================================================
+   PC専用スタイル: 768px以上でのみ適用
+   SPとの完全分離（相互干渉防止）
+   =================================================== */
+@media (min-width: 768px) {
+
 #bust-issues {
     padding-top: 0;
     padding-bottom: 0;
@@ -180,6 +186,14 @@
   font-weight: 500;
 }
 
+/* MOREボタン: カード外配置（中央揃え + 上余白） */
+#bust-issues .ptl-news__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  margin-bottom: 0;
+}
+
 /* ========================================
    セクション余白（独自管理）
 ======================================== */
@@ -208,4 +222,5 @@
         padding: 10px 6px;
     }
 }
+} /* PC専用メディアクエリ終了 */
 
