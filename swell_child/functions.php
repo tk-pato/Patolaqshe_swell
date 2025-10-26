@@ -10,6 +10,14 @@ add_action('wp_enqueue_scripts', function () {
   }
 }, 999);
 
+/* BUST-ISSUES: PC専用CSS */
+add_action('wp_enqueue_scripts', function () {
+  $issues_pc = get_stylesheet_directory() . '/css/pc/issues-navigation.css';
+  if (file_exists($issues_pc)) {
+    wp_enqueue_style('ptl-issues-pc', get_stylesheet_directory_uri() . '/css/pc/issues-navigation.css', ['ptl-issues-bundle'], filemtime($issues_pc), 'screen and (min-width: 960px)');
+  }
+}, 999);
+
 // BUST-ISSUESスタイルはissues-navigation.cssで完全管理
 
 // NAV背景メディアを取得
@@ -166,7 +174,7 @@ add_action('wp_footer', function () {
       setInterval(forceShow, 1500);
     })();
   </script>
-<?php
+  <?php
 }, 9999);
 
 /**
@@ -182,7 +190,7 @@ add_action('wp_enqueue_scripts', function () {
   // ========================================
   // COMMITMENT - CSS読み込み（PC/SP分離対応）
   // ========================================
-  
+
   // COMMITMENT - ベースCSS
   $commitment_css = get_stylesheet_directory() . '/css/section-commitment.css';
   if (file_exists($commitment_css)) {
@@ -196,7 +204,7 @@ add_action('wp_enqueue_scripts', function () {
     // child_style依存で読み込み
     wp_enqueue_style('ptlCommit', get_stylesheet_directory_uri() . '/css/section-commitment.css', ['child_style'], filemtime($commitment_css));
   }
-  
+
   // COMMITMENT - PC専用CSS
   $commitment_pc = get_stylesheet_directory() . '/css/pc/section-commitment.css';
   if (file_exists($commitment_pc)) {
@@ -208,7 +216,7 @@ add_action('wp_enqueue_scripts', function () {
       'screen and (min-width: 960px)'
     );
   }
-  
+
   // COMMITMENT - SP専用CSS
   $commitment_sp = get_stylesheet_directory() . '/css/sp/section-commitment.css';
   if (file_exists($commitment_sp)) {
@@ -232,6 +240,18 @@ add_action('wp_enqueue_scripts', function () {
     );
   }
 
+  // MENU - PC専用CSS
+  $menu_pc = get_stylesheet_directory() . '/css/pc/section-menu.css';
+  if (file_exists($menu_pc)) {
+    wp_enqueue_style('ptl_section_menu-pc', get_stylesheet_directory_uri() . '/css/pc/section-menu.css', ['ptl_section_menu'], filemtime($menu_pc), 'screen and (min-width: 960px)');
+  }
+
+  // MENU - SP専用CSS
+  $menu_sp = get_stylesheet_directory() . '/css/sp/section-menu.css';
+  if (file_exists($menu_sp)) {
+    wp_enqueue_style('ptl_section_menu-sp', get_stylesheet_directory_uri() . '/css/sp/section-menu.css', ['ptl_section_menu'], filemtime($menu_sp), 'screen and (max-width: 959px)');
+  }
+
   // head-toggle.js
   $head_js_path = get_stylesheet_directory() . '/js/head-toggle.js';
   $head_js_ver  = file_exists($head_js_path) ? date('Ymdgis', filemtime($head_js_path)) : ($style_ver ?: '1.0');
@@ -239,40 +259,50 @@ add_action('wp_enqueue_scripts', function () {
 
   // SPヒーロースクロールボタン → #intro スムーススクロール（インラインスクリプト）
   if (is_front_page()) {
-    add_action('wp_footer', function() {
-      ?>
-<script>
-(function(){
-  if(window.innerWidth>767)return;
-  function init(){
-    var intro=document.getElementById('intro');
-    if(!intro)return;
-    var hero=document.querySelector('.p-mainVisual');
-    if(!hero)return;
-    var links=hero.querySelectorAll('a');
-    if(links.length===0)return;
-    links.forEach(function(link){
-      if(link.offsetParent===null)return;
-      var newLink=link.cloneNode(true);
-      link.parentNode.replaceChild(newLink,link);
-      newLink.href='#intro';
-      newLink.removeAttribute('target');
-      newLink.removeAttribute('rel');
-      newLink.onclick=function(e){
-        e.preventDefault();
-        window.scrollTo({top:intro.offsetTop,behavior:'smooth'});
-        setTimeout(function(){history.pushState(null,null,'#intro')},800);
-        return false;
-      };
-    });
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}
-  setTimeout(init,500);
-  setTimeout(init,1500);
-  window.addEventListener('load',init);
-})();
-</script>
-      <?php
+    add_action('wp_footer', function () {
+  ?>
+      <script>
+        (function() {
+          if (window.innerWidth > 767) return;
+
+          function init() {
+            var intro = document.getElementById('intro');
+            if (!intro) return;
+            var hero = document.querySelector('.p-mainVisual');
+            if (!hero) return;
+            var links = hero.querySelectorAll('a');
+            if (links.length === 0) return;
+            links.forEach(function(link) {
+              if (link.offsetParent === null) return;
+              var newLink = link.cloneNode(true);
+              link.parentNode.replaceChild(newLink, link);
+              newLink.href = '#intro';
+              newLink.removeAttribute('target');
+              newLink.removeAttribute('rel');
+              newLink.onclick = function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                  top: intro.offsetTop,
+                  behavior: 'smooth'
+                });
+                setTimeout(function() {
+                  history.pushState(null, null, '#intro')
+                }, 800);
+                return false;
+              };
+            });
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init)
+          } else {
+            init()
+          }
+          setTimeout(init, 500);
+          setTimeout(init, 1500);
+          window.addEventListener('load', init);
+        })();
+      </script>
+  <?php
     }, 99);
   }
 
@@ -287,12 +317,24 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($salon_css)) {
     wp_enqueue_style('ptl_section_salon', get_stylesheet_directory_uri() . '/css/section-salon.css', ['child_style'], filemtime($salon_css));
   }
+  
+  // SALON PC版CSS（960px以上）
+  $salon_pc_css = get_stylesheet_directory() . '/css/pc/section-salon.css';
+  if (file_exists($salon_pc_css)) {
+    wp_enqueue_style('ptl_section_salon-pc', get_stylesheet_directory_uri() . '/css/pc/section-salon.css', ['ptl_section_salon'], filemtime($salon_pc_css), 'screen and (min-width: 960px)');
+  }
+  
+  // SALON SP版CSS（959px以下）
+  $salon_sp_css = get_stylesheet_directory() . '/css/sp/section-salon.css';
+  if (file_exists($salon_sp_css)) {
+    wp_enqueue_style('ptl_section_salon-sp', get_stylesheet_directory_uri() . '/css/sp/section-salon.css', ['ptl_section_salon'], filemtime($salon_sp_css), 'screen and (max-width: 959px)');
+  }
 }, 20);
 
 /* === Spacing Debug Toggle (front only) === */
 add_action('wp_footer', function () {
   if (is_admin()) return; // 全公開ページで有効
-?>
+  ?>
   <script id="ptl-spacing-debug" data-desc="Press Shift+D or use ?debug=spacing to toggle">
     (function() {
       try {
@@ -983,6 +1025,12 @@ add_action('wp_enqueue_scripts', function () {
   $nav_css_path = get_stylesheet_directory() . '/css/navigation.css';
   $nav_css_ver  = file_exists($nav_css_path) ? date('Ymdgis', filemtime($nav_css_path)) : null;
   wp_enqueue_style('ptl-navigation-style', get_stylesheet_directory_uri() . '/css/navigation.css', [], $nav_css_ver);
+  
+  // NAVIGATION PC版CSS（960px以上）
+  $nav_pc_css = get_stylesheet_directory() . '/css/pc/navigation.css';
+  if (file_exists($nav_pc_css)) {
+    wp_enqueue_style('ptl-navigation-pc', get_stylesheet_directory_uri() . '/css/pc/navigation.css', ['ptl-navigation-style'], filemtime($nav_pc_css), 'screen and (min-width: 960px)');
+  }
 
   // JS（統合版：navigation.js に ptl-nav-fix.js を統合済み）
   $nav_js_path = get_stylesheet_directory() . '/js/navigation.js';
@@ -1033,7 +1081,7 @@ add_action('wp_enqueue_scripts', function () {
   // ========================================
   // FOOTER - CSS読み込み（PC/SP分離対応）
   // ========================================
-  
+
   // フッター - ベースCSS
   $footer_css = get_stylesheet_directory() . '/css/footer.css';
   if (file_exists($footer_css)) {
@@ -1044,7 +1092,7 @@ add_action('wp_enqueue_scripts', function () {
       filemtime($footer_css)
     );
   }
-  
+
   // フッター - PC専用CSS
   $footer_pc = get_stylesheet_directory() . '/css/pc/footer-pc.css';
   if (file_exists($footer_pc)) {
@@ -1056,7 +1104,7 @@ add_action('wp_enqueue_scripts', function () {
       'screen and (min-width: 960px)'
     );
   }
-  
+
   // フッター - SP専用CSS
   $footer_sp = get_stylesheet_directory() . '/css/sp/footer-sp.css';
   if (file_exists($footer_sp)) {
