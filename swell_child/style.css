@@ -710,16 +710,5 @@ Version: 1.0.0
     outline: 3px solid navy !important;
   }
   
-  /* body背景を表示 */
-  body {
-  
-  /* メインコンテンツ */
-  .l-mainContent {
-    outline: 5px dashed yellow !important;
-  }
-  
-  .l-mainContent__inner {
-    outline: 3px dotted teal !important;
-  }
 }
 
