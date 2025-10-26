@@ -247,21 +247,29 @@ add_action('wp_enqueue_scripts', function () {
   function init(){
     var intro=document.getElementById('intro');
     if(!intro)return;
-    var btn=document.querySelector('.p-mainVisual__scrollBtn a')||document.querySelector('.p-mainVisual .c-scrollDown')||document.querySelector('.p-mainVisual a[href*="#"]');
-    if(!btn)return;
-    var newBtn=btn.cloneNode(true);
-    btn.parentNode.replaceChild(newBtn,btn);
-    newBtn.href='#intro';
-    newBtn.onclick=function(e){
-      e.preventDefault();
-      window.scrollTo({top:intro.offsetTop,behavior:'smooth'});
-      setTimeout(function(){history.pushState(null,null,'#intro')},800);
-      return false;
-    };
+    var hero=document.querySelector('.p-mainVisual');
+    if(!hero)return;
+    var links=hero.querySelectorAll('a');
+    if(links.length===0)return;
+    links.forEach(function(link){
+      if(link.offsetParent===null)return;
+      var newLink=link.cloneNode(true);
+      link.parentNode.replaceChild(newLink,link);
+      newLink.href='#intro';
+      newLink.removeAttribute('target');
+      newLink.removeAttribute('rel');
+      newLink.onclick=function(e){
+        e.preventDefault();
+        window.scrollTo({top:intro.offsetTop,behavior:'smooth'});
+        setTimeout(function(){history.pushState(null,null,'#intro')},800);
+        return false;
+      };
+    });
   }
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}
   setTimeout(init,500);
   setTimeout(init,1500);
+  window.addEventListener('load',init);
 })();
 </script>
       <?php
