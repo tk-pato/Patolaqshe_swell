@@ -69,7 +69,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                 <?php endforeach; ?>
             </ul>
         </div>
-        
+
         <!-- MORE: NEWSセクションと同意匠（カード外に配置） -->
         <div class="ptl-news__more">
             <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/reason/')); ?>">
