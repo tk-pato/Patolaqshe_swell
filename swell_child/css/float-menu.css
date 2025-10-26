@@ -11,22 +11,24 @@
   right: 0;              /* 修正2: 画面右端にピッタリ接地 */
   bottom: 100px;
   z-index: 9998;
-  display: flex;
+  display: none;         /* 初期状態: 完全非表示（DOM上存在しない状態） */
   flex-direction: column;
   gap: 8px;              /* 修正1: ボタン間隔を縮小 */
-  pointer-events: none;
+  pointer-events: none;  /* 保険: 非表示時のクリック防止 */
   
-  /* 初期状態: 完全非表示 */
+  /* アニメーション用（表示時のみ適用） */
   opacity: 0;
   transform: translateX(100%);
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
               transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 表示状態 */
+/* 表示状態: display切替 + アニメーション */
 .ptl-float-menu.is-visible {
+  display: flex;         /* 表示時のみDOM上に存在 */
   opacity: 1;
   transform: translateX(0);
+  pointer-events: auto;  /* ボタンクリック有効化 */
 }
 
 /* ボタン共通スタイル */
@@ -117,6 +119,7 @@
     right: 0;
     bottom: 60px;         /* フッターメニューの上に表示 */
     left: 0;
+    display: none;        /* SP初期状態: 完全非表示 */
     flex-direction: row;
     justify-content: space-around;
     padding: 10px 6px;  /* 修正1: パディング縮小 */
@@ -127,6 +130,7 @@
     backdrop-filter: none;
     border-top: none;
     box-shadow: none;
+    pointer-events: none;
     
     /* SP用初期状態 */
     opacity: 0;
@@ -134,8 +138,10 @@
   }
   
   .ptl-float-menu.is-visible {
+    display: flex;        /* SP表示時のみDOM上に存在 */
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto; /* SP表示時のみクリック有効 */
   }
   
   .ptl-float-menu__btn {
