@@ -17,11 +17,10 @@
     }
     
     // ヒーロー内のボタンを取得
-    // SWELLのヒーロースクロールボタンは `.p-mainVisual__scroll` クラス
     const heroButton = document.querySelector('.p-mainVisual__scroll');
     
     if (!heroButton) {
-      return; // ボタンが見つからない場合は終了
+      return;
     }
     
     // INTROセクションの存在確認
@@ -32,23 +31,33 @@
       return;
     }
     
-    // ボタンクリック時の動作を上書き
+    // data-onclick属性を削除（SWELL標準の動作を無効化）
+    heroButton.removeAttribute('data-onclick');
+    
+    // 既存のリンクがある場合は削除
+    if (heroButton.tagName === 'A') {
+      heroButton.removeAttribute('href');
+    }
+    
+    // ボタンクリック時の動作を設定
     heroButton.addEventListener('click', function(e) {
-      // デフォルトのリンク動作をキャンセル
       e.preventDefault();
       e.stopPropagation();
+      e.stopImmediatePropagation();
       
       // INTROセクションへスムーススクロール
-      introSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      window.scrollTo({
+        top: introSection.offsetTop,
+        behavior: 'smooth'
       });
       
-      // スクロール後、URLハッシュを更新(戻るボタン対応)
+      // URLハッシュを更新
       setTimeout(function() {
         history.pushState(null, null, '#intro');
       }, 800);
-    });
+      
+      return false;
+    }, true); // useCapture = true で最優先
   }
   
   // ページ読み込み完了後に実行
@@ -57,15 +66,5 @@
   } else {
     initHeroScroll();
   }
-  
-  // リサイズ時に再判定(PC↔SP切替対応)
-  let resizeTimer;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      // ページリロードで再初期化
-      location.reload();
-    }, 500);
-  });
   
 })();
