@@ -218,11 +218,11 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // COMMITMENT - SP専用CSS
-  $commitment_sp = get_stylesheet_directory() . '/css/sp/section-commitment.css';
+  $commitment_sp = get_stylesheet_directory() . '/css/sp/section-commitment-sp.css';
   if (file_exists($commitment_sp)) {
     wp_enqueue_style(
       'ptlCommit-sp',
-      get_stylesheet_directory_uri() . '/css/sp/section-commitment.css',
+      get_stylesheet_directory_uri() . '/css/sp/section-commitment-sp.css',
       ['ptlCommit'],
       filemtime($commitment_sp),
       'screen and (max-width: 959px)'
@@ -247,9 +247,9 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // MENU - SP専用CSS
-  $menu_sp = get_stylesheet_directory() . '/css/sp/section-menu.css';
+  $menu_sp = get_stylesheet_directory() . '/css/sp/section-menu-sp.css';
   if (file_exists($menu_sp)) {
-    wp_enqueue_style('ptl_section_menu-sp', get_stylesheet_directory_uri() . '/css/sp/section-menu.css', ['ptl_section_menu'], filemtime($menu_sp), 'screen and (max-width: 959px)');
+    wp_enqueue_style('ptl_section_menu-sp', get_stylesheet_directory_uri() . '/css/sp/section-menu-sp.css', ['ptl_section_menu'], filemtime($menu_sp), 'screen and (max-width: 959px)');
   }
 
   // head-toggle.js
@@ -290,9 +290,9 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // SALON SP版CSS（959px以下）
-  $salon_sp_css = get_stylesheet_directory() . '/css/sp/section-salon.css';
+  $salon_sp_css = get_stylesheet_directory() . '/css/sp/section-salon-sp.css';
   if (file_exists($salon_sp_css)) {
-    wp_enqueue_style('ptl_section_salon-sp', get_stylesheet_directory_uri() . '/css/sp/section-salon.css', ['ptl_section_salon'], filemtime($salon_sp_css), 'screen and (max-width: 959px)');
+    wp_enqueue_style('ptl_section_salon-sp', get_stylesheet_directory_uri() . '/css/sp/section-salon-sp.css', ['ptl_section_salon'], filemtime($salon_sp_css), 'screen and (max-width: 959px)');
   }
 }, 20);
 
@@ -1015,9 +1015,9 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // INFO HUB - SP専用CSS
-  $infohub_sp = get_stylesheet_directory() . '/css/sp/section-infohub.css';
+  $infohub_sp = get_stylesheet_directory() . '/css/sp/section-infohub-sp.css';
   if (file_exists($infohub_sp)) {
-    wp_enqueue_style('ptlHub-sp', get_stylesheet_directory_uri() . '/css/sp/section-infohub.css', ['ptlHub'], filemtime($infohub_sp), 'screen and (max-width: 767px)');
+    wp_enqueue_style('ptlHub-sp', get_stylesheet_directory_uri() . '/css/sp/section-infohub-sp.css', ['ptlHub'], filemtime($infohub_sp), 'screen and (max-width: 767px)');
   }
 
   $infohub_js = get_stylesheet_directory() . '/js/section-infohub.js';
@@ -1038,9 +1038,9 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // NEWS - SP専用CSS
-  $news_sp = get_stylesheet_directory() . '/css/sp/section-news.css';
+  $news_sp = get_stylesheet_directory() . '/css/sp/section-news-sp.css';
   if (file_exists($news_sp)) {
-    wp_enqueue_style('ptlNews-sp', get_stylesheet_directory_uri() . '/css/sp/section-news.css', ['ptlNews'], filemtime($news_sp), 'screen and (max-width: 767px)');
+    wp_enqueue_style('ptlNews-sp', get_stylesheet_directory_uri() . '/css/sp/section-news-sp.css', ['ptlNews'], filemtime($news_sp), 'screen and (max-width: 767px)');
   }
 
   // ========================================
@@ -2091,9 +2091,9 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // お客様の声 - SP専用CSS
-  $uservoice_sp = get_stylesheet_directory() . '/css/sp/section-uservoice.css';
+  $uservoice_sp = get_stylesheet_directory() . '/css/sp/section-uservoice-sp.css';
   if (file_exists($uservoice_sp)) {
-    wp_enqueue_style('ptl-uservoice-sp', get_stylesheet_directory_uri() . '/css/sp/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_sp), 'screen and (max-width: 767px)');
+    wp_enqueue_style('ptl-uservoice-sp', get_stylesheet_directory_uri() . '/css/sp/section-uservoice-sp.css', ['ptl-uservoice'], filemtime($uservoice_sp), 'screen and (max-width: 767px)');
   }
 
   // お客様の声 JS（Swiperに依存）
@@ -2120,9 +2120,9 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // INTRO - SP専用CSS
-  $intro_sp = get_stylesheet_directory() . '/css/sp/section-intro.css';
+  $intro_sp = get_stylesheet_directory() . '/css/sp/section-intro-sp.css';
   if (file_exists($intro_sp)) {
-    wp_enqueue_style('ptlIntro-sp', get_stylesheet_directory_uri() . '/css/sp/section-intro.css', ['ptl_section_intro'], filemtime($intro_sp), 'screen and (max-width: 767px)');
+    wp_enqueue_style('ptlIntro-sp', get_stylesheet_directory_uri() . '/css/sp/section-intro-sp.css', ['ptl_section_intro'], filemtime($intro_sp), 'screen and (max-width: 767px)');
   }
 }, 30);
 
@@ -2326,9 +2326,9 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   // BLOG - SP専用CSS
-  $blog_sp = get_stylesheet_directory() . '/css/sp/section-blog.css';
+  $blog_sp = get_stylesheet_directory() . '/css/sp/section-blog-sp.css';
   if (file_exists($blog_sp)) {
-    wp_enqueue_style('ptlBlog-sp', get_stylesheet_directory_uri() . '/css/sp/section-blog.css', ['ptl-blog'], filemtime($blog_sp), 'screen and (max-width: 767px)');
+    wp_enqueue_style('ptlBlog-sp', get_stylesheet_directory_uri() . '/css/sp/section-blog-sp.css', ['ptl-blog'], filemtime($blog_sp), 'screen and (max-width: 767px)');
   }
 
   // JS
