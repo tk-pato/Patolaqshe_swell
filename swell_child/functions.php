@@ -16,6 +16,12 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($issues_pc)) {
     wp_enqueue_style('ptl-issues-pc', get_stylesheet_directory_uri() . '/css/pc/issues-navigation.css', ['ptl-issues-bundle'], filemtime($issues_pc), 'screen and (min-width: 960px)');
   }
+
+  // BUST-ISSUES SP版CSS
+  $issues_sp = get_stylesheet_directory() . '/css/sp/issues-navigation-sp.css';
+  if (file_exists($issues_sp)) {
+    wp_enqueue_style('ptl-issues-sp', get_stylesheet_directory_uri() . '/css/sp/issues-navigation-sp.css', ['ptl-issues-bundle'], filemtime($issues_sp), 'screen and (max-width: 959px)');
+  }
 }, 999);
 
 // BUST-ISSUESスタイルはissues-navigation.cssで完全管理
@@ -995,6 +1001,12 @@ add_action('wp_enqueue_scripts', function () {
   $nav_pc_css = get_stylesheet_directory() . '/css/pc/navigation.css';
   if (file_exists($nav_pc_css)) {
     wp_enqueue_style('ptl-navigation-pc', get_stylesheet_directory_uri() . '/css/pc/navigation.css', ['ptl-navigation-style'], filemtime($nav_pc_css), 'screen and (min-width: 960px)');
+  }
+
+  // NAVIGATION SP版CSS（959px以下）
+  $nav_sp_css = get_stylesheet_directory() . '/css/sp/navigation-sp.css';
+  if (file_exists($nav_sp_css)) {
+    wp_enqueue_style('ptl-navigation-sp', get_stylesheet_directory_uri() . '/css/sp/navigation-sp.css', ['ptl-navigation-style'], filemtime($nav_sp_css), 'screen and (max-width: 959px)');
   }
 
   // JS（統合版：navigation.js に ptl-nav-fix.js を統合済み）
