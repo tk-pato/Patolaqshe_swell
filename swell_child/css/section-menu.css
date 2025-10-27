@@ -196,29 +196,6 @@
 #menu .ptlMenu__moreBtn:hover .ptlMenu__moreArrow {
   transform: translateX(5px);
 }
-/* レスポンシブ統合 */
-@media (max-width: 992px) {
-  #menu .ptlMenu__content { grid-template-columns: 1fr; gap: 30px; }
-  #menu .ptlMenu__subGrid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-  #menu .ptlMenu__title { font-size: 2.2rem; }
-}
-@media (max-width: 768px) {
-  #menu .ptlMenu__mainImage { height: 200px; }
-  #menu .ptlMenu__mainText { padding: 20px; }
-  #menu .ptlMenu__mainTitle { font-size: 1.3rem; }
-  #menu .ptlMenu__mainDesc { font-size: 0.9rem; }
-  #menu .ptlMenu__subImage { height: 100px; }
-  #menu .ptlMenu__subTitle { padding: 12px 15px; font-size: 0.9rem; }
-  #menu .ptlMenu__more { margin-top: 40px; }
-  #menu .ptlMenu__moreBtn { padding: 12px 25px; font-size: 1rem; }
-}
-@media (max-width: 480px) {
-  #menu .ptlMenu__mainImage { height: 180px; }
-  #menu .ptlMenu__mainText { padding: 15px; }
-  #menu .ptlMenu__mainTitle { font-size: 1.2rem; }
-  #menu .ptlMenu__subImage { height: 80px; }
-  #menu .ptlMenu__subTitle { padding: 10px 12px; font-size: 0.85rem; }
-}
 #menu .ptlMenuHero__boxTitle {
   /* ナビの .ptlNavHero__label に寄せる（clamp(13px,1.4vw,16px) 相当をh要素向けに少し大きめ） */
   font-size: clamp(13px, 1.4vw, 16px);
@@ -254,13 +231,6 @@
   margin-top: 0;
   margin-bottom: 80px; /* セクション間余白 */
   min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
-}
-
-/* SP用余白調整 */
-@media (max-width: 959px) {
-    .ptlMenuHero {
-        margin-bottom: 40px;
-    }
 }
 
 .ptlMenuHero.is-translucent {
@@ -329,18 +299,6 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-@media (min-width: 700px) {
-  .ptlMenuHero__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 960px) {
-  .ptlMenuHero__grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 #menu .ptlMenuHero__btn {
   display: grid;
   grid-template-rows: auto auto;
@@ -391,22 +349,6 @@
   text-align: center;
 }
 
-/* レスポンシブ調整 */
-@media screen and (max-width: 767px) {
-  .ptlMenuHero {
-    padding: 40px 0;
-  }
-
-  .ptlMenuHero__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .ptlMenuHero__label {
-    font-size: 14px;
-  }
-}
-
 /* ファイル末尾 */
 #menu .ptlMenu__mainImage img {
   width: 100%;
@@ -441,14 +383,9 @@
     margin-top: 0;
     margin-bottom: 80px;
 }
-@media (max-width: 768px) {
-    #menu {
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-}
 
 #menu {
   margin-top: 0;
   margin-bottom: 80px;
 }
+

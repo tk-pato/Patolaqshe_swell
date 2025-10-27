@@ -9,30 +9,10 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 769px) {
-    #salon .ptlSalon-map {
-        width: 95%;
-    }
-    #salon .ptlSalonHero__btn:nth-child(1) .ptlSalonHero__icon,
-    #salon .ptlSalonHero__btn:nth-child(1) .ptlSalon-map,
-    #salon .ptlSalonHero__btn:nth-child(1) .ptlSalon-access {
-        width: 95%;
-        margin-left: 0;
-        margin-right: auto;
-    }
-    #salon .ptlSalonHero__btn:nth-child(2) .ptlSalonHero__icon,
-    #salon .ptlSalonHero__btn:nth-child(2) .ptlSalon-map,
-    #salon .ptlSalonHero__btn:nth-child(2) .ptlSalon-access {
-        width: 95%;
-        margin-left: auto;
-        margin-right: 0;
-    }
-    .ptlSalon-map-link {
-        display: none;
-    }
-}
-
 /* ===== 店名のPC/SP切替 ===== */
+.shop-name--sp { display: none; }
+
+/* コミットメントセクション（Reasons）のスタイル *//* ===== 店名のPC/SP切替 ===== */
 .shop-name--sp { display: none; }
 @media (max-width: 768px) {
     .shop-name--pc { display: none; }
@@ -129,7 +109,7 @@
     text-align: center;
 }
 
-/* ===== layout ===== */
+/* layout ===== */
 .ptlSalonHero {
     position: relative;
     overflow: hidden;
@@ -142,13 +122,6 @@
     margin-bottom: 80px; /* セクション間余白 */
     min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
     padding: 0; /* padding削除: margin-bottomで余白管理 */
-}
-
-/* SP用余白調整 */
-@media (max-width: 959px) {
-    .ptlSalonHero {
-        margin-bottom: 40px;
-    }
 }
 
 .ptlSalonHero__bg {
@@ -424,186 +397,6 @@
 
 .ptlSalonHero.has-bg {
     color: #fff;
-}
-
-/* ===== PC時：左右カードの要素配置 ===== */
-@media (min-width: 769px) {
-    /* 🔧 修正: 左カード（代官山店）- すべて左寄せで統一 */
-    #salon .ptlSalonHero__btn:nth-child(1) .ptlSalonHero__icon,
-    #salon .ptlSalonHero__btn:nth-child(1) .ptlSalon-map,
-    #salon .ptlSalonHero__btn:nth-child(1) .ptlSalon-access {
-        margin-left: 0;
-        margin-right: auto;
-    }
-    
-    /* 🔧 修正: 右カード（銀座店）- すべて右寄せで統一 */
-    #salon .ptlSalonHero__btn:nth-child(2) .ptlSalonHero__icon,
-    #salon .ptlSalonHero__btn:nth-child(2) .ptlSalon-map,
-    #salon .ptlSalonHero__btn:nth-child(2) .ptlSalon-access {
-        margin-left: auto;
-        margin-right: 0;
-    }
-}
-
-/* ===== SP表示 ===== */
-@media (max-width: 768px) {
-    .ptlSalonHero__grid {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-    
-    /* SP: グレー縦線を非表示 */
-    .ptlSalonHero__grid::after {
-        display: none;
-    }
-    
-    /* SP時のカード */
-    #salon .ptlSalonHero__btn {
-        background: #fff;
-        border-radius: 8px;
-        padding: 12px;
-    }
-    
-    /* SP時の要素を100%幅に */
-    #salon .ptlSalonHero__btn:nth-child(1) .ptlSalonHero__icon,
-    #salon .ptlSalonHero__btn:nth-child(2) .ptlSalonHero__icon {
-        width: 100%;
-        margin: 0;
-    }
-    
-    /* 店舗名：User's Voice/REASONSのboxTitleと完全統一 */
-    #salon .ptlSalonHero__boxTitle {
-        font-size: clamp(13px, 1.4vw, 16px);
-        font-weight: 600;
-        color: #444;
-        text-align: center;
-        margin-top: 10px;
-        margin-bottom: 6px;
-        letter-spacing: .08em;
-        font-family: inherit;
-        width: 100%;
-        background: transparent;
-        border-radius: 0;
-    }
-    
-    /* 店舗詳細：User's Voice/REASONSのboxDescと完全統一 */
-    #salon .ptlSalonHero__boxDesc {
-        font-size: clamp(13px, 1.2vw, 15px);
-        font-weight: 300;
-        color: #444;
-        line-height: 1.65;
-        text-align: center;
-        margin-top: 4px;
-        margin-bottom: 0;
-        font-family: inherit;
-        width: 100%;
-        background: transparent;
-        border-radius: 0;
-    }
-    
-    /* 店舗詳細内のpタグも統一 */
-    #salon .ptlSalonHero__boxDesc p {
-        font-size: clamp(13px, 1.2vw, 15px);
-        font-weight: 300;
-        color: #444;
-        line-height: 1.65;
-        letter-spacing: 0.02em;
-    }
-    
-    /* 🔧 新規: アコーディオンボタン */
-    .ptlSalon-map-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-        padding: 14px 16px;
-        margin: 12px 0;
-        background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-        box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
-        transition: all 0.3s ease;
-    }
-    
-    .ptlSalon-map-toggle:active {
-        transform: scale(0.98);
-    }
-    
-    .ptlSalon-map-toggle__icon {
-        font-size: 14px;
-        transition: transform 0.3s ease;
-    }
-    
-    .ptlSalon-map-toggle[aria-expanded="true"] .ptlSalon-map-toggle__icon {
-        transform: rotate(180deg);
-    }
-    
-    /* 🔧 新規: アコーディオンパネル */
-    .ptlSalon-map-wrapper {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease;
-    }
-    
-    .ptlSalon-map-wrapper[aria-hidden="false"] {
-        max-height: 320px;
-    }
-    
-    /* SP時の地図 */
-    #salon .ptlSalon-map {
-        width: 100%;
-        margin: 12px 0;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    
-    #salon .ptlSalon-map iframe {
-        width: 100%;
-        height: 280px;
-        border: none;
-        border-radius: 8px;
-    }
-    
-    /* SP時の最寄駅情報 */
-    #salon .ptlSalon-access {
-        width: 100%;
-        margin: 10px 0;
-        padding: 10px 12px;
-    }
-    
-    #salon .ptlSalon-access p {
-        font-size: 13px;
-    }
-}
-
-/* PC時はアコーディオンボタンを非表示 */
-@media (min-width: 769px) {
-    .ptlSalon-map-toggle {
-        display: none;
-    }
-    
-    .ptlSalon-map-wrapper {
-        display: block;
-        max-height: none;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .ptlSalonHero { 
-        padding: 0; 
-    }
-
-    .ptlSalonHero__label {
-        font-size: 14px;
-    }
 }
 
 #salon {
