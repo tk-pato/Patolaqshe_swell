@@ -5,7 +5,6 @@
    =========================== */
 
 /* SP: padding削除、margin-bottomのみで管理 + パララックス設定 */
-@media (max-width: 959px) {
     #bust-issues {
         padding-top: 0;
         padding-bottom: 0;
@@ -34,13 +33,11 @@
     #bust-issues .ptl-bustIssues__item {
         padding: 10px 6px;
     }
-}
 
 /* =====================================================
    SP: BUST-ISSUES 背景透過
    実装日: 2025-10-25
    ----------------------------------------------------- */
-@media (max-width: 767px) {
   /* 背景透過 */
   #bust-issues,
   .ptl-bustIssues,
@@ -59,5 +56,3 @@
     background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(10px) !important;
   }
-}
-

@@ -5,7 +5,6 @@
    =========================== */
 
 /* タブレット向け調整（769px-1024px） */
-@media (min-width: 769px) and (max-width: 1024px) {
   #intro .ptlIntro__content {
     padding: clamp(36px, 6vw, 72px);
   }
@@ -13,4 +12,3 @@
   #intro .ptlIntro__content-inner {
     max-width: 480px;
   }
-}

@@ -10,7 +10,6 @@
 /* =====================================================
    PC専用: Flex無効化（念のための保険）
    ----------------------------------------------------- */
-@media (min-width: 768px) {
   #main_content {
     display: block !important;
     flex-direction: unset !important;
@@ -19,12 +18,10 @@
   #main_content > * {
     order: unset !important;
   }
-}
 
 /* =====================================================
    SP専用: セクション順序変更
    ----------------------------------------------------- */
-@media (max-width: 767px) {
   /* メインコンテンツをFlexコンテナに（SP専用） */
   #main_content {
     display: flex;
@@ -66,4 +63,3 @@
     margin-top: 24px;
     margin-bottom: 0;
   }
-}

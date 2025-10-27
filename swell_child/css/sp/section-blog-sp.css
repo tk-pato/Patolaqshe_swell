@@ -5,23 +5,18 @@
    =========================== */
 
 /* セクション余白 - SP調整 */
-@media (max-width: 768px) {
   #section-blog {
     margin-bottom: 40px;
   }
-}
 
 /* タブレット対応（3列表示） */
-@media (max-width: 959px) {
   .ptlBlog__item {
     flex: 0 0 calc((100% - 48px) / 3);
     min-width: 220px;
     max-width: 320px;
   }
-}
 
 /* モバイル対応（2列表示） */
-@media (max-width: 699px) {
   .ptlBlog__item {
     flex: 0 0 calc((100% - 24px) / 2);
     min-width: 160px;
@@ -35,4 +30,3 @@
   .ptlBlog .ptl-section__ornament img {
     width: 180px;
   }
-}

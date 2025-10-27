@@ -4,7 +4,6 @@
    PC専用スタイル: 768px以上でのみ適用
    SPとの完全分離（相互干渉防止）
    =================================================== */
-@media (min-width: 768px) {
 
 #bust-issues {
     padding-top: 0;
@@ -144,7 +143,6 @@
 }
 
 /* PCでもカードに上下余白を追加（背景との接地防止） */
-}
 
 #bust-issues .ptl-bustIssues__list {
   display: grid;
@@ -201,4 +199,3 @@
 /* PC: padding削除、margin-bottomのみで管理 + 高さ統一 */
 }
 } /* PC専用メディアクエリ終了 */
-

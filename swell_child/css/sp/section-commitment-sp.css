@@ -5,7 +5,6 @@
    =========================== */
 
 /* グリッドレイアウト - SP調整 */
-@media (max-width: 767px) {
   .ptlCommitHero__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -19,11 +18,8 @@
   #section-commitment-tiles .ptlNavHero__grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
 /* セクション余白 - SP設定 */
-@media (max-width: 959px) {
   body #section-commitment {
     margin-bottom: 40px !important;
   }
-}

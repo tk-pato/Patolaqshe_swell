@@ -5,15 +5,12 @@
    =========================== */
 
 /* セクション余白 - SP調整 */
-@media (max-width: 768px) {
   #intro,
   #intro.ptlIntro-section {
     margin-bottom: 40px;
   }
-}
 
 /* モバイルレイアウト（767px以下） */
-@media (max-width: 767px) {
   #intro.ptlIntro-section {
     min-height: auto;
     margin-bottom: 40px;
@@ -57,4 +54,3 @@
   #intro .ptlIntro__cta-button {
     margin: 0 auto;
   }
-}

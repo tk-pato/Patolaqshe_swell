@@ -9,7 +9,6 @@
    4カラム表示を確実に適用
    ======================================== */
 
-@media (min-width: 960px) {
   /* グリッド: 4カラム固定 */
   #section-commitment .ptlCommitHero__grid,
   .ptlCommitHero__grid {
@@ -36,25 +35,21 @@
   body #section-commitment {
     margin-bottom: 80px !important;
   }
-}
 
 /* ========================================
    グリッドレイアウト - タブレット（700px-959px）
    2カラム表示
    ======================================== */
 
-@media (min-width: 700px) and (max-width: 959px) {
   #section-commitment .ptlCommitHero__grid,
   .ptlCommitHero__grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
 /* ========================================
    旧グリッドシステム対応（後方互換性）
    ======================================== */
 
-@media (max-width: 1024px) {
   .ptlCommit-grid .cmt-cards,
   .ptlCommit .cards {
     grid-template-columns: repeat(3, 1fr);
@@ -63,4 +58,3 @@
   #section-commitment-tiles .ptlNavHero__grid {
     grid-template-columns: repeat(3, 1fr);
   }
-}

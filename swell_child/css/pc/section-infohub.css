@@ -5,9 +5,7 @@
    =========================== */
 
 /* セクション余白 - PC設定 */
-@media (min-width: 960px) {
   #section-infohub,
   .ptlHub {
     margin-bottom: 80px;
   }
-}

@@ -5,7 +5,6 @@
    =========================== */
 
 /* タブレット・SP調整 */
-@media (max-width: 768px) {
   .ptlVoice {
     padding: 60px 0;
   }
@@ -104,10 +103,8 @@
   #uservoice .swiper-button-next {
     right: 10px;
   }
-}
 
 /* モバイル調整 */
-@media (max-width: 480px) {
   .ptlVoice {
     padding: 50px 0;
   }
@@ -134,14 +131,11 @@
     height: 10px;
     margin: 0 4px;
   }
-}
 
 /* セクション余白 - SP設定 */
-@media (max-width: 959px) {
   body #uservoice {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-top: 0 !important;
     margin-bottom: 40px !important;
   }
-}

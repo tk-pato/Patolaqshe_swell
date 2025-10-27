@@ -1,17 +1,12 @@
 /* === MENU Section (PC版: 960px以上) === */
 
 /* PC: 2列レイアウト + 右側サブメニュー */
-@media (min-width: 960px) {
   #menu .ptlMenu__content {
     grid-template-columns: 2fr 1fr;
     gap: 40px;
   }
-}
 
 /* ptlMenuHero グリッド - PC: 4列 */
-@media (min-width: 960px) {
   .ptlMenuHero__grid {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-

@@ -5,14 +5,11 @@
    =========================== */
 
 /* PC/SP表示切り替え制御 - SPでは元の位置のみ表示 */
-@media screen and (max-width: 767px) {
   .ptl-news-pc-only {
     display: none !important;
   }
-}
 
 /* セクション余白 - SP調整 */
-@media screen and (max-width: 767px) {
   #news {
     margin-bottom: 40px;
   }
@@ -22,4 +19,3 @@
     padding: 18px 0;
     gap: 18px;
   }
-}

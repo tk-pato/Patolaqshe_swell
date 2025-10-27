@@ -5,8 +5,6 @@
    =========================== */
 
 /* PC/SP表示切り替え制御 - PCではヒーロー直下のみ表示 */
-@media (min-width: 768px) {
   .ptl-news-sp-only {
     display: none !important;
   }
-}

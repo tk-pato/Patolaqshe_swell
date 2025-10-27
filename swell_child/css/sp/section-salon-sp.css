@@ -1,7 +1,6 @@
 /* === SALON Section (SP版: 959px以下) === */
 
 /* SP表示 */
-@media (max-width: 768px) {
   .ptlSalonHero__grid {
     width: 100%;
     margin-left: 0;
@@ -182,10 +181,8 @@
     width: 1.8em;
     height: 1.8em;
   }
-}
 
 /* 店名表示：SP時のみSP版表示 */
-@media (max-width: 768px) {
   .shop-name--pc {
     display: none;
   }
@@ -197,10 +194,8 @@
   #salon .ptlSalon-map {
     display: none;
   }
-}
 
 /* SP時のレスポンシブ */
-@media screen and (max-width: 767px) {
   .ptlSalonHero {
     padding: 0;
   }
@@ -208,13 +203,9 @@
   .ptlSalonHero__label {
     font-size: 14px;
   }
-}
 
 /* セクション余白 - SP */
-@media (max-width: 959px) {
   #salon,
   .ptlSalonHero {
     margin-bottom: 40px;
   }
-}
-

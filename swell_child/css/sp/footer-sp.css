@@ -23,7 +23,6 @@
 /* ===================================
    SP専用CSS（767px以下）
 =================================== */
-@media screen and (max-width: 767px) {
   
   /* PC用フッターを完全非表示 */
   .ptl-footer__container {
@@ -251,7 +250,6 @@
   .footer-instagram-item {
     display: none !important;
   }
-}
 
 /* ===================================
    【5】コピーライト（完全修正版）
@@ -259,7 +257,6 @@
    - color: #bbbbbb
    - padding: 20px 20px 35px
 =================================== */
-@media screen and (max-width: 767px) {
   .ptl-footer__copyright {
     background-color: var(--sp-footer-bg-white);
     text-align: center;
@@ -275,12 +272,10 @@
   .ptl-footer__copyright p {
     margin: 0;
   }
-}
 
 /* ===================================
    PC表示時はSP用フッター非表示
 =================================== */
-@media screen and (min-width: 768px) {
   .sp-footer,
   .sp-footer-reservation,
   .sp-footer-main-nav,
@@ -288,4 +283,3 @@
   .sp-footer-instagram {
     display: none !important;
   }
-}

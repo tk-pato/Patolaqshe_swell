@@ -1,7 +1,6 @@
 /* === SALON Section (PC版: 960px以上) === */
 
 /* PC時：左右カード配置 */
-@media (min-width: 769px) {
   #salon .ptlSalon-map {
     width: 95%;
   }
@@ -25,10 +24,8 @@
   .ptlSalon-map-link {
     display: none;
   }
-}
 
 /* PC時：アコーディオンボタンを非表示 */
-@media (min-width: 769px) {
   .ptlSalon-map-toggle {
     display: none;
   }
@@ -37,10 +34,8 @@
     display: block;
     max-height: none;
   }
-}
 
 /* 店名表示：PC時のみPC版表示 */
 .shop-name--sp {
   display: none;
 }
-

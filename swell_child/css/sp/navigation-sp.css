@@ -5,17 +5,14 @@
    =========================== */
 
 /* SP: padding削除、margin-bottomのみで管理 */
-@media (max-width: 959px) {
     #page-navigation {
         padding-top: 0;
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 40px;
     }
-}
 
 /* ===== SP: パララックス可視化強化 ===== */
-@media (max-width: 959px) {
   .ptl-navigation {
     --ptl-parallax: 0px;
     background-position: 50% calc(50% + var(--ptl-parallax));
@@ -63,13 +60,11 @@
   .ptlNavHero__label {
     font-size: 14px;
   }
-}
 
 /* =====================================================
    SP: NAVIGATION 背景透過
    実装日: 2025-10-25
    ----------------------------------------------------- */
-@media (max-width: 767px) {
   /* 背景透過 */
   #page-navigation,
   .ptl-pageNavHero {
@@ -94,4 +89,3 @@
   .ptl-pageNavHero__btn {
     background: #ffffff !important;
   }
-}

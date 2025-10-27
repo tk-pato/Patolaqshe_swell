@@ -1,7 +1,6 @@
 /* === MENU Section (SP版: 959px以下) === */
 
 /* SP: 1列レイアウト */
-@media (max-width: 959px) {
   #menu .ptlMenu__content {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -40,10 +39,8 @@
     padding: 12px 25px;
     font-size: 1rem;
   }
-}
 
 /* SP超小型: 480px以下 */
-@media (max-width: 480px) {
   #menu .ptlMenu__mainImage {
     height: 180px;
   }
@@ -64,10 +61,8 @@
     padding: 10px 12px;
     font-size: 0.85rem;
   }
-}
 
 /* ptlMenuHero グリッド - SP: 2列 */
-@media (max-width: 959px) {
   .ptlMenuHero {
     padding: 40px 0;
   }
@@ -80,12 +75,8 @@
   .ptlMenuHero__label {
     font-size: 14px;
   }
-}
 
 /* セクション余白 - SP */
-@media (max-width: 959px) {
   #menu {
     margin-bottom: 40px;
   }
-}
-
