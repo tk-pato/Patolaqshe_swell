@@ -3188,6 +3188,7 @@ add_action('get_footer', function() {
         font-size: 14px;
         letter-spacing: 0.08em;
         transition: color 0.3s;
+        display: inline-block;
     }
     .ptl-simple-footer .nav-link:hover {
         color: #d4a574;
@@ -3195,6 +3196,7 @@ add_action('get_footer', function() {
     .ptl-simple-footer .nav-separator {
         color: #ddd;
         font-size: 12px;
+        display: inline-block;
     }
     .ptl-simple-footer .sns-section {
         background: #fff;
@@ -3295,17 +3297,17 @@ add_action('get_footer', function() {
             <nav class="nav-section">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="/" class="nav-link">TOP</a></li>
-                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-separator">|</li>
                     <li class="nav-item"><a href="#section-news" class="nav-link">NEWS</a></li>
-                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-separator">|</li>
                     <li class="nav-item"><a href="#section-infohub" class="nav-link">INFO</a></li>
-                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-separator">|</li>
                     <li class="nav-item"><a href="#section-menu" class="nav-link">MENU</a></li>
-                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-separator">|</li>
                     <li class="nav-item"><a href="#section-uservoice" class="nav-link">VOICE</a></li>
-                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-separator">|</li>
                     <li class="nav-item"><a href="/faq" class="nav-link">FAQ</a></li>
-                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-separator">|</li>
                     <li class="nav-item"><a href="#section-blog" class="nav-link">BLOG</a></li>
                 </ul>
             </nav>
