@@ -3179,6 +3179,13 @@ add_action('get_footer', function() {
         gap: 0;
     }
     .ptl-simple-footer .nav-item {
+        display: inline-block;
+        margin: 0 2px;
+    }
+    .ptl-simple-footer .nav-separator {
+        display: inline-block;
+        color: #ddd;
+        font-size: 12px;
         margin: 0 2px;
     }
     .ptl-simple-footer .nav-link {
@@ -3192,11 +3199,6 @@ add_action('get_footer', function() {
     }
     .ptl-simple-footer .nav-link:hover {
         color: #d4a574;
-    }
-    .ptl-simple-footer .nav-separator {
-        color: #ddd;
-        font-size: 12px;
-        display: inline-block;
     }
     .ptl-simple-footer .sns-section {
         background: #fff;
@@ -3257,6 +3259,7 @@ add_action('get_footer', function() {
         .ptl-simple-footer .nav-item {
             margin: 0;
             width: 100%;
+            display: block;
         }
         .ptl-simple-footer .nav-link {
             display: block;
