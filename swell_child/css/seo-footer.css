@@ -1,0 +1,261 @@
+@charset "UTF-8";
+
+/**
+ * SEO最適化フッター - PC用CSS
+ */
+
+/* PC表示時のみ適用 */
+@media screen and (min-width: 768px) {
+    
+    /* ========================================
+       基本レイアウト
+    ======================================== */
+    .seo-footer {
+        background: linear-gradient(to bottom, #fafafa, #f5f5f5);
+        padding: 80px 0 40px;
+        margin-top: 100px;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .seo-footer__inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    /* SP専用要素を非表示 */
+    .sp-only {
+        display: none !important;
+    }
+    
+    /* ========================================
+       セクションタイトル
+    ======================================== */
+    .seo-footer__section-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+        margin: 0 0 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #d4a574;
+        letter-spacing: 0.08em;
+    }
+    
+    /* ========================================
+       店舗情報セクション
+    ======================================== */
+    .seo-footer__shops-info {
+        margin-bottom: 60px;
+    }
+    
+    .seo-footer__shops-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .seo-footer__shop-card {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .seo-footer__shop-name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #d4a574;
+        margin: 0 0 20px;
+    }
+    
+    .seo-footer__shop-details {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #666;
+    }
+    
+    .seo-footer__address,
+    .seo-footer__tel,
+    .seo-footer__hours {
+        margin: 0 0 15px;
+    }
+    
+    .seo-footer__tel a {
+        color: #d4a574;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    
+    .seo-footer__tel a:hover {
+        text-decoration: underline;
+    }
+    
+    .seo-footer__hours-label {
+        font-weight: 600;
+    }
+    
+    .seo-footer__detail-link {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 20px;
+        background: #d4a574;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 13px;
+        transition: background 0.3s ease;
+    }
+    
+    .seo-footer__detail-link:hover {
+        background: #b88d5f;
+    }
+    
+    /* ========================================
+       サービスメニュー
+    ======================================== */
+    .seo-footer__services {
+        margin-bottom: 60px;
+    }
+    
+    .seo-footer__services-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .seo-footer__service-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin: 0 0 20px;
+    }
+    
+    .seo-footer__service-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .seo-footer__service-list li {
+        margin: 0 0 12px;
+    }
+    
+    .seo-footer__service-list a {
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s ease;
+        position: relative;
+        padding-left: 15px;
+    }
+    
+    .seo-footer__service-list a:before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #d4a574;
+    }
+    
+    .seo-footer__service-list a:hover {
+        color: #d4a574;
+    }
+    
+    /* ========================================
+       サイトマップ
+    ======================================== */
+    .seo-footer__sitemap {
+        margin-bottom: 60px;
+        padding: 40px;
+        background: white;
+        border-radius: 8px;
+    }
+    
+    .seo-footer__sitemap-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+    
+    .seo-footer__sitemap-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        margin: 0 0 20px;
+    }
+    
+    .seo-footer__sitemap-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .seo-footer__sitemap-list li {
+        margin: 0 0 10px;
+    }
+    
+    .seo-footer__sitemap-list a {
+        color: #666;
+        text-decoration: none;
+        font-size: 13px;
+        transition: color 0.3s ease;
+    }
+    
+    .seo-footer__sitemap-list a:hover {
+        color: #d4a574;
+        text-decoration: underline;
+    }
+    
+    /* ========================================
+       SNSリンク
+    ======================================== */
+    .seo-footer__sns {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .seo-footer__sns .seo-footer__section-title {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .seo-footer__sns-list {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    .seo-footer__sns-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 14px;
+    }
+    
+    .seo-footer__sns-item:hover {
+        color: #d4a574;
+    }
+    
+    .seo-footer__sns-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* ========================================
+       コピーライト
+    ======================================== */
+    .seo-footer__copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .seo-footer__copyright p {
+        font-size: 12px;
+        color: #999;
+        margin: 0;
+        letter-spacing: 0.05em;
+    }
+}

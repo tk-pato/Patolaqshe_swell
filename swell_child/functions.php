@@ -3114,3 +3114,165 @@ add_action('wp_head', function () {
   </script>
 <?php
 }, 999);
+
+// ========================================
+// SEO最適化カスタムフッター実装
+// ========================================
+add_action('wp_footer', function() {
+    if (is_front_page()) {
+        // SEO最適化フッターテンプレートを読み込み
+        get_template_part('template-parts/seo-footer-content');
+        
+        // 構造化データ（JSON-LD）を出力
+        ?>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "HealthAndBeautyBusiness",
+            "@id": "https://patolaqshe.com/#organization",
+            "name": "Patolaqshe（パトラクシェ）",
+            "alternateName": "パトラクシェ",
+            "description": "バストケア専門サロン。育乳マッサージ、バストアップ施術、美乳ケアを提供。代官山と銀座に店舗展開。",
+            "url": "https://patolaqshe.com/media/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://patolaqshe.com/media/wp-content/uploads/logo.png"
+            },
+            "image": "https://patolaqshe.com/media/wp-content/uploads/salon-image.jpg",
+            "priceRange": "¥¥¥",
+            "hasMap": "https://goo.gl/maps/example",
+            "sameAs": [
+                "https://www.instagram.com/patolaqshe_daikanyama/",
+                "https://www.instagram.com/patolaqshe_ginza/"
+            ],
+            "location": [
+                {
+                    "@type": "Place",
+                    "name": "Patolaqshe 代官山店",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "東京都渋谷区代官山町",
+                        "addressLocality": "渋谷区",
+                        "addressRegion": "東京都",
+                        "postalCode": "150-0034",
+                        "addressCountry": "JP"
+                    },
+                    "telephone": "+81-3-XXXX-XXXX",
+                    "openingHoursSpecification": [
+                        {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                            "opens": "11:00",
+                            "closes": "20:00"
+                        },
+                        {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Saturday", "Sunday"],
+                            "opens": "10:00",
+                            "closes": "19:00"
+                        }
+                    ],
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 35.6485,
+                        "longitude": 139.6990
+                    }
+                },
+                {
+                    "@type": "Place",
+                    "name": "Patolaqshe 銀座店",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "東京都中央区銀座",
+                        "addressLocality": "中央区",
+                        "addressRegion": "東京都",
+                        "postalCode": "104-0061",
+                        "addressCountry": "JP"
+                    },
+                    "telephone": "+81-3-YYYY-YYYY",
+                    "openingHoursSpecification": [
+                        {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                            "opens": "11:00",
+                            "closes": "20:00"
+                        },
+                        {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Saturday", "Sunday"],
+                            "opens": "10:00",
+                            "closes": "19:00"
+                        }
+                    ],
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 35.6717,
+                        "longitude": 139.7642
+                    }
+                }
+            ],
+            "potentialAction": {
+                "@type": "ReserveAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://patolaqshe.com/media/contact",
+                    "inLanguage": "ja",
+                    "actionPlatform": [
+                        "http://schema.org/DesktopWebPlatform",
+                        "http://schema.org/MobileWebPlatform"
+                    ]
+                },
+                "result": {
+                    "@type": "Reservation",
+                    "name": "バストケア予約"
+                }
+            },
+            "makesOffer": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "育乳マッサージ",
+                        "description": "バストの形を整え、ハリと弾力を向上させる専門施術"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "バストアップケア",
+                        "description": "サイズアップを目指す集中ケアプログラム"
+                    }
+                }
+            ]
+        }
+        </script>
+        <?php
+    }
+}, 5);
+
+// SEO最適化フッターCSS読み込み
+add_action('wp_enqueue_scripts', function() {
+    if (is_front_page()) {
+        $theme_uri = get_stylesheet_directory_uri();
+        $cache_bust_ver = '20251030_' . date('His');
+        
+        // PC用CSS
+        wp_enqueue_style(
+            'seo-footer-pc',
+            $theme_uri . '/css/seo-footer.css',
+            array(),
+            $cache_bust_ver,
+            'screen and (min-width: 768px)'
+        );
+        
+        // SP用CSS
+        wp_enqueue_style(
+            'seo-footer-sp',
+            $theme_uri . '/css/sp/seo-footer-sp.css',
+            array(),
+            $cache_bust_ver,
+            'screen and (max-width: 767px)'
+        );
+    }
+});
