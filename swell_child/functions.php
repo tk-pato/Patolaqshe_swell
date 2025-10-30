@@ -3119,6 +3119,8 @@ add_action('wp_head', function () {
 // MEO対策シンプルフッター実装
 // ========================================
 add_action('get_footer', function() {
+    // デバッグ: コンソールに出力確認
+    error_log('DEBUG: get_footer フック実行中');
     ?>
     <!-- シンプルフッター開始 -->
     <style>
@@ -3143,9 +3145,6 @@ add_action('get_footer', function() {
         background: #fff;
         padding: 25px;
         margin-bottom: 30px;
-        display: inline-block;
-        width: 100%;
-        max-width: 800px;
     }
     .ptl-simple-footer .salon-label {
         font-size: 12px;
@@ -3177,6 +3176,7 @@ add_action('get_footer', function() {
         list-style: none;
         margin: 0;
         padding: 0;
+        gap: 0;
     }
     .ptl-simple-footer .nav-item {
         margin: 0 2px;
@@ -3200,9 +3200,6 @@ add_action('get_footer', function() {
         background: #fff;
         padding: 20px;
         margin-bottom: 30px;
-        display: inline-block;
-        width: 100%;
-        max-width: 600px;
     }
     .ptl-simple-footer .sns-link {
         color: #666;
@@ -3374,3 +3371,4 @@ add_action('get_footer', function() {
     <!-- シンプルフッター終了 -->
     <?php
 }, 1);
+
