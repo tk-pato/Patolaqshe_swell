@@ -3114,3 +3114,263 @@ add_action('wp_head', function () {
   </script>
 <?php
 }, 999);
+
+// ========================================
+// MEO対策シンプルフッター実装
+// ========================================
+add_action('get_footer', function() {
+    ?>
+    <!-- シンプルフッター開始 -->
+    <style>
+    .ptl-simple-footer {
+        background: #f8f8f8;
+        padding: 60px 20px 40px;
+        margin-top: 80px;
+        text-align: center;
+    }
+    .ptl-simple-footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .ptl-simple-footer h2 {
+        font-size: 18px;
+        color: #333;
+        margin: 0 0 30px;
+        letter-spacing: 0.08em;
+        font-weight: 500;
+    }
+    .ptl-simple-footer .salon-section {
+        background: #fff;
+        padding: 25px;
+        margin-bottom: 30px;
+        display: inline-block;
+        width: 100%;
+        max-width: 800px;
+    }
+    .ptl-simple-footer .salon-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-right: 25px;
+    }
+    .ptl-simple-footer .salon-link {
+        color: #666;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 14px;
+        letter-spacing: 0.05em;
+        transition: color 0.3s;
+    }
+    .ptl-simple-footer .salon-link:hover {
+        color: #d4a574;
+    }
+    .ptl-simple-footer .nav-section {
+        margin-bottom: 30px;
+    }
+    .ptl-simple-footer .nav-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .ptl-simple-footer .nav-item {
+        margin: 0 2px;
+    }
+    .ptl-simple-footer .nav-link {
+        color: #666;
+        text-decoration: none;
+        padding: 0 12px;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        transition: color 0.3s;
+    }
+    .ptl-simple-footer .nav-link:hover {
+        color: #d4a574;
+    }
+    .ptl-simple-footer .nav-separator {
+        color: #ddd;
+        font-size: 12px;
+    }
+    .ptl-simple-footer .sns-section {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 30px;
+        display: inline-block;
+        width: 100%;
+        max-width: 600px;
+    }
+    .ptl-simple-footer .sns-link {
+        color: #666;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        transition: color 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .ptl-simple-footer .sns-link:hover {
+        color: #d4a574;
+    }
+    .ptl-simple-footer .sns-icon {
+        width: 16px;
+        height: 16px;
+    }
+    .ptl-simple-footer .copyright {
+        font-size: 11px;
+        color: #999;
+        margin: 0;
+        letter-spacing: 0.05em;
+    }
+    
+    /* SP表示 */
+    @media (max-width: 767px) {
+        .ptl-simple-footer {
+            padding: 50px 15px 30px;
+            margin-top: 60px;
+        }
+        .ptl-simple-footer h2 {
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .ptl-simple-footer .salon-section {
+            padding: 20px 15px;
+            margin-bottom: 25px;
+        }
+        .ptl-simple-footer .salon-label {
+            display: block;
+            margin: 0 0 15px;
+        }
+        .ptl-simple-footer .salon-link {
+            display: block;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+        .ptl-simple-footer .nav-list {
+            flex-direction: column;
+        }
+        .ptl-simple-footer .nav-item {
+            margin: 0;
+            width: 100%;
+        }
+        .ptl-simple-footer .nav-link {
+            display: block;
+            padding: 10px;
+            background: #fff;
+            margin: 5px 0;
+            font-size: 13px;
+        }
+        .ptl-simple-footer .nav-separator {
+            display: none;
+        }
+        .ptl-simple-footer .sns-section {
+            padding: 20px 15px;
+            margin-bottom: 25px;
+        }
+        .ptl-simple-footer .sns-link {
+            display: block;
+            margin: 10px 0;
+            font-size: 12px;
+            justify-content: center;
+        }
+        .ptl-simple-footer .copyright {
+            font-size: 10px;
+        }
+    }
+    </style>
+    
+    <div class="ptl-simple-footer">
+        <div class="ptl-simple-footer-inner">
+            <h2>バストアップ専門パトラクシェ｜育乳・美乳ケア</h2>
+            
+            <div class="salon-section">
+                <span class="salon-label">SALON</span>
+                <a href="/salon-daikanyama" class="salon-link">Patolaqshe Daikanyama</a>
+                <a href="/salon-ginza" class="salon-link">Patolaqshe GINZA</a>
+            </div>
+            
+            <nav class="nav-section">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/" class="nav-link">TOP</a></li>
+                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-item"><a href="#section-news" class="nav-link">NEWS</a></li>
+                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-item"><a href="#section-infohub" class="nav-link">INFO</a></li>
+                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-item"><a href="#section-menu" class="nav-link">MENU</a></li>
+                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-item"><a href="#section-uservoice" class="nav-link">VOICE</a></li>
+                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-item"><a href="/faq" class="nav-link">FAQ</a></li>
+                    <li class="nav-item nav-separator">|</li>
+                    <li class="nav-item"><a href="#section-blog" class="nav-link">BLOG</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sns-section">
+                <a href="https://www.instagram.com/patolaqshe_daikanyama/" target="_blank" rel="noopener noreferrer" class="sns-link">
+                    <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2C5.61 4 4 5.61 4 7.6v8.8c0 1.99 1.61 3.6 3.6 3.6h8.8c1.99 0 3.6-1.61 3.6-3.6V7.6c0-1.99-1.61-3.6-3.6-3.6H7.6zm9.65 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 2c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                    <span>Instagram Daikanyama</span>
+                </a>
+                <a href="https://www.instagram.com/patolaqshe_ginza/" target="_blank" rel="noopener noreferrer" class="sns-link">
+                    <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2C5.61 4 4 5.61 4 7.6v8.8c0 1.99 1.61 3.6 3.6 3.6h8.8c1.99 0 3.6-1.61 3.6-3.6V7.6c0-1.99-1.61-3.6-3.6-3.6H7.6zm9.65 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 2c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                    <span>GINZA</span>
+                </a>
+            </div>
+            
+            <p class="copyright">© 2012-2025 Patolaqshe All rights reserved.</p>
+        </div>
+    </div>
+    
+    <!-- 構造化データ（SEO対策） -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HealthAndBeautyBusiness",
+        "name": "バストアップ専門パトラクシェ",
+        "alternateName": ["Patolaqshe", "パトラクシェ"],
+        "description": "育乳・美乳ケア専門サロン。代官山と銀座に店舗展開。",
+        "url": "https://patolaqshe.com/media/",
+        "sameAs": [
+            "https://www.instagram.com/patolaqshe_daikanyama/",
+            "https://www.instagram.com/patolaqshe_ginza/"
+        ],
+        "location": [
+            {
+                "@type": "Place",
+                "name": "パトラクシェ銀座店",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "中央区",
+                    "addressRegion": "東京都",
+                    "addressCountry": "JP"
+                },
+                "telephone": "03-6264-4343"
+            },
+            {
+                "@type": "Place",
+                "name": "パトラクシェ恵比寿・代官山店",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "渋谷区",
+                    "addressRegion": "東京都",
+                    "addressCountry": "JP"
+                },
+                "telephone": "03-5489-7118"
+            }
+        ]
+    }
+    </script>
+    <!-- シンプルフッター終了 -->
+    <?php
+}, 1);
