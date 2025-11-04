@@ -3115,205 +3115,290 @@ add_action('wp_head', function () {
 <?php
 }, 999);
 
+
 // ========================================
-// MEO対策シンプルフッター実装
+// Astiフッター実装
 // ========================================
 add_action('get_footer', function() {
-    // デバッグ: コンソールに出力確認
-    error_log('DEBUG: get_footer フック実行中');
     ?>
-    <!-- シンプルフッター開始 -->
+    <!-- Astiフッター開始 -->
     <style>
+    /* Astiフッター：PC/SP完全対応 */
     .ptl-simple-footer {
         background: #f8f8f8;
-        padding: 60px 20px 40px;
+        padding: 0;
         margin-top: 80px;
-        text-align: center;
+        border-top: 1px solid #f8f8f8;
     }
+    
     .ptl-simple-footer-inner {
         max-width: 1200px;
         margin: 0 auto;
-    }
-    .ptl-simple-footer h2 {
-        font-size: 18px;
-        color: #333;
-        margin: 0 0 30px;
-        letter-spacing: 0.08em;
-        font-weight: 500;
-    }
-    .ptl-simple-footer .salon-section {
-        background: #fff;
-        padding: 25px;
-        margin-bottom: 30px;
-    }
-    .ptl-simple-footer .salon-label {
-        font-size: 12px;
-        font-weight: 700;
-        color: #666;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-right: 25px;
-    }
-    .ptl-simple-footer .salon-link {
-        color: #666;
-        text-decoration: none;
-        margin: 0 15px;
-        font-size: 14px;
-        letter-spacing: 0.05em;
-        transition: color 0.3s;
-    }
-    .ptl-simple-footer .salon-link:hover {
-        color: #d4a574;
-    }
-    .ptl-simple-footer .nav-section {
-        margin-bottom: 30px;
-    }
-    .ptl-simple-footer .nav-list {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        gap: 0;
-    }
-    .ptl-simple-footer .nav-item {
-        display: inline-block;
-        margin: 0 2px;
-    }
-    .ptl-simple-footer .nav-separator {
-        display: inline-block;
-        color: #ddd;
-        font-size: 12px;
-        margin: 0 2px;
-    }
-    .ptl-simple-footer .nav-link {
-        color: #666;
-        text-decoration: none;
-        padding: 0 12px;
-        font-size: 14px;
-        letter-spacing: 0.08em;
-        transition: color 0.3s;
-        display: inline-block;
-    }
-    .ptl-simple-footer .nav-link:hover {
-        color: #d4a574;
-    }
-    .ptl-simple-footer .sns-section {
-        background: #fff;
-        padding: 20px;
-        margin-bottom: 30px;
-    }
-    .ptl-simple-footer .sns-link {
-        color: #666;
-        text-decoration: none;
-        margin: 0 20px;
-        font-size: 13px;
-        letter-spacing: 0.05em;
-        transition: color 0.3s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .ptl-simple-footer .sns-link:hover {
-        color: #d4a574;
-    }
-    .ptl-simple-footer .sns-icon {
-        width: 16px;
-        height: 16px;
-    }
-    .ptl-simple-footer .copyright {
-        font-size: 11px;
-        color: #999;
-        margin: 0;
-        letter-spacing: 0.05em;
+        padding: 50px 40px 30px;
     }
     
-    /* SP表示 */
+    /* PC: 3カラムgrid */
+    @media (min-width: 768px) {
+        .ptl-simple-footer-inner {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        /* 左: ロゴ */
+        .ptl-simple-footer h2 {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: #999;
+            margin: 0;
+            font-family: serif;
+        }
+        
+        /* 中央: ナビゲーション */
+        .ptl-simple-footer .nav-section {
+            margin: 0;
+        }
+        
+        .ptl-simple-footer .nav-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 0;
+        }
+        
+        .ptl-simple-footer .nav-item {
+            display: inline-block;
+            margin: 0;
+        }
+        
+        .ptl-simple-footer .nav-separator {
+            display: inline-block;
+            color: #ccc;
+            margin: 0 15px;
+        }
+        
+        .ptl-simple-footer .nav-link {
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        
+        .ptl-simple-footer .nav-link:hover {
+            color: #666;
+        }
+        
+        /* 右: SALONセクション */
+        .ptl-simple-footer .salon-section {
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+        
+        .ptl-simple-footer .salon-label {
+            font-size: 11px;
+            font-weight: 400;
+            color: #999;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .ptl-simple-footer .salon-divider {
+            width: 60px;
+            height: 1px;
+            background: #ddd;
+        }
+        
+        .ptl-simple-footer .salon-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .ptl-simple-footer .salon-link {
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            display: block;
+        }
+        
+        .ptl-simple-footer .salon-link:hover {
+            color: #666;
+        }
+        
+        /* SNS非表示（PC） */
+        .ptl-simple-footer .sns-section {
+            display: none;
+        }
+        
+        /* Copyright（PC） */
+        .ptl-simple-footer .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 10px;
+            color: #999;
+            letter-spacing: 0.05em;
+            margin: 40px 0 0;
+            padding: 20px 0 0;
+            border-top: 1px solid #f0f0f0;
+        }
+    }
+    
+    /* SP: 縦スクロール */
     @media (max-width: 767px) {
         .ptl-simple-footer {
-            padding: 50px 15px 30px;
             margin-top: 60px;
         }
-        .ptl-simple-footer h2 {
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-        .ptl-simple-footer .salon-section {
-            padding: 20px 15px;
-            margin-bottom: 25px;
-        }
-        .ptl-simple-footer .salon-label {
-            display: block;
-            margin: 0 0 15px;
-        }
-        .ptl-simple-footer .salon-link {
-            display: block;
-            margin: 8px 0;
-            font-size: 12px;
-        }
-        .ptl-simple-footer .nav-list {
+        
+        .ptl-simple-footer-inner {
+            padding: 40px 20px 30px;
+            display: flex;
             flex-direction: column;
+            gap: 30px;
         }
-        .ptl-simple-footer .nav-item {
+        
+        /* ロゴ中央 */
+        .ptl-simple-footer h2 {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: #999;
             margin: 0;
-            width: 100%;
-            display: block;
+            text-align: center;
+            font-family: serif;
         }
+        
+        /* SALONセクション非表示（SP） */
+        .ptl-simple-footer .salon-section {
+            display: none;
+        }
+        
+        /* ナビゲーション */
+        .ptl-simple-footer .nav-section {
+            margin: 0;
+        }
+        
+        .ptl-simple-footer .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #e8e8e8;
+        }
+        
+        .ptl-simple-footer .nav-item {
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
         .ptl-simple-footer .nav-link {
             display: block;
-            padding: 10px;
-            background: #fff;
-            margin: 5px 0;
-            font-size: 13px;
+            padding: 15px 0;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-align: center;
+            transition: opacity 0.3s;
         }
+        
+        .ptl-simple-footer .nav-link:hover {
+            opacity: 0.6;
+        }
+        
         .ptl-simple-footer .nav-separator {
             display: none;
         }
+        
+        /* SNS */
         .ptl-simple-footer .sns-section {
-            padding: 20px 15px;
-            margin-bottom: 25px;
+            background: transparent;
+            padding: 20px 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
         }
+        
         .ptl-simple-footer .sns-link {
-            display: block;
-            margin: 10px 0;
-            font-size: 12px;
-            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            color: #999;
+            letter-spacing: 0.05em;
+            transition: opacity 0.3s;
         }
+        
+        .ptl-simple-footer .sns-link:hover {
+            opacity: 0.6;
+        }
+        
+        .ptl-simple-footer .sns-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.6;
+        }
+        
+        /* Copyright（SP） */
         .ptl-simple-footer .copyright {
-            font-size: 10px;
+            text-align: center;
+            font-size: 9px;
+            color: #999;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 20px 0 0;
         }
     }
     </style>
     
     <div class="ptl-simple-footer">
         <div class="ptl-simple-footer-inner">
-            <h2>バストアップ専門パトラクシェ｜育乳・美乳ケア</h2>
-            
-            <div class="salon-section">
-                <span class="salon-label">SALON</span>
-                <a href="/salon-daikanyama" class="salon-link">Patolaqshe Daikanyama</a>
-                <a href="/salon-ginza" class="salon-link">Patolaqshe GINZA</a>
-            </div>
+            <h2>Patolaqshe</h2>
             
             <nav class="nav-section">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="/" class="nav-link">TOP</a></li>
-                    <li class="nav-separator">|</li>
+                    <li class="nav-separator">・</li>
                     <li class="nav-item"><a href="#section-news" class="nav-link">NEWS</a></li>
-                    <li class="nav-separator">|</li>
+                    <li class="nav-separator">・</li>
                     <li class="nav-item"><a href="#section-infohub" class="nav-link">INFO</a></li>
-                    <li class="nav-separator">|</li>
+                    <li class="nav-separator">・</li>
                     <li class="nav-item"><a href="#section-menu" class="nav-link">MENU</a></li>
-                    <li class="nav-separator">|</li>
+                    <li class="nav-separator">・</li>
                     <li class="nav-item"><a href="#section-uservoice" class="nav-link">VOICE</a></li>
-                    <li class="nav-separator">|</li>
+                    <li class="nav-separator">・</li>
                     <li class="nav-item"><a href="/faq" class="nav-link">FAQ</a></li>
-                    <li class="nav-separator">|</li>
+                    <li class="nav-separator">・</li>
                     <li class="nav-item"><a href="#section-blog" class="nav-link">BLOG</a></li>
                 </ul>
             </nav>
+            
+            <div class="salon-section">
+                <span class="salon-label">SALON</span>
+                <div class="salon-divider"></div>
+                <div class="salon-links">
+                    <a href="/salon-daikanyama" class="salon-link">Patolaqshe Daikanyama</a>
+                    <a href="/salon-ginza" class="salon-link">Patolaqshe GINZA</a>
+                </div>
+            </div>
             
             <div class="sns-section">
                 <a href="https://www.instagram.com/patolaqshe_daikanyama/" target="_blank" rel="noopener noreferrer" class="sns-link">
@@ -3326,11 +3411,11 @@ add_action('get_footer', function() {
                     <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2C5.61 4 4 5.61 4 7.6v8.8c0 1.99 1.61 3.6 3.6 3.6h8.8c1.99 0 3.6-1.61 3.6-3.6V7.6c0-1.99-1.61-3.6-3.6-3.6H7.6zm9.65 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 2c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
                     </svg>
-                    <span>GINZA</span>
+                    <span>Instagram GINZA</span>
                 </a>
             </div>
             
-            <p class="copyright">© 2012-2025 Patolaqshe All rights reserved.</p>
+            <p class="copyright">Copyright © Patolaqshe / ALL RIGHTS RESERVED.</p>
         </div>
     </div>
     
@@ -3373,7 +3458,6 @@ add_action('get_footer', function() {
         ]
     }
     </script>
-    <!-- シンプルフッター終了 -->
+    <!-- Astiフッター終了 -->
     <?php
 }, 1);
-
