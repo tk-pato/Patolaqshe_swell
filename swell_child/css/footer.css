@@ -14,6 +14,24 @@
     padding: 0 0 60px;
 }
 
+/* ===================================
+   clearfix（最重要）
+=================================== */
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.row:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ===================================
+   footer-head: 上段（ロゴ + SALON）
+=================================== */
 #footer .w__inn .footer-head {
     border-top: 1px solid #eee;
     position: relative;
@@ -46,6 +64,12 @@
     right: 0;
 }
 
+#footer .w__inn .footer-head aside ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 #footer .w__inn .footer-head aside ul li {
     float: left;
     margin-left: 30px;
@@ -73,8 +97,18 @@
     font-size: 1.4rem;
     line-height: 1;
     letter-spacing: 0;
+    color: #666;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
 }
 
+#footer .w__inn .footer-head aside ul li a:hover {
+    opacity: 0.7;
+}
+
+/* ===================================
+   footer-foot: 下段（Navigation + Copyright）
+=================================== */
 #footer .w__inn .footer-foot {
     background: #f8f8f8;
     padding: 50px;
@@ -85,13 +119,25 @@
     width: 70%;
 }
 
+#footer .w__inn .footer-foot aside ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#footer .w__inn .footer-foot aside ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 #footer .w__inn .footer-foot aside ul li {
     float: left;
     margin-right: 32px;
 }
 
 #footer .w__inn .footer-foot aside ul li a {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #aaa;
@@ -100,15 +146,21 @@
     line-height: 1;
     letter-spacing: 0;
     vertical-align: middle;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+#footer .w__inn .footer-foot aside ul li a:hover {
+    opacity: 0.7;
 }
 
 #footer .w__inn .footer-foot aside ul li a:before {
     display: inline-block;
     content: "";
-    background: url(../img/icon/diamond.svg) no-repeat 50% 50%;
     width: 4px;
     height: 4px;
-    background-size: 4px 4px;
+    background: #aaa;
+    border-radius: 50%;
     margin-right: 6px;
     position: relative;
     top: -3px;
@@ -117,6 +169,7 @@
 #footer .w__inn .footer-foot address {
     float: right;
     width: 30%;
+    font-style: normal;
 }
 
 #footer .w__inn .footer-foot address p {
@@ -125,12 +178,16 @@
     line-height: 1;
     letter-spacing: 0;
     text-align: right;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #aaa;
+    margin: 0;
 }
 
+/* ===================================
+   SP版フッター（768px以下）
+=================================== */
 @media screen and (max-width: 768px) {
     #footer {
         margin: 20px 0 0;
@@ -162,48 +219,52 @@
     }
 
     #footer .w__inn .footer-head aside ul li {
-        float: none;
+        float: left;
         margin-left: 0;
-        display: inline-block;
-        margin-right: 20px;
+        margin-right: 14px;
         font-size: 12px;
         font-size: 1.2rem;
     }
 
     #footer .w__inn .footer-head aside ul li:first-child:after {
-        display: none;
+        width: 1.5em;
+        margin-left: 14px;
+    }
+
+    #footer .w__inn .footer-head aside ul li a {
+        font-size: 12px;
+        font-size: 1.2rem;
     }
 
     #footer .w__inn .footer-foot {
-        padding: 30px 0;
+        padding: 20px;
     }
 
     #footer .w__inn .footer-foot aside {
         float: none;
-        width: 100%;
-        margin-bottom: 20px;
+        width: auto;
     }
 
     #footer .w__inn .footer-foot aside ul li {
         float: none;
+        margin-right: 14px;
         display: inline-block;
-        margin-right: 16px;
-        margin-bottom: 8px;
     }
 
     #footer .w__inn .footer-foot aside ul li a {
-        font-size: 11px;
-        font-size: 1.1rem;
+        font-size: 12px;
+        font-size: 1.2rem;
     }
 
     #footer .w__inn .footer-foot address {
         float: none;
-        width: 100%;
+        width: auto;
     }
 
     #footer .w__inn .footer-foot address p {
-        text-align: center;
+        margin-top: 16px;
         font-size: 10px;
-        font-size: 1.0rem;
+        font-size: 1rem;
+        text-align: center;
     }
 }
