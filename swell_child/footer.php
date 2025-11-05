@@ -25,7 +25,7 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 		SWELL_Theme::get_parts( 'parts/breadcrumb' );
 	endif;
 ?>
-<footer id="footer" class="l-footer">
+<footer id="footer">
 	<div class="w__inn">
 		<div class="footer-head">
 			<p>代官山と銀座のバストアップ専門サロン Patolaqshe</p>
