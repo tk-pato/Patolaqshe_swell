@@ -26,64 +26,36 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	endif;
 ?>
 <footer id="footer" class="l-footer">
-	<?php 
-	// ========================================
-	// ★ カスタムフッター追加箇所（開始）
-	// ========================================
-	if ( is_front_page() ) : 
-	?>
-	<div class="ptl-footer">
-		<div class="ptl-footer-inner">
-			
-			<!-- ロゴセクション -->
-			<div class="ptl-footer__logo">
-				<h2>Patolaqshe</h2>
-			</div>
-			
-			<!-- ナビゲーションセクション -->
-			<nav class="ptl-footer__nav" aria-label="フッターナビゲーション">
-				<ul class="ptl-footer__nav-list">
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/about/')); ?>" class="ptl-footer__nav-link">About</a>
-					</li>
-					<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/menu/')); ?>" class="ptl-footer__nav-link">Menu</a>
-					</li>
-					<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/salon/')); ?>" class="ptl-footer__nav-link">Salon</a>
-					</li>
-					<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/contact/')); ?>" class="ptl-footer__nav-link">Contact</a>
-					</li>
+	<div class="w__inn">
+		<div class="footer-head">
+			<p>代官山と銀座のバストアップ専門サロン Patolaqshe</p>
+			<aside>
+				<ul class="clearfix">
+					<li>SALON</li>
+					<li><a href="<?php echo esc_url(home_url('/salon/daikanyama/')); ?>">代官山店</a></li>
+					<li><a href="<?php echo esc_url(home_url('/salon/ginza/')); ?>">銀座店</a></li>
 				</ul>
-			</nav>
-			
-			<!-- SALONセクション -->
-			<div class="ptl-footer__salon">
-				<p class="ptl-footer__salon-label">SALON</p>
-				<div class="ptl-footer__salon-divider"></div>
-				<div class="ptl-footer__salon-links">
-					<a href="<?php echo esc_url(home_url('/salon/daikanyama/')); ?>" class="ptl-footer__salon-link">代官山</a>
-					<a href="<?php echo esc_url(home_url('/salon/ginza/')); ?>" class="ptl-footer__salon-link">銀座</a>
-				</div>
-			</div>
-			
+			</aside>
 		</div>
-		
-		<!-- コピーライト -->
-		<div class="ptl-footer__copyright">
-			<p>&copy; <?php echo date('Y'); ?> Patolaqshe. All rights reserved.</p>
+		<div class="footer-foot">
+			<div class="row">
+				<aside>
+					<ul>
+						<li><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></li>
+						<li><a href="<?php echo esc_url(home_url('/philosophy/')); ?>">PHILOSOPHY</a></li>
+						<li><a href="<?php echo esc_url(home_url('/menu/')); ?>">MENU</a></li>
+						<li><a href="<?php echo esc_url(home_url('/staff/')); ?>">STAFF</a></li>
+						<li><a href="<?php echo esc_url(home_url('/news/')); ?>">NEWS</a></li>
+						<li><a href="https://www.instagram.com/patolaqshe/" target="_blank" rel="noopener" class="ins_sty">STYLE</a></li>
+						<li><a href="https://www.instagram.com/patolaqshe/" target="_blank" rel="noopener" class="ins_sty">BLOG</a></li>
+					</ul>
+				</aside>
+				<address>
+					<p>Copyright &copy; Patolaqshe / ALL RIGHTS RESERVED.</p>
+				</address>
+			</div>
 		</div>
 	</div>
-	<?php 
-	endif; 
-	// ========================================
-	// ★ カスタムフッター追加箇所（終了）
-	// ========================================
-	?>
 </footer>
 <?php
 	// 固定フッターメニュー
