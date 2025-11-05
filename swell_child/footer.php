@@ -84,8 +84,6 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	// ★ カスタムフッター追加箇所（終了）
 	// ========================================
 	?>
-	
-	<?php if ( ! SWELL_Theme::is_use( 'ajax_footer' ) ) SWELL_Theme::get_parts( 'parts/footer/footer_contents' ); ?>
 </footer>
 <?php
 	// 固定フッターメニュー
