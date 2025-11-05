@@ -1,0 +1,158 @@
+=====================================================
+swell_child テーマ ファイルリスト
+作成日: 2025/11/05
+用途: 子テーマの構成確認用リファレンス
+=====================================================
+
+【重要】
+このファイルはPatolaqsheカスタム子テーマのファイル構成を示します。
+実装内容は以下の通り：
+
+- footer.php: Astiフッター完全トレース版
+- functions.php: カスタム関数定義
+- style.css: 子テーマメインスタイル
+- css/footer.css: フッター専用CSS（SWELL親CSS対策版）
+
+=====================================================
+【テンプレートファイル】
+=====================================================
+
+./footer.php                       # Astiフッター実装版（完全トレース）
+./functions.php                    # カスタム関数定義
+./front-page.php                   # トップページテンプレート
+./page.php                         # 固定ページテンプレート
+./page-landing.php                 # ランディングページテンプレート
+./style.css                        # メインスタイルシート
+./cache-bust.php                   # キャッシュバスター
+./header.php                       # (存在する場合のみ)
+
+=====================================================
+【CSS ファイル】
+=====================================================
+
+./css/
+├── footer.css                     # フッターCSS（SWELL親CSS対策版）
+├── float-menu.css                 # フローティングメニュー
+├── footer.css                     # (削除予定: footer.phpで使用)
+├── header-reset.css               # ヘッダーリセット
+├── issues-navigation.css          # 問題ナビゲーション
+├── navigation.css                 # ナビゲーション
+├── section-blog.css               # ブログセクション
+├── section-commitment.css         # コミットメントセクション
+├── section-infohub.css            # インフォハブセクション
+├── section-intro.css              # イントロセクション
+├── section-menu.css               # メニューセクション
+├── section-news.css               # ニュースセクション
+├── section-salon.css              # サロンセクション
+├── section-uservoice.css          # ユーザーボイスセクション
+└── pc/                            # PC用CSS
+    ├── issues-navigation.css
+    ├── navigation.css
+    ├── section-blog.css
+    ├── section-commitment.css
+    ├── section-infohub.css
+    ├── section-intro.css
+    ├── section-menu.css
+    ├── section-news.css
+    ├── section-salon.css
+    └── section-uservoice.css
+└── sp/                            # SP用CSS
+    ├── footer-sp.css
+    ├── issues-navigation-sp.css
+    ├── navigation-sp.css
+    ├── section-blog-sp.css
+    ├── section-commitment-sp.css
+    ├── section-infohub-sp.css
+    ├── section-intro-sp.css
+    ├── section-menu-sp.css
+    ├── section-news-sp.css
+    ├── section-order-sp.css
+    ├── section-salon-sp.css
+    └── section-uservoice-sp.css
+
+=====================================================
+【JavaScript ファイル】
+=====================================================
+
+./js/
+├── float-menu.js                  # フローティングメニュー機能
+├── navigation.js                  # ナビゲーション機能
+├── section-blog.js                # ブログセクション機能
+├── section-bust-issues.js         # バストケア課題セクション機能
+├── section-infohub.js             # インフォハブセクション機能
+├── section-parallax.js            # パララックス効果
+├── section-reasons-parallax.js    # 理由セクションパララックス
+├── uservoice-slider.js            # ユーザーボイススライダー
+└── README.salon.md                # サロン関連機能ドキュメント
+
+=====================================================
+【テンプレートパーツ】
+=====================================================
+
+./template-parts/
+└── front/                         # フロントページ用パーツ
+    ├── global-parallax-bg.php
+    ├── section-blog.php
+    ├── section-bust-issues.php
+    ├── section-commitment.php
+    ├── section-infohub.php
+    ├── section-intro.php
+    ├── section-menu.php
+    ├── section-news.php
+    ├── section-page-navigation.php
+    ├── section-reasons.textClipping  (未使用)
+    ├── section-salon.php
+    └── section-uservoice.php
+
+=====================================================
+【画像・デザインファイル】
+=====================================================
+
+./img/
+├── headlogo.afdesign              # ヘッドロゴ（Affinity Design）
+├── LINE.afdesign                  # LINE用アイコン
+├── logo.afdesign                  # ロゴ（Affinity Design）
+├── mainlogo.afdesign              # メインロゴ（Affinity Design）
+└── nav/                           # ナビゲーション画像
+
+=====================================================
+【ドキュメント】
+=====================================================
+
+./LOG_parallax.md                  # パララックス実装ログ
+./USERVOICE_README.md              # ユーザーボイス機能ドキュメント
+./test-upload.txt                  # テストアップロードファイル
+
+=====================================================
+【重要な実装内容】
+=====================================================
+
+### footer.php（最新版）
+- Astiサイトフッター完全トレース版
+- ヘッダーバー保護（1-24行目）
+- Astiフッター実装（26-79行目）
+- 閉じタグ保護（81-106行目）
+
+### css/footer.css（SWELL対策版）
+- body #footer セレクタで詳細度UP
+- !important で親CSS対策
+- clearfix:after / row:after 追加
+- list-style / margin / padding リセット
+- PC: 2段レイアウト（左:70% ナビ、右:30% コピーライト）
+- SP: 1段レイアウト（768px以下）
+
+=====================================================
+【WordPressテーマ階層】
+=====================================================
+
+子テーマ (swell_child/) 
+  ↓ 優先
+親テーマ (swell/)
+  ↓ （参照用: GitHub swell_parent_reference/）
+
+=====================================================
+【関連ドキュメント】
+=====================================================
+
+親テーマ RAW URL参照: PARENT_THEME_RAW_URLS_20251105.txt
+親テーマ参照フォルダ: swell_parent_reference/

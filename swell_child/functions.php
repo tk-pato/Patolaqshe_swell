@@ -208,6 +208,37 @@ add_action('wp_enqueue_scripts', function () {
     ['section-salon', 'ptl_section_salon', ['child_style'], '-sp'],
   ];
 
+  // Google Fonts: Noto Sans JP（child_style依存で読み込み）
+  wp_enqueue_style(
+    'google-fonts-noto-sans',
+    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap',
+    ['child_style'],
+    null
+  );
+
+  // Footer CSS（child_style依存）
+  $footer_path = get_stylesheet_directory() . '/css/footer.css';
+  if (file_exists($footer_path)) {
+    wp_enqueue_style(
+      'ptl_footer',
+      get_stylesheet_directory_uri() . '/css/footer.css',
+      ['child_style'],
+      filemtime($footer_path)
+    );
+
+    // Footer SP CSS
+    $footer_sp_path = get_stylesheet_directory() . '/css/sp/footer-sp.css';
+    if (file_exists($footer_sp_path)) {
+      wp_enqueue_style(
+        'ptl_footer-sp',
+        get_stylesheet_directory_uri() . '/css/sp/footer-sp.css',
+        ['ptl_footer'],
+        filemtime($footer_sp_path),
+        $breakpoint_sp
+      );
+    }
+  }
+
   foreach ($sections as list($file_prefix, $handle, $deps, $sp_suffix)) {
     // ベースCSS
     $base_path = get_stylesheet_directory() . "/css/{$file_prefix}.css";

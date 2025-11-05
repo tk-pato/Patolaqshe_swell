@@ -1,0 +1,86 @@
+=====================================================
+SWELL 親テーマ RAW URL リスト (GitHub参照用)
+作成日: 2025/11/05
+更新日: 2025/11/05（main ブランチ参照版）
+用途: Claude/CopilotがリファレンスとしてアクセスするためのURL一覧
+=====================================================
+
+【GitHubリポジトリ】
+Repository: tk-pato/Patolaqshe_swell
+Branch: main
+Parent Theme Reference: swell_parent_reference/swell_parent_reference/
+
+【主要テンプレートファイル RAW URL】
+
+## フッター参照
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/footer.php
+
+## ヘッダー参照
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/header.php
+
+## 関数参照（親テーマ）
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/functions.php
+
+## スタイル定義
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/style.css
+
+=====================================================
+【親テーマ CSS ファイル】
+
+## メインスタイル
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/assets/css/style.css
+
+## リセットCSS
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/assets/css/reset.css
+
+## フッター関連CSS（存在する場合）
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/assets/css/footer.css
+
+=====================================================
+【アクセス方法】
+
+### 方法1: ブラウザで直接表示
+上記URLをコピーしてブラウザにペーストすると、RAWコード表示されます
+
+### 方法2: AI（Copilot）への参照指示
+プロンプトに以下の形式で指定：
+"GitHubの以下のURLを参照してください：
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/footer.php"
+
+### 方法3: cURL/wgetでダウンロード
+```bash
+curl https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_parent_reference/swell_parent_reference/footer.php
+```
+
+=====================================================
+【ディレクトリ構造】
+
+swell_parent_reference/
+└── swell_parent_reference/    # 実際の親テーマファイル
+    ├── footer.php
+    ├── header.php
+    ├── functions.php
+    ├── style.css
+    ├── assets/
+    │   ├── css/
+    │   │   ├── style.css
+    │   │   ├── reset.css
+    │   │   └── ...
+    │   ├── js/
+    │   │   └── ...
+    │   └── img/
+    │       └── ...
+    └── template-parts/
+        └── ...
+
+=====================================================
+【ファイル総数】
+PHP/CSS/JS: 568ファイル
+※ 完全なリストは PARENT_THEME_FILES_LIST_20251105.txt を参照
+
+=====================================================
+【注意事項】
+- これらのURLは main ブランチを参照します
+- ファイルは読み取り専用です
+- 本番環境では /home/patolaqshe/www/media/wp-content/themes/swell/ が使用されます
+- step2-functions-loop ブランチにも同じファイルが存在します（step2-functions-loop/swell_parent_reference/...）
