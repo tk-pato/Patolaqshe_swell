@@ -1,14 +1,14 @@
 /* ========================================
-   Astiフッター完全トレース
+   Astiフッター完全トレース（SWELL対策版）
 ======================================== */
 
-#footer {
+body #footer {
     padding: 0;
     margin: 80px 0 0;
     text-align: left;
 }
 
-#footer .w__inn {
+body #footer .w__inn {
     width: calc(100% - 160px);
     margin: 0 auto;
     padding: 0 0 60px;
@@ -17,13 +17,15 @@
 /* ===================================
    clearfix（最重要）
 =================================== */
-.clearfix:after {
+.clearfix:after,
+body #footer .clearfix:after {
     content: "";
     display: block;
     clear: both;
 }
 
-.row:after {
+.row:after,
+body #footer .row:after {
     content: "";
     display: block;
     clear: both;
@@ -32,13 +34,13 @@
 /* ===================================
    footer-head: 上段（ロゴ + SALON）
 =================================== */
-#footer .w__inn .footer-head {
+body #footer .w__inn .footer-head {
     border-top: 1px solid #eee;
     position: relative;
     padding: 60px 0 90px;
 }
 
-#footer .w__inn .footer-head > p {
+body #footer .w__inn .footer-head > p {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -49,7 +51,7 @@
     left: 0;
 }
 
-#footer .w__inn .footer-head > p:before {
+body #footer .w__inn .footer-head > p:before {
     display: block;
     content: "";
     background: url(../img/logo_foot.svg) no-repeat 50% 50%;
@@ -58,21 +60,25 @@
     background-size: 120px 30px;
 }
 
-#footer .w__inn .footer-head aside {
+body #footer .w__inn .footer-head aside {
     position: absolute;
     top: 70px;
     right: 0;
 }
 
-#footer .w__inn .footer-head aside ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+body #footer .w__inn .footer-head aside ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
 }
 
-#footer .w__inn .footer-head aside ul li {
-    float: left;
+body #footer .w__inn .footer-head aside ul li {
+    float: left !important;
     margin-left: 30px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -81,9 +87,14 @@
     line-height: 1;
     letter-spacing: 0;
     color: #aaa;
+    display: block;
 }
 
-#footer .w__inn .footer-head aside ul li:first-child:after {
+body #footer .w__inn .footer-head aside ul li:first-child {
+    margin-left: 0;
+}
+
+body #footer .w__inn .footer-head aside ul li:first-child:after {
     display: inline-block;
     content: "";
     width: 4em;
@@ -92,7 +103,7 @@
     margin-left: 30px;
 }
 
-#footer .w__inn .footer-head aside ul li a {
+body #footer .w__inn .footer-head aside ul li a {
     font-size: 14px;
     font-size: 1.4rem;
     line-height: 1;
@@ -102,42 +113,51 @@
     transition: opacity 0.3s ease;
 }
 
-#footer .w__inn .footer-head aside ul li a:hover {
+body #footer .w__inn .footer-head aside ul li a:hover {
     opacity: 0.7;
 }
 
 /* ===================================
    footer-foot: 下段（Navigation + Copyright）
 =================================== */
-#footer .w__inn .footer-foot {
+body #footer .w__inn .footer-foot {
     background: #f8f8f8;
     padding: 50px;
 }
 
-#footer .w__inn .footer-foot aside {
-    float: left;
+body #footer .w__inn .footer-foot .row {
+    display: block !important;
+}
+
+body #footer .w__inn .footer-foot aside {
+    float: left !important;
     width: 70%;
 }
 
-#footer .w__inn .footer-foot aside ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+body #footer .w__inn .footer-foot aside ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
 }
 
-#footer .w__inn .footer-foot aside ul:after {
+body #footer .w__inn .footer-foot aside ul:after {
     content: "";
     display: block;
     clear: both;
 }
 
-#footer .w__inn .footer-foot aside ul li {
-    float: left;
+body #footer .w__inn .footer-foot aside ul li {
+    float: left !important;
     margin-right: 32px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
 }
 
-#footer .w__inn .footer-foot aside ul li a {
-    font-family: 'Noto Sans JP', sans-serif;
+body #footer .w__inn .footer-foot aside ul li a {
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #aaa;
@@ -150,35 +170,35 @@
     transition: opacity 0.3s ease;
 }
 
-#footer .w__inn .footer-foot aside ul li a:hover {
+body #footer .w__inn .footer-foot aside ul li a:hover {
     opacity: 0.7;
 }
 
-#footer .w__inn .footer-foot aside ul li a:before {
+body #footer .w__inn .footer-foot aside ul li a:before {
     display: inline-block;
     content: "";
+    background: url(../img/icon/diamond.svg) no-repeat 50% 50%;
     width: 4px;
     height: 4px;
-    background: #aaa;
-    border-radius: 50%;
+    background-size: 4px 4px;
     margin-right: 6px;
     position: relative;
     top: -3px;
 }
 
-#footer .w__inn .footer-foot address {
-    float: right;
+body #footer .w__inn .footer-foot address {
+    float: right !important;
     width: 30%;
     font-style: normal;
 }
 
-#footer .w__inn .footer-foot address p {
+body #footer .w__inn .footer-foot address p {
     font-size: 13px;
     font-size: 1.3rem;
     line-height: 1;
     letter-spacing: 0;
     text-align: right;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #aaa;
@@ -189,79 +209,79 @@
    SP版フッター（768px以下）
 =================================== */
 @media screen and (max-width: 768px) {
-    #footer {
+    body #footer {
         margin: 20px 0 0;
     }
 
-    #footer .w__inn {
+    body #footer .w__inn {
         width: 100%;
         padding: 0 20px 20px;
     }
 
-    #footer .w__inn .footer-head {
+    body #footer .w__inn .footer-head {
         position: static;
         padding: 24px 0;
     }
 
-    #footer .w__inn .footer-head > p {
+    body #footer .w__inn .footer-head > p {
         position: static;
     }
 
-    #footer .w__inn .footer-head > p:before {
+    body #footer .w__inn .footer-head > p:before {
         width: 100px;
         height: 25px;
         background-size: 100px 25px;
     }
 
-    #footer .w__inn .footer-head aside {
+    body #footer .w__inn .footer-head aside {
         position: static;
         margin-top: 20px;
     }
 
-    #footer .w__inn .footer-head aside ul li {
-        float: left;
+    body #footer .w__inn .footer-head aside ul li {
+        float: left !important;
         margin-left: 0;
         margin-right: 14px;
         font-size: 12px;
         font-size: 1.2rem;
     }
 
-    #footer .w__inn .footer-head aside ul li:first-child:after {
+    body #footer .w__inn .footer-head aside ul li:first-child:after {
         width: 1.5em;
         margin-left: 14px;
     }
 
-    #footer .w__inn .footer-head aside ul li a {
+    body #footer .w__inn .footer-head aside ul li a {
         font-size: 12px;
         font-size: 1.2rem;
     }
 
-    #footer .w__inn .footer-foot {
+    body #footer .w__inn .footer-foot {
         padding: 20px;
     }
 
-    #footer .w__inn .footer-foot aside {
-        float: none;
+    body #footer .w__inn .footer-foot aside {
+        float: none !important;
         width: auto;
     }
 
-    #footer .w__inn .footer-foot aside ul li {
-        float: none;
+    body #footer .w__inn .footer-foot aside ul li {
+        float: none !important;
         margin-right: 14px;
-        display: inline-block;
+        display: inline-block !important;
     }
 
-    #footer .w__inn .footer-foot aside ul li a {
+    body #footer .w__inn .footer-foot aside ul li a {
         font-size: 12px;
         font-size: 1.2rem;
     }
 
-    #footer .w__inn .footer-foot address {
-        float: none;
+    body #footer .w__inn .footer-foot address {
+        float: none !important;
         width: auto;
     }
 
-    #footer .w__inn .footer-foot address p {
+    body #footer .w__inn .footer-foot address p {
         margin-top: 16px;
         font-size: 10px;
         font-size: 1rem;
