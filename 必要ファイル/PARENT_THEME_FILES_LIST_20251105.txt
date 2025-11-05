@@ -1,0 +1,1083 @@
+=====================================================
+SWELL 親テーマ ファイルリスト (Reference Only)
+WordPress Theme: SWELL (Parent Theme)
+作成日: 2025/11/05
+用途: AI コーディング支援用リファレンス
+=====================================================
+
+【重要】
+このファイルリストはSWELL親テーマの構造を示すものです。
+本番環境: /home/patolaqshe/www/media/wp-content/themes/swell/
+リファレンス: swell_parent_reference/swell_parent_reference/
+※ 絶対に編集しないでください（read-only）
+
+【WordPress テーマ階層】
+子テーマ (swell_child/) → 優先
+親テーマ (swell/) → 子テーマに同名ファイルがない場合に使用
+
+【ファイル総数】
+PHP/CSS/JS: 568ファイル
+
+=====================================================
+【テンプレートファイル (Root Level)】
+=====================================================
+
+./404.php                          # 404エラーページテンプレート
+./archive.php                      # アーカイブページテンプレート
+./archive-term.php                 # タームアーカイブテンプレート
+./attachment.php                   # 添付ファイルページテンプレート
+./author.php                       # 著者アーカイブテンプレート
+./comments.php                     # コメント表示テンプレート
+./footer.php                       # フッターテンプレート ★重要
+./functions.php                    # テーマ関数定義 ★重要
+./header.php                       # ヘッダーテンプレート ★重要
+./home.php                         # ホームページテンプレート
+./index.php                        # デフォルトテンプレート
+./page.php                         # 固定ページテンプレート
+./search.php                       # 検索結果ページテンプレート
+./searchform.php                   # 検索フォームテンプレート
+./sidebar.php                      # サイドバーテンプレート
+./single.php                       # 個別投稿ページテンプレート
+./single-lp.php                    # ランディングページテンプレート
+./style.css                        # テーマスタイルシート（メタ情報）
+
+=====================================================
+【Font Awesome Assets】
+=====================================================
+
+./assets/font-awesome/v5/css/all.min.css
+./assets/font-awesome/v5/js/all.min.js
+./assets/font-awesome/v6/css/all.min.css
+./assets/font-awesome/v6/css/brands.min.css
+./assets/font-awesome/v6/css/fontawesome.min.css
+./assets/font-awesome/v6/css/regular.min.css
+./assets/font-awesome/v6/css/solid.min.css
+./assets/font-awesome/v6/js/all.min.js
+./assets/font-awesome/v6/js/brands.min.js
+./assets/font-awesome/v6/js/conflict-detection.min.js
+./assets/font-awesome/v6/js/fontawesome.min.js
+./assets/font-awesome/v6/js/regular.min.js
+./assets/font-awesome/v6/js/solid.min.js
+
+=====================================================
+【JavaScript Plugins】
+=====================================================
+
+./assets/js/plugins/lazysizes.min.js        # 遅延読み込み
+./assets/js/plugins/luminous.min.js         # 画像ライトボックス
+./assets/js/plugins/rellax.min.js           # パララックス効果
+./assets/js/plugins/swiper.min.js           # スライダー
+./assets/js/tinymce/table_plugin.min.js     # TinyMCE テーブルプラグイン
+
+=====================================================
+【Build - CSS (Main)】
+=====================================================
+
+./build/css/blocks.css                      # ブロックスタイル
+./build/css/main.css                        # メインスタイル ★重要
+./build/css/swell-icons.css                 # アイコンフォント
+./build/css/print.css                       # 印刷用スタイル
+./build/css/noscript.css                    # JavaScript無効時
+
+=====================================================
+【Build - CSS (Admin)】
+=====================================================
+
+./build/css/admin/ad_tag.css
+./build/css/admin/balloon.css
+./build/css/admin/common.css
+./build/css/admin/customizer.css
+./build/css/admin/post.css
+./build/css/admin/settings.css
+./build/css/admin/term.css
+./build/css/admin/user.css
+./build/css/admin/widgets.css
+
+=====================================================
+【Build - CSS (Editor)】
+=====================================================
+
+./build/css/editor/editor_style.css         # エディタスタイル
+./build/css/editor/gutenberg.css            # Gutenbergスタイル
+
+=====================================================
+【Build - CSS (Blocks)】
+=====================================================
+
+./build/css/modules/blocks/calendar.css
+./build/css/modules/blocks/categories.css
+./build/css/modules/blocks/columns.css
+./build/css/modules/blocks/embed.css
+./build/css/modules/blocks/file.css
+./build/css/modules/blocks/gallery.css
+./build/css/modules/blocks/latest-posts.css
+./build/css/modules/blocks/media-text.css
+./build/css/modules/blocks/profile-box.css
+./build/css/modules/blocks/pullquote.css
+./build/css/modules/blocks/search.css
+./build/css/modules/blocks/separator.css
+./build/css/modules/blocks/social-links.css
+./build/css/modules/blocks/table.css
+./build/css/modules/blocks/tag-cloud.css
+./build/css/modules/blocks/widget-dropdown.css
+./build/css/modules/blocks/widget-rss.css
+
+./build/css/modules/core-blocks/core-calendar.css
+./build/css/modules/core-blocks/core-categories.css
+./build/css/modules/core-blocks/core-columns.css
+./build/css/modules/core-blocks/core-embed.css
+./build/css/modules/core-blocks/core-gallery.css
+./build/css/modules/core-blocks/core-latest-posts.css
+./build/css/modules/core-blocks/core-media-text.css
+./build/css/modules/core-blocks/core-pullquote.css
+./build/css/modules/core-blocks/core-search.css
+./build/css/modules/core-blocks/core-social-links.css
+./build/css/modules/core-blocks/core-table.css
+./build/css/modules/core-blocks/core-tag-cloud.css
+./build/css/modules/core-blocks/profile-box.css
+./build/css/modules/core-blocks/widget-rss.css
+
+=====================================================
+【Build - CSS (Pages)】
+=====================================================
+
+./build/css/modules/pages/404.css
+./build/css/modules/pages/archive.css
+./build/css/modules/pages/author.css
+./build/css/modules/pages/home.css
+./build/css/modules/pages/lp.css
+./build/css/modules/pages/page.css
+./build/css/modules/pages/search.css
+./build/css/modules/pages/single.css
+./build/css/modules/pages/term.css
+
+=====================================================
+【Build - CSS (Parts)】
+=====================================================
+
+./build/css/modules/parts/comments.css
+./build/css/modules/parts/fix-header.css
+./build/css/modules/parts/fix_bottom_menu.css
+./build/css/modules/parts/footer.css         # フッターCSS ★重要
+./build/css/modules/parts/gnav-overwrite.css
+./build/css/modules/parts/head_bar.css
+./build/css/modules/parts/header--parallel.css
+./build/css/modules/parts/header--series.css
+./build/css/modules/parts/info-bar.css
+./build/css/modules/parts/main-visual--movie.css
+./build/css/modules/parts/main-visual--single.css
+./build/css/modules/parts/main-visual--slider.css
+./build/css/modules/parts/pickup-banner.css
+./build/css/modules/parts/pickup-banner--slide.css
+./build/css/modules/parts/pn-links--normal.css
+./build/css/modules/parts/pn-links--simple.css
+./build/css/modules/parts/post-slider.css
+./build/css/modules/parts/related-posts--card.css
+./build/css/modules/parts/related-posts--list.css
+./build/css/modules/parts/sns-cta.css
+./build/css/modules/parts/sp-head-nav.css
+./build/css/modules/parts/toc--border.css
+./build/css/modules/parts/toc--capbox.css
+./build/css/modules/parts/toc--double.css
+./build/css/modules/parts/toc--simple.css
+./build/css/modules/parts/top-header--spfix.css
+./build/css/modules/parts/top-header--spnofix.css
+./build/css/modules/parts/top-title-area.css
+
+=====================================================
+【Build - CSS (Special)】
+=====================================================
+
+./build/css/modules/customizer-preview.css
+./build/css/modules/frame-off.css
+./build/css/modules/frame-on.css
+./build/css/modules/loaded-animation.css
+./build/css/modules/pages.css
+./build/css/modules/site-radius.css
+./build/css/modules/site-solid.css
+./build/css/modules/submenu-acc.css
+./build/css/modules/submenu-normal.css
+
+=====================================================
+【Build - Vendor CSS】
+=====================================================
+
+./build/css/vendor/luminous.css
+./build/css/vendor/swiper.css
+
+=====================================================
+【Build - JavaScript (Admin)】
+=====================================================
+
+./build/js/admin/ad_tag.min.js
+./build/js/admin/admin_script.min.js
+./build/js/admin/colorpicker.min.js
+./build/js/admin/count_title.min.js
+./build/js/admin/mediauploader.min.js
+./build/js/admin/settings.min.js
+./build/js/admin/tinymce.min.js
+
+=====================================================
+【Build - JavaScript (Customizer)】
+=====================================================
+
+./build/js/customizer/customizer-controls.min.js
+./build/js/customizer/responsive-device-preview.min.js
+
+=====================================================
+【Build - JavaScript (Front)】
+=====================================================
+
+./build/js/front/accordion.min.js
+./build/js/front/count_CTR.min.js
+./build/js/front/set_fix_header.min.js
+./build/js/front/set_luminous.min.js
+./build/js/front/set_mv.min.js
+./build/js/front/set_olstart.min.js
+./build/js/front/set_post_slider.min.js
+./build/js/front/set_rellax.min.js
+./build/js/front/set_sp_headnav.min.js
+./build/js/front/set_sp_headnav_loop.min.js
+./build/js/front/set_urlcopy.min.js
+
+./build/js/main.min.js                      # メインスクリプト ★重要
+./build/js/main_with_pjax.min.js           # PJAX対応版
+./build/js/prefetch.min.js                  # プリフェッチ
+
+=====================================================
+【Gutenberg Blocks (Build)】
+=====================================================
+
+./build/gutenberg/blocks/ab-test-a/block.json
+./build/gutenberg/blocks/ab-test-a/index.asset.php
+./build/gutenberg/blocks/ab-test-a/index.js
+
+./build/gutenberg/blocks/ab-test-b/block.json
+./build/gutenberg/blocks/ab-test-b/index.asset.php
+./build/gutenberg/blocks/ab-test-b/index.js
+
+./build/gutenberg/blocks/ab-test/block.json
+./build/gutenberg/blocks/ab-test/index.asset.php
+./build/gutenberg/blocks/ab-test/index.css
+./build/gutenberg/blocks/ab-test/index.js
+
+./build/gutenberg/blocks/accordion-item/block.json
+./build/gutenberg/blocks/accordion-item/index.asset.php
+./build/gutenberg/blocks/accordion-item/index.js
+
+./build/gutenberg/blocks/accordion/block.json
+./build/gutenberg/blocks/accordion/index.asset.php
+./build/gutenberg/blocks/accordion/index.css
+./build/gutenberg/blocks/accordion/index.js
+./build/gutenberg/blocks/accordion/style-index.css
+
+./build/gutenberg/blocks/ad-tag/block.json
+./build/gutenberg/blocks/ad-tag/index.asset.php
+./build/gutenberg/blocks/ad-tag/index.js
+./build/gutenberg/blocks/ad-tag/style-index.css
+
+./build/gutenberg/blocks/balloon/block.json
+./build/gutenberg/blocks/balloon/index.asset.php
+./build/gutenberg/blocks/balloon/index.css
+./build/gutenberg/blocks/balloon/index.js
+./build/gutenberg/blocks/balloon/style-index.css
+
+./build/gutenberg/blocks/banner-link/block.json
+./build/gutenberg/blocks/banner-link/index.asset.php
+./build/gutenberg/blocks/banner-link/index.css
+./build/gutenberg/blocks/banner-link/index.js
+./build/gutenberg/blocks/banner-link/style-index.css
+
+./build/gutenberg/blocks/blog-parts/block.json
+./build/gutenberg/blocks/blog-parts/index.asset.php
+./build/gutenberg/blocks/blog-parts/index.js
+
+./build/gutenberg/blocks/box-menu-item/block.json
+./build/gutenberg/blocks/box-menu-item/index.asset.php
+./build/gutenberg/blocks/box-menu-item/index.js
+
+./build/gutenberg/blocks/box-menu/block.json
+./build/gutenberg/blocks/box-menu/index.asset.php
+./build/gutenberg/blocks/box-menu/index.css
+./build/gutenberg/blocks/box-menu/index.js
+./build/gutenberg/blocks/box-menu/style-index.css
+
+./build/gutenberg/blocks/button/block.json
+./build/gutenberg/blocks/button/index.asset.php
+./build/gutenberg/blocks/button/index.css
+./build/gutenberg/blocks/button/index.js
+
+./build/gutenberg/blocks/cap-block/block.json
+./build/gutenberg/blocks/cap-block/index.asset.php
+./build/gutenberg/blocks/cap-block/index.css
+./build/gutenberg/blocks/cap-block/index.js
+./build/gutenberg/blocks/cap-block/style-index.css
+
+./build/gutenberg/blocks/column/block.json
+./build/gutenberg/blocks/column/index.asset.php
+./build/gutenberg/blocks/column/index.js
+
+./build/gutenberg/blocks/columns/block.json
+./build/gutenberg/blocks/columns/index.asset.php
+./build/gutenberg/blocks/columns/index.css
+./build/gutenberg/blocks/columns/index.js
+./build/gutenberg/blocks/columns/style-index.css
+
+./build/gutenberg/blocks/dl-dd/block.json
+./build/gutenberg/blocks/dl-dd/index.asset.php
+./build/gutenberg/blocks/dl-dd/index.js
+
+./build/gutenberg/blocks/dl-dt/block.json
+./build/gutenberg/blocks/dl-dt/index.asset.php
+./build/gutenberg/blocks/dl-dt/index.js
+
+./build/gutenberg/blocks/dl/block.json
+./build/gutenberg/blocks/dl/index.asset.php
+./build/gutenberg/blocks/dl/index.css
+./build/gutenberg/blocks/dl/index.js
+./build/gutenberg/blocks/dl/style-index.css
+
+./build/gutenberg/blocks/faq-item/block.json
+./build/gutenberg/blocks/faq-item/index.asset.php
+./build/gutenberg/blocks/faq-item/index.js
+
+./build/gutenberg/blocks/faq/block.json
+./build/gutenberg/blocks/faq/index.asset.php
+./build/gutenberg/blocks/faq/index.css
+./build/gutenberg/blocks/faq/index.js
+./build/gutenberg/blocks/faq/style-index.css
+
+./build/gutenberg/blocks/full-wide/block.json
+./build/gutenberg/blocks/full-wide/index.asset.php
+./build/gutenberg/blocks/full-wide/index.css
+./build/gutenberg/blocks/full-wide/index.js
+./build/gutenberg/blocks/full-wide/style-index.css
+
+./build/gutenberg/blocks/link-list-item/block.json
+./build/gutenberg/blocks/link-list-item/index.asset.php
+./build/gutenberg/blocks/link-list-item/index.js
+
+./build/gutenberg/blocks/link-list/block.json
+./build/gutenberg/blocks/link-list/index.asset.php
+./build/gutenberg/blocks/link-list/index.css
+./build/gutenberg/blocks/link-list/index.js
+./build/gutenberg/blocks/link-list/style-index.css
+
+./build/gutenberg/blocks/old-blocks/index.asset.php
+./build/gutenberg/blocks/old-blocks/index.js
+
+./build/gutenberg/blocks/post-link/block.json
+./build/gutenberg/blocks/post-link/index.asset.php
+./build/gutenberg/blocks/post-link/index.css
+./build/gutenberg/blocks/post-link/index.js
+
+./build/gutenberg/blocks/post-list/block.json
+./build/gutenberg/blocks/post-list/index.asset.php
+./build/gutenberg/blocks/post-list/index.css
+./build/gutenberg/blocks/post-list/index.js
+
+./build/gutenberg/blocks/restricted-area/block.json
+./build/gutenberg/blocks/restricted-area/index.asset.php
+./build/gutenberg/blocks/restricted-area/index.css
+./build/gutenberg/blocks/restricted-area/index.js
+
+./build/gutenberg/blocks/review/block.json
+./build/gutenberg/blocks/review/index.asset.php
+./build/gutenberg/blocks/review/index.css
+./build/gutenberg/blocks/review/index.js
+./build/gutenberg/blocks/review/style-index.css
+
+./build/gutenberg/blocks/rss/block.json
+./build/gutenberg/blocks/rss/index.asset.php
+./build/gutenberg/blocks/rss/index.css
+./build/gutenberg/blocks/rss/index.js
+
+./build/gutenberg/blocks/step-item/block.json
+./build/gutenberg/blocks/step-item/index.asset.php
+./build/gutenberg/blocks/step-item/index.js
+
+./build/gutenberg/blocks/step/block.json
+./build/gutenberg/blocks/step/index.asset.php
+./build/gutenberg/blocks/step/index.css
+./build/gutenberg/blocks/step/index.js
+./build/gutenberg/blocks/step/style-index.css
+
+./build/gutenberg/blocks/tab-body/block.json
+./build/gutenberg/blocks/tab-body/index.asset.php
+./build/gutenberg/blocks/tab-body/index.js
+
+./build/gutenberg/blocks/tab/block.json
+./build/gutenberg/blocks/tab/index.asset.php
+./build/gutenberg/blocks/tab/index.css
+./build/gutenberg/blocks/tab/index.js
+./build/gutenberg/blocks/tab/style-index.css
+
+./build/gutenberg/hide_fse_blocks.asset.php
+./build/gutenberg/hide_fse_blocks.js
+./build/gutenberg/index.asset.php
+./build/gutenberg/index.js
+./build/gutenberg/post_editor.asset.php
+./build/gutenberg/post_editor.js
+
+=====================================================
+【Icon Libraries (Build)】
+=====================================================
+
+./build/icons/fa.asset.php
+./build/icons/fa.js
+./build/icons/fi.asset.php
+./build/icons/fi.js
+./build/icons/index.asset.php
+./build/icons/index.js
+./build/icons/io.asset.php
+./build/icons/io.js
+./build/icons/ph.asset.php
+./build/icons/ph.js
+
+=====================================================
+【Menu Editor (Build)】
+=====================================================
+
+./build/menu/balloon/index.asset.php
+./build/menu/balloon/index.js
+
+=====================================================
+【Classes - Core】
+=====================================================
+
+./classes/Admin_Menu.php
+./classes/Customizer.php
+./classes/Json_Ld.php
+./classes/Legacy_Widget.php
+./classes/License.php
+./classes/Meta_User.php
+./classes/Pre_Parse_Blocks.php
+./classes/SVG.php
+./classes/SWELL_FUNC.php
+./classes/SWELL_PARTS.php
+./classes/Style.php
+./classes/Theme_Data.php
+./classes/Updated_Action.php
+
+=====================================================
+【Classes - Customizer】
+=====================================================
+
+./classes/Customizer/Control/Base_Control.php
+./classes/Customizer/Control/Big_Title.php
+./classes/Customizer/Control/Clear_Media_Control.php
+./classes/Customizer/Control/Color_Control.php
+./classes/Customizer/Control/Image_Control.php
+./classes/Customizer/Control/Media_Control.php
+./classes/Customizer/Control/Old_Img_Control.php
+./classes/Customizer/Control/Sub_Title.php
+./classes/Customizer/Partial.php
+./classes/Customizer/Sanitize.php
+
+=====================================================
+【Classes - Data】
+=====================================================
+
+./classes/Data/Default_Settings.php
+
+=====================================================
+【Classes - Legacy Widget】
+=====================================================
+
+./classes/Legacy_Widget/Custom_WP_Widget_Recent_Posts.php
+./classes/Legacy_Widget/SWELL_Ad_Widget.php
+./classes/Legacy_Widget/SWELL_Index.php
+./classes/Legacy_Widget/SWELL_New_Posts.php
+./classes/Legacy_Widget/SWELL_Popular_Posts.php
+./classes/Legacy_Widget/SWELL_Prof_Widget.php
+./classes/Legacy_Widget/SWELL_Promotion_Banner.php
+./classes/Legacy_Widget/SWELL_SNS_Links.php
+
+=====================================================
+【Classes - Menu】
+=====================================================
+
+./classes/Menu/Setting_Field.php
+
+=====================================================
+【Classes - SWELL Theme】
+=====================================================
+
+./classes/SWELL_THEME/Menu/Tab_Balloon.php
+./classes/SWELL_THEME/Menu/Tab_Border.php
+./classes/SWELL_THEME/Menu/Tab_Btn.php
+./classes/SWELL_THEME/Menu/Tab_Colors.php
+./classes/SWELL_THEME/Menu/Tab_Custom.php
+./classes/SWELL_THEME/Menu/Tab_Iconbox.php
+./classes/SWELL_THEME/Menu/Tab_Marker.php
+./classes/SWELL_THEME/Menu/Tab_Others.php
+./classes/SWELL_THEME/Parts/Post_List.php
+./classes/SWELL_THEME/Parts/Setting_Field.php
+
+=====================================================
+【Classes - Style】
+=====================================================
+
+./classes/Style/Body.php
+./classes/Style/Color.php
+./classes/Style/Editor.php
+./classes/Style/Footer.php               # フッタースタイル ★重要
+./classes/Style/Header.php
+./classes/Style/Others.php
+./classes/Style/Page.php
+./classes/Style/Post.php
+./classes/Style/Post_List.php
+./classes/Style/Top.php
+./classes/Style/Widget.php
+
+=====================================================
+【Classes - Utility】
+=====================================================
+
+./classes/Utility/Attrs.php
+./classes/Utility/Balloon.php
+./classes/Utility/Get.php
+./classes/Utility/Others.php
+./classes/Utility/Parts.php
+./classes/Utility/Status.php
+
+=====================================================
+【Classes - Plugins】
+=====================================================
+
+./classes/plugins/get_ogp_inwp.php
+
+=====================================================
+【Library Files】
+=====================================================
+
+./lib/activate.php
+./lib/autoloader.php
+./lib/check_environment.php
+./lib/content_filter.php
+./lib/custom_menu.php
+./lib/customizer.php
+./lib/define_const.php
+./lib/gutenberg.php
+./lib/hooks.php
+./lib/load_files.php
+./lib/notice.php
+./lib/output.php
+./lib/overwrite.php
+./lib/pluggable.php
+./lib/pluggable_parts.php
+./lib/post_meta.php
+./lib/post_type.php
+./lib/rest_api.php
+./lib/rewrite_html.php
+./lib/shortcode.php
+./lib/taxonomy.php
+./lib/term_meta.php
+./lib/theme_setup.php
+./lib/tiny_mce.php
+./lib/update.php
+./lib/updated_action.php
+./lib/widget.php
+
+=====================================================
+【Library - Customizer】
+=====================================================
+
+./lib/customizer/advanced.php
+./lib/customizer/archive.php
+./lib/customizer/common.php
+./lib/customizer/footer.php              # フッターカスタマイザー ★重要
+./lib/customizer/header.php
+./lib/customizer/post_list.php
+./lib/customizer/post_page.php
+./lib/customizer/sidebar.php
+./lib/customizer/single_page/after_article.php
+./lib/customizer/single_page/post_content.php
+./lib/customizer/single_page/post_title.php
+./lib/customizer/single_page/pr_notation.php
+./lib/customizer/single_page/share_btn.php
+./lib/customizer/single_page/thumbnail.php
+./lib/customizer/single_page/toc.php
+./lib/customizer/sns.php
+./lib/customizer/top.php
+./lib/customizer/top/main_visual.php
+./lib/customizer/top/mv/movie.php
+./lib/customizer/top/mv/slider.php
+./lib/customizer/top/others.php
+./lib/customizer/top/pickup_banner.php
+./lib/customizer/top/post_slider.php
+./lib/customizer/wp_setting.php
+
+./lib/customizer/common/base_design.php
+./lib/customizer/common/breadcrumb.php
+./lib/customizer/common/color.php
+./lib/customizer/common/content_header.php
+./lib/customizer/common/info_bar.php
+./lib/customizer/common/noimg.php
+./lib/customizer/common/pager.php
+./lib/customizer/common/sp_bottom_menu.php
+./lib/customizer/common/sp_menu.php
+./lib/customizer/common/title.php
+
+=====================================================
+【Library - Gutenberg】
+=====================================================
+
+./lib/gutenberg/block_control.php
+./lib/gutenberg/block_patterns.php
+./lib/gutenberg/register_blocks.php
+./lib/gutenberg/render_hook.php
+
+./lib/gutenberg/block/ab-test.php
+./lib/gutenberg/block/ad-tag.php
+./lib/gutenberg/block/balloon.php
+./lib/gutenberg/block/blog-parts.php
+./lib/gutenberg/block/link-list.php
+./lib/gutenberg/block/post-link.php
+./lib/gutenberg/block/post-list.php
+./lib/gutenberg/block/restricted-area.php
+./lib/gutenberg/block/review.php
+./lib/gutenberg/block/rss.php
+
+./lib/gutenberg/block_pattern/common.php
+./lib/gutenberg/block_pattern/page.php
+./lib/gutenberg/block_pattern/table.php
+
+./lib/gutenberg/render_hook/core_table.php
+./lib/gutenberg/render_hook/faq.php
+
+=====================================================
+【Library - Hooks】
+=====================================================
+
+./lib/hooks/admin_display.php
+./lib/hooks/admin_toolbar.php
+./lib/hooks/cache_clear.php
+./lib/hooks/edit_core_html.php
+./lib/hooks/remove.php
+
+=====================================================
+【Library - Load】
+=====================================================
+
+./lib/load/admin.php
+./lib/load/block_assets.php
+./lib/load/check_code.php
+./lib/load/front.php
+./lib/load/jquery.php
+./lib/load/separate.php
+
+=====================================================
+【Library - Menu】
+=====================================================
+
+./lib/menu/swell_menu.php
+./lib/menu/swell_menu_ads.php
+./lib/menu/swell_menu_balloon.php
+./lib/menu/swell_menu_editor.php
+./lib/menu/swell_menu_swellers.php
+
+./lib/menu/settings/ad_code.php
+./lib/menu/settings/font_awesome.php
+./lib/menu/settings/jquery.php
+./lib/menu/settings/remove.php
+./lib/menu/settings/speed.php
+./lib/menu/settings/structure_data.php
+
+./lib/menu/tabs/reset.php
+
+=====================================================
+【Library - Pluggable Parts】
+=====================================================
+
+./lib/pluggable_parts/header_parts.php
+./lib/pluggable_parts/list_parts.php
+./lib/pluggable_parts/page_parts.php
+
+=====================================================
+【Library - Polyfill】
+=====================================================
+
+./lib/polyfill/html-api.php
+./lib/polyfill/php_functions.php
+./lib/polyfill/html-api/class-wp-html-attribute-token.php
+./lib/polyfill/html-api/class-wp-html-span.php
+./lib/polyfill/html-api/class-wp-html-tag-processor.php
+./lib/polyfill/html-api/class-wp-html-text-replacement.php
+
+=====================================================
+【Library - Post Meta】
+=====================================================
+
+./lib/post_meta/meta_ad.php
+./lib/post_meta/meta_button.php
+./lib/post_meta/meta_code.php
+./lib/post_meta/meta_lp.php
+./lib/post_meta/meta_side.php
+
+=====================================================
+【Library - REST API】
+=====================================================
+
+./lib/rest_api/balloon_api.php
+
+=====================================================
+【Library - Update (Plugin Update Checker)】
+=====================================================
+
+./lib/update/plugin-update-checker.php
+./lib/update/license.txt
+
+./lib/update/Puc/v4/Factory.php
+./lib/update/Puc/v4p5/Autoloader.php
+./lib/update/Puc/v4p5/Factory.php
+./lib/update/Puc/v4p5/InstalledPackage.php
+./lib/update/Puc/v4p5/Metadata.php
+./lib/update/Puc/v4p5/OAuthSignature.php
+./lib/update/Puc/v4p5/Scheduler.php
+./lib/update/Puc/v4p5/StateStore.php
+./lib/update/Puc/v4p5/Update.php
+./lib/update/Puc/v4p5/UpdateChecker.php
+./lib/update/Puc/v4p5/UpgraderStatus.php
+./lib/update/Puc/v4p5/Utils.php
+
+./lib/update/Puc/v4p5/DebugBar/Extension.php
+./lib/update/Puc/v4p5/DebugBar/Panel.php
+./lib/update/Puc/v4p5/DebugBar/PluginExtension.php
+./lib/update/Puc/v4p5/DebugBar/PluginPanel.php
+./lib/update/Puc/v4p5/DebugBar/ThemePanel.php
+
+./lib/update/Puc/v4p5/Plugin/Info.php
+./lib/update/Puc/v4p5/Plugin/Package.php
+./lib/update/Puc/v4p5/Plugin/Ui.php
+./lib/update/Puc/v4p5/Plugin/Update.php
+./lib/update/Puc/v4p5/Plugin/UpdateChecker.php
+
+./lib/update/Puc/v4p5/Theme/Package.php
+./lib/update/Puc/v4p5/Theme/Update.php
+./lib/update/Puc/v4p5/Theme/UpdateChecker.php
+
+./lib/update/Puc/v4p5/Vcs/Api.php
+./lib/update/Puc/v4p5/Vcs/BaseChecker.php
+./lib/update/Puc/v4p5/Vcs/BitBucketApi.php
+./lib/update/Puc/v4p5/Vcs/GitHubApi.php
+./lib/update/Puc/v4p5/Vcs/GitLabApi.php
+./lib/update/Puc/v4p5/Vcs/PluginUpdateChecker.php
+./lib/update/Puc/v4p5/Vcs/Reference.php
+./lib/update/Puc/v4p5/Vcs/ThemeUpdateChecker.php
+
+./lib/update/css/puc-debug-bar.css
+./lib/update/js/debug-bar.js
+./lib/update/examples/plugin.json
+./lib/update/examples/theme.json
+
+./lib/update/vendor/Parsedown.php
+./lib/update/vendor/ParsedownLegacy.php
+./lib/update/vendor/readme-parser.php
+
+./lib/update/languages/plugin-update-checker-cs_CZ.mo
+./lib/update/languages/plugin-update-checker-cs_CZ.po
+./lib/update/languages/plugin-update-checker-da_DK.mo
+./lib/update/languages/plugin-update-checker-da_DK.po
+./lib/update/languages/plugin-update-checker-de_DE.mo
+./lib/update/languages/plugin-update-checker-de_DE.po
+./lib/update/languages/plugin-update-checker-fa_IR.mo
+./lib/update/languages/plugin-update-checker-fa_IR.po
+./lib/update/languages/plugin-update-checker-fr_CA.mo
+./lib/update/languages/plugin-update-checker-fr_CA.po
+./lib/update/languages/plugin-update-checker-fr_FR.mo
+./lib/update/languages/plugin-update-checker-fr_FR.po
+./lib/update/languages/plugin-update-checker-hu_HU.mo
+./lib/update/languages/plugin-update-checker-hu_HU.po
+./lib/update/languages/plugin-update-checker-it_IT.mo
+./lib/update/languages/plugin-update-checker-it_IT.po
+./lib/update/languages/plugin-update-checker-ja.mo
+./lib/update/languages/plugin-update-checker-ja.po
+./lib/update/languages/plugin-update-checker-nl_BE.mo
+./lib/update/languages/plugin-update-checker-nl_BE.po
+./lib/update/languages/plugin-update-checker-nl_NL.mo
+./lib/update/languages/plugin-update-checker-nl_NL.po
+./lib/update/languages/plugin-update-checker-pt_BR.mo
+./lib/update/languages/plugin-update-checker-pt_BR.po
+./lib/update/languages/plugin-update-checker-sv_SE.mo
+./lib/update/languages/plugin-update-checker-sv_SE.po
+./lib/update/languages/plugin-update-checker.pot
+
+=====================================================
+【Languages (i18n)】
+=====================================================
+
+./languages/en_US.mo
+./languages/en_US.po
+./languages/swell-en_US-swell_blocks.json
+
+=====================================================
+【Parts - Archive】
+=====================================================
+
+./parts/archive/term_head.php
+
+=====================================================
+【Parts - Breadcrumb】
+=====================================================
+
+./parts/breadcrumb.php
+
+=====================================================
+【Parts - Footer】
+=====================================================
+
+./parts/footer/before_footer.php
+./parts/footer/fix_btns.php
+./parts/footer/fix_menu.php
+./parts/footer/foot_widget.php
+./parts/footer/footer_contents.php       # フッターコンテンツ ★重要
+./parts/footer/modals.php
+
+=====================================================
+【Parts - Header】
+=====================================================
+
+./parts/header/fix_header.php
+./parts/header/head_bar.php
+./parts/header/header_contents.php
+./parts/header/info_bar.php
+./parts/header/sp_btns.php
+./parts/header/sp_head_nav.php
+./parts/header/sp_menu.php
+
+=====================================================
+【Parts - Home】
+=====================================================
+
+./parts/home_content.php
+./parts/icon_list.php
+./parts/page_head.php
+./parts/profile_box.php
+./parts/sidebar_content.php
+./parts/top_title_area.php
+
+=====================================================
+【Parts - Post List】
+=====================================================
+
+./parts/post_list/infeed_ad.php
+./parts/post_list/loop_by_slider.php
+./parts/post_list/loop_by_widget.php
+./parts/post_list/loop_main.php
+./parts/post_list/loop_sub.php
+./parts/post_list/related.php
+./parts/post_list/rss.php
+./parts/post_list/style_big.php
+./parts/post_list/style_normal.php
+./parts/post_list/style_simple.php
+
+./parts/post_list/item/date.php
+./parts/post_list/item/pagination.php
+./parts/post_list/item/rss_meta.php
+./parts/post_list/item/thumb.php
+
+./parts/post_list/style/rss_normal.php
+./parts/post_list/style/rss_simple.php
+
+=====================================================
+【Parts - Single】
+=====================================================
+
+./parts/single/after_article.php
+./parts/single/post_author.php
+./parts/single/post_foot.php
+./parts/single/post_head.php
+./parts/single/prev_next_link.php
+./parts/single/related_post_list.php
+./parts/single/share_btns.php
+./parts/single/sns_cta.php
+
+./parts/single/item/term_list.php
+./parts/single/item/times.php
+
+=====================================================
+【Parts - Top】
+=====================================================
+
+./parts/top/main_visual.php
+./parts/top/main_visual-movie.php
+./parts/top/main_visual-single.php
+./parts/top/main_visual-slider.php
+./parts/top/mv_info.php
+./parts/top/pickup_banner.php
+./parts/top/post_slider.php
+
+=====================================================
+【Source Files (Gutenberg Blocks)】
+=====================================================
+
+./src/gutenberg/blocks/ab-test-a/block.json
+./src/gutenberg/blocks/ab-test-b/block.json
+./src/gutenberg/blocks/ab-test/block.json
+./src/gutenberg/blocks/ab-test/index.scss
+./src/gutenberg/blocks/accordion-item/block.json
+./src/gutenberg/blocks/accordion/block.json
+./src/gutenberg/blocks/accordion/index.scss
+./src/gutenberg/blocks/accordion/style.scss
+./src/gutenberg/blocks/ad-tag/block.json
+./src/gutenberg/blocks/ad-tag/style.scss
+./src/gutenberg/blocks/balloon/block.json
+./src/gutenberg/blocks/balloon/index.scss
+./src/gutenberg/blocks/balloon/style.scss
+./src/gutenberg/blocks/banner-link/block.json
+./src/gutenberg/blocks/banner-link/index.scss
+./src/gutenberg/blocks/banner-link/style.scss
+./src/gutenberg/blocks/blog-parts/block.json
+./src/gutenberg/blocks/box-menu-item/block.json
+./src/gutenberg/blocks/box-menu/block.json
+./src/gutenberg/blocks/box-menu/index.scss
+./src/gutenberg/blocks/box-menu/style.scss
+./src/gutenberg/blocks/button/block.json
+./src/gutenberg/blocks/button/index.scss
+./src/gutenberg/blocks/cap-block/block.json
+./src/gutenberg/blocks/cap-block/index.scss
+./src/gutenberg/blocks/cap-block/style.scss
+./src/gutenberg/blocks/column/block.json
+./src/gutenberg/blocks/columns/block.json
+./src/gutenberg/blocks/columns/index.scss
+./src/gutenberg/blocks/columns/style.scss
+./src/gutenberg/blocks/dl-dd/block.json
+./src/gutenberg/blocks/dl-dt/block.json
+./src/gutenberg/blocks/dl/block.json
+./src/gutenberg/blocks/dl/index.scss
+./src/gutenberg/blocks/dl/style.scss
+./src/gutenberg/blocks/faq-item/block.json
+./src/gutenberg/blocks/faq/block.json
+./src/gutenberg/blocks/faq/index.scss
+./src/gutenberg/blocks/faq/style.scss
+./src/gutenberg/blocks/full-wide/block.json
+./src/gutenberg/blocks/full-wide/index.scss
+./src/gutenberg/blocks/full-wide/style.scss
+./src/gutenberg/blocks/link-list-item/block.json
+./src/gutenberg/blocks/link-list/block.json
+./src/gutenberg/blocks/link-list/index.scss
+./src/gutenberg/blocks/link-list/style.scss
+./src/gutenberg/blocks/post-link/block.json
+./src/gutenberg/blocks/post-link/index.scss
+./src/gutenberg/blocks/post-list/block.json
+./src/gutenberg/blocks/post-list/index.scss
+./src/gutenberg/blocks/restricted-area/block.json
+./src/gutenberg/blocks/restricted-area/index.scss
+./src/gutenberg/blocks/review/block.json
+./src/gutenberg/blocks/review/index.scss
+./src/gutenberg/blocks/review/style.scss
+./src/gutenberg/blocks/rss/block.json
+./src/gutenberg/blocks/rss/index.scss
+./src/gutenberg/blocks/step-item/block.json
+./src/gutenberg/blocks/step/block.json
+./src/gutenberg/blocks/step/index.scss
+./src/gutenberg/blocks/step/style.scss
+./src/gutenberg/blocks/tab-body/block.json
+./src/gutenberg/blocks/tab/block.json
+./src/gutenberg/blocks/tab/index.scss
+./src/gutenberg/blocks/tab/scss/_tabBody.scss
+./src/gutenberg/blocks/tab/scss/_tabList.scss
+./src/gutenberg/blocks/tab/style.scss
+
+=====================================================
+【Source Files (Icons)】
+=====================================================
+
+./src/icons/fa/index.js
+./src/icons/fa/list.js
+./src/icons/fa/src.js
+./src/icons/fi/index.js
+./src/icons/fi/list.js
+./src/icons/fi/src.js
+./src/icons/index.js
+./src/icons/io/index.js
+./src/icons/io/list.js
+./src/icons/io/src.js
+./src/icons/ls/list.js
+./src/icons/ls/src.js
+./src/icons/ph/index.js
+./src/icons/ph/list.js
+./src/icons/ph/src.js
+./src/icons/set-icon.js
+
+=====================================================
+【Source Files (Menu)】
+=====================================================
+
+./src/menu/balloon/edit.js
+./src/menu/balloon/index.js
+./src/menu/balloon/list-item.js
+./src/menu/balloon/list.js
+./src/menu/balloon/migrate.js
+
+=====================================================
+【Temporary Files】
+=====================================================
+
+./tmp/404.php
+./tmp/archive-term.php
+./tmp/front.php
+./tmp/popular.php
+
+=====================================================
+【Other Files】
+=====================================================
+
+./licence                               # ライセンス情報
+./sass-builder.js                       # SASS ビルダー
+./screenshot.png                        # テーマスクリーンショット
+
+=====================================================
+【フッター関連の重要ファイル】
+=====================================================
+
+★ テンプレート:
+./footer.php                            # メインフッターテンプレート
+
+★ パーツ:
+./parts/footer/before_footer.php
+./parts/footer/fix_btns.php
+./parts/footer/fix_menu.php
+./parts/footer/foot_widget.php
+./parts/footer/footer_contents.php      # フッターコンテンツパーツ
+./parts/footer/modals.php
+
+★ CSS:
+./build/css/modules/parts/footer.css    # フッターCSS
+
+★ カスタマイザー:
+./lib/customizer/footer.php             # フッターカスタマイザー設定
+
+★ スタイルクラス:
+./classes/Style/Footer.php              # フッタースタイルクラス
+
+=====================================================
+【子テーマとの差別化】
+=====================================================
+
+子テーマファイルリスト: FILES_LIST_20251105.txt
+親テーマファイルリスト: PARENT_THEME_FILES_LIST_20251105.txt ← このファイル
+
+【識別方法】
+- 子テーマ: swell_child/ ディレクトリ
+- 親テーマ: swell_parent_reference/swell_parent_reference/ ディレクトリ
+
+【優先順位】
+子テーマに同名ファイルが存在する場合、子テーマが優先されます。
+親テーマファイルは子テーマに該当ファイルがない場合にのみ使用されます。
+
+=====================================================
+【備考】
+=====================================================
+
+- このリストは AI コーディング支援のためのリファレンスです
+- 親テーマファイルは絶対に編集しないでください
+- 実装は必ず子テーマ (swell_child/) で行ってください
+- footer.php などのテンプレートファイルは慎重に扱ってください
+
+作成: 2025/11/05
+目的: Claude コーディング支援用リファレンス
+親テーマバージョン: サーバーから取得時点の最新版
+
+=====================================================
