@@ -67,6 +67,13 @@
   font-family: inherit !important;
 }
 
+/* ロゴ画像スタイル */
+.ptl-footer__logo img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
 /* SALON（右側） */
 .ptl-footer__salon {
   flex: 0 0 auto;
@@ -107,19 +114,24 @@
    下段（グレー背景）: ナビ左 + コピーライト右
    ======================================== */
 
-/* グレー背景の親コンテナ */
+/* グレー背景の親コンテナ（BOX化） */
 .ptl-footer__lower {
   width: 100%;
-  background: #f8f8f8;
+  background: transparent;
   margin: 0;
-  padding: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
 }
 
-/* 内側コンテナ：ナビとコピーライトを横並び */
+/* 内側コンテナ：グレーBOX + ナビとコピーライトを横並び */
 .ptl-footer__lower-inner {
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 40px 20px;
+  background: #f8f8f8;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;

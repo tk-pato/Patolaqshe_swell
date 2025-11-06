@@ -34,12 +34,10 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	<div class="ptl-footer">
 		<div class="ptl-footer-inner">
 			
-			<!-- ロゴセクション -->
-			<div class="ptl-footer__logo">
-				<h2>Patolaqshe</h2>
-			</div>
-			
-			<!-- SALONセクション -->
+		<!-- ロゴセクション -->
+		<div class="ptl-footer__logo">
+			<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/headlogo.png" alt="Patolaqshe">
+		</div>			<!-- SALONセクション -->
 			<div class="ptl-footer__salon">
 				<p class="ptl-footer__salon-label">SALON</p>
 				<div class="ptl-footer__salon-divider"></div>
