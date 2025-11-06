@@ -1,6 +1,8 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// Cache bust: 2025-11-06 16:25
+
 /* BUST-ISSUES: 統合CSSを最終読込（親テーマより後に読み込み） */
 add_action('wp_enqueue_scripts', function () {
   $rel  = '/css/issues-navigation.css';
