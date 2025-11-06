@@ -234,18 +234,3 @@
   max-width: var(--ptl-container-max, 1200px);
   margin: 0 auto;
 }
-
-/* =====================================================
-   SP: BLOG 薄グレー背景
-   実装日: 2025-10-25
-   ----------------------------------------------------- */
-@media (max-width: 767px) {
-  /* 薄グレー背景 */
-  #section-blog,
-  .ptl-blog,
-  .ptlBlog {
-    background: #f8f8f8 !important;
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
-  }
-}
