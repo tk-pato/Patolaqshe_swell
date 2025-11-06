@@ -136,14 +136,17 @@
   display: none;
 }
 
-.ptl-footer__nav-link {
-  font-family: var(--swl-font_family);
-  font-weight: 500;
-  color: #3a3a3a;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  text-decoration: none;
+.ptl-footer .ptl-footer__nav .ptl-footer__nav-link {
+  font-family: var(--swl-font_family) !important;
+  font-weight: 500 !important;
+  color: #000 !important;
+  font-size: 16px !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
   transition: opacity 0.3s;
+  display: inline !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .ptl-footer__nav-link:hover {
