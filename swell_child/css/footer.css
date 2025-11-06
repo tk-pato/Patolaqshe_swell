@@ -6,7 +6,7 @@
 
 /* フッター全体 */
 .ptl-footer {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: var(--swl-font_family);
   background: #fff;
   margin: 0;
   padding: 0;
@@ -137,7 +137,7 @@
 }
 
 .ptl-footer__nav-link {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: var(--swl-font_family);
   font-weight: 500;
   color: #3a3a3a;
   font-size: 14px;
@@ -159,7 +159,7 @@
 }
 
 .ptl-footer__copyright p {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: var(--swl-font_family);
   font-weight: 400;
   font-size: 13px;
   color: #aaa;

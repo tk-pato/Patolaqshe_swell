@@ -208,14 +208,6 @@ add_action('wp_enqueue_scripts', function () {
     ['section-salon', 'ptl_section_salon', ['child_style'], '-sp'],
   ];
 
-  // Google Fonts: Noto Sans JP（child_style依存で読み込み）
-  wp_enqueue_style(
-    'google-fonts-noto-sans',
-    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap',
-    ['child_style'],
-    null
-  );
-
   // Footer CSS（child_style依存）
   $footer_path = get_stylesheet_directory() . '/css/footer.css';
   if (file_exists($footer_path)) {
