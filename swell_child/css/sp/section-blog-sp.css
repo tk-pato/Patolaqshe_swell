@@ -1,3 +1,22 @@
+/* ========================================
+   SP版 BLOG背景の強制上書き
+   section-blog.cssの透明背景を白に変更
+   ======================================== */
+
+/* 親コンテナ（SWELL）の透明背景を白に上書き */
+.hero-section + .l-mainContent,
+.hero-section + .l-mainContent__inner {
+  background: #fff !important;
+}
+
+/* BLOGセクション本体の透明背景を白に上書き */
+.ptlBlog,
+#section-blog,
+#section-blog.ptl-section {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+
 /* ===========================
    BLOG Section - SP Styles
    BLOGセクション SP専用スタイル
