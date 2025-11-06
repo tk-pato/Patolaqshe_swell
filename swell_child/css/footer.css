@@ -7,10 +7,15 @@
 /* フッター全体 */
 .ptl-footer {
   /* カスタマイザ変数が未定義でも表示が途切れないようにフォールバックを追加 */
-  font-family: var(--swl-font_family, 'Noto Serif JP', serif);
+  font-family: var(--swl-font_family, 'Noto Serif JP', serif) !important;
   background: #fff;
   margin: 0;
   padding: 0;
+}
+
+/* 全子要素にフォント継承を強制 */
+.ptl-footer * {
+  font-family: inherit !important;
 }
 
 /* 親テーマのフッター色変数をローカルで明示上書き（白地に黒文字） */
@@ -59,6 +64,7 @@
   margin: 0;
   color: #333;
   letter-spacing: 0.05em;
+  font-family: inherit !important;
 }
 
 /* SALON（右側） */

@@ -30,7 +30,8 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	// ========================================
 	// ★ カスタムフッター追加箇所（開始）
 	// ========================================
-	if ( is_front_page() ) : 
+	// デバッグ: 全ページで表示（本番では is_front_page() に戻す）
+	if ( true || is_front_page() ) : 
 	?>
 	<div class="ptl-footer">
 		<div class="ptl-footer-inner">
