@@ -51,30 +51,41 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 			
 		</div>
 
-		<!-- ナビゲーションセクション -->
-		<nav class="ptl-footer__nav" aria-label="フッターナビゲーション">
-			<ul class="ptl-footer__nav-list">
-				<li class="ptl-footer__nav-item">
-					<a href="<?php echo esc_url(home_url('/about/')); ?>" class="ptl-footer__nav-link">About</a>
-				</li>
-				<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-				<li class="ptl-footer__nav-item">
-					<a href="<?php echo esc_url(home_url('/menu/')); ?>" class="ptl-footer__nav-link">Menu</a>
-				</li>
-				<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-				<li class="ptl-footer__nav-item">
-					<a href="<?php echo esc_url(home_url('/salon/')); ?>" class="ptl-footer__nav-link">Salon</a>
-				</li>
-				<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-				<li class="ptl-footer__nav-item">
-					<a href="<?php echo esc_url(home_url('/contact/')); ?>" class="ptl-footer__nav-link">Contact</a>
-				</li>
-			</ul>
-		</nav>
-		
-		<!-- コピーライト -->
-		<div class="ptl-footer__copyright">
-			<p>&copy; <?php echo date('Y'); ?> Patolaqshe. All rights reserved.</p>
+		<!-- 下段グレー背景（ナビ＋コピーライト） -->
+		<div class="ptl-footer__lower">
+			<div class="ptl-footer__lower-inner">
+				<!-- ナビゲーション -->
+				<nav class="ptl-footer__nav" aria-label="フッターナビゲーション">
+					<ul class="ptl-footer__nav-list">
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/')); ?>" class="ptl-footer__nav-link">TOP</a>
+						</li>
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/news/')); ?>" class="ptl-footer__nav-link">NEWS</a>
+						</li>
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/info/')); ?>" class="ptl-footer__nav-link">INFO</a>
+						</li>
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/menu/')); ?>" class="ptl-footer__nav-link">MENU</a>
+						</li>
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/voice/')); ?>" class="ptl-footer__nav-link">VOICE</a>
+						</li>
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/faq/')); ?>" class="ptl-footer__nav-link">FAQ</a>
+						</li>
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/blog/')); ?>" class="ptl-footer__nav-link">BLOG</a>
+						</li>
+					</ul>
+				</nav>
+				
+				<!-- コピーライト -->
+				<div class="ptl-footer__copyright">
+					<p>&copy; <?php echo date('Y'); ?> Patolaqshe. All rights reserved.</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<?php 

@@ -104,58 +104,69 @@
 }
 
 /* ========================================
-   下段（グレー背景）: ナビ + コピーライト
+   下段（グレー背景）: ナビ左 + コピーライト右
    ======================================== */
-.ptl-footer__nav {
-  /* 全幅のグレー帯（内側の幅制御はUL側で行う） */
+
+/* グレー背景の親コンテナ */
+.ptl-footer__lower {
   width: 100%;
-  margin: 0;
-  padding: 40px 0; /* 内側ULで左右パディング */
   background: #f8f8f8;
+  margin: 0;
+  padding: 0;
+}
+
+/* 内側コンテナ：ナビとコピーライトを横並び */
+.ptl-footer__lower-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ナビゲーション（左側） */
+.ptl-footer__nav {
+  flex: 1;
+  background: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 .ptl-footer__nav-list {
-  /* 内側コンテナ: 中央寄せ・幅制限 */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
   display: flex;
-  gap: 32px;
+  gap: 28px;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
 .ptl-footer__nav-item {
   font-size: 13px;
   position: relative;
-  padding-left: 10px;
+  padding-left: 0;
+  margin: 0;
 }
 
+/* 点は不要 */
 .ptl-footer__nav-item:before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  background: #aaa;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  display: none;
 }
 
 .ptl-footer__nav-separator {
   display: none;
 }
 
+/* ナビリンク */
 .ptl-footer .ptl-footer__nav .ptl-footer__nav-link {
-  /* 同様にフォールバック付き */
   font-family: var(--swl-font_family, 'Noto Serif JP', serif) !important;
   font-weight: 500 !important;
-  color: #000 !important;
-  font-size: 16px !important;
-  letter-spacing: 0.05em !important;
+  color: #666 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.08em !important;
   text-decoration: none !important;
   transition: opacity 0.3s;
   display: inline !important;
@@ -167,20 +178,21 @@
   opacity: 0.6;
 }
 
+/* コピーライト（右側） */
 .ptl-footer__copyright {
-  background: #f8f8f8;
-  padding: 50px 20px;
+  flex: 0 0 auto;
+  background: transparent;
+  padding: 0;
   text-align: right;
   font-style: normal;
-  flex: 0 0 auto;
 }
 
 .ptl-footer__copyright p {
   font-family: var(--swl-font_family);
   font-weight: 400;
-  font-size: 13px;
+  font-size: 11px;
   color: #aaa;
   margin: 0;
   line-height: 1;
-  letter-spacing: 0;
+  letter-spacing: 0.05em;
 }

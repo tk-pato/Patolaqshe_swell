@@ -32,13 +32,21 @@
     letter-spacing: 0.08em;
   }
 
-  .ptl-footer__nav {
-    order: 2;
+  /* 下段グレー背景コンテナ（SP版：縦並び） */
+  .ptl-footer__lower {
     background: #f8f8f8;
-    padding: 30px 20px;
-    margin: 0;
+  }
+
+  .ptl-footer__lower-inner {
     flex-direction: column;
-    gap: 24px;
+    padding: 30px 20px;
+    gap: 32px;
+  }
+
+  /* ナビゲーション（SP版：縦並び） */
+  .ptl-footer__nav {
+    width: 100%;
+    order: 1;
   }
 
   .ptl-footer__nav-list {
@@ -57,10 +65,11 @@
   }
 
   .ptl-footer__nav-link {
-    font-size: 14px;
-    letter-spacing: 0.08em;
+    font-size: 14px !important;
+    letter-spacing: 0.08em !important;
   }
 
+  /* SALON（SP版） */
   .ptl-footer__salon {
     order: 3;
     text-align: center;
@@ -80,13 +89,16 @@
     font-size: 13px;
   }
 
+  /* コピーライト（SP版：中央寄せ） */
   .ptl-footer__copyright {
-    padding: 24px 20px 36px;
+    width: 100%;
+    padding: 0;
     text-align: center;
+    order: 2;
   }
 
   .ptl-footer__copyright p {
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.02em;
   }
 }
