@@ -40,27 +40,6 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 				<h2>Patolaqshe</h2>
 			</div>
 			
-			<!-- ナビゲーションセクション -->
-			<nav class="ptl-footer__nav" aria-label="フッターナビゲーション">
-				<ul class="ptl-footer__nav-list">
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/about/')); ?>" class="ptl-footer__nav-link">About</a>
-					</li>
-					<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/menu/')); ?>" class="ptl-footer__nav-link">Menu</a>
-					</li>
-					<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/salon/')); ?>" class="ptl-footer__nav-link">Salon</a>
-					</li>
-					<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/contact/')); ?>" class="ptl-footer__nav-link">Contact</a>
-					</li>
-				</ul>
-			</nav>
-			
 			<!-- SALONセクション -->
 			<div class="ptl-footer__salon">
 				<p class="ptl-footer__salon-label">SALON</p>
@@ -72,6 +51,27 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 			</div>
 			
 		</div>
+
+		<!-- ナビゲーションセクション -->
+		<nav class="ptl-footer__nav" aria-label="フッターナビゲーション">
+			<ul class="ptl-footer__nav-list">
+				<li class="ptl-footer__nav-item">
+					<a href="<?php echo esc_url(home_url('/about/')); ?>" class="ptl-footer__nav-link">About</a>
+				</li>
+				<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
+				<li class="ptl-footer__nav-item">
+					<a href="<?php echo esc_url(home_url('/menu/')); ?>" class="ptl-footer__nav-link">Menu</a>
+				</li>
+				<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
+				<li class="ptl-footer__nav-item">
+					<a href="<?php echo esc_url(home_url('/salon/')); ?>" class="ptl-footer__nav-link">Salon</a>
+				</li>
+				<li class="ptl-footer__nav-separator" aria-hidden="true">|</li>
+				<li class="ptl-footer__nav-item">
+					<a href="<?php echo esc_url(home_url('/contact/')); ?>" class="ptl-footer__nav-link">Contact</a>
+				</li>
+			</ul>
+		</nav>
 		
 		<!-- コピーライト -->
 		<div class="ptl-footer__copyright">
