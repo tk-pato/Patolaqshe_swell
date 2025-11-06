@@ -6,7 +6,8 @@
 
 /* フッター全体 */
 .ptl-footer {
-  font-family: var(--swl-font_family);
+  /* カスタマイザ変数が未定義でも表示が途切れないようにフォールバックを追加 */
+  font-family: var(--swl-font_family, 'Noto Serif JP', serif);
   background: #fff;
   margin: 0;
   padding: 0;
@@ -143,7 +144,8 @@
 }
 
 .ptl-footer .ptl-footer__nav .ptl-footer__nav-link {
-  font-family: var(--swl-font_family) !important;
+  /* 同様にフォールバック付き */
+  font-family: var(--swl-font_family, 'Noto Serif JP', serif) !important;
   font-weight: 500 !important;
   color: #000 !important;
   font-size: 16px !important;
