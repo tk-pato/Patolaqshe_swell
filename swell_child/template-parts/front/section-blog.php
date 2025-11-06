@@ -17,7 +17,7 @@ $blog_posts = get_posts([
 $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
 ?>
 
-<section id="section-blog" class="ptlBlog">
+<section id="section-blog" class="ptl-section ptlBlog">
     <div class="ptl-section__inner">
 
         <!-- ヘッダー（SALONと完全統一：タイトル、サブタイトル、オーナメント） -->
