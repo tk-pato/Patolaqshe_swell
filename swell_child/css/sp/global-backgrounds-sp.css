@@ -2,36 +2,69 @@
    SP版全セクション背景（767px以下）
    - スクロール時のヒーロー背景透け防止
    - 全セクションに白背景を一括適用
+   - 詳細度を上げて確実に適用
    ======================================== */
 
 @media screen and (max-width: 767px) {
-  /* 全セクションに白背景を適用 */
-  #intro,
-  #page-navigation,
-  #bust-issues,
-  #news,
-  #blog,
-  #menu,
-  #commitment,
-  #uservoice,
-  #salon,
-  #infohub {
+  /* body全体の背景を白に */
+  body.home,
+  body.front-page {
     background: #fff !important;
-    position: relative;
-    z-index: 1;
   }
 
-  /* 各セクション内のコンテナにも白背景を適用（念のため） */
-  #intro .ptl-intro,
-  #page-navigation .ptlNavHero,
-  #bust-issues .bust-issues-container,
-  #news .ptl-news,
-  #blog .ptl-blog,
-  #menu .ptl-menu,
-  #commitment .ptl-commitment,
-  #uservoice .ptl-uservoice,
-  #salon .ptl-salon,
-  #infohub .ptl-infohub {
-    background: #fff;
+  /* メインコンテンツエリア全体 */
+  body #all_wrap,
+  body #container,
+  body #content {
+    background: #fff !important;
+  }
+
+  /* 全セクションに白背景を適用（詳細度UP） */
+  body section.ptl-section,
+  body section[id="intro"],
+  body section[id="page-navigation"],
+  body section[id="bust-issues"],
+  body section[id="news"],
+  body section[id="blog"],
+  body section[id="menu"],
+  body section[id="commitment"],
+  body section[id="uservoice"],
+  body section[id="salon"],
+  body section[id="infohub"] {
+    background: #fff !important;
+    background-color: #fff !important;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* 各セクションの内側コンテナにも白背景 */
+  body .ptl-section__inner,
+  body .ptl-intro,
+  body .ptlNavHero,
+  body .bust-issues-container,
+  body .ptl-news,
+  body .ptl-blog,
+  body .ptl-menu,
+  body .ptl-commitment,
+  body .ptl-uservoice,
+  body .ptl-salon,
+  body .ptl-infohub {
+    background: #fff !important;
+    background-color: #fff !important;
+  }
+
+  /* ヒーロー背景より前面に表示 */
+  body #content {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* パララックス背景を完全に隠す */
+  body .parallax-bg,
+  body .global-parallax-bg,
+  body [class*="parallax"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 }
