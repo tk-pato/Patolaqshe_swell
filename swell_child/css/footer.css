@@ -12,6 +12,12 @@
   padding: 0;
 }
 
+/* 親テーマのフッター色変数をローカルで明示上書き（白地に黒文字） */
+.l-footer {
+  --color_footer_bg: #ffffff;
+  --color_footer_text: #333333;
+}
+
 /* リセット */
 .ptl-footer ul {
   list-style: none;
