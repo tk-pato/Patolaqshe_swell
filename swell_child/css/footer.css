@@ -43,7 +43,7 @@
 .ptl-footer-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px 30px 20px;
+  padding: 40px 20px 20px 20px;
   border-top: 1px solid #eee;
   background: #fff;
   display: flex;
@@ -119,7 +119,7 @@
   width: 100%;
   background: transparent;
   margin: 0;
-  padding: 30px 20px 40px 20px;
+  padding: 20px 20px 40px 20px;
   display: flex;
   justify-content: center;
 }
