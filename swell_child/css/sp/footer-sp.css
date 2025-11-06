@@ -10,11 +10,11 @@
   }
 
   .ptl-footer-inner {
-    padding: 40px 20px 32px;
+    padding: 30px 20px 24px;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 32px;
+    gap: 24px;
   }
 
   .ptl-footer__logo,
@@ -32,15 +32,24 @@
     letter-spacing: 0.08em;
   }
 
+  .ptl-footer__logo img {
+    height: 32px;
+  }
+
   /* 下段グレー背景コンテナ（SP版：縦並び） */
   .ptl-footer__lower {
-    background: #f8f8f8;
+    background: transparent;
+    padding: 16px 20px 32px 20px;
   }
 
   .ptl-footer__lower-inner {
     flex-direction: column;
-    padding: 30px 20px;
-    gap: 32px;
+    padding: 28px 20px;
+    gap: 24px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
   }
 
   /* ナビゲーション（SP版：縦並び） */
@@ -52,7 +61,7 @@
   .ptl-footer__nav-list {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   .ptl-footer__nav-item {
@@ -77,7 +86,7 @@
 
   .ptl-footer__salon-label {
     font-size: 13px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .ptl-footer__salon-links {
