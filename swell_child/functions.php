@@ -292,7 +292,9 @@ add_action('wp_enqueue_scripts', function () {
       <script>
         if (window.location.hash) {
           history.replaceState(null, null, window.location.pathname + window.location.search);
-          setTimeout(function() { window.scrollTo(0, 0); }, 1);
+          setTimeout(function() {
+            window.scrollTo(0, 0);
+          }, 1);
         }
       </script>
   <?php
@@ -325,6 +327,20 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptl_section_salon-sp', get_stylesheet_directory_uri() . '/css/sp/section-salon-sp.css', ['ptl_section_salon'], filemtime($salon_sp_css), 'screen and (max-width: 959px)');
   }
 }, 20);
+
+// SP版全セクション背景CSS（最優先で読み込み）
+add_action('wp_enqueue_scripts', function () {
+  $global_bg_sp = get_stylesheet_directory() . '/css/sp/global-backgrounds-sp.css';
+  if (file_exists($global_bg_sp)) {
+    wp_enqueue_style(
+      'ptl-global-backgrounds-sp',
+      get_stylesheet_directory_uri() . '/css/sp/global-backgrounds-sp.css',
+      [],
+      filemtime($global_bg_sp),
+      'screen and (max-width: 767px)'
+    );
+  }
+}, 5);
 
 /* === Spacing Debug Toggle (front only) === */
 add_action('wp_footer', function () {

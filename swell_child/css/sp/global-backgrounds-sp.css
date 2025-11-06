@@ -1,0 +1,37 @@
+/* ========================================
+   SP版全セクション背景（767px以下）
+   - スクロール時のヒーロー背景透け防止
+   - 全セクションに白背景を一括適用
+   ======================================== */
+
+@media screen and (max-width: 767px) {
+  /* 全セクションに白背景を適用 */
+  #intro,
+  #page-navigation,
+  #bust-issues,
+  #news,
+  #blog,
+  #menu,
+  #commitment,
+  #uservoice,
+  #salon,
+  #infohub {
+    background: #fff !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 各セクション内のコンテナにも白背景を適用（念のため） */
+  #intro .ptl-intro,
+  #page-navigation .ptlNavHero,
+  #bust-issues .bust-issues-container,
+  #news .ptl-news,
+  #blog .ptl-blog,
+  #menu .ptl-menu,
+  #commitment .ptl-commitment,
+  #uservoice .ptl-uservoice,
+  #salon .ptl-salon,
+  #infohub .ptl-infohub {
+    background: #fff;
+  }
+}
