@@ -1,73 +1,22 @@
 /* ========================================
-   SP版全セクション背景（767px以下）
-   - スクロール時のヒーロー背景透け防止
-   - 全セクションに白背景を一括適用
-   - 詳細度を上げて確実に適用
+   SP版背景制御（767px以下）
+   - メインコンテンツエリアを白背景に統一
+   - セクションのmargin領域も自動的に白になる
+   - ヒーロー背景の透け防止
    ======================================== */
 
 @media screen and (max-width: 767px) {
-  /* body全体の背景を白に */
-  body.home,
-  body.front-page {
+  /* メインコンテンツエリア全体を白に（これだけで全セクション＋margin領域も白） */
+  body .l-mainContent,
+  body .l-mainContent__inner {
     background: #fff !important;
-  }
-
-  /* メインコンテンツエリア全体 */
-  body #all_wrap,
-  body #container,
-  body #content {
-    background: #fff !important;
-  }
-
-  /* 全セクションに白背景を適用（詳細度UP） */
-  body section.ptl-section,
-  body section[id="intro"],
-  body section[id="page-navigation"],
-  body section[id="bust-issues"],
-  body section[id="news"],
-  body section[id="blog"],
-  body section[id="section-blog"],
-  body section[id="menu"],
-  body section[id="commitment"],
-  body section[id="uservoice"],
-  body section[id="salon"],
-  body section[id="infohub"] {
-    background: #fff !important;
-    background-color: #fff !important;
     position: relative;
     z-index: 10;
   }
 
-  /* 各セクションの内側コンテナにも白背景 */
-  body .ptl-section__inner,
-  body .ptl-intro,
-  body .ptlNavHero,
-  body .bust-issues-container,
-  body .ptl-news,
-  body .ptl-blog,
-  body .ptlBlog,
-  body .ptl-menu,
-  body .ptl-commitment,
-  body .ptl-uservoice,
-  body .ptl-salon,
-  body .ptl-infohub {
-    background: #fff !important;
-    background-color: #fff !important;
-  }
-
-  /* ヒーロー背景より前面に表示 */
-  body #content {
-    position: relative;
-    z-index: 10;
-  }
-
-  /* パララックス背景を完全に隠す */
-  body .parallax-bg,
-  body .global-parallax-bg,
-  body [class*="parallax"] {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
+  /* 透過指定されている可能性のある要素を上書き */
+  body .l-mainContent section {
+    background: inherit; /* 親の白を継承 */
   }
 
   /* ========================================
