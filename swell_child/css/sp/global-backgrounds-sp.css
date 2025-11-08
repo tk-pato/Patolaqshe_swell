@@ -7,6 +7,11 @@
 
 @media screen and (max-width: 767px) {
   /* メインコンテンツエリア全体を白に（これだけで全セクション＋margin領域も白） */
+  /* section-blog.css の transparent より優先させるため詳細度UP */
+  body.home .hero-section + .l-mainContent,
+  body.front-page .hero-section + .l-mainContent,
+  body.home .hero-section + .l-mainContent__inner,
+  body.front-page .hero-section + .l-mainContent__inner,
   body.home .l-mainContent,
   body.front-page .l-mainContent,
   body.home .l-mainContent__inner,
