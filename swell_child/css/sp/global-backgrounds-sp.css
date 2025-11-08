@@ -6,6 +6,16 @@
    ======================================== */
 
 @media screen and (max-width: 767px) {
+  /* ヒーロー背景を強制的に隠す（診断用） */
+  .p-mainVisual,
+  .hero-section,
+  [class*="hero"],
+  .c-bgFit,
+  .c-heroContent__bg {
+    position: relative !important;
+    z-index: 0 !important;
+  }
+
   /* メインコンテンツエリア全体を白に（これだけで全セクション＋margin領域も白） */
   /* section-blog.css の transparent より優先させるため詳細度UP */
   body.home .hero-section + .l-mainContent,
@@ -19,8 +29,8 @@
   body #main_content.l-mainContent {
     background: #fff !important;
     background-color: #fff !important;
-    position: relative;
-    z-index: 10;
+    position: relative !important;
+    z-index: 10 !important;
   }
 
   /* 透過指定されている可能性のある要素を強制的に上書き */
