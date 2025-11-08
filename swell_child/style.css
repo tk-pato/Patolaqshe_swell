@@ -575,17 +575,11 @@ Version: 1.0.0
   }
   
   /* ========================================
-     BLOG: 背景あり（薄グレー）
+     BLOG: 背景設定を css/section-blog.css へ移管
      ======================================== */
   
-  #section-blog,
-  .ptl-blog {
-    position: relative !important;
-    z-index: 10 !important;
-    background: #f8f8f8 !important;
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
-  }
+  /* 🔴 削除済み: BLOGセクション固有の設定 */
+  /* section-blog.css で管理（設計思想に準拠） */
   
   /* ========================================
      その他のセクション: 白背景
