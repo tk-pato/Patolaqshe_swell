@@ -7,16 +7,23 @@
 
 @media screen and (max-width: 767px) {
   /* メインコンテンツエリア全体を白に（これだけで全セクション＋margin領域も白） */
-  body .l-mainContent,
-  body .l-mainContent__inner {
+  body.home .l-mainContent,
+  body.front-page .l-mainContent,
+  body.home .l-mainContent__inner,
+  body.front-page .l-mainContent__inner,
+  body #main_content.l-mainContent {
     background: #fff !important;
+    background-color: #fff !important;
     position: relative;
     z-index: 10;
   }
 
-  /* 透過指定されている可能性のある要素を上書き */
-  body .l-mainContent section {
-    background: inherit; /* 親の白を継承 */
+  /* 透過指定されている可能性のある要素を強制的に上書き */
+  body .l-mainContent section,
+  body .l-mainContent section[class*="ptl"],
+  body .l-mainContent .ptl-section {
+    background: #fff !important;
+    background-color: #fff !important;
   }
 
   /* ========================================
