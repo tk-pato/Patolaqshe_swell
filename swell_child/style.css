@@ -540,6 +540,7 @@ Version: 1.0.0
   .ptl-uservoice,
   .ptlVoice,
   #blog,
+  #section-blog,
   .ptl-blog,
   .ptlBlog,
   #news,
@@ -555,6 +556,7 @@ Version: 1.0.0
   #section-menu .ptl-section__inner,
   #uservoice .ptl-section__inner,
   #blog .ptl-section__inner,
+  #section-blog .ptl-section__inner,
   #news .ptl-section__inner {
     background: transparent !important;
   }
@@ -571,10 +573,14 @@ Version: 1.0.0
   }
   
   body footer,
-  body .l-footer {
+  body .l-footer,
+  body .ptl-footer,
+  body .ptl-footer-inner,
+  body .ptl-footer__lower,
+  body .ptl-footer__lower-inner {
     position: relative;
     z-index: 10;
-    background: transparent;
+    background: transparent !important;
   }
   
   /* ========================================
