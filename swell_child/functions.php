@@ -338,7 +338,7 @@ add_action('wp_enqueue_scripts', function () {
       'screen and (max-width: 767px)'
     );
   }
-}, 5);
+}, 999); // 最後に読み込んで全セクションCSSを上書き
 
 /* === Spacing Debug Toggle (front only) === */
 add_action('wp_footer', function () {
