@@ -119,7 +119,6 @@
   #bust-issues .ptlNavHero__bg img,
   #bust-issues .ptlNavHero__image img,
   #bust-issues .ptlNavHero__video {
-    transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
     transform-origin: center;
     will-change: transform;
   }
@@ -203,16 +202,6 @@
 
 /* ===== PC/全画面: パララックス用スケール ===== */
 #bust-issues .ptlIssues__bg video,
-#bust-issues .ptlIssues__bg img,
-#bust-issues .ptlIssues__image img,
-#bust-issues .ptlIssues__video,
-#bust-issues .ptlNavHero__image img,
-#bust-issues .ptlNavHero__video {
-  transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
-  transform-origin: center;
-  will-change: transform;
-}
-
 /* ========================================
    セクション余白（独自管理）
 ======================================== */

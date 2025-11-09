@@ -221,7 +221,6 @@
 .ptlNavHero__video,
 #page-navigation .ptlNavHero__image img,
 #page-navigation .ptlNavHero__video {
-  transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
   transform-origin: center;
   will-change: transform;
 }
@@ -238,7 +237,6 @@
   .ptlNavHero.ptl-has-image .ptlNavHero__image img,
   .ptlNavHero.ptl-has-video .ptlNavHero__video,
   .ptl-navigation.ptl-has-video video {
-    transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
@@ -252,14 +250,12 @@
   #page-navigation .ptlNavHero__video,
   #bust-issues .ptlNavHero__image img,
   #bust-issues .ptlNavHero__video {
-    transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
   
   .ptlNavHero.has-bg .ptlNavHero__image img,
   .ptlNavHero.has-bg .ptlNavHero__video {
-    transform: translateY(var(--ptl-parallax)) scale(1.28);
     transform-origin: center;
     will-change: transform;
   }
