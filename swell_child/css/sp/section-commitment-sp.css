@@ -19,7 +19,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-/* セクション余白 - global-backgrounds-sp.cssで統一管理 */
+/* セクション余白 - style.css (SP section)で統一管理 */
   body #section-commitment {
     margin-bottom: 0 !important;
   }

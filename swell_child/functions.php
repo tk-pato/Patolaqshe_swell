@@ -332,21 +332,7 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($order_sp)) {
     wp_enqueue_style('ptl-order-sp', get_stylesheet_directory_uri() . '/css/sp/section-order-sp.css', [], filemtime($order_sp), 'screen and (max-width: 767px)');
   }
-}, 998); // global-backgrounds-spより優先度が低い（998 < 999）
-
-// SP版全セクション背景CSS（最優先で読み込み）
-add_action('wp_enqueue_scripts', function () {
-  $global_bg_sp = get_stylesheet_directory() . '/css/sp/global-backgrounds-sp.css';
-  if (file_exists($global_bg_sp)) {
-    wp_enqueue_style(
-      'ptl-global-backgrounds-sp',
-      get_stylesheet_directory_uri() . '/css/sp/global-backgrounds-sp.css',
-      [],
-      filemtime($global_bg_sp),
-      'screen and (max-width: 767px)'
-    );
-  }
-}, 999); // 最後に読み込んで全セクションCSSを上書き
+}, 998);
 
 /* === Spacing Debug Toggle (front only) === */
 add_action('wp_footer', function () {

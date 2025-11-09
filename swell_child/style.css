@@ -426,6 +426,26 @@ Version: 1.0.0
 @media (max-width: 767px) {
   
   /* ========================================
+     SP共通背景設定
+     ======================================== */
+  
+  /* 基本的な背景色リセット */
+  body {
+    background: #ffffff;
+  }
+  
+  /* メインコンテンツ - 基本白背景 */
+  .l-mainContent,
+  .l-mainContent__inner {
+    background: #ffffff;
+  }
+  
+  /* セクションの余白を内側に移動（隙間なくす） */
+  .l-mainContent section {
+    margin-bottom: 0 !important;
+  }
+  
+  /* ========================================
      ヒーロー固定
      ======================================== */
   
@@ -479,7 +499,7 @@ Version: 1.0.0
   
   /* ========================================
      各セクションのSP背景設定
-     css/sp/global-backgrounds-sp.css で一括管理
+     css/sp/style.css (SP section) で一括管理
      css/sp/section-*-sp.css で個別管理
      ======================================== */
   

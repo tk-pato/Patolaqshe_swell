@@ -132,7 +132,7 @@
     margin: 0 4px;
   }
 
-/* セクション余白 - global-backgrounds-sp.cssで統一管理 */
+/* セクション余白 - style.css (SP section)で統一管理 */
   body #uservoice {
     padding-top: 0 !important;
     padding-bottom: 0 !important;

@@ -19,7 +19,7 @@
     position: static; /* 通常フローに戻す */
     padding: 0 20px;
     padding-top: 40px; /* セクション上余白 */
-    padding-bottom: 0; /* global-backgrounds-sp.cssで統一管理 */
+    padding-bottom: 0; /* style.css (SP section)で統一管理 */
   }
   
   /* カード余白削除（グリッドのgapで管理） */

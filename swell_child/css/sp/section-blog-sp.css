@@ -1,6 +1,6 @@
 /* ========================================
    SP版 BLOGセクション背景制御
-   global-backgrounds-sp.cssで統一管理されるため
+   style.css (SP section)で統一管理されるため
    ここでは個別の背景上書きは不要
    ======================================== */
 
@@ -10,7 +10,7 @@
    適用条件: 959px以下
    =========================== */
 
-/* セクション余白 - global-backgrounds-sp.cssで統一管理 */
+/* セクション余白 - style.css (SP section)で統一管理 */
   #section-blog {
     margin-bottom: 0;
   }
