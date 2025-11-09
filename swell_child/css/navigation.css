@@ -214,8 +214,20 @@
   margin: 20px 0 4px; 
 }
 
-/* ===== SP: パララックス可視化強化 ===== */
-@media (max-width: 959px) {
+/* ===== PC/全画面: パララックス用スケール ===== */
+.ptlNavHero__bg video,
+.ptlNavHero__bg img,
+.ptlNavHero__image img,
+.ptlNavHero__video,
+#page-navigation .ptlNavHero__image img,
+#page-navigation .ptlNavHero__video {
+  transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* ===== SP: パララックス可視化強化（スケール増強） ===== */
+@media (max-width: 767px) {
   .ptl-navigation {
     --ptl-parallax: 0px;
     background-position: 50% calc(50% + var(--ptl-parallax));
@@ -292,35 +304,4 @@
 #page-navigation {
   margin-top: 0;
   margin-bottom: 80px;
-}
-
-/* =====================================================
-   SP: NAVIGATION 背景透過
-   実装日: 2025-10-25
-   ----------------------------------------------------- */
-@media (max-width: 767px) {
-  /* 背景透過 */
-  #page-navigation,
-  .ptl-pageNavHero {
-    background: transparent !important;
-    min-height: auto !important;
-  }
-  
-  /* 背景動画/画像を非表示 */
-  #page-navigation .ptl-pageNavHero__bg,
-  #page-navigation .ptl-pageNavHero__overlay {
-    display: none !important;
-  }
-  
-  /* タイトルを黒文字に */
-  #page-navigation .ptl-section__title,
-  #page-navigation .ptl-section__subtitle {
-    color: #333 !important;
-    text-shadow: none !important;
-  }
-  
-  /* ボタンは白背景維持 */
-  .ptl-pageNavHero__btn {
-    background: #ffffff !important;
-  }
 }

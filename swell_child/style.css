@@ -484,18 +484,18 @@ Version: 1.0.0
     background: #ffffff !important;
   }
   
-  #bust-issues .ptl-pageNavHero__bg,
-  .ptl-bustIssues .ptl-pageNavHero__bg {
+  #bust-issues .ptlNavHero__bg,
+  .ptlIssues .ptlNavHero__bg {
     display: none !important;
   }
   
-  #bust-issues .ptl-pageNavHero__overlay,
-  .ptl-bustIssues .ptl-pageNavHero__overlay {
+  #bust-issues .ptlNavHero__overlay,
+  .ptlIssues .ptlNavHero__overlay {
     display: none !important;
   }
   
   /* カード部分だけ白背景 */
-  #bust-issues .ptl-bustIssues__card {
+  #bust-issues .ptlIssues__card {
     background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(10px) !important;
   }
@@ -505,28 +505,28 @@ Version: 1.0.0
      ======================================== */
   
   #page-navigation,
-  .ptl-pageNavHero {
+  .ptlNavHero {
     position: relative !important;
     z-index: 10 !important;
     background: #ffffff !important;
     min-height: auto !important;
   }
   
-  #page-navigation .ptl-pageNavHero__bg,
-  .ptl-pageNavHero .ptl-pageNavHero__bg {
+  #page-navigation .ptlNavHero__bg,
+  .ptlNavHero .ptlNavHero__bg {
     display: none !important;
   }
   
-  #page-navigation .ptl-pageNavHero__overlay,
-  .ptl-pageNavHero .ptl-pageNavHero__overlay {
+  #page-navigation .ptlNavHero__overlay,
+  .ptlNavHero .ptlNavHero__overlay {
     display: none !important;
   }
   
   /* タイトルを黒文字に（背景がないため） */
   #page-navigation .ptl-section__title,
   #page-navigation .ptl-section__subtitle,
-  .ptl-pageNavHero .ptl-section__title,
-  .ptl-pageNavHero .ptl-section__subtitle {
+  .ptlNavHero .ptl-section__title,
+  .ptlNavHero .ptl-section__subtitle {
     color: #333 !important;
     text-shadow: none !important;
   }

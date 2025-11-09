@@ -109,6 +109,22 @@
   background: rgba(0,0,0,0.25);
 }
 
+/* PC: パララックス効果 */
+@media (min-width: 960px) {
+  #bust-issues .ptlIssues__bg video,
+  #bust-issues .ptlIssues__bg img,
+  #bust-issues .ptlIssues__image img,
+  #bust-issues .ptlIssues__video,
+  #bust-issues .ptlNavHero__bg video,
+  #bust-issues .ptlNavHero__bg img,
+  #bust-issues .ptlNavHero__image img,
+  #bust-issues .ptlNavHero__video {
+    transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
+    transform-origin: center;
+    will-change: transform;
+  }
+}
+
 /* BUST-ISSUES: コンテンツ部分のスタイル */
 .ptlIssues__head {
   text-align: center;
@@ -183,6 +199,18 @@
 .ptlIssues__text {
   color: #333;
   font-weight: 500;
+}
+
+/* ===== PC/全画面: パララックス用スケール ===== */
+#bust-issues .ptlIssues__bg video,
+#bust-issues .ptlIssues__bg img,
+#bust-issues .ptlIssues__image img,
+#bust-issues .ptlIssues__video,
+#bust-issues .ptlNavHero__image img,
+#bust-issues .ptlNavHero__video {
+  transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
+  transform-origin: center;
+  will-change: transform;
 }
 
 /* ========================================
@@ -261,5 +289,4 @@
     background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(10px) !important;
   }
-}
 */
