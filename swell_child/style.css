@@ -430,67 +430,82 @@ Version: 1.0.0
      ======================================== */
   
   /* 基本的な背景色リセット */
-  body {
-    background: transparent !important;
+  body.home,
+  body.page {
+    background: transparent;
   }
   
-  /* 親テーマのl-mainContent背景を強制的に透明化 */
-  .l-mainContent,
-  .l-mainContent__inner,
-  .l-contents,
-  .l-container {
-    background: transparent !important;
+  /* 親テーマのl-mainContent背景を詳細度高く上書き */
+  body .l-mainContent,
+  body .l-mainContent__inner,
+  body .l-contents,
+  body .l-container {
+    background: transparent;
+  }
+  
+  /* 各セクションの背景も詳細度高く上書き */
+  body section,
+  body .ptl-section,
+  body [id*="section-"],
+  body #salon,
+  body #menu,
+  body #uservoice,
+  body #blog,
+  body #commitment,
+  body #navigation,
+  body #bust-issues {
+    background: transparent;
   }
   
   /* セクションの余白を内側に移動（隙間なくす） */
   .l-mainContent section {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
   
   /* ========================================
      ヒーロー固定
      ======================================== */
   
-  .p-mainVisual,
-  .ptl-overlap-base {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-    z-index: 1 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+  body .p-mainVisual,
+  body .ptl-overlap-base {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
   }
   
-  .p-mainVisual__inner,
-  .p-mainVisual video,
-  .p-mainVisual img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+  body .p-mainVisual__inner,
+  body .p-mainVisual video,
+  body .p-mainVisual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   /* ========================================
      INTRO: 被さり効果（SP専用）
      ======================================== */
   
-  .ptl-overlap-layer,
-  .ptlIntro-section.ptl-overlap-layer {
-    position: relative !important;
-    z-index: 10 !important;
+  body .ptl-overlap-layer,
+  body .ptlIntro-section.ptl-overlap-layer {
+    position: relative;
+    z-index: 10;
     
     /* SP専用: 画面1個分下に配置 */
-    margin-top: 100vh !important;
+    margin-top: 100vh;
     
     /* スクロール後に被さる効果 */
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    border-radius: 0;
+    box-shadow: none;
     
     /* 内部余白 */
-    padding-top: 0 !important;
-    padding-bottom: 60px !important;
+    padding-top: 0;
+    padding-bottom: 60px;
   }
   
   /* ========================================
@@ -514,27 +529,51 @@ Version: 1.0.0
   .ptl-salonHero,
   #section-commitment,
   .ptl-commitment,
+  .ptlCommitment,
+  .ptlCommitHero,
   #section-menu,
-  .ptl-menu {
+  .ptl-menu,
+  .ptlMenu,
+  .ptlMenuHero,
+  #uservoice,
+  .ptl-uservoice,
+  .ptlVoice,
+  #blog,
+  .ptl-blog,
+  .ptlBlog,
+  #news,
+  .ptl-news {
     position: relative !important;
     z-index: 10 !important;
+    background: transparent !important;
+  }
+  
+  /* セクション内のインナー要素も透明化 */
+  #salon .ptl-section__inner,
+  #section-commitment .ptl-section__inner,
+  #section-menu .ptl-section__inner,
+  #uservoice .ptl-section__inner,
+  #blog .ptl-section__inner,
+  #news .ptl-section__inner {
+    background: transparent !important;
   }
   
   /* ========================================
      ヘッダー＋フッター
      ======================================== */
   
-  .l-header,
-  .p-headerBar,
-  .l-fixHeader {
-    position: fixed !important;
-    z-index: 100 !important;
+  body .l-header,
+  body .p-headerBar,
+  body .l-fixHeader {
+    position: fixed;
+    z-index: 100;
   }
   
-  footer,
-  .l-footer {
-    position: relative !important;
-    z-index: 10 !important;
+  body footer,
+  body .l-footer {
+    position: relative;
+    z-index: 10;
+    background: transparent;
   }
   
   /* ========================================
@@ -542,15 +581,15 @@ Version: 1.0.0
      ======================================== */
   
   /* will-changeを削除（SP軽量化） */
-  * {
-    will-change: auto !important;
+  body * {
+    will-change: auto;
   }
   
   /* アニメーションを削減 */
   @media (prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
+    body * {
+      animation: none;
+      transition: none;
     }
   }
   
