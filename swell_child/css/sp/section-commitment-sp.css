@@ -19,7 +19,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-/* セクション余白 - SP設定 */
+/* セクション余白 - global-backgrounds-sp.cssで統一管理 */
   body #section-commitment {
-    margin-bottom: 40px !important;
+    margin-bottom: 0 !important;
   }

@@ -100,6 +100,13 @@
   body .l-mainContent section#infohub {
     padding-bottom: 60px !important; /* 元々60px */
   }
+  
+  /* FOOTERの上マージンを削除（BLOGとの隙間をなくす） */
+  body .l-footer,
+  body #footer.l-footer {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
 
   /* ========================================
      デバッグ線 - 全セクション（後で削除）
