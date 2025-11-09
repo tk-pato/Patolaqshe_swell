@@ -14,12 +14,12 @@
 
 /* コミットメントセクション（Reasons）のスタイル *//* ===== 店名のPC/SP切替 ===== */
 .shop-name--sp { display: none; }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .shop-name--pc { display: none; }
     .shop-name--sp { display: inline; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     #salon .ptlSalon-map { display: none; }
     .ptlSalon-map-link {
         display: flex;

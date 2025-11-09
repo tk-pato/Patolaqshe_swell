@@ -200,8 +200,8 @@
   color: #222; 
 }
 
-/* PCは2カラム */
-@media (min-width: 768px){
+/* PC/タブレットは2カラム（SP専用CSSで1カラム管理） */
+@media (min-width: 960px){
   #bust-issues .ptlIssues__list{ 
     grid-template-columns: 1fr 1fr; 
   }

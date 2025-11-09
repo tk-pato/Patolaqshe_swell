@@ -179,7 +179,7 @@
 /* 以下の独自スタイルは削除：style.cssで統一管理 */
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .ptlVoice {
         padding: 60px 0;
     }
@@ -271,7 +271,7 @@
 }
 
 /* ===== SP専用フォント統一設定（REASONSセクションと統一） ===== */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     /* タイトル：REASONSのboxTitleと完全統一 */
     #uservoice .feedback-title {
         font-size: clamp(13px, 1.4vw, 16px);
@@ -389,7 +389,7 @@
 }
 
 /* PC・タブレット用カード間グレー線 */
-@media (min-width: 769px) {
+@media (min-width: 960px) {
     #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
         content: '';
         position: absolute;

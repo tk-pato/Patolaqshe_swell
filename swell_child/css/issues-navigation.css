@@ -42,15 +42,6 @@
   margin-bottom: 80px; /* セクション間余白 */
 }
 
-/* SP用余白調整 - 無効化（SP専用CSSで管理） */
-/*
-@media (max-width: 959px) {
-    #bust-issues {
-        margin-bottom: 40px;
-    }
-}
-*/
-
 /* コンテンツ余白 - NAVIGATIONと完全一致 */
 #bust-issues.ptlIssues .ptl-section__inner,
 #bust-issues .ptlIssues .ptl-section__inner,
@@ -165,7 +156,7 @@
   list-style: none;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 960px) {
   .ptlIssues__list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -216,39 +207,12 @@
     }
 }
 
-/* SP: padding削除、margin-bottomのみで管理 + パララックス設定 - 無効化（SP専用CSSで管理） */
-/*
-@media (max-width: 959px) {
-    #bust-issues {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
-        overflow: hidden;
-        min-height: auto;
-        max-height: none;
-    }
-    
-    #bust-issues .ptlIssues__image img,
-    #bust-issues .ptlIssues__video {
-        transform: translateY(var(--ptl-parallax, 0)) scale(1.15);
-        transform-origin: center;
-        will-change: transform;
-    }
-    
-    .ptlIssues__card {
-        padding: 32px 16px;
-        margin: 40px auto;
-        max-width: calc(100% - 40px);
-    }
-    
-    .ptlIssues__item {
-        padding: 10px 6px;
-    }
-}
-*/
+/* ========================================
+   セクション余白
+   PC: css/pc/issues-navigation.css で管理
+   SP: css/sp/issues-navigation-sp.css で管理
+======================================== */
 
-/* セクション余白 */
 #bust-issues {
   margin-top: 0;
 }
