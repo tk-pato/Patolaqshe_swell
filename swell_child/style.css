@@ -545,9 +545,9 @@ Version: 1.0.0
   .ptlBlog,
   #news,
   .ptl-news {
-    position: relative !important;
-    z-index: 10 !important;
-    background: transparent !important;
+    position: relative;
+    z-index: 10;
+    background: transparent;
   }
   
   /* セクション内のインナー要素も透明化 */
@@ -558,7 +558,7 @@ Version: 1.0.0
   #blog .ptl-section__inner,
   #section-blog .ptl-section__inner,
   #news .ptl-section__inner {
-    background: transparent !important;
+    background: transparent;
   }
   
   /* ========================================
@@ -580,7 +580,7 @@ Version: 1.0.0
   body .ptl-footer__lower-inner {
     position: relative;
     z-index: 10;
-    background: transparent !important;
+    background: transparent;
   }
   
   /* ========================================
