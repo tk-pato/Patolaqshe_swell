@@ -8,7 +8,6 @@
 .ptl-footer {
   /* カスタマイザ変数が未定義でも表示が途切れないようにフォールバックを追加 */
   font-family: var(--swl-font_family, 'Noto Serif JP', serif) !important;
-  background: #fff;
   margin: 0;
   padding: 0;
 }
@@ -45,7 +44,6 @@
   margin: 0 auto;
   padding: 40px 20px 20px 20px;
   border-top: 1px solid #eee;
-  background: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;

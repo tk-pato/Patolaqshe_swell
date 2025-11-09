@@ -23,15 +23,13 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 #menu .ptlMenu__mainContent:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 #menu .ptlMenu__mainLink {
   display: block;
@@ -55,7 +53,6 @@
 }
 #menu .ptlMenu__mainText {
   padding: 20px 30px;
-  background: #fff;
 }
 #menu .ptlMenu__mainTitle {
   font-size: clamp(14px, 1.4vw, 16px);
@@ -107,16 +104,13 @@
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: #fff;
+  transition: transform 0.3s ease;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 #menu .ptlMenu__subItem:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 #menu .ptlMenu__subLink {
   display: flex;
@@ -148,7 +142,6 @@
   color: #444;
   margin: 0;
   text-align: center;
-  background: #fff;
   transition: background 0.3s ease;
   flex: 1;
   display: flex;
@@ -168,7 +161,6 @@
   align-items: center;
   gap: 10px;
   padding: 15px 30px;
-  background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
@@ -177,12 +169,9 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
 #menu .ptlMenu__moreBtn:hover {
-  background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
   color: #fff;
   text-decoration: none;
 }
@@ -315,13 +304,11 @@
   /* 見出しのみ太字にするため、コンテナでの太字指定はしない */
   font-weight: 400;
   letter-spacing: .02em;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition: transform .25s ease;
 }
 
 #menu .ptlMenuHero__btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
 #menu .ptlMenuHero__icon {

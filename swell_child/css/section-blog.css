@@ -143,16 +143,13 @@
   text-decoration: none;
   color: inherit;
   display: block;
-  background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .ptlBlog__card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 /* カード画像 */
