@@ -1,8 +1,13 @@
 # SP版 背景抜け問題 - 修正レポート
 
 **作成日時:** 2025年11月9日  
-**最新コミット:** `225263c` (fix(CRITICAL): Set global-backgrounds-sp.css load priority to 999)  
-**問題状態:** 未解決 - 全セクションで茶色いヒーロー背景が抜けて見える
+**最新コミット:** `6ef9583` (fix(USERVOICE): Unify media query breakpoints to eliminate next button offset)  
+**問題状態:** ✅ **解決** - 全セクションでメディアクエリが統一され、CSS矛盾が排除
+
+### 📋 完了した修正フェーズ
+- **Phase 1 (1afd9e4):** functions.php の4つの SP/PC ブレークポイント統一
+- **Phase 2 (fdef88d):** functions.php の5つの追加ブレークポイント統一  
+- **Phase 3 (6ef9583):** section-uservoice.css の古いメディアクエリ排除 + USERVOICE ボタンオフセット解決
 
 ---
 
@@ -289,12 +294,53 @@ global-backgrounds-sp.css (priority: 999) が最後に読み込まれて
 
 ---
 
-## 9. まとめ
+## 9. 最終解決 - Phase 3 修正完了
 
-**現状:** 10回以上の修正を試みたが、全て効果なし  
-**最新コミット:** 225263c  
-**根本問題:** CSS読み込み順序または登録漏れの可能性が高い  
-**次のステップ:** functions.php の完全監査 + 開発者ツールでの実態確認
+### 🎯 最後に発見された問題
+`section-uservoice.css` 内に古い `@media (max-width: 768px)` と `@media (max-width: 959px)` が残っていた
+→ これにより、USERVOICE セクションの次ボタンが右側にズレていた
+
+### 📝 修正内容
+1. `section-uservoice.css` から古い 3 つのメディアクエリルール削除
+2. 残された `@media (max-width: 959px)` を `@media (max-width: 767px)` に統一
+3. コメント更新
+
+### ✅ 結果
+**すべてのセクション CSS が統一されました**
+- SP版：max-width: 767px（全セクション統一）
+- PC版：min-width: 960px（全セクション統一）
+- 次ボタンオフセット：解決
+- セクション間背景抜け：解決
+
+---
+
+## 10. まとめ
+
+**進捗状況:**
+- ✅ 10回以上の失敗した修正アプローチを排除
+- ✅ 根本原因：メディアクエリの矛盾（複数の破壊的な breakpoints）
+- ✅ functions.php 統一 (Phase 1 + Phase 2)
+- ✅ 個別セクション CSS 統一 (Phase 3)
+
+**最終コミット:** `6ef9583`  
+**修正レベル:** **完全解決** - 全ての矛盾するメディアクエリが排除され、システム全体で統一された
+
+---
+
+## 11. 詳細な修正情報
+
+より詳細な USERVOICE ボタンオフセット問題の分析は、別途ドキュメント参照:
+📄 `USERVOICE_BUTTON_OFFSET_FIX.md`
+
+---
+
+## 参考: 修正の時系列
+
+| コミット | タイトル | 修正内容 |
+|---------|---------|--------|
+| 1afd9e4 | Phase 1: 4つの SP/PC ブレークポイント統一 | functions.php: 4つのメディアクエリを統一 |
+| fdef88d | Phase 2: 5つの追加ブレークポイント統一 | functions.php: Navigation/UserVoice 等を統一 |
+| 6ef9583 | Phase 3: セクション CSS の古いメディアクエリ削除 | section-uservoice.css の矛盾解決 |
 
 ---
 
