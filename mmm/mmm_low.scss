@@ -1,0 +1,114 @@
+@include sp {
+}
+
+.low {
+	margin-top: $pc_top * 1rem;
+	@include sp {
+		margin-top: $sp_top * 1rem;
+	}
+}
+
+.low_ttl {
+	text-align: center;
+	font-size: 4.2rem * $pc;
+	letter-spacing: .175em;
+	position: relative; 
+	padding-top: 11rem * $pc;
+	margin-bottom: 9rem * $pc;
+	line-height: 1.2;
+	padding-bottom: .6em;
+	@include sp {
+		font-size: 4.2rem;
+		padding-top: 11rem;
+		margin-bottom: 9rem;
+	}
+	&:before {
+		content: '';
+		@include absCenter;
+		width: 2.28em;
+		height: .05rem;
+		background: $pink;
+		bottom: 0;
+	}
+}
+
+.low_img {
+	margin-bottom: 14rem * $pc;
+	@include sp {
+		margin-bottom: 14rem;
+	}
+	img {
+		width: 100%;
+	}
+	@include sp {
+	}
+}
+
+.c_ttl {
+	text-align: center;
+	font-size: 4.4rem * $pc;
+	line-height: 1.4;
+	@include sp {
+		font-size: 4.4rem;
+	}
+	* {
+		line-height: inherit;
+	}
+	small {
+		display: block;
+		font-size: .886em;
+		margin-bottom: .8em;
+	}
+	em {
+		background: linear-gradient(transparent 80%, #e0bdd7 80%);
+		font-size: 1.18em;
+	}
+}
+
+.c_lead {
+	text-align: center;
+	font-size: 3.6rem * $pc;
+	line-height: 1.66;
+	@include sp {
+		font-size: 3.6rem;
+	}
+}
+
+.c_ttl2 {
+	text-align: center;
+	background: #e3b3c8;
+	color: #fff;
+	font-size: 5.2rem * $pc;
+	height: 10.2rem * $pc;
+	position: relative;
+	@include sp {
+		font-size: 5.2rem;
+		height: 9.7rem;
+	}
+	&:before {
+		content: '';
+		@include absCenter;
+		border-style: solid;
+		border-width: 1.5rem * $pc 1.5rem * $pc 0 1.5rem * $pc;
+		border-color: #e3b3c8 transparent transparent transparent;
+		bottom: -1.4rem * $pc;
+		@include sp {
+			border-width: 1.6rem 1.6rem 0 1.6rem;
+			bottom: -1.5rem;
+		}
+	}
+}
+
+.salon_ttl {
+	font-size: 3rem * $pc;
+	letter-spacing: .075em;
+	background : linear-gradient(45deg, rgba(227, 210, 216, 1) 1.55%, rgba(229, 214, 219, 1) 31.75%, rgba(236, 225, 229, 1) 60.15%, rgba(248, 244, 245, 1) 87.75%, rgba(255, 255, 255, 1) 100%);
+	line-height: 8.5rem * $pc;
+	padding-left: 1em;
+	margin-bottom: 9rem * $pc;
+	@include sp {
+		margin-bottom: 3rem;
+		line-height: 8.5rem;
+		font-size: 3rem;
+	}
+}

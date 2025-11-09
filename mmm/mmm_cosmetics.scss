@@ -1,0 +1,73 @@
+/*--------------------------------------------------------------
+Utility
+--------------------------------------------------------------*/
+.u_wrap {
+	overflow: hidden;
+}
+.u_inner {
+	width: 110rem; // 基本の横幅1080
+	margin: 0 auto;
+	max-width: 100%;
+}
+html {
+	font-size: 10px;
+}
+@include mediaMaxPc(1400px) {
+	html {
+		font-size: calc(100vw * 10 / 1400);
+	}
+}
+@include sp {
+	html {
+		font-size: calc(100vw * 10 / 768);
+	}
+}
+.u_clearfix:after,
+.u_clearfix > li:after {
+	height: 0;
+	visibility: hidden;
+	content: ".";
+	display: block;
+	clear: both;
+}
+* html .u_clearfix,
+* html .u_clearfix > li {
+	zoom: 1;
+}
+*+html .u_clearfix,
+*+html .u_clearfix li {
+	zoom: 1;
+}
+.u_switch_img {
+	opacity: 1;
+}
+.u_relative {
+	position: relative;
+}
+
+@include pc {
+	.u_visible_sp {
+		display: none;
+	}
+	.u_tel {
+		pointer-events: none;
+		cursor: default;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+@include sp {
+	.u_visible_pc {
+		display: none;
+	}
+	.u_inner {
+		width: auto;
+		margin: 0 $sp_margin;
+		&.b {
+			margin: 0;
+		}
+	}
+}
+
+

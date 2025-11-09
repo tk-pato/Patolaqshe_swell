@@ -1,0 +1,40 @@
+// 基本色　案件ごとに変更
+$color1: #cc9999;
+$black: #4D4D4D;
+$pink: #D080A3;
+$brown: #B08C75;
+// テキスト基本設定　案件ごとに変更
+@mixin text1 {
+	font-size: 1.6rem;
+	line-height: 1.875;
+}
+// header 固定時の高さ rem
+$pc_top: 10;
+$sp_top: 10;
+// スマホ左右マージン
+$sp_margin: 5rem;
+$pc: .7;
+@import 'setting';
+@import 'foundation';
+@import 'common';
+@import 'cosmetic';
+@import 'base';
+
+/*--------------------------------------------------------------
+Project
+--------------------------------------------------------------*/
+
+// Default style
+@import 'top';
+@import 'low';
+@import 'trial';
+@import 'method';
+@import 'menu';
+@import 'about';
+@import 'slick';
+@import 'salon';
+@import 'form';
+@import 'voice';
+@import 'other';
+@import 'column2';
+@import 'blog';

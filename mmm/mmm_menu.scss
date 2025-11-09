@@ -1,0 +1,385 @@
+.menu_lead {
+	margin-bottom: 20rem * $pc;
+	@include sp {
+		margin-bottom: 20rem;
+	}
+	.c_lead {
+		margin: 9rem * $pc 0 24rem * $pc;
+		@include sp {
+			margin: 9rem 0 24rem;
+		}
+	}
+	.ttl {
+		text-align: center;
+		color: $pink;
+		font-size: 5.2rem * $pc;
+		line-height: 1.3;
+		margin-bottom: 7.5rem * $pc;
+		@include sp {
+			font-size: 5.2rem;
+			margin-bottom: 7.5rem;
+		}
+		small {
+			display: block;
+			margin-bottom: .2em;
+			font-size: .769em;
+		}
+	}
+	figure {
+		margin-bottom: 7.5rem * $pc;
+		@include sp {
+			margin: 0 $sp_margin * -1 7.5rem;
+		}
+	}
+	.box {
+		@include pc {
+			width: 89rem * $pc;
+			margin: 0 auto;
+		}
+		p {
+			font-size: 2.2rem * $pc;
+			line-height: 1.81;
+			+ p {
+				margin-top: 2em;
+			}
+			@include sp {
+				font-size: 2.8rem;
+			}
+		}
+	}
+}
+
+.menu_case {
+	margin-bottom: 24rem * $pc;
+	@include sp {
+		margin-bottom: 24rem;
+	}
+	.c_ttl2 {
+		letter-spacing: .075em;
+		font-size: 3.5rem * $pc;
+		line-height: 10rem * $pc;
+		margin-bottom: 12rem * $pc;
+		@include sp {
+			font-size: 3.5rem;
+			line-height: 10rem;
+			margin-bottom: 12rem;
+		}
+	}
+	.ttl {
+		text-align: center;
+		color: $brown;
+		margin-bottom: 11rem * $pc;
+		font-size: 6.2rem * $pc;
+		@include sp {
+			margin-bottom: 11rem;
+			font-size: 6.2rem;
+		}
+	}
+	.sub {
+		text-align: center;
+		font-size: 4.2rem * $pc;
+		margin-bottom: 6.5rem * $pc;
+		@include sp {
+			font-size: 4.2rem;
+			margin-bottom: 6.5rem;
+		}
+		em {
+			background: linear-gradient(transparent 80%, #e0bdd7 80%);
+			font-size: 1.238em;
+		}
+	}
+	.ttl2 {
+		text-align: center;
+		font-size: 7.3rem * $pc;
+		line-height: 1.2;
+		color: $pink;
+		margin-bottom: 4rem * $pc;
+		@include sp {
+			font-size: 7.3rem;
+			margin-bottom: 4rem;
+		}
+		img {
+			display: block;
+			width: 23.1rem * $pc;
+			margin: 0 auto;
+			@include sp {
+				width: 23.1rem;
+			}
+		}
+	}
+	.img1 {
+		text-align: center;
+		img {
+			width: 37.7rem * $pc;
+			@include sp {
+				width: 37.7rem;
+			}
+		}
+	}
+	.point {
+		position: relative;
+		padding: 8rem * $pc 5.8rem * $pc 5rem * $pc;
+		border: solid .4rem #e7dcd5;
+		border-radius: 2rem * $pc;
+		margin: 2.5rem * $pc auto 17rem * $pc;
+		@include sp {
+			padding: 6.5rem 3rem 4rem; 
+			margin: 2.5rem auto 17rem;
+			border-radius: 2rem;
+		}
+		dt {
+			@include absCenter;
+			top: -2rem * $pc;
+			background: #fff;
+			padding: 0 1.5em;
+			@include sp {
+				top: -2rem;
+			}
+			img {
+				width: 24rem * $pc;
+				@include sp {
+					width: 24rem;
+				}
+			}
+		}
+		dd {
+			font-size: 2.6rem * $pc;
+			line-height: 2;
+			@include sp {
+				font-size: 2.6rem;
+			}
+		}
+		@include pc {
+			width: 94.3rem * $pc;
+		}
+	}
+	
+	.price {
+		position: relative;
+		margin-top: 16rem * $pc;
+		@include sp {
+			margin-top: 16rem;
+		}
+		p {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			color: #fff;
+			font-size: 3.5rem * $pc;
+			top: .8em;
+			@include sp {
+				font-size: 3.5rem;
+			}
+		}
+	}
+}
+
+.menu_voice {
+	.box {
+		@include pc {
+			width: 82rem * $pc;
+			margin: 0 auto;
+		}
+	}
+}
+
+.menu_program {
+	margin: 22rem * $pc 0;
+	@include sp {
+		margin: 22rem 0;
+	}
+	.ttl {
+		text-align: center;
+		color: $pink;
+		font-size: 5rem * $pc;
+		margin-bottom: 11rem * $pc;
+		@include sp {
+			font-size: 5rem;
+			margin-bottom: 11rem;
+		}
+	}
+	li {
+		border-bottom: dashed 1px $pink;
+		background: url(../img/ico_check_02.svg) no-repeat .5em center / .766em;
+		font-size: 3rem * $pc;
+		letter-spacing: .075em;
+		white-space: nowrap;
+		padding: .65em 0 .5em;
+		padding-left: 1.8em;
+		@include sp {
+			font-size: 3rem;
+		}
+	}
+	.row {
+		@include sp {
+			figure {
+				width: 39.3rem;
+				margin: 0 auto 6rem;
+			}
+		}
+		@include pc {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			flex-flow: row-reverse;
+			figure {
+				width: 39.3rem * $pc;
+			}
+			ul {
+				width: 63.5rem * $pc;
+			}
+		}
+	}
+}
+
+.menu_salon {
+	background: #f7f3f1;
+	padding: 14rem * $pc 0 13rem * $pc;
+	@include sp {
+		padding: 14rem 0 13rem;
+	}
+}
+
+.voice_list {
+	background: #f7f3f1;
+	padding: 13rem * $pc 0 18rem * $pc;
+	@include sp {
+		padding: 13rem 0 18rem;
+	}
+	.ttl {
+		text-align: center;
+		font-size: 5rem * $pc;
+		color: $brown;
+		position: relative;
+		margin-bottom: 14rem * $pc;
+		@include sp {
+			margin-bottom: 7rem;
+			font-size: 5rem;
+		}
+		span {
+			background: #f7f3f1;
+			position: relative;
+			padding: 0 .5em;
+			display: inline-block;
+			@include sp {
+				padding: 0;
+			}
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			left: 0;
+			top: 55%;
+			border-bottom: solid 1px $brown;
+		}
+	}
+	.img {
+		display: flex;
+		position: relative;
+		margin-bottom: 8rem * $pc;
+		@include sp {
+			margin: 0 $sp_margin * -1 8rem;
+		}
+		div {
+			width: 100%; 
+		}
+		img {
+			width: 100%;
+		}
+		.logo {
+			position: absolute;
+			width: 12rem * $pc;
+			right: 1rem * $pc;
+			top: 2rem * $pc;
+			@include sp {
+				width: 12rem;
+				right: 1rem;
+				top: 2rem;
+			}
+		}
+	}
+	dt {
+		text-align: center;
+		margin-bottom: 7rem * $pc;
+		font-size: 4.4rem * $pc;
+		@include sp {
+			margin-bottom: 7rem;
+			font-size: 4.4rem;
+		}
+		small {
+			display: block;
+			font-size: .568em;
+			margin-top: .3em;
+		}
+	}
+	dd {
+		font-size: 2.2rem * $pc;
+		line-height: 1.81;
+		@include sp {
+			font-size: 2.8rem;
+		}
+	}
+	.c_btn2 {
+		margin-top: 15rem * $pc;
+		@include sp {
+			margin-top: 15rem;
+		}
+	}
+}
+
+
+.flow_list {
+	width: 94rem * $pc;
+	margin: 0 auto;
+	@include sp {
+		width: 50rem;
+	}
+	dt {
+		text-align: center;
+		margin: 1rem * $pc 0 3rem * $pc;
+		@include sp {
+			margin: 4rem 0;
+		}
+		img {
+			width: 9.4rem * $pc;
+			@include sp {
+				width: 13.2rem;
+			}
+		}
+	}
+	dd {
+		font-size: 2.8rem;
+		line-height: 1.75;
+		letter-spacing: .135em;
+		text-align: justify;
+		em {
+			background: linear-gradient(transparent 20%, #eedde3 20%);
+		}
+		@include pc {
+			font-size: 2.4rem * $pc;
+			height: 5em;
+		}
+	}
+	li {
+		+ li {
+			border-top: dashed 1px $black;
+			padding-top: 8rem * $pc;
+			margin-top: 8rem * $pc;
+			@include sp {
+				padding-top: 8rem;
+				margin-top: 8rem;
+			}
+		}
+		@include pc {
+			display: flex;
+			justify-content: space-between;
+			figure {
+				width: 48.2rem * $pc; 
+			}
+			dl {
+				width: 36rem * $pc;
+			}
+		}
+	}
+}

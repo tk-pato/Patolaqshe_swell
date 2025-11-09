@@ -1,0 +1,202 @@
+.voice_lead {
+	margin-bottom: 25rem;
+	@include pc {
+		width: 87rem * $pc;
+		margin: 0 auto 25rem * $pc;
+	}
+	.lead {
+		margin-bottom: 17rem * $pc;
+		text-align: center;
+		@include sp {
+			margin-bottom: 17rem;
+		}
+		p {
+			font-size: 2.6rem * $pc;
+			line-height: 1.73;
+			@include sp {
+				font-size: 2.6rem;
+			}
+			+ p {
+				margin-top: 2em;
+			}
+		}
+	}
+	.catch {
+		font-size: 2.4rem * $pc;
+		border-top: solid 1px $pink;
+		text-align: center;
+		border-bottom: solid 1px $pink;
+		padding: 1.3em 0;
+		margin-bottom: 4.5rem * $pc;
+		position: relative;
+		@include sp {
+			font-size: 2.4rem;
+			margin-bottom: 4.5rem;
+		}
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			border-style: solid;
+			border-width: 3.5rem * $pc 2.5rem * $pc 0 0;
+			border-color: $pink transparent transparent transparent;
+			right: 10rem * $pc;
+			bottom: -3.5rem * $pc;
+			@include sp {
+				border-width: 3.5rem 2.5rem 0 0;
+				right: 10rem;
+				bottom: -3.5rem;
+			}
+		}
+		&:after {
+			border-color: #fff transparent transparent transparent;
+			right: calc(#{(10rem * $pc)} - 1.5px);
+			bottom: calc(#{(-3.5rem * $pc)} + 3px);
+			@include sp {
+				right: calc(10rem - 1.5px);
+				bottom: calc(-3.5rem + 3px);
+			}
+		}
+	}
+	dl {
+		margin: 6.5rem * $pc 0 7rem * $pc;
+		text-align: center;
+		@include sp {
+			margin: 6.5rem 0 7rem;
+		}
+	}
+	dt {
+		font-size: 2.4rem * $pc;
+		color: #fff;
+		background: #e0bdd7;
+		padding: .8em 0;
+		@include sp {
+			font-size: 2.4rem * 1.5;
+		}
+	}
+	dd {
+		background: rgba(224, 189, 215, 0.3);
+		padding: 6.3rem * $pc 8.3rem * $pc;
+		@include sp {
+			overflow-x: auto;
+			padding: 6.3rem 8.3rem;
+		}
+	}
+	.img {
+		@include pc {
+			display: flex;
+			justify-content: space-between;
+			
+		}
+		@include sp {
+		}
+	}
+	figure {
+		width: 20.2rem * $pc;
+		position: relative;
+		@include sp {
+			width: auto;
+		}
+		img {
+			width: 100%;
+		}
+		+ figure {
+			@include sp {
+				margin-top: 8.5rem;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				height: calc(100% - #{(3rem * $pc)});
+				background: url(../img/ico_arrow05.svg) no-repeat 50% / contain;
+				width: 5.7rem * $pc;
+				left: -5rem * $pc;
+				@include sp {
+					width: 9.6rem;
+					height: 5.894rem;
+					transform: rotate(90deg);
+					left: calc(50% - 4.8rem);
+					top: -9.5rem;
+					z-index: -1;
+				}
+			}
+		}
+	}
+	figcaption {
+		font-size: 1.8rem * $pc;
+		font-weight: bold;
+		margin-top: .5em;
+		@include sp {
+			font-size: 3.4rem;
+			position: absolute;
+			bottom: 0;
+			text-align: center;
+			background: $brown;
+			width: 100%;
+			color: #fff;
+			padding: .6em 0;
+		}
+	}
+	p {
+		text-align: center;
+		font-size: 2.2rem * $pc;
+		line-height: 1.81;
+		@include sp {
+			font-size: 2.2rem;
+		}
+	}
+}
+
+.voice_case {
+	&.open {
+		li {
+			&:nth-child(n + 3) {
+				display: block;
+			}
+		}
+		.c_btn2 {
+			display: none;
+		}
+	}
+	.ttl {
+		margin-bottom: 10rem * $pc;
+		@include sp {
+			margin-bottom: 10rem;
+		}
+	}
+	li {
+		background: #fff;
+		padding: 7.5rem * $pc 6.3rem * $pc;
+		margin-bottom: 7rem * $pc;
+		&:nth-child(n + 3) {
+			display: none;
+		}
+		@include sp {
+			padding: 1.8rem 3rem 5rem;
+			margin-bottom: 7rem;
+		}
+	}
+	.img {
+		margin-bottom: 5rem * $pc;
+		@include sp {
+			margin: 0 0 3.5rem;
+		}
+	}
+	dt {
+		margin-bottom: 5.5rem * $pc;
+		@include sp {
+			margin-bottom: 5.5rem;
+		}
+	}
+	.c_btn2 {
+		margin-top: 9rem * $pc;
+		@include sp {
+			margin-top: 9rem;
+		}
+	}
+	@include pc {
+		ul {
+			width: 87rem * $pc;
+			margin: 0 auto;
+		}
+	}
+}

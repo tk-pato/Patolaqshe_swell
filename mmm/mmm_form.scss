@@ -1,0 +1,335 @@
+
+.form {
+	@include form;
+	@include pc {
+		width: 90rem * $pc;
+		margin: 0 auto;
+	}
+	.lead {
+		font-size: 1.4rem;
+		line-height: 1.75;
+		margin-bottom: 4rem;
+		@include sp {
+			font-size: 2.5rem;
+			margin-bottom: 7rem;
+		}
+	}
+	dl {
+		background: #f3eeea;
+		border-radius: 3rem * $pc;
+		padding: 5rem * $pc 9rem * $pc;
+		margin-bottom: 12.5rem * $pc;
+		@include sp {
+			border-radius: 3rem;
+			padding: 5rem;
+			margin-bottom: 12.5rem;
+		}
+	}
+	dt {
+		text-align: center;
+		font-size: 2.4rem * $pc;
+		font-weight: bold;
+		letter-spacing: .12em;
+		margin-bottom: 1em;
+		@include sp {
+			font-size: 2.4rem;
+		}
+		i {
+			background: url(../img/caution_bg.svg) no-repeat left center / #{(2.6rem * $pc)};
+			width: 2.6rem * $pc;
+			display: inline-block;
+			margin-right: .4em;
+			padding-left: .1em;
+			@include sp {
+				width: 2.6rem;
+				background-size: 2.6rem;
+			}
+		}
+	}
+	dd {
+		line-height: 1.75;
+		font-size: 2rem * $pc;
+		@include sp {
+			font-size: 2rem;
+		}
+		+ dd {
+			border-top: solid 1px $black;
+			padding-top: 1.5rem * $pc;
+			margin-top: 3rem * $pc;
+			@include sp {
+				margin-top: 3rem;
+				padding-top: 1.5rem;
+			}
+		}
+	}
+	th {
+		width: 30rem * $pc;
+		text-align: left;
+		position: relative;
+		font-weight: bold;
+		letter-spacing: .05em;
+		padding-top: 1em;
+		@include sp {
+			padding: 0 0 1em;
+		}
+		em {
+			background: $color1;
+			color: #fff;
+			font-size: 1.4rem * $pc;
+			padding: .2em .8em .3em;
+			border-radius: .3em;
+			margin-right: 1em;
+			@include sp {
+				font-size: 2.1rem;
+			}
+		}
+		span {
+			display: inline-block;
+			vertical-align: -1.4em;
+		}
+	}
+	tr > * {
+		vertical-align: top;
+		font-size: 1.8rem * $pc;
+		letter-spacing: .05em;
+		@include sp {
+			float: left;
+			width: 100%;
+			font-size: 2.7rem;
+		}
+	}
+	.line {
+		border-bottom: solid 1px #a4a4a4;
+		margin-top: 4rem;
+		@include sp {
+			display: none;
+		}
+	}
+	td {
+		padding-bottom: 4rem * $pc;
+		@include sp {
+			padding-bottom: 6rem;
+		}
+		@include controls {
+			width: 100%;
+			border: solid 1px #a4a4a4;
+			padding: 1em 1.5em;
+			border-radius: .3em;
+			@include sp {
+				padding: .6em 1.5em;
+			}
+		}
+		a {
+			color: $pink;
+			border-bottom: solid 1px #4d4d4d;
+		}
+		p {
+			font-size: 1.4rem * .8;
+			line-height: 1.85;
+			margin-top: 1em;
+			@include sp {
+				font-size: 2rem; 
+			}
+			&.note {
+				color: #c62626;
+				line-height: 2.2;
+			}
+		}
+		textarea {
+			height: 10em;
+		}
+		.radio {
+			label {
+				display: block;
+				line-height: 2;
+				input {
+					margin-right: 1em;
+				}
+			}
+			@include sp {
+				&.a {
+					display: flex;
+					flex-wrap: wrap;
+					label {
+						width: 50%;
+					}
+				}
+				padding: 3.5rem 5rem;
+				border-bottom: solid 1px #a4a4a4;
+				border-top: solid 1px #a4a4a4;
+			}
+		}
+		&.doui {
+			@include pc {
+				padding-top: .7em;
+			}
+		}
+	}
+	.check {
+		@include sp {
+			gap: .5rem 2rem;
+		} 
+		label {
+			position: relative;
+		}
+		input {
+			position: absolute;
+			opacity: 0;
+			+ span {
+				position: relative;
+				padding-left: 2.2em;
+				cursor: pointer;
+				height: 2em;
+				display: inline-block;
+				line-height: 2;
+				&:before {
+					content: '';
+					@include absMiddle;
+					left: 0;
+					width: 1.3em;
+					height: 1.3em;
+					background: #fff;
+					border-radius: 50%;
+					border: solid 1px $black;
+				}
+			}
+			&:checked + span {
+				&:after {
+					content: '';
+				}
+			}
+			&[type="radio"] {
+				&:checked + span {
+					&:after {
+						@include absMiddle;
+						left: .3em;
+						top: 1em;
+						width: .7em;
+						height: .7em;
+						background: #949494;
+						border-radius: 50%;
+					}
+				}
+			}
+			&[type="checkbox"] {
+				&:checked + span {
+					&:after {
+						border-right: .3rem solid #949494;
+						border-bottom: .3rem solid #949494;
+						left: .6em;
+						position: absolute;
+						top: 50%;
+						margin-top: -.7em;
+						transform:  rotate(45deg);
+						width: .5em;
+						height: 1em;
+					}
+				}
+				+ span {
+					&:before {
+						border-radius: .1em;
+					}
+				}
+			}
+		}
+	}
+	label.error {
+		color: #b94a48;
+		font-weight: bold;
+		font-size: 1.4rem * $pc;
+		display: block;
+		@include sp {
+			font-size: 2.2rem;
+		}
+	}
+	
+	
+	.btn {
+		text-align: center;
+		margin-top: 10rem * $pc;
+		@include sp {
+			margin-top: 10rem;
+		}
+		&.b {
+			display: none;
+		}
+		li {
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 1rem * $pc 2rem * $pc;
+			@include sp {
+				margin: 0 1rem 2rem;
+			}
+		}
+		button {
+			background: #b7808a;
+			border: solid .3rem #d1aec8;
+			color: #fff;
+			font-size: 2.8rem * $pc;
+			letter-spacing: .18em;
+			width: 14.8em;
+			max-width: 100%;
+			border-radius: 4em;
+			padding: .6em 0;
+			font-weight: bold;
+			font-family: inherit;
+			cursor: pointer;
+			@include sp {
+				font-size: 3.9rem;
+			}
+		}
+		#back {
+			background: #bbb;
+		}
+	}
+
+	&.confirm {
+		table {
+			margin-top: 14rem * $pc;
+			@include sp {
+				margin-top: 14rem;
+			}
+		}
+		.line {
+			display: none;
+		}
+		th {
+			padding-top: 0;
+			em {
+				display: none;
+			}
+		}
+		td {
+			p {
+				display: none;
+			}
+			select {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+			@include controls {
+				border: none;
+				background: none;
+				padding: 0;
+			}
+			input:-webkit-autofill {
+				-webkit-box-shadow: 0 0 0px 1000px #fff inset;
+			}
+			select:-webkit-autofill {
+				-webkit-box-shadow: 0 0 0px 1000px #fff inset;
+			}
+		}
+	}
+}
+#thanks {
+	display: none;
+	text-align: center;
+	p {
+		font-size: 1.8rem * $pc;
+		line-height: 2;
+		@include sp {
+			font-size: 2.8rem;
+		}
+	}
+}

@@ -1,0 +1,379 @@
+/*--------------------------------------------------------------
+Layout/PageBase
+--------------------------------------------------------------*/
+#header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 66;
+	height: $pc_top * 1rem;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 1) 12.07%, rgba(227, 210, 216, 1) 98.45%);
+	@include sp {
+		height: $sp_top * 1rem;
+		&.home {
+			background: none;
+		}
+	}
+}
+
+.h_logo {
+	position: absolute;
+	top: 3.5rem;
+	left: 3.8rem;
+	@include sp {
+		left: 1.8rem;
+		top: 2.7rem;
+	}
+	img {
+		width: 16.5rem; 
+	}
+}
+
+.h_nav {
+	margin: auto;
+	text-align: center;
+	a {
+		display: block;
+		font-size: 2.2rem;
+		color: #fff;
+		letter-spacing: .135em;
+		@include sp {
+			font-size: 3.6rem;
+		}
+	}
+	ul {
+		+ ul  {
+			margin-top: 8rem;
+			@include sp {
+				margin-top: 13rem;
+			}
+		}
+	}
+	li {
+		margin: 4rem 0;
+	}
+}
+
+.h_nav_pc {
+	@include pc {
+		position: absolute;
+		right: 13rem;
+		top: 4.2rem;
+		display: flex;
+		font-size: 1.4rem;
+		gap: 0 1rem;
+		a {
+			letter-spacing: .15em;
+			padding: .2em .5em;
+			display: inline-block;
+			position: relative;
+			&:hover {
+				opacity: 1;
+				&:before {
+					width: calc(100% - 1em);
+				}
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: .2rem;
+				background: $pink;
+				bottom: 0;
+				left: .5em;
+				transition: width .2s ease-in;
+			}
+		}
+		.trial {
+			background: $pink;
+			color: #fff;
+			padding: .2em 1em;
+			&:before {
+				content: none;
+			}
+			&:hover {
+				background: $black;
+				color: #fff;
+				opacity: 1;
+			}
+		}
+		.mail {
+			padding: .2em 1em;
+			&:before {
+				content: none;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				border: solid .5px $black;
+			}
+			&:hover {
+				background: $black;
+				color: #fff;
+				opacity: 1;
+			}
+		}
+	}
+	
+	@include mediaMin(1500px) {
+		right: 15rem;
+		gap: 0 2.2rem;
+	}
+}
+
+.h_inner {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.h_menu {
+	position: absolute;
+	right: 4.7rem;
+	top: 3.8rem;
+	width: 5rem;
+	cursor: pointer;
+	@include sp {
+		to: 3.2rem;
+		right: 2.3rem;
+	}
+}
+.h_close {
+	width: 2.8rem;
+	right: 5.7rem;
+	top: 4rem;
+	@include sp {
+		width: 4.3rem;
+	}
+}
+#toggle_menu {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow-y: auto;
+	height: 100%;
+	background: $pink;
+}
+body.open {
+	overflow-y: hidden;
+}
+
+#gototop {
+	position: fixed;
+	right: 5rem;
+	bottom: 5rem;
+	z-index: 5;
+	img {
+		width: 8.2rem;
+	}
+}
+
+.f_follow {
+	text-align: center;
+	margin: 20rem * $pc 0 15rem * $pc;
+	@include sp {
+		margin: 12vw 0 12vw;
+	}
+	dt {
+		font-size: 3rem * $pc;
+		letter-spacing: .075em;
+		margin-bottom: 5rem * $pc;
+		@include sp {
+			font-size: 3rem;
+			margin-bottom: 5rem;
+		}
+	}
+	dd {
+		display: flex;
+		justify-content: center;
+		gap: 0 4rem * $pc;
+		font-size: 1rem * $pc;
+		@include sp {
+			gap: 0 4rem;
+			font-size: 1rem;
+		}
+		a {
+			display: block;
+		}
+	}
+	.insta {
+		width: 4.9em;
+	}
+	.line {
+		width: 5.8em;
+	}
+}
+
+#footer {
+	background: #eedde3;
+	padding: 10.5rem 0 7rem;
+	text-align: center;
+	@include sp {
+		padding: 10.5rem 0 4.5rem;
+	}
+}
+
+.f_logo {
+	margin-bottom: 7.5rem;
+	img {
+		width: 21.2rem;
+	}
+}
+
+.f_nav {
+	margin-bottom: 10rem;
+	li {
+		letter-spacing: .2em;
+	}
+	@include sp {
+		text-align: left;
+		display: flex;
+		justify-content: space-between;
+		
+		li {
+			font-size: 2.1rem;
+			margin-bottom: 1em;
+		}
+	}
+	@include pc {
+		ul {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 1.5rem;
+		}
+		li {
+			font-size: 1.4rem;
+			+ li {
+				&:before {
+					content: '|';
+					margin: 0 1.4em;
+				}
+			}
+		}
+	}
+}
+
+.f_copy {
+	font-size: 1.3rem;
+	letter-spacing: .07em;
+}
+
+
+
+
+.line_modal {
+	dl {
+		width: 80rem;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	dt {
+		letter-spacing: .2em;
+		background: #b08c75;
+		font-size: 2.4rem;
+		text-align: center;
+		color: #fff;
+		line-height: 8.7rem;
+	}
+	dd {
+		background: #fff;
+		text-align: center;
+		padding: 5.3rem 3rem;
+		position: relative;
+	}
+	p {
+		font-size: 1.6rem;
+		color: #404040;
+		letter-spacing: .2em;
+		margin-top: .8em;
+		@include sp {
+			font-size: 2.2rem;
+		}
+	}
+	.code {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background: #fff;
+		height: 100%;
+		padding-top: 12rem;
+		display: none;
+		img {
+			width: 24rem;
+		}
+		p {
+			line-height: 1.875;
+			margin-top: 8rem;
+		}
+		a {
+			color: #b08c75;
+			background: url(../img/ico_copy.svg) no-repeat left center / 1em;
+			padding-left: 1.5em;
+		}
+	}
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3rem 3rem;
+		margin: 0 auto;
+		@include pc {
+			width: 53rem;
+			gap: 3rem 5rem;
+		}
+	}
+	li {
+		width: calc(50% - 1.5rem);
+		@include pc {
+			width: calc(50% - 2.5rem);
+		}
+	}
+}
+
+
+.popup-modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, 0.70);
+	display: none;
+	.close {
+		position: absolute;
+		top: 5rem;
+		width: 2.3rem;
+		right: 6.5rem;
+		cursor: pointer;
+		z-index: 1;
+		img {
+			width: 100%; 
+		}
+		@include sp {
+			width: 3.5rem;
+			right: 2rem;
+		}
+	}
+	.wrap {
+		position: relative;
+		height: 100%;
+		margin: auto;
+		height: 100%;
+		overflow-y: auto;
+		@include flexCenter;
+		width: 80rem;
+		max-width: calc(100% - 4rem);
+		@include sp {
+		}
+	}
+}
+body.show-modal {
+	overflow-y: hidden;
+}

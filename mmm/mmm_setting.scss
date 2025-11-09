@@ -1,0 +1,778 @@
+// ipad miniの縦をスマホレイアウトにしたい場合は、max-widthを768にする
+@mixin sp {
+	@media screen and (max-width: 767px) {
+		@content;
+	}
+}
+@mixin pc {
+	@media screen and (min-width: 768px) {
+		@content;
+	}
+}
+@mixin mediaMax($maxWidth: 767px) {
+	@media screen and (max-width: $maxWidth) {
+		@content;
+	}
+}
+@mixin mediaMin($minWidth: 768px) {
+	@media screen and (min-width: $minWidth) {
+		@content;
+	}
+}
+// 指定領域内
+@mixin mediaMaxPc($maxWidth: 1200px, $minWidth: 768px) {
+	@media screen and (min-width: $minWidth) and (max-width: $maxWidth) {
+		@content;
+	}
+}
+// 指定領域内
+@mixin mediaMaxSp($minWidth: 451px, $maxWidth: 767px) {
+	@media screen and (min-width: $minWidth) and (max-width: $maxWidth) {
+		@content;
+	}
+}
+// IEのみ
+@mixin ieOnly {
+	@media screen and (-ms-high-contrast: none) {
+		@content;
+	}
+}
+// スマホとPCの画像ネーミングルールによる切り替え
+@mixin imgSpSwitch {
+	@include pc {
+		img[src$="_sp.jpg"],
+		img[src$="_sp.png"],
+		img[src$="_sp.svg"] {
+			display: none;
+		}
+	}
+	@include sp {
+		img[src$="_sp.jpg"] + img,
+		img[src$="_sp.png"] + img,
+		img[src$="_sp.svg"] + img {
+			display: none;
+		}
+	}
+}
+// btnShadow
+@mixin btnShadow($color, $height) {
+	box-shadow: 0 $height 0 $color;
+	&:hover {
+		opacity: 1;
+		box-shadow: none;
+		transform: translate3d(0, $height, 0);
+	}
+}
+// 領域内いっぱい
+@mixin fullBox {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	@content;
+}
+// 疑似要素で、領域内いっぱい
+@mixin pseFull {
+	&:before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		@content;
+	}
+}
+// 疑似要素で、右側に装飾
+@mixin pseArrowR($image, $width: 100%, $right: 1em) {
+	&:before {
+		content: '';
+		position: absolute;
+		background: url($image) no-repeat 50%;
+		background-size: contain;
+		top: 0;
+		height: 100%;
+		width: $width;
+		right: $right;
+		@content;
+	}
+}
+// 疑似要素で、横向き三角 ▶
+@mixin arrow1($height: .8rem, $width: 1.2rem, $color: #000) {
+	position: relative;
+	&:before {
+		content: '';
+		@include absMiddle;
+		border: $height solid transparent;
+		border-left: $width solid $color;
+		@content;
+	}
+}
+// 疑似要素で、横向き三角 ◀
+@mixin arrow2($height: .8rem, $width: 1.2rem, $color: #000) {
+	position: relative;
+	&:before {
+		content: '';
+		@include absMiddle;
+		border: $height solid transparent;
+		border-right: $width solid $color;
+		@content;
+	}
+}
+// 疑似要素で、下向き三角 ▼ 真ん中ぞろえ
+@mixin arrow3($height: .8rem, $width: 1.2rem, $color: $color4) {
+	position: relative;
+	&:before {
+		content: '';
+		@include absCenter;
+		border: $height solid transparent;
+		border-top: $width solid $color;
+		@content;
+	}
+}
+// 疑似要素で、下向き三角 ▼ 右揃え
+@mixin arrow3-2($height: .8rem, $width: 1.2rem, $color: $color4, $right: 1em) {
+	position: relative;
+	&:before {
+		content: '';
+		@include absMiddle;
+		right: $right;
+		border: $height solid transparent;
+		border-top: $width solid $color;
+		@content;
+	}
+}
+// 疑似要素で、くの字の矢印 ＞
+@mixin arrow4($size: 1.2rem, $color: #000, $right: 0) {
+	&:before {
+		content: '';
+		position: absolute;
+		width: $size;
+		height: $size;
+		border-top: 1px solid $color;
+		border-right: 1px solid $color;
+		right: $right;
+		top: 50%;
+		-webkit-transform: rotate(45deg) translateY(-50%);
+		transform: rotate(45deg) translateY(-50%);
+		@content;
+	}
+}
+// 疑似要素で、くの字の矢印 ＞（下向き）
+@mixin arrow5($size: 1.2rem, $color: #000, $right: 0) {
+	&:before {
+		content: '';
+		position: absolute;
+		width: $size;
+		height: $size;
+		border-bottom: 1px solid $color;
+		border-right: 1px solid $color;
+		right: $right;
+		top: 50%;
+		-webkit-transform: rotate(45deg) translateY(-50%);
+		transform: rotate(45deg) translateY(-50%);
+		@content;
+	}
+}
+// 上下センターに配置
+@mixin relMiddle {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+// 左右センターに配置
+@mixin relCenter {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+// 上下中央に配置
+@mixin relMidst {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+// 上下センターに配置
+@mixin absMiddle {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+// 左右センターに配置
+@mixin absCenter {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+// 上下中央に配置
+@mixin absMidst {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+// 背景画像、領域一杯
+@mixin bgCover($image, $height: 100%) {
+	background: url($image) no-repeat center center;
+	background-size: cover;
+	height: $height;
+}
+// floatリスト（2列）
+@mixin listCol2($width) {
+	> * {
+		width: $width;
+		&:nth-child(even) {
+			float: right;
+		}
+		&:nth-child(odd) {
+			float: left;
+			clear: both;
+		}
+	}
+}
+// floatリスト
+@mixin listCol($col, $ml) {
+	> * {
+		float: left;
+		margin-left: $ml * 1%;
+		width: ((100 - (($col - 1) * $ml)) / $col) * 1%;
+		&:nth-child(#{$col}n + 1) {
+			margin-left: 0;
+			clear: both;
+		}
+	}
+}
+// floatリスト　PC、SPとも列あり
+@mixin listColPcSp($col, $ml, $col_sp, $ml_sp) {
+	> * {
+		float: left;
+		margin-left: $ml * 1%;
+		width: ((100 - (($col - 1) * $ml)) / $col) * 1%;
+		@include pc {
+			&:nth-child(#{$col}n + 1) {
+				margin-left: 0;
+				clear: both;
+			}
+		}
+		@include sp {
+			margin-left: $ml_sp * 1%;
+			width: ((100 - (($col_sp - 1) * $ml_sp)) / $col_sp) * 1%;
+			&:nth-child(#{$col_sp}n + 1) {
+				margin-left: 0;
+				clear: both;
+			}
+		}
+	}
+}
+// 展開メニューの上下センタリング
+// <div id="toggle_menu"><div class="h_inner">@include menuMiddle(60rem)<div>コンテンツ入る</div></div></div>
+@mixin menuMiddle($min-height) {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	height: 100%;
+	min-height: $min-height;
+}
+// 上下センター
+@mixin flexMiddle {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+}
+// 上下左右センター
+@mixin flexCenter {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+}
+// flexコンテンツ 枠有りに便利　横方向に均等割り
+@mixin flexBetween($width: 0) {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	//-webkit-box-align: center;
+	//align-items: center;
+	//flex-flow: row-reverse;逆順
+	@if $width != 0 {
+		> * {
+			width: $width;
+			//flex-basis: $width;
+			//max-width: $width;
+		}
+	}
+}
+// flexコンテンツ隙間なし
+@mixin flexWrap($width: 0) {
+	display: -webkit-box;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap : wrap;
+	@if $width != 0 {
+		> * {
+			width: $width;
+			//flex-basis: $width;
+			//max-width: $width;
+		}
+	}
+}
+// flexリスト
+@mixin listFlex($col, $ml) {
+	display: -webkit-box;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap : wrap;
+	> * {
+		margin-left: $ml * 1%;
+		width: ((100 - (($col - 1) * $ml)) / $col) * 1%;
+		&:nth-child(#{$col}n + 1) {
+			margin-left: 0;
+		}
+	}
+}
+// flexリスト 横幅指定
+@mixin listFlex2($width, $gap) {
+	display: -webkit-box;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap : wrap;
+	gap: $gap;
+	> * {
+		width: $width;
+	}
+}
+// flexリスト（横幅指定）
+@mixin listFlexByPx($col, $width, $totalWidth) {
+	display: -webkit-box;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap : wrap;
+	> * {
+		margin-left: (($totalWidth - ($col * $width)) / ($col - 1)) * .1rem;
+		width: $width * .1rem;
+		&:nth-child(#{$col}n + 1) {
+			margin-left: 0;
+		}
+	}
+}
+// flexリスト　PC、SPとも列あり
+@mixin listFlexPcSp($col, $ml, $col_sp, $ml_sp) {
+	display: -webkit-box;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap : wrap;
+	> * {
+		margin-left: $ml * 1%;
+		width: ((100 - (($col - 1) * $ml)) / $col) * 1%;
+		@include pc {
+			&:nth-child(#{$col}n + 1) {
+				margin-left: 0;
+			}
+		}
+		@include sp {
+			margin-left: $ml_sp * 1%;
+			width: ((100 - (($col_sp - 1) * $ml_sp)) / $col_sp) * 1%;
+			&:nth-child(#{$col_sp}n + 1) {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+// WordPress 同意チェックボックス（リンク文字がラベルにある場合の対応）
+// <label>[checkbox* doui "同意する"]<a href="/privacy/">個人情報の取り扱い</a>について同意する</label>
+@mixin wpDoui {
+	// 文字透過＋横幅（チェックボックスと次の文字のスペースになる）
+	.wpcf7-list-item-label {
+		color: transparent;
+		width: 1em;
+		white-space: nowrap;
+		display: inline-block;
+		position: relative;
+	}
+}
+// WordPress 装飾付きチェックボックス
+@mixin wpDecoCheckbox {
+	input {
+		position: absolute;
+		visibility: hidden;
+	}
+	.wpcf7-list-item-label {
+		display: inline-block;
+		position: relative;
+		&:before {
+			content: '';
+			width: 2.3em;
+			height: 2.3em;
+			background: #C9C9C9;
+			left: -2.3em;
+			@include absMiddle;
+			border-radius: .3em;
+		}
+		&:after {
+			content: '';
+			border-right: .35em solid #fff;
+			border-bottom: .35em solid #fff;
+			left: -1.55em;
+			position: absolute;
+			top: -.15em;
+			transform:  rotate(45deg);
+			width: .85em;
+			height: 1.4em;
+			opacity: 0;
+		}
+	}
+	input[type=checkbox]:checked + span:after {
+		opacity: 1;
+	}
+}
+
+// WordPress ContactForm
+@mixin wpForm($bgColor: #fff, $comfirmColor: #fff) {
+	div.wpcf7 .ajax-loader {
+		position: absolute;
+		left: 0;
+		background-color: transparent;
+		&:before {
+			content: none;
+		}
+	}
+	.wpcf7-spinner {
+		display: none !important;
+	}
+	span.wpcf7-list-item {
+		margin: 0;
+		display: inline;
+	}
+	.wpcf7c-conf {
+		&:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0px 1000px $comfirmColor inset;
+		}
+	}
+	input:-webkit-autofill, select:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0px 1000px $bgColor inset;
+	}
+	input[readonly], textarea[readonly], select[readonly] {
+		border: none !important;
+		background: $comfirmColor;
+	}
+}
+// 定義済みフォームコントロールの背景
+@mixin form($bgColor: #fff, $comfirmColor: #fff) {
+	input:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0px 1000px $bgColor inset;
+	}
+}
+// フォームコントロールの装飾
+@mixin controls {
+	input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+		@content;
+	}
+}
+// WordPress ContactForm エラーメッセー ジ（3項目Tel用）
+@mixin wpNotValid {
+	span.wpcf7-not-valid-tip {
+		position: absolute;
+		bottom: -3em;
+		white-space: nowrap;
+	}
+}
+// placeholderの文字色を設定
+@mixin placeholder($color) {
+	&::placeholder {
+		color: $color;
+	}
+	// IE
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+	// Edge
+	&::-ms-input-placeholder {
+		color: $color;
+	}
+}
+// placeholderの色とサイズを設定
+@mixin placeholdersize($color, $size) {
+	&::placeholder {
+		color: $color;
+		font-size: $size;
+	}
+	// IE
+	&:-ms-input-placeholder {
+		color: $color;
+		font-size: $size;
+	}
+	// Edge
+	&::-ms-input-placeholder {
+		color: $color;
+		font-size: $size;
+	}
+}
+// スクロールバーの装飾
+@mixin scrollbar($active: #e5e5e5, $base: #fff, $size: .5rem) {
+	::-webkit-scrollbar{
+		width: $size;
+		height: $size;
+	}
+	::-webkit-scrollbar-track{
+		background: $base;
+	}
+	::-webkit-scrollbar-thumb{
+		background: $active;
+	}
+}
+// select のデフォルト値をリセット
+@mixin select {
+	select {
+		outline: none;
+		text-indent: 0.01px;
+		text-overflow: '';
+		background: none transparent;
+		-webkit-appearance: button;
+		-moz-appearance: button;
+		appearance: button;
+		option {
+			background-color: #fff;
+		}
+		&::-ms-expand {
+			display: none;
+		}
+		&:-moz-focusring { 
+			color: transparent; 
+			text-shadow: 0 0 0 #828c9a;
+		}
+	}
+}
+// シャドウ
+@mixin shadow {
+	box-shadow: 0 2px 3px 0 rgba(78, 78, 78, 0.1);
+}
+// シャドウ2
+@mixin shadow2 {
+	box-shadow: 2px 2px 1px 0 rgba(78, 78, 78, 0.1);
+}
+// マーカー
+@mixin marker($color: #ffff66, $size: 60%) {
+	background: linear-gradient(transparent $size, $color $size);
+}
+// 太文字1
+@mixin boldText1($color: #000) {
+	text-shadow: $color 1px 1px 0;
+}
+// 太文字2
+@mixin boldText2($color: #000) {
+	text-shadow: 
+		$color 1px 1px 0, $color -1px -1px 0,
+		$color -1px 1px 0, $color 1px -1px 0,
+		$color 0px 1px 0, $color 0 -1px 0,
+		$color -1px 0 0, $color 1px 0 0;
+}
+// mapやyoutubeなど
+@mixin iframe($paddingTop: 500px) {
+	position: relative;
+	height: 0;
+	padding-top: $paddingTop;
+	overflow: hidden;
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+// video
+@mixin video($paddingTop: 500px) {
+	position: relative;
+	height: 0;
+	padding-top: $paddingTop;
+	overflow: hidden;
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		filter: drop-shadow(0px 0px rgba(0,0,0,0));
+	}
+}
+// iframe 全画面（余白なしのカバー状態）
+@mixin iframeCover($w: 16, $h: 9) {
+	position: relative;
+	.embed {
+		bottom: 0;
+		left: 0;
+		overflow: hidden;
+		position: absolute;
+		right: 0;
+		top: 0;
+		@content;
+	}
+	iframe {
+		position: absolute;
+		height: $h / $w * 100vw;
+		left: 50%;
+		min-height: 100%;
+		min-width: 100%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: $w / $h * 100vh;
+	}
+}
+// video 表示領域内中央（スクリプト込み）※iframeでも有効 videoの場合は、object-fitでいけるみたい
+// padding-topはいらないかも！
+@mixin videoCover($paddingTop: 500px) {
+	position: relative;
+	padding-top: $paddingTop;
+	overflow: hidden;
+	video {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+}
+// video 全画面
+@mixin videoFull {
+	position: relative;
+	video {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+// iframe 全画面（余白ありの、表示領域内に切れずに収まる。背景色必須）
+@mixin iframeFull($paddingTop: 100vh) {
+	position: relative;
+	overflow: hidden;
+	padding-top: $paddingTop;
+	iframe {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+}
+// 文字列を省略（単数行）
+@mixin ellipsis1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+// 文字列を省略（複数行対応）
+@mixin ellipsis($color: #fff) {
+	overflow: hidden;
+	position: relative;
+	text-align: justify;
+	&:before,
+	&:after {
+		background: $color;
+		position: absolute;
+	}
+	&:before {
+		content: '...';
+		bottom: 0;
+		right: 0;
+		width: 1em;
+	}
+	&:after {
+		content: '';
+		height: 100%;
+		width: 100%;
+	}
+}
+// 縦文字
+@mixin vText {
+	-webkit-writing-mode: vertical-rl;
+	-ms-writing-mode: tb-rl;
+	writing-mode: vertical-rl;
+}
+// 縦方向グラデーション
+@mixin gradeV($start: #000, $end: #fff) {
+	background : -moz-linear-gradient(50% 0% -90deg, $start 0%, $end 100%);
+	background : -webkit-linear-gradient(-90deg, $start 0%, $end 100%);
+	background : -webkit-gradient(linear,50% 0% ,50% 100% ,color-stop(0, $start),color-stop(1, $end));
+	background : linear-gradient(180deg, $start 0%, $end 100%);
+}
+// 横方向グラデーション
+@mixin gradeH($start: #000, $end: #fff) {
+	background : -moz-linear-gradient(0% 50% 0deg, $start 0%, $end 100%);
+	background : -webkit-linear-gradient(0deg, $start 0%, $end 100%);
+	background : -webkit-gradient(linear,0% 50% ,100% 50% ,color-stop(0, $start),color-stop(1, $end));
+	background : linear-gradient(90deg, $start 0%, $end 100%);
+}
+// ①などのまるもじ
+@mixin circleText($size: 2, $bg: #000, $color: #fff) {
+	width: $size * 1em;
+	height: $size * 1em;
+	border-radius: 500%;
+	line-height: $size;
+	background: $bg;
+	color: $color;
+	text-align: center;
+	letter-spacing: 0;
+}
+
+
+// Round (四捨五入)
+@function round2 ($number, $digits: 0) {
+	@return to-fixed($number, $digits, 'round');
+}
+
+// Ceil (切り上げ)
+@function ceil2 ($number, $digits: 0) {
+	@return to-fixed($number, $digits, 'ceil');
+}
+
+// Floor (切り捨て)
+@function floor2 ($number, $digits: 0) {
+	@return to-fixed($number, $digits, 'floor');
+}
+
+@function to-fixed ($number, $digits: 0, $round: 'round') {
+	$n: 1;
+	// $number must be a number
+	@if type-of($number) != number {
+		@warn '#{ $number } is not a number.';
+		@return $number;
+	}
+	// $digits must be a unitless number
+	@if type-of($digits) != number {
+		@warn '#{ $digits } is not a number.';
+		@return $number;
+	} @else if not unitless($digits) {
+		@warn '#{ $digits } has a unit.';
+		@return $number;
+	}
+	@for $i from 1 through $digits {
+		$n: $n * 10;
+	}
+	@if $round == 'round' {
+		@return round($number * $n) / $n;
+	} @else if $round == 'ceil' {
+		@return ceil($number * $n) / $n;
+	} @else if $round == 'floor' {
+		@return floor($number * $n) / $n;
+	} @else {
+		@warn '#{ $round } is undefined keyword.';
+		@return $number;
+	}
+}

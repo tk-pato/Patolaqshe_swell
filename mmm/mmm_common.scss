@@ -1,0 +1,122 @@
+/*--------------------------------------------------------------
+Component
+--------------------------------------------------------------*/
+.evt {
+	visibility: hidden;
+}
+
+.c_anchor {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	margin-top: $pc_top * -1rem;
+	@include sp {
+		margin-top: $sp_top * -1rem;
+	}
+}
+
+
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+.c_txt {
+	p {
+		font-size: 2.2rem * $pc;
+		line-height: 1.81;
+		@include sp {
+			font-size: 2.8rem;
+			br {
+				display: none;
+			}
+		}
+		+ p {
+			margin-top: 2em;
+		}
+	}
+}
+
+.c_btn {
+	text-align: center;
+	a {
+		text-align: center;
+		display: inline-block;
+		border: solid 1px $pink;
+		color: $pink;
+		width: 62.2rem * $pc;
+		font-size: 2.3rem * $pc;
+		line-height: 10.4rem * $pc;
+		letter-spacing: .04em;
+		max-width: 100%;
+		&:hover {
+			opacity: 1;
+			background: $pink;
+			color: #fff;
+		}
+		@include sp {
+			font-size: 3.6rem;
+			line-height: 13.7rem;
+			width: 100%;
+		}
+	}
+}
+.c_btn2 {
+	text-align: center;
+	a {
+		display: inline-block;
+		border: solid 1px #B09280;
+		color: #fff;
+		width: 62.2rem * $pc;
+		line-height: 10.4rem * $pc;
+		max-width: 100%;
+		font-size: 2.7rem * $pc;
+		background: #B09280;
+		&.b {
+			background: #fff;
+			color: $brown;
+			border: none;
+			&:hover {
+				color: #fff;
+				background: #B09280;
+			}
+		}
+		&:hover {
+			opacity: 1;
+			background: #fff;
+			color: #B09280;
+		}
+		@include sp {
+			font-size: 3.2rem;
+			line-height: 12.1rem;
+			width: 100%;
+		}
+	}
+}

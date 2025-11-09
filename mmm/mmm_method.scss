@@ -1,0 +1,407 @@
+.method_lead {
+	.care {
+		@include pc {
+			width: 96rem * $pc;
+			margin: 4.5rem * $pc auto 19.5rem * $pc;
+			display: flex;
+			justify-content: space-between;
+			figure {
+				width: 39rem * $pc;
+			}
+		}
+		@include sp {
+			width: 48.8rem;
+			margin: 10rem auto 15rem;
+			text-align: center;
+		}
+	}
+	.cross {
+		width: 10.2rem * $pc;
+		@include sp {
+			width: 12.7rem;
+			margin: 4rem 0;
+		}
+	}
+	.recom {
+		text-align: center;
+		margin-bottom: 15rem * $pc;
+		@include sp {
+			margin-bottom: 15rem;
+		}
+		p {
+			display: inline-block;
+			font-size: 5rem * $pc;
+			margin-bottom: 6rem * $pc;
+			position: relative;
+			@include sp {
+				font-size: 5rem;
+				margin-bottom: 6rem;
+			}
+			&:before, &:after {
+				content: '';
+				height: 1.1em;
+				border-left: solid 1px $pink;
+				position: absolute;
+				margin-top: .4em;
+			}
+			&:before {
+				transform: rotate(-30deg);
+				margin-left: -.7em;
+			}
+			&:after {
+				transform: rotate(30deg);
+				margin-left: .5em;
+			}
+		}
+		ul {
+			background: #efe8e3;
+			border-radius: 3rem * $pc;
+			padding: 6rem * $pc 4.3rem * $pc;
+			@include sp {
+				border-radius: 3rem;
+				padding: 6rem 4.3rem;
+			}
+		}
+		li {
+			background: url(../img/ico_check.svg) no-repeat .8em center / .741em;
+			border-bottom: dashed 1px $pink;
+			font-size: 3.1rem * $pc;
+			line-height: 7.8rem * $pc;
+			text-align: left;
+			padding-left: 2.7em;
+			@include sp {
+				font-size: 3.1rem;
+				line-height: 7.8rem;
+			}
+			&:nth-child(1) {
+				border-top: dashed 1px $pink;
+			}
+		}
+		@include pc {
+			width: 64.8rem * $pc;
+			margin: 0 auto 25rem * $pc;
+		}
+	}
+}
+
+.method_strong {
+	margin-bottom: 32rem * $pc;
+	@include sp {
+		margin-bottom: 32rem;
+	}
+	.ttl {
+		text-align: center;
+		color: $pink;
+		line-height: 1;
+		font-size: 6.5rem * $pc;
+		margin-bottom: 10rem * $pc;
+		@include sp {
+			font-size: 6.5rem;
+			margin-bottom: 10rem;
+		}
+	}
+	.lead {
+		margin: 0 auto 8rem * $pc;
+		@include sp {
+			margin: 0 auto 8rem;
+		}
+		p {
+			letter-spacing: .075em;
+		}
+		@include pc {
+			width: 94rem * $pc;
+		}
+	}
+	p, dd {
+		font-size: 2.2rem * $pc;
+		line-height: 1.81;
+		letter-spacing: .11em;
+		em {
+			background: linear-gradient(transparent 10%, #eedde3 10%);
+		}
+		@include sp {
+			font-size: 2.8rem;
+		}
+		+ p {
+			margin-top: 2em;
+		}
+	}
+	.ttl2 {
+		position: relative;
+		font-size: 5.2rem;
+		text-align: center;
+		color: $pink;
+		margin: 11rem 0 6rem;
+		@include pc {
+			font-size: 4.5rem * $pc;
+			margin: 11rem * $pc 0 6rem * $pc;
+			&:before, &:after {
+				content: '';
+				height: 1em;
+				border-left: solid 1px $pink;
+				position: absolute;
+				margin-top: .4em;
+			}
+			&:before {
+				margin-left: -.4em;
+			}
+			&:after {
+				margin-left: .3em;
+			}
+		}
+	}
+	.app {
+		text-align: center;
+		font-size: 2.7rem * $pc;
+		margin-bottom: 7.5rem * $pc;
+		line-height: 1.85;
+		@include sp {
+			font-size: 2.7rem;
+			margin-bottom: 7.5rem;
+		}
+	}
+	.envi {
+		margin: 0 4rem * $pc 3rem * $pc;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		@include sp {
+			margin: 0 4rem 3rem;
+		}
+		dt, dd {
+			margin-bottom: 6rem * $pc;
+			@include sp {
+				margin-bottom: 6rem;
+			}
+		}
+		dt {
+			font-size: 2.7rem * $pc;
+			width: 23rem * $pc;
+			color: $pink;
+			text-align: center;
+			border-left: solid 1px $pink;
+			border-right: solid 1px $pink;
+			@include flexCenter;
+			@include sp {
+				width: 17rem;
+				font-size: 2.7rem;
+			}
+		}
+		dd {
+			font-size: 2.2rem * $pc;
+			line-height: 1.81;
+			width: 73rem * $pc;
+			@include sp {
+				font-size: 2.8rem;
+				width: calc(100% - 20rem);
+			}
+		}
+	}
+	.img2 {
+		margin-bottom: 18rem * $pc;
+		text-align: center;
+		@include sp {
+			margin-bottom: 18rem;
+		}
+		img {
+			width: 83.8rem * $pc;
+			@include sp {
+				width: 100%;
+			}
+		}
+	}
+	.img3 {
+		text-align: center;
+		margin: 7rem 0;
+		img {
+			width: 76.6rem;
+			@include sp {
+				width: 51.7rem;
+			}
+		}
+	}
+	.ttl3 {
+		font-size: 5rem * $pc;
+		text-align: center;
+		margin-bottom: 9rem * $pc;
+		@include sp {
+			margin-bottom: 9rem;
+			font-size: 5rem;
+		}
+		img {
+			display: block;
+			margin: 0 auto .8em;
+			width: 28.9rem * $pc;
+			@include sp {
+				width: 28.9rem;
+			}
+		}
+		em {
+			background: linear-gradient(transparent 70%, #eedde3 70%);
+		}
+	}
+	.ttl4 {
+		text-align: center;
+		font-size: 2.8rem * $pc;
+		letter-spacing: .05em;
+		margin-bottom: 4rem * $pc;
+		@include sp {
+			font-size: 2.8rem;
+			margin-bottom: 4rem;
+		}
+		span {
+			border-bottom: solid .5px $black;
+			padding-bottom: .35em;
+			display: inline-block;
+		}
+	}
+	.img {
+		display: flex;
+		gap: 1.9rem * $pc;
+		margin: 3rem * $pc 0 5.5rem * $pc;
+		img {
+			width: calc(33.33% - #{(1.266rem * $pc)});
+		}
+		@include sp {
+			gap: 1.9rem;
+			margin: 1.9rem $sp_margin * -1 5.5rem;
+			img {
+				width: calc(33.33% - 1.266rem);
+			}
+		}
+	}
+	li {
+		margin-bottom: 23rem * $pc;
+		@include sp {
+			margin-bottom: 23rem;
+		}
+		figure {
+			@include sp {
+				margin: 0 $sp_margin * -1;
+			}
+			+ p {
+				margin-top: 9rem * $pc;
+				&.b {
+					margin: 6rem * $pc 0 8rem * $pc;
+				}
+				@include sp {
+					margin-top: 9rem;
+					&.b {
+						margin: 6rem 0 8rem;
+					}
+				}
+			}
+		}
+		li {
+			margin-bottom: 6.8rem * $pc;
+			@include sp {
+				margin-bottom: 6.8rem;
+				figure {
+					margin: 0 auto 6rem;
+				}
+			}
+			@include pc {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				figure {
+					width: 43rem * $pc;
+				}
+				dl {
+					width: 43rem * $pc;
+				}
+			}
+		}
+	}
+	.list {
+		@include pc {
+			width: 94rem * $pc;
+			margin: 0 auto 25.7rem * $pc;
+		}
+	}
+}
+
+
+.c_trial {
+	position: relative;
+	color: $pink;
+	img {
+		width: 100%;
+	}
+	.box {
+		position: absolute;
+		top: 58%;
+		transform: translateY(-50%);
+		left: calc(50% - #{(55rem * $pc)});
+		@include sp {
+			left: 8rem;
+		}
+	}
+	.box {
+		text-align: center;
+		@include sp {
+		}
+	}
+	p {
+		font-size: 3.6rem * $pc;
+		letter-spacing: .115em;
+		line-height: 1.27;
+		margin-bottom: 2rem * $pc;
+		@include sp {
+			margin-bottom: 5.5rem;
+			font-size: 3.6rem;
+			margin-bottom: 2rem;
+		}
+	}
+	.btn {
+		i {
+			font-size: 1.6rem * $pc;
+			letter-spacing: .1em;
+			position: relative;
+			display: inline-block;
+			padding-bottom: .2em;
+			@include sp {
+				font-size: 2.4rem;
+			}
+			&:before {
+				content: '';
+				@include absCenter;
+				bottom: 0;
+				width: calc(100% + 1.5em);
+				border-bottom: solid 1px $pink;
+			}
+		}
+	}
+}
+
+.method_salon {
+	.c_salon {
+		margin-top: 23rem * $pc;
+		@include sp {
+			margin-top: 23rem;
+		}
+	}
+	.salon_list {
+		margin-top: 16.6rem * $pc;
+		@include sp {
+			margin-top: 16.6rem;
+		}
+		dt {
+			&.b {
+				margin-top: 1.5rem * $pc;
+				@include sp {
+					margin-top: 1.5rem;
+				}
+			}
+		}
+		dd {
+			&.b {
+				margin-top: 1.5rem * $pc;
+				margin-bottom: 0;
+				@include sp {
+					margin-top: 1.5rem;
+				}
+			}
+		}
+	}
+}

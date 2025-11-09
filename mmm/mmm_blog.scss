@@ -1,0 +1,162 @@
+@include sp {
+}
+
+.blog_ttl {
+	font-size: 2.6rem;
+	font-weight: bold;
+	letter-spacing: .05em;
+	@include sp {
+		font-size: 3.4rem;
+		margin-bottom: .6em;
+	}
+}
+.blog_sub {
+	font-size: 1.4rem;
+	border-bottom: solid 1px $brown;
+	padding-bottom: 1em;
+	margin-bottom: 2em;
+	i {
+		color: $pink;
+		margin-left: 1em;
+	}
+	@include sp {
+		font-size: 2.8rem;
+	}
+}
+
+.blog_body {
+	font-size: 1.6rem;
+	line-height: 1.75;
+	margin-bottom: 8rem;
+	@include sp {
+		font-size: 2.8rem;
+	}
+	p {
+		margin: 2em 0;
+		line-height: 1.75;
+	}
+	img {
+		display: block;
+		margin-bottom: 2em;
+	}
+}
+
+.c_pager {
+	display: flex;
+	justify-content: space-between;
+	a {
+		display: block;
+		background: url(../img/ico_arrow06.svg) no-repeat left center / .388em;
+		font-size: 1.8rem;
+		padding: 0 1.3em;
+		letter-spacing: .195em;
+		color: $brown;
+		@include sp {
+			font-size: 2.8rem;
+		}
+	}
+	.next {
+		background-image: url(../img/ico_arrow07.svg);
+		background-position: right center;
+	}
+}
+
+.blog_ttl2 {
+	color: $brown;
+	font-size: 2.4rem;
+	letter-spacing: .195em;
+	border-bottom: solid 1px $brown;
+	margin-bottom: 2.5rem;
+	@include sp {
+		font-size: 3.2rem;
+		margin-bottom: 3.5rem;
+	}
+}
+
+.blog_sec {
+	@include pc {
+		display: flex;
+		justify-content: space-between;
+		> * {
+			width: 40.3rem;
+		}
+	}
+	@include sp {
+		> * + * {
+			margin-top: 10rem;
+		}
+	}
+}
+
+.blog_nav {
+	margin: 20rem 0  10rem;
+	ul {
+		margin-left: 2rem;
+	}
+	li {
+		font-size: 1.4rem;
+		letter-spacing: .195em;
+		margin-bottom: .8em;
+		@include sp {
+			font-size: 2.8rem;
+		}
+	}
+}
+
+.blog_article {
+	li {
+		+ li {
+			margin-top: 2.5rem;
+		}
+		a {
+			display: flex;
+			justify-content: space-between;
+		}
+		figure {
+			width: 11.8rem;
+			img {
+				width: 100%;
+			}
+			@include sp {
+				width: 17rem;
+			}
+		}
+		p {
+			width: calc(100% - 13rem);
+			font-size: 1.4rem;
+			font-weight: bold;
+			letter-spacing: .05em;
+			line-height: 1.36;
+			@include sp {
+				width: calc(100% - 19rem);
+				font-size: 2.8rem;
+			}
+		}
+		small {
+			display: block;
+			color: $pink;
+			font-weight: normal;
+			margin-top: .5em;
+			letter-spacing: 0;
+		}
+	}
+}
+
+
+
+.blog_list {
+	@include pc {
+		ul {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 2.5rem 0;
+		}
+		li {
+			width: 40.3rem;
+			+ li {
+				margin-top: 0;
+			}
+		}
+	}
+}

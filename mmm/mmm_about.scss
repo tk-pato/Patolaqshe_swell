@@ -1,0 +1,513 @@
+.about_lead {
+	margin-bottom: 18rem * $pc;
+	@include sp {
+		margin-bottom: 18rem;
+	}
+	.row {
+		margin-top: 11rem;
+		@include pc {
+			display: flex;
+			flex-flow: row-reverse;
+			justify-content: space-between;
+			figure {
+				width: 26.8rem * $pc;
+			}
+			.c_txt {
+				width: 72.5rem * $pc;
+			}
+		}
+	}
+	@include sp {
+		figure {
+			width: 32rem;
+			margin: 16rem auto 0;
+			img {
+				width: 100%;
+			}
+		}
+	}
+	figcaption {
+		text-align: center;
+		font-size: 2.5rem * $pc;
+		margin-top: 3.5rem * $pc;
+		letter-spacing: .05em;
+		@include sp {
+			font-size: 3rem;
+			margin-top: 3.5rem;
+		}
+		small {
+			display: block;
+			font-size: 1.7rem * $pc;
+			letter-spacing: .05em;
+			@include sp {
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+.about_reason {
+	margin-bottom: 36rem * $pc;
+	@include sp {
+		margin-bottom: 15rem;
+	}
+	.ttl {
+		text-align: center;
+		font-size: 5.2rem * $pc;
+		white-space: nowrap;
+		margin-bottom: 10rem * $pc;
+		@include sp {
+			font-size: 5.2rem;
+			margin-bottom: 10rem;
+		}
+		span {
+			display: inline-block;
+			border-bottom: solid 1.4rem #e0bdd7;
+			padding-bottom: .3em;
+		}
+	}
+	
+	.ttl2 {
+		text-align: center;
+		font-size: 5rem * $pc;
+		margin-bottom: 10rem * $pc;
+		line-height: 1;
+		@include sp {
+			font-size: 5rem;
+			margin-bottom: 10rem;
+		}
+		&.b {
+			small {
+				margin-top: 2rem * $pc;
+				@include sp {
+					margin-top: 2rem;
+				}
+			}
+		}
+		* {
+			line-height: inherit;
+		}
+		small {
+			font-size: 3.6rem * $pc;
+			display: block;
+			margin: 0 0 3rem * $pc;
+			@include sp {
+				font-size: 3.6rem;
+				margin: 0 0 3rem;
+			}
+		}
+		img {
+			width: 28.9rem * $pc;
+			display: block;
+			margin: 0 auto 7rem * $pc;
+			@include sp {
+				width: 28.9rem;
+				margin: 0 auto 7rem;
+			}
+		}
+		em {
+			background: linear-gradient(transparent 70%, #eedde3 70%);
+		}
+	}
+	.img1 {
+		margin-top: -4rem * $pc;
+		@include sp {
+			margin-top: -4rem;
+		}
+	}
+	.img2 {
+		text-align: center;
+		img {
+			width: 94rem * $pc;
+			@include sp {
+				width: 94rem;
+			}
+		}
+	}
+	.img4 {
+		@include sp {
+			text-align: center;
+			img {
+				width: 51rem;
+			}
+		}
+	}
+	.c_btn2 {
+		margin-top: 10rem * $pc;
+		@include sp {
+			margin-top: 10rem;
+		}
+	}
+	.c_txt {
+		margin: 9rem auto 0;
+		@include pc {
+			width: 89rem * $pc;
+			margin: 9rem * $pc auto 0;
+		}
+	}
+	.list {
+		> li {
+			+ li {
+				margin-top: 20rem * $pc;
+				@include sp {
+					margin-top: 20rem;
+				}
+			}
+		}
+	}
+	.flow_list {
+		margin-top: 12rem * $pc;
+		@include sp {
+			margin-top: 12rem;
+		}
+		dt {
+			img {
+				width: 13.6rem * $pc;
+				@include sp {
+					width: 15rem;
+				}
+			}
+		}
+	}
+
+	.point {
+		position: relative;
+		padding: 10rem * $pc 0 9rem * $pc;
+		margin: 20.5rem * $pc auto 17rem * $pc;
+		text-align: center;
+		@include sp {
+			padding: 10rem 0 9rem;
+			margin: 20.5rem auto 17rem;
+		}
+		&:before {
+			content: '';
+			@include absCenter;
+			background: #f9f2f7;
+			width: 100vw;
+			height: 100%;
+			top: 0;
+			z-index: -1;
+		}
+		dt {
+			padding: 0 1.5em;
+			margin-bottom: 5rem;
+			position: relative;
+			overflow: hidden;
+			@include sp {
+				margin-bottom: 5rem * $pc;
+			}
+			&:before, &:after {
+				content: '';
+				border-bottom: solid 1px $pink;
+				width: 100%;
+				position: absolute;
+				top: .9em;
+			}
+			&:before {
+				transform: translateX(-100%);
+				margin-left: -.6em;
+			}
+			&:after {
+				margin-left: .6em;
+			}
+			img {
+				width: 32.4rem * $pc;
+				@include sp {
+					width: 32.4rem;
+				}
+			}
+		}
+		dd {
+			font-size: 2.4rem * $pc;
+			line-height: 2;
+			@include sp {
+				text-align: left;
+				font-size: 2.8rem;
+				br {
+					display: none;
+				}
+			}
+		}
+		@include pc {
+			width: 75.5rem * $pc;
+		}
+	}
+	
+	.catch {
+		text-align: center;
+		margin-bottom: 4rem * $pc;
+		@include sp {
+			margin-bottom: 4rem;
+		}
+		img {
+			width: 79.4rem * $pc;
+			@include sp {
+				width: 79.4rem;
+			}
+		}
+	}
+	.img3 {
+		text-align: center;
+		margin-bottom: 6rem * $pc;
+		@include sp {
+			margin-bottom: 6rem;
+		}
+		img {
+			width: 74.3rem * $pc;
+			position: relative;
+			left: 6rem * $pc;
+			@include sp {
+				margin-bottom: 6rem;
+				width: 74.3rem;
+				left: 6rem;
+			}
+		}
+	}
+	.txt1 {
+		font-size: 4.7rem * $pc;
+		margin-bottom: 4rem * $pc;
+		line-height: 1.2;
+		@include sp {
+			font-size: 4.7rem;
+			margin-bottom: 4rem;
+		}
+		small {
+			display: block;
+			font-size: .617em;
+		}
+		em {
+			color: $brown;
+			border-bottom: solid .17rem $brown;
+		}
+	}
+	.txt2 {
+		font-size: 3.2rem * $pc;
+		line-height: 1.2;
+		margin-bottom: 4rem * $pc;
+		@include sp {
+			font-size: 3.2rem;
+			margin-bottom: 4rem;
+		}
+	}
+	.txt3 {
+		font-size: 5rem * $pc;
+		line-height: 1.1;
+		color: $brown;
+		margin-bottom: 7rem * $pc;
+		@include sp {
+			font-size: 5rem;
+			margin-bottom: 7rem;
+		}
+	}
+	.box {
+		text-align: center; 
+		@include pc {
+			width: 94rem * $pc;
+			margin: 0 auto;
+		}
+		@include sp {
+			figure {
+				margin: 0 $sp_margin * -1;
+			}
+		}
+	}
+	.jmb {
+		background: #f7f4f2;
+		margin-top: 14.5rem * $pc;
+		padding: 7.5rem * $pc 7rem * $pc 10rem * $pc;
+		@include sp {
+			margin-top:  4.5rem;
+			padding: 7.5rem 4.8rem;
+		}
+		dt {
+			border-bottom: solid .5px $black;
+			padding-bottom: .3em;
+			margin-bottom: 8rem * $pc;
+			font-size: 4rem * $pc;
+			@include sp {
+				margin-bottom: 8rem;
+				font-size: 4rem;
+			}
+		}
+		dd {
+			font-size: 2.4rem * $pc;
+			letter-spacing: .1em;
+			@include sp {
+				font-size: 2.8rem;
+				padding: 0 1rem;
+				white-space: nowrap;
+			}
+			@include pc {
+				width: 49.5rem * $pc;
+				margin: 0 auto;
+			}
+			p {
+				text-align: right;
+			}
+		}
+		li {
+			text-align: left;
+			margin-bottom: 2em;
+			@include sp {
+				margin-bottom: 1em;
+			}
+		}
+		figure {
+			margin-top: 5rem * $pc;
+			@include sp {
+				margin-top: 5rem * $pc;
+			}
+			img {
+				width: 14.4rem;
+				@include sp {
+					width: 14.4rem;
+				}
+			}
+		}
+	}
+}
+
+.about_voice {
+	margin-bottom: 19rem * $pc;
+	@include sp {
+		margin-bottom: 19rem;
+	}
+	.ttl {
+		text-align: center;
+		color: $pink;
+		font-size: 5rem * $pc;
+		margin-bottom: 11rem * $pc;
+		@include sp {
+			margin-bottom: 8rem;
+			font-size: 5rem;
+		}
+	}
+	
+	ul {
+		margin: 0 auto 5rem;
+		@include pc {
+			margin: 0 auto 5rem * $pc;
+			width: 94rem * $pc;
+		}
+	}
+	
+	.name {
+		font-size: 2.6rem * $pc;
+		text-align: center;
+		margin: 9.5rem* $pc 0 4.5rem* $pc;
+		letter-spacing: .135em;
+		@include sp {
+			font-size: 3rem;
+			margin: 9.5rem 0 4.5rem;
+		}
+	}
+	
+	p {
+		font-size: 2.4rem * $pc;
+		line-height: 1.75;
+		@include sp {
+			font-size: 2.8rem;
+			line-height: 1.81;
+		}
+	}
+	small {
+		font-size: 1.6rem * $pc;
+		margin-top: 5rem * $pc;
+		display: block;
+		line-height: 1.81;
+		@include sp {
+			font-size: 2.2rem;
+			margin-top: 5rem;
+		}
+	}
+	
+	.img {
+		@include sp {
+			width: 45rem;
+			margin: 0 auto;
+		}
+		figure {
+			position: relative;
+			&:after {
+				content: '';
+				position: absolute;
+				background: url(../img/ico_before.svg) no-repeat left top / contain;
+				width: 13.7rem * $pc;
+				height: 100%;
+				top: 0;
+				@include sp {
+					width: 13.7rem;
+				}
+			}
+			+ figure {
+				&:after {
+					background-image: url(../img/ico_after.svg);
+				}
+				@include sp {
+					margin-top: 3.5rem;
+					&:before {
+						content: '';
+						position: absolute;
+						background: url(../img/ico_arrow_05.svg) no-repeat 50% / contain;
+						width: 100%;
+						height: 7.5rem;
+						top: -3.5rem;
+					}
+				}
+			}
+		}
+		@include pc {
+			display: flex;
+			justify-content: space-between;
+			figure {
+				width: 45.2rem * $pc;
+				+ figure {
+					&:before {
+						content: '';
+						position: absolute;
+						background: url(../img/ico_arrow_03.svg) no-repeat 50% / contain;
+						height: 100%;
+						width: 5.3rem * $pc;
+						top: 0;
+						left: -3.6rem * $pc;
+					}
+				}
+			}
+		}
+	}
+	
+	.slick-arrow {
+		position: absolute;
+		z-index: 2;
+		height: 42.7rem * $pc;
+		width: 1.8rem * $pc;
+		top: 0;
+		border: none;
+		color: transparent;
+		cursor: pointer;
+		@include sp {
+			height: 89rem;
+			width: 1.8rem;
+		}
+		&:active,
+		&:focus {
+			outline: 0;
+		}
+	}
+
+	.slick-prev {
+		background: url(../img/ico_arrow_01.svg) no-repeat 50% / contain;
+		left: -8rem * $pc;
+		@include sp {
+			left: 0;
+		}
+	}
+
+	.slick-next {
+		background: url(../img/ico_arrow_02.svg) no-repeat 50% / contain;
+		right: -8rem * $pc;
+		@include sp {
+			right: 0;
+		}
+	}
+}

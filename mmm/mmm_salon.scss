@@ -1,0 +1,326 @@
+.salon_mv {
+	margin-bottom: 11rem * $pc;
+	@include sp {
+		margin-bottom: 11rem;
+	}
+	img {
+		width: 100%;
+	}
+}
+
+.map {
+	filter:grayscale(100%);
+}
+
+.salon_lead {
+	margin-bottom: 18rem * $pc;
+	@include sp {
+		margin-bottom: 15rem;
+	}
+	.low_path {
+		margin-top: -6.5rem;
+		@include sp {
+			margin-top: -9rem;
+		}
+	}
+	.ttl {
+		text-align: center;
+		font-size: 3.4rem * $pc;
+		letter-spacing: .08em;
+		margin-bottom: 8rem * $pc;
+		@include sp {
+			font-size: 3.4rem;
+			margin-bottom: 8rem;
+		}
+	}
+	.name {
+		font-size: 2.7rem * $pc;
+		letter-spacing: .2em;
+		border-top: solid 1px $pink;
+		padding: .7em 0 .5em;
+		border-bottom: solid 1px $pink;
+		@include pc {
+			margin-bottom: 5.5rem * $pc;
+		}
+		@include sp {
+			font-size: 3.6rem;
+		}
+	}
+	.salon_list {
+		margin-bottom: 10rem * $pc;
+		.line {
+			margin-top: 4.5rem * $pc;
+			@include sp {
+				margin-top: 4.5rem;
+			}
+		}
+		@include sp {
+			margin-bottom: 12rem;
+			dl {
+				margin-top: 3.5rem;
+			}
+		}
+	}
+	.map {
+		@include iframe(43rem * $pc);
+		margin: 0;
+		@include sp {
+			margin-top: 4rem;
+			padding-top: 51rem;
+		}
+	}
+	@include sp {
+		.slide {
+			margin: 0 $sp_margin * -1;
+			li {
+				width: 60rem;
+				margin: 0 1.75rem;
+			}
+			img {
+				width: 100%;
+			}
+		}
+	}
+	@include pc {
+		ul {
+			display: flex;
+			gap: 2.3rem * $pc;
+		}
+		.salon_list {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			.map {
+				width: 52.5rem * $pc;
+			}
+			.desc {
+				width: 52.2rem * $pc;
+			}
+		}
+	}
+}
+
+.salon_staff {
+	background: #f3eeeb;
+	padding: 13rem * $pc 0 11rem * $pc;
+	@include sp {
+		padding: 13rem 0 11rem;
+	}
+	.ttl {
+		text-align: center;
+		color: $pink;
+		font-size: 3.3rem * $pc;
+		letter-spacing: .1em;
+		margin-bottom: 9.5rem * $pc;
+		@include sp {
+			font-size: 3.3rem;
+			margin-bottom: 9.5rem;
+		}
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			height: 1em;
+			border-left: solid 1px $pink;
+			margin-top: .25em;
+			margin-left: -1em;
+		}
+		&:after {
+			margin-left: .7em;
+		}
+	}
+	figure {
+		width: 100%;
+	}
+	dt {
+		text-align: center;
+		font-size: 2.6rem * $pc;
+		letter-spacing: .15em;
+		color: $pink;
+		margin: 3.5rem * $pc 0 ;
+		@include sp {
+			font-size: 3.9rem;
+			margin: 3.5rem 0;
+		}
+	}
+	dd {
+		font-size: 1.95rem * $pc;
+		letter-spacing: .025em;
+		white-space: nowrap;
+		@include sp {
+			font-size: 3.05rem;
+		}
+		+ dd {
+			border-top: solid .5px $black;
+			padding-top: .8em;
+			margin-top: .8em;
+			white-space: normal;
+		}
+	}
+	@include sp {
+		ul {
+			width: 40rem;
+			margin: 0 auto;
+		}
+		li {
+			+ li {
+				margin-top: 14rem;
+			}
+		}
+	}
+	@include pc {
+		ul {
+			width: 88.5rem * $pc;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8.6rem * $pc 6.6rem * $pc;
+		}
+		li {
+			width: calc(33.33% - #{(4.4rem * $pc)});
+		}
+	}
+}
+
+.salon_step {
+	background: #fcf8f9;
+	padding: 20rem * $pc 0 16rem * $pc;
+	text-align: center;
+	@include sp {
+		padding: 20rem 0 16rem;
+	}
+	.ttl {
+		color: $brown;
+		font-size: 5.4rem * $pc;
+		margin-bottom: 13rem * $pc;
+		@include sp {
+			font-size: 5.4rem;
+			margin-bottom: 13rem;
+		}
+		span {
+			display: inline-block;
+			padding-bottom: .55em;
+			border-bottom: dotted .4rem * $pc #d0baac;
+			position: relative;
+			@include sp {
+				border-bottom: dotted .4rem #d0baac;
+			}
+			&:before, &:after {
+				content: '';
+				border-bottom: dotted .4rem * $pc #d0baac;
+				left: 0;
+				width: 100%;
+				position: absolute;
+				bottom: .5rem * $pc;
+				@include sp {
+					border-bottom: dotted .4rem #d0baac;
+					bottom: .5rem;
+				}
+			}
+			&:after {
+				bottom: 1.4rem * $pc;
+				@include sp {
+					bottom: 1.4rem;
+				}
+			}
+		}
+	}
+	li {
+		i {
+			display: block;
+			margin-bottom: 6.5rem * $pc;
+			@include sp {
+				margin-bottom: 6.5rem;
+			}
+		}
+		img {
+			width: 17.7rem * $pc;
+			@include sp {
+				width: 17.7rem;
+			}
+		}
+		+ li {
+			position: relative;
+			margin-top: 18rem * $pc;
+			@include sp {
+				margin-top: 18rem;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				background: url(../img/ico_arrow_04.svg) no-repeat 50% / contain;
+				height: 2.5rem * $pc;
+				left: 0;
+				top: -12rem * $pc;
+				@include sp {
+					height: 2.5rem;
+					top: -12rem;
+				}
+			}
+		}
+		p {
+			font-size: 3rem * $pc;
+			line-height: 1.73;
+			letter-spacing: .1em;
+			@include sp {
+				font-size: 3rem;
+			}
+		}
+		small {
+			display: block;
+			font-size: 2.4rem * $pc;
+			line-height: 1.75;
+			margin-top: 1.8em;
+			@include sp {
+				font-size: 2.4rem;
+			}
+		}
+	}
+	ul {
+		margin-bottom: 10rem * $pc;
+		@include sp {
+			margin-bottom: 10rem;
+		}
+	}
+	.note {
+		color: #b22b35;
+		font-size: 2.4rem * $pc;
+		margin-bottom: 10rem * $pc;
+		@include sp {
+			font-size: 2.4rem;
+			margin-bottom: 10rem;
+		}
+	}
+	.tel {
+		font-size: 3.5rem * $pc;
+		letter-spacing: .025em;
+		letter-spacing: .025em;
+		margin: 9rem 0 4rem * $pc;
+		@include sp {
+			font-size: 3.5rem;
+			margin: 9rem 0 4rem;
+		}
+		em {
+			font-size: 1.571em;
+			color: $pink;
+			letter-spacing: .025em;
+			margin-left: .3em;
+		}
+	}
+	.time {
+		font-size: 1.9rem * $pc;
+		line-height: 1.73;
+		letter-spacing: .075em;
+		@include sp {
+			font-size: 2.1rem;
+		}
+	}
+	.c_btn2 {
+		a {
+			line-height: 1.5;
+			padding: .9em 0 .8em;
+		}
+	}
+	@include sp {
+	}
+}

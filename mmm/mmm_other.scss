@@ -1,0 +1,190 @@
+.c_ttl3 {
+	text-align: center;
+	font-size: 2.6rem;
+	color: $brown;
+	letter-spacing: .135em;
+	margin-bottom: 6rem;
+	@include sp {
+		font-size: 3.6rem;
+	}
+	small {
+		display: block;
+		font-size: .615em;;
+		letter-spacing: .135em;
+		margin-top: .8em;
+	}
+}
+
+.low_sec {
+	@include pc {
+		.u_inner {
+			width: 86.6rem;
+		}
+	}
+}
+
+.recruit_lead {
+	text-align: center;
+	margin-bottom: 14rem;
+	p {
+		font-size: 1.8rem;
+		line-height: 1.722;
+		margin-top: 2em;
+		letter-spacing: .11em;
+		@include sp {
+			font-size: 2.6rem;
+		}
+	}
+	.img {
+		margin-top: 7.5rem;
+		img {
+			width: 100%;
+		}
+		@include pc {
+			display: flex;
+			width: 50%;
+		}
+	}
+}
+
+.recruit_style {
+	background: #f7f3f1;
+	padding: 11rem 0;
+	margin-bottom: 12rem;
+	li {
+		font-size: 1.8rem;
+		line-height: 1.722;
+		border-bottom: solid .5px $black;
+		background: url(../img/ico_star.svg) no-repeat .7em .3em / 1em;
+		margin-bottom: .8em;
+		padding-bottom: .5em;
+		padding-left: 2.5em;
+		@include sp {
+			font-size: 2.6rem;
+		}
+	}
+}
+
+.recruit_info {
+	th {
+		background: $pink;
+		width: 21rem;
+		text-align: left;
+		color: #fff;
+	}
+	td {
+		background: rgba(208, 128, 163, 0.1);
+	}
+	tr > * {
+		font-size: 1.6rem;
+		line-height: 1.625;
+		border-bottom: solid 1px #fff;
+		padding: 1em 1.3em;
+		letter-spacing: .11em;
+		@include sp {
+			font-size: 2.4rem;
+			float: left;
+			width: 100%;
+			border-bottom: none;
+		}
+	}
+	@include pc {
+		table {
+			width: 70rem;
+			margin: 0 auto;
+		}
+	}
+}
+
+.pp_body {
+	font-size: 1.8rem;
+	@include sp {
+		font-size: 2.6rem;
+	}
+	.ttl {
+		font-size: 2.6rem;
+		color: $brown;
+		letter-spacing: .135em;
+		margin: 8rem 0 1em;
+		@include sp {
+			font-size: 3.2rem;
+			margin-left: 1.1em;
+			text-indent: -1.1em;
+		}
+	}
+	p, li {
+		line-height: 1.77;
+	}
+	p {
+		+ p {
+			margin-top: 2em;
+		}
+	}
+	ul {
+		margin: .8em 0 3em;
+	}
+	li {
+		position: relative;
+		margin-left: 1em;
+		text-indent: -1em;
+		&:before {
+			content: '・';
+		}
+	}
+	.right {
+		text-align: right;
+	}
+	@include pc {
+		.u_inner {
+			width: 86.6rem;
+		}
+	}
+}
+
+.faq_body {
+	dt, dd {
+		position: relative;
+		padding-left: 8rem;
+		&:before {
+			content: '';
+			position: absolute;
+			left: 3rem;
+			background: url(../img/ico_q.svg) no-repeat left top / contain;
+			width: 2.6rem;
+			height: 100%;
+			@include sp {
+				width: 3.2rem;
+				left: 2rem;
+			}
+		}
+	}
+	dt {
+		border-bottom: solid .5px $black;
+		font-size: 2.4rem;
+		letter-spacing: .1em;
+		padding-bottom: .6em;
+		margin-bottom: 1em;
+		@include sp {
+			font-size: 3rem;
+		}
+	}
+	dd {
+		font-size: 1.8rem;
+		line-height: 1.77;
+		+ dt {
+			margin-top: 10rem;
+		}
+		&:before {
+			background-image: url(../img/ico_a.svg);
+		}
+		@include sp {
+			font-size: 2.6rem;
+		}
+	}
+	section {
+		margin-bottom: 18rem;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

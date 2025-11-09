@@ -1,0 +1,154 @@
+/*--------------------------------------------------------------
+Foundation
+--------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, i, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, figure, figcaption, 
+button, input, textarea, select, i {
+	border: 0;
+	font-style: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	font-family: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+	line-height: 1.5;
+}
+
+html {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:     100%;
+}
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+}
+body {
+	font-size: 20px;
+	font-size: 2rem;
+	line-height: 1.5;
+	background: #fff;
+	color: #4D4D4D;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif;
+
+}
+ul, li {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+i {
+	//font-style: normal;
+}
+a:hover,
+a:active,
+a:focus {
+	outline: 0;
+}
+a {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+	-webkit-transition: all .2s ease-in;
+	transition: all .2s ease-in;
+  -webkit-transition-property: opacity, color, background, box-shadow, -webkit-transform;
+  transition-property: opacity, color, background, box-shadow, -webkit-transform;
+  transition-property: opacity, color, background, transform, box-shadow;
+  transition-property: opacity, color, background, transform, box-shadow, -webkit-transform;
+	opacity: 1;
+	line-height: inherit;
+}
+img {
+	vertical-align: middle;
+}
+img,
+input[type="image"] {
+	border: 0;
+	height: auto;
+	max-width: 100%;
+}
+input[type="submit"], input[type="button"], button {
+	cursor: pointer;
+	-webkit-appearance: none;
+	border-radius: 0;
+	font-size: inherit;
+	letter-spacing: inherit;
+	background: none;
+}
+strong {
+	font-weight:bold;
+}
+a {
+	text-decoration: none;
+}
+a:hover,
+a:focus,
+a:active {
+	//text-decoration: underline;
+}
+a:hover,
+input[type="image"]:hover {
+	opacity: 0.7;
+}
+p {
+	line-height: inherit;
+	* {
+		line-height: inherit;
+	}
+}
+main {
+	overflow: hidden;
+}
+
+.m_ft {
+	font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro', serif;
+}
+
+.g_ft {
+	font-family: Montserrat, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", YuGothic, "ヒラギノ角ゴシック", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "Hiragino Sans", "メイリオ", "Meiryo", sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/earlyaccess/hannari.css');
+//@import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+/*
+@font-face {
+	font-family: 'hannari';
+	src: url('hannari.eot');
+	src: url('hannari.eot?#iefix') format('embedded-opentype'),
+		url('hannari.woff2') format('woff2'),
+		url('hannari.woff') format('woff'),
+		url('hannari.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "hannari";
+	src: url("HannariMincho-Regular.eot?")  format('eot'),
+		url("HannariMincho-Regular.woff2") format('woff2'),
+		url("HannariMincho-Regular.woff")  format('woff');
+}
+*/
+
+
+.ft_m {
+	font-family: hannari, serif;
+}

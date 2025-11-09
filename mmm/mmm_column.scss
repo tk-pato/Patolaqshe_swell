@@ -1,0 +1,570 @@
+.low_path {
+	position: absolute;
+	right: calc(50% - 55rem);
+	display: flex;
+	margin-top: 2rem;
+	z-index: 2;
+	@include sp {
+		right: $sp_margin;
+	}
+	a {
+		color: $brown;
+		border-bottom: solid 1px $brown;
+	}
+	span {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	&.long {
+		li {
+			&:nth-child(4) {
+				span {
+					max-width: 8.5em;
+					@include ellipsis1;
+				}
+			}
+		}
+		@include sp {
+			li {
+				&:nth-child(3) {
+					span {
+						max-width: 8.5em;
+						@include ellipsis1;
+					}
+				}
+			}
+		}
+	}
+	li {
+		font-size: 1.2rem;
+		letter-spacing: .135em;
+		@include sp {
+			font-size: 1.8rem;
+		}
+		+ li {
+			&:before {
+				content: '>';
+				margin: 0 .6em;
+			}
+		}
+	}
+}
+
+.column_header {
+	position: relative;
+	@include pc {
+		height: 52.8rem;
+		img {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			object-fit: cover;
+			object-position: center top;
+		}
+	}
+	img {
+		width: 100%;
+	}
+	.box {
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		z-index: 1;
+		top: 0;
+	}
+	.low_ttl {
+		margin-bottom: 4rem;
+		@include sp {
+			margin-top: 2rem;
+		}
+	}
+	p {
+		font-size: 1.6rem;
+		line-height: 1.8125;
+		@include sp {
+			font-size: 2.4rem;
+		}
+	}
+}
+
+.column_slide {
+	.c_btn2 {
+		margin: 12rem 0 14rem;
+	}
+	.slick-slide {
+		background: #f7f4f2;
+	}
+	@include pc {
+		.slick-slide {
+			display: flex;
+			align-items: center;
+			> * {
+				width: 50%;
+			}
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	figure {
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: url(../img/ico_pop.svg) no-repeat left top / contain;
+			width: 15.9rem;
+			height: 15.9rem;
+			z-index: 1;
+		}
+		@include sp {
+			height: 33.4rem;
+			img {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+
+	.desc {
+		padding: 0 9rem 0 6rem;
+		@include sp {
+			padding: 4.5rem 5.5rem;
+		}
+	}
+	p {
+		font-size: 2.6rem;
+		line-height: 1.73;
+		@include sp {
+			font-size: 3.4rem;
+		}
+	}
+	.sub {
+		margin-bottom: 1em;
+		line-height: 1;
+		@include sp {
+			margin-bottom: .5em;
+		}
+		i {
+			font-size: 1.6rem;
+			background: $pink;
+			color: #fff;
+			line-height: 4.1rem;
+			padding: 0 1em;
+			display: inline-block;
+			@include sp {
+				font-size: 2.1rem;
+			}
+		}
+	}
+	.btn {
+		margin-top: 2rem;
+		a {
+			color: $pink;
+			font-size: 1.6rem;
+			border-bottom: solid 1px $pink;
+			letter-spacing: .115em;
+			padding-bottom: .2em;
+			@include sp {
+				font-size: 1.96rem;
+			}
+		}
+	}
+
+	.slick-arrow {
+		position: absolute;
+		z-index: 2;
+		height: 38.5rem;
+		width: 5.1rem;
+		top: 0;
+		border: none;
+		color: transparent;
+		cursor: pointer;
+		@include sp {
+			height: 66.8rem;
+		}
+		&:active,
+		&:focus {
+			outline: 0;
+		}
+	}
+
+	.slick-prev {
+		background: url(../img/ico_prev.svg) no-repeat 50% / contain;
+		left: -2.5rem;
+	}
+
+	.slick-next {
+		background: url(../img/ico_next.svg) no-repeat 50% / contain;
+		right: -2.5rem;
+	}
+
+	/* Dots */
+
+	.slick-dots {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		margin-top: 3.5rem;
+		li {
+			&.slick-active {
+				button {
+					&:before {
+						background: $color1;
+					}
+				}
+			}
+		}
+		button {
+			border: none;
+			cursor: pointer;
+			color: transparent;
+			position: relative;
+			background: none;
+			&:active,
+			&:focus {
+				outline: 0;
+			}
+			width: 3rem;
+			height: 3rem;
+			&:before {
+				content: '';
+				width: 1.5rem;
+				height: 1.5rem;
+				background: rgba(77, 77, 77, 0.3);
+				border-radius: 50%;
+				@include absMidst;
+			}
+		}
+	}
+}
+
+.column_lead {
+	position: relative;
+	margin: -26rem 0 18rem * $pc;
+	@include sp {
+		margin: -10rem 0 18rem;
+	}
+}
+
+.column_sec {
+	margin-bottom: 20rem * $pc;
+	@include sp {
+		margin-bottom: 18rem;
+	}
+	.ttl {
+		text-align: center;
+		color: $pink;
+		font-size: 6.5rem * $pc;
+		line-height: 1;
+		margin-bottom: 10rem * $pc;
+		@include sp {
+			margin-bottom: 8rem;
+			font-size: 6.5rem;
+		}
+	}
+}
+
+.column_cate {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2.7rem * $pc 1.5rem * $pc;
+		@include sp {
+			gap: 2.7rem 1.5rem;
+		}
+	}
+	li {
+		width: calc(33.33% - #{($pc * 1rem)});
+		@include sp {
+			width: calc(50% - .75rem);
+		}
+		a {
+			display: block;
+			border: solid 1px $brown;
+			text-align: center;
+			line-height: 2.75;
+			color: $brown;
+			font-size: 2rem * $pc;
+			@include sp {
+				font-size: 2.2rem;
+			}
+		}
+	}
+	@include pc {
+		padding: 0 5.5rem;
+		.u_inner {
+			padding: 0 5.5rem * $pc;
+		}
+	}
+}
+
+.column_list {
+	padding: 0 7.5rem;
+	@include sp {
+		padding: 0 6rem;
+	}
+	li {
+		border-bottom: dashed 1px $black;
+		padding-bottom: 7rem;
+		margin-bottom: 7rem;
+	}
+	dt {
+		font-size: 2.4rem;
+		line-height: 1.75;
+		margin: .7em 0;
+		letter-spacing: .1em;
+		@include sp {
+			font-size: 3.6rem;
+		}
+	}
+	dd {
+		font-size: 1.6rem;
+		line-height: 1.75;
+		letter-spacing: .135em;
+		@include sp {
+			font-size: 2.4rem;
+		}
+	}
+	.sub  {
+		font-size: 1.4rem;
+		letter-spacing: 0;
+		@include sp {
+			font-size: 2.4rem;
+		}
+		i {
+			color: $pink;
+			margin-left: 1em;
+		}
+	}
+	@include sp {
+		dl {
+			margin-top: 3rem;
+		}
+	}
+	@include pc {
+		li {
+			a {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			figure {
+				width: 48rem;
+			}
+			dl {
+				width: calc(100% - 54.8rem);
+			}
+		}
+	}
+}
+
+.column_news {
+	&.open {
+		li {
+			&:nth-child(n + 5) {
+				display: block;
+			}
+		}
+		.c_btn2 {
+			display: none;
+		}
+	}
+	li {
+		&:nth-child(n + 5) {
+			display: none;
+		}
+	}
+	ul {
+		margin-bottom: 10rem;
+	}
+}
+
+.column_strong {
+	background: #f7f4f2;
+	padding: 12rem * $pc 0 16rem * $pc;
+	border-radius: 3rem * $pc;
+	.img1 {
+		text-align: center;
+		@include pc {
+			img {
+				width: 103.8rem * $pc;
+			}
+		}
+	}
+	@include sp {
+		position: relative;
+		padding: 12rem 0 16rem;
+		border-radius: 3rem;
+		&:before {
+			content: '';
+			position: absolute;
+			width: calc(100vw - 4rem);
+			@include absCenter;
+			height: 100%;
+			background: #f7f4f2;
+			border-radius: 3rem;
+			top: 0;
+			z-index: -1;
+		}
+	}
+}
+
+.column_salon {
+	padding: 14rem * $pc 0 0;
+	margin: 0;
+	@include sp {
+		padding: 14rem 0 0;
+	}
+	.c_btn2 {
+		margin-top: 10rem * $pc;
+		@include sp {
+			margin-top: 10rem;
+		}
+	}
+}
+
+.column_trial {
+	color: $brown;
+	@include sp {
+		.box {
+			left: 5rem;
+		}
+	}
+	p {
+		@include pc {
+			line-height: 1.75;
+		}
+	}
+	.btn {
+		i {
+			&:before {
+				border-color: $brown;
+			}
+		}
+	}
+}
+
+.column_archive {
+	padding: 11rem 0 0;
+	margin-bottom: 20rem;
+	@include sp {
+		padding: 11rem 0;
+		margin-bottom: 15rem;
+	}
+	.ttl {
+		text-align: center;
+		font-size: 2.8rem;
+		letter-spacing: .135em;
+		line-height: 1;
+		margin-bottom: 8rem;
+		span {
+			border-bottom: solid .7rem #e0bdd7;
+			display: inline-block;
+		}
+	}
+}
+
+.column_inner {
+	padding: 13rem 0 0;
+	@include pc {
+		padding: 13rem 8rem 0;
+	}
+	.head {
+		margin-bottom: 15rem;
+		.ttl {
+			font-size: 2.6rem;
+			font-weight: bold;
+			letter-spacing: .05em;
+			@include sp {
+				font-size: 4rem;
+			}
+		}
+		p {
+			font-size: 1.6rem;
+			line-height: 1.75;
+			@include sp {
+				font-size: 2.8rem;
+			}
+		}
+	}
+	.sub {
+		margin: 1rem 0 4rem;
+		line-height: 1;
+		font-size: 1.4rem;
+		@include sp {
+			font-size: 2.4rem;
+		}
+		i {
+			color: $pink;
+			display: inline-block;
+			margin-left: 1em;
+		}
+	}
+	.mv {
+		margin-bottom: 4rem;
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.column_body {
+	font-size: 1.6rem;
+	@include sp {
+		font-size: 16px;
+		font-size: 2.8rem;
+	}
+	padding-bottom: 11rem;
+	border-bottom: dashed 1px $black;
+	margin-bottom:20rem;
+}
+
+.wp-pagenavi {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	margin-top: 9rem;
+	a, span {
+		text-align: center;
+		line-height: 2.5;
+		font-size: 1.8rem;
+		display: block;
+		width: 4.5rem;
+		background: #f7f4f2;
+		@include sp {
+			font-size: 2.4rem;
+		}
+	}
+	.current {
+		color: #fff;
+		background: $pink;
+	}
+
+	.previouspostslink, .nextpostslink {
+		width: auto;
+		height: auto;
+		width: 4em;
+		@include pc {
+			width: 7.2em;
+		}
+	}
+	.previouspostslink {
+		border-radius: 3em 0 0 3em;
+		@include pc {
+			padding-left: .5em;
+			padding-right: 3em;
+		}
+	}
+	.nextpostslink {
+		border-radius: 0 3em 3em 0;
+		@include pc {
+			padding-left: 3em;
+			padding-right: .5em;
+		}
+	}
+}
