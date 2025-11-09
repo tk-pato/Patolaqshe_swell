@@ -13,6 +13,7 @@
   function collect() {
     items = [];
     var nodeList = document.querySelectorAll('.ptlNavHero[data-parallax="bg"], .ptlIssues[data-parallax="bg"], .ptl-pageNavHero[data-parallax="bg"]');
+    console.log('[Parallax] Found sections:', nodeList.length);
     if (!nodeList || !nodeList.length) return;
 
   for (var i = 0; i < nodeList.length; i++) {
@@ -46,6 +47,7 @@
       var tPic = (!tVideo && !tImg && sec.querySelector('.ptlNavHero__image, .ptlIssues__image, .ptl-pageNavHero__image')) || null;
       var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptlNavHero__bg, .ptlIssues__bg, .ptl-pageNavHero__bg')) || null;
       target = tVideo || tImg || tPic || tBg;
+      console.log('[Parallax] Section', i, 'target:', target ? target.tagName + '.' + target.className : 'NOT FOUND');
       if (!target) continue;
 
       // 視覚的に動作していることを判別しやすいようにフラグ付け
@@ -111,7 +113,9 @@
   }
 
   function init() {
+    console.log('[Parallax] Initializing...');
     collect();
+    console.log('[Parallax] Collected', items.length, 'parallax items');
     // 初回適用（ロード直後に一度動かしておく）
     applyParallax();
   }
