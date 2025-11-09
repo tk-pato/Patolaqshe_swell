@@ -1,91 +1,57 @@
 /* ===========================
    NAVIGATION Section - SP Styles
    NAVIGATIONセクション SP専用スタイル
-   適用条件: 959px以下
+   適用条件: 767px以下
+   背景完全非表示、白背景のみ
    =========================== */
 
 /* SP: padding削除、margin-bottomのみで管理 */
-    #page-navigation {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
+#page-navigation {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
 
-/* ===== SP: パララックス可視化強化 ===== */
-  .ptl-navigation {
-    --ptl-parallax: 0px;
-    background-position: 50% calc(50% + var(--ptl-parallax));
-    background-size: 135% auto;
-    will-change: background-position;
-  }
+/* 背景を完全に非表示 */
+#page-navigation .ptlNavHero__bg,
+.ptlNavHero .ptlNavHero__bg,
+#page-navigation .ptlNavHero__overlay,
+.ptlNavHero .ptlNavHero__overlay,
+#page-navigation .ptlNavHero__image,
+.ptlNavHero .ptlNavHero__image,
+#page-navigation .ptlNavHero__video,
+.ptlNavHero .ptlNavHero__video,
+#page-navigation .ptl-pageNavHero__bg,
+#page-navigation .ptl-pageNavHero__overlay {
+  display: none !important;
+}
 
-  .ptlNavHero.ptl-has-image .ptlNavHero__image img,
-  .ptlNavHero.ptl-has-video .ptlNavHero__video,
-  .ptl-navigation.ptl-has-video video {
-    transform: translateY(var(--ptl-parallax)) scale(1.28);
-    transform-origin: center;
-    will-change: transform;
-  }
+/* セクション背景を白に */
+#page-navigation,
+.ptlNavHero,
+.ptl-pageNavHero {
+  background: #ffffff !important;
+  min-height: auto !important;
+}
 
-  .ptlNavHero,
-  .ptl-navigation {
-    overflow: clip;
-  }
-  
-  #page-navigation .ptlNavHero__image img,
-  #page-navigation .ptlNavHero__video,
-  #bust-issues .ptlNavHero__image img,
-  #bust-issues .ptlNavHero__video {
-    transform: translateY(var(--ptl-parallax)) scale(1.28);
-    transform-origin: center;
-    will-change: transform;
-  }
-  
-  .ptlNavHero.has-bg .ptlNavHero__image img,
-  .ptlNavHero.has-bg .ptlNavHero__video {
-    transform: translateY(var(--ptl-parallax)) scale(1.28);
-    transform-origin: center;
-    will-change: transform;
-  }
-  
-  #page-navigation .ptlNavHero__icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .ptlNavHero__label {
-    font-size: 14px;
-  }
+/* タイトルを黒文字に */
+#page-navigation .ptl-section__title,
+#page-navigation .ptl-section__subtitle,
+.ptlNavHero .ptl-section__title,
+.ptlNavHero .ptl-section__subtitle {
+  color: #333 !important;
+  text-shadow: none !important;
+}
 
-/* =====================================================
-   SP: NAVIGATION セクション設定
-   実装日: 2025-10-25
-   背景: global-backgrounds-sp.css で白背景統一管理
-   ----------------------------------------------------- */
-  /* 高さ設定 */
-  #page-navigation,
-  .ptl-pageNavHero {
-    min-height: auto;
-  }
-  
-  /* 背景動画/画像を非表示 */
-  #page-navigation .ptl-pageNavHero__bg,
-  #page-navigation .ptl-pageNavHero__overlay {
-    display: none;
-  }
-  
-  /* タイトルを黒文字に */
-  #page-navigation .ptl-section__title,
-  #page-navigation .ptl-section__subtitle {
-    color: #333;
-    text-shadow: none;
-  }
-  
-  /* ボタンは白背景維持 */
-  .ptl-pageNavHero__btn {
-    background: #ffffff;
-  }
+#page-navigation .ptlNavHero__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ptlNavHero__label {
+  font-size: 14px;
+}
