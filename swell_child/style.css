@@ -501,13 +501,6 @@ Version: 1.0.0
      その他のセクション: 白背景
      ======================================== */
   
-  .l-mainContent,
-  .l-mainContent__inner {
-    position: relative !important;
-    z-index: 10 !important;
-    background: #ffffff !important;
-  }
-  
   /* SALON, COMMITMENT, MENU等 */
   #salon,
   .ptl-salon,
