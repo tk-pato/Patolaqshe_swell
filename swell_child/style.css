@@ -431,7 +431,15 @@ Version: 1.0.0
   
   /* 基本的な背景色リセット */
   body {
-    background: #ffffff;
+    background: transparent !important;
+  }
+  
+  /* 親テーマのl-mainContent背景を強制的に透明化 */
+  .l-mainContent,
+  .l-mainContent__inner,
+  .l-contents,
+  .l-container {
+    background: transparent !important;
   }
   
   /* セクションの余白を内側に移動（隙間なくす） */
