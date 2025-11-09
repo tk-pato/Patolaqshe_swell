@@ -476,12 +476,12 @@ Version: 1.0.0
      パララックス無効化（軽量化）
      ======================================== */
   
-  /* BUST-ISSUES: パララックス無効＋背景透過 */
+  /* BUST-ISSUES: パララックス無効＋白背景 */
   #bust-issues,
   .ptl-bustIssues {
     position: relative !important;
     z-index: 10 !important;
-    background: transparent !important;
+    background: #ffffff !important;
   }
   
   #bust-issues .ptl-pageNavHero__bg,
@@ -501,14 +501,14 @@ Version: 1.0.0
   }
   
   /* ========================================
-     NAVIGATION: パララックス無効＋背景透過
+     NAVIGATION: パララックス無効＋白背景
      ======================================== */
   
   #page-navigation,
   .ptl-pageNavHero {
     position: relative !important;
     z-index: 10 !important;
-    background: transparent !important;
+    background: #ffffff !important;
     min-height: auto !important;
   }
   
@@ -545,14 +545,14 @@ Version: 1.0.0
   }
   
   /* ========================================
-     INFO HUB: パララックス無効＋背景透過
+     INFO HUB: パララックス無効＋白背景
      ======================================== */
   
   #section-infohub,
   .ptl-infohub {
     position: relative !important;
     z-index: 10 !important;
-    background: transparent !important;
+    background: #ffffff !important;
   }
   
   /* 固定背景を無効化 */
