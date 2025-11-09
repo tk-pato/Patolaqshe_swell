@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
   // BUST-ISSUES SP版CSS
   $issues_sp = get_stylesheet_directory() . '/css/sp/issues-navigation-sp.css';
   if (file_exists($issues_sp)) {
-    wp_enqueue_style('ptl-issues-sp', get_stylesheet_directory_uri() . '/css/sp/issues-navigation-sp.css', ['ptl-issues-bundle'], filemtime($issues_sp), 'screen and (max-width: 959px)');
+    wp_enqueue_style('ptl-issues-sp', get_stylesheet_directory_uri() . '/css/sp/issues-navigation-sp.css', ['ptl-issues-bundle'], filemtime($issues_sp), 'screen and (max-width: 767px)');
   }
 }, 999);
 
@@ -201,7 +201,7 @@ add_action('wp_enqueue_scripts', function () {
 
   // ブレークポイント統一定義
   $breakpoint_pc = 'screen and (min-width: 960px)';
-  $breakpoint_sp = 'screen and (max-width: 959px)';
+  $breakpoint_sp = 'screen and (max-width: 767px)';
 
   // セクション定義配列：[ファイルプレフィックス, ハンドル名基, 依存関係, SP suffix]
   $sections = [
@@ -319,12 +319,20 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptl_section_salon-pc', get_stylesheet_directory_uri() . '/css/pc/section-salon.css', ['ptl_section_salon'], filemtime($salon_pc_css), 'screen and (min-width: 960px)');
   }
 
-  // SALON SP版CSS（959px以下）
+  // SALON SP版CSS（767px以下）
   $salon_sp_css = get_stylesheet_directory() . '/css/sp/section-salon-sp.css';
   if (file_exists($salon_sp_css)) {
-    wp_enqueue_style('ptl_section_salon-sp', get_stylesheet_directory_uri() . '/css/sp/section-salon-sp.css', ['ptl_section_salon'], filemtime($salon_sp_css), 'screen and (max-width: 959px)');
+    wp_enqueue_style('ptl_section_salon-sp', get_stylesheet_directory_uri() . '/css/sp/section-salon-sp.css', ['ptl_section_salon'], filemtime($salon_sp_css), 'screen and (max-width: 767px)');
   }
 }, 20);
+
+// SP専用: セクション順序変更CSS
+add_action('wp_enqueue_scripts', function () {
+  $order_sp = get_stylesheet_directory() . '/css/sp/section-order-sp.css';
+  if (file_exists($order_sp)) {
+    wp_enqueue_style('ptl-order-sp', get_stylesheet_directory_uri() . '/css/sp/section-order-sp.css', [], filemtime($order_sp), 'screen and (max-width: 767px)');
+  }
+}, 998); // global-backgrounds-spより優先度が低い（998 < 999）
 
 // SP版全セクション背景CSS（最優先で読み込み）
 add_action('wp_enqueue_scripts', function () {
@@ -1041,10 +1049,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptl-navigation-pc', get_stylesheet_directory_uri() . '/css/pc/navigation.css', ['ptl-navigation-style'], filemtime($nav_pc_css), 'screen and (min-width: 960px)');
   }
 
-  // NAVIGATION SP版CSS（959px以下）
+  // NAVIGATION SP版CSS（767px以下）
   $nav_sp_css = get_stylesheet_directory() . '/css/sp/navigation-sp.css';
   if (file_exists($nav_sp_css)) {
-    wp_enqueue_style('ptl-navigation-sp', get_stylesheet_directory_uri() . '/css/sp/navigation-sp.css', ['ptl-navigation-style'], filemtime($nav_sp_css), 'screen and (max-width: 959px)');
+    wp_enqueue_style('ptl-navigation-sp', get_stylesheet_directory_uri() . '/css/sp/navigation-sp.css', ['ptl-navigation-style'], filemtime($nav_sp_css), 'screen and (max-width: 767px)');
   }
 
   // JS（統合版：navigation.js に ptl-nav-fix.js を統合済み）
