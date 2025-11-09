@@ -48,6 +48,9 @@ $header_output = ob_get_clean();
 echo $header_output;
 ?>
 
+<!-- SP専用: ヒーローとコンテンツの間に白背景レイヤーを挿入 -->
+<div class="ptl-white-bg-layer"></div>
+
 <main id="main_content" class="l-mainContent l-article">
 	<div class="l-mainContent__inner">
 
