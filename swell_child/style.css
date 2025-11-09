@@ -474,112 +474,14 @@ Version: 1.0.0
   
   /* ========================================
      パララックス無効化（軽量化）
+     各セクションのSP設定は css/sp/*-sp.css で管理
      ======================================== */
-  
-  /* BUST-ISSUES: パララックス無効＋白背景 */
-  #bust-issues,
-  .ptl-bustIssues {
-    position: relative !important;
-    z-index: 10 !important;
-    background: #ffffff !important;
-  }
-  
-  #bust-issues .ptlNavHero__bg,
-  .ptlIssues .ptlNavHero__bg {
-    display: none !important;
-  }
-  
-  #bust-issues .ptlNavHero__overlay,
-  .ptlIssues .ptlNavHero__overlay {
-    display: none !important;
-  }
-  
-  /* カード部分だけ白背景 */
-  #bust-issues .ptlIssues__card {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-  }
   
   /* ========================================
-     NAVIGATION: パララックス無効＋白背景
+     各セクションのSP背景設定
+     css/sp/global-backgrounds-sp.css で一括管理
+     css/sp/section-*-sp.css で個別管理
      ======================================== */
-  
-  #page-navigation,
-  .ptlNavHero {
-    position: relative !important;
-    z-index: 10 !important;
-    background: #ffffff !important;
-    min-height: auto !important;
-  }
-  
-  #page-navigation .ptlNavHero__bg,
-  .ptlNavHero .ptlNavHero__bg {
-    display: none !important;
-  }
-  
-  #page-navigation .ptlNavHero__overlay,
-  .ptlNavHero .ptlNavHero__overlay {
-    display: none !important;
-  }
-  
-  /* タイトルを黒文字に（背景がないため） */
-  #page-navigation .ptl-section__title,
-  #page-navigation .ptl-section__subtitle,
-  .ptlNavHero .ptl-section__title,
-  .ptlNavHero .ptl-section__subtitle {
-    color: #333 !important;
-    text-shadow: none !important;
-  }
-  
-  /* ========================================
-     USER'S VOICE: 背景あり
-     ======================================== */
-  
-  #section-uservoice,
-  .ptl-uservoice {
-    position: relative !important;
-    z-index: 10 !important;
-    background: #ffffff !important;
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
-  }
-  
-  /* ========================================
-     INFO HUB: パララックス無効＋白背景
-     ======================================== */
-  
-  #section-infohub,
-  .ptl-infohub {
-    position: relative !important;
-    z-index: 10 !important;
-    background: #ffffff !important;
-  }
-  
-  /* 固定背景を無効化 */
-  .ptl-infohub {
-    background-image: none !important;
-    background-attachment: scroll !important;
-  }
-  
-  /* カード部分だけ白背景 */
-  .ptl-infohub .ptl-infohubCard {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-  }
-  
-  /* タイトルを黒文字に */
-  #section-infohub .ptl-section__title,
-  #section-infohub .ptl-section__subtitle {
-    color: #333 !important;
-    text-shadow: none !important;
-  }
-  
-  /* ========================================
-     BLOG: 背景設定を css/section-blog.css へ移管
-     ======================================== */
-  
-  /* 🔴 削除済み: BLOGセクション固有の設定 */
-  /* section-blog.css で管理（設計思想に準拠） */
   
   /* ========================================
      その他のセクション: 白背景
