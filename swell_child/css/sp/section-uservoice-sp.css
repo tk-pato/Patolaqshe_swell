@@ -1,7 +1,7 @@
 /* ===========================
    User's Voice Section - SP Styles
    USERVOICEセクション SP専用スタイル
-   適用条件: 959px以下
+   適用条件: max-width: 767px以下（functions.php line 2133で設定）
    =========================== */
 
 /* タブレット・SP調整 */
