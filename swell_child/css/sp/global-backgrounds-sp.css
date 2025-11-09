@@ -24,16 +24,13 @@
     z-index: 1 !important;
   }
 
-  /* メインコンテンツ - 白背景を直接適用（Angelica方式） */
-  /* ヒーローとオーバーラップさせる */
+  /* メインコンテンツ - 白背景を直接適用 */
   body.home .l-mainContent,
   body.front-page .l-mainContent,
   body #main_content.l-mainContent {
     position: relative !important;
     z-index: 2 !important;
     background: #ffffff !important;
-    margin-top: -50vh !important; /* ヒーローの半分重ねる */
-    padding-top: 50vh !important; /* 重ねた分の余白を確保 */
   }
 
   /* コンテンツ内側も白背景 */
@@ -69,6 +66,27 @@
   body .l-mainContent div.ptl-news {
     background: #ffffff !important;
     background-color: #ffffff !important;
+  }
+
+  /* ========================================
+     SP専用: マージンをパディングに変換
+     セクション間の「穴」をなくすため、margin-bottomをpadding-bottomに変更
+     これにより余白が要素の内側になり、白背景でカバーされる
+     ======================================== */
+  
+  body .l-mainContent section,
+  body .l-mainContent section[id] {
+    margin-bottom: 0 !important;
+    padding-bottom: 80px !important; /* デフォルト値 */
+  }
+  
+  /* 個別調整が必要なセクション */
+  body .l-mainContent section#section-blog {
+    padding-bottom: 40px !important; /* 元々40pxだった */
+  }
+  
+  body .l-mainContent section#news {
+    padding-bottom: 60px !important;
   }
 
   /* ========================================
