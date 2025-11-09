@@ -39,7 +39,6 @@
     letter-spacing: .08em;
     font-family: inherit;
     width: 100%;
-    background: transparent;
     border-radius: 0;
   }
   
@@ -54,7 +53,6 @@
     margin-bottom: 0;
     font-family: inherit;
     width: 100%;
-    background: transparent;
     border-radius: 0;
   }
   
@@ -76,7 +74,6 @@
     width: 100%;
     padding: 14px 16px;
     margin: 12px 0;
-    background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
     color: #fff;
     border: none;
     border-radius: 8px;

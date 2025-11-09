@@ -47,6 +47,5 @@
   
   /* カード部分のみ半透明白背景 */
   .ptl-bustIssues__card {
-    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
   }

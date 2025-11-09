@@ -6,7 +6,6 @@
 
 /* SP対応：モバイルでは固定背景を無効化 */
   .ptlHub {
-    background-attachment: scroll;
     min-height: auto; /* SP: 固定高さ解除、コンテンツベースに */
     max-height: none; /* 最大高さ制限も解除 */
     padding: 0; /* パディング削除（カード側で管理） */
