@@ -593,5 +593,275 @@ Version: 1.0.0
     }
   }
   
+  /* ========================================
+     デバッグ線 - 全セクション（後で削除）
+     余白調整用：各セクションの範囲を色分けで可視化
+     ======================================== */
+  
+  /* INTRO セクション - 赤 */
+  #intro {
+    outline: 3px solid #ff0000 !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #intro .ptl-section__inner {
+    outline: 2px dashed #ff6666 !important;
+    outline-offset: -2px;
+  }
+  #intro::before {
+    content: 'INTRO (RED)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ff0000;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* PAGE-NAVIGATION セクション - オレンジ */
+  #page-navigation {
+    outline: 3px solid #ff8800 !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #page-navigation .ptlNavHero {
+    outline: 2px dashed #ffaa44 !important;
+    outline-offset: -2px;
+  }
+  #page-navigation::before {
+    content: 'PAGE-NAV (ORANGE)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ff8800;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* BUST-ISSUES セクション - 黄色 */
+  #bust-issues {
+    outline: 3px solid #ffdd00 !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #bust-issues .bust-issues-container {
+    outline: 2px dashed #ffee66 !important;
+    outline-offset: -2px;
+  }
+  #bust-issues::before {
+    content: 'BUST-ISSUES (YELLOW)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffdd00;
+    color: black;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* NEWS セクション - 緑 */
+  #news {
+    outline: 3px solid #00bb00 !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #news .ptl-news {
+    outline: 2px dashed #66dd66 !important;
+    outline-offset: -2px;
+  }
+  #news::before {
+    content: 'NEWS (GREEN)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #00bb00;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* BLOG セクション - 青 */
+  #section-blog {
+    outline: 3px solid #0066ff !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #section-blog .ptlBlog {
+    outline: 2px dashed #66aaff !important;
+    outline-offset: -2px;
+  }
+  #section-blog::before {
+    content: 'BLOG (BLUE)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0066ff;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* MENU セクション - 紫 */
+  #menu {
+    outline: 3px solid #8800ff !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #menu .ptl-menu {
+    outline: 2px dashed #aa66ff !important;
+    outline-offset: -2px;
+  }
+  #menu::before {
+    content: 'MENU (PURPLE)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #8800ff;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* COMMITMENT セクション - ピンク */
+  #commitment,
+  #section-commitment {
+    outline: 3px solid #ff0088 !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #commitment .ptl-commitment,
+  #section-commitment .ptl-commitment {
+    outline: 2px dashed #ff66aa !important;
+    outline-offset: -2px;
+  }
+  #commitment::before,
+  #section-commitment::before {
+    content: 'COMMITMENT (PINK)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ff0088;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* USERVOICE セクション - シアン */
+  #uservoice {
+    outline: 3px solid #00dddd !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #uservoice .ptl-uservoice {
+    outline: 2px dashed #66eeee !important;
+    outline-offset: -2px;
+  }
+  #uservoice::before {
+    content: 'USERVOICE (CYAN)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #00dddd;
+    color: black;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* SALON セクション - マゼンタ */
+  #salon {
+    outline: 3px solid #dd00dd !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #salon .ptl-salon {
+    outline: 2px dashed #ee66ee !important;
+    outline-offset: -2px;
+  }
+  #salon::before {
+    content: 'SALON (MAGENTA)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #dd00dd;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* INFOHUB セクション - ライム */
+  #infohub {
+    outline: 3px solid #88ff00 !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  #infohub .ptl-infohub {
+    outline: 2px dashed #aaff66 !important;
+    outline-offset: -2px;
+  }
+  #infohub::before {
+    content: 'INFOHUB (LIME)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #88ff00;
+    color: black;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* FOOTER - グレー */
+  #footer,
+  .l-footer {
+    outline: 3px solid #666666 !important;
+    outline-offset: -3px;
+    position: relative;
+  }
+  .ptl-footer {
+    outline: 2px dashed #999999 !important;
+    outline-offset: -2px;
+  }
+  #footer::before,
+  .l-footer::before {
+    content: 'FOOTER (GRAY)';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #666666;
+    color: white;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  /* 親コンテナ（SWELL） - 半透明の緑 */
+  .hero-section + .l-mainContent,
+  .hero-section + .l-mainContent__inner {
+    outline: 2px dotted rgba(0, 255, 0, 0.5) !important;
+    outline-offset: -2px;
+  }
+  
 }
 
