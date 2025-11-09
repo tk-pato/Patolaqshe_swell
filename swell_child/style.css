@@ -492,12 +492,13 @@ Version: 1.0.0
      ======================================== */
   
   body .ptl-overlap-layer,
-  body .ptlIntro-section.ptl-overlap-layer {
-    position: relative;
-    z-index: 10;
+  body .ptlIntro-section.ptl-overlap-layer,
+  body #intro {
+    position: relative !important;
+    z-index: 10 !important;
     
     /* SP専用: 画面1個分下に配置 */
-    margin-top: 100vh;
+    margin-top: 100vh !important;
     
     /* スクロール後に被さる効果 */
     border-radius: 0;
