@@ -16,7 +16,7 @@
   
   /* SP時のカード */
   #salon .ptlSalonHero__btn {
-    background: #fff;
+    /* background管理はstyle.css（global SP）で統一 */
     border-radius: 8px;
     padding: 12px;
   }
@@ -146,7 +146,7 @@
     width: 100%;
     padding: 12px 14px;
     margin: 12px 0;
-    background: #fff;
+    /* background管理はstyle.css（global SP）で統一 */
     color: #111;
     text-decoration: none;
     border-radius: 8px;

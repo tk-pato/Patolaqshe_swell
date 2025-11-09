@@ -31,7 +31,7 @@
 #page-navigation,
 .ptlNavHero,
 .ptl-pageNavHero {
-  background: #ffffff !important;
+  /* background管理はstyle.css（global SP）で統一 */
   min-height: auto !important;
 }
 

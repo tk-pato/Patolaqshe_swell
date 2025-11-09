@@ -5,10 +5,8 @@
    ======================================== */
 
 @media screen and (max-width: 767px) {
-  .ptl-footer {
-    background: #fff;
-  }
-
+  /* background管理はstyle.css（global SP）で統一 */
+  
   .ptl-footer-inner {
     padding: 30px 20px 24px;
     flex-direction: column;
