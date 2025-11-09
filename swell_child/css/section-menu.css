@@ -295,7 +295,6 @@
   row-gap: 8px;
   justify-items: center;
   color: #333;
-  background: rgba(255,255,255,0.92);
   border: 1px solid rgba(0,0,0,0.06);
   border-radius: 10px;
   /* 内側の余白をやや減らす */

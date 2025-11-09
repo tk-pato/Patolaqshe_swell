@@ -292,7 +292,9 @@ add_action('wp_enqueue_scripts', function () {
       <script>
         if (window.location.hash) {
           history.replaceState(null, null, window.location.pathname + window.location.search);
-          setTimeout(function() { window.scrollTo(0, 0); }, 1);
+          setTimeout(function() {
+            window.scrollTo(0, 0);
+          }, 1);
         }
       </script>
   <?php
