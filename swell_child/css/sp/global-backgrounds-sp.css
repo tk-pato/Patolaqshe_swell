@@ -24,41 +24,29 @@
     z-index: 1 !important;
   }
 
-  /* メインコンテンツ - position: relative でスタッキングコンテキスト作成 */
+  /* メインコンテンツ - 白背景を直接適用（Angelica方式） */
   body.home .l-mainContent,
   body.front-page .l-mainContent,
   body #main_content.l-mainContent {
     position: relative !important;
-    z-index: auto !important;
-    background: transparent !important;
-  }
-
-  /* 白背景レイヤー - main内の最背面、ヒーローの上 */
-  .ptl-white-bg-layer {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff !important;
     z-index: 2 !important;
-    pointer-events: none; /* クリックイベントを透過 */
+    background: #ffffff !important;
   }
 
-  /* コンテンツレイヤー - 白背景の上 */
+  /* コンテンツ内側も白背景 */
   body.home .l-mainContent__inner,
   body.front-page .l-mainContent__inner,
   body .l-mainContent__inner {
     position: relative !important;
-    z-index: 3 !important;
-    background: transparent !important;
+    z-index: auto !important;
+    background: #ffffff !important;
   }
 
-  /* セクションも透明でOK - 白背景レイヤーが下にある */
+  /* 各セクションも白背景を持つ（透明化しない） */
   body .l-mainContent section,
   body .l-mainContent section[class*="ptl"],
   body .l-mainContent .ptl-section {
-    background: transparent !important;
+    background: #ffffff !important;
   }
 
   /* ========================================

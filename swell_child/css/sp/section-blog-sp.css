@@ -1,24 +1,8 @@
 /* ========================================
-   SP版 BLOG背景の強制上書き
-   section-blog.cssの透明背景を白に変更
-   ヒーロー直後のグレー帯対策を維持しつつ、SP専用で白背景を適用
+   SP版 BLOGセクション背景制御
+   global-backgrounds-sp.cssで統一管理されるため
+   ここでは個別の背景上書きは不要
    ======================================== */
-
-/* 親コンテナ（SWELL）の透明背景をSP専用で白に上書き */
-/* セレクタの詳細度を上げて、section-blog.css 8行目を確実に上書き */
-body .hero-section + .l-mainContent,
-body .hero-section + .l-mainContent__inner {
-  background: #fff !important;
-}
-
-/* BLOGセクション本体の透明背景をSP専用で白に上書き */
-/* section-blog.cssの透明背景設定（PC用）をSPでのみ上書き */
-body .ptlBlog,
-body #section-blog,
-body #section-blog.ptl-section {
-  background: #fff !important;
-  background-color: #fff !important;
-}
 
 /* ===========================
    BLOG Section - SP Styles

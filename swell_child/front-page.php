@@ -49,8 +49,6 @@ echo $header_output;
 ?>
 
 <main id="main_content" class="l-mainContent l-article">
-	<!-- SP専用: ヒーローとコンテンツの間に白背景レイヤーを挿入 -->
-	<div class="ptl-white-bg-layer"></div>
 	
 	<div class="l-mainContent__inner">
 
