@@ -225,39 +225,30 @@
   will-change: transform;
 }
 
-/* ===== SP: パララックス可視化強化（スケール増強） ===== */
+/* ===== SP: パララックス無効＋背景非表示 ===== */
 @media (max-width: 767px) {
+  /* 背景を完全に非表示 */
+  #page-navigation .ptlNavHero__bg,
+  .ptlNavHero .ptlNavHero__bg,
+  #page-navigation .ptlNavHero__overlay,
+  .ptlNavHero .ptlNavHero__overlay,
+  #page-navigation .ptlNavHero__image,
+  .ptlNavHero .ptlNavHero__image,
+  #page-navigation .ptlNavHero__video,
+  .ptlNavHero .ptlNavHero__video {
+    display: none !important;
+  }
+  
+  /* セクション背景を白に */
+  #page-navigation,
+  .ptlNavHero {
+    background: #ffffff !important;
+    min-height: auto !important;
+  }
+  
   .ptl-navigation {
     --ptl-parallax: 0px;
-    background-position: 50% calc(50% + var(--ptl-parallax));
-    background-size: 135% auto;
-    will-change: background-position;
-  }
-
-  .ptlNavHero.ptl-has-image .ptlNavHero__image img,
-  .ptlNavHero.ptl-has-video .ptlNavHero__video,
-  .ptl-navigation.ptl-has-video video {
-    transform-origin: center;
-    will-change: transform;
-  }
-
-  .ptlNavHero,
-  .ptl-navigation {
-    overflow: clip;
-  }
-  
-  #page-navigation .ptlNavHero__image img,
-  #page-navigation .ptlNavHero__video,
-  #bust-issues .ptlNavHero__image img,
-  #bust-issues .ptlNavHero__video {
-    transform-origin: center;
-    will-change: transform;
-  }
-  
-  .ptlNavHero.has-bg .ptlNavHero__image img,
-  .ptlNavHero.has-bg .ptlNavHero__video {
-    transform-origin: center;
-    will-change: transform;
+    background: transparent;
   }
   
   #page-navigation .ptlNavHero__icon {
@@ -270,6 +261,15 @@
   
   .ptlNavHero__label {
     font-size: 14px;
+  }
+  
+  /* タイトルを黒文字に */
+  #page-navigation .ptl-section__title,
+  #page-navigation .ptl-section__subtitle,
+  .ptlNavHero .ptl-section__title,
+  .ptlNavHero .ptl-section__subtitle {
+    color: #333 !important;
+    text-shadow: none !important;
   }
 }
 
