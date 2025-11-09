@@ -403,7 +403,7 @@
 }
 
 /* タブレット時の線の調整 */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 960px) and (max-width: 1024px) {
     #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
         background-color: #d0d0d0;
         top: 8%;
