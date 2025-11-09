@@ -4,6 +4,13 @@
    適用条件: 960px以上
    =========================== */
 
+/* セクション余白 */
+body #uservoice {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 80px !important;
+}
+
 /* PC・タブレット用カード間グレー線 */
   #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
     content: '';

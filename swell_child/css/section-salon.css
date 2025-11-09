@@ -78,26 +78,15 @@
    セクション余白（独自管理）
 ======================================== */
 
-/* PC: padding削除、margin-bottomのみで管理 */
-@media (min-width: 960px) {
-    #salon,
-    .ptlSalonHero {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 80px;
-    }
-}
+/* ========================================
+   セクション余白
+   PC: css/pc/section-salon.css で管理
+   SP: css/sp/section-salon-sp.css で管理
+======================================== */
 
-/* SP: padding削除、margin-bottomのみで管理 */
-@media (max-width: 959px) {
-    #salon,
-    .ptlSalonHero {
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
+#salon,
+.ptlSalonHero {
+  margin-top: 0;
 }
 
 /* h2スタイルはstyle.cssで統一管理（.ptl-section__title, .ptl-section__subtitle, .ptl-section__subtitleLine） */

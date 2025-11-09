@@ -440,47 +440,12 @@
    @media (min-width: 769px) and (max-width: 1024px)はsection-uservoice.cssで@media (max-width: 767px)として定義済み */
 
 /* ========================================
-   セクション余白設定（NAVIGATION/SALONと同じ構造）
-   詳細度最大化: body + section IDで親テーマCSS上書き
+   セクション余白設定
+   PC: css/pc/section-uservoice.css で管理
+   SP: css/sp/section-uservoice-sp.css で管理
 ======================================== */
 
-/* PC: padding削除、margin-bottomのみで管理 */
-@media (min-width: 960px) {
-    body #uservoice {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        margin-top: 0 !important;
-        margin-bottom: 80px !important;
-    }
-}
-
-/* SP: padding削除、margin-bottomのみで管理 */
-@media (max-width: 767px) {
-    body #uservoice {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        margin-top: 0 !important;
-        margin-bottom: 40px !important;
-    }
-}
-
-/* デフォルト設定（メディアクエリ外） */
 body #uservoice {
   margin-top: 0 !important;
-  margin-bottom: 80px !important;
 }
 
-/* =====================================================
-   SP: USER'S VOICE 白背景
-   実装日: 2025-10-25
-   ----------------------------------------------------- */
-@media (max-width: 767px) {
-  /* 白背景 */
-  #section-uservoice,
-  .ptl-uservoice,
-  #uservoice {
-    background: #ffffff !important;
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
-  }
-}

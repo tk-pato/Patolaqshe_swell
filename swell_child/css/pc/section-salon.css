@@ -1,5 +1,13 @@
 /* === SALON Section (PC版: 960px以上) === */
 
+/* セクション余白 */
+#salon,
+.ptlSalonHero {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 80px;
+}
+
 /* PC時：左右カード配置 */
   #salon .ptlSalon-map {
     width: 95%;
