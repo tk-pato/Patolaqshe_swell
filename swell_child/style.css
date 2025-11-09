@@ -283,7 +283,7 @@ Version: 1.0.0
 #news::before {
     content: "";
     position: absolute; inset: 0 auto 0 50%; transform: translateX(-50%);
-    width: 100vw; background: #fff; z-index: -1;
+    width: 100vw; z-index: -1;
     top: -2px; bottom: 0; /* extend upward to hide 1px seams */
 }
 
@@ -318,7 +318,7 @@ Version: 1.0.0
 .ptl-serviceNav .ptl-section__inner { position: relative; z-index: 1; }
 .ptl-serviceNav__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2vw, 24px); margin-top: 20px; }
 @media (min-width: 900px) { .ptl-serviceNav__grid { grid-template-columns: repeat(4, 1fr); } }
-.ptl-serviceNav__card { display: grid; place-items: center; text-align: center; background: rgba(255,255,255,.95); border-radius: 8px; padding: clamp(20px, 3vw, 32px); text-decoration: none; color: inherit; box-shadow: 0 6px 24px rgba(0,0,0,.12); transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
+.ptl-serviceNav__card { display: grid; place-items: center; text-align: center; border-radius: 8px; padding: clamp(20px, 3vw, 32px); text-decoration: none; color: inherit; box-shadow: 0 6px 24px rgba(0,0,0,.12); transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
 .ptl-serviceNav__icon { font-size: clamp(28px, 4.5vw, 44px); margin-bottom: 12px; display: inline-flex; align-items: center; justify-content: center; width: 1em; height: 1em; }
 .ptl-serviceNav__label { font-weight: 600; letter-spacing: .02em; }
 .ptl-serviceNav__card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,.18); }
@@ -337,7 +337,7 @@ Version: 1.0.0
 .ptl-storeNav .ptl-section__title { font-size: var(--ptl-heading-size); line-height: 1.2; }
 .ptl-storeNav__grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px; }
 @media (min-width: 700px) { .ptl-storeNav__grid { grid-template-columns: repeat(2, 1fr); } }
-.ptl-storeNav__card { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 8px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
+.ptl-storeNav__card { display: block; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,.06); border-radius: 8px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
 .ptl-storeNav__card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
 .ptl-storeNav__label { font-weight: 600; }
 .ptl-storeNav__meta { display: block; margin-top: 6px; color: #666; font-size: .95em; }
@@ -374,7 +374,7 @@ Version: 1.0.0
 }
 @media (min-width: 700px) { .ptlNavHero__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .ptlNavHero__grid { grid-template-columns: repeat(4, 1fr); } }
-.ptlNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.ptlNavHero__btn { display: grid; grid-template-rows: auto auto; row-gap: 12px; justify-items: center; text-decoration: none; color: #111; border: 1px solid rgba(0,0,0,.08); border-radius: 10px; padding: clamp(20px, 2.6vw, 32px) clamp(16px, 2.2vw, 24px); min-height: 170px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
 .ptlNavHero__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.18); border-color: rgba(0,0,0,.15); }
 .ptlNavHero__btn:active { transform: translateY(-1px); }
 .ptlNavHero__icon { width: clamp(44px, 5vw, 56px); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: clamp(2px, 0.5vw, 6px); }
@@ -477,7 +477,6 @@ Version: 1.0.0
     margin-top: 100vh !important;
     
     /* スクロール後に被さる効果 */
-    background: #ffffff !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     
@@ -511,7 +510,6 @@ Version: 1.0.0
   .ptl-menu {
     position: relative !important;
     z-index: 10 !important;
-    background: #ffffff !important;
   }
   
   /* ========================================
@@ -529,7 +527,6 @@ Version: 1.0.0
   .l-footer {
     position: relative !important;
     z-index: 10 !important;
-    background: #ffffff !important;
   }
   
   /* ========================================
