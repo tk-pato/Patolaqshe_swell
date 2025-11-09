@@ -14,7 +14,7 @@
      z-index: 1 = ヒーロー（見える）
      ======================================== */
 
-  /* ヒーロー背景 - 最背面だが見える */
+  /* ヒーロー背景 - 見える状態を維持 */
   .p-mainVisual,
   .hero-section,
   [class*="hero"],
@@ -24,27 +24,34 @@
     z-index: 1 !important;
   }
 
-  /* 白背景レイヤー - ヒーローとコンテンツの間 */
+  /* メインコンテンツ - position: relative でスタッキングコンテキスト作成 */
+  body.home .l-mainContent,
+  body.front-page .l-mainContent,
+  body #main_content.l-mainContent {
+    position: relative !important;
+    z-index: auto !important;
+    background: transparent !important;
+  }
+
+  /* 白背景レイヤー - main内の最背面、ヒーローの上 */
   .ptl-white-bg-layer {
-    position: fixed !important;
+    position: absolute !important;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: #fff !important;
     z-index: 2 !important;
     pointer-events: none; /* クリックイベントを透過 */
   }
 
-  /* メインコンテンツ - 白背景レイヤーの上 */
-  body.home .l-mainContent,
-  body.front-page .l-mainContent,
+  /* コンテンツレイヤー - 白背景の上 */
   body.home .l-mainContent__inner,
   body.front-page .l-mainContent__inner,
-  body #main_content.l-mainContent {
-    background: transparent !important; /* 透明でOK */
+  body .l-mainContent__inner {
     position: relative !important;
     z-index: 3 !important;
+    background: transparent !important;
   }
 
   /* セクションも透明でOK - 白背景レイヤーが下にある */
