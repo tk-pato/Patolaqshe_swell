@@ -128,14 +128,12 @@
     row-gap: 8px;
     justify-items: center;
     color: #111;
-    background: #fff;
     border: 1px solid rgba(0, 0, 0, .08);
     border-radius: 10px;
     padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 20px);
     min-height: 170px;
     font-weight: 400;
     letter-spacing: .02em;
-    box-shadow: 0 10px 26px rgba(0, 0, 0, .12);
 }
 
 #section-commitment .ptlCommitHero__icon {
@@ -188,9 +186,7 @@
 /* カードスタイル */
 .ptlCommit-grid .cmt-card,
 .ptlCommit .card {
-  background:#fff;
   border-radius:12px;
-  box-shadow:0 4px 24px rgba(0,0,0,.06);
   padding:24px;
   text-align:center;
 }
