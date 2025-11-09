@@ -17,10 +17,11 @@
   font-family: inherit !important;
 }
 
-/* 親テーマのフッター色変数をローカルで明示上書き（白地に黒文字） */
+/* 親テーマのフッター色変数をローカルで明示上書き（透明背景・黒文字） */
 .l-footer {
-  --color_footer_bg: #ffffff;
+  --color_footer_bg: transparent;
   --color_footer_text: #333333;
+  background: transparent;
 }
 
 /* リセット */
@@ -122,13 +123,13 @@
   justify-content: center;
 }
 
-/* 内側コンテナ：グレーBOX + ナビとコピーライトを横並び */
+/* 内側コンテナ：透明背景 + ナビとコピーライトを横並び */
 .ptl-footer__lower-inner {
   max-width: 1200px;
   width: 100%;
   margin: 0;
   padding: 40px 20px;
-  background: #f8f8f8;
+  background: transparent;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
