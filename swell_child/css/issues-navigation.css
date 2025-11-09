@@ -248,10 +248,29 @@
 }
 */
 
-/* セクション余白（PC） */
+/* セクション余白 */
 #bust-issues {
   margin-top: 0;
-  margin-bottom: 80px;
+}
+
+/* PC */
+@media (min-width: 960px) {
+  #bust-issues {
+    margin-bottom: 80px;
+  }
+}
+
+/* SP */
+@media (max-width: 767px) {
+  #bust-issues {
+    margin-bottom: 40px;
+  }
+  
+  .ptlIssues__card {
+    padding: 32px 16px;
+    margin: 20px auto 20px;
+    max-width: calc(100% - 40px);
+  }
 }
 
 /* =====================================================
