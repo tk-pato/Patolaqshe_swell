@@ -22,11 +22,13 @@
       var speed = parseFloat(sec.getAttribute('data-parallax-speed') || '0.3');
       if (!isFinite(speed)) speed = 0.3;
       speed = Math.max(0, Math.min(1, speed));
+      console.log('[Parallax] Section', i, 'speed:', speed, '(DEFAULT 0.3 - MAX EFFECT)');
 
       // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）0.25 = セクション高さの25%まで移動
       var clampRatio = parseFloat(sec.getAttribute('data-parallax-clamp') || '0.25');
       if (!isFinite(clampRatio)) clampRatio = 0.25;
       clampRatio = Math.max(0, Math.min(0.3, clampRatio));
+      console.log('[Parallax] Section', i, 'clampRatio:', clampRatio, '(DEFAULT 0.25)');
 
   // 絶対最大移動量（px）で上書き可能（例: data-parallax-distance="120"）
       var maxDistancePx = parseFloat(sec.getAttribute('data-parallax-distance') || '');
@@ -92,6 +94,8 @@
       
       // 最小拡大率を1.5に設定（parallax効果を劇的に）
       if (scale < 1.5) scale = 1.5;
+      
+      console.log('[Parallax] Section', i, 'final scale:', scale.toFixed(3), 'move:', move.toFixed(2), 'px');
       
       // data-parallax-scale属性の指定値を最優先で適用
       if (it.minScale && it.minScale > scale) scale = it.minScale;
