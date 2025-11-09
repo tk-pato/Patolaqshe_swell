@@ -18,14 +18,14 @@
 
   for (var i = 0; i < nodeList.length; i++) {
       var sec = nodeList[i];
-      // 速度: 0..1（1で追従なし）
-      var speed = parseFloat(sec.getAttribute('data-parallax-speed') || '0.6');
-      if (!isFinite(speed)) speed = 0.6;
+      // 速度: 0..1（1で追従なし）0.4 = 背景が60%の速度で動く（視差効果強）
+      var speed = parseFloat(sec.getAttribute('data-parallax-speed') || '0.4');
+      if (!isFinite(speed)) speed = 0.4;
       speed = Math.max(0, Math.min(1, speed));
 
-      // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）
-      var clampRatio = parseFloat(sec.getAttribute('data-parallax-clamp') || '0.12');
-      if (!isFinite(clampRatio)) clampRatio = 0.12;
+      // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）0.20 = セクション高さの20%まで移動
+      var clampRatio = parseFloat(sec.getAttribute('data-parallax-clamp') || '0.20');
+      if (!isFinite(clampRatio)) clampRatio = 0.20;
       clampRatio = Math.max(0, Math.min(0.3, clampRatio));
 
   // 絶対最大移動量（px）で上書き可能（例: data-parallax-distance="120"）
@@ -88,10 +88,10 @@
   // 端見え防止のための拡大率を算出
   // parallax移動量を完全にカバーするために、十分な拡大率を確保
   var needed = (2 * Math.abs(max)) / Math.max(1, rect.height);
-  var scale = 1 + needed + 0.18; // 移動量カバー + 18%の安全マージン
+  var scale = 1 + needed + 0.25; // 移動量カバー + 25%の安全マージン（拡大強化）
       
-      // 最小拡大率を1.35に設定（parallax効果に必要な最低限の拡大）
-      if (scale < 1.35) scale = 1.35;
+      // 最小拡大率を1.4に設定（parallax効果をより明確に）
+      if (scale < 1.4) scale = 1.4;
       
       // data-parallax-scale属性の指定値を最優先で適用
       if (it.minScale && it.minScale > scale) scale = it.minScale;
