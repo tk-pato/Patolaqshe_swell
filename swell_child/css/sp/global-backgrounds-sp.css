@@ -82,11 +82,23 @@
   
   /* 個別調整が必要なセクション */
   body .l-mainContent section#section-blog {
-    padding-bottom: 40px !important; /* 元々40pxだった */
+    padding-bottom: 0 !important; /* BLOGとFOOTERの間は余白なし */
   }
   
   body .l-mainContent section#news {
     padding-bottom: 60px !important;
+  }
+  
+  body .l-mainContent section#page-navigation {
+    padding-bottom: 80px !important;
+  }
+  
+  body .l-mainContent section#uservoice {
+    padding-bottom: 80px !important;
+  }
+  
+  body .l-mainContent section#infohub {
+    padding-bottom: 60px !important; /* 元々60px */
   }
 
   /* ========================================
