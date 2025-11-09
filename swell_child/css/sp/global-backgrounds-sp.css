@@ -25,12 +25,15 @@
   }
 
   /* メインコンテンツ - 白背景を直接適用（Angelica方式） */
+  /* ヒーローとオーバーラップさせる */
   body.home .l-mainContent,
   body.front-page .l-mainContent,
   body #main_content.l-mainContent {
     position: relative !important;
     z-index: 2 !important;
     background: #ffffff !important;
+    margin-top: -50vh !important; /* ヒーローの半分重ねる */
+    padding-top: 50vh !important; /* 重ねた分の余白を確保 */
   }
 
   /* コンテンツ内側も白背景 */
@@ -42,11 +45,30 @@
     background: #ffffff !important;
   }
 
-  /* 各セクションも白背景を持つ（透明化しない） */
+  /* 各セクションも白背景を持つ（透明化しない） - 詳細度MAX */
   body .l-mainContent section,
   body .l-mainContent section[class*="ptl"],
-  body .l-mainContent .ptl-section {
+  body .l-mainContent .ptl-section,
+  body .l-mainContent section#intro,
+  body .l-mainContent section#salon,
+  body .l-mainContent section#menu,
+  body .l-mainContent section#commitment,
+  body .l-mainContent section#uservoice,
+  body .l-mainContent section#infohub,
+  body .l-mainContent section#section-blog,
+  body .l-mainContent section#news,
+  body .l-mainContent section#bust-issues,
+  body .l-mainContent section#page-navigation,
+  body .l-mainContent div.ptlIntro,
+  body .l-mainContent div.ptl-salon,
+  body .l-mainContent div.ptl-menu,
+  body .l-mainContent div.ptl-commitment,
+  body .l-mainContent div.ptl-uservoice,
+  body .l-mainContent div.ptl-infohub,
+  body .l-mainContent div.ptlBlog,
+  body .l-mainContent div.ptl-news {
     background: #ffffff !important;
+    background-color: #ffffff !important;
   }
 
   /* ========================================
