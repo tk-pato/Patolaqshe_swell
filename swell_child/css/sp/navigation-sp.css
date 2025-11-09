@@ -62,30 +62,30 @@
   }
 
 /* =====================================================
-   SP: NAVIGATION 背景透過
+   SP: NAVIGATION セクション設定
    実装日: 2025-10-25
+   背景: global-backgrounds-sp.css で白背景統一管理
    ----------------------------------------------------- */
-  /* 背景透過 */
+  /* 高さ設定 */
   #page-navigation,
   .ptl-pageNavHero {
-    background: transparent !important;
-    min-height: auto !important;
+    min-height: auto;
   }
   
   /* 背景動画/画像を非表示 */
   #page-navigation .ptl-pageNavHero__bg,
   #page-navigation .ptl-pageNavHero__overlay {
-    display: none !important;
+    display: none;
   }
   
   /* タイトルを黒文字に */
   #page-navigation .ptl-section__title,
   #page-navigation .ptl-section__subtitle {
-    color: #333 !important;
-    text-shadow: none !important;
+    color: #333;
+    text-shadow: none;
   }
   
   /* ボタンは白背景維持 */
   .ptl-pageNavHero__btn {
-    background: #ffffff !important;
+    background: #ffffff;
   }

@@ -38,7 +38,6 @@
 
   /* 下段グレー背景コンテナ（SP版：縦並び） */
   .ptl-footer__lower {
-    background: transparent;
     padding: 16px 20px 32px 20px;
   }
 
