@@ -429,13 +429,13 @@ Version: 1.0.0
      SP共通背景設定
      ======================================== */
   
-  /* 基本的な背景色リセット */
+  /* bodyは白背景（ヒーロー画像の背景として必要） */
   body.home,
   body.page {
-    background: transparent;
+    background: #ffffff;
   }
   
-  /* 親テーマのl-mainContent背景を詳細度高く上書き */
+  /* l-mainContentは透明（ヒーローを透過させる） */
   body .l-mainContent,
   body .l-mainContent__inner,
   body .l-contents,
@@ -443,7 +443,7 @@ Version: 1.0.0
     background: transparent;
   }
   
-  /* 各セクションの背景も詳細度高く上書き */
+  /* 各セクションの背景も透明 */
   body section,
   body .ptl-section,
   body [id*="section-"],
