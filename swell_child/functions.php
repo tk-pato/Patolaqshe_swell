@@ -1065,7 +1065,7 @@ add_action('wp_enqueue_scripts', function () {
   // ========================================
 
   // ブレークポイント統一定義
-  $breakpoint_pc = 'screen and (min-width: 768px)';
+  $breakpoint_pc = 'screen and (min-width: 960px)';
   $breakpoint_sp = 'screen and (max-width: 767px)';
 
   // セクション定義配列：[ファイルプレフィックス, ハンドル名基, 依存関係, SP suffix, JS相対パス]
@@ -1136,7 +1136,7 @@ add_action('wp_enqueue_scripts', function () {
 /* ptl-navigation: PC parallax boost */
 .ptl-navigation { position: relative; overflow: clip; }
 
-@media (min-width: 769px) {
+@media (min-width: 960px) {
   /* 背景画像を直接持つ .ptl-navigation 用 */
   .ptl-navigation {
     --ptl-parallax: 0px;
@@ -1160,7 +1160,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* ③ SPカード縮小（.ptl-nav-collapsible 配下のみ） */
   .ptl-navigation .ptl-nav-collapsible,
   .ptlNavHero .ptl-nav-collapsible {
@@ -1278,9 +1278,9 @@ CSS;
   // JS（インライン）
   $js = <<<JS
 // パララックス処理は section-parallax.js に一本化済み
-// SP向け：ナビ折り畳みの max-height 再計測（<=768pxのみ）
+// SP向け：ナビ折り畳みの max-height 再計測（<=767pxのみ）
 (function(){
-  var mqSP = window.matchMedia('(max-width: 768px)');
+  var mqSP = window.matchMedia('(max-width: 767px)');
   
   // ハンバーガーメニューの制御
   function setupToggle() {
@@ -2125,7 +2125,7 @@ add_action('wp_enqueue_scripts', function () {
   // お客様の声 - PC専用CSS
   $uservoice_pc = get_stylesheet_directory() . '/css/pc/section-uservoice.css';
   if (file_exists($uservoice_pc)) {
-    wp_enqueue_style('ptl-uservoice-pc', get_stylesheet_directory_uri() . '/css/pc/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_pc), 'screen and (min-width: 768px)');
+    wp_enqueue_style('ptl-uservoice-pc', get_stylesheet_directory_uri() . '/css/pc/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_pc), 'screen and (min-width: 960px)');
   }
 
   // お客様の声 - SP専用CSS
