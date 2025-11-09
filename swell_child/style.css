@@ -434,12 +434,6 @@ Version: 1.0.0
     background: #ffffff;
   }
   
-  /* メインコンテンツ - 基本白背景 */
-  .l-mainContent,
-  .l-mainContent__inner {
-    background: #ffffff;
-  }
-  
   /* セクションの余白を内側に移動（隙間なくす） */
   .l-mainContent section {
     margin-bottom: 0 !important;
