@@ -10,6 +10,22 @@
    適用条件: 959px以下
    =========================== */
 
+/* SP専用: BLOGセクション全体を透明化 */
+@media (max-width: 767px) {
+  #section-blog,
+  #section-blog .ptl-section__inner,
+  .ptlBlog,
+  .ptlBlog__header,
+  .ptlBlog__container,
+  .ptlBlog__track,
+  .ptlBlog__item,
+  .ptlBlog__card,
+  .ptlBlog__media,
+  .ptlBlog__more {
+    background: transparent !important;
+  }
+}
+
 /* セクション余白 - style.css (SP section)で統一管理 */
   #section-blog {
     margin-bottom: 0;
