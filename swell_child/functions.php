@@ -2348,7 +2348,7 @@ add_action('wp_enqueue_scripts', function () {
   // BLOG - PC専用CSS
   $blog_pc = get_stylesheet_directory() . '/css/pc/section-blog.css';
   if (file_exists($blog_pc)) {
-    wp_enqueue_style('ptlBlog-pc', get_stylesheet_directory_uri() . '/css/pc/section-blog.css', ['ptl-blog'], filemtime($blog_pc), 'screen and (min-width: 768px)');
+    wp_enqueue_style('ptlBlog-pc', get_stylesheet_directory_uri() . '/css/pc/section-blog.css', ['ptl-blog'], filemtime($blog_pc), 'screen and (min-width: 960px)');
   }
 
   // BLOG - SP専用CSS

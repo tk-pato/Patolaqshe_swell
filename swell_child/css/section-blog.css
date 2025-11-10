@@ -32,12 +32,17 @@
    BLOG セクション（自動横スクロール）
 ======================================== */
 
+/* セクション本体 - ID指定で最強の詳細度 */
+html body #section-blog {
+  background: transparent !important;
+}
+
 /* セクション全体 - 全幅対応 */
-.ptlBlog {
+html body .ptlBlog {
   position: relative;
   /* overflow: hidden; を削除 - MOREボタンが見切れる原因 */
   isolation: isolate;
-  background: transparent;
+  background: transparent !important;
   /* フルブリード実装 - 画面端まで表示 */
   width: 100vw;
   margin-left: calc(50% - 50vw);
