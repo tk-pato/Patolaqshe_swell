@@ -4,6 +4,7 @@
    適用条件: 960px以上
    =========================== */
 
+@media (min-width: 960px) {
 /* ========================================
    グリッドレイアウト - PC版（960px以上）
    4カラム表示を確実に適用
@@ -39,16 +40,19 @@
   body #section-commitment {
     margin-bottom: 80px !important;
   }
+}
 
 /* ========================================
    グリッドレイアウト - タブレット（700px-959px）
    2カラム表示
    ======================================== */
 
+@media (min-width: 700px) and (max-width: 959px) {
   #section-commitment .ptlCommitHero__grid,
   .ptlCommitHero__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
 /* ========================================
    旧グリッドシステム対応（後方互換性）
