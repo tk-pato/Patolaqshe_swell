@@ -1,4 +1,12 @@
 <?php
+
+// ========== 超シンプルテスト: functions.php 読み込み確認 ==========
+// このコードが実行されたら、ログに記録される
+@error_log('🔥🔥🔥 FUNCTIONS.PHP LOADED 🔥🔥🔥');
+@error_log('Timestamp: ' . date('Y-m-d H:i:s'));
+@error_log('File: ' . __FILE__);
+// ================================================================
+
 if (!defined('ABSPATH')) exit;
 
 // Cache bust: 2025-11-09 17:00 - DEBUG LINES ADDED
