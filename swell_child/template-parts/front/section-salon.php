@@ -64,6 +64,7 @@ $salons = [
         ],
     ],
 ];
+$default_items = $salons;
 $items = apply_filters('ptl_page_nav_items', $default_items);
 $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
