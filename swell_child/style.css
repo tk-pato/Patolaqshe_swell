@@ -539,10 +539,6 @@ Version: 1.0.0
   #uservoice,
   .ptl-uservoice,
   .ptlVoice,
-  #blog,
-  #section-blog,
-  .ptl-blog,
-  .ptlBlog,
   #news,
   .ptl-news {
     position: relative;
@@ -555,8 +551,6 @@ Version: 1.0.0
   #section-commitment .ptl-section__inner,
   #section-menu .ptl-section__inner,
   #uservoice .ptl-section__inner,
-  #blog .ptl-section__inner,
-  #section-blog .ptl-section__inner,
   #news .ptl-section__inner {
     background: transparent;
   }

@@ -1,54 +1,71 @@
 /* ========================================
-   SP版 BLOGセクション背景制御
-   style.css (SP section)で統一管理されるため
-   ここでは個別の背景上書きは不要
+   BLOG Section - SP Styles (完全版)
+   BLOGセクション SP専用スタイル
+   
+   【重要】functions.phpで max-width: 767px 指定済み
+   このファイル内でメディアクエリは不要
+   
+   【変更履歴】
+   2025-11-10: 完全再設計
+   - style.cssからの分離完了
+   - メディアクエリ二重構造を解消
+   - 背景設定を1箇所に集約（将来の変更が容易）
    ======================================== */
 
-/* ===========================
-   BLOG Section - SP Styles
-   BLOGセクション SP専用スタイル
-   適用条件: 959px以下
-   =========================== */
-
-/* SP専用: BLOGセクション全体を透明化 */
-@media (max-width: 767px) {
-  #section-blog,
-  #section-blog .ptl-section__inner,
-  .ptlBlog,
-  .ptlBlog__header,
-  .ptlBlog__container,
-  .ptlBlog__track,
-  .ptlBlog__item,
-  .ptlBlog__card,
-  .ptlBlog__media,
-  .ptlBlog__more {
-    background: transparent !important;
-  }
+/* ========================================
+   背景透明化（将来の変更はここだけ修正）
+   ======================================== */
+#section-blog,
+#section-blog .ptl-section__inner,
+.ptlBlog,
+.ptlBlog__header,
+.ptlBlog__container,
+.ptlBlog__track,
+.ptlBlog__item,
+.ptlBlog__card,
+.ptlBlog__media,
+.ptlBlog__more {
+  background: transparent !important;
 }
 
-/* セクション余白 - style.css (SP section)で統一管理 */
-  #section-blog {
-    margin-bottom: 0;
-  }
+/* ========================================
+   セクション余白
+   ======================================== */
+#section-blog {
+  margin-bottom: 0;
+}
 
-/* タブレット対応（3列表示） */
+/* ========================================
+   ヘッダー調整
+   ======================================== */
+.ptlBlog__header {
+  margin-bottom: 40px;
+}
+
+/* ========================================
+   装飾要素調整
+   ======================================== */
+.ptlBlog .ptl-section__ornament img {
+  width: 180px;
+}
+
+/* ========================================
+   カードレイアウト - モバイル（2列表示）
+   ======================================== */
+.ptlBlog__item {
+  flex: 0 0 calc((100% - 24px) / 2);
+  min-width: 160px;
+  max-width: 320px;
+}
+
+/* ========================================
+   カードレイアウト - タブレット（3列表示）
+   500px以上でタブレット表示に切り替え
+   ======================================== */
+@media (min-width: 500px) and (max-width: 767px) {
   .ptlBlog__item {
     flex: 0 0 calc((100% - 48px) / 3);
     min-width: 220px;
     max-width: 320px;
   }
-
-/* モバイル対応（2列表示） */
-  .ptlBlog__item {
-    flex: 0 0 calc((100% - 24px) / 2);
-    min-width: 160px;
-    max-width: 320px;
-  }
-  
-  .ptlBlog__header {
-    margin-bottom: 40px;
-  }
-  
-  .ptlBlog .ptl-section__ornament img {
-    width: 180px;
-  }
+}
