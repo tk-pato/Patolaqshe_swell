@@ -16,25 +16,25 @@
 }
 
 /* BUST-ISSUES — 点線のみ表示（実線削除） */
-#bust-issues .ptl-bustIssues__list {
+#bust-issues .ptlIssues__list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 /* 親テーマの個別ボーダー指定を無効化 */
-#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item {
+#bust-issues .ptlIssues__list > li.ptlIssues__item {
   border: 0;
 }
 
 /* 項目間の実線も削除 */
-#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item + li.ptl-bustIssues__item {
+#bust-issues .ptlIssues__list > li.ptlIssues__item + li.ptlIssues__item {
   border-top: none;
 }
 
 /* BUST-ISSUES: 点線のみの下線（詳細度を上げて!important不要に） */
-#bust-issues .ptl-bustIssues__list > li.ptl-bustIssues__item,
-#bust-issues .ptl-bustIssues__list .ptl-bustIssues__item {
+#bust-issues .ptlIssues__list > li.ptlIssues__item,
+#bust-issues .ptlIssues__list .ptlIssues__item {
   border-bottom: 1px dashed rgba(0,0,0,.18);
 }
 
@@ -61,8 +61,8 @@
 }
 
 /* コンテンツ余白 - NAVIGATIONと完全一致 */
-#bust-issues.ptl-bustIssues .ptl-section__inner,
-#bust-issues .ptl-bustIssues .ptl-section__inner,
+#bust-issues.ptlIssues .ptl-section__inner,
+#bust-issues .ptlIssues .ptl-section__inner,
 #bust-issues .ptl-section__inner {
   width: 100%;
   position: relative;
@@ -77,7 +77,7 @@
 }
 
 /* 背景レイヤ */
-#bust-issues .ptl-bustIssues__bg {
+#bust-issues .ptlIssues__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -87,8 +87,8 @@
 }
 
 /* 背景メディア（動画/画像） */
-#bust-issues .ptl-bustIssues__video,
-#bust-issues .ptl-bustIssues__image {
+#bust-issues .ptlIssues__video,
+#bust-issues .ptlIssues__image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -97,11 +97,11 @@
   transform-origin: center center;
 }
 
-#bust-issues .ptl-bustIssues__video {
+#bust-issues .ptlIssues__video {
   object-fit: cover;
 }
 
-#bust-issues .ptl-bustIssues__image img {
+#bust-issues .ptlIssues__image img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -112,19 +112,19 @@
 }
 
 /* オーバーレイ */
-#bust-issues .ptl-bustIssues__overlay {
+#bust-issues .ptlIssues__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.25);
 }
 
 /* BUST-ISSUES: コンテンツ部分のスタイル */
-#bust-issues .ptl-bustIssues__head {
+#bust-issues .ptlIssues__head {
   text-align: center;
   margin-bottom: clamp(8px, 2vw, 12px);
 }
 
-#bust-issues .ptl-bustIssues .ptl-section__subtitleLine {
+#bust-issues .ptlIssues .ptl-section__subtitleLine {
   width: clamp(180px, 28vw, 560px);
   height: clamp(16px, 3.2vw, 28px);
   margin: 10px auto 26px;
@@ -132,7 +132,7 @@
 }
 
 /* カード内のコンテンツスタイル - NAVIGATIONと同じ半透明効果 */
-#bust-issues .ptl-bustIssues__card {
+#bust-issues .ptlIssues__card {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
@@ -145,14 +145,14 @@
 }
 
 /* ホバー時の効果 */
-#bust-issues .ptl-bustIssues__card:hover {
+#bust-issues .ptlIssues__card:hover {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
 }
 
 /* PCでもカードに上下余白を追加（背景との接地防止） */
 
-#bust-issues .ptl-bustIssues__list {
+#bust-issues .ptlIssues__list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
@@ -161,7 +161,7 @@
   list-style: none;
 }
 
-#bust-issues .ptl-bustIssues__item {
+#bust-issues .ptlIssues__item {
   display: grid;
   grid-template-columns: 28px 1fr;
   align-items: center;
@@ -170,7 +170,7 @@
   border-bottom: 1px dashed rgba(0,0,0,.18);
 }
 
-#bust-issues .ptl-bustIssues__icon {
+#bust-issues .ptlIssues__icon {
   width: 22px;
   height: 22px;
   display: flex;
@@ -178,14 +178,14 @@
   justify-content: center;
 }
 
-#bust-issues .ptl-bustIssues__icon img {
+#bust-issues .ptlIssues__icon img {
   width: 22px;
   height: 22px;
   display: block;
   object-fit: contain;
 }
 
-#bust-issues .ptl-bustIssues__text {
+#bust-issues .ptlIssues__text {
   color: #333;
   font-weight: 500;
 }
