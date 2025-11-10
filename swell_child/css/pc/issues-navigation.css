@@ -131,23 +131,23 @@
   background: url('../img/bg_1.png') center/contain no-repeat;
 }
 
-/* カード内のコンテンツスタイル - NAVIGATIONと同じ92% */
+/* カード内のコンテンツスタイル - NAVIGATIONと同じ透明 */
 #bust-issues .ptlIssues__card {
-  background: rgba(255, 255, 255, 0.92);
+  background: transparent;
   border-radius: 10px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
   padding: clamp(12px, 2vw, 18px);
   max-width: var(--ptl-container-max, 1200px);
   margin: 0 auto;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   transition: all 0.3s ease;
 }
 
 /* ホバー時の効果 */
 #bust-issues .ptlIssues__card:hover {
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* PCでもカードに上下余白を追加（背景との接地防止） */
