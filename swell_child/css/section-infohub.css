@@ -86,6 +86,15 @@
   min-width: 0;
   width: 100%;
   aspect-ratio: 4/3;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.ptlHub__card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* カード画像 */
@@ -97,6 +106,12 @@
   height: 100%;
   overflow: hidden;
   background: #f5f5f5;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.ptlHub__card:hover .ptlHub__media {
+  opacity: 0.85;
 }
 
 .ptlHub__media img {
@@ -108,23 +123,7 @@
   object-fit: cover;
 }
 
-/* ダーケンオーバーレイ（テキストの視認性向上） */
-.ptlHub__media::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.4) 70%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
+/* ダーク オーバーレイは削除（ガラス モルフィズムで代替） */
 
 /* キラっと光る演出（カーソルが止まってから発動） */
 .ptlHub__media::before {
@@ -150,7 +149,7 @@
   left: 150%;
 }
 
-/* カードコンテンツ（画像の上に重ねる） */
+/* カードコンテンツ（画像の上に重ねるが透明） */
 .ptlHub__content {
   position: absolute;
   bottom: 0;
@@ -159,31 +158,30 @@
   padding: 30px 20px 40px 20px;
   text-align: center;
   z-index: 3;
+  background: transparent;
 }
 
-/* カードタイトル（視認性向上） */
+/* カードタイトル（黒文字） */
 .ptlHub__title {
   position: relative;
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 700;
-  color: #fff;
+  color: #333;
   margin: 0 0 8px 0;
   letter-spacing: 0.08em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
-               0 0 8px rgba(0, 0, 0, 0.5);
-  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
+  -webkit-text-stroke: none;
 }
 
-/* カード説明文（視認性向上） */
+/* カード説明文（黒文字） */
 .ptlHub__desc {
   font-size: clamp(13px, 1.4vw, 15px);
   font-weight: 400;
-  color: #fff;
+  color: #555;
   line-height: 1.6;
   margin: 0;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8),
-               0 0 6px rgba(0, 0, 0, 0.4);
-  -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+  -webkit-text-stroke: none;
 }
 
 /* ========================================
@@ -211,36 +209,61 @@
 }
 
 /* =====================================================
-   SP: INFO HUB 背景透過
-   実装日: 2025-10-25
+   SP: INFO HUB 元のスタイルに戻す
+   実装日: 2025-11-10
    ----------------------------------------------------- */
-@media (max-width: 767px) {
-  /* 背景透過 */
-  #section-infohub,
-  .ptl-infohub,
-  .ptlHub {
-    background: transparent !important;
+@media (max-width: 959px) {
+  /* PC のガラス モルフィズム効果を無効化 */
+  .ptlHub__card {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   
-  /* 固定背景を無効化 */
-  .ptlHub {
-    background-attachment: scroll !important;
-    background-image: none !important;
+  .ptlHub__card:hover {
+    background: transparent;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
   }
   
-  /* カード部分のみ半透明白背景 */
-  .ptlHub__card,
-  .ptlInfohubCard {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
+  /* 画像の opacity を戻す */
+  .ptlHub__media {
+    opacity: 1;
   }
   
-  /* タイトルを黒文字に */
-  #section-infohub .ptl-section__title,
-  #section-infohub .ptl-section__subtitle,
-  .ptlHub__title,
-  .ptlHub__subtitle {
-    color: #333 !important;
-    text-shadow: none !important;
+  .ptlHub__card:hover .ptlHub__media {
+    opacity: 1;
+  }
+  
+  /* テキストを白に戻す */
+  .ptlHub__title {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+                 0 0 8px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .ptlHub__desc {
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8),
+                 0 0 6px rgba(0, 0, 0, 0.4);
+    -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ダークオーバーレイを戻す */
+  .ptlHub__media::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.4) 70%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
   }
 }

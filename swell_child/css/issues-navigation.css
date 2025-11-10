@@ -134,7 +134,16 @@
   padding: clamp(12px, 2vw, 18px);
   max-width: var(--ptl-container-max, 1200px);
   margin: 0 auto;
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ptlIssues__card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* PCでもカードに上下余白を追加（背景との接地防止） */
@@ -189,8 +198,6 @@
   font-weight: 500;
 }
 
-/* ===== PC/全画面: パララックス用スケール ===== */
-#bust-issues .ptlIssues__bg video,
 /* ========================================
    セクション余白（独自管理）
 ======================================== */
@@ -232,31 +239,15 @@
     padding: 32px 16px;
     margin: 20px auto 20px;
     max-width: calc(100% - 40px);
+    background: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: none;
+  }
+  
+  .ptlIssues__card:hover {
+    background: transparent;
+    box-shadow: none;
   }
 }
 
-/* =====================================================
-   SP: BUST-ISSUES 背景透過 - 無効化（SP専用CSSで管理）
-   実装日: 2025-10-25
-   ----------------------------------------------------- */
-/*
-@media (max-width: 767px) {
-  /* 背景透過 */
-  #bust-issues,
-  .ptl-bustIssues,
-  .ptl-pageNavHero {
-    background: transparent !important;
-  }
-  
-  /* 背景動画/画像を非表示 */
-  .ptl-pageNavHero__bg,
-  .ptl-pageNavHero__overlay {
-    display: none !important;
-  }
-  
-  /* カード部分のみ半透明白背景 */
-  .ptl-bustIssues__card {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-  }
-*/
