@@ -14,17 +14,20 @@
 
 /* ========================================
    背景透明化（将来の変更はここだけ修正）
+   
+   【重要】html body プレフィックスで詳細度を最大化
+   親テーマ（SWELL）のCSSに確実に勝つため
    ======================================== */
-#section-blog,
-#section-blog .ptl-section__inner,
-.ptlBlog,
-.ptlBlog__header,
-.ptlBlog__container,
-.ptlBlog__track,
-.ptlBlog__item,
-.ptlBlog__card,
-.ptlBlog__media,
-.ptlBlog__more {
+html body #section-blog,
+html body #section-blog .ptl-section__inner,
+html body .ptlBlog,
+html body .ptlBlog__header,
+html body .ptlBlog__container,
+html body .ptlBlog__track,
+html body .ptlBlog__item,
+html body .ptlBlog__card,
+html body .ptlBlog__media,
+html body .ptlBlog__more {
   background: transparent !important;
 }
 

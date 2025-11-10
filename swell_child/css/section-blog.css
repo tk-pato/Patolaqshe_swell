@@ -33,11 +33,11 @@
 ======================================== */
 
 /* セクション全体 - 全幅対応 */
-.ptlBlog {
+html body .ptlBlog {
   position: relative;
   /* overflow: hidden; を削除 - MOREボタンが見切れる原因 */
   isolation: isolate;
-  background: transparent;
+  background: transparent !important;
   /* フルブリード実装 - 画面端まで表示 */
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -153,12 +153,12 @@
 }
 
 /* カード画像 */
-.ptlBlog__media {
+html body .ptlBlog__media {
   position: relative;
   width: 100%;
   padding-top: 66.67%; /* 3:2 アスペクト比 */
   overflow: hidden;
-  background: transparent;
+  background: transparent !important;
 }
 
 .ptlBlog__media img {
