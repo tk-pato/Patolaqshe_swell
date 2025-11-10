@@ -97,6 +97,7 @@ html body .ptlBlog {
 /* カードトラック（スクロールする部分） */
 .ptlBlog__track {
   display: flex;
+  flex-wrap: nowrap;
   gap: 24px;
   will-change: transform;
   margin-left: 0;
