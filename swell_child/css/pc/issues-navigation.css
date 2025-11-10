@@ -141,13 +141,6 @@
   margin: 0 auto;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
-}
-
-/* ホバー時の効果 */
-#bust-issues .ptlIssues__card:hover {
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
 }
 
 /* PCでもカードに上下余白を追加（背景との接地防止） */
