@@ -222,9 +222,7 @@
   min-height: auto; /* 固定高さ削除: コンテンツベースに変更 */
 }
 
-.ptlMenuHero.is-translucent {
-  background-color: rgba(255, 255, 255, 0.92);
-}
+/* .ptlMenuHero.is-translucent は PC版で25%ガラス調を使用するため削除 */
 
 .ptlMenuHero.has-bg {
   color: #fff;
