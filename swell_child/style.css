@@ -273,6 +273,8 @@ Version: 1.0.0
 .ptl-news__moreBtn:hover .ptl-news__moreArrow,
 .ptlNews__moreBtn:focus-visible .ptlNews__moreArrow,
 .ptl-news__moreBtn:focus-visible .ptl-news__moreArrow,
+.ptlCommit__more:hover .ptlNews__moreArrow,
+.ptlCommit__more:focus-visible .ptlNews__moreArrow,
 .ptlIntro__cta-button:hover .ptlIntro__cta-arrow,
 .ptlIntro__cta-button:focus-visible .ptlIntro__cta-arrow { transform: translateX(4px); }
 
