@@ -370,22 +370,3 @@
     margin-bottom: 80px;
 }
 
-/* ========================================
-   PC専用：カードにガラス調背景を適用（960px以上）
-======================================== */
-@media (min-width: 960px) {
-  #menu .ptlMenu__main .ptlMenu__mainContent,
-  #menu .ptlMenu__sub .ptlMenu__subItem {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
-  }
-  
-  /* 子要素の白背景を透明にしてガラス調を表示 */
-  #menu .ptlMenu__mainText,
-  #menu .ptlMenu__subTitle {
-    background: transparent;
-  }
-}
-
