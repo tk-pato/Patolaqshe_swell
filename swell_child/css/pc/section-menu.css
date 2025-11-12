@@ -7,9 +7,9 @@
     gap: 40px;
   }
 
-/* メインカードとサブカードに25%ガラス調背景を追加 */
-  #menu .ptlMenu__mainContent,
-  #menu .ptlMenu__subItem {
+/* メインカードとサブカードに25%ガラス調背景を追加（詳細度を上げて確実に適用） */
+  #menu .ptlMenu__main .ptlMenu__mainContent,
+  #menu .ptlMenu__sub .ptlMenu__subItem {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
