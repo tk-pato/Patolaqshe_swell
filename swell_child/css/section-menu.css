@@ -381,5 +381,11 @@
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
   }
+  
+  /* 子要素の白背景を透明にしてガラス調を表示 */
+  #menu .ptlMenu__mainText,
+  #menu .ptlMenu__subTitle {
+    background: transparent;
+  }
 }
 
