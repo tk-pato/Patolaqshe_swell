@@ -92,6 +92,7 @@ Version: 1.0.0
     opacity: 0;
     animation: heroLogoInOut 5s ease-in-out 0s forwards; /* 総時間: 5s（調整可） */
     will-change: opacity, transform, filter;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* 構成: 0-15% フェードイン → 15-60% 表示キープ → 60-100% フェードアウト */
@@ -306,7 +307,10 @@ Version: 1.0.0
   .l-header,
   .p-headerBar,
   .l-fixHeader {
-    background: rgba(0,0,0,0.85);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -582,7 +586,10 @@ Version: 1.0.0
   body .ptl-footer__lower-inner {
     position: relative;
     z-index: 10;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
   
   /* ========================================
