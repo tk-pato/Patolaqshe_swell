@@ -21,9 +21,9 @@ if (is_front_page()) {
     error_log('✅ is_front_page() = TRUE: front-page.php を include します');
     error_log('📂 include パス: ' . get_stylesheet_directory() . '/front-page.php');
     error_log('📁 ファイル存在確認: ' . (file_exists(get_stylesheet_directory() . '/front-page.php') ? '存在する ✅' : '存在しない ❌'));
-    
+
     include get_stylesheet_directory() . '/front-page.php';
-    
+
     error_log('✅ front-page.php の include 完了');
     return;
 }

@@ -57,7 +57,7 @@ echo $header_output;
 ?>
 
 <main id="main_content" class="l-mainContent l-article">
-	
+
 	<div class="l-mainContent__inner">
 
 		<?php
@@ -125,13 +125,13 @@ echo $header_output;
 	</div>
 
 	<?php /* BLOGセクション: INFOHUB の直後に配置（再表示） */ ?>
-	<?php 
+	<?php
 	error_log('----------------------------------------');
 	error_log('📍 get_template_part("blog") を呼び出します');
 	error_log('🔍 呼び出し位置: front-page.php 120行目付近');
-	
+
 	get_template_part('template-parts/front/section', 'blog');
-	
+
 	error_log('✅ get_template_part("blog") の呼び出し完了');
 	error_log('ℹ️ section-blog.php のデバッグ出力を確認してください');
 	error_log('----------------------------------------');
@@ -141,7 +141,7 @@ echo $header_output;
 	<?php /* お問合せセクションは別途専用テンプレートで実装予定 */ ?>
 </main>
 
-<?php 
+<?php
 error_log('========================================');
 error_log('🏁 front-page.php の処理完了');
 error_log('🕐 タイムスタンプ: ' . date('Y-m-d H:i:s'));

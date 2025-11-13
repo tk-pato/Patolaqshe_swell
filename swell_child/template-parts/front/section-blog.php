@@ -36,7 +36,7 @@ if (!empty($blog_posts)) {
     }
 } else {
     error_log('⚠️ 警告: 投稿が1件も取得できませんでした');
-    
+
     // 全ステータスを含めて再取得
     $all_posts = get_posts([
         'post_type' => 'post',
@@ -44,7 +44,7 @@ if (!empty($blog_posts)) {
         'post_status' => 'any',
     ]);
     error_log('📊 全ステータス含めた投稿数: ' . count($all_posts));
-    
+
     if (!empty($all_posts)) {
         error_log('--- 全投稿のステータス ---');
         foreach ($all_posts as $post) {
@@ -77,9 +77,9 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
             </div>
         </div>
 
-        <?php 
+        <?php
         error_log('🔀 条件分岐: empty($blog_posts) = ' . (empty($blog_posts) ? 'true' : 'false'));
-        if (!empty($blog_posts)): 
+        if (!empty($blog_posts)):
             error_log('✅ 投稿あり: カードコンテナを出力します');
         ?>
             <!-- カードコンテナ -->
@@ -112,8 +112,8 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
                     wp_reset_postdata(); ?>
                 </div>
             </div>
-        <?php 
-        else: 
+        <?php
+        else:
             error_log('⚠️ 投稿なし: 空メッセージを出力します');
         ?>
             <!-- 投稿がない場合 -->

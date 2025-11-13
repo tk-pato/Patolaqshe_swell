@@ -14,9 +14,9 @@ if (is_front_page()) {
     // フロントページの場合は front-page.php を include
     error_log('✅ is_front_page() = TRUE: front-page.php を include します');
     error_log('📂 include パス: ' . get_stylesheet_directory() . '/front-page.php');
-    
+
     include get_stylesheet_directory() . '/front-page.php';
-    
+
     error_log('✅ front-page.php の include 完了');
     return;
 }
@@ -28,4 +28,3 @@ error_log('📂 include パス: ' . get_template_directory() . '/home.php');
 include get_template_directory() . '/home.php';
 
 error_log('✅ 親テーマの home.php の include 完了');
-?>
