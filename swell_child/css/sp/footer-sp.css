@@ -46,6 +46,7 @@
     border-radius: 8px;
     max-width: calc(100% - 40px);
     margin: 0 auto;
+    background: #f8f8f8 !important;
   }
 
   /* ナビゲーション（SP版：縦並び） */
