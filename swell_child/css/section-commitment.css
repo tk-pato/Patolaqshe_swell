@@ -299,21 +299,3 @@ body #section-commitment {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-
-/* ========================================
-   PC専用：ガラス調背景（960px以上）
-   詳細度を最大化して確実に適用
-======================================== */
-@media (min-width: 960px) {
-  body #section-commitment .ptlCommitHero__grid .ptlCommitHero__btn {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
-  }
-  
-  body #section-commitment .ptlCommitHero__btn .ptlCommitHero__boxTitle,
-  body #section-commitment .ptlCommitHero__btn .ptlCommitHero__boxDesc {
-    background: transparent;
-  }
-}
