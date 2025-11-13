@@ -614,10 +614,7 @@ Version: 1.0.0
   body .ptl-footer__lower-inner {
     position: relative;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
   }
   
   /* ========================================
