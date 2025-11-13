@@ -208,7 +208,6 @@ add_action('wp_enqueue_scripts', function () {
     ['section-commitment', 'ptlCommit', ['child_style'], '-sp'],
     ['section-menu', 'ptl_section_menu', ['child_style'], '-sp'],
     ['section-salon', 'ptl_section_salon', ['child_style'], '-sp'],
-    ['footer', 'ptl_footer', ['child_style'], '-sp'], // PC: footer-pc.css, SP: footer-sp.css
   ];
 
   // Footer CSS（child_style依存）
