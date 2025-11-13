@@ -314,7 +314,21 @@ Version: 1.0.0
   }
   
   /* 固定フッターボタンエリアをガラス調に */
-  .p-fixBtnWrap,
+  .p-fixBtnWrap {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  /* ボタン自体もガラス調に */
+  .p-fixBtnWrap .c-fixBtn {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
   #fix_bottom_menu {
     background: rgba(255, 255, 255, 0.25) !important;
     backdrop-filter: blur(12px) !important;
