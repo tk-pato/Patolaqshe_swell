@@ -550,17 +550,17 @@ Version: 1.0.0
   .ptl-news {
     position: relative;
     z-index: 10;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
   }
   
-  /* セクション内のインナー要素も透明化 */
+  /* セクション内のインナー要素も同じ背景 */
   #salon .ptl-section__inner,
   #section-commitment .ptl-section__inner,
   #section-menu .ptl-section__inner,
   #uservoice .ptl-section__inner,
   #section-blog .ptl-section__inner,
   #news .ptl-section__inner {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
   }
   
   /* ========================================
