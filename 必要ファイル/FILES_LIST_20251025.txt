@@ -104,6 +104,9 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/
 # css/pc/section-infohub.css
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/section-infohub.css
 
+# css/pc/footer-pc.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/footer-pc.css
+
 # ========================================
 # CSS: SP専用（Phase2完全分離版）（最新版）
 # ========================================
