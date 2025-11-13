@@ -1,0 +1,11 @@
+/* ========================================
+   Patolaqshe Footer（PC専用）
+   - 768px以上でグレーボックス表示
+   ======================================== */
+
+@media screen and (min-width: 768px) {
+  /* 下段グレー背景ボックス（PC版） */
+  .ptl-footer__lower-inner {
+    background: #f8f8f8 !important;
+  }
+}

@@ -220,6 +220,18 @@ add_action('wp_enqueue_scripts', function () {
       filemtime($footer_path)
     );
 
+    // Footer PC CSS
+    $footer_pc_path = get_stylesheet_directory() . '/css/pc/footer-pc.css';
+    if (file_exists($footer_pc_path)) {
+      wp_enqueue_style(
+        'ptl_footer-pc',
+        get_stylesheet_directory_uri() . '/css/pc/footer-pc.css',
+        ['ptl_footer'],
+        filemtime($footer_pc_path),
+        'screen and (min-width: 768px)'
+      );
+    }
+
     // Footer SP CSS
     $footer_sp_path = get_stylesheet_directory() . '/css/sp/footer-sp.css';
     if (file_exists($footer_sp_path)) {
@@ -3156,33 +3168,33 @@ add_action('wp_head', function () {
  * @param string $template 選択されたテンプレートのパス
  * @return string 修正後のテンプレートパス
  */
-add_filter('template_include', function($template) {
-    // デバッグ: 現在選択されているテンプレートを記録
-    error_log('========== TEMPLATE FILTER ==========');
-    error_log('🎯 WordPress が選択したテンプレート: ' . basename($template));
-    error_log('🔍 is_front_page(): ' . (is_front_page() ? 'TRUE ✅' : 'FALSE ❌'));
-    error_log('🔍 is_home(): ' . (is_home() ? 'TRUE' : 'FALSE'));
-    error_log('🔍 is_page(): ' . (is_page() ? 'TRUE' : 'FALSE'));
-    
-    // フロントページの場合、強制的に front-page.php を使用
-    if (is_front_page()) {
-        $front_page_template = get_stylesheet_directory() . '/front-page.php';
-        
-        // ファイルの存在確認
-        if (file_exists($front_page_template)) {
-            error_log('✅ front-page.php を強制使用します');
-            error_log('📂 パス: ' . $front_page_template);
-            error_log('=====================================');
-            return $front_page_template;
-        } else {
-            error_log('⚠️ 警告: front-page.php が見つかりません');
-            error_log('📂 探した場所: ' . $front_page_template);
-        }
+add_filter('template_include', function ($template) {
+  // デバッグ: 現在選択されているテンプレートを記録
+  error_log('========== TEMPLATE FILTER ==========');
+  error_log('🎯 WordPress が選択したテンプレート: ' . basename($template));
+  error_log('🔍 is_front_page(): ' . (is_front_page() ? 'TRUE ✅' : 'FALSE ❌'));
+  error_log('🔍 is_home(): ' . (is_home() ? 'TRUE' : 'FALSE'));
+  error_log('🔍 is_page(): ' . (is_page() ? 'TRUE' : 'FALSE'));
+
+  // フロントページの場合、強制的に front-page.php を使用
+  if (is_front_page()) {
+    $front_page_template = get_stylesheet_directory() . '/front-page.php';
+
+    // ファイルの存在確認
+    if (file_exists($front_page_template)) {
+      error_log('✅ front-page.php を強制使用します');
+      error_log('📂 パス: ' . $front_page_template);
+      error_log('=====================================');
+      return $front_page_template;
+    } else {
+      error_log('⚠️ 警告: front-page.php が見つかりません');
+      error_log('📂 探した場所: ' . $front_page_template);
     }
-    
-    error_log('ℹ️ テンプレートを変更せず元のテンプレートを使用: ' . basename($template));
-    error_log('=====================================');
-    
-    // その他の場合は元のテンプレートを返す
-    return $template;
+  }
+
+  error_log('ℹ️ テンプレートを変更せず元のテンプレートを使用: ' . basename($template));
+  error_log('=====================================');
+
+  // その他の場合は元のテンプレートを返す
+  return $template;
 }, 999);
