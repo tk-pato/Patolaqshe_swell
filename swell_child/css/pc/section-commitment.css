@@ -14,20 +14,24 @@
   /* グリッド: 4カラム固定 */
   #section-commitment .ptlCommitHero__grid,
   .ptlCommitHero__grid {
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr);
     column-gap: clamp(16px, 2vw, 24px);
     row-gap: clamp(40px, 4.6vw, 80px);
   }
   
-/* カードサイズの最適化 */
-#section-commitment .ptlCommitHero__btn {
-  min-height: 170px;
-  padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 20px);
-  background: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12) !important;
-}  /* カード内のすべての子要素を透明化してガラス調を表示 */
+  /* カードサイズの最適化 */
+  #section-commitment .ptlCommitHero__btn {
+    min-height: 170px;
+    padding: clamp(16px, 2vw, 24px) clamp(14px, 1.8vw, 20px);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* カード内のすべての子要素を透明化してガラス調を表示 */
   #section-commitment .ptlCommitHero__btn * {
-    background: transparent !important;
+    background: transparent;
   }
   
   /* 画像アスペクト比維持 */
