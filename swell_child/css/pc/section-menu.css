@@ -10,7 +10,7 @@
 /* メインカードとサブカードに25%ガラス調背景を追加（NAVIGATIONと同じ） */
 #menu .ptlMenu__main .ptlMenu__mainContent,
 #menu .ptlMenu__sub .ptlMenu__subItem {
-  background: rgba(248, 248, 248, 0.25);
+  background: rgba(200, 200, 200, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
