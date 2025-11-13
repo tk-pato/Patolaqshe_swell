@@ -34,10 +34,9 @@
     box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15), 0 5px 16px rgba(0, 0, 0, 0.1);
   }
   
-  /* 子要素の白背景を透明にしてガラス調を表示 */
-  #section-commitment .ptlCommitHero__boxTitle,
-  #section-commitment .ptlCommitHero__boxDesc {
-    background: transparent;
+  /* カード内のすべての子要素を透明化してガラス調を表示 */
+  #section-commitment .ptlCommitHero__btn * {
+    background: transparent !important;
   }
   
   /* 画像アスペクト比維持 */

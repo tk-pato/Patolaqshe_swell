@@ -22,10 +22,10 @@
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15), 0 5px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* 子要素の白背景を透明にしてガラス調を表示 */
-#menu .ptlMenu__mainText,
-#menu .ptlMenu__subTitle {
-  background: transparent;
+/* カード内のすべての子要素を透明化してガラス調を表示 */
+#menu .ptlMenu__mainContent *,
+#menu .ptlMenu__subItem * {
+  background: transparent !important;
 }
 
 /* ptlMenuHero グリッド - PC: 4列 */
