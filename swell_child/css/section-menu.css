@@ -149,9 +149,6 @@
   justify-content: center;
   letter-spacing: .08em;
 }
-#menu .ptlMenu__subItem:hover .ptlMenu__subTitle {
-  background: #f8f9fa;
-}
 #menu .ptlMenu__more {
   text-align: center;
   margin-top: 50px;
