@@ -46,7 +46,7 @@
     border-radius: 8px;
     max-width: calc(100% - 40px);
     margin: 0 auto;
-    background: rgba(248, 248, 248, 0.75) !important;
+    background: rgba(248, 248, 248, 0.85) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
