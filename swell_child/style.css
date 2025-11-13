@@ -312,6 +312,16 @@ Version: 1.0.0
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
+  
+  /* 固定フッターメニューをガラス調に */
+  .p-fixMenu,
+  [data-section="fix_bottom_menu"],
+  .l-fixMenu {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
 }
 
 /* =====================================================
