@@ -21,22 +21,6 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 ?>
 
 <section id="menu" class="ptlMenuHero is-translucent<?php echo $has_bg ? ' has-bg' : ''; ?>">
-    <?php if ($has_bg): ?>
-    <div class="ptlMenu__bg ptlNavHero__bg" aria-hidden="true">
-        <?php if ($video_url): ?>
-            <video class="ptlMenu__video ptlNavHero__video" src="<?php echo esc_url($video_url); ?>" autoplay muted loop playsinline></video>
-        <?php else: ?>
-            <picture class="ptlMenu__image ptlNavHero__image">
-                <?php if (!empty($bg_sp)): ?>
-                    <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
-                <?php endif; ?>
-                <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" decoding="async">
-            </picture>
-        <?php endif; ?>
-        <div class="ptlMenu__overlay ptlNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
-    </div>
-    <?php endif; ?>
-    
     <div class="ptl-section__inner">
         <h2 class="ptl-section__title">MENU</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">各種メニュー</div>
