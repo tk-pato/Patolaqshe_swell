@@ -55,3 +55,12 @@
 .ptlNavHero__label {
   font-size: 14px;
 }
+
+/* SPパララックス効果を完全無効化 */
+#page-navigation .ptlNavHero__bg,
+#page-navigation .ptlNavHero__image,
+#page-navigation .ptlNavHero__image img,
+#page-navigation .ptlNavHero__video {
+    transform: none !important;
+    will-change: auto !important;
+}
