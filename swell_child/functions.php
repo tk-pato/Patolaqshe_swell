@@ -2392,6 +2392,32 @@ add_action('wp_enqueue_scripts', function () {
       true
     );
   }
+
+  // ========================================
+  // スムーズスクロール用JavaScript読み込み
+  // ========================================
+  
+  // jQueryは既にWordPressが読み込んでいるため、依存関係に指定
+  // niceScrollライブラリをCDNから読み込み（PC専用スムーズスクロール）
+  wp_enqueue_script(
+    'nicescroll',
+    'https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js',
+    ['jquery'],
+    '3.7.6',
+    true  // フッターで読み込み
+  );
+
+  // スムーズスクロール実装スクリプト
+  $smooth_scroll = get_stylesheet_directory() . '/js/smooth-scroll.js';
+  if (file_exists($smooth_scroll)) {
+    wp_enqueue_script(
+      'ptl-smooth-scroll',
+      get_stylesheet_directory_uri() . '/js/smooth-scroll.js',
+      ['jquery', 'nicescroll'],  // jQueryとniceScrollに依存
+      filemtime($smooth_scroll),
+      true  // フッターで読み込み
+    );
+  }
 }, 30);
 
 /* ========================================
