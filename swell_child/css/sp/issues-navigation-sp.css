@@ -59,3 +59,24 @@
   .ptl-bustIssues__card {
     backdrop-filter: blur(10px);
   }
+
+/* =====================================================
+   SP: タイトルスタイル
+   ----------------------------------------------------- */
+
+/* SP: タイトルエリア */
+#bust-issues .ptlIssues__titleArea {
+  margin-bottom: clamp(20px, 5vw, 32px);
+}
+
+/* SP: メインタイトル */
+#bust-issues .ptl-section__title.is-onImage {
+  font-size: clamp(16px, 4.2vw, 22px);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+/* SP: サブタイトル */
+#bust-issues .ptl-section__subtitle {
+  font-size: clamp(10px, 2.8vw, 13px);
+}

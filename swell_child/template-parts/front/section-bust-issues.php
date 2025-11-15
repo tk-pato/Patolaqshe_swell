@@ -54,7 +54,10 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
     <?php endif; ?>
 
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title is-onImage">BUST-ISSUES</h2>
+        <div class="ptlIssues__titleArea">
+            <h2 class="ptl-section__title is-onImage">パトラクシェのハイブリッドバストアップは<br>このような方におすすめです</h2>
+            <p class="ptl-section__subtitle">BUST-ISSUES</p>
+        </div>
 
         <!-- 新：8つの悩みチェックリスト -->
         <div class="ptlIssues__card">
@@ -70,12 +73,5 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
             </ul>
         </div>
 
-        <!-- MORE: NEWSセクションと同意匠（カード外に配置） -->
-        <div class="ptl-news__more">
-            <a class="ptl-news__moreBtn" href="<?php echo esc_url(home_url('/reason/')); ?>">
-                <span class="ptl-news__moreLabel">MORE</span>
-                <span class="ptl-news__moreArrow" aria-hidden="true">→</span>
-            </a>
-        </div>
     </div>
 </section>
