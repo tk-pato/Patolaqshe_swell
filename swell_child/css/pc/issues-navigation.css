@@ -184,8 +184,9 @@
 }
 
 #bust-issues .ptlIssues__text {
-  color: #333;
+  color: #fff;
   font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* ========================================

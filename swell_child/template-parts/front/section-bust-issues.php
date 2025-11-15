@@ -28,7 +28,7 @@ if (!function_exists('ptl_check_svg_fallback')) {
         return '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     }
 }
-$check_rel = 'img/check.png';
+$check_rel = 'img/check_wh.png';
 $check_path = trailingslashit(get_stylesheet_directory()) . $check_rel;
 $check_uri  = trailingslashit(get_stylesheet_directory_uri()) . $check_rel;
 $has_check_img = file_exists($check_path);

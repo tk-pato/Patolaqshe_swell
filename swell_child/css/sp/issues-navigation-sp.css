@@ -84,6 +84,8 @@
 #bust-issues .ptlIssues__text {
   font-size: clamp(14px, 3.6vw, 16px);
   font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* SP: アイテム間の余白調整 */
