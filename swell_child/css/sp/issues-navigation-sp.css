@@ -61,22 +61,44 @@
   }
 
 /* =====================================================
-   SP: タイトルスタイル
+   SP: タイトルスタイル（MMMバランス再現）
    ----------------------------------------------------- */
 
 /* SP: タイトルエリア */
 #bust-issues .ptlIssues__titleArea {
-  margin-bottom: clamp(20px, 5vw, 32px);
+  margin-bottom: clamp(32px, 8vw, 48px);
+  padding: 0 16px;
 }
 
-/* SP: メインタイトル */
+/* SP: メインタイトル（MMMと同等の大きさ） */
 #bust-issues .ptl-section__title.is-onImage {
-  font-size: clamp(16px, 4.2vw, 22px);
-  line-height: 1.5;
-  margin-bottom: 8px;
+  font-size: clamp(20px, 5.2vw, 26px);
+  line-height: 1.65;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 /* SP: サブタイトル */
 #bust-issues .ptl-section__subtitle {
-  font-size: clamp(10px, 2.8vw, 13px);
+  font-size: clamp(12px, 3.5vw, 15px);
+  letter-spacing: 0.2em;
+}
+
+/* SP: カードサイズ調整（MMMバランス） */
+#bust-issues .ptlIssues__card {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(28px, 7vw, 40px) clamp(20px, 5vw, 28px);
+}
+
+/* SP: リストアイテムのフォントサイズ調整 */
+#bust-issues .ptlIssues__text {
+  font-size: clamp(15px, 4vw, 18px);
+  font-weight: 500;
+}
+
+/* SP: アイテム間の余白調整 */
+#bust-issues .ptlIssues__item {
+  padding: clamp(12px, 3.2vw, 16px) 8px;
 }

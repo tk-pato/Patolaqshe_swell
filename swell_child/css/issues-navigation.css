@@ -124,27 +124,27 @@
 /* タイトルエリア */
 .ptlIssues__titleArea {
   text-align: center;
-  margin-bottom: clamp(24px, 4vw, 40px);
+  margin-bottom: clamp(32px, 6vw, 56px);
 }
 
 /* メインタイトル */
 #bust-issues .ptl-section__title.is-onImage {
-  font-size: clamp(18px, 3.2vw, 28px);
+  font-size: clamp(20px, 3.5vw, 32px);
   font-weight: 600;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #fff;
   text-shadow: 
     0 2px 4px rgba(0, 0, 0, 0.3),
     0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   letter-spacing: 0.05em;
 }
 
 /* サブタイトル */
 #bust-issues .ptl-section__subtitle {
-  font-size: clamp(11px, 1.6vw, 14px);
+  font-size: clamp(12px, 1.8vw, 16px);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.15em;
   margin: 0;
