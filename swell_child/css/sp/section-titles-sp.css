@@ -47,7 +47,17 @@
 
 .ptl-section__subtitleLine,
 .ptlCommitHero .ptl-section__subtitleLine {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  /* 単純な線から装飾画像に変更 */
+  background-color: transparent !important;
+  background-image: url('../../img/bg_1_wh.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  
+  /* 画像サイズに合わせて高さを調整 */
+  width: 140px !important;
+  height: 20px !important;
+  margin: 20px auto !important;
 }
 
 /* ========================================
