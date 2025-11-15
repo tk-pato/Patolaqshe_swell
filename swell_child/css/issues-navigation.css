@@ -221,6 +221,7 @@
   height: 22px;
   display: block;
   object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
 }
 
 .ptlIssues__text {
