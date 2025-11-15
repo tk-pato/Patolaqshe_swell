@@ -6,17 +6,17 @@
 
 /* グリッドレイアウト - SP調整 */
   .ptlCommitHero__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   
   .ptlCommit-grid .cmt-cards,
   .ptlCommit .cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
   
   #section-commitment-tiles .ptlNavHero__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
 /* セクション余白 - style.css (SP section)で統一管理 */
