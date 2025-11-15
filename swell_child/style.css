@@ -258,6 +258,14 @@ Version: 1.0.0
     -webkit-mask: url('./img/bg_frame_bk.png') center/100% 100% no-repeat;
     mask: url('./img/bg_frame_bk.png') center/100% 100% no-repeat;
 }
+
+/* SP版（767px以下）: MOREボタン白枠フレーム */
+@media screen and (max-width: 767px) {
+    .ptlNews__moreBtn::before, .ptl-news__moreBtn::before, .ptlCommit__more::before, .ptlIntro__cta-button::before {
+        -webkit-mask: url('./img/bg_frame_wht.png') center/100% 100% no-repeat;
+        mask: url('./img/bg_frame_wht.png') center/100% 100% no-repeat;
+    }
+}
 .ptlNews__moreArrow, .ptl-news__moreArrow { display: inline-block; transform: translateX(0); transition: transform .2s ease; }
 .ptlNews__moreLabel, .ptl-news__moreLabel { display: inline-block; }
 
