@@ -84,6 +84,7 @@
 .ptl-news__moreBtn::before,
 .ptlCommit__more::before,
 .ptlIntro__cta-button::before {
+  background: #fff !important;
   -webkit-mask: url('./img/bg_frame_wht.png') center/100% 100% no-repeat !important;
   mask: url('./img/bg_frame_wht.png') center/100% 100% no-repeat !important;
 }
