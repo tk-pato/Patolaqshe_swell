@@ -193,3 +193,8 @@
 ======================================== */
 
 /* PC: padding削除、margin-bottomのみで管理 + 高さ統一 */
+
+/* PC: SP専用改行を非表示 */
+#bust-issues .sp-br {
+  display: none;
+}
