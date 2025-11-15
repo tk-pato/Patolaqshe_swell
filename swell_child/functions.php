@@ -2363,6 +2363,18 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptlBlog-pc', get_stylesheet_directory_uri() . '/css/pc/section-blog.css', ['ptl-blog'], filemtime($blog_pc), 'screen and (min-width: 960px)');
   }
 
+  // SP専用CSS（767px以下）
+  $titles_sp = get_stylesheet_directory() . '/css/sp/section-titles-sp.css';
+  if (file_exists($titles_sp)) {
+    wp_enqueue_style(
+      'swell-child-sp-titles',
+      get_stylesheet_directory_uri() . '/css/sp/section-titles-sp.css',
+      ['child_style'],
+      filemtime($titles_sp),
+      'screen and (max-width: 767px)'
+    );
+  }
+
   // BLOG - SP専用CSS
   $blog_sp = get_stylesheet_directory() . '/css/sp/section-blog-sp.css';
   if (file_exists($blog_sp)) {

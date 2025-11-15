@@ -1,0 +1,51 @@
+/* ========================================
+   SP版 全セクション タイトル・サブタイトル
+   白文字+シャドウ化（視認性向上）
+   ======================================== */
+
+.ptl-section__title,
+.ptlNews .ptl-section__title,
+.ptlVoice .ptl-section__title,
+.ptlCommit .ptl-section__title,
+.ptlCommitHero .ptl-section__title,
+.ptlBlog .ptl-section__title,
+.ptlMenu .ptl-section__title,
+.ptlSalonHero .ptl-section__title,
+#intro .ptlIntro__title,
+#page-navigation .ptl-section__title,
+#bust-issues .ptl-section__title,
+#section-infohub .ptl-section__title,
+#section-blog .ptl-section__title,
+#section-menu .ptl-section__title,
+#salon .ptl-section__title,
+#uservoice .ptl-section__title,
+#news .ptl-section__title {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+.ptl-section__subtitle,
+.ptlNews .ptl-section__subtitle,
+.ptlVoice .ptl-section__subtitle,
+.ptlCommit .ptl-section__subtitle,
+.ptlCommitHero .ptl-section__subtitle,
+.ptlBlog .ptl-section__subtitle,
+.ptlMenu .ptl-section__subtitle,
+.ptlSalonHero .ptl-section__subtitle,
+#intro .ptlIntro__subtitle,
+#page-navigation .ptl-section__subtitle,
+#bust-issues .ptl-section__subtitle,
+#section-infohub .ptl-section__subtitle,
+#section-blog .ptl-section__subtitle,
+#section-menu .ptl-section__subtitle,
+#salon .ptl-section__subtitle,
+#uservoice .ptl-section__subtitle,
+#news .ptl-section__subtitle {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+.ptl-section__subtitleLine,
+.ptlCommitHero .ptl-section__subtitleLine {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
