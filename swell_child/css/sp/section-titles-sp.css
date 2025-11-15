@@ -50,9 +50,10 @@
    対象: NEWS/BLOG/MENU/COMMITMENT/USERVOICE等
    ======================================== */
 
-/* オーナメント画像を白版に差し替え */
+/* オーナメント画像を白く反転 */
 .ptl-section__ornament img {
-  content: url('../../img/bg_1_wh.png') !important;
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
 }
 
 /* INTROセクションのオーナメント（CSSで作られた線）を白に */
