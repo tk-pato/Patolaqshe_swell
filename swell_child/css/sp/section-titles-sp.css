@@ -49,3 +49,32 @@
 .ptlCommitHero .ptl-section__subtitleLine {
   background-color: rgba(255, 255, 255, 0.6) !important;
 }
+
+/* ========================================
+   MOREボタン タイトルと同じ白文字+シャドウ
+   ======================================== */
+
+.ptlNews__moreBtn,
+.ptl-news__moreBtn,
+.ptlCommit__more,
+.ptlIntro__cta-button,
+.ptlNews__moreLabel,
+.ptl-news__moreLabel,
+.ptlNews__moreArrow,
+.ptl-news__moreArrow {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ホバー時も白文字+シャドウを維持 */
+.ptlNews__moreBtn:hover,
+.ptl-news__moreBtn:hover,
+.ptlCommit__more:hover,
+.ptlIntro__cta-button:hover,
+.ptlNews__moreBtn:focus-visible,
+.ptl-news__moreBtn:focus-visible,
+.ptlCommit__more:focus-visible,
+.ptlIntro__cta-button:focus-visible {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+}
