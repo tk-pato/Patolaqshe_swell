@@ -74,10 +74,15 @@
   overflow: hidden;
 }
 
+.ptlNavHero__icon img {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
 .ptlNavHero__label {
   font-size: 16px;
   font-weight: 600;
-  color: #222;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   text-align: center;
 }
 

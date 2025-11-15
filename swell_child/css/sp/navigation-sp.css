@@ -54,6 +54,8 @@
 
 .ptlNavHero__label {
   font-size: 14px;
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* SPパララックス効果を完全無効化 */

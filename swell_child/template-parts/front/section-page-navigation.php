@@ -79,9 +79,14 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 $slug  = !empty($it['slug']) ? (string) $it['slug'] : strtolower(preg_replace('/[^a-z0-9\-]+/i', '-', $label));
                 $icon_html = $it['icon_html'] ?? '';
                 if (!$icon_html && $slug) {
-                    $png = $icon_dir_abs . $slug . '.png';
-                    if (file_exists($png)) {
-                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" loading="lazy" decoding="async">';
+                    $png_wh = $icon_dir_abs . $slug . '_wh.png';
+                    if (file_exists($png_wh)) {
+                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '_wh.png') . '" alt="" loading="lazy" decoding="async">';
+                    } else {
+                        $png = $icon_dir_abs . $slug . '.png';
+                        if (file_exists($png)) {
+                            $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" loading="lazy" decoding="async">';
+                        }
                     }
                 }
                 if (!$icon_html) {
