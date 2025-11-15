@@ -61,3 +61,9 @@
 #intro .ptlIntro__brand-ornament {
   background: #fff !important;
 }
+
+/* 説明文 - SP専用：白+シャドウ */
+#intro .ptlIntro__desc {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}

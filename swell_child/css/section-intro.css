@@ -150,7 +150,7 @@
 #intro .ptlIntro__desc {
   font-size: clamp(14px, 2.2vw, 16px);
   line-height: 1.8;
-  color: #999;
+  color: #555;
   margin-bottom: clamp(28px, 4.5vw, 44px);
 }
 
