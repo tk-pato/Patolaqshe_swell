@@ -27,11 +27,14 @@
   display: none !important;
 }
 
-/* セクション背景を白に */
+/* セクション背景を完全透明に */
 #page-navigation,
 .ptlNavHero,
-.ptl-pageNavHero {
-  /* background管理はstyle.css（global SP）で統一 */
+.ptl-pageNavHero,
+#page-navigation.ptlNavHero,
+.ptlNavHero.is-translucent {
+  background: transparent !important;
+  background-color: transparent !important;
   min-height: auto !important;
 }
 
