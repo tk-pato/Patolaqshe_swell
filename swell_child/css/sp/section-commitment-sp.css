@@ -19,6 +19,17 @@
     grid-template-columns: 1fr;
   }
 
+/* カードテキストを白+シャドウに */
+  #section-commitment .ptlCommitHero__boxTitle {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  #section-commitment .ptlCommitHero__boxDesc {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+  }
+
 /* セクション余白 - style.css (SP section)で統一管理 */
   body #section-commitment {
     margin-bottom: 0 !important;
