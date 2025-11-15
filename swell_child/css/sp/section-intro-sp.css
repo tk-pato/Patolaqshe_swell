@@ -44,6 +44,15 @@
     max-width: 140px;
     margin-left: auto;
     margin-right: auto;
+    /* 元の画像を透明に */
+    opacity: 0;
+    /* 背景画像として白ロゴを設定 */
+    background-image: url('../../img/intrologo_wh.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* 要素の表示領域は維持（シャドウ効果のため） */
+    display: block;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
   }
   
@@ -55,26 +64,6 @@
   #intro .ptlIntro__cta-button {
     margin: 0 auto;
   }
-
-/* ========================================
-   ブランドロゴを白版に変更（SP専用）
-   ======================================== */
-
-/* 元のimg要素を非表示にして、background-imageで白ロゴを表示 */
-#intro .ptlIntro__brand-logo {
-  /* 元の画像を透明に */
-  opacity: 0;
-  
-  /* 背景画像として白ロゴを設定 */
-  background-image: url('../../img/intrologo_wh.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  
-  /* 要素の表示領域は維持（シャドウ効果のため） */
-  display: block;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
-}
 
 /* ロゴ下の装飾線を白に変更 */
 #intro .ptlIntro__brand-ornament {
