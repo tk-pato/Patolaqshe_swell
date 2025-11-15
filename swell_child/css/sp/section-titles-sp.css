@@ -79,12 +79,12 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* MOREボタン白枠フレーム（bg_frame_wht.png） */
+/* MOREボタン白枠フレーム（bg_frame_wh.png） */
 .ptlNews__moreBtn::before,
 .ptl-news__moreBtn::before,
 .ptlCommit__more::before,
 .ptlIntro__cta-button::before {
   background: #fff !important;
-  -webkit-mask: url('./img/bg_frame_wht.png') center/100% 100% no-repeat !important;
-  mask: url('./img/bg_frame_wht.png') center/100% 100% no-repeat !important;
+  -webkit-mask: url('../../img/bg_frame_wh.png') center/100% 100% no-repeat !important;
+  mask: url('../../img/bg_frame_wh.png') center/100% 100% no-repeat !important;
 }
