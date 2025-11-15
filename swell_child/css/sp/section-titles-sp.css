@@ -53,17 +53,17 @@
 /* オーナメント画像を白く反転 */
 .ptl-section__ornament img,
 .ptlCommit .ptl-section__ornament img,
+.ptlCommitHero .ptl-section__ornament img,
 .ptlNews .ptl-section__ornament img,
 .ptlBlog .ptl-section__ornament img,
 .ptlMenu .ptl-section__ornament img,
 .ptlVoice .ptl-section__ornament img,
-.ptlSalon .ptl-section__ornament img {
+.ptlSalon .ptl-section__ornament img,
+.ptlSalonHero .ptl-section__ornament img {
   filter: brightness(0) invert(1) !important;
   -webkit-filter: brightness(0) invert(1) !important;
-  /* インラインstyleより優先 */
-  width: 240px !important;
-  max-width: 100% !important;
-  height: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* INTROセクションのオーナメント（CSSで作られた線）を白に */
