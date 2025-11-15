@@ -127,9 +127,9 @@
   margin-bottom: clamp(40px, 7vw, 64px);
 }
 
-/* メインタイトル（イントロと同等の大きさ） */
+/* メインタイトル（標準h2サイズ） */
 #bust-issues .ptl-section__title.is-onImage {
-  font-size: clamp(24px, 4.5vw, 38px);
+  font-size: clamp(22px, 2.8vw, 28px);
   font-weight: 600;
   line-height: 1.65;
   color: #fff;
