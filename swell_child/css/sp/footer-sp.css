@@ -33,6 +33,7 @@
   .ptl-footer__logo img {
     height: 32px;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    content: url('../../img/headlogo.png') !important;
   }
 
   /* 下段グレー背景コンテナ（SP版：縦並び） */
