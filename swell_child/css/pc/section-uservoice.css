@@ -11,6 +11,11 @@ body #uservoice {
   margin-bottom: 80px !important;
 }
 
+/* PCナビゲーション用の左右余白 */
+#uservoice .uservoice-slider .swiper {
+  padding: 0 60px;
+}
+
 /* PC・タブレット用カード間グレー線 */
   #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
     content: '';
