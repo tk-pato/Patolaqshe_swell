@@ -75,6 +75,12 @@
     align-items: center;
   }
   
+  /* SP: 親要素のpaddingを削除（全幅表示のため） */
+  #uservoice .ptl-section__inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
   /* スライダー調整 */
   #uservoice .uservoice-slider {
     margin-left: calc(50% - 50vw);
