@@ -19,8 +19,8 @@
     grid-template-columns: 1fr;
   }
 
-/* カードスタイル - ガラス調デザイン（PC版と統一） */
-  #section-commitment .ptlCommitHero__btn {
+/* カードスタイル - ガラス調デザイン（セレクタ詳細度強化版） */
+  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__btn {
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -32,19 +32,19 @@
   }
 
   /* カード内のすべての子要素を透明化してガラス調を表示 */
-  #section-commitment .ptlCommitHero__btn * {
+  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__btn * {
     background: transparent;
   }
 
   /* カードテキストを黒色に（ガラス調背景なので白文字から変更） */
-  #section-commitment .ptlCommitHero__boxTitle {
-    color: #333 !important;
-    text-shadow: none !important;
+  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__boxTitle {
+    color: #333;
+    text-shadow: none;
   }
 
-  #section-commitment .ptlCommitHero__boxDesc {
-    color: #555 !important;
-    text-shadow: none !important;
+  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__boxDesc {
+    color: #555;
+    text-shadow: none;
   }
 
 /* セクション余白 - style.css (SP section)で統一管理 */
