@@ -36,28 +36,21 @@
     }
     
     /* Swiperのアイコンフォントを完全無効化 */
-    #uservoice .swiper-button-prev::before,
-    #uservoice .swiper-button-next::before {
-        content: none;
-        display: none;
+    #uservoice .swiper-button-prev::after,
+    #uservoice .swiper-button-next::after {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 32px;
+        line-height: 1;
+        font-style: normal;
     }
     
     #uservoice .swiper-button-prev::after {
         content: '<';
-        font-size: 32px;
-        font-weight: 300;
-        font-family: Arial, Helvetica, sans-serif;
-        font-style: normal;
-        line-height: 1;
     }
     
     #uservoice .swiper-button-next::after {
         content: '>';
-        font-size: 32px;
-        font-weight: 300;
-        font-family: Arial, Helvetica, sans-serif;
-        font-style: normal;
-        line-height: 1;
     }
     
     #uservoice .swiper-button-next {
