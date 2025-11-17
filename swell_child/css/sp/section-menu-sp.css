@@ -1,5 +1,11 @@
 /* === MENU Section (SP版: 959px以下) === */
 
+/* SP: 1列レイアウト */
+  #menu .ptlMenu__content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
 /* SP: メインカードのガラス調背景 */
 #menu .ptlMenu__mainContent {
   background: rgba(255, 255, 255, 0.25);
@@ -43,6 +49,10 @@
   padding: 12px 15px;
   font-size: 0.9rem;
 }
+  
+  #menu .ptlMenu__mainImage {
+    height: 200px;
+  }
   
   #menu .ptlMenu__more {
     margin-top: 40px;
