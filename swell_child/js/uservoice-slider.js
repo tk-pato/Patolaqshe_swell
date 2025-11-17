@@ -35,7 +35,7 @@ function initUserVoiceSlider() {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
-            centeredSlides: true,
+            centeredSlides: false,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
