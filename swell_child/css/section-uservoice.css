@@ -36,6 +36,12 @@
     }
     
     /* Swiperのアイコンフォントを完全無効化 */
+    #uservoice .swiper-button-prev::before,
+    #uservoice .swiper-button-next::before {
+        content: '';
+        display: none;
+    }
+    
     #uservoice .swiper-button-prev::after,
     #uservoice .swiper-button-next::after {
         font-family: Arial, Helvetica, sans-serif;

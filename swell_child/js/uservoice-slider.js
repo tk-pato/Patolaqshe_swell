@@ -53,7 +53,7 @@ function initUserVoiceSlider() {
                 320: {
                     slidesPerView: 1,
                     spaceBetween: 20,
-                    centeredSlides: true,
+                    centeredSlides: false,
                 },
                 768: {
                     slidesPerView: 3,

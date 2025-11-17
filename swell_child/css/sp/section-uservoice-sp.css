@@ -95,6 +95,14 @@
     min-height: 300px;
   }
   
+  /* SP: swiper-slideの左右余白を強制ゼロ */
+  #uservoice .swiper-slide {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
   /* 透明背景用: テキストを読みやすく調整 */
   #uservoice .feedback-title,
   #uservoice .feedback-content,
