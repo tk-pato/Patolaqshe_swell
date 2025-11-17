@@ -85,10 +85,28 @@
     padding: 0 50px;
   }
   
+  /* SP: カードの背景を完全透過（commitmentセクションと同様） */
   #uservoice .feedback-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
     padding: 20px;
     margin: 0 10px;
     min-height: 300px;
+  }
+  
+  /* 透明背景用: テキストを読みやすく調整 */
+  #uservoice .feedback-title,
+  #uservoice .feedback-content,
+  #uservoice .feedback-content p,
+  #uservoice .feedback-author {
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* 星計価はそのまま（試認性確保） */
+  #uservoice .feedback-rating {
+    color: #ffc107;
   }
   
   /* SP時はグレー線を確実に非表示 */
@@ -96,12 +114,30 @@
     display: none;
   }
   
+  /* スライダー矢印ボタン: ガラス調グレーに変更 */
+  #uservoice .swiper-button-prev,
+  #uservoice .swiper-button-next {
+    color: rgba(150, 150, 150, 0.85);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+  }
+  
+  #uservoice .swiper-button-prev::after,
+  #uservoice .swiper-button-next::after {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
   #uservoice .swiper-button-prev {
     left: 10px;
   }
   
   #uservoice .swiper-button-next {
-    right: 10px;
+    right: 15px;
   }
 
 /* モバイル調整 */
