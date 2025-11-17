@@ -25,6 +25,26 @@
 }
 #uservoice .swiper-button-prev{ left:10px; }
 #uservoice .swiper-button-next{ right:10px; }
+/* SP時の矢印スタイル: ガラス調グレー */
+@media (max-width: 767px) {
+    #uservoice .swiper-button-prev,
+    #uservoice .swiper-button-next {
+        color: rgba(150, 150, 150, 0.85);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+    
+    #uservoice .swiper-button-prev::after,
+    #uservoice .swiper-button-next::after {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    #uservoice .swiper-button-next {
+        right: 15px;
+    }
+}
 /* ページネーション余白 */
 #uservoice .swiper-pagination{ margin-top:24px; }
 
@@ -267,13 +287,14 @@
     }
 }
 
-/* ===== SP専用フォント統一設定（REASONSセクションと統一） ===== */
+/* ===== SP専用フォント統一設定（半透明背景用に白色テキスト） ===== */
 @media (max-width: 767px) {
-    /* タイトル：REASONSのboxTitleと完全統一 */
+    /* タイトル: 白色+シャドウ（issues/commitment参照） */
     #uservoice .feedback-title {
         font-size: clamp(13px, 1.4vw, 16px);
         font-weight: 600;
-        color: #444; /* REASONSと統一 */
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         text-align: center;
         margin-top: 10px;
         margin-bottom: 6px;
@@ -281,11 +302,12 @@
         font-family: inherit;
     }
     
-    /* ディスクリプション：REASONSのboxDescと完全統一 */
+    /* ディスクリプション: 白色+シャドウ */
     #uservoice .feedback-content {
-        font-size: clamp(12px, 1.2vw, 14px); /* タイトルより1〜2px小 */
+        font-size: clamp(12px, 1.2vw, 14px);
         font-weight: 300;
-        color: #444;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         line-height: 1.65;
         text-align: center;
         margin-bottom: 20px;
@@ -293,28 +315,30 @@
     }
     
     #uservoice .feedback-content p {
-        font-size: clamp(12px, 1.2vw, 14px); /* タイトルより1〜2px小 */
+        font-size: clamp(12px, 1.2vw, 14px);
         font-weight: 300;
-        color: #444;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         line-height: 1.65;
         margin: 0;
         letter-spacing: 0.02em;
     }
     
-    /* 顧客名：REASONSのlabelスタイルベース */
+    /* 顧客名: 白色+シャドウ */
     #uservoice .feedback-author {
-        font-size: clamp(13px, 1.4vw, 16px); /* タイトルと統一 */
+        font-size: clamp(13px, 1.4vw, 16px);
         font-weight: 600;
-        color: #222;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         text-align: center;
         margin-bottom: 15px;
         font-family: inherit;
     }
     
-    /* 星評価：視認性保持 */
+    /* 星評価：視認性保持（黄色のまま） */
     #uservoice .feedback-rating {
         color: #ffc107;
-        font-size: 0.88rem; /* 80%縮小（1.1rem → 0.88rem） */
+        font-size: 0.88rem;
         letter-spacing: 2px;
         text-align: center;
         display: flex;
@@ -380,7 +404,20 @@
     min-height: 350px;
     width: 100%;
     box-sizing: border-box;
-    position: relative; /* 疑似要素用 */
+    position: relative; /* 疆佋要素用 */
+}
+
+/* SP: カードの半透明ガラス背景（issues/commitment参照） */
+@media (max-width: 767px) {
+    #uservoice .feedback-card {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+        padding: 20px;
+        margin: 0 10px;
+        min-height: 300px;
+    }
 }
 
 /* PC・タブレット用カード間グレー線 */
