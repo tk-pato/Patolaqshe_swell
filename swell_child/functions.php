@@ -2128,10 +2128,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ptl-uservoice-pc', get_stylesheet_directory_uri() . '/css/pc/section-uservoice.css', ['ptl-uservoice'], filemtime($uservoice_pc), 'screen and (min-width: 960px)');
   }
 
-  // お客様の声 - SP専用CSS
+  // お客様の声 - SP専用CSS（タブレット含む）
   $uservoice_sp = get_stylesheet_directory() . '/css/sp/section-uservoice-sp.css';
   if (file_exists($uservoice_sp)) {
-    wp_enqueue_style('ptl-uservoice-sp', get_stylesheet_directory_uri() . '/css/sp/section-uservoice-sp.css', ['ptl-uservoice'], filemtime($uservoice_sp), 'screen and (max-width: 767px)');
+    wp_enqueue_style('ptl-uservoice-sp', get_stylesheet_directory_uri() . '/css/sp/section-uservoice-sp.css', ['ptl-uservoice'], filemtime($uservoice_sp), 'screen and (max-width: 959px)');
   }
 
   // お客様の声 JS（Swiperに依存）
