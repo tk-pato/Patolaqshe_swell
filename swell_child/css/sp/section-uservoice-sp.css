@@ -103,6 +103,11 @@
     padding-right: 0;
   }
   
+  /* SP: swiper-wrapperのtransformをリセット（左端表示） */
+  #uservoice .swiper-wrapper {
+    transform: translate3d(0px, 0, 0) !important;
+  }
+  
   /* 透明背景用: テキストを読みやすく調整 */
   #uservoice .feedback-title,
   #uservoice .feedback-content,

@@ -36,17 +36,20 @@
         padding: 0;
     }
     
-    /* Swiperのアイコンフォントを完全無効化 */
-    #uservoice .uservoice-slider .swiper-button-prev::before,
-    #uservoice .uservoice-slider .swiper-button-next::before,
-    #uservoice .uservoice-slider .swiper-button-prev::after,
-    #uservoice .uservoice-slider .swiper-button-next::after {
-        content: none;
-        display: none;
+    /* 親テーマの矢印を完全無効化 */
+    #uservoice .swiper-button-prev::after,
+    #uservoice .swiper-button-next::after {
         border: none;
         background: none;
-        width: 0;
-        height: 0;
+        width: auto;
+        height: auto;
+        transform: none;
+        position: static;
+        box-sizing: content-box;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
     }
     
     /* カスタム矢印 */
@@ -58,9 +61,6 @@
         line-height: 40px;
         font-style: normal;
         display: block;
-        border: none;
-        transform: none;
-        position: static;
     }
     
     #uservoice .swiper-button-next::after {
@@ -71,9 +71,6 @@
         line-height: 40px;
         font-style: normal;
         display: block;
-        border: none;
-        transform: none;
-        position: static;
     }
     
     #uservoice .swiper-button-next {
