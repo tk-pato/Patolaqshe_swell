@@ -19,33 +19,33 @@
     grid-template-columns: 1fr;
   }
 
-/* カードスタイル - ガラス調デザイン（セレクタ詳細度強化版） */
-  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__btn {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    padding: 16px 14px;
-    min-height: 150px;
-  }
+/* SP: カードのガラス調背景（issues/PC版と同じ設定） */
+#section-commitment .ptlCommitHero__btn {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  padding: clamp(32px, 8vw, 44px) clamp(24px, 6vw, 32px);
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  /* カード内のすべての子要素を透明化してガラス調を表示 */
-  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__btn * {
-    background: transparent;
-  }
+/* SP: カードテキストを白色+シャドウに（半透明背景用） */
+#section-commitment .ptlCommitHero__boxTitle {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  font-size: clamp(14px, 3.6vw, 16px);
+  font-weight: 600;
+}
 
-  /* カードテキストを黒色に（ガラス調背景なので白文字から変更） */
-  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__boxTitle {
-    color: #333;
-    text-shadow: none;
-  }
-
-  body #section-commitment .ptl-section__inner .ptlCommitHero__grid .ptlCommitHero__boxDesc {
-    color: #555;
-    text-shadow: none;
-  }
+#section-commitment .ptlCommitHero__boxDesc {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  font-size: clamp(14px, 3.6vw, 16px);
+  font-weight: 500;
+  line-height: 1.65;
+}
 
 /* セクション余白 - style.css (SP section)で統一管理 */
   body #section-commitment {
