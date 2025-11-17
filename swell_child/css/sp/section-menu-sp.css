@@ -1,35 +1,48 @@
 /* === MENU Section (SP版: 959px以下) === */
 
-/* SP: 1列レイアウト */
-  #menu .ptlMenu__content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  #menu .ptlMenu__mainImage {
-    height: 200px;
-  }
-  
-  #menu .ptlMenu__mainText {
-    padding: 20px;
-  }
-  
-  #menu .ptlMenu__mainTitle {
-    font-size: 1.3rem;
-  }
-  
-  #menu .ptlMenu__mainDesc {
-    font-size: 0.9rem;
-  }
-  
-  #menu .ptlMenu__subImage {
-    height: 100px;
-  }
-  
-  #menu .ptlMenu__subTitle {
-    padding: 12px 15px;
-    font-size: 0.9rem;
-  }
+/* SP: メインカードのガラス調背景 */
+#menu .ptlMenu__mainContent {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* SP: メインカード テキストエリアの背景を透明に */
+#menu .ptlMenu__mainText {
+  background: transparent;
+  padding: 20px;
+}
+
+/* SP: メインカード タイトル・説明文を白色+シャドウに */
+#menu .ptlMenu__mainTitle {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  font-size: 1.3rem;
+}
+
+#menu .ptlMenu__mainDesc {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+}
+
+/* SP: サブカードのガラス調背景 */
+#menu .ptlMenu__subItem {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* SP: サブカード タイトルを白色+シャドウに */
+#menu .ptlMenu__subTitle {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  background: transparent;
+  padding: 12px 15px;
+  font-size: 0.9rem;
+}
   
   #menu .ptlMenu__more {
     margin-top: 40px;
