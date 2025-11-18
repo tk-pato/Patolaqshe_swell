@@ -1,162 +1,143 @@
 /* ===========================
    User's Voice Section - SP Styles
    USERVOICEセクション SP専用スタイル
-   適用条件: max-width: 767px以下（functions.php line 2133で設定）
+   適用条件: max-width: 959px以下（functions.php line 2134で設定）
    =========================== */
 
-/* タブレット・SP調整 */
-  .ptlVoice {
-    padding: 60px 0;
-  }
-  
-  .uservoice-slider {
-    margin: 40px 0;
-  }
-  
-  .uservoice-slider .swiper-wrapper {
-    gap: 20px;
-  }
-  
-  .customer-img {
-    width: 80px;
-    height: 80px;
-  }
-  
-  /* タイトル：REASONSのboxTitleと完全統一 */
-  #uservoice .feedback-title {
-    font-size: clamp(13px, 1.4vw, 16px);
-    font-weight: 600;
-    color: #444;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 6px;
-    letter-spacing: .08em;
-    font-family: inherit;
-  }
-  
-  /* ディスクリプション：REASONSのboxDescと完全統一 */
-  #uservoice .feedback-content {
-    font-size: clamp(12px, 1.2vw, 14px);
-    font-weight: 300;
-    color: #444;
-    line-height: 1.65;
-    text-align: center;
-    margin-bottom: 20px;
-    font-family: inherit;
-  }
-  
-  #uservoice .feedback-content p {
-    font-size: clamp(12px, 1.2vw, 14px);
-    font-weight: 300;
-    color: #444;
-    line-height: 1.65;
-    margin: 0;
-    letter-spacing: 0.02em;
-  }
-  
-  /* 顧客名：REASONSのlabelスタイルベース */
-  #uservoice .feedback-author {
-    font-size: clamp(13px, 1.4vw, 16px);
-    font-weight: 600;
-    color: #222;
-    text-align: center;
-    margin-bottom: 15px;
-    font-family: inherit;
-  }
-  
-  /* 星評価：視認性保持 */
-  #uservoice .feedback-rating {
-    color: #ffc107;
-    font-size: 0.88rem;
-    letter-spacing: 2px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* スライダー調整 */
-  #uservoice .uservoice-slider {
-    margin-left: calc(50% - 50vw);
-    width: 100vw;
-  }
-  
-  #uservoice .uservoice-slider .swiper {
-    padding: 0 50px;
-    max-width: 100%;
-  }
-  
-  /* SP: カードの背景を完全透過（commitmentセクションと同様） */
-  #uservoice .feedback-card {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 20px;
-    margin: 0 10px;
-    min-height: 300px;
-  }
-  
-  /* 透明背景用: テキストを読みやすく調整 */
-  #uservoice .feedback-title,
-  #uservoice .feedback-content,
-  #uservoice .feedback-content p,
-  #uservoice .feedback-author {
-    color: #fff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-  }
-  
-  /* 星計価はそのまま（試認性確保） */
-  #uservoice .feedback-rating {
-    color: #ffc107;
-  }
-  
-  /* SP時はグレー線を確実に非表示 */
-  #uservoice .feedback-card::after {
-    display: none;
-  }
-  
-  #uservoice .swiper-button-prev {
-    left: 10px;
-  }
-  
-  #uservoice .swiper-button-next {
-    right: 10px;
-  }
-  
+/* セクション余白 */
+.ptlVoice {
+  padding: 50px 0;
+}
 
+/* スライダー全体 */
+.uservoice-slider {
+  margin: 30px 0;
+}
 
-/* モバイル調整 */
-  .ptlVoice {
-    padding: 50px 0;
-  }
-  
-  .uservoice-slider {
-    margin: 30px 0;
-  }
-  
-  .uservoice-slider .swiper-wrapper {
-    gap: 15px;
-  }
-  
-  .customer-img {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .uservoice-slider .swiper-pagination {
-    margin-top: 30px;
-  }
-  
-  .uservoice-slider .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    margin: 0 4px;
-  }
+/* スライダーラッパー */
+.uservoice-slider .swiper-wrapper {
+  gap: 15px;
+}
+
+/* 顧客画像サイズ */
+.customer-img {
+  width: 70px;
+  height: 70px;
+}
+
+/* ページネーション */
+.uservoice-slider .swiper-pagination {
+  margin-top: 30px;
+}
+
+.uservoice-slider .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+}
+
+/* タイトル：REASONSのboxTitleと完全統一 */
+#uservoice .feedback-title {
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-weight: 600;
+  color: #444;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  letter-spacing: .08em;
+  font-family: inherit;
+}
+
+/* ディスクリプション：REASONSのboxDescと完全統一 */
+#uservoice .feedback-content {
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 300;
+  color: #444;
+  line-height: 1.65;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: inherit;
+}
+
+#uservoice .feedback-content p {
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 300;
+  color: #444;
+  line-height: 1.65;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* 顧客名：REASONSのlabelスタイルベース */
+#uservoice .feedback-author {
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: inherit;
+}
+
+/* 星評価：視認性保持 */
+#uservoice .feedback-rating {
+  color: #ffc107;
+  font-size: 0.88rem;
+  letter-spacing: 2px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* SP: スライダーコンテナ - 共通CSSの全幅設定を継承 */
+#uservoice .uservoice-slider {
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+}
+
+/* SP: swiper要素 */
+#uservoice .uservoice-slider .swiper {
+  padding: 0 50px;
+  max-width: 100%;
+}
+
+/* SP: カードの背景を完全透過 */
+#uservoice .feedback-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 20px;
+  margin: 0 10px;
+  min-height: 300px;
+}
+
+/* 透明背景用: テキストを読みやすく調整 */
+#uservoice .feedback-title,
+#uservoice .feedback-content,
+#uservoice .feedback-content p,
+#uservoice .feedback-author {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* SP時はグレー線を確実に非表示 */
+#uservoice .feedback-card::after {
+  display: none;
+}
+
+/* 矢印ボタン位置 */
+#uservoice .swiper-button-prev {
+  left: 10px;
+}
+
+#uservoice .swiper-button-next {
+  right: 10px;
+}
 
 /* セクション余白 - style.css (SP section)で統一管理 */
-  body #uservoice {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
+body #uservoice {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
