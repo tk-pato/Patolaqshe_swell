@@ -35,7 +35,7 @@ function initUserVoiceSlider() {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
-            centeredSlides: false,
+            centeredSlides: true,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
@@ -53,7 +53,7 @@ function initUserVoiceSlider() {
                 320: {
                     slidesPerView: 1,
                     spaceBetween: 20,
-                    centeredSlides: false,
+                    centeredSlides: true,
                 },
                 768: {
                     slidesPerView: 3,
