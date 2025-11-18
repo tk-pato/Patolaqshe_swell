@@ -100,7 +100,7 @@
     padding: 20px;
     margin: 0 auto;
     min-height: 300px;
-    max-width: 100%;
+    max-width: 90%;
   }
   
   /* SP: swiper-slideの左右余白を強制ゼロ & 幅を100%に */
