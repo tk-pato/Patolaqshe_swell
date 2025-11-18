@@ -75,12 +75,6 @@
     align-items: center;
   }
   
-  /* SP: 親要素のpaddingを削除（全幅表示のため） */
-  #uservoice .ptl-section__inner {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  
   /* スライダー調整 */
   #uservoice .uservoice-slider {
     margin-left: calc(50% - 50vw);
@@ -98,19 +92,8 @@
     border: none;
     box-shadow: none;
     padding: 20px;
-    margin: 0 auto;
+    margin: 0 10px;
     min-height: 300px;
-    max-width: 90%;
-  }
-  
-  /* SP: swiper-slideの左右余白を強制ゼロ & 幅を100%に */
-  #uservoice .swiper-slide {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-    max-width: 100%;
   }
   
   /* 透明背景用: テキストを読みやすく調整 */
