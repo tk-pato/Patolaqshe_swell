@@ -14,6 +14,16 @@
 
 /* セクション余白は最後に設定（NAVIGATION/SALONと同じ構造） */
 
+/* デバッグ: セクション全体 */
+#uservoice {
+  outline: 5px solid purple !important;
+}
+
+/* デバッグ: inner要素 */
+#uservoice .ptl-section__inner {
+  outline: 3px solid magenta !important;
+}
+
 /* arrows */
 /* arrows (updated) */
 #uservoice .swiper-button-prev,
@@ -387,8 +397,8 @@
 /* stop full-bleed shift only for this section (disabled to allow full-bleed) */
 /* #uservoice .uservoice-slider{width:100% !important;max-width:1100px;margin:24px auto 0 !important;margin-left:0 !important;} */
 
-#uservoice .uservoice-slider .swiper-wrapper{display:flex; flex-direction:row; align-items: stretch;}
-#uservoice .uservoice-slider .swiper{min-height:450px; position: relative;} /* ラッパーの高さゼロ回避 */
+#uservoice .uservoice-slider .swiper-wrapper{display:flex; flex-direction:row; align-items: stretch; outline: 3px solid cyan !important;}
+#uservoice .uservoice-slider .swiper{min-height:450px; position: relative; outline: 3px solid blue !important;} /* ラッパーの高さゼロ回避 */
 
 #uservoice .uservoice-slider{
     width:100vw;
@@ -397,6 +407,12 @@
     max-width:none;
     position: relative;
     overflow: hidden;
+    outline: 3px solid red !important;
+}
+
+/* デバッグ: スライド */
+#uservoice .swiper-slide {
+  outline: 3px solid orange !important;
 }
 
 /* .feedback-card rules removed per request */
@@ -433,6 +449,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    outline: 3px solid green !important;
     justify-content: space-between;
     border: none;
     min-height: 350px;
