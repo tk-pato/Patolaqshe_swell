@@ -115,6 +115,14 @@
     display: none;
   }
   
+  #uservoice .swiper-button-prev {
+    left: 10px;
+  }
+  
+  #uservoice .swiper-button-next {
+    right: 10px;
+  }
+  
 
 
 /* モバイル調整 */
