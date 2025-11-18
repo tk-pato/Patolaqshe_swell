@@ -4,6 +4,13 @@
    適用条件: max-width: 959px以下（functions.php line 2134で設定）
    =========================== */
 
+/* SP: inner要素の幅制限を解除 */
+#uservoice .ptl-section__inner {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* セクション余白 */
 .ptlVoice {
   padding: 50px 0;
