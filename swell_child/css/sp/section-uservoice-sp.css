@@ -96,11 +96,19 @@
 }
 
 #uservoice .uservoice-slider .swiper {
-  padding-left: 60px;
-  padding-right: 40px;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0;
   padding-bottom: 0;
   max-width: 100%;
+}
+
+#uservoice .uservoice-slider .swiper-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* SP: カードの背景を完全透過 */
@@ -109,8 +117,8 @@
   border: none;
   box-shadow: none;
   padding: 20px;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0 auto !important;
+  max-width: calc(100vw - 100px) !important;
   min-height: 300px;
 }
 
