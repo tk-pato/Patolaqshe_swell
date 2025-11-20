@@ -412,6 +412,15 @@
     outline: 3px solid red !important;
 }
 
+/* SP時は全幅設定を無効化（PC影響ゼロ） */
+@media (max-width: 767px) {
+    #uservoice .uservoice-slider {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
 /* デバッグ: スライド */
 #uservoice .swiper-slide {
   outline: 3px solid orange !important;
