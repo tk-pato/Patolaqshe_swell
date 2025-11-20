@@ -89,11 +89,6 @@
   align-items: center;
 }
 
-/* SP: swiper要素 */
-#uservoice .uservoice-slider .swiper {
-  padding: 0 50px;
-  max-width: 100%;
-}
 
 /* SP: カードの背景を完全透過 */
 #uservoice .feedback-card {

@@ -41,13 +41,14 @@
 @media (max-width: 767px) {
     #uservoice .swiper-button-prev,
     #uservoice .swiper-button-next {
-        color: rgba(180, 180, 180, 0.9);
+        color: rgba(255, 255, 255, 0.95);
         background: transparent;
         width: 40px;
         height: 40px;
         padding: 0;
         z-index: 20;
         cursor: pointer;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     }
     
     /* 親テーマの矢印を完全無効化 */
@@ -87,8 +88,12 @@
         display: block;
     }
     
+    #uservoice .swiper-button-prev {
+        left: 0;
+    }
+    
     #uservoice .swiper-button-next {
-        right: 10px;
+        right: 0;
     }
 }
 /* ページネーション余白 */
@@ -400,7 +405,16 @@
 /* #uservoice .uservoice-slider{width:100% !important;max-width:1100px;margin:24px auto 0 !important;margin-left:0 !important;} */
 
 #uservoice .uservoice-slider .swiper-wrapper{display:flex; flex-direction:row; align-items: stretch;}
-#uservoice .uservoice-slider .swiper{min-height:450px; position: relative;} /* ラッパーの高さゼロ回避 */
+#uservoice .uservoice-slider .swiper{min-height:450px; position: relative; padding: 0 60px;} /* ラッパーの高さゼロ回避とナビ用余白 *//* ラッパーの高さゼロ回避とナビ用余白 */
+
+#uservoice .uservoice-slider{
+    width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:0;
+    max-width:none;
+    position: relative;
+    overflow: hidden;
+}
 
 /* デバッグ: スライド */
 #uservoice .swiper-slide {

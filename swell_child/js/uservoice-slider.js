@@ -36,11 +36,6 @@ function initUserVoiceSlider() {
             spaceBetween: 20,
             loop: true,
             centeredSlides: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
             pagination: {
                 el: '.uservoice-slider .swiper-pagination',
                 clickable: true,
