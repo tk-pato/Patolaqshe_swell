@@ -97,13 +97,8 @@
 }
 
 #uservoice .uservoice-slider .swiper {
-  padding: 0 50px !important;
+  padding: 0 !important;
   max-width: 100% !important;
-}
-
-#uservoice .swiper-slide {
-  margin-left: auto !important;
-  margin-right: auto !important;
 }
 
 /* SP: カードの背景を完全透過 */
