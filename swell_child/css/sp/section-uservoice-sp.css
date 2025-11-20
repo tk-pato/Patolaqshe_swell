@@ -101,11 +101,6 @@
   max-width: 100% !important;
 }
 
-#uservoice .uservoice-slider .swiper-wrapper {
-  transform: translateX(0) !important;
-  justify-content: center !important;
-}
-
 #uservoice .swiper-slide {
   margin-left: auto !important;
   margin-right: auto !important;
