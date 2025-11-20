@@ -91,13 +91,24 @@
 
 /* スライダー調整 */
 #uservoice .uservoice-slider {
-  margin-left: calc(50% - 50vw);
-  width: 100vw;
+  margin-left: calc(50% - 50vw) !important;
+  width: 100vw !important;
+  position: relative !important;
 }
 
 #uservoice .uservoice-slider .swiper {
-  padding: 0 50px;
-  max-width: 100%;
+  padding: 0 50px !important;
+  max-width: 100% !important;
+}
+
+#uservoice .uservoice-slider .swiper-wrapper {
+  transform: translateX(0) !important;
+  justify-content: center !important;
+}
+
+#uservoice .swiper-slide {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* SP: カードの背景を完全透過 */
@@ -106,7 +117,7 @@
   border: none;
   box-shadow: none;
   padding: 20px;
-  margin: 0;
+  margin: 0 auto !important;
   min-height: 300px;
 }
 
