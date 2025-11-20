@@ -89,6 +89,16 @@
   align-items: center;
 }
 
+/* スライダー調整 */
+#uservoice .uservoice-slider {
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+}
+
+#uservoice .uservoice-slider .swiper {
+  padding: 0 50px;
+  max-width: 100%;
+}
 
 /* SP: カードの背景を完全透過 */
 #uservoice .feedback-card {
