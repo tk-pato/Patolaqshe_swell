@@ -89,6 +89,13 @@
   align-items: center;
 }
 
+/* SP: swiper-slideを強制中央配置 */
+#uservoice .swiper-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
 /* スライダー調整 */
 #uservoice .uservoice-slider {
   margin-left: calc(50% - 50vw);
@@ -118,8 +125,8 @@
   box-shadow: none;
   padding: 20px;
   margin: 0 auto !important;
-  max-width: calc(100vw - 100px) !important;
   min-height: 300px;
+  max-width: 85% !important;
 }
 
 /* 透明背景用: テキストを読みやすく調整 */

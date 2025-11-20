@@ -2396,7 +2396,7 @@ add_action('wp_enqueue_scripts', function () {
   // ========================================
   // スムーズスクロール用JavaScript読み込み
   // ========================================
-  
+
   // jQueryは既にWordPressが読み込んでいるため、依存関係に指定
   // niceScrollライブラリをCDNから読み込み（PC専用スムーズスクロール）
   wp_enqueue_script(
