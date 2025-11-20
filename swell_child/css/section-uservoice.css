@@ -405,7 +405,7 @@
 /* #uservoice .uservoice-slider{width:100% !important;max-width:1100px;margin:24px auto 0 !important;margin-left:0 !important;} */
 
 #uservoice .uservoice-slider .swiper-wrapper{display:flex; flex-direction:row; align-items: stretch;}
-#uservoice .uservoice-slider .swiper{min-height:450px; position: relative; padding: 0 60px;} /* ラッパーの高さゼロ回避とナビ用余白 *//* ラッパーの高さゼロ回避とナビ用余白 */
+#uservoice .uservoice-slider .swiper{min-height:450px; position: relative;} /* ラッパーの高さゼロ回避 */
 
 #uservoice .uservoice-slider{
     width:100vw;
