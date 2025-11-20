@@ -412,11 +412,11 @@
     outline: 3px solid red !important;
 }
 
-/* SP時は全幅設定を無効化（PC影響ゼロ） */
+/* SP時は全幅設定を強制適用（親要素の制限を無視） */
 @media (max-width: 767px) {
     #uservoice .uservoice-slider {
-        width: 100% !important;
-        margin-left: 0 !important;
+        width: 100vw !important;
+        margin-left: calc((100% - 100vw) / 2) !important;
         margin-right: 0 !important;
     }
 }
