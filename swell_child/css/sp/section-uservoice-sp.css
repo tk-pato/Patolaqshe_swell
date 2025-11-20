@@ -112,7 +112,7 @@
 
 /* SP: swiper要素 */
 #uservoice .uservoice-slider .swiper {
-  padding: 0 50px;
+  padding: 0;
   max-width: 100%;
 }
 
