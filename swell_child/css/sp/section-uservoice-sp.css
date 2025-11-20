@@ -4,6 +4,14 @@
    適用条件: max-width: 959px以下（functions.php line 2134で設定）
    =========================== */
 
+/* SP: セクション全体の余白をリセット（calc計算の基準点を正確に） */
+#uservoice {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 /* SP: inner要素の幅制限を解除 */
 #uservoice .ptl-section__inner {
   max-width: none !important;
