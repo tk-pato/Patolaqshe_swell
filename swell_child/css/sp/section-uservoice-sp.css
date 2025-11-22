@@ -93,17 +93,20 @@
 #uservoice .uservoice-slider {
   margin-left: calc(50% - 50vw);
   width: 100vw;
+  position: relative;
 }
 
+/* SPではswiperのpaddingを削除（矢印ボタンは外側に配置） */
 #uservoice .uservoice-slider .swiper {
-  padding: 0 50px !important;
+  padding: 0 !important;
   max-width: 100%;
 }
 
 #uservoice .uservoice-slider .swiper-slide {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
 }
 
 /* SP: カードの背景を完全透過 */
@@ -114,7 +117,8 @@
   padding: 20px;
   margin: 0 auto;
   min-height: 300px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
 }
 
 /* 透明背景用: テキストを読みやすく調整 */
@@ -131,13 +135,15 @@
   display: none;
 }
 
-/* 矢印ボタン位置 */
+/* 矢印ボタンを.uservoice-slider基準で外側に配置 */
 #uservoice .swiper-button-prev {
-  left: 10px;
+  left: 5px;
+  z-index: 100;
 }
 
 #uservoice .swiper-button-next {
-  right: 10px;
+  right: 5px;
+  z-index: 100;
 }
 
 /* セクション余白 - style.css (SP section)で統一管理 */
