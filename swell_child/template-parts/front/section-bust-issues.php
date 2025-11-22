@@ -55,7 +55,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
     <div class="ptl-section__inner">
         <div class="ptlIssues__titleArea">
-            <h2 class="ptl-section__title is-onImage">パトラクシェの<br class="sp-br">ハイブリッドバストアップは<br>このような方におすすめです</h2>
+            <h2 class="ptl-section__title is-onImage">パトラクシェのバストアップはこのような方にお勧めです。</h2>
             <p class="ptl-section__subtitle">バストのお悩み</p>
         </div>
 
