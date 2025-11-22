@@ -44,7 +44,8 @@
   #salon .ptlSalonHero__boxTitle {
     font-size: clamp(13px, 1.4vw, 16px);
     font-weight: 600;
-    color: #444;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     text-align: center;
     margin-top: 10px;
     margin-bottom: 6px;
@@ -60,7 +61,8 @@
   #salon .ptlSalonHero__boxDesc {
     font-size: clamp(13px, 1.2vw, 15px);
     font-weight: 300;
-    color: #444;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     line-height: 1.65;
     text-align: center;
     margin-top: 4px;
@@ -76,7 +78,8 @@
   #salon .ptlSalonHero__boxDesc p {
     font-size: clamp(13px, 1.2vw, 15px);
     font-weight: 300;
-    color: #444;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     line-height: 1.65;
     letter-spacing: 0.02em;
   }
