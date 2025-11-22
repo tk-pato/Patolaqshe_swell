@@ -81,8 +81,8 @@
 
 /* SP: セクション内パディング調整 */
 #page-navigation .ptl-section__inner {
-  padding-top: 40px;
-  padding-bottom: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* SP: タイトルとメニューの間隔調整 */
