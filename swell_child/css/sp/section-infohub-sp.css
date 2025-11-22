@@ -17,7 +17,7 @@
   .ptlHub .ptl-section__inner {
     position: static; /* 通常フローに戻す */
     padding: 0 20px;
-    padding-top: 40px; /* セクション上余白 */
+    padding-top: 0; /* セクション上余白削除 */
     padding-bottom: 0; /* style.css (SP section)で統一管理 */
   }
   
