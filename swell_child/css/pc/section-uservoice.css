@@ -4,16 +4,18 @@
    適用条件: 960px以上
    =========================== */
 
-/* セクション余白 */
-body #uservoice {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  margin-bottom: 80px !important;
-}
+@media (min-width: 960px) {
+  /* セクション余白 */
+  body #uservoice {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 80px !important;
+  }
 
-/* PCナビゲーション用の左右余白 */
-#uservoice .uservoice-slider .swiper {
-  padding: 0 60px;
+  /* PCナビゲーション用の左右余白 */
+  #uservoice .uservoice-slider .swiper {
+    padding: 0 60px;
+  }
 }
 
 /* PC・タブレット用カード間グレー線 */
