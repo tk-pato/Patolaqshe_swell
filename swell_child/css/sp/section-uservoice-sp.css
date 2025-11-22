@@ -96,7 +96,7 @@
 }
 
 #uservoice .uservoice-slider .swiper {
-  padding: 0 60px !important;
+  padding: 0 50px !important;
   max-width: 100%;
 }
 
@@ -112,8 +112,9 @@
   border: none;
   box-shadow: none;
   padding: 20px;
-  margin: 0 10px;
+  margin: 0 auto;
   min-height: 300px;
+  max-width: 100%;
 }
 
 /* 透明背景用: テキストを読みやすく調整 */
