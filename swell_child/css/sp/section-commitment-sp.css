@@ -49,5 +49,5 @@
 
 /* セクション余白 - style.css (SP section)で統一管理 */
   body #section-commitment {
-    margin-bottom: 0 !important;
+    margin-bottom: 60px !important;
   }
