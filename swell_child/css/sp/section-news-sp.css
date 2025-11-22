@@ -14,6 +14,29 @@
     margin-bottom: 40px;
   }
   
+  /* SP時の日付を白に変更 */
+  .ptlNews__date {
+    color: #fff !important;
+  }
+  
+  /* SP時のタイトルを白に変更 */
+  .ptlNews__title {
+    color: #fff !important;
+  }
+  
+  /* SP時のタイトルリンクも白に統一 */
+  .ptlNews__title a {
+    color: #fff !important;
+  }
+  
+  /* SP時のホバー時も白を維持 */
+  .ptlNews__title:hover,
+  .ptlNews__title:focus-visible,
+  .ptlNews__title a:hover {
+    color: #fff !important;
+    opacity: 0.8;
+  }
+  
   /* タイトルのみ表示モード - SP調整 */
   .ptlNews__list.is-titleOnly .ptlNews__item {
     padding: 18px 0;
