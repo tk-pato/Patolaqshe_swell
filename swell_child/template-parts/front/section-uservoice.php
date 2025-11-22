@@ -4,8 +4,8 @@ if (!defined('ABSPATH')) exit;
 
 <section id="uservoice" class="ptl-section ptlVoice">
     <div class="ptl-section__inner">
-        <h2 class="ptl-section__title">USER'S VOICE</h2>
-        <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">お客様の声</div>
+        <h2 class="ptl-section__title">お客様の声</h2>
+        <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">体験レビュー</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>

@@ -70,8 +70,8 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
 
         <!-- ヘッダー（SALONと完全統一：タイトル、サブタイトル、オーナメント） -->
         <div class="ptlBlog__header">
-            <h2 class="ptl-section__title">BLOG</h2>
-            <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">美容コラム</div>
+            <h2 class="ptl-section__title">コラム</h2>
+            <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">美容情報</div>
             <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/bg_1.png'); ?>" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
             </div>
