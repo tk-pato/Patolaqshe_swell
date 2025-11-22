@@ -45,6 +45,17 @@ html body .ptlBlog__more {
   margin-bottom: 40px;
 }
 
+/* SP時のブログカードタイトルを白に */
+.ptlBlog__card-title {
+  color: #fff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.ptlBlog__card-title a {
+  color: #fff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
 /* ========================================
    装飾要素調整
    ======================================== */
