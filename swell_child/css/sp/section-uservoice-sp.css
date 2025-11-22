@@ -96,21 +96,21 @@
   position: relative;
 }
 
-/* SPではswiperのpaddingを削除（矢印ボタンは外側に配置） */
-#uservoice .uservoice-slider .swiper {
+/* SPではswiperのpaddingを完全に削除（共通CSSの!importantを上書き） */
+body #uservoice .uservoice-slider .swiper {
   padding: 0 !important;
   max-width: 100%;
 }
 
-#uservoice .uservoice-slider .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 50px;
+body #uservoice .uservoice-slider .swiper-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 50px !important;
 }
 
 /* SP: カードの背景を完全透過 */
-#uservoice .feedback-card {
+body #uservoice .feedback-card {
   background: transparent;
   border: none;
   box-shadow: none;
