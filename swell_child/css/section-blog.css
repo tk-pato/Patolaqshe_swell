@@ -111,7 +111,7 @@ html body .ptlBlog {
 
 /* 5記事以上でアニメーション有効 */
 .ptlBlog__track.is-animated {
-  animation: blog-scroll 60s linear infinite;
+  animation: blog-scroll 40s linear infinite;
   animation-fill-mode: forwards;
 }
 
