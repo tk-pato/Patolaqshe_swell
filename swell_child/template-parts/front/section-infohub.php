@@ -99,7 +99,7 @@ $cards = [
         <!-- ヘッダー -->
         <div class="ptlHub__header">
             <?php if (!empty($main_title)) : ?>
-                <h2 class="ptl-section__title"><?php echo esc_html($main_title); ?></h2>
+                <h2 class="ptl-section__title">各種ご案内</h2>
             <?php endif; ?>
         </div>
 
