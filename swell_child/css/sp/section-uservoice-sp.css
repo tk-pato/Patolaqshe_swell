@@ -106,7 +106,7 @@ body #uservoice .uservoice-slider .swiper-slide {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  padding: 0 50px !important;
+  padding: 0 !important;
 }
 
 /* SP: カードの背景を完全透過 */
@@ -115,10 +115,10 @@ body #uservoice .feedback-card {
   border: none;
   box-shadow: none;
   padding: 20px;
-  margin: 0;
+  margin: 0 50px;
   min-height: 300px;
-  width: calc(100% - 100px);
-  max-width: 500px;
+  width: auto;
+  max-width: calc(100vw - 140px);
 }
 
 /* 透明背景用: テキストを読みやすく調整 */
