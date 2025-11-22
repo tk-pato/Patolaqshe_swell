@@ -14,16 +14,6 @@
 
 /* セクション余白は最後に設定（NAVIGATION/SALONと同じ構造） */
 
-/* デバッグ: セクション全体 */
-#uservoice {
-  outline: 5px solid purple !important;
-}
-
-/* デバッグ: inner要素 */
-#uservoice .ptl-section__inner {
-  outline: 3px solid magenta !important;
-}
-
 /* arrows */
 /* arrows (updated) */
 #uservoice .swiper-button-prev,
@@ -416,11 +406,6 @@
     overflow: hidden;
 }
 
-/* デバッグ: スライド */
-#uservoice .swiper-slide {
-  outline: 3px solid orange !important;
-}
-
 /* .feedback-card rules removed per request */
 
 
@@ -455,7 +440,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    outline: 3px solid green !important;
     justify-content: space-between;
     border: none;
     min-height: 350px;
