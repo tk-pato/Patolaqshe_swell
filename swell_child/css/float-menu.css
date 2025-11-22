@@ -160,6 +160,10 @@
       0 4px 16px rgba(0, 0, 0, 0.1),
       inset 0 1px 1px rgba(255, 255, 255, 0.5);
     
+    /* SP用: テキストカラーを白＋シャドウに */
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    
     font-size: 10px;      /* 修正1: フォントサイズ縮小 */
     line-height: 1.3;
   }
