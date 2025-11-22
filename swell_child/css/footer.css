@@ -82,8 +82,7 @@
 .ptl-footer__salon-label {
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: #333;
   margin: 0 0 8px 0;
   letter-spacing: 0.05em;
 }
@@ -101,8 +100,7 @@
 
 .ptl-footer__salon-link {
   font-size: 14px;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: #333;
   text-decoration: none;
   transition: opacity 0.3s;
 }
