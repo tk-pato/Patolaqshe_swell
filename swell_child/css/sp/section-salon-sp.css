@@ -221,9 +221,9 @@
     display: none;
   }
 
-/* SP時のレスポンシブ */
+/* SP時のレスポンシブ - padding完全削除 */
   .ptlSalonHero {
-    padding: 0;
+    padding: 0 !important;
   }
   
   .ptlSalonHero__label {
