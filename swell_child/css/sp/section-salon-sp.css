@@ -52,6 +52,8 @@
     font-family: inherit;
     width: 100%;
     border-radius: 0;
+    background: transparent !important;
+    padding: 0 !important;
   }
   
   /* 店舗詳細：User's Voice/REASONSのboxDescと統一 */
@@ -66,6 +68,8 @@
     font-family: inherit;
     width: 100%;
     border-radius: 0;
+    background: transparent !important;
+    padding: 0 !important;
   }
   
   /* 店舗詳細内のpタグも統一 */
