@@ -62,23 +62,33 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 $label = (string) $it['label'];
                 $image_src = '';
 
-                // 各メニューアイテムに対応する画像パスを設定
+                // 各メニューアイテムに対応する画像パス・タイトル・ディスクリプションを設定
                 switch ($label) {
                     case 'COMMITMENT':
                         $image_src = get_stylesheet_directory_uri() . '/img/hair.jpg';
+                        $box_title = '創業13年・累計3万人超の実績';
+                        $box_desc = '2012年の開業以来、延べ30,000人以上の施術実績。長年の経験と信頼で、初めての方も安心してお任せいただけます。';
                         break;
                     case 'TREATMENT':
                         $image_src = get_stylesheet_directory_uri() . '/img/makup.jpg';
+                        $box_title = '都内随一の2000ショット照射';
+                        $box_desc = 'バストアップ専用機による都内随一の高密度2000ショット照射で、深部までしっかりアプローチ。熟練のハンドマッサージ（乳腺ケア）、生体電流を使用した育乳メソッドなど、豊富な施術メニューからあなたに最適な組み合わせをご提案します。';
                         break;
                     case 'COLLECTION':
                         $image_src = get_stylesheet_directory_uri() . '/img/nail.jpg';
+                        $box_title = '熟練スタッフによる丁寧なカウンセリング';
+                        $box_desc = 'エステティシャン歴14年のオーナーをはじめ、経験豊富なスタッフがお一人おひとりのお悩みに寄り添います。カウンセリングから施術まで、完全オーダーメイドでご提案いたします。';
                         break;
                     case 'SALON':
                         $image_src = get_stylesheet_directory_uri() . '/img/spa.jpg';
+                        $box_title = '芸能人も通う効果実感率99%';
+                        $box_desc = '芸能人・モデル・インフルエンサーもお忍びで通う実績。効果体感率99%、平均2カップアップの結果にこだわります。銀座駅・代官山駅から徒歩2分以内の好立地で、お仕事帰りにも通いやすい環境です。';
                         break;
                     default:
                         // デフォルトのSVGアイコン
                         $icon_html = ptl_nav_placeholder_svg($label);
+                        $box_title = '';
+                        $box_desc = '';
                 }
 
                 // 画像パスがある場合はimg要素を生成
@@ -89,8 +99,8 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 <div class="ptlCommitHero__btn">
                     <span class="ptlCommitHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                                                         ?></span>
-                    <div class="ptlCommitHero__boxTitle">HAIR STYLING</div>
-                    <div class="ptlCommitHero__boxDesc">Beautiful, healthy hair and a great style is a trademark for Hairdresser. Professional care and awesome attention to details and your needs defines us.</div>
+                    <div class="ptlCommitHero__boxTitle"><?php echo esc_html($box_title); ?></div>
+                    <div class="ptlCommitHero__boxDesc"><?php echo esc_html($box_desc); ?></div>
                 </div>
             <?php endforeach; ?>
         </div>
