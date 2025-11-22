@@ -86,6 +86,35 @@
   text-align: center;
 }
 
+/* ハンバーガーメニューボタン（SP用） */
+.ptl-nav-toggle {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: 20px auto;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.ptl-nav-toggle:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ptl-nav-toggle[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (min-width: 768px) {
   /* PCモードでハンバーガーボタンを非表示 */
   body:not(.sp-view) .ptl-nav-toggle {

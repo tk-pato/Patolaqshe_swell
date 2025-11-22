@@ -78,3 +78,26 @@
     transform: none !important;
     will-change: auto !important;
 }
+
+/* SP: セクション内パディング調整 */
+#page-navigation .ptl-section__inner {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+/* SP: タイトルとメニューの間隔調整 */
+#page-navigation .ptl-section__title {
+  margin-bottom: 0;
+}
+
+/* SP: ハンバーガーメニューボタンの余白調整 */
+#page-navigation .ptl-nav-toggle {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* SP: グリッド（メニュー内容）の余白調整 */
+#page-navigation .ptlNavHero__grid {
+  margin-top: 0;
+  padding-top: 0;
+}

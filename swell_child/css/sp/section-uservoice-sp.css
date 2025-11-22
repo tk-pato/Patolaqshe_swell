@@ -150,3 +150,9 @@ body #uservoice {
   margin-top: 0 !important;
   margin-bottom: 60px !important;
 }
+
+/* SP: MOREボタンの下余白を削除してセクション全体の60pxを確実に効かせる */
+#uservoice .ptl-section__more,
+#uservoice .ptlVoice__more {
+  margin-bottom: 0 !important;
+}
