@@ -96,9 +96,8 @@
   position: relative;
 }
 
-/* SPではswiperのpaddingを完全に削除（共通CSSの!importantを上書き） */
-body #uservoice .uservoice-slider .swiper {
-  padding: 0 !important;
+#uservoice .uservoice-slider .swiper {
+  padding: 0 50px;
   max-width: 100%;
 }
 
@@ -115,10 +114,8 @@ body #uservoice .feedback-card {
   border: none;
   box-shadow: none;
   padding: 20px;
-  margin: 0 50px;
+  margin: 0 10px;
   min-height: 300px;
-  width: auto;
-  max-width: calc(100vw - 140px);
 }
 
 /* 透明背景用: テキストを読みやすく調整 */
