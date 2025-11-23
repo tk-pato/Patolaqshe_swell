@@ -43,7 +43,6 @@
   overflow: hidden;
   flex-shrink: 0;
   align-self: stretch;
-  border-radius: 0 12px 12px 0;
 }
 
 #menu .ptlMenu__mainImage img {
@@ -113,10 +112,6 @@
   background: transparent;
   border-radius: 0;
   overflow: visible;
-  transition: opacity 0.3s ease;
-}
-#menu .ptlMenu__subItem:hover {
-  transform: translateY(-3px);
 }
 #menu .ptlMenu__subLink {
   position: relative;
