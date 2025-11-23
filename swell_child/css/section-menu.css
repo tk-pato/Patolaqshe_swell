@@ -19,8 +19,7 @@
 }
 #menu .ptlMenu__mainContent {
   display: flex;
-  flex-direction: row-reverse;
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -119,7 +118,10 @@
   position: relative;
   display: block;
   padding: 20px 12px;
-  background: #FFF;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-decoration: none;
 }
 #menu .ptlMenu__subImage {
@@ -144,7 +146,7 @@
   left: 12px;
   display: inline-block;
   padding: 5px 35px 5px 10px;
-  background: #FFF;
+  background: rgba(255, 255, 255, 0.95);
   font-size: 2rem !important;
   font-weight: 600;
   color: #333;
