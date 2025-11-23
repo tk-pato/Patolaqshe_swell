@@ -1,105 +1,106 @@
 /* === MENU Section (SP版: 959px以下) === */
 
-/* SP: 1列レイアウト */
-  #menu .ptlMenu__content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-/* SP: メインカードのガラス調背景 */
+/* SP: メインカードを縦並び（Rococo準拠） */
 #menu .ptlMenu__mainContent {
-  background: rgba(255, 255, 255, 0.25);
+  display: block !important;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* SP: メインカード テキストエリアの背景を透明に */
+/* SP: メイン画像を通常配置 */
+#menu .ptlMenu__mainImage {
+  width: auto !important;
+  position: relative !important;
+  overflow: hidden;
+}
+
+#menu .ptlMenu__mainImage img {
+  position: relative !important;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* SP: メインテキスト */
 #menu .ptlMenu__mainText {
-  background: transparent;
   padding: 20px;
+  background: transparent;
 }
 
-/* SP: メインカード タイトル・説明文を白色+シャドウに */
 #menu .ptlMenu__mainTitle {
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   font-size: 1.3rem;
+  color: #AC905E;
+  text-align: center;
 }
 
 #menu .ptlMenu__mainDesc {
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   font-size: 0.9rem;
+  color: #666;
+  text-align: left;
 }
 
-/* SP: サブカードのガラス調背景 */
+/* SP: サブカードを2列表示（Rococo準拠） */
+#menu .ptlMenu__subGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 #menu .ptlMenu__subItem {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
-}
-
-/* SP: サブカード タイトルを白色+シャドウに */
-#menu .ptlMenu__subTitle {
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  flex: none !important;
+  width: calc(50% - 10px);
   background: transparent;
-  padding: 12px 15px;
-  font-size: 0.9rem;
 }
-  
-  #menu .ptlMenu__mainImage {
-    height: 200px;
-  }
-  
-  #menu .ptlMenu__more {
-    margin-top: 40px;
-  }
-  
-  #menu .ptlMenu__moreBtn {
-    padding: 12px 25px;
-    font-size: 1rem;
-  }
 
-/* SP超小型: 480px以下 */
-  #menu .ptlMenu__mainImage {
-    height: 180px;
-  }
-  
-  #menu .ptlMenu__mainText {
-    padding: 15px;
-  }
-  
-  #menu .ptlMenu__mainTitle {
-    font-size: 1.2rem;
-  }
-  
-  #menu .ptlMenu__subImage {
-    height: 80px;
-  }
-  
-  #menu .ptlMenu__subTitle {
-    padding: 10px 12px;
-    font-size: 0.85rem;
-  }
+#menu .ptlMenu__subLink {
+  padding: 14px 8px;
+  background: #FFF;
+}
+
+#menu .ptlMenu__subImage {
+  margin-bottom: 8px;
+}
+
+#menu .ptlMenu__subTitle {
+  bottom: 2px !important;
+  left: 8px !important;
+  padding: 5px 25px 5px 10px !important;
+  font-size: 1.6rem !important;
+  background: #FFF !important;
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+/* MORE */
+#menu .ptlMenu__more {
+  margin-top: 40px;
+}
+
+#menu .ptlMenu__moreBtn {
+  padding: 12px 25px;
+  font-size: 1rem;
+}
 
 /* ptlMenuHero グリッド - SP: 2列 */
-  .ptlMenuHero {
-    padding: 0;
-  }
-  
-  .ptlMenuHero__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-  
-  .ptlMenuHero__label {
-    font-size: 14px;
-  }
+.ptlMenuHero {
+  padding: 0;
+}
+
+.ptlMenuHero__grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ptlMenuHero__label {
+  font-size: 14px;
+}
 
 /* セクション余白 - SP */
-  #menu {
-    margin-bottom: 60px;
-  }
+#menu {
+  margin-bottom: 60px;
+}
