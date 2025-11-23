@@ -27,9 +27,6 @@
   border-radius: 12px;
   overflow: hidden;
 }
-#menu .ptlMenu__mainContent:hover {
-  transform: translateY(-5px);
-}
 #menu .ptlMenu__mainLink {
   display: flex;
   flex-direction: row-reverse;
@@ -45,15 +42,17 @@
 }
 
 #menu .ptlMenu__mainImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
 }
 #menu .ptlMenu__mainContent:hover .ptlMenu__mainImage img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 #menu .ptlMenu__mainText {
   flex: 1;
