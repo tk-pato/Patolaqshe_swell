@@ -44,16 +44,16 @@
   text-align: left;
 }
 
-/* SP: サブカードを2列表示（Rococo準拠） */
+/* SP: サブカードを縦1列表示 */
 #menu .ptlMenu__subGrid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
 }
 
 #menu .ptlMenu__subItem {
   flex: none !important;
-  width: calc(50% - 10px);
+  width: 100%;
   background: transparent;
 }
 
@@ -63,20 +63,35 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 #menu .ptlMenu__subImage {
   margin-bottom: 8px;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
 }
 
 #menu .ptlMenu__subTitle {
-  bottom: 2px !important;
-  left: 8px !important;
-  padding: 5px 25px 5px 10px !important;
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  padding: 10px 12px !important;
   font-size: clamp(14px, 1.4vw, 16px) !important;
-  background: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 600 !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   color: #333 !important;
   text-shadow: none !important;
+  text-align: center !important;
+  border-radius: 0 0 8px 8px;
+}
+
+#menu .ptlMenu__subTitle::after {
+  content: '>' !important;
+  margin-left: 8px !important;
 }
 
 /* MORE */
