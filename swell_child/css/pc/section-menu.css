@@ -2,6 +2,28 @@
 /* 注意: functions.phpで既にmedia="screen and (min-width: 960px)"が設定されているため、このファイル内で@mediaは不要 */
 
 /* ========================================
+   PC: レイアウト強制指定
+======================================== */
+
+/* メインリンク：右に画像、左にテキスト */
+#menu .ptlMenu__mainLink {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+}
+
+/* 画像：右側60% */
+#menu .ptlMenu__mainImage {
+  width: 60% !important;
+  order: 1 !important;
+}
+
+/* テキスト：左側40% */
+#menu .ptlMenu__mainText {
+  width: 40% !important;
+  order: 2 !important;
+}
+
+/* ========================================
    PC: タイトル・ディスクリプション調整
 ======================================== */
 
@@ -31,12 +53,14 @@
   background: transparent;
 }
 
-/* 例外：フレームとタイトル背景は白 */
+/* 例外：フレームとタイトル背景はガラス調 */
 #menu .ptlMenu__subLink {
-  background: #FFF !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 #menu .ptlMenu__subTitle {
-  background: #FFF !important;
-  font-size: 1.4rem !important; /* PC: 14px相当に縮小 */
+  background: rgba(255, 255, 255, 0.95) !important;
+  font-size: 1.4rem !important;
 }
