@@ -24,6 +24,8 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
 }
 #menu .ptlMenu__mainLink {
   display: flex;
@@ -116,6 +118,8 @@
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
 }
 #menu .ptlMenu__subImage {
   position: relative;
@@ -123,6 +127,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   margin-bottom: 12px;
+  border-radius: 8px;
 }
 #menu .ptlMenu__subImage img {
   width: 100%;
