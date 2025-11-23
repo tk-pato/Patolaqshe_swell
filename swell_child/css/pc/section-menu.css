@@ -1,29 +1,187 @@
 /* === MENU Section (PC版: 960px以上) === */
 /* 注意: functions.phpで既にmedia="screen and (min-width: 960px)"が設定されているため、このファイル内で@mediaは不要 */
 
-/* PC: 2列レイアウト + 右側サブメニュー */
+/* ========================================
+   PC: レイアウト - 上下配置（Rococo構造）
+======================================== */
+
+/* 全体：縦並び */
 #menu .ptlMenu__content {
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
-/* メインカードとサブカードに25%ガラス調背景を追加（NAVIGATIONと同じ） */
-#menu .ptlMenu__main .ptlMenu__mainContent,
-#menu .ptlMenu__sub .ptlMenu__subItem {
+/* メインカード：全幅表示 */
+#menu .ptlMenu__main {
+  width: 100%;
+}
+
+/* ========================================
+   PC: メインカード（上段・大きいカード）
+======================================== */
+
+/* メインカード全体：画像右、テキスト左 */
+#menu .ptlMenu__main .ptlMenu__mainContent {
+  display: flex;
+  flex-direction: row; /* 画像を右に配置 */
   background: rgba(255, 255, 255, 1);
   border: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* カード内のすべての子要素を透明化してガラス調を表示 */
-#menu .ptlMenu__mainContent *,
-#menu .ptlMenu__subItem * {
+/* メイン画像：60%（右側） */
+#menu .ptlMenu__mainImage {
+  width: 60%;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  order: 2; /* 右側に配置 */
+}
+
+#menu .ptlMenu__mainImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#menu .ptlMenu__mainContent:hover .ptlMenu__mainImage img {
+  transform: scale(1.1);
+}
+
+/* メインテキスト：40%（左側） */
+#menu .ptlMenu__mainText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 40px;
+  background: transparent;
+  order: 1; /* 左側に配置 */
+}
+
+/* タイトル */
+#menu .ptlMenu__mainTitle {
+  font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+  line-height: 1.5;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #AC905E;
+  font-weight: 500;
+}
+
+/* ディスクリプション */
+#menu .ptlMenu__mainDesc {
+  text-align: left !important;
+  line-height: 1.9;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  color: #666;
+}
+
+/* ========================================
+   PC: サブメニュー（下段・3つのカード）
+======================================== */
+
+/* サブメニュー全体 */
+#menu .ptlMenu__sub {
+  width: 100%;
+}
+
+#menu .ptlMenu__subGrid {
+  display: flex;
+  gap: 25px;
+}
+
+/* 個別カード：Rococo準拠（白フレーム構造） */
+#menu .ptlMenu__subItem {
+  flex: 1;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  transition: opacity 0.3s ease;
+}
+
+#menu .ptlMenu__subItem:hover {
+  opacity: 1;
+}
+
+/* リンク全体：白フレーム */
+#menu .ptlMenu__subLink {
+  position: relative;
+  display: block;
+  padding: 20px 12px; /* フレームの厚み */
+  background: #FFF;
+  text-decoration: none;
+}
+
+/* 画像：通常配置（フレーム内） */
+#menu .ptlMenu__subImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+#menu .ptlMenu__subImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#menu .ptlMenu__subItem:hover .ptlMenu__subImage img {
+  transform: scale(1.1);
+}
+
+/* タイトル：フレーム内の左下に絶対配置 */
+#menu .ptlMenu__subTitle {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: inline-block;
+  padding: 5px 35px 5px 10px;
+  background: #FFF;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* 「>」記号を追加 */
+#menu .ptlMenu__subTitle::after {
+  content: '>';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ========================================
+   カード内の透明化
+======================================== */
+
+#menu .ptlMenu__mainContent * {
   background: transparent;
 }
 
-/* ptlMenuHero グリッド - PC: 4列 */
-.ptlMenuHero__grid {
-  grid-template-columns: repeat(4, 1fr);
+/* 例外 */
+#menu .ptlMenu__subLink {
+  background: #FFF !important;
+}
+
+#menu .ptlMenu__subTitle {
+  background: #FFF !important;
 }
