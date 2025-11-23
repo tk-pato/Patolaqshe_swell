@@ -10,23 +10,23 @@
 }
 
 #menu .ptlMenu__content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
-  align-items: stretch;
-}
-#menu .ptlMenu__main {
-  position: relative;
-  height: 100%;
-}
-#menu .ptlMenu__mainContent {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 40px;
+}
+#menu .ptlMenu__main {
+  width: 100%;
+}
+#menu .ptlMenu__mainContent {
+  display: flex;
+  flex-direction: row;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
 }
 #menu .ptlMenu__mainContent:hover {
   transform: translateY(-5px);
@@ -37,12 +37,17 @@
   color: inherit;
 }
 #menu .ptlMenu__mainImage {
+  width: 60%;
+  min-height: 500px;
   position: relative;
-  width: 100%;
-  height: 400px;
   overflow: hidden;
+  flex-shrink: 0;
+  order: 2;
 }
 #menu .ptlMenu__mainImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -52,7 +57,13 @@
   transform: scale(1.05);
 }
 #menu .ptlMenu__mainText {
-  padding: 20px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 40px;
+  background: transparent;
+  order: 1;
 }
 #menu .ptlMenu__mainTitle {
   font-size: clamp(14px, 1.4vw, 16px);
@@ -89,42 +100,35 @@
   color: #0056b3;
 }
 #menu .ptlMenu__sub {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 #menu .ptlMenu__subGrid {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  height: 100%;
+  gap: 25px;
 }
 #menu .ptlMenu__subItem {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  transition: opacity 0.3s ease;
 }
 #menu .ptlMenu__subItem:hover {
   transform: translateY(-3px);
 }
 #menu .ptlMenu__subLink {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  display: block;
+  padding: 20px 12px;
+  background: #FFF;
   text-decoration: none;
-  color: inherit;
-  height: 100%;
 }
 #menu .ptlMenu__subImage {
   position: relative;
   width: 100%;
-  height: 150px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  flex-shrink: 0;
+  margin-bottom: 12px;
 }
 #menu .ptlMenu__subImage img {
   width: 100%;
@@ -136,18 +140,27 @@
   transform: scale(1.1);
 }
 #menu .ptlMenu__subTitle {
-  padding: 20px;
-  font-size: clamp(14px, 1.4vw, 16px);
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: inline-block;
+  padding: 5px 35px 5px 10px;
+  background: #FFF;
+  font-size: 2rem;
   font-weight: 600;
-  color: #444;
+  color: #333;
   margin: 0;
-  text-align: center;
-  transition: background 0.3s ease;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: .08em;
+}
+
+#menu .ptlMenu__subTitle::after {
+  content: '>';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
 }
 #menu .ptlMenu__more {
   text-align: center;
