@@ -3,7 +3,7 @@
 /* SP: メインカードを縦並び（Rococo準拠） */
 #menu .ptlMenu__mainContent {
   display: block !important;
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -59,7 +59,10 @@
 
 #menu .ptlMenu__subLink {
   padding: 14px 8px;
-  background: #FFF;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 #menu .ptlMenu__subImage {
@@ -71,7 +74,7 @@
   left: 8px !important;
   padding: 5px 25px 5px 10px !important;
   font-size: 1.6rem !important;
-  background: #FFF !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   color: #333 !important;
   text-shadow: none !important;
 }
