@@ -38,8 +38,8 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                             <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
                         </div>
                         <div class="ptlMenu__mainText">
-                            <h3 class="ptlMenu__mainTitle">テキストテキストテキスト</h3>
-                            <p class="ptlMenu__mainDesc">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキスト。</p>
+                            <h3 class="ptlMenu__mainTitle">バストアップ施術</h3>
+                            <p class="ptlMenu__mainDesc">✦ フラッシュバストアップ<br>✦ 乳腺マッサージ<br>✦ ナノカレント<br><br>※サイズアップ、下垂ケア、離れバストケアなどお悩みに合わせてオーダーメイドでご提案します。</p>
                         </div>
                     </a>
                 </div>
@@ -51,27 +51,27 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/menu/sizeup/')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="サイズアップ" loading="lazy" decoding="async">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="フェイシャル" loading="lazy" decoding="async">
                             </div>
-                            <h4 class="ptlMenu__subTitle">サイズアップ</h4>
+                            <h4 class="ptlMenu__subTitle">フェイシャル</h4>
                         </a>
                     </div>
 
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/menu/down/')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="下垂ケア" loading="lazy" decoding="async">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="ボディケア" loading="lazy" decoding="async">
                             </div>
-                            <h4 class="ptlMenu__subTitle">下垂ケア</h4>
+                            <h4 class="ptlMenu__subTitle">ボディケア</h4>
                         </a>
                     </div>
 
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/menu/distance/')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="離れバストケア" loading="lazy" decoding="async">
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="バストケアグッズ" loading="lazy" decoding="async">
                             </div>
-                            <h4 class="ptlMenu__subTitle">離れバストケア</h4>
+                            <h4 class="ptlMenu__subTitle">バストケアグッズ</h4>
                         </a>
                     </div>
                 </div>
