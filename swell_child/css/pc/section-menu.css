@@ -38,4 +38,5 @@
 
 #menu .ptlMenu__subTitle {
   background: #FFF !important;
+  font-size: 1.4rem !important; /* PC: 14px相当に縮小 */
 }
