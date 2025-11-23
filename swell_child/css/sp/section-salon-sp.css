@@ -165,10 +165,11 @@
   .ptlSalon-map-link {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     width: 100%;
     padding: 12px 14px;
-    margin: 12px 0;
+    margin: 12px auto;
     /* ガラス調スタイル */
     background: rgba(255, 255, 255, 0.25) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
