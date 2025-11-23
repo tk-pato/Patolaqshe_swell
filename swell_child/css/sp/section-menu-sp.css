@@ -76,23 +76,17 @@
 }
 
 #menu .ptlMenu__subTitle {
-  position: relative !important;
-  bottom: auto !important;
-  left: auto !important;
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 12px !important;
   display: inline-block !important;
-  padding: 10px 35px 10px 12px !important;
+  padding: 5px 35px 5px 10px !important;
   font-size: clamp(14px, 1.4vw, 16px) !important;
   font-weight: 600 !important;
-  background: rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   color: #333 !important;
   text-shadow: none !important;
-  border-radius: 0 0 8px 8px;
-}
-
-#menu .ptlMenu__subLink {
-  text-align: center !important;
+  border-radius: 0;
 }
 
 #menu .ptlMenu__subTitle::after {
