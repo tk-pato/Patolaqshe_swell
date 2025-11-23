@@ -55,5 +55,5 @@
 /* SP: 画像を横長に */
 #section-commitment .ptlCommitHero__icon svg,
 #section-commitment .ptlCommitHero__icon img {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 9 !important;
 }
