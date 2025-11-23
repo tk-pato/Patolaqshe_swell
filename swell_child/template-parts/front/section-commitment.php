@@ -81,8 +81,8 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         break;
                     case 'SALON':
                         $image_src = get_stylesheet_directory_uri() . '/img/spa.jpg';
-                        $box_title = 'モデル等も通う';
-                        $box_desc = '芸能人・モデル・インフルエンサーもお忍びで通う実績。効果体感率99%、平均22カップアップの結果にこだわります。銀座駅や恵比寿駅からも駅近の好立地で、お仕事帰りにも通いやすい環境です。';
+                        $box_title = 'モデル等も通う効果実感率99%';
+                        $box_desc = '芸能人・モデル・インフルエンサーもお忍びで通う実績。効果体感率99%、平均2カップアップの結果にこだわります。銀座駅や恵比寿駅からも駅近の好立地で、お仕事帰りにも通いやすい環境です。';
                         break;
                     default:
                         // デフォルトのSVGアイコン
