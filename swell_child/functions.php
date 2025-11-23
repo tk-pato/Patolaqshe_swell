@@ -1,9 +1,6 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-// Cache bust: 2025-11-09 17:00 - DEBUG LINES ADDED
-
-/* BUST-ISSUES: 統合CSSを最終読込（親テーマより後に読み込み） */
 add_action('wp_enqueue_scripts', function () {
   $rel  = '/css/issues-navigation.css';
   $path = get_stylesheet_directory() . $rel;
@@ -18,27 +15,19 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($issues_pc)) {
     wp_enqueue_style('ptl-issues-pc', get_stylesheet_directory_uri() . '/css/pc/issues-navigation.css', ['ptl-issues-bundle'], filemtime($issues_pc), 'screen and (min-width: 960px)');
   }
-
-  // BUST-ISSUES SP版CSS
   $issues_sp = get_stylesheet_directory() . '/css/sp/issues-navigation-sp.css';
   if (file_exists($issues_sp)) {
     wp_enqueue_style('ptl-issues-sp', get_stylesheet_directory_uri() . '/css/sp/issues-navigation-sp.css', ['ptl-issues-bundle'], filemtime($issues_sp), 'screen and (max-width: 767px)');
   }
 }, 999);
 
-// BUST-ISSUESスタイルはissues-navigation.cssで完全管理
-
-// NAV背景メディアを取得
 function ptl_get_nav_background(): array
 {
-  // テーマ設定より取得
   $video_mod = get_theme_mod('ptl_nav_video');
   $bg_pc     = (string) get_theme_mod('ptl_nav_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
   $bg_sp     = (string) get_theme_mod('ptl_nav_bg_sp', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
   $overlay   = (float) get_theme_mod('ptl_nav_overlay', 0.25);
   $p_speed   = (float) get_theme_mod('ptl_nav_parallax_speed', 0.6);
-
-  // 結果を組み立て
   $result = [
     'bg_pc'           => $bg_pc,
     'bg_sp'           => $bg_sp,
