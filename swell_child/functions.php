@@ -49,25 +49,19 @@ function ptl_get_nav_background(): array
   return $result;
 }
 
-// BUST-ISSUES背景メディアを取得
 function ptl_get_bust_issues_background(): array
 {
-  // テーマ設定より取得
   $video_mod = get_theme_mod('ptl_bust_issues_video');
   $bg_pc     = (string) get_theme_mod('ptl_bust_issues_bg_pc', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
   $bg_sp     = (string) get_theme_mod('ptl_bust_issues_bg_sp', get_stylesheet_directory_uri() . '/img/ourprices-bg-placeholder-1920x1080.svg');
   $overlay   = (float) get_theme_mod('ptl_bust_issues_overlay', 0.25);
   $p_speed   = (float) get_theme_mod('ptl_bust_issues_parallax_speed', 0.6);
-
-  // 結果を組み立て
   $result = [
     'bg_pc'           => $bg_pc,
     'bg_sp'           => $bg_sp,
     'overlay_opacity' => $overlay,
     'parallax_speed'  => $p_speed,
   ];
-
-  // 動画の設定（あれば）
   if ($video_mod) {
     if (is_numeric($video_mod)) {
       $u = wp_get_attachment_url((int) $video_mod);
@@ -77,18 +71,16 @@ function ptl_get_bust_issues_background(): array
       if ($video_url) $result['video_url'] = $video_url;
     }
   }
-
   return $result;
 }
 
-// bodyクラスにフラグを追加（ホームとランディングテンプレで有効）
 add_filter('body_class', function ($classes) {
   if (is_front_page() || is_page_template('page-landing.php')) {
     $classes[] = 'has-head-toggle';
   }
   return $classes;
 });
-/* === PTL Header Visibility Guard (Plan B) | 非表示だけ無効化。見た目は変更しない === */
+
 add_action('wp_footer', function () {
   if (is_admin()) return;
 ?>
