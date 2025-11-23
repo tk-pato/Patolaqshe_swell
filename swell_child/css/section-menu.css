@@ -340,7 +340,6 @@
   width: 100%;
   display: block;
   object-fit: cover;
-  border-radius: 16px 16px 0 0;
   /* 最小260px ↔ 最大420px。足りない場合は420→440に調整 */
   height: clamp(260px, 35vw, 420px);
   max-height: none;
