@@ -19,6 +19,10 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($issues_sp)) {
     wp_enqueue_style('ptl-issues-sp', get_stylesheet_directory_uri() . '/css/sp/issues-navigation-sp.css', ['ptl-issues-bundle'], filemtime($issues_sp), 'screen and (max-width: 767px)');
   }
+  $hero_scroll_sp = get_stylesheet_directory() . '/css/sp/hero-scroll-sp.css';
+  if (file_exists($hero_scroll_sp)) {
+    wp_enqueue_style('ptl-hero-scroll-sp', get_stylesheet_directory_uri() . '/css/sp/hero-scroll-sp.css', ['main_style'], filemtime($hero_scroll_sp), 'screen and (max-width: 959px)');
+  }
 }, 999);
 
 function ptl_get_nav_background(): array
