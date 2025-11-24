@@ -5,9 +5,11 @@
    =========================== */
 
 @media (max-width: 959px) {
-  /* Scrollボタンを画面中央付近に配置（Safari下部に隠れないように） */
+  /* Scrollボタンを画面下から70%の位置、左右中央に配置 */
   .p-mainVisual__scroll {
-    bottom: 50vh !important;
-    transform: translateY(50%) !important;
+    bottom: 30vh !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
   }
 }
