@@ -32,14 +32,17 @@
     }
   }
   
-  // Scrollボタンクリック時にイントロセクションへスクロール
+  // 親テーマのイベントを無効化してからクリックイベントを追加
+  scrollBtn.removeAttribute('data-onclick');
+  
   scrollBtn.addEventListener('click', function(e) {
     e.preventDefault();
+    e.stopPropagation();
     const introSection = document.getElementById('intro');
     if (introSection) {
       introSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  });
+  }, true);
   
   // 初期状態を設定
   scrollBtn.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
