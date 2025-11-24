@@ -3225,3 +3225,100 @@ add_filter('template_include', function ($template) {
   // その他の場合は元のテンプレートを返す
   return $template;
 }, 999);
+
+/* === 店舗選択フィールド追加 === */
+
+// お客様の声に店舗選択フィールドを追加
+add_action('add_meta_boxes', function () {
+  add_meta_box(
+    'store_location_selector',
+    '店舗選択',
+    'ptl_store_location_selector_callback',
+    'post',
+    'side',
+    'high'
+  );
+});
+
+function ptl_store_location_selector_callback($post)
+{
+  wp_nonce_field('ptl_store_location_selector', 'ptl_store_location_selector_nonce');
+
+  // 既存の店舗情報を取得（配列形式）
+  $store_locations = get_post_meta($post->ID, '_store_locations', true);
+  if (!is_array($store_locations)) {
+    $store_locations = [];
+  }
+
+  echo '<p class="description" style="margin-bottom: 15px; color: #0073aa;">';
+  echo '✅ <strong>グランド（全店舗共通ページ）</strong>には必ず表示されます。<br>';
+  echo '追加で特定店舗ページにも表示したい場合は、下記をチェックしてください。';
+  echo '</p>';
+  
+  echo '<p class="description" style="margin-bottom: 10px; padding: 8px; background: #fff3cd; border-left: 3px solid #ffc107; font-size: 12px;">';
+  echo '<strong>📌 記事種別に関わらず適用されます：</strong><br>';
+  echo 'ニュース、お客様の声、ブログ記事、全てで使用可能です。';
+  echo '</p>';
+
+  echo '<div style="padding: 10px; background: #f6f7f7; border-radius: 4px;">';
+  
+  // 銀座店チェックボックス
+  echo '<label style="display: block; margin-bottom: 10px; cursor: pointer;">';
+  echo '<input type="checkbox" name="store_locations[]" value="ginza" ' . checked(in_array('ginza', $store_locations), true, false) . ' />';
+  echo ' <strong>🏢 銀座店ページにも表示</strong>';
+  echo '</label>';
+
+  // 代官山店チェックボックス
+  echo '<label style="display: block; cursor: pointer;">';
+  echo '<input type="checkbox" name="store_locations[]" value="daikanyama" ' . checked(in_array('daikanyama', $store_locations), true, false) . ' />';
+  echo ' <strong>🏢 代官山店ページにも表示</strong>';
+  echo '</label>';
+
+  echo '</div>';
+
+  echo '<p class="description" style="margin-top: 10px; font-size: 12px; color: #666;">';
+  echo '<strong>使用例：</strong><br>';
+  echo '・銀座店のニュース → 銀座店のみチェック<br>';
+  echo '・代官山店のブログ → 代官山店のみチェック<br>';
+  echo '・両店舗のお客様の声 → 両方チェック<br>';
+  echo '・全店舗共通の記事 → どちらもチェックなし';
+  echo '</p>';
+}
+
+// 店舗選択の保存
+add_action('save_post', function ($post_id) {
+  if (!isset($_POST['ptl_store_location_selector_nonce'])) return;
+  if (!wp_verify_nonce($_POST['ptl_store_location_selector_nonce'], 'ptl_store_location_selector')) return;
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+  if (!current_user_can('edit_post', $post_id)) return;
+
+  // 店舗選択を保存（配列形式）
+  $store_locations = isset($_POST['store_locations']) ? array_map('sanitize_text_field', $_POST['store_locations']) : [];
+  update_post_meta($post_id, '_store_locations', $store_locations);
+}, 10, 1);
+
+// 管理画面の投稿一覧に店舗表示カラムを追加
+add_filter('manage_posts_columns', function ($columns) {
+  $new_columns = [];
+  foreach ($columns as $key => $value) {
+    $new_columns[$key] = $value;
+    if ($key === 'post_category') {
+      $new_columns['store_locations'] = '表示店舗';
+    }
+  }
+  return $new_columns;
+});
+
+// 店舗表示カラムの内容を表示
+add_action('manage_posts_custom_column', function ($column, $post_id) {
+  if ($column === 'store_locations') {
+    $locations = get_post_meta($post_id, '_store_locations', true);
+    if (!is_array($locations)) $locations = [];
+    
+    $display = ['グランド'];
+    if (in_array('ginza', $locations)) $display[] = '銀座';
+    if (in_array('daikanyama', $locations)) $display[] = '代官山';
+    
+    echo '<span style="color: #0073aa;">' . implode(' / ', $display) . '</span>';
+  }
+}, 10, 2);
