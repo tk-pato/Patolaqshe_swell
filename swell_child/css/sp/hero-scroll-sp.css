@@ -1,0 +1,13 @@
+/* ===========================
+   Hero Scroll Button - SP Styles
+   SPでScrollボタンを上に移動
+   適用条件: 959px以下
+   =========================== */
+
+@media (max-width: 959px) {
+  /* Scrollボタンを画面中央付近に配置（Safari下部に隠れないように） */
+  .p-mainVisual__scroll {
+    bottom: 50vh !important;
+    transform: translateY(50%) !important;
+  }
+}
