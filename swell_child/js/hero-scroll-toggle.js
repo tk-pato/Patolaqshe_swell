@@ -1,6 +1,7 @@
 /**
  * Hero Scroll Button Toggle
  * 最上部でのみScrollボタンを表示、スクロールしたら非表示
+ * クリック時にイントロセクションへスクロール
  */
 (function() {
   'use strict';
@@ -30,6 +31,15 @@
       ticking = true;
     }
   }
+  
+  // Scrollボタンクリック時にイントロセクションへスクロール
+  scrollBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const introSection = document.getElementById('intro');
+    if (introSection) {
+      introSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
   
   // 初期状態を設定
   scrollBtn.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
