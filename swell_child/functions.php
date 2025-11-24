@@ -23,6 +23,10 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($hero_scroll_sp)) {
     wp_enqueue_style('ptl-hero-scroll-sp', get_stylesheet_directory_uri() . '/css/sp/hero-scroll-sp.css', ['main_style'], filemtime($hero_scroll_sp), 'screen and (max-width: 959px)');
   }
+  $hero_scroll_js = get_stylesheet_directory() . '/js/hero-scroll-toggle.js';
+  if (file_exists($hero_scroll_js)) {
+    wp_enqueue_script('ptl-hero-scroll-toggle', get_stylesheet_directory_uri() . '/js/hero-scroll-toggle.js', [], filemtime($hero_scroll_js), true);
+  }
 }, 999);
 
 function ptl_get_nav_background(): array
