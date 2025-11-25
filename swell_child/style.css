@@ -650,11 +650,11 @@ Version: 1.0.0
    ----------------------------------------------------- */
 #pagetop {
   background: #ffffff !important;
-  border: 2px solid #d4a574 !important;
+  border: 1px solid #d4a574 !important;
   border-radius: 50% !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
-  width: 60px !important;
-  height: 60px !important;
+  width: 57px !important;
+  height: 57px !important;
   opacity: 0.75 !important;
   transition: all 0.3s ease !important;
 }
@@ -669,7 +669,7 @@ Version: 1.0.0
 
 #pagetop .c-fixBtn__icon {
   color: #d4a574 !important;
-  font-size: 24px !important;
+  font-size: 23px !important;
   transition: color 0.3s ease !important;
 }
 
@@ -685,22 +685,21 @@ Version: 1.0.0
 /* スマホサイズでの調整 */
 @media screen and (max-width: 767px) {
   #pagetop {
-    width: 56px !important;
-    height: 56px !important;
+    width: 53px !important;
+    height: 53px !important;
     bottom: 80px !important;
     right: 16px !important;
   }
   
   #pagetop .c-fixBtn__icon {
-    font-size: 22px !important;
+    font-size: 21px !important;
   }
 }
 
 /* PC表示位置調整 */
 @media screen and (min-width: 960px) {
-  #pagetop {
-    bottom: 40px !important;
-    right: 40px !important;
+  .p-fixBtnWrap {
+    bottom: 80px !important;
   }
 }
 
