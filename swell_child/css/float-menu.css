@@ -206,6 +206,7 @@ body .ptl-float-menu .ptl-float-menu__btn:active,
   .ptl-float-menu__btn.ptl-float-menu__btn:hover {
     background: rgba(255, 255, 255, 0.4);
     opacity: 1;
+    color: #fff;  /* SPホバー時も白のまま */
     transform: none !important;
   }
   
