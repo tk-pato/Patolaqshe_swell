@@ -9,7 +9,7 @@
 .ptl-float-menu {
   position: fixed;
   right: 0;              /* 修正2: 画面右端にピッタリ接地 */
-  bottom: 100px;
+  bottom: 140px;         /* ページトップボタンから40px上に配置 */
   z-index: 9998;
   display: none;         /* 初期状態: 完全非表示（DOM上存在しない状態） */
   flex-direction: column;
