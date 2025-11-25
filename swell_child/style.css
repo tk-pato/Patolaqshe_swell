@@ -698,8 +698,9 @@ Version: 1.0.0
 
 /* PC表示位置調整 */
 @media screen and (min-width: 960px) {
-  .p-fixBtnWrap {
-    bottom: 80px !important;
+  /* 予約リンクボタン（フロートボタン）の位置を40px上に */
+  .p-fixBtnWrap .c-fixBtn:not(#pagetop) {
+    margin-bottom: 40px;
   }
 }
 
