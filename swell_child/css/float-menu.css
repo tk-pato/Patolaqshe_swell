@@ -78,6 +78,10 @@
   width: auto !important;
   height: auto !important;
   transform: none !important;
+  -webkit-transform: none !important;
+  -ms-transform: none !important;
+  scale: 1 !important;
+  -webkit-scale: 1 !important;
 }
 
 /* ホバーエフェクト: 色反転のみ、拡大なし */
@@ -93,6 +97,10 @@
   opacity: 0.9;
   color: #000;
   transform: none !important;
+  -webkit-transform: none !important;
+  -ms-transform: none !important;
+  scale: 1 !important;
+  -webkit-scale: 1 !important;
 }
 
 /* 重要: パッシブ状態（SPヒーロー重なり時など）はタップを透過させる */
@@ -103,6 +111,11 @@
 /* アクティブ状態 */
 .ptl-float-menu__btn:active {
   opacity: 0.8;
+  transform: none !important;
+  -webkit-transform: none !important;
+  -ms-transform: none !important;
+  scale: 1 !important;
+  -webkit-scale: 1 !important;
 }
 
 /* ボタンテキスト */
