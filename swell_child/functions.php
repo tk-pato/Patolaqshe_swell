@@ -3650,9 +3650,62 @@ function ptl_uservoice_slider_shortcode($atts)
         <?php endforeach;
         wp_reset_postdata(); ?>
       <?php else: ?>
+        <!-- ダミーデータ（グランドトップと同じ） -->
         <div class="swiper-slide">
           <div class="feedback-card">
-            <p style="text-align:center;padding:40px 20px;">現在、表示できるお客様の声はありません。</p>
+            <div class="feedback-image">
+              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様1" class="customer-img" />
+            </div>
+            <h3 class="feedback-title">自分に自信が持てるようになった</h3>
+            <div class="feedback-content">
+              <p>施術を受けてから姿勢が良くなり、バストのラインが綺麗になりました。鏡を見るのが楽しみです。</p>
+            </div>
+            <div class="feedback-author">30代女性</div>
+            <div class="feedback-rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="feedback-card">
+            <div class="feedback-image">
+              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様2" class="customer-img" />
+            </div>
+            <h3 class="feedback-title">諦めていたけど変化を実感</h3>
+            <div class="feedback-content">
+              <p>年齢的に無理だと思っていましたが、3ヶ月でサイズアップ！スタッフの方々も親切で通いやすいです。</p>
+            </div>
+            <div class="feedback-author">40代女性</div>
+            <div class="feedback-rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="feedback-card">
+            <div class="feedback-image">
+              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様3" class="customer-img" />
+            </div>
+            <h3 class="feedback-title">体質改善にも効果あり</h3>
+            <div class="feedback-content">
+              <p>バストケアだけでなく、冷え性も改善されて驚きです。身体全体が軽くなった感じがします。</p>
+            </div>
+            <div class="feedback-author">20代女性</div>
+            <div class="feedback-rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
           </div>
         </div>
       <?php endif; ?>
