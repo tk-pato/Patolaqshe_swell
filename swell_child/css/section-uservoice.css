@@ -47,6 +47,65 @@
 }
 #uservoice .swiper-button-prev{ left:10px; }
 #uservoice .swiper-button-next{ right:10px; }
+/* SP時の矢印スタイル: シンプルな<>デザイン */
+@media (max-width: 767px) {
+    #uservoice .swiper-button-prev,
+    #uservoice .swiper-button-next {
+        color: rgba(255, 255, 255, 0.95);
+        background: transparent;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        z-index: 20;
+        cursor: pointer;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* 親テーマの矢印を完全無効化 */
+    #uservoice .swiper-button-prev::after,
+    #uservoice .swiper-button-next::after {
+        border: none;
+        background: none;
+        width: auto;
+        height: auto;
+        transform: none;
+        position: static;
+        box-sizing: content-box;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+    }
+    
+    /* カスタム矢印 */
+    #uservoice .swiper-button-prev::after {
+        content: '<';
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 32px;
+        line-height: 40px;
+        font-style: normal;
+        display: block;
+    }
+    
+    #uservoice .swiper-button-next::after {
+        content: '>';
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 32px;
+        line-height: 40px;
+        font-style: normal;
+        display: block;
+    }
+    
+    #uservoice .swiper-button-prev {
+        left: 0;
+    }
+    
+    #uservoice .swiper-button-next {
+        right: 0;
+    }
+}
 /* ページネーション余白 */
 #uservoice .swiper-pagination{ margin-top:24px; }
 
