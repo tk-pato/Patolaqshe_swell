@@ -3538,3 +3538,166 @@ function ptl_breadcrumb_styles()
 <?php
 }
 add_action('wp_head', 'ptl_breadcrumb_styles');
+
+/**
+ * お客様の声スライダー ショートコード
+ * 使い方: [uservoice_slider store="daikanyama" limit="12"]
+ */
+function ptl_uservoice_slider_shortcode($atts)
+{
+  $atts = shortcode_atts(array(
+    'store' => 'all',
+    'limit' => 12
+  ), $atts);
+
+  $store = sanitize_text_field($atts['store']);
+  $limit = absint($atts['limit']);
+
+  // 店舗別にお客様の声を取得
+  if ($store === 'all') {
+    $uservoice_posts = ptl_get_all_uservoice_posts($limit);
+  } else {
+    // 特定店舗のみ
+    $args = array(
+      'post_type' => 'post',
+      'posts_per_page' => $limit,
+      'post_status' => 'publish',
+      'meta_query' => array(
+        'relation' => 'AND',
+        array(
+          'key' => '_post_category',
+          'value' => 'uservoice',
+          'compare' => '='
+        ),
+        array(
+          'key' => '_store_locations',
+          'value' => $store,
+          'compare' => 'LIKE'
+        )
+      ),
+      'orderby' => 'date',
+      'order' => 'DESC'
+    );
+    $uservoice_posts = get_posts($args);
+
+    // 既存のuservoiceカスタム投稿タイプも取得
+    $old_uservoice_args = array(
+      'post_type' => 'uservoice',
+      'posts_per_page' => $limit,
+      'post_status' => 'publish',
+      'meta_query' => array(
+        array(
+          'key' => '_store_locations',
+          'value' => $store,
+          'compare' => 'LIKE'
+        )
+      ),
+      'orderby' => 'date',
+      'order' => 'DESC'
+    );
+    $old_uservoice_posts = get_posts($old_uservoice_args);
+
+    // 統合してソート
+    $uservoice_posts = array_merge($uservoice_posts, $old_uservoice_posts);
+    usort($uservoice_posts, function ($a, $b) {
+      return strtotime($b->post_date) - strtotime($a->post_date);
+    });
+    $uservoice_posts = array_slice($uservoice_posts, 0, $limit);
+  }
+
+  ob_start();
+?>
+  <div class="uservoice-slider swiper">
+    <div class="swiper-wrapper">
+      <?php if (!empty($uservoice_posts)): ?>
+        <?php foreach ($uservoice_posts as $post):
+          setup_postdata($post);
+          $customer_name = get_post_meta($post->ID, '_customer_name', true);
+          $rating = (int)get_post_meta($post->ID, '_rating', true);
+          $customer_image = get_post_meta($post->ID, '_customer_image', true);
+          $uservoice_title = get_post_meta($post->ID, '_uservoice_title', true);
+        ?>
+          <div class="swiper-slide">
+            <div class="feedback-card">
+              <div class="feedback-image">
+                <?php if ($customer_image):
+                  $image_url = is_numeric($customer_image) ? wp_get_attachment_url($customer_image) : $customer_image;
+                  if ($image_url): ?>
+                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($customer_name); ?>" class="customer-img" />
+                  <?php else: ?>
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" />
+                  <?php endif; ?>
+                <?php else: ?>
+                  <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" />
+                <?php endif; ?>
+              </div>
+
+              <h3 class="feedback-title"><?php echo esc_html($uservoice_title ? $uservoice_title : get_the_title()); ?></h3>
+
+              <div class="feedback-content">
+                <p><?php echo get_the_content(); ?></p>
+              </div>
+
+              <div class="feedback-author"><?php echo esc_html($customer_name ? $customer_name : '匿名のお客様'); ?></div>
+
+              <div class="feedback-rating">
+                <?php for ($i = 1; $i <= 5; $i++): ?>
+                  <i class="fa fa-star<?php echo ($i <= $rating) ? '' : '-o'; ?>"></i>
+                <?php endfor; ?>
+              </div>
+            </div>
+          </div>
+        <?php endforeach;
+        wp_reset_postdata(); ?>
+      <?php else: ?>
+        <div class="swiper-slide">
+          <div class="feedback-card">
+            <p style="text-align:center;padding:40px 20px;">現在、表示できるお客様の声はありません。</p>
+          </div>
+        </div>
+      <?php endif; ?>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sliders = document.querySelectorAll('.uservoice-slider');
+      const lastSlider = sliders[sliders.length - 1];
+      
+      if (lastSlider && !lastSlider.classList.contains('swiper-initialized')) {
+        new Swiper(lastSlider, {
+          loop: true,
+          slidesPerView: 1,
+          spaceBetween: 16,
+          centeredSlides: true,
+          speed: 1500,
+          breakpoints: {
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 24
+            }
+          },
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          navigation: {
+            nextEl: lastSlider.querySelector('.swiper-button-next'),
+            prevEl: lastSlider.querySelector('.swiper-button-prev'),
+          },
+          pagination: {
+            el: lastSlider.querySelector('.swiper-pagination'),
+            clickable: true,
+          },
+        });
+      }
+    });
+  </script>
+<?php
+  return ob_get_clean();
+}
+add_shortcode('uservoice_slider', 'ptl_uservoice_slider_shortcode');
