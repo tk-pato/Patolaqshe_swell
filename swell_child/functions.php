@@ -3754,3 +3754,156 @@ function ptl_uservoice_slider_shortcode($atts)
   return ob_get_clean();
 }
 add_shortcode('uservoice_slider', 'ptl_uservoice_slider_shortcode');
+
+/**
+ * ========================================
+ * サロンモーダル機能
+ * ========================================
+ */
+function pato_enqueue_salon_modal_assets() {
+    wp_enqueue_script(
+        'pato-salon-modal',
+        get_stylesheet_directory_uri() . '/js/salon-modal.js',
+        array(),
+        '1.0.0',
+        true
+    );
+    
+    wp_enqueue_style(
+        'pato-salon-modal-pc',
+        get_stylesheet_directory_uri() . '/css/pc/salon-modal-pc.css',
+        array(),
+        '1.0.0',
+        'screen and (min-width: 768px)'
+    );
+    
+    wp_enqueue_style(
+        'pato-salon-modal-sp',
+        get_stylesheet_directory_uri() . '/css/sp/salon-modal-sp.css',
+        array(),
+        '1.0.0',
+        'screen and (max-width: 767px)'
+    );
+}
+add_action('wp_enqueue_scripts', 'pato_enqueue_salon_modal_assets');
+
+function pato_salon_modal_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'id' => 'salon-modal-' . uniqid(),
+        'name' => '',
+        'subtitle' => '',
+        'concept' => '',
+        'image' => '',
+        'address' => '',
+        'tel' => '',
+        'hours' => '',
+        'access' => '',
+        'description' => '',
+        'maps_url' => '',
+        'modal_image' => '',
+    ), $atts, 'salon_modal');
+    
+    if (empty($atts['modal_image'])) {
+        $atts['modal_image'] = $atts['image'];
+    }
+    
+    $modal_id = 'salon-modal-' . sanitize_title($atts['id']);
+    
+    ob_start();
+    ?>
+    
+    <div class="salon-modal-trigger" data-modal-id="<?php echo esc_attr($modal_id); ?>">
+        <?php if (!empty($atts['image'])): ?>
+            <img src="<?php echo esc_url($atts['image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>" class="salon-modal-trigger__image">
+        <?php endif; ?>
+        
+        <div class="salon-modal-trigger__content">
+            <?php if (!empty($atts['subtitle'])): ?>
+                <div class="salon-modal-trigger__subtitle"><?php echo esc_html($atts['subtitle']); ?></div>
+            <?php endif; ?>
+            
+            <?php if (!empty($atts['name'])): ?>
+                <h3 class="salon-modal-trigger__name"><?php echo esc_html($atts['name']); ?></h3>
+            <?php endif; ?>
+            
+            <?php if (!empty($atts['address'])): ?>
+                <div class="salon-modal-trigger__address"><?php echo wp_kses_post($atts['address']); ?></div>
+            <?php endif; ?>
+            
+            <?php if (!empty($atts['maps_url'])): ?>
+                <a href="<?php echo esc_url($atts['maps_url']); ?>" target="_blank" rel="noopener" class="salon-modal-trigger__link" onclick="event.stopPropagation();">Google Maps</a>
+            <?php endif; ?>
+        </div>
+    </div>
+    
+    <div id="<?php echo esc_attr($modal_id); ?>" class="salon-modal">
+        <div class="salon-modal__container">
+            <button class="salon-modal-close" aria-label="閉じる"></button>
+            
+            <div class="salon-modal__content">
+                <?php if (!empty($atts['name'])): ?>
+                    <h2 class="salon-modal__name"><?php echo esc_html($atts['name']); ?></h2>
+                <?php endif; ?>
+                
+                <?php if (!empty($atts['concept'])): ?>
+                    <div class="salon-modal__concept"><?php echo esc_html($atts['concept']); ?></div>
+                <?php endif; ?>
+                
+                <?php if (!empty($atts['subtitle'])): ?>
+                    <h3 class="salon-modal__title"><?php echo esc_html($atts['subtitle']); ?></h3>
+                <?php endif; ?>
+                
+                <?php if (!empty($atts['description'])): ?>
+                    <p class="salon-modal__description"><?php echo esc_html($atts['description']); ?></p>
+                <?php endif; ?>
+                
+                <div class="salon-modal__info">
+                    <?php if (!empty($atts['address'])): ?>
+                        <div class="salon-modal__info-item">
+                            <div class="salon-modal__info-label">所在地</div>
+                            <div class="salon-modal__info-value"><?php echo wp_kses_post($atts['address']); ?></div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if (!empty($atts['access'])): ?>
+                        <div class="salon-modal__info-item">
+                            <div class="salon-modal__info-label">アクセス</div>
+                            <div class="salon-modal__info-value"><?php echo esc_html($atts['access']); ?></div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if (!empty($atts['tel'])): ?>
+                        <div class="salon-modal__info-item">
+                            <div class="salon-modal__info-label">電話番号</div>
+                            <div class="salon-modal__info-value">Tel.<?php echo esc_html($atts['tel']); ?></div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if (!empty($atts['hours'])): ?>
+                        <div class="salon-modal__info-item">
+                            <div class="salon-modal__info-label">営業時間</div>
+                            <div class="salon-modal__info-value"><?php echo esc_html($atts['hours']); ?></div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if (!empty($atts['maps_url'])): ?>
+                        <div class="salon-modal__info-item">
+                            <div class="salon-modal__info-label">地図</div>
+                            <div class="salon-modal__info-value">
+                                <a href="<?php echo esc_url($atts['maps_url']); ?>" target="_blank" rel="noopener">Google Maps</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                
+                <?php if (!empty($atts['modal_image'])): ?>
+                    <img src="<?php echo esc_url($atts['modal_image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>" class="salon-modal__image">
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('salon_modal', 'pato_salon_modal_shortcode');
