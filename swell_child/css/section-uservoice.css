@@ -20,33 +20,40 @@
 #uservoice .swiper-button-next{
     position:absolute; top:50%; transform:translateY(-50%);
     width:44px; height:44px; display:flex; align-items:center; justify-content:center;
-    z-index:10; pointer-events:auto;
+    z-index:10; pointer-events:auto; opacity:0.75;
+    background: #ffffff;
+    border: 1px solid #d4a574;
     border-radius: 50%;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
+#uservoice .swiper-button-prev:hover,
+#uservoice .swiper-button-next:hover {
+    background: #fafafa;
+    border-color: #c49a6c;
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+    opacity: 1;
+}
+#uservoice .swiper-button-prev::after,
+#uservoice .swiper-button-next::after {
+    color: #d4a574;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+#uservoice .swiper-button-prev:hover::after,
+#uservoice .swiper-button-next:hover::after {
+    color: #c49a6c;
+}
 #uservoice .swiper-button-prev{ left:10px; }
 #uservoice .swiper-button-next{ right:10px; }
 
-/* PC専用: ゴールドデザイン */
+/* PC専用: Swiperデフォルト矢印をゴールド色に */
 @media (min-width: 768px) {
-    #uservoice .swiper-button-prev,
-    #uservoice .swiper-button-next {
-        background: #ffffff;
-        border: 1px solid #d4a574;
-        opacity: 0.75;
-    }
     #uservoice .swiper-button-prev::after,
     #uservoice .swiper-button-next::after {
         font-family: swiper-icons;
         color: #d4a574;
         font-size: 16px;
-    }
-    #uservoice .swiper-button-prev:hover,
-    #uservoice .swiper-button-next:hover {
-        background: #fafafa;
-        border-color: #c49a6c;
-        opacity: 1;
     }
     #uservoice .swiper-button-prev:hover::after,
     #uservoice .swiper-button-next:hover::after {
