@@ -1,209 +1,210 @@
-/**
- * Salon Modal CSS - SP Version
- */
-
 @media (max-width: 767px) {
-    
+    /* トリガーカード */
     .salon-modal-trigger {
         display: block;
         cursor: pointer;
         text-decoration: none;
         color: inherit;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     
-    .salon-modal-trigger:active {
-        opacity: 0.9;
+    .salon-modal-trigger__image-wrapper {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        position: relative;
     }
     
     .salon-modal-trigger__image {
         width: 100%;
-        height: auto;
+        height: 100%;
         display: block;
+        object-fit: cover;
+        object-position: center;
     }
     
     .salon-modal-trigger__content {
         padding: 20px;
-        background: #fff;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
     
     .salon-modal-trigger__subtitle {
-        font-size: 12px;
+        font-size: 11px;
         color: #666;
-        margin-bottom: 6px;
-        font-family: Georgia, serif;
-    }
-    
-    .salon-modal-trigger__name {
-        font-size: 20px;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 12px;
-    }
-    
-    .salon-modal-trigger__address {
-        font-size: 13px;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 12px;
-    }
-    
-    .salon-modal-trigger__link {
-        display: inline-block;
-        font-size: 13px;
-        color: #333;
-        text-decoration: underline;
-    }
-    
-    .salon-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .salon-modal.is-active {
-        display: block;
-    }
-    
-    .salon-modal.is-visible {
-        opacity: 1;
-    }
-    
-    .salon-modal__container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        overflow: hidden;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
-    }
-    
-    .salon-modal.is-visible .salon-modal__container {
-        transform: translateY(0);
-    }
-    
-    .salon-modal__content {
-        padding: 80px 20px 40px;
-        overflow-y: auto;
-        height: 100%;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .salon-modal-close {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-        background: #fff;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 10;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-    
-    .salon-modal-close:active {
-        transform: scale(0.95);
-    }
-    
-    .salon-modal-close::before,
-    .salon-modal-close::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 2px;
-        background: #333;
-    }
-    
-    .salon-modal-close::before {
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-    
-    .salon-modal-close::after {
-        transform: translate(-50%, -50%) rotate(-45deg);
-    }
-    
-    .salon-modal__name {
-        font-size: 24px;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 8px;
-    }
-    
-    .salon-modal__concept {
-        font-size: 12px;
-        color: #666;
-        margin-bottom: 12px;
-    }
-    
-    .salon-modal__title {
-        font-size: 28px;
-        color: #333;
-        margin-bottom: 20px;
-        font-family: Georgia, serif;
-        font-weight: normal;
-    }
-    
-    .salon-modal__description {
-        font-size: 15px;
-        color: #666;
-        line-height: 1.8;
-        margin-bottom: 28px;
-    }
-    
-    .salon-modal__info {
-        margin-bottom: 28px;
-    }
-    
-    .salon-modal__info-item {
-        padding: 14px 0;
-        border-bottom: 1px solid #eee;
-        font-size: 13px;
-        line-height: 1.8;
-    }
-    
-    .salon-modal__info-label {
-        display: block;
-        color: #999;
-        font-weight: bold;
         margin-bottom: 4px;
     }
     
-    .salon-modal__info-value {
-        display: block;
-        color: #333;
+    .salon-modal-trigger__concept {
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 6px;
     }
     
-    .salon-modal__info-value a {
-        color: #333;
+    .salon-modal-trigger__name {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+    }
+    
+    /* モーダル本体（angelica方式） */
+    body.js-modal_open {
+        overflow: hidden;
+    }
+    
+    .js-modal_wrap {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+        transition: all 0.7s ease-out;
+        opacity: 0;
+    }
+    
+    .js-modal_wrap.js-modalitem_open {
+        opacity: 1;
+        z-index: 1000;
+        right: 0;
+    }
+    
+    .js-modal_wrap.js-modalitem_open .js-modal_bg {
+        right: 0;
+    }
+    
+    .js-modal_cont {
+        position: relative;
+        z-index: 10;
+        max-width: 95%;
+        margin: 0 0 0 auto;
+        border-left: 1px solid #3E4443;
+        background: #FFF;
+        overflow: auto;
+        height: 100%;
+        height: 100dvh;
+    }
+    
+    .js-modal_close.p-ico {
+        border: none;
+        background: transparent;
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+    }
+    
+    .js-modal_close.p-ico svg {
+        width: 20px;
+        height: 20px;
+        color: #3E4443;
+    }
+    
+    .js-modal_bg {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        position: fixed;
+        top: 0;
+        right: -100%;
+    }
+    
+    /* モーダル内コンテンツ */
+    .p-salon .l-modal_area {
+        padding: 80px 20px 60px;
+    }
+    
+    .p-salon .l-modal_area .l-2col {
+        display: block;
+        padding-top: 60px;
+    }
+    
+    .p-salon .l-modal_area .l-2col > * {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .p-salon .l-modal_area .l-2col > * + * {
+        margin-top: 30px;
+    }
+    
+    .p-salon .l-modal_area .c-name {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 0.04em;
+    }
+    
+    .p-salon .l-modal_area .c-copy_ja {
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 1.5;
+        letter-spacing: 0.024em;
+    }
+    
+    .p-salon .l-modal_area .c-copy_en {
+        padding-top: 8px;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1;
+    }
+    
+    .p-salon .l-modal_area .c-text {
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.5;
+        letter-spacing: 0.07em;
+        text-align: left;
+    }
+    
+    .p-salon .l-modal_area .c-text.p-main {
+        padding-top: 20px;
+        line-height: 1.7;
+    }
+    
+    .p-salon .l-modal_area .c-text.p-map {
+        margin-top: 24px !important;
+    }
+    
+    .p-salon .l-modal_area .c-text + .c-text {
+        margin-top: 10px;
+    }
+    
+    .p-salon .l-modal_area .c-text a[target] {
         text-decoration: underline;
     }
     
-    .salon-modal__image {
+    /* モーダル内スライダー（3:2アスペクト比） */
+    .p-salon .l-modal_slider {
+        margin-top: 80px;
+        padding-bottom: 70px;
+        position: relative;
+        overflow: hidden;
         width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 4px;
-        margin-bottom: 20px;
     }
     
-    body.salon-modal-open {
+    .p-salon .l-modal_slider .c-img {
+        aspect-ratio: 3 / 2;
         overflow: hidden;
-        position: fixed;
+        display: block;
+    }
+    
+    .p-salon .l-modal_slider .c-img img {
+        object-fit: cover;
         width: 100%;
         height: 100%;
+        object-position: center;
     }
-    
 }
