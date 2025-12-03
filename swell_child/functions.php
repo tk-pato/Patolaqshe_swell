@@ -3254,14 +3254,14 @@ function ptl_store_location_selector_callback($post)
   echo '✅ <strong>グランド（全店舗共通ページ）</strong>には必ず表示されます。<br>';
   echo '追加で特定店舗ページにも表示したい場合は、下記をチェックしてください。';
   echo '</p>';
-  
+
   echo '<p class="description" style="margin-bottom: 10px; padding: 8px; background: #fff3cd; border-left: 3px solid #ffc107; font-size: 12px;">';
   echo '<strong>📌 記事種別に関わらず適用されます：</strong><br>';
   echo 'ニュース、お客様の声、ブログ記事、全てで使用可能です。';
   echo '</p>';
 
   echo '<div style="padding: 10px; background: #f6f7f7; border-radius: 4px;">';
-  
+
   // 銀座店チェックボックス
   echo '<label style="display: block; margin-bottom: 10px; cursor: pointer;">';
   echo '<input type="checkbox" name="store_locations[]" value="ginza" ' . checked(in_array('ginza', $store_locations), true, false) . ' />';
@@ -3314,11 +3314,11 @@ add_action('manage_posts_custom_column', function ($column, $post_id) {
   if ($column === 'store_locations') {
     $locations = get_post_meta($post_id, '_store_locations', true);
     if (!is_array($locations)) $locations = [];
-    
+
     $display = ['グランド'];
     if (in_array('ginza', $locations)) $display[] = '銀座';
     if (in_array('daikanyama', $locations)) $display[] = '代官山';
-    
+
     echo '<span style="color: #0073aa;">' . implode(' / ', $display) . '</span>';
   }
 }, 10, 2);
@@ -3329,30 +3329,32 @@ add_action('manage_posts_custom_column', function ($column, $post_id) {
  * リファラーから店舗を判定するヘルパー関数
  * @return string 'ginza' | 'daikanyama' | 'grand'
  */
-function ptl_get_store_from_referer() {
+function ptl_get_store_from_referer()
+{
   $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
-  
+
   if (strpos($referer, '/ginza/') !== false || strpos($referer, '/ginza') !== false) {
     return 'ginza';
   }
-  
+
   if (strpos($referer, '/daikanyama/') !== false || strpos($referer, '/daikanyama') !== false) {
     return 'daikanyama';
   }
-  
+
   return 'grand';
 }
 
 /**
  * セッションに店舗情報を保存(ページ内遷移でも維持)
  */
-function ptl_init_store_session() {
+function ptl_init_store_session()
+{
   if (session_status() === PHP_SESSION_NONE) {
     session_start();
   }
-  
+
   $store = ptl_get_store_from_referer();
-  
+
   if ($store !== 'grand') {
     $_SESSION['ptl_current_store'] = $store;
   }
@@ -3363,15 +3365,16 @@ add_action('init', 'ptl_init_store_session');
  * 現在の店舗を取得(セッション優先)
  * @return string 'ginza' | 'daikanyama' | 'grand'
  */
-function ptl_get_current_store() {
+function ptl_get_current_store()
+{
   if (session_status() === PHP_SESSION_NONE) {
     session_start();
   }
-  
+
   if (isset($_SESSION['ptl_current_store'])) {
     return $_SESSION['ptl_current_store'];
   }
-  
+
   return ptl_get_store_from_referer();
 }
 
@@ -3380,7 +3383,8 @@ function ptl_get_current_store() {
  * @param string $store_key
  * @return string
  */
-function ptl_get_store_name($store_key) {
+function ptl_get_store_name($store_key)
+{
   $stores = [
     'ginza' => '銀座店',
     'daikanyama' => '代官山店',
@@ -3394,7 +3398,8 @@ function ptl_get_store_name($store_key) {
  * @param string $store_key
  * @return string
  */
-function ptl_get_store_url($store_key) {
+function ptl_get_store_url($store_key)
+{
   $urls = [
     'ginza' => home_url('/ginza/'),
     'daikanyama' => home_url('/daikanyama/'),
@@ -3410,32 +3415,33 @@ function ptl_get_store_url($store_key) {
  * 出力例(銀座店から来た場合):
  * ホーム > 銀座店 > 現在のページタイトル
  */
-function ptl_dynamic_breadcrumb_shortcode($atts) {
+function ptl_dynamic_breadcrumb_shortcode($atts)
+{
   $store = ptl_get_current_store();
   $store_name = ptl_get_store_name($store);
   $store_url = ptl_get_store_url($store);
   $current_title = get_the_title();
-  
+
   $breadcrumb = '<nav class="ptl-breadcrumb" aria-label="パンくずリスト">';
   $breadcrumb .= '<ol class="ptl-breadcrumb__list">';
-  
+
   $breadcrumb .= '<li class="ptl-breadcrumb__item">';
   $breadcrumb .= '<a href="' . esc_url(home_url('/')) . '" class="ptl-breadcrumb__link">ホーム</a>';
   $breadcrumb .= '</li>';
-  
+
   if ($store !== 'grand' && !empty($store_name)) {
     $breadcrumb .= '<li class="ptl-breadcrumb__item">';
     $breadcrumb .= '<a href="' . esc_url($store_url) . '" class="ptl-breadcrumb__link">' . esc_html($store_name) . '</a>';
     $breadcrumb .= '</li>';
   }
-  
+
   $breadcrumb .= '<li class="ptl-breadcrumb__item ptl-breadcrumb__item--current">';
   $breadcrumb .= '<span class="ptl-breadcrumb__current">' . esc_html($current_title) . '</span>';
   $breadcrumb .= '</li>';
-  
+
   $breadcrumb .= '</ol>';
   $breadcrumb .= '</nav>';
-  
+
   return $breadcrumb;
 }
 add_shortcode('dynamic_breadcrumb', 'ptl_dynamic_breadcrumb_shortcode');
@@ -3448,19 +3454,20 @@ add_shortcode('dynamic_breadcrumb', 'ptl_dynamic_breadcrumb_shortcode');
  * 出力例(銀座店から来た場合):
  * <a href="/ginza/" class="ptl-home-link">トップページに戻る</a>
  */
-function ptl_dynamic_home_link_shortcode($atts) {
+function ptl_dynamic_home_link_shortcode($atts)
+{
   $atts = shortcode_atts([
     'text' => 'トップページに戻る',
     'class' => 'ptl-home-link'
   ], $atts);
-  
+
   $store = ptl_get_current_store();
   $store_url = ptl_get_store_url($store);
-  
+
   $link = '<a href="' . esc_url($store_url) . '" class="' . esc_attr($atts['class']) . '">';
   $link .= esc_html($atts['text']);
   $link .= '</a>';
-  
+
   return $link;
 }
 add_shortcode('dynamic_home_link', 'ptl_dynamic_home_link_shortcode');
@@ -3468,57 +3475,66 @@ add_shortcode('dynamic_home_link', 'ptl_dynamic_home_link_shortcode');
 /**
  * パンくずリスト用CSS(フロントエンドに出力)
  */
-function ptl_breadcrumb_styles() {
+function ptl_breadcrumb_styles()
+{
   if (is_admin()) return;
-  ?>
+?>
   <style>
-  .ptl-breadcrumb {
-    padding: 10px 0;
-    font-size: 13px;
-  }
-  .ptl-breadcrumb__list {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-  }
-  .ptl-breadcrumb__item {
-    display: flex;
-    align-items: center;
-  }
-  .ptl-breadcrumb__item:not(:last-child)::after {
-    content: ">";
-    margin: 0 8px;
-    color: #999;
-  }
-  .ptl-breadcrumb__link {
-    color: #0073aa;
-    text-decoration: none;
-  }
-  .ptl-breadcrumb__link:hover {
-    text-decoration: underline;
-  }
-  .ptl-breadcrumb__current {
-    color: #666;
-  }
-  .ptl-home-link {
-    display: inline-block;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-  .ptl-home-link:hover {
-    background: linear-gradient(135deg, #c49a6c 0%, #b38a5c 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(196, 154, 108, 0.4);
-  }
+    .ptl-breadcrumb {
+      padding: 10px 0;
+      font-size: 13px;
+    }
+
+    .ptl-breadcrumb__list {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 0;
+    }
+
+    .ptl-breadcrumb__item {
+      display: flex;
+      align-items: center;
+    }
+
+    .ptl-breadcrumb__item:not(:last-child)::after {
+      content: ">";
+      margin: 0 8px;
+      color: #999;
+    }
+
+    .ptl-breadcrumb__link {
+      color: #0073aa;
+      text-decoration: none;
+    }
+
+    .ptl-breadcrumb__link:hover {
+      text-decoration: underline;
+    }
+
+    .ptl-breadcrumb__current {
+      color: #666;
+    }
+
+    .ptl-home-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .ptl-home-link:hover {
+      background: linear-gradient(135deg, #c49a6c 0%, #b38a5c 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(196, 154, 108, 0.4);
+    }
   </style>
-  <?php
+<?php
 }
 add_action('wp_head', 'ptl_breadcrumb_styles');
