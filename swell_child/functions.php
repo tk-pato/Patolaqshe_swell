@@ -3849,10 +3849,6 @@ function pato_salon_modal_shortcode($atts)
       </button>
 
       <div class="l-modal_area">
-        <a href="https://beauty.hotpepper.jp/kr/slnH000263216/?utm_source=site&utm_medium=modal&utm_campaign=reserve" class="salon-modal__hotpepper-logo" target="_blank" rel="noopener noreferrer">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" loading="lazy">
-        </a>
-
         <div class="c-name"><?php echo esc_html($atts['name']); ?></div>
 
         <?php if (!empty($atts['subtitle'])): ?>
@@ -3865,6 +3861,10 @@ function pato_salon_modal_shortcode($atts)
 
         <div class="l-2col">
           <div>
+            <a href="https://beauty.hotpepper.jp/kr/slnH000263216/?utm_source=site&utm_medium=modal&utm_campaign=reserve" class="salon-modal__hotpepper-logo" target="_blank" rel="noopener noreferrer">
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" loading="lazy">
+            </a>
+
             <?php if (!empty($atts['description'])): ?>
               <div class="c-text p-main"><?php echo wp_kses_post($atts['description']); ?></div>
             <?php endif; ?>

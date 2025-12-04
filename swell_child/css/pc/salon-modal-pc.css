@@ -223,6 +223,7 @@ body.js-modal_open {
 
 .p-salon .l-modal_area .l-2col > *:first-child {
     margin-bottom: 40px;
+    position: relative;
 }
 
 .p-salon .l-modal_area .c-name {
