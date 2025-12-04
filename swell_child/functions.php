@@ -3818,6 +3818,10 @@ function pato_salon_modal_shortcode($atts)
         </picture>
       <?php endif; ?>
 
+      <div class="salon-modal-trigger__hotpepper-logo">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティー" loading="lazy">
+      </div>
+
       <div class="salon-modal-trigger__content">
         <?php if (!empty($atts['subtitle'])): ?>
           <div class="salon-modal-trigger__subtitle"><?php echo esc_html($atts['subtitle']); ?></div>
