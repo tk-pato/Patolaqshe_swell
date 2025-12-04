@@ -47,9 +47,9 @@
     left: 0;
     right: 0;
     padding: 32px 24px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     z-index: 2;
 }
@@ -107,7 +107,6 @@ body.js-modal_open {
     z-index: 10;
     max-width: 1160px;
     margin: 0 0 0 auto;
-    border-left: 1px solid #3E4443;
     background: #FFF;
     overflow: auto;
     height: 100%;
@@ -148,19 +147,22 @@ body.js-modal_open {
 /* モーダル内コンテンツ */
 .p-salon .l-modal_area {
     max-width: 1060px;
-    padding: 140px 30px 100px;
+    padding: 80px 30px 100px;
     margin: 0 auto;
 }
 
 .p-salon .l-modal_area .l-2col {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 100px;
+    display: block;
+    padding-top: 60px;
 }
 
 .p-salon .l-modal_area .l-2col > * {
-    width: 48%;
-    max-width: 460px;
+    width: 100%;
+    max-width: none;
+}
+
+.p-salon .l-modal_area .l-2col > *:first-child {
+    margin-bottom: 40px;
 }
 
 .p-salon .l-modal_area .c-name {
@@ -216,8 +218,8 @@ body.js-modal_open {
 
 /* モーダル内スライダー（3:2アスペクト比） */
 .p-salon .l-modal_slider {
-    margin-top: 136px;
-    padding-bottom: 140px;
+    margin-top: 0;
+    padding-bottom: 80px;
     position: relative;
     overflow: hidden;
     width: 100%;
