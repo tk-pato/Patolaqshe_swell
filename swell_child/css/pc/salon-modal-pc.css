@@ -47,10 +47,14 @@
     left: 0;
     right: 0;
     padding: 32px 24px;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.5),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.05);
     z-index: 2;
 }
 
@@ -104,7 +108,7 @@ body.js-modal_open {
 
 .js-modal_cont {
     position: relative;
-    z-index: 10;
+    z-index: 2;
     max-width: 1160px;
     margin: 0 0 0 auto;
     background: #FFF;
@@ -142,12 +146,13 @@ body.js-modal_open {
     top: 0;
     right: -100%;
     transition: right 0.7s ease-out;
+    z-index: 1;
 }
 
 /* モーダル内コンテンツ */
 .p-salon .l-modal_area {
     max-width: 1060px;
-    padding: 80px 30px 100px;
+    padding: 40px 30px 80px;
     margin: 0 auto;
 }
 
