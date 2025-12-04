@@ -170,8 +170,9 @@ body.js-modal_open {
 /* モーダル内ホットペッパーロゴ */
 .salon-modal__hotpepper-logo {
     position: absolute;
-    bottom: 30px;
+    top: 50%;
     right: 30px;
+    transform: translateY(-50%);
     width: 43px;
     height: 43px;
     z-index: 101;
