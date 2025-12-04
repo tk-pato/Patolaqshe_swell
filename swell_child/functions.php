@@ -3809,24 +3809,26 @@ function pato_salon_modal_shortcode($atts) {
     ob_start();
     ?>
     <div class="salon-modal-trigger js-modal_btn" data-modal="salon-modal-<?php echo esc_attr($atts['id']); ?>">
-        <?php if (!empty($atts['image'])): ?>
-            <div class="salon-modal-trigger__image-wrapper">
-                <img src="<?php echo esc_url($atts['image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>" class="salon-modal-trigger__image">
+        <div class="salon-modal-trigger__inner">
+            <?php if (!empty($atts['image'])): ?>
+                <picture class="salon-modal-trigger__image">
+                    <img src="<?php echo esc_url($atts['image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>">
+                </picture>
+            <?php endif; ?>
+            
+            <div class="salon-modal-trigger__content">
+                <?php if (!empty($atts['subtitle'])): ?>
+                    <div class="salon-modal-trigger__subtitle"><?php echo esc_html($atts['subtitle']); ?></div>
+                <?php endif; ?>
+                
+                <?php if (!empty($atts['concept'])): ?>
+                    <div class="salon-modal-trigger__concept"><?php echo esc_html($atts['concept']); ?></div>
+                <?php endif; ?>
+                
+                <?php if (!empty($atts['name'])): ?>
+                    <h3 class="salon-modal-trigger__name"><?php echo esc_html($atts['name']); ?></h3>
+                <?php endif; ?>
             </div>
-        <?php endif; ?>
-        
-        <div class="salon-modal-trigger__content">
-            <?php if (!empty($atts['subtitle'])): ?>
-                <div class="salon-modal-trigger__subtitle"><?php echo esc_html($atts['subtitle']); ?></div>
-            <?php endif; ?>
-            
-            <?php if (!empty($atts['concept'])): ?>
-                <div class="salon-modal-trigger__concept"><?php echo esc_html($atts['concept']); ?></div>
-            <?php endif; ?>
-            
-            <?php if (!empty($atts['name'])): ?>
-                <h3 class="salon-modal-trigger__name"><?php echo esc_html($atts['name']); ?></h3>
-            <?php endif; ?>
         </div>
     </div>
 

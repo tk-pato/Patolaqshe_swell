@@ -1,210 +1,232 @@
-@media (max-width: 767px) {
-    /* トリガーカード */
-    .salon-modal-trigger {
-        display: block;
-        cursor: pointer;
-        text-decoration: none;
-        color: inherit;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .salon-modal-trigger__image-wrapper {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .salon-modal-trigger__image {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-        object-position: center;
-    }
-    
-    .salon-modal-trigger__content {
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    }
-    
-    .salon-modal-trigger__subtitle {
-        font-size: 11px;
-        color: #666;
-        margin-bottom: 4px;
-    }
-    
-    .salon-modal-trigger__concept {
-        font-size: 12px;
-        color: #888;
-        margin-bottom: 6px;
-    }
-    
-    .salon-modal-trigger__name {
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0;
-    }
-    
-    /* モーダル本体（angelica方式） */
-    body.js-modal_open {
-        overflow: hidden;
-    }
-    
-    .js-modal_wrap {
-        width: 100%;
-        height: 100vh;
-        height: 100dvh;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        z-index: 10;
-        transition: all 0.7s ease-out;
-        opacity: 0;
-    }
-    
-    .js-modal_wrap.js-modalitem_open {
-        opacity: 1;
-        z-index: 1000;
-        right: 0;
-    }
-    
-    .js-modal_wrap.js-modalitem_open .js-modal_bg {
-        right: 0;
-    }
-    
-    .js-modal_cont {
-        position: relative;
-        z-index: 10;
-        max-width: 95%;
-        margin: 0 0 0 auto;
-        border-left: 1px solid #3E4443;
-        background: #FFF;
-        overflow: auto;
-        height: 100%;
-        height: 100dvh;
-    }
-    
-    .js-modal_close.p-ico {
-        border: none;
-        background: transparent;
-        position: absolute;
-        top: 20px;
-        left: 15px;
-        cursor: pointer;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 100;
-    }
-    
-    .js-modal_close.p-ico svg {
-        width: 20px;
-        height: 20px;
-        color: #3E4443;
-    }
-    
-    .js-modal_bg {
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.5);
-        position: fixed;
-        top: 0;
-        right: -100%;
-    }
-    
-    /* モーダル内コンテンツ */
-    .p-salon .l-modal_area {
-        padding: 80px 20px 60px;
-    }
-    
-    .p-salon .l-modal_area .l-2col {
-        display: block;
-        padding-top: 60px;
-    }
-    
-    .p-salon .l-modal_area .l-2col > * {
-        width: 100%;
-        max-width: none;
-    }
-    
-    .p-salon .l-modal_area .l-2col > * + * {
-        margin-top: 30px;
-    }
-    
-    .p-salon .l-modal_area .c-name {
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 1.5;
-        letter-spacing: 0.04em;
-    }
-    
-    .p-salon .l-modal_area .c-copy_ja {
-        font-size: 11px;
-        font-weight: 400;
-        line-height: 1.5;
-        letter-spacing: 0.024em;
-    }
-    
-    .p-salon .l-modal_area .c-copy_en {
-        padding-top: 8px;
-        font-size: 22px;
-        font-weight: 400;
-        line-height: 1;
-    }
-    
-    .p-salon .l-modal_area .c-text {
-        font-size: 13px;
-        font-weight: 400;
-        line-height: 1.5;
-        letter-spacing: 0.07em;
-        text-align: left;
-    }
-    
-    .p-salon .l-modal_area .c-text.p-main {
-        padding-top: 20px;
-        line-height: 1.7;
-    }
-    
-    .p-salon .l-modal_area .c-text.p-map {
-        margin-top: 24px !important;
-    }
-    
-    .p-salon .l-modal_area .c-text + .c-text {
-        margin-top: 10px;
-    }
-    
-    .p-salon .l-modal_area .c-text a[target] {
-        text-decoration: underline;
-    }
-    
-    /* モーダル内スライダー（3:2アスペクト比） */
-    .p-salon .l-modal_slider {
-        margin-top: 80px;
-        padding-bottom: 70px;
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-    }
-    
-    .p-salon .l-modal_slider .c-img {
-        aspect-ratio: 3 / 2;
-        overflow: hidden;
-        display: block;
-    }
-    
-    .p-salon .l-modal_slider .c-img img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        object-position: center;
-    }
+/* =====================================================
+   サロンモーダル SP用CSS（Angelica完全準拠版）
+   ===================================================== */
+
+/* トリガーカード */
+.salon-modal-trigger {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+    border-radius: 8px;
+}
+
+.salon-modal-trigger__inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.salon-modal-trigger__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.salon-modal-trigger__image img {
+    width: 100%;
+    height: calc(100% + 50px);
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.salon-modal-trigger__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 20px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 2;
+}
+
+.salon-modal-trigger__subtitle {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.salon-modal-trigger__concept {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+.salon-modal-trigger__name {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+/* モーダル本体（angelica方式） */
+body.js-modal_open {
+    overflow: hidden;
+}
+
+.js-modal_wrap {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    transition: all 0.7s ease-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.js-modal_wrap.js-modalitem_open {
+    opacity: 1;
+    z-index: 1000;
+    right: 0;
+    pointer-events: auto;
+}
+
+.js-modal_wrap.js-modalitem_open .js-modal_bg {
+    right: 0;
+}
+
+.js-modal_cont {
+    position: relative;
+    z-index: 10;
+    max-width: 95%;
+    margin: 0 0 0 auto;
+    border-left: 1px solid #3E4443;
+    background: #FFF;
+    overflow: auto;
+    height: 100%;
+    height: 100dvh;
+}
+
+.js-modal_close.p-ico {
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.js-modal_close.p-ico svg {
+    width: 20px;
+    height: 20px;
+    color: #3E4443;
+}
+
+.js-modal_bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: right 0.7s ease-out;
+}
+
+/* モーダル内コンテンツ */
+.p-salon .l-modal_area {
+    max-width: 100%;
+    padding: 100px 20px 60px;
+    margin: 0 auto;
+}
+
+.p-salon .l-modal_area .l-2col {
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+}
+
+.p-salon .l-modal_area .l-2col > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.p-salon .l-modal_area .c-name {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+}
+
+.p-salon .l-modal_area .c-copy_ja {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.024em;
+}
+
+.p-salon .l-modal_area .c-copy_en {
+    padding-top: 8px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.p-salon .l-modal_area .c-text {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.07em;
+    text-align: left;
+}
+
+.p-salon .l-modal_area .c-text.p-main {
+    padding-top: 20px;
+    line-height: 1.7;
+}
+
+.p-salon .l-modal_area .c-text.p-map {
+    margin-top: 20px !important;
+}
+
+.p-salon .l-modal_area .c-text + .c-text {
+    margin-top: 8px;
+}
+
+.p-salon .l-modal_area .c-text a[target] {
+    text-decoration: underline;
+    transition: 0.5s;
+}
+
+.p-salon .l-modal_area .c-text a[target]:hover {
+    opacity: 0.5;
+}
+
+/* モーダル内スライダー（3:2アスペクト比） */
+.p-salon .l-modal_slider {
+    margin-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.p-salon .l-modal_slider .c-img {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    display: block;
+}
+
+.p-salon .l-modal_slider .c-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center;
 }
