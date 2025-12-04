@@ -172,8 +172,8 @@ body.js-modal_open {
 /* モーダル内ホットペッパーロゴ */
 .salon-modal__hotpepper-logo {
     position: absolute;
-    top: 20px;
-    right: 65px;
+    bottom: 0;
+    right: 20px;
     width: 20px;
     height: 20px;
     z-index: 101;
@@ -221,6 +221,10 @@ body.js-modal_open {
     max-width: 100%;
 }
 
+.p-salon .l-modal_area .l-2col > *:first-child {
+    position: relative;
+}
+
 .p-salon .l-modal_area .c-name {
     font-size: 16px;
     font-weight: 500;
@@ -237,7 +241,7 @@ body.js-modal_open {
 
 .p-salon .l-modal_area .c-copy_en {
     padding-top: 6px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1;
 }
@@ -251,7 +255,7 @@ body.js-modal_open {
 }
 
 .p-salon .l-modal_area .c-text.p-main {
-    padding-top: 15px;
+    padding-top: 10px;
     line-height: 1.6;
 }
 
