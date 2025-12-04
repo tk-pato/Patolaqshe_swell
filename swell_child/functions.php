@@ -3831,6 +3831,8 @@ function pato_salon_modal_shortcode($atts)
           <div class="salon-modal-trigger__concept"><?php echo esc_html($atts['concept']); ?></div>
         <?php endif; ?>
 
+        <div class="salon-modal-trigger__address">Horii Daikanyama Bldg. 3F, 18-8 Daikanyamacho,<br>Shibuya-ku, Tokyo, 150-0034, Japan</div>
+
         <?php if (!empty($atts['name'])): ?>
           <h3 class="salon-modal-trigger__name"><?php echo esc_html($atts['name']); ?></h3>
         <?php endif; ?>
@@ -3845,6 +3847,10 @@ function pato_salon_modal_shortcode($atts)
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
       </button>
+
+      <a href="https://beauty.hotpepper.jp/kr/slnH000263216/?utm_source=site&utm_medium=modal&utm_campaign=reserve" class="salon-modal__hotpepper-logo" target="_blank" rel="noopener noreferrer">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" loading="lazy">
+      </a>
 
       <div class="l-modal_area">
         <div class="c-name"><?php echo esc_html($atts['name']); ?></div>

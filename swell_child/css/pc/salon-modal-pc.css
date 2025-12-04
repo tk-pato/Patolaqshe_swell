@@ -73,18 +73,6 @@
     font-weight: 600;
     margin: 0;
     color: #333;
-    padding-bottom: 12px;
-    position: relative;
-}
-
-.salon-modal-trigger__name::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(to right, rgba(150, 150, 150, 0.8), rgba(150, 150, 150, 0));
 }
 
 /* ホットペッパーロゴ */
@@ -92,17 +80,16 @@
     position: absolute;
     top: 16px;
     right: 16px;
-    width: 54px;
-    height: 54px;
+    width: 43px;
+    height: 43px;
     z-index: 10;
     display: block;
     text-decoration: none;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: filter 0.3s ease;
 }
 
 .salon-modal-trigger__hotpepper-logo:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) brightness(1.2);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) brightness(1.3);
 }
 
 .salon-modal-trigger__hotpepper-logo img {
@@ -110,6 +97,14 @@
     height: 100%;
     object-fit: contain;
     display: block;
+}
+
+/* 住所表示 */
+.salon-modal-trigger__address {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
 /* モーダル本体（angelica方式） */
@@ -171,6 +166,30 @@ body.js-modal_open {
     width: 24px;
     height: 24px;
     color: #3E4443;
+}
+
+/* モーダル内ホットペッパーロゴ */
+.salon-modal__hotpepper-logo {
+    position: absolute;
+    top: 30px;
+    right: 80px;
+    width: 43px;
+    height: 43px;
+    z-index: 101;
+    display: block;
+    text-decoration: none;
+    transition: filter 0.3s ease;
+}
+
+.salon-modal__hotpepper-logo:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) brightness(1.3);
+}
+
+.salon-modal__hotpepper-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .js-modal_bg {
