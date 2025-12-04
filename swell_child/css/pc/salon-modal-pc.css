@@ -208,6 +208,7 @@ body.js-modal_open {
     max-width: 1060px;
     padding: 40px 30px 80px;
     margin: 0 auto;
+    position: relative;
 }
 
 .p-salon .l-modal_area .l-2col {
