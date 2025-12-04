@@ -206,15 +206,15 @@ body.js-modal_open {
 /* モーダル内コンテンツ */
 .p-salon .l-modal_area {
     max-width: 100%;
-    padding: 60px 20px 20px;
+    padding: 50px 20px 15px;
     margin: 0 auto;
 }
 
 .p-salon .l-modal_area .l-2col {
     display: flex;
     flex-direction: column;
-    padding-top: 30px;
-    gap: 20px;
+    padding-top: 20px;
+    gap: 15px;
 }
 
 .p-salon .l-modal_area .l-2col > * {
@@ -241,7 +241,7 @@ body.js-modal_open {
 }
 
 .p-salon .l-modal_area .c-copy_en {
-    padding-top: 6px;
+    padding-top: 4px;
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
@@ -256,16 +256,16 @@ body.js-modal_open {
 }
 
 .p-salon .l-modal_area .c-text.p-main {
-    padding-top: 10px;
-    line-height: 1.6;
+    padding-top: 8px;
+    line-height: 1.5;
 }
 
 .p-salon .l-modal_area .c-text.p-map {
-    margin-top: 15px !important;
+    margin-top: 10px !important;
 }
 
 .p-salon .l-modal_area .c-text + .c-text {
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 .p-salon .l-modal_area .c-text a[target] {
