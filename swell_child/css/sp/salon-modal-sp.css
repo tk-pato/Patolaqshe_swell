@@ -214,6 +214,7 @@ body.js-modal_open {
     display: flex;
     flex-direction: column;
     padding-top: 30px;
+    gap: 20px;
 }
 
 .p-salon .l-modal_area .l-2col > * {
