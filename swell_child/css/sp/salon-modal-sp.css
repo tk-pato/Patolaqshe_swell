@@ -66,6 +66,14 @@
     font-weight: 600;
     margin: 0;
     color: #333;
+    border: none !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+.salon-modal-trigger__name::after,
+.salon-modal-trigger__name::before {
+    display: none !important;
 }
 
 /* ホットペッパーロゴ */
