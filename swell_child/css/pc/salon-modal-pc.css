@@ -15,7 +15,8 @@
 }
 
 .salon-modal-trigger__inner {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -25,12 +26,13 @@
 .salon-modal-trigger__image {
     display: block;
     width: 100%;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
 }
 
 .salon-modal-trigger__image img {
     width: 100%;
-    height: calc(100% + 50px);
+    height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
@@ -42,11 +44,8 @@
 }
 
 .salon-modal-trigger__content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 32px 24px;
+    position: relative;
+    padding: 24px;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -55,7 +54,6 @@
         0 8px 32px rgba(0, 0, 0, 0.08),
         inset 0 1px 1px rgba(255, 255, 255, 0.5),
         inset 0 -1px 1px rgba(0, 0, 0, 0.05);
-    z-index: 2;
 }
 
 .salon-modal-trigger__subtitle {
