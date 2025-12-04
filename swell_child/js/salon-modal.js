@@ -10,6 +10,15 @@
     'use strict';
     
     function initSalonModal() {
+        // STEP1: モーダルをbody直下に移動
+        const modals = document.querySelectorAll('.js-modal_wrap');
+        modals.forEach(function(modal) {
+            // ブロック内に閉じ込められているモーダルをbody直下に移動
+            document.body.appendChild(modal);
+            console.log('[Salon Modal] モーダルをbody直下に移動:', modal.id);
+        });
+        
+        // STEP2: トリガーボタンの登録
         const triggers = document.querySelectorAll('.js-modal_btn');
         
         if (!triggers.length) {
