@@ -3818,11 +3818,11 @@ function pato_salon_modal_shortcode($atts)
         </picture>
       <?php endif; ?>
 
-      <div class="salon-modal-trigger__hotpepper-logo">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティー" loading="lazy">
-      </div>
-
       <div class="salon-modal-trigger__content">
+        <a href="https://beauty.hotpepper.jp/kr/slnH000263216/?utm_source=site&utm_medium=card&utm_campaign=reserve" class="salon-modal-trigger__hotpepper-logo" target="_blank" rel="noopener noreferrer">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" loading="lazy">
+        </a>
+
         <?php if (!empty($atts['subtitle'])): ?>
           <div class="salon-modal-trigger__subtitle"><?php echo esc_html($atts['subtitle']); ?></div>
         <?php endif; ?>
