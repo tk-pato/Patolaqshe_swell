@@ -206,14 +206,14 @@ body.js-modal_open {
 /* モーダル内コンテンツ */
 .p-salon .l-modal_area {
     max-width: 100%;
-    padding: 70px 20px 30px;
+    padding: 60px 20px 20px;
     margin: 0 auto;
 }
 
 .p-salon .l-modal_area .l-2col {
     display: flex;
     flex-direction: column;
-    padding-top: 60px;
+    padding-top: 30px;
 }
 
 .p-salon .l-modal_area .l-2col > * {
@@ -222,9 +222,9 @@ body.js-modal_open {
 }
 
 .p-salon .l-modal_area .c-name {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1.4;
     letter-spacing: 0.04em;
 }
 
@@ -236,31 +236,31 @@ body.js-modal_open {
 }
 
 .p-salon .l-modal_area .c-copy_en {
-    padding-top: 8px;
-    font-size: 24px;
+    padding-top: 6px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 1;
 }
 
 .p-salon .l-modal_area .c-text {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.05em;
     text-align: left;
 }
 
 .p-salon .l-modal_area .c-text.p-main {
-    padding-top: 20px;
-    line-height: 1.7;
+    padding-top: 15px;
+    line-height: 1.6;
 }
 
 .p-salon .l-modal_area .c-text.p-map {
-    margin-top: 20px !important;
+    margin-top: 15px !important;
 }
 
 .p-salon .l-modal_area .c-text + .c-text {
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 .p-salon .l-modal_area .c-text a[target] {
