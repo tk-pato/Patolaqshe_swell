@@ -80,8 +80,8 @@
     position: absolute;
     top: 16px;
     right: 16px;
-    width: 43px;
-    height: 43px;
+    width: 30px;
+    height: 30px;
     z-index: 10;
     display: block;
     text-decoration: none;
@@ -170,12 +170,12 @@ body.js-modal_open {
 
 /* モーダル内ホットペッパーロゴ */
 .salon-modal__hotpepper-logo {
-    position: absolute;
+    position: fixed;
     top: 30px;
-    right: 80px;
+    right: 30px;
     width: 43px;
     height: 43px;
-    z-index: 101;
+    z-index: 1001;
     display: block;
     text-decoration: none;
     transition: filter 0.3s ease;
