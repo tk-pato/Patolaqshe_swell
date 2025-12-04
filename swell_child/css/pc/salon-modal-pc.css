@@ -52,6 +52,9 @@
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.08),
         inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .salon-modal-trigger__subtitle {
