@@ -74,8 +74,17 @@
     margin: 0;
     color: #333;
     padding-bottom: 12px;
-    border-bottom: 1px solid;
-    border-image: linear-gradient(to right, rgba(150, 150, 150, 0.8), rgba(150, 150, 150, 0)) 1;
+    position: relative;
+}
+
+.salon-modal-trigger__name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(150, 150, 150, 0.8), rgba(150, 150, 150, 0));
 }
 
 /* ホットペッパーロゴ */
