@@ -307,3 +307,18 @@ body.js-modal_open {
     height: 100%;
     object-position: center;
 }
+
+/* ========================================
+   サロンカード：Click for detailsヒント
+   ======================================== */
+
+.salon-click-hint {
+  margin: 12px 0 8px 0;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.salon-click-hint::after {
+  content: ' →';
+  color: #666;
+}
