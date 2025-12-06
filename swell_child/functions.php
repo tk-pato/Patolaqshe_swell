@@ -3832,6 +3832,8 @@ function pato_salon_modal_shortcode($atts)
         <?php endif; ?>
 
         <div class="salon-modal-trigger__address">Horii Daikanyama Bldg. 3F, 18-8 Daikanyamacho,<br>Shibuya-ku, Tokyo, 150-0034, Japan</div>
+        
+        <p class="salon-click-hint">Click for details</p>
 
         <?php if (!empty($atts['name'])): ?>
           <h3 class="salon-modal-trigger__name"><?php echo esc_html($atts['name']); ?></h3>
