@@ -322,3 +322,47 @@ body.js-modal_open {
   content: ' →';
   color: #666;
 }
+
+/* =====================================================
+   モーダルウィンドウ内問合せボタン
+   ===================================================== */
+
+/* 問合せボタンセクション */
+.modal-contact-section {
+  width: 100%;
+  padding: 30px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 問合せボタン本体：ガラス調（フッター統一） */
+.modal-contact-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 85% !important;
+  max-width: 500px !important;
+  padding: 18px 40px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #333 !important;
+  border-radius: 50px !important;
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ホバー効果 */
+.modal-contact-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15) !important;
+}

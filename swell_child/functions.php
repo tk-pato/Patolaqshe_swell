@@ -3905,6 +3905,12 @@ function pato_salon_modal_shortcode($atts)
               </div>
             </div>
           <?php endif; ?>
+
+          <div class="modal-contact-section">
+            <a href="https://patolaqshe.com/contact/" target="_blank" rel="noopener" class="modal-contact-btn">
+              Contact
+            </a>
+          </div>
         </div>
       </div>
     </div>
