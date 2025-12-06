@@ -152,7 +152,10 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         <?php endif; ?>
                     </div>
                     <div class="ptlSalonHero__boxDesc">
-                        <?php if ($addr): ?><p style="margin:4px 0;"><?php echo esc_html($addr); ?></p><?php endif; ?>
+                        <?php if ($addr): ?>
+                            <p style="margin:4px 0;"><?php echo esc_html($addr); ?></p>
+                            <p class="salon-click-hint">Click for details</p>
+                        <?php endif; ?>
                         <?php if (!empty($biz)): ?>
                             <?php foreach ($biz as $label => $time): ?>
                                 <p style="margin:2px 0;font-size:0.9em;"><?php echo esc_html($label); ?>: <?php echo esc_html($time); ?></p>
