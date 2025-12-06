@@ -309,25 +309,19 @@ body.js-modal_open {
    ======================================== */
 
 .salon-click-hint {
-  margin: 12px 0 8px 0;
+  margin: 12px 0 4px 0;
   font-size: 0.85em;
-  color: #666; /* 隠れ家サロンと統一 */
-}
-
-.salon-click-hint::after {
-  content: ' →';
   color: #666;
 }
 
 /* =====================================================
-   モーダルウィンドウ内問合せボタン
+   モーダルウィンドウ内問合せボタン（SP非表示）
    ===================================================== */
 
 /* 問合せボタンセクション */
 .modal-contact-section {
-  width: 100%;
-  padding: 20px 15px 15px 15px;
-  display: flex;
+  display: none;
+}
   justify-content: center;
   align-items: center;
 }
