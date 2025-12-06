@@ -145,7 +145,7 @@ body.js-modal_open {
     z-index: 2;
     max-width: 100%;
     margin: 0 0 0 auto;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(150, 150, 150, 0.3);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     overflow-y: auto;
@@ -278,6 +278,8 @@ body.js-modal_open {
 }
 
 .p-salon .l-modal_area .c-text a[target] {
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
     text-decoration: underline;
     transition: 0.5s;
 }
