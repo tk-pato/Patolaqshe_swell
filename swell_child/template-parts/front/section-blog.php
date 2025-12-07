@@ -9,13 +9,15 @@ error_log('========== BLOG SECTION DEBUG START ==========');
 error_log('📍 section-blog.php が読み込まれました');
 error_log('🕐 タイムスタンプ: ' . date('Y-m-d H:i:s'));
 
-// 最新のブログ記事を10件取得
+// 最新のブログ記事を10件取得（記事種別「ブログ記事」のみ）
 $blog_posts = get_posts([
     'post_type' => 'post',
     'posts_per_page' => 10,
     'post_status' => 'publish',
     'orderby' => 'date',
     'order' => 'DESC',
+    'meta_key' => '_post_category',
+    'meta_value' => 'blog',
 ]);
 
 // デバッグ: 取得した投稿の情報
