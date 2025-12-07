@@ -131,12 +131,16 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
 
         <!-- MOREボタン（常に表示） -->
         <div class="ptlBlog__more">
-            <a class="ptlNews__moreBtn" href="/blog/">
+            <button class="ptlNews__moreBtn blog-modal-trigger" type="button" data-modal-id="blog-modal-all">
                 <span class="ptlNews__moreLabel">MORE</span>
                 <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
-            </a>
+            </button>
         </div>
 
     </div>
+
+    <!-- ブログモーダル本体 -->
+    <?php echo do_shortcode('[blog_list_modal]'); ?>
+
 </section>
 <?php error_log('🏁 HTML出力完了: </section> を出力しました'); ?>
