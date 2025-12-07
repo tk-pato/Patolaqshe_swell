@@ -4230,3 +4230,100 @@ function ptl_migrate_store_locations_to_taxonomy() {
     }
 }
 add_action('admin_init', 'ptl_migrate_store_locations_to_taxonomy');
+
+/**
+ * ========================================
+ * ブログモーダルウィンドウ
+ * ========================================
+ * 使い方: 
+ * グランド用: [blog_list_modal]
+ * 銀座用: [blog_list_modal store="ginza"]
+ * 代官山用: [blog_list_modal store="daikanyama"]
+ */
+function ptl_blog_list_modal_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'store' => 'all',
+    ), $atts);
+    
+    $store = sanitize_text_field($atts['store']);
+    
+    // ブログ記事を取得
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'meta_query' => array(
+            array(
+                'key' => '_post_category',
+                'value' => 'blog',
+                'compare' => '='
+            )
+        )
+    );
+    
+    // 店舗指定がある場合
+    if ($store !== 'all') {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'store_location',
+                'field' => 'slug',
+                'terms' => $store,
+            )
+        );
+    }
+    
+    $blog_posts = get_posts($args);
+    
+    // モーダルID生成
+    $modal_id = 'blog-modal-' . $store;
+    
+    ob_start();
+    ?>
+    
+    <!-- ブログモーダルトリガー -->
+    <div class="blog-modal-trigger" data-modal-id="<?php echo esc_attr($modal_id); ?>">
+        <div class="blog-modal-trigger__inner">
+            <span class="blog-modal-trigger__text">VIEW BLOG LIST</span>
+        </div>
+    </div>
+    
+    <!-- ブログモーダル本体 -->
+    <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap blog-modal">
+        <div class="js-modal_cont">
+            <button class="js-modal_close blog-modal__close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+            
+            <div class="blog-modal__content">
+                <!-- バナー画像 -->
+                <div class="blog-modal__hero">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/blog-modal-hero.jpg" alt="BLOG" loading="lazy">
+                    <div class="blog-modal__hero-text">BLOG</div>
+                </div>
+                
+                <!-- ブログリスト -->
+                <div class="blog-modal__list">
+                    <?php if (!empty($blog_posts)): ?>
+                        <?php foreach ($blog_posts as $post): ?>
+                            <a href="<?php echo get_permalink($post->ID); ?>" class="blog-modal__item">
+                                <span class="blog-modal__date"><?php echo get_the_date('Y.m.d', $post->ID); ?></span>
+                                <span class="blog-modal__title"><?php echo esc_html(get_the_title($post->ID)); ?></span>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="blog-modal__empty">まだブログ記事がありません。</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div class="js-modal_bg js-modal_close"></div>
+    </div>
+    
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('blog_list_modal', 'ptl_blog_list_modal_shortcode');
