@@ -4283,11 +4283,10 @@ function ptl_blog_list_modal_shortcode($atts) {
     ?>
     
     <!-- ブログモーダルトリガー -->
-    <div class="blog-modal-trigger" data-modal-id="<?php echo esc_attr($modal_id); ?>">
-        <div class="blog-modal-trigger__inner">
-            <span class="blog-modal-trigger__text">VIEW BLOG LIST</span>
-        </div>
-    </div>
+    <button class="blog-modal-trigger more-button is-style-btn_normal" data-modal-id="<?php echo esc_attr($modal_id); ?>" type="button">
+        <span class="ptlNews__moreLabel">MORE</span>
+        <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
+    </button>
     
     <!-- ブログモーダル本体 -->
     <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap blog-modal">
