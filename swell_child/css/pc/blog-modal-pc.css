@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+/**
+ * Blog Modal - PC Version
+ * ブログモーダルウィンドウ（PC）
+ * 
+ * @version 1.0.0
+ * @date 2025-12-07
+ */
+
+@media (min-width: 768px) {
+
+/* モーダル背景 */
+.blog-modal.js-modal_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+.blog-modal.js-modalitem_open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-modal .js-modal_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+/* モーダルコンテンツ */
+.blog-modal .js-modal_cont {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* 閉じるボタン */
+.blog-modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.blog-modal__close:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: rotate(90deg);
+}
+
+.blog-modal__close svg {
+    width: 20px;
+    height: 20px;
+    stroke: #333;
+}
+
+/* モーダルコンテンツエリア */
+.blog-modal__content {
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* バナー画像 */
+.blog-modal__hero {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    overflow: hidden;
+}
+
+.blog-modal__hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-modal__hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.1em;
+}
+
+/* ブログリスト */
+.blog-modal__list {
+    padding: 40px 60px 60px;
+}
+
+.blog-modal__item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.blog-modal__item:hover {
+    background: rgba(0, 0, 0, 0.02);
+    padding-left: 10px;
+}
+
+.blog-modal__date {
+    font-size: 14px;
+    color: #999;
+    min-width: 100px;
+    margin-right: 20px;
+}
+
+.blog-modal__title {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.blog-modal__item:hover .blog-modal__title {
+    color: #d4a574;
+}
+
+.blog-modal__empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 14px;
+}
+
+}

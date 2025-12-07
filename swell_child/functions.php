@@ -3788,6 +3788,21 @@ function pato_enqueue_salon_modal_assets()
 }
 add_action('wp_enqueue_scripts', 'pato_enqueue_salon_modal_assets');
 
+/**
+ * ブログモーダルのJavaScript読み込み
+ */
+function pato_enqueue_blog_modal_assets()
+{
+  wp_enqueue_script(
+    'pato-blog-modal',
+    get_stylesheet_directory_uri() . '/js/blog-modal.js',
+    array(),
+    '1.0.0',
+    true
+  );
+}
+add_action('wp_enqueue_scripts', 'pato_enqueue_blog_modal_assets');
+
 function pato_salon_modal_shortcode($atts)
 {
   $atts = shortcode_atts(
@@ -3929,84 +3944,86 @@ add_shortcode('salon_modal', 'pato_salon_modal_shortcode');
  * カスタムフィールド _post_category を
  * カスタムタクソノミー article_type としても登録
  */
-function ptl_register_article_type_taxonomy() {
-    $labels = array(
-        'name' => '記事種別',
-        'singular_name' => '記事種別',
-        'search_items' => '記事種別を検索',
-        'all_items' => '全ての記事種別',
-        'edit_item' => '記事種別を編集',
-        'update_item' => '記事種別を更新',
-        'add_new_item' => '新しい記事種別を追加',
-        'new_item_name' => '新しい記事種別名',
-        'menu_name' => '記事種別',
-    );
+function ptl_register_article_type_taxonomy()
+{
+  $labels = array(
+    'name' => '記事種別',
+    'singular_name' => '記事種別',
+    'search_items' => '記事種別を検索',
+    'all_items' => '全ての記事種別',
+    'edit_item' => '記事種別を編集',
+    'update_item' => '記事種別を更新',
+    'add_new_item' => '新しい記事種別を追加',
+    'new_item_name' => '新しい記事種別名',
+    'menu_name' => '記事種別',
+  );
 
-    $args = array(
-        'hierarchical' => false,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array('slug' => 'article-type'),
-        'show_in_rest' => true, // ブロックエディタで使用可能にする
-        'public' => true,
-    );
+  $args = array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'article-type'),
+    'show_in_rest' => true, // ブロックエディタで使用可能にする
+    'public' => true,
+  );
 
-    register_taxonomy('article_type', array('post'), $args);
-    
-    // デフォルトのタームを登録
-    if (!term_exists('ニュース', 'article_type')) {
-        wp_insert_term('ニュース', 'article_type', array('slug' => 'news'));
-    }
-    if (!term_exists('お客様の声', 'article_type')) {
-        wp_insert_term('お客様の声', 'article_type', array('slug' => 'uservoice'));
-    }
-    if (!term_exists('ブログ記事', 'article_type')) {
-        wp_insert_term('ブログ記事', 'article_type', array('slug' => 'blog'));
-    }
+  register_taxonomy('article_type', array('post'), $args);
+
+  // デフォルトのタームを登録
+  if (!term_exists('ニュース', 'article_type')) {
+    wp_insert_term('ニュース', 'article_type', array('slug' => 'news'));
+  }
+  if (!term_exists('お客様の声', 'article_type')) {
+    wp_insert_term('お客様の声', 'article_type', array('slug' => 'uservoice'));
+  }
+  if (!term_exists('ブログ記事', 'article_type')) {
+    wp_insert_term('ブログ記事', 'article_type', array('slug' => 'blog'));
+  }
 }
 add_action('init', 'ptl_register_article_type_taxonomy');
 
 /**
  * 投稿保存時にカスタムフィールドとタクソノミーを同期
  */
-function ptl_sync_post_category_to_taxonomy($post_id) {
-    // 自動保存時は何もしない
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-    
-    // 投稿タイプが post でない場合は何もしない
-    if (get_post_type($post_id) !== 'post') {
-        return;
-    }
-    
-    // カスタムフィールド _post_category の値を取得
-    $post_category = get_post_meta($post_id, '_post_category', true);
-    
-    if (!$post_category) {
-        return;
-    }
-    
-    // カスタムフィールドの値に応じてタクソノミーを設定
-    $term_slug = '';
-    switch ($post_category) {
-        case 'news':
-            $term_slug = 'news';
-            break;
-        case 'uservoice':
-            $term_slug = 'uservoice';
-            break;
-        case 'blog':
-            $term_slug = 'blog';
-            break;
-    }
-    
-    if ($term_slug) {
-        // タクソノミーを設定（既存のタームを上書き）
-        wp_set_object_terms($post_id, $term_slug, 'article_type', false);
-    }
+function ptl_sync_post_category_to_taxonomy($post_id)
+{
+  // 自動保存時は何もしない
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    return;
+  }
+
+  // 投稿タイプが post でない場合は何もしない
+  if (get_post_type($post_id) !== 'post') {
+    return;
+  }
+
+  // カスタムフィールド _post_category の値を取得
+  $post_category = get_post_meta($post_id, '_post_category', true);
+
+  if (!$post_category) {
+    return;
+  }
+
+  // カスタムフィールドの値に応じてタクソノミーを設定
+  $term_slug = '';
+  switch ($post_category) {
+    case 'news':
+      $term_slug = 'news';
+      break;
+    case 'uservoice':
+      $term_slug = 'uservoice';
+      break;
+    case 'blog':
+      $term_slug = 'blog';
+      break;
+  }
+
+  if ($term_slug) {
+    // タクソノミーを設定（既存のタームを上書き）
+    wp_set_object_terms($post_id, $term_slug, 'article_type', false);
+  }
 }
 add_action('save_post', 'ptl_sync_post_category_to_taxonomy', 20);
 
@@ -4014,62 +4031,63 @@ add_action('save_post', 'ptl_sync_post_category_to_taxonomy', 20);
  * 既存の全投稿のカスタムフィールドをタクソノミーに移行
  * 管理画面でのみ実行（初回のみ）
  */
-function ptl_migrate_post_category_to_taxonomy() {
-    // 移行済みフラグをチェック
-    if (get_option('ptl_article_type_migrated')) {
-        return;
+function ptl_migrate_post_category_to_taxonomy()
+{
+  // 移行済みフラグをチェック
+  if (get_option('ptl_article_type_migrated')) {
+    return;
+  }
+
+  // 管理画面でのみ実行
+  if (!is_admin()) {
+    return;
+  }
+
+  // 全ての投稿を取得
+  $posts = get_posts(array(
+    'post_type' => 'post',
+    'posts_per_page' => -1,
+    'post_status' => 'any',
+  ));
+
+  $count = 0;
+  foreach ($posts as $post) {
+    $post_category = get_post_meta($post->ID, '_post_category', true);
+
+    if (!$post_category) {
+      continue;
     }
-    
-    // 管理画面でのみ実行
-    if (!is_admin()) {
-        return;
+
+    $term_slug = '';
+    switch ($post_category) {
+      case 'news':
+        $term_slug = 'news';
+        break;
+      case 'uservoice':
+        $term_slug = 'uservoice';
+        break;
+      case 'blog':
+        $term_slug = 'blog';
+        break;
     }
-    
-    // 全ての投稿を取得
-    $posts = get_posts(array(
-        'post_type' => 'post',
-        'posts_per_page' => -1,
-        'post_status' => 'any',
-    ));
-    
-    $count = 0;
-    foreach ($posts as $post) {
-        $post_category = get_post_meta($post->ID, '_post_category', true);
-        
-        if (!$post_category) {
-            continue;
-        }
-        
-        $term_slug = '';
-        switch ($post_category) {
-            case 'news':
-                $term_slug = 'news';
-                break;
-            case 'uservoice':
-                $term_slug = 'uservoice';
-                break;
-            case 'blog':
-                $term_slug = 'blog';
-                break;
-        }
-        
-        if ($term_slug) {
-            wp_set_object_terms($post->ID, $term_slug, 'article_type', false);
-            $count++;
-        }
+
+    if ($term_slug) {
+      wp_set_object_terms($post->ID, $term_slug, 'article_type', false);
+      $count++;
     }
-    
-    // 移行完了フラグを保存
-    update_option('ptl_article_type_migrated', true);
-    
-    // 管理画面に通知（オプション）
-    if ($count > 0) {
-        add_action('admin_notices', function() use ($count) {
-            echo '<div class="notice notice-success is-dismissible">';
-            echo '<p>記事種別の移行が完了しました。' . $count . '件の投稿を処理しました。</p>';
-            echo '</div>';
-        });
-    }
+  }
+
+  // 移行完了フラグを保存
+  update_option('ptl_article_type_migrated', true);
+
+  // 管理画面に通知（オプション）
+  if ($count > 0) {
+    add_action('admin_notices', function () use ($count) {
+      echo '<div class="notice notice-success is-dismissible">';
+      echo '<p>記事種別の移行が完了しました。' . $count . '件の投稿を処理しました。</p>';
+      echo '</div>';
+    });
+  }
 }
 add_action('admin_init', 'ptl_migrate_post_category_to_taxonomy');
 
@@ -4081,87 +4099,89 @@ add_action('admin_init', 'ptl_migrate_post_category_to_taxonomy');
  * カスタムフィールド _store_locations を
  * カスタムタクソノミー store_location としても登録
  */
-function ptl_register_store_location_taxonomy() {
-    $labels = array(
-        'name' => '店舗選択',
-        'singular_name' => '店舗',
-        'search_items' => '店舗を検索',
-        'all_items' => '全ての店舗',
-        'edit_item' => '店舗を編集',
-        'update_item' => '店舗を更新',
-        'add_new_item' => '新しい店舗を追加',
-        'new_item_name' => '新しい店舗名',
-        'menu_name' => '店舗選択',
-    );
+function ptl_register_store_location_taxonomy()
+{
+  $labels = array(
+    'name' => '店舗選択',
+    'singular_name' => '店舗',
+    'search_items' => '店舗を検索',
+    'all_items' => '全ての店舗',
+    'edit_item' => '店舗を編集',
+    'update_item' => '店舗を更新',
+    'add_new_item' => '新しい店舗を追加',
+    'new_item_name' => '新しい店舗名',
+    'menu_name' => '店舗選択',
+  );
 
-    $args = array(
-        'hierarchical' => false,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array('slug' => 'store'),
-        'show_in_rest' => true, // ブロックエディタで使用可能にする
-        'public' => true,
-    );
+  $args = array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'store'),
+    'show_in_rest' => true, // ブロックエディタで使用可能にする
+    'public' => true,
+  );
 
-    register_taxonomy('store_location', array('post'), $args);
-    
-    // デフォルトのタームを登録
-    if (!term_exists('グランド', 'store_location')) {
-        wp_insert_term('グランド', 'store_location', array('slug' => 'grand'));
-    }
-    if (!term_exists('銀座店', 'store_location')) {
-        wp_insert_term('銀座店', 'store_location', array('slug' => 'ginza'));
-    }
-    if (!term_exists('代官山店', 'store_location')) {
-        wp_insert_term('代官山店', 'store_location', array('slug' => 'daikanyama'));
-    }
+  register_taxonomy('store_location', array('post'), $args);
+
+  // デフォルトのタームを登録
+  if (!term_exists('グランド', 'store_location')) {
+    wp_insert_term('グランド', 'store_location', array('slug' => 'grand'));
+  }
+  if (!term_exists('銀座店', 'store_location')) {
+    wp_insert_term('銀座店', 'store_location', array('slug' => 'ginza'));
+  }
+  if (!term_exists('代官山店', 'store_location')) {
+    wp_insert_term('代官山店', 'store_location', array('slug' => 'daikanyama'));
+  }
 }
 add_action('init', 'ptl_register_store_location_taxonomy');
 
 /**
  * 投稿保存時にカスタムフィールドとタクソノミーを同期
  */
-function ptl_sync_store_locations_to_taxonomy($post_id) {
-    // 自動保存時は何もしない
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
+function ptl_sync_store_locations_to_taxonomy($post_id)
+{
+  // 自動保存時は何もしない
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    return;
+  }
+
+  // 投稿タイプが post でない場合は何もしない
+  if (get_post_type($post_id) !== 'post') {
+    return;
+  }
+
+  // カスタムフィールド _store_locations の値を取得（配列）
+  $store_locations = get_post_meta($post_id, '_store_locations', true);
+
+  if (empty($store_locations) || !is_array($store_locations)) {
+    return;
+  }
+
+  // タクソノミーのタームスラッグに変換
+  $term_slugs = array();
+
+  foreach ($store_locations as $location) {
+    switch ($location) {
+      case 'grand':
+        $term_slugs[] = 'grand';
+        break;
+      case 'ginza':
+        $term_slugs[] = 'ginza';
+        break;
+      case 'daikanyama':
+        $term_slugs[] = 'daikanyama';
+        break;
     }
-    
-    // 投稿タイプが post でない場合は何もしない
-    if (get_post_type($post_id) !== 'post') {
-        return;
-    }
-    
-    // カスタムフィールド _store_locations の値を取得（配列）
-    $store_locations = get_post_meta($post_id, '_store_locations', true);
-    
-    if (empty($store_locations) || !is_array($store_locations)) {
-        return;
-    }
-    
-    // タクソノミーのタームスラッグに変換
-    $term_slugs = array();
-    
-    foreach ($store_locations as $location) {
-        switch ($location) {
-            case 'grand':
-                $term_slugs[] = 'grand';
-                break;
-            case 'ginza':
-                $term_slugs[] = 'ginza';
-                break;
-            case 'daikanyama':
-                $term_slugs[] = 'daikanyama';
-                break;
-        }
-    }
-    
-    if (!empty($term_slugs)) {
-        // タクソノミーを設定（既存のタームを上書き）
-        wp_set_object_terms($post_id, $term_slugs, 'store_location', false);
-    }
+  }
+
+  if (!empty($term_slugs)) {
+    // タクソノミーを設定（既存のタームを上書き）
+    wp_set_object_terms($post_id, $term_slugs, 'store_location', false);
+  }
 }
 add_action('save_post', 'ptl_sync_store_locations_to_taxonomy', 20);
 
@@ -4169,65 +4189,66 @@ add_action('save_post', 'ptl_sync_store_locations_to_taxonomy', 20);
  * 既存の全投稿のカスタムフィールドをタクソノミーに移行
  * 管理画面でのみ実行（初回のみ）
  */
-function ptl_migrate_store_locations_to_taxonomy() {
-    // 移行済みフラグをチェック
-    if (get_option('ptl_store_location_migrated')) {
-        return;
+function ptl_migrate_store_locations_to_taxonomy()
+{
+  // 移行済みフラグをチェック
+  if (get_option('ptl_store_location_migrated')) {
+    return;
+  }
+
+  // 管理画面でのみ実行
+  if (!is_admin()) {
+    return;
+  }
+
+  // 全ての投稿を取得
+  $posts = get_posts(array(
+    'post_type' => 'post',
+    'posts_per_page' => -1,
+    'post_status' => 'any',
+  ));
+
+  $count = 0;
+  foreach ($posts as $post) {
+    $store_locations = get_post_meta($post->ID, '_store_locations', true);
+
+    if (empty($store_locations) || !is_array($store_locations)) {
+      continue;
     }
-    
-    // 管理画面でのみ実行
-    if (!is_admin()) {
-        return;
+
+    $term_slugs = array();
+
+    foreach ($store_locations as $location) {
+      switch ($location) {
+        case 'grand':
+          $term_slugs[] = 'grand';
+          break;
+        case 'ginza':
+          $term_slugs[] = 'ginza';
+          break;
+        case 'daikanyama':
+          $term_slugs[] = 'daikanyama';
+          break;
+      }
     }
-    
-    // 全ての投稿を取得
-    $posts = get_posts(array(
-        'post_type' => 'post',
-        'posts_per_page' => -1,
-        'post_status' => 'any',
-    ));
-    
-    $count = 0;
-    foreach ($posts as $post) {
-        $store_locations = get_post_meta($post->ID, '_store_locations', true);
-        
-        if (empty($store_locations) || !is_array($store_locations)) {
-            continue;
-        }
-        
-        $term_slugs = array();
-        
-        foreach ($store_locations as $location) {
-            switch ($location) {
-                case 'grand':
-                    $term_slugs[] = 'grand';
-                    break;
-                case 'ginza':
-                    $term_slugs[] = 'ginza';
-                    break;
-                case 'daikanyama':
-                    $term_slugs[] = 'daikanyama';
-                    break;
-            }
-        }
-        
-        if (!empty($term_slugs)) {
-            wp_set_object_terms($post->ID, $term_slugs, 'store_location', false);
-            $count++;
-        }
+
+    if (!empty($term_slugs)) {
+      wp_set_object_terms($post->ID, $term_slugs, 'store_location', false);
+      $count++;
     }
-    
-    // 移行完了フラグを保存
-    update_option('ptl_store_location_migrated', true);
-    
-    // 管理画面に通知（オプション）
-    if ($count > 0) {
-        add_action('admin_notices', function() use ($count) {
-            echo '<div class="notice notice-success is-dismissible">';
-            echo '<p>店舗選択の移行が完了しました。' . $count . '件の投稿を処理しました。</p>';
-            echo '</div>';
-        });
-    }
+  }
+
+  // 移行完了フラグを保存
+  update_option('ptl_store_location_migrated', true);
+
+  // 管理画面に通知（オプション）
+  if ($count > 0) {
+    add_action('admin_notices', function () use ($count) {
+      echo '<div class="notice notice-success is-dismissible">';
+      echo '<p>店舗選択の移行が完了しました。' . $count . '件の投稿を処理しました。</p>';
+      echo '</div>';
+    });
+  }
 }
 add_action('admin_init', 'ptl_migrate_store_locations_to_taxonomy');
 
@@ -4240,83 +4261,84 @@ add_action('admin_init', 'ptl_migrate_store_locations_to_taxonomy');
  * 銀座用: [blog_list_modal store="ginza"]
  * 代官山用: [blog_list_modal store="daikanyama"]
  */
-function ptl_blog_list_modal_shortcode($atts) {
-    $atts = shortcode_atts(array(
-        'store' => 'all',
-    ), $atts);
-    
-    $store = sanitize_text_field($atts['store']);
-    
-    // ブログ記事を取得
-    $args = array(
-        'post_type' => 'post',
-        'posts_per_page' => -1,
-        'post_status' => 'publish',
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'meta_query' => array(
-            array(
-                'key' => '_post_category',
-                'value' => 'blog',
-                'compare' => '='
-            )
-        )
+function ptl_blog_list_modal_shortcode($atts)
+{
+  $atts = shortcode_atts(array(
+    'store' => 'all',
+  ), $atts);
+
+  $store = sanitize_text_field($atts['store']);
+
+  // ブログ記事を取得
+  $args = array(
+    'post_type' => 'post',
+    'posts_per_page' => -1,
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'meta_query' => array(
+      array(
+        'key' => '_post_category',
+        'value' => 'blog',
+        'compare' => '='
+      )
+    )
+  );
+
+  // 店舗指定がある場合
+  if ($store !== 'all') {
+    $args['tax_query'] = array(
+      array(
+        'taxonomy' => 'store_location',
+        'field' => 'slug',
+        'terms' => $store,
+      )
     );
-    
-    // 店舗指定がある場合
-    if ($store !== 'all') {
-        $args['tax_query'] = array(
-            array(
-                'taxonomy' => 'store_location',
-                'field' => 'slug',
-                'terms' => $store,
-            )
-        );
-    }
-    
-    $blog_posts = get_posts($args);
-    
-    // モーダルID生成
-    $modal_id = 'blog-modal-' . $store;
-    
-    ob_start();
-    ?>
-    
-    <!-- ブログモーダル本体 -->
-    <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap blog-modal">
-        <div class="js-modal_cont">
-            <button class="js-modal_close blog-modal__close">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-            </button>
-            
-            <div class="blog-modal__content">
-                <!-- バナー画像 -->
-                <div class="blog-modal__hero">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/blog-modal-hero.jpg" alt="BLOG" loading="lazy">
-                    <div class="blog-modal__hero-text">BLOG</div>
-                </div>
-                
-                <!-- ブログリスト -->
-                <div class="blog-modal__list">
-                    <?php if (!empty($blog_posts)): ?>
-                        <?php foreach ($blog_posts as $post): ?>
-                            <a href="<?php echo get_permalink($post->ID); ?>" class="blog-modal__item">
-                                <span class="blog-modal__date"><?php echo get_the_date('Y.m.d', $post->ID); ?></span>
-                                <span class="blog-modal__title"><?php echo esc_html(get_the_title($post->ID)); ?></span>
-                            </a>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p class="blog-modal__empty">まだブログ記事がありません。</p>
-                    <?php endif; ?>
-                </div>
-            </div>
+  }
+
+  $blog_posts = get_posts($args);
+
+  // モーダルID生成
+  $modal_id = 'blog-modal-' . $store;
+
+  ob_start();
+?>
+
+  <!-- ブログモーダル本体 -->
+  <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap blog-modal">
+    <div class="js-modal_cont">
+      <button class="js-modal_close blog-modal__close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="blog-modal__content">
+        <!-- バナー画像 -->
+        <div class="blog-modal__hero">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/blog-modal-hero.jpg" alt="BLOG" loading="lazy">
+          <div class="blog-modal__hero-text">BLOG</div>
         </div>
-        <div class="js-modal_bg js-modal_close"></div>
+
+        <!-- ブログリスト -->
+        <div class="blog-modal__list">
+          <?php if (!empty($blog_posts)): ?>
+            <?php foreach ($blog_posts as $post): ?>
+              <a href="<?php echo get_permalink($post->ID); ?>" class="blog-modal__item">
+                <span class="blog-modal__date"><?php echo get_the_date('Y.m.d', $post->ID); ?></span>
+                <span class="blog-modal__title"><?php echo esc_html(get_the_title($post->ID)); ?></span>
+              </a>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <p class="blog-modal__empty">まだブログ記事がありません。</p>
+          <?php endif; ?>
+        </div>
+      </div>
     </div>
-    
-    <?php
-    return ob_get_clean();
+    <div class="js-modal_bg js-modal_close"></div>
+  </div>
+
+<?php
+  return ob_get_clean();
 }
 add_shortcode('blog_list_modal', 'ptl_blog_list_modal_shortcode');
