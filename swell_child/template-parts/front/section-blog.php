@@ -16,8 +16,13 @@ $blog_posts = get_posts([
     'post_status' => 'publish',
     'orderby' => 'date',
     'order' => 'DESC',
-    'meta_key' => '_post_category',
-    'meta_value' => 'blog',
+    'meta_query' => [
+        [
+            'key' => '_post_category',
+            'value' => 'blog',
+            'compare' => '='
+        ]
+    ]
 ]);
 
 // デバッグ: 取得した投稿の情報
