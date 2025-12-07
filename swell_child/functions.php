@@ -3832,7 +3832,7 @@ function pato_salon_modal_shortcode($atts)
         <?php endif; ?>
 
         <div class="salon-modal-trigger__address">Horii Daikanyama Bldg. 3F, 18-8 Daikanyamacho,<br>Shibuya-ku, Tokyo, 150-0034, Japan</div>
-        
+
         <p class="salon-click-hint">Click for details</p>
 
         <?php if (!empty($atts['name'])): ?>
@@ -3920,3 +3920,155 @@ function pato_salon_modal_shortcode($atts)
   return ob_get_clean();
 }
 add_shortcode('salon_modal', 'pato_salon_modal_shortcode');
+
+/**
+ * ========================================
+ * カスタムタクソノミー: 記事種別
+ * ========================================
+ * ブロックエディタで絞り込み可能にするため、
+ * カスタムフィールド _post_category を
+ * カスタムタクソノミー article_type としても登録
+ */
+function ptl_register_article_type_taxonomy() {
+    $labels = array(
+        'name' => '記事種別',
+        'singular_name' => '記事種別',
+        'search_items' => '記事種別を検索',
+        'all_items' => '全ての記事種別',
+        'edit_item' => '記事種別を編集',
+        'update_item' => '記事種別を更新',
+        'add_new_item' => '新しい記事種別を追加',
+        'new_item_name' => '新しい記事種別名',
+        'menu_name' => '記事種別',
+    );
+
+    $args = array(
+        'hierarchical' => false,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'article-type'),
+        'show_in_rest' => true, // ブロックエディタで使用可能にする
+        'public' => true,
+    );
+
+    register_taxonomy('article_type', array('post'), $args);
+    
+    // デフォルトのタームを登録
+    if (!term_exists('ニュース', 'article_type')) {
+        wp_insert_term('ニュース', 'article_type', array('slug' => 'news'));
+    }
+    if (!term_exists('お客様の声', 'article_type')) {
+        wp_insert_term('お客様の声', 'article_type', array('slug' => 'uservoice'));
+    }
+    if (!term_exists('ブログ記事', 'article_type')) {
+        wp_insert_term('ブログ記事', 'article_type', array('slug' => 'blog'));
+    }
+}
+add_action('init', 'ptl_register_article_type_taxonomy');
+
+/**
+ * 投稿保存時にカスタムフィールドとタクソノミーを同期
+ */
+function ptl_sync_post_category_to_taxonomy($post_id) {
+    // 自動保存時は何もしない
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    // 投稿タイプが post でない場合は何もしない
+    if (get_post_type($post_id) !== 'post') {
+        return;
+    }
+    
+    // カスタムフィールド _post_category の値を取得
+    $post_category = get_post_meta($post_id, '_post_category', true);
+    
+    if (!$post_category) {
+        return;
+    }
+    
+    // カスタムフィールドの値に応じてタクソノミーを設定
+    $term_slug = '';
+    switch ($post_category) {
+        case 'news':
+            $term_slug = 'news';
+            break;
+        case 'uservoice':
+            $term_slug = 'uservoice';
+            break;
+        case 'blog':
+            $term_slug = 'blog';
+            break;
+    }
+    
+    if ($term_slug) {
+        // タクソノミーを設定（既存のタームを上書き）
+        wp_set_object_terms($post_id, $term_slug, 'article_type', false);
+    }
+}
+add_action('save_post', 'ptl_sync_post_category_to_taxonomy', 20);
+
+/**
+ * 既存の全投稿のカスタムフィールドをタクソノミーに移行
+ * 管理画面でのみ実行（初回のみ）
+ */
+function ptl_migrate_post_category_to_taxonomy() {
+    // 移行済みフラグをチェック
+    if (get_option('ptl_article_type_migrated')) {
+        return;
+    }
+    
+    // 管理画面でのみ実行
+    if (!is_admin()) {
+        return;
+    }
+    
+    // 全ての投稿を取得
+    $posts = get_posts(array(
+        'post_type' => 'post',
+        'posts_per_page' => -1,
+        'post_status' => 'any',
+    ));
+    
+    $count = 0;
+    foreach ($posts as $post) {
+        $post_category = get_post_meta($post->ID, '_post_category', true);
+        
+        if (!$post_category) {
+            continue;
+        }
+        
+        $term_slug = '';
+        switch ($post_category) {
+            case 'news':
+                $term_slug = 'news';
+                break;
+            case 'uservoice':
+                $term_slug = 'uservoice';
+                break;
+            case 'blog':
+                $term_slug = 'blog';
+                break;
+        }
+        
+        if ($term_slug) {
+            wp_set_object_terms($post->ID, $term_slug, 'article_type', false);
+            $count++;
+        }
+    }
+    
+    // 移行完了フラグを保存
+    update_option('ptl_article_type_migrated', true);
+    
+    // 管理画面に通知（オプション）
+    if ($count > 0) {
+        add_action('admin_notices', function() use ($count) {
+            echo '<div class="notice notice-success is-dismissible">';
+            echo '<p>記事種別の移行が完了しました。' . $count . '件の投稿を処理しました。</p>';
+            echo '</div>';
+        });
+    }
+}
+add_action('admin_init', 'ptl_migrate_post_category_to_taxonomy');
