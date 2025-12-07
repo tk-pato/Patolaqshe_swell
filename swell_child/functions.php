@@ -4072,3 +4072,161 @@ function ptl_migrate_post_category_to_taxonomy() {
     }
 }
 add_action('admin_init', 'ptl_migrate_post_category_to_taxonomy');
+
+/**
+ * ========================================
+ * カスタムタクソノミー: 店舗選択
+ * ========================================
+ * ブロックエディタで絞り込み可能にするため、
+ * カスタムフィールド _store_locations を
+ * カスタムタクソノミー store_location としても登録
+ */
+function ptl_register_store_location_taxonomy() {
+    $labels = array(
+        'name' => '店舗選択',
+        'singular_name' => '店舗',
+        'search_items' => '店舗を検索',
+        'all_items' => '全ての店舗',
+        'edit_item' => '店舗を編集',
+        'update_item' => '店舗を更新',
+        'add_new_item' => '新しい店舗を追加',
+        'new_item_name' => '新しい店舗名',
+        'menu_name' => '店舗選択',
+    );
+
+    $args = array(
+        'hierarchical' => false,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'store'),
+        'show_in_rest' => true, // ブロックエディタで使用可能にする
+        'public' => true,
+    );
+
+    register_taxonomy('store_location', array('post'), $args);
+    
+    // デフォルトのタームを登録
+    if (!term_exists('グランド', 'store_location')) {
+        wp_insert_term('グランド', 'store_location', array('slug' => 'grand'));
+    }
+    if (!term_exists('銀座店', 'store_location')) {
+        wp_insert_term('銀座店', 'store_location', array('slug' => 'ginza'));
+    }
+    if (!term_exists('代官山店', 'store_location')) {
+        wp_insert_term('代官山店', 'store_location', array('slug' => 'daikanyama'));
+    }
+}
+add_action('init', 'ptl_register_store_location_taxonomy');
+
+/**
+ * 投稿保存時にカスタムフィールドとタクソノミーを同期
+ */
+function ptl_sync_store_locations_to_taxonomy($post_id) {
+    // 自動保存時は何もしない
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    // 投稿タイプが post でない場合は何もしない
+    if (get_post_type($post_id) !== 'post') {
+        return;
+    }
+    
+    // カスタムフィールド _store_locations の値を取得（配列）
+    $store_locations = get_post_meta($post_id, '_store_locations', true);
+    
+    if (empty($store_locations) || !is_array($store_locations)) {
+        return;
+    }
+    
+    // タクソノミーのタームスラッグに変換
+    $term_slugs = array();
+    
+    foreach ($store_locations as $location) {
+        switch ($location) {
+            case 'grand':
+                $term_slugs[] = 'grand';
+                break;
+            case 'ginza':
+                $term_slugs[] = 'ginza';
+                break;
+            case 'daikanyama':
+                $term_slugs[] = 'daikanyama';
+                break;
+        }
+    }
+    
+    if (!empty($term_slugs)) {
+        // タクソノミーを設定（既存のタームを上書き）
+        wp_set_object_terms($post_id, $term_slugs, 'store_location', false);
+    }
+}
+add_action('save_post', 'ptl_sync_store_locations_to_taxonomy', 20);
+
+/**
+ * 既存の全投稿のカスタムフィールドをタクソノミーに移行
+ * 管理画面でのみ実行（初回のみ）
+ */
+function ptl_migrate_store_locations_to_taxonomy() {
+    // 移行済みフラグをチェック
+    if (get_option('ptl_store_location_migrated')) {
+        return;
+    }
+    
+    // 管理画面でのみ実行
+    if (!is_admin()) {
+        return;
+    }
+    
+    // 全ての投稿を取得
+    $posts = get_posts(array(
+        'post_type' => 'post',
+        'posts_per_page' => -1,
+        'post_status' => 'any',
+    ));
+    
+    $count = 0;
+    foreach ($posts as $post) {
+        $store_locations = get_post_meta($post->ID, '_store_locations', true);
+        
+        if (empty($store_locations) || !is_array($store_locations)) {
+            continue;
+        }
+        
+        $term_slugs = array();
+        
+        foreach ($store_locations as $location) {
+            switch ($location) {
+                case 'grand':
+                    $term_slugs[] = 'grand';
+                    break;
+                case 'ginza':
+                    $term_slugs[] = 'ginza';
+                    break;
+                case 'daikanyama':
+                    $term_slugs[] = 'daikanyama';
+                    break;
+            }
+        }
+        
+        if (!empty($term_slugs)) {
+            wp_set_object_terms($post->ID, $term_slugs, 'store_location', false);
+            $count++;
+        }
+    }
+    
+    // 移行完了フラグを保存
+    update_option('ptl_store_location_migrated', true);
+    
+    // 管理画面に通知（オプション）
+    if ($count > 0) {
+        add_action('admin_notices', function() use ($count) {
+            echo '<div class="notice notice-success is-dismissible">';
+            echo '<p>店舗選択の移行が完了しました。' . $count . '件の投稿を処理しました。</p>';
+            echo '</div>';
+        });
+    }
+}
+add_action('admin_init', 'ptl_migrate_store_locations_to_taxonomy');
