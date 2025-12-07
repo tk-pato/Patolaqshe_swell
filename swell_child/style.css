@@ -703,3 +703,19 @@ Version: 1.0.0
   }
 }
 
+/* ========================================
+   ブログモーダルトリガー（buttonタグ）のスタイルリセット
+   ======================================== */
+.blog-modal-trigger {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+
+.blog-modal-trigger:hover,
+.blog-modal-trigger:focus {
+  background: transparent !important;
+  outline: none;
+}
+
