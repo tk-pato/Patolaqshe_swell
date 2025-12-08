@@ -86,14 +86,11 @@
 .blog-modal__hero {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 */
+    height: 200px;
     overflow: hidden;
 }
 
 .blog-modal__hero img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -113,14 +110,23 @@
 
 /* ブログリスト */
 .blog-modal__list {
-    padding: 24px 20px 40px;
+    padding: 30px 20px 40px;
 }
 
 .blog-modal__item {
     display: block;
     padding: 16px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.blog-modal__item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.blog-modal__item:active {
+    background: rgba(212, 165, 116, 0.05);
 }
 
 .blog-modal__date {
@@ -128,13 +134,19 @@
     font-size: 12px;
     color: #999;
     margin-bottom: 8px;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 0.02em;
 }
 
 .blog-modal__title {
     display: block;
     font-size: 14px;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.7;
+}
+
+.blog-modal__item:active .blog-modal__title {
+    color: #d4a574;
 }
 
 .blog-modal__empty {
