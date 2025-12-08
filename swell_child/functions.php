@@ -3789,10 +3789,11 @@ function pato_enqueue_salon_modal_assets()
 add_action('wp_enqueue_scripts', 'pato_enqueue_salon_modal_assets');
 
 /**
- * ブログモーダルのJavaScript読み込み
+ * ブログモーダルのJavaScript/CSS読み込み
  */
 function pato_enqueue_blog_modal_assets()
 {
+  // JavaScript
   wp_enqueue_script(
     'pato-blog-modal',
     get_stylesheet_directory_uri() . '/js/blog-modal.js',
@@ -3800,6 +3801,30 @@ function pato_enqueue_blog_modal_assets()
     '1.0.0',
     true
   );
+  
+  // CSS PC
+  $css_pc_path = get_stylesheet_directory() . '/css/pc/blog-modal-pc.css';
+  if (file_exists($css_pc_path)) {
+    wp_enqueue_style(
+      'pato-blog-modal-pc',
+      get_stylesheet_directory_uri() . '/css/pc/blog-modal-pc.css',
+      array(),
+      filemtime($css_pc_path),
+      'screen and (min-width: 768px)'
+    );
+  }
+  
+  // CSS SP
+  $css_sp_path = get_stylesheet_directory() . '/css/sp/blog-modal-sp.css';
+  if (file_exists($css_sp_path)) {
+    wp_enqueue_style(
+      'pato-blog-modal-sp',
+      get_stylesheet_directory_uri() . '/css/sp/blog-modal-sp.css',
+      array(),
+      filemtime($css_sp_path),
+      'screen and (max-width: 767px)'
+    );
+  }
 }
 add_action('wp_enqueue_scripts', 'pato_enqueue_blog_modal_assets');
 
