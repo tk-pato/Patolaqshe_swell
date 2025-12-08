@@ -37,11 +37,12 @@
                 const modalElement = document.getElementById(modalId);
                 if (!modalElement) {
                     console.error('[Blog Modal] モーダルが見つかりません:', modalId);
+                    console.log('[Blog Modal] 利用可能なモーダル:', Array.from(document.querySelectorAll('.blog-modal')).map(m => m.id));
                     return;
                 }
                 
-                const modalWrap = modalElement.closest('.js-modal_wrap') || modalElement;
-                modalWrap.classList.add('js-modalitem_open');
+                console.log('[Blog Modal] モーダル要素取得成功:', modalElement);
+                modalElement.classList.add('js-modalitem_open');
                 document.body.classList.add('js-modal_open');
                 
                 console.log('[Blog Modal] モーダル opened:', modalId);
