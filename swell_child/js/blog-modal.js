@@ -58,8 +58,16 @@
                 e.preventDefault();
                 const modal = this.closest('.js-modal_wrap');
                 if (modal) {
-                    modal.classList.remove('js-modalitem_open');
-                    document.body.classList.remove('js-modal_open');
+                    // アニメーション開始
+                    modal.classList.add('js-modal_closing');
+                    
+                    // アニメーション完了後にクラスを削除
+                    setTimeout(function() {
+                        modal.classList.remove('js-modalitem_open');
+                        modal.classList.remove('js-modal_closing');
+                        document.body.classList.remove('js-modal_open');
+                    }, 500); // アニメーション時間と同じ
+                    
                     console.log('[Blog Modal] モーダル closed:', modal.id);
                 } else {
                     console.warn('[Blog Modal] 閉じるボタンの親モーダルが見つかりません');
@@ -69,13 +77,43 @@
             console.log('[Blog Modal] 閉じるボタン', index + 1, '登録完了');
         });
         
+        // 背景クリックで閉じる
+        const modalsArray = Array.from(document.querySelectorAll('.blog-modal'));
+        modalsArray.forEach(function(modal) {
+            const bg = modal.querySelector('.js-modal_bg');
+            if (bg) {
+                bg.onclick = function(e) {
+                    if (e.target === bg) {
+                        e.preventDefault();
+                        modal.classList.add('js-modal_closing');
+                        
+                        setTimeout(function() {
+                            modal.classList.remove('js-modalitem_open');
+                            modal.classList.remove('js-modal_closing');
+                            document.body.classList.remove('js-modal_open');
+                        }, 500);
+                        
+                        console.log('[Blog Modal] 背景クリックでモーダル closed');
+                    }
+                };
+            }
+        });
+        
         // ESCキーで閉じる
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' || e.keyCode === 27) {
                 const openModal = document.querySelector('.blog-modal.js-modalitem_open');
                 if (openModal) {
-                    openModal.classList.remove('js-modalitem_open');
-                    document.body.classList.remove('js-modal_open');
+                    // アニメーション開始
+                    openModal.classList.add('js-modal_closing');
+                    
+                    // アニメーション完了後にクラスを削除
+                    setTimeout(function() {
+                        openModal.classList.remove('js-modalitem_open');
+                        openModal.classList.remove('js-modal_closing');
+                        document.body.classList.remove('js-modal_open');
+                    }, 500); // アニメーション時間と同じ
+                    
                     console.log('[Blog Modal] ESCキーでモーダル closed');
                 }
             }
