@@ -3837,7 +3837,7 @@ function pato_enqueue_faq_modal_assets()
     'pato-faq-modal',
     get_stylesheet_directory_uri() . '/js/faq-modal.js',
     array(),
-    filemtime(get_stylesheet_directory() . '/js/faq-modal.js'),
+    '1.0.1',
     true
   );
 }
