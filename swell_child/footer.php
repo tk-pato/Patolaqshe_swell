@@ -73,14 +73,14 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 						<li class="ptl-footer__nav-item">
 							<a href="<?php echo esc_url(home_url('/faq/')); ?>" class="ptl-footer__nav-link">FAQ</a>
 						</li>
-					<li class="ptl-footer__nav-item">
-						<a href="<?php echo esc_url(home_url('/blog/')); ?>" class="ptl-footer__nav-link">BLOG</a>
-					</li>
-					<li class="ptl-footer__nav-item">
-						<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger">PRIVACY</a>
-					</li>
-				</ul>
-			</nav>				<!-- コピーライト -->
+						<li class="ptl-footer__nav-item">
+							<a href="<?php echo esc_url(home_url('/blog/')); ?>" class="ptl-footer__nav-link">BLOG</a>
+						</li>
+						<li class="ptl-footer__nav-item">
+							<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger">PRIVACY</a>
+						</li>
+					</ul>
+				</nav>				<!-- コピーライト -->
 				<div class="ptl-footer__copyright">
 					<p>&copy; <?php echo date('Y'); ?> Patolaqshe. All rights reserved.</p>
 				</div>
