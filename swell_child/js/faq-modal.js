@@ -31,7 +31,7 @@
         triggers.forEach(function(trigger, index) {
             trigger.onclick = function(e) {
                 e.preventDefault();
-                const modalId = this.getAttribute('data-modal-id');
+                const modalId = 'faq-modal';
                 console.log('[FAQ Modal] トリガークリック:', modalId);
                 
                 const modalElement = document.getElementById(modalId);
