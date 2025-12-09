@@ -181,6 +181,12 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/s
 # js/salon-modal.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/salon-modal.js
 
+# js/blog-modal.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/blog-modal.js
+
+# js/faq-modal.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/faq-modal.js
+
 # ========================================
 # CSS: サロンモーダルシステム（最新版）
 # ========================================
@@ -190,6 +196,16 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/
 
 # css/sp/salon-modal-sp.css
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/salon-modal-sp.css
+
+# ========================================
+# CSS: ブログモーダルシステム（最新版）
+# ========================================
+
+# css/pc/blog-modal-pc.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/blog-modal-pc.css
+
+# css/sp/blog-modal-sp.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/blog-modal-sp.css
 
 # ========================================
 # テンプレートパーツ（最新版）
@@ -234,6 +250,16 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/temp
 # ========================================
 # 更新履歴
 # ========================================
+# 2025/12/09: FAQモーダルシステム実装完了
+# - js/faq-modal.js: FAQモーダル操作ロジック（複数トリガー対応、700ms統一アニメーション）
+# - css（style.css）: FAQモーダル CSS 統合（ガラスモーフィズム、PC/SP対応）
+# - functions.php: ptl_faq_modal_shortcode() 追加、faq-modal.js読み込み
+# - footer.php: FAQリンク修正（モーダルトリガー化）、FAQモーダル出力追加
+# 2025/12/09: ブログモーダル統一修正完了
+# - css/pc/blog-modal-pc.css: transform/transition統一、requestAnimationFrame対応
+# - css/sp/blog-modal-sp.css: SP版同等修正
+# - js/blog-modal.js: 700ms統一アニメーション実装
+# - footer.php: BLOGリンク店舗別対応、トップ移動防止
 # 2025/12/09: プライバシーポリシーモーダル実装完了
 # - footer.php: PRIVACY リンク追加、テンプレートパーツインクルード
 # - functions.php: ptl_privacy_modal_shortcode() 追加
