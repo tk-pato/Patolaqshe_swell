@@ -5,6 +5,9 @@
 # functions.php
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/functions.php
 
+# footer.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/footer.php
+
 # style.css
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/style.css
 
@@ -175,9 +178,25 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/u
 # js/section-reasons-parallax.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/section-reasons-parallax.js
 
+# js/salon-modal.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/salon-modal.js
+
+# ========================================
+# CSS: サロンモーダルシステム（最新版）
+# ========================================
+
+# css/pc/salon-modal-pc.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/salon-modal-pc.css
+
+# css/sp/salon-modal-sp.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/salon-modal-sp.css
+
 # ========================================
 # テンプレートパーツ（最新版）
 # ========================================
+
+# template-parts/section-privacy.php
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/section-privacy.php
 
 # template-parts/front/global-parallax-bg.php
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/template-parts/front/global-parallax-bg.php
@@ -215,6 +234,15 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/temp
 # ========================================
 # 更新履歴
 # ========================================
+# 2025/12/09: プライバシーポリシーモーダル実装完了
+# - footer.php: PRIVACY リンク追加、テンプレートパーツインクルード
+# - functions.php: ptl_privacy_modal_shortcode() 追加
+# - style.css: プライバシーモーダル CSS 統合
+# - template-parts/section-privacy.php: MMMベース 10セクション プライバシーポリシー
+# 2025/12/04: サロンモーダルシステム追加
+# - js/salon-modal.js: モーダル操作ロジック（Angelica準拠、onclick方式、デバッグログ）
+# - css/pc/salon-modal-pc.css: PCモーダルスタイル（固定高500px、calc(100%+50px)画像、absolute配置）
+# - css/sp/salon-modal-sp.css: SPモーダルスタイル（固定高400px、統一構造）
 # 2025/10/27: main ブランチ参照（常に最新）
 # - Remove unnecessary .broken file
 # - .broken ファイルを削除
