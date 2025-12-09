@@ -70,9 +70,9 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 						<li class="ptl-footer__nav-item">
 							<a href="<?php echo esc_url(home_url('/voice/')); ?>" class="ptl-footer__nav-link">VOICE</a>
 						</li>
-						<li class="ptl-footer__nav-item">
-							<a href="<?php echo esc_url(home_url('/faq/')); ?>" class="ptl-footer__nav-link">FAQ</a>
-						</li>
+					<li class="ptl-footer__nav-item">
+						<a href="javascript:void(0);" class="ptl-footer__nav-link faq-modal-trigger" data-modal-id="faq-modal">FAQ</a>
+					</li>
 					<li class="ptl-footer__nav-item">
 						<?php
 						// 現在のページを判定してモーダルIDを切り替え
@@ -118,6 +118,10 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 		// グランドトップ：すべて
 		echo do_shortcode('[blog_list_modal]');
 	}
+?>
+<?php
+	// FAQモーダルを出力
+	echo do_shortcode('[faq_modal]');
 ?>
 <?php
 	// 固定フッターメニュー

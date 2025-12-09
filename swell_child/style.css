@@ -927,3 +927,170 @@ Version: 1.0.0
 body.js-modal_open {
     overflow: hidden;
 }
+
+/* =====================================================
+   FAQモーダル：全ページ共通スタイル
+   ===================================================== */
+
+/* モーダル背景 */
+.faq-modal .js-modal_bg {
+  background: transparent !important;
+}
+
+/* モーダルコンテンツ */
+.faq-modal .js-modal_cont {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 90%;
+  max-width: 800px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
+  z-index: 1;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 開いた状態（初期位置維持） */
+.faq-modal.js-modalitem_open .js-modal_cont {
+  transform: translateX(100%);
+}
+
+/* アニメーション開始 */
+.faq-modal.js-modal_animating .js-modal_cont {
+  transform: translateX(0);
+}
+
+/* 閉じるアニメーション */
+.faq-modal.js-modal_closing .js-modal_cont {
+  transform: translateX(100%);
+}
+
+/* ヒーロー画像エリア */
+.faq-modal .modal-hero {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.faq-modal .modal-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.faq-modal .modal-hero-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 48px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  letter-spacing: 0.1em;
+}
+
+/* コンテンツエリア */
+.faq-modal .modal-content {
+  padding: 60px 40px;
+}
+
+/* FAQ一覧 */
+.faq-modal .faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* FAQ項目 */
+.faq-modal .faq-item {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.faq-modal .faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* 質問（Q:） */
+.faq-modal .faq-question {
+  font-size: 18px;
+  font-weight: 700;
+  color: #AC905E;
+  margin: 0 0 12px 0;
+  line-height: 1.7;
+}
+
+/* 回答（A:） */
+.faq-modal .faq-answer {
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.9;
+  margin: 0;
+  padding-left: 1.5em;
+}
+
+/* 閉じるボタン */
+.faq-modal .js-modal_close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.faq-modal .js-modal_close:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.faq-modal .js-modal_close svg {
+  color: #333;
+}
+
+/* SP対応 */
+@media (max-width: 767px) {
+  .faq-modal .js-modal_cont {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .faq-modal .modal-hero {
+    height: 200px;
+  }
+  
+  .faq-modal .modal-hero-title {
+    font-size: 32px;
+  }
+  
+  .faq-modal .modal-content {
+    padding: 40px 20px;
+  }
+  
+  .faq-modal .faq-question {
+    font-size: 16px;
+  }
+  
+  .faq-modal .faq-answer {
+    font-size: 14px;
+  }
+}
