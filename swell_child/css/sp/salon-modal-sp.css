@@ -147,9 +147,9 @@ body.js-modal_open {
     width: 100%;
     max-width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.25) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
     z-index: 1;
     overflow-y: auto;

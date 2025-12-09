@@ -1097,6 +1097,43 @@ body.js-modal_open {
   padding: 60px 40px;
 }
 
+/* =====================================================
+   PRIVACYモーダル：SP版テキストカラー統一
+   ===================================================== */
+
+@media screen and (max-width: 767px) {
+  .privacy-modal__content,
+  .privacy-modal__content h2,
+  .privacy-modal__content h3,
+  .privacy-modal__content h4,
+  .privacy-modal__content p,
+  .privacy-modal__content ul li {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+  }
+  
+  .privacy-modal__content ul li::before {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+  }
+}
+
+/* =====================================================
+   FAQモーダル：SP版テキストカラー統一
+   ===================================================== */
+
+@media screen and (max-width: 767px) {
+  .faq-modal .faq-question {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+  }
+  
+  .faq-modal .faq-answer {
+    color: #fff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+  }
+}
+
 /* FAQ一覧 */
 .faq-modal .faq-list {
   max-width: 700px;
