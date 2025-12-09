@@ -11,6 +11,7 @@
 // ========================================
 ?>
 <div id="privacy-modal" class="js-modal_wrap privacy-modal">
+  <div class="js-modal_bg"></div>
   <div class="js-modal_cont privacy-modal__container">
     <!-- モーダルクローズボタン -->
     <button class="js-modal_close privacy-modal__close" aria-label="モーダルを閉じる">
@@ -213,7 +214,4 @@
       </main>
     </div>
   </div>
-
-  <!-- モーダル背景（クリック時にクローズ） -->
-  <div class="js-modal_bg js-modal_close"></div>
 </div>
