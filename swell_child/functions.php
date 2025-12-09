@@ -4402,7 +4402,7 @@ function ptl_faq_modal_shortcode()
       </button>
 
       <div class="modal-hero">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq-hero.jpg" alt="FAQ" />
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/FAQ-modal.jpg" alt="FAQ" />
         <h2 class="modal-hero-title">FAQ</h2>
       </div>
 
