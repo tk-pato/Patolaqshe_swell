@@ -105,6 +105,9 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 
 	// モーダル
 	SWELL_Theme::get_parts( 'parts/footer/modals' );
+	
+	// プライバシーポリシーモーダル
+	get_template_part( 'template-parts/section', 'privacy' );
 ?>
 </div><!--/ #all_wrapp-->
 <?php
