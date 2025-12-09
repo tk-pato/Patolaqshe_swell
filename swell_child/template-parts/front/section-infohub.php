@@ -62,8 +62,10 @@ $cards = [
     [
         'title' => 'FAQ',
         'desc' => 'よくあるご質問にお答えします。お気軽にお問い合わせください。',
-        'url' => home_url('/faq/'),
+        'url' => 'javascript:void(0);',
         'image' => $resolve_image($card3_img, $default_img),
+        'is_modal' => true,
+        'modal_id' => 'faq-modal',
     ],
 ];
 ?>
@@ -106,7 +108,9 @@ $cards = [
         <!-- カードグリッド -->
         <div class="ptlHub__grid">
             <?php foreach ($cards as $index => $card) : ?>
-                <a href="<?php echo esc_url($card['url']); ?>" class="ptlHub__card">
+                <a href="<?php echo esc_url($card['url']); ?>" 
+                   class="ptlHub__card<?php echo !empty($card['is_modal']) ? ' faq-modal-trigger' : ''; ?>"
+                   <?php echo !empty($card['modal_id']) ? 'data-modal-id="' . esc_attr($card['modal_id']) . '"' : ''; ?>>
                     <div class="ptlHub__media">
                         <img src="<?php echo esc_url($card['image']); ?>" alt="<?php echo esc_attr($card['title']); ?>">
                     </div>
