@@ -3802,15 +3802,6 @@ function pato_enqueue_blog_modal_assets()
     true
   );
   
-  // FAQモーダルJS
-  wp_enqueue_script(
-    'pato-faq-modal',
-    get_stylesheet_directory_uri() . '/js/faq-modal.js',
-    array(),
-    filemtime(get_stylesheet_directory() . '/js/faq-modal.js'),
-    true
-  );
-  
   // CSS PC
   $css_pc_path = get_stylesheet_directory() . '/css/pc/blog-modal-pc.css';
   if (file_exists($css_pc_path)) {
@@ -3836,6 +3827,21 @@ function pato_enqueue_blog_modal_assets()
   }
 }
 add_action('wp_enqueue_scripts', 'pato_enqueue_blog_modal_assets');
+
+/**
+ * FAQモーダルのJavaScript読み込み
+ */
+function pato_enqueue_faq_modal_assets()
+{
+  wp_enqueue_script(
+    'pato-faq-modal',
+    get_stylesheet_directory_uri() . '/js/faq-modal.js',
+    array(),
+    filemtime(get_stylesheet_directory() . '/js/faq-modal.js'),
+    true
+  );
+}
+add_action('wp_enqueue_scripts', 'pato_enqueue_faq_modal_assets');
 
 function pato_salon_modal_shortcode($atts)
 {
