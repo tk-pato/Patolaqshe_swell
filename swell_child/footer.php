@@ -133,8 +133,17 @@ echo $SETTING['foot_code']; // phpcs:ignore
         // モーダルを開く
         trigger.onclick = function(e) {
             e.preventDefault();
+            // 1. まず表示（display: block）
             modal.classList.add('js-modalitem_open');
             document.body.classList.add('js-modal_open');
+            
+            // 2. 次のフレームでアニメーション開始
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    modal.classList.add('js-modal_animating');
+                });
+            });
+            
             console.log('[Privacy Modal] モーダル opened');
         };
         
@@ -143,7 +152,8 @@ echo $SETTING['foot_code']; // phpcs:ignore
         closeBtns.forEach(function(btn) {
             btn.onclick = function(e) {
                 e.preventDefault();
-                // アニメーション開始
+                // アニメーション開始（アニメーションクラス削除）
+                modal.classList.remove('js-modal_animating');
                 modal.classList.add('js-modal_closing');
                 
                 // アニメーション完了後にクラスを削除
@@ -163,7 +173,8 @@ echo $SETTING['foot_code']; // phpcs:ignore
             bg.onclick = function(e) {
                 if (e.target === bg) {
                     e.preventDefault();
-                    // アニメーション開始
+                    // アニメーション開始（アニメーションクラス削除）
+                    modal.classList.remove('js-modal_animating');
                     modal.classList.add('js-modal_closing');
                     
                     // アニメーション完了後にクラスを削除
@@ -181,7 +192,8 @@ echo $SETTING['foot_code']; // phpcs:ignore
         // ESCキー
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && modal.classList.contains('js-modalitem_open')) {
-                // アニメーション開始
+                // アニメーション開始（アニメーションクラス削除）
+                modal.classList.remove('js-modal_animating');
                 modal.classList.add('js-modal_closing');
                 
                 // アニメーション完了後にクラスを削除

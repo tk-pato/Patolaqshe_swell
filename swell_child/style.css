@@ -745,7 +745,7 @@ Version: 1.0.0
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: transparent;
     z-index: 0;
 }
 
@@ -767,8 +767,13 @@ Version: 1.0.0
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 開いた状態 */
+/* 開いた状態（初期位置維持） */
 .privacy-modal.js-modalitem_open .js-modal_cont {
+    transform: translateX(100%);
+}
+
+/* アニメーション開始 */
+.privacy-modal.js-modal_animating .js-modal_cont {
     transform: translateX(0);
 }
 
