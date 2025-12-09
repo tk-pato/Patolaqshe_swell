@@ -4392,7 +4392,7 @@ function ptl_faq_modal_shortcode()
 {
     ob_start();
     ?>
-    <div id="faq-modal" class="js-modal_wrap faq-modal" style="display:none;">
+    <div id="faq-modal" class="js-modal_wrap faq-modal">
         <div class="js-modal_bg"></div>
         <div class="js-modal_cont">
             <button class="js-modal_close" aria-label="モーダルを閉じる">
