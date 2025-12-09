@@ -62,13 +62,32 @@
   .ptl-footer__nav-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px 8px;
+    gap: 12px 6px;
     justify-items: center;
   }
 
-  /* 2行目（5番目以降）を中央寄せ */
+  /* 2行目を中央寄せ（5-8番目） */
+  .ptl-footer__nav-item:nth-child(5),
+  .ptl-footer__nav-item:nth-child(6),
+  .ptl-footer__nav-item:nth-child(7),
+  .ptl-footer__nav-item:nth-child(8) {
+    grid-row: 2;
+  }
+  
   .ptl-footer__nav-item:nth-child(5) {
+    grid-column: 1;
+  }
+  
+  .ptl-footer__nav-item:nth-child(6) {
     grid-column: 2;
+  }
+  
+  .ptl-footer__nav-item:nth-child(7) {
+    grid-column: 3;
+  }
+  
+  .ptl-footer__nav-item:nth-child(8) {
+    grid-column: 4;
   }
 
   .ptl-footer__nav-item {
