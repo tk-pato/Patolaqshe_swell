@@ -73,9 +73,9 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 						<li class="ptl-footer__nav-item">
 							<a href="<?php echo esc_url(home_url('/faq/')); ?>" class="ptl-footer__nav-link">FAQ</a>
 						</li>
-						<li class="ptl-footer__nav-item">
-							<a href="<?php echo esc_url(home_url('/blog/')); ?>" class="ptl-footer__nav-link">BLOG</a>
-						</li>
+					<li class="ptl-footer__nav-item">
+						<a href="#" class="ptl-footer__nav-link blog-modal-trigger">BLOG</a>
+					</li>
 						<li class="ptl-footer__nav-item">
 							<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger">PRIVACY</a>
 						</li>
