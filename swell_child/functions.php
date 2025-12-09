@@ -3898,6 +3898,7 @@ function pato_salon_modal_shortcode($atts)
   </div>
 
   <div id="salon-modal-<?php echo esc_attr($atts['id']); ?>" class="js-modal_wrap p-salon">
+    <div class="js-modal_bg"></div>
     <div class="js-modal_cont">
       <button class="js-modal_close p-ico">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3969,7 +3970,6 @@ function pato_salon_modal_shortcode($atts)
         </div>
       </div>
     </div>
-    <div class="js-modal_bg js-modal_close"></div>
   </div>
 <?php
   return ob_get_clean();
