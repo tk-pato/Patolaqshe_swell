@@ -3801,7 +3801,7 @@ function pato_enqueue_blog_modal_assets()
     '1.0.0',
     true
   );
-  
+
   // CSS PC
   $css_pc_path = get_stylesheet_directory() . '/css/pc/blog-modal-pc.css';
   if (file_exists($css_pc_path)) {
@@ -3813,7 +3813,7 @@ function pato_enqueue_blog_modal_assets()
       'screen and (min-width: 768px)'
     );
   }
-  
+
   // CSS SP
   $css_sp_path = get_stylesheet_directory() . '/css/sp/blog-modal-sp.css';
   if (file_exists($css_sp_path)) {
@@ -4390,89 +4390,89 @@ add_shortcode('blog_list_modal', 'ptl_blog_list_modal_shortcode');
  */
 function ptl_faq_modal_shortcode()
 {
-    ob_start();
-    ?>
-    <div id="faq-modal" class="js-modal_wrap faq-modal">
-        <div class="js-modal_bg"></div>
-        <div class="js-modal_cont">
-            <button class="js-modal_close" aria-label="モーダルを閉じる">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
-            
-            <div class="modal-hero">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/0H9A0947.jpg" alt="FAQ" />
-                <h2 class="modal-hero-title">FAQ</h2>
-            </div>
-            
-            <div class="modal-content">
-                <div class="faq-list">
-                    <!-- Q1 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 予約方法を教えてください</div>
-                        <div class="faq-answer">A: お電話（営業時間内）、LINE、またはホットペッパービューティーから24時間ご予約いただけます。</div>
-                    </div>
-                    
-                    <!-- Q2 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 予約の変更・キャンセルはできますか？</div>
-                        <div class="faq-answer">A: はい、可能です。ただし、変更・キャンセルは2営業日前までにお願いいたします。それ以降の場合は、回数券の消化またはキャンセル料が発生する場合がございます。お電話またはLINEにてご連絡ください。</div>
-                    </div>
-                    
-                    <!-- Q3 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 支払い方法を教えてください</div>
-                        <div class="faq-answer">A: 現金、クレジットカード、電子マネーがご利用いただけます。</div>
-                    </div>
-                    
-                    <!-- Q4 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: どんな施術をしますか？</div>
-                        <div class="faq-answer">A: 都内でも珍しいマシンとオールハンドのハイブリッド施術が特徴です。オールハンドではバスト周りだけでなく、背面や二の腕、フットマッサージなど、バストに関わるお身体全体をしっかりケアしてまいります。</div>
-                    </div>
-                    
-                    <!-- Q5 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 何回通えば良いですか？通う頻度は？</div>
-                        <div class="faq-answer">A: バストアップなどの効果実感には、6回以上、2～3ヶ月以上をおすすめしております。お客様お一人おひとりの状態に合わせて、最適なペースをカウンセリング時にお伝えいたします。最初は2週間に1回がベースとなり、徐々にペースは減っていきます。</div>
-                    </div>
-                    
-                    <!-- Q6 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 年齢制限はありますか？</div>
-                        <div class="faq-answer">A: 18歳以上の方からご利用いただけます。未成年の方は保護者の同意が必要です。</div>
-                    </div>
-                    
-                    <!-- Q7 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 無料カウンセリングだけでも良いですか？</div>
-                        <div class="faq-answer">A: はい、もちろんです。無料カウンセリングのみも大歓迎です。施術内容やお悩みについて、じっくりお話を伺い、不安や疑問を解消してからご判断いただけますので、お気軽にご相談ください。</div>
-                    </div>
-                    
-                    <!-- Q8 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: バストの下垂や左右差は改善できますか？</div>
-                        <div class="faq-answer">A: はい、可能です。バストを支える筋肉を整えることで下垂の改善が期待でき、左右のバランスを整える施術も行います。お一人おひとりの状態に合わせてケアいたします。</div>
-                    </div>
-                    
-                    <!-- Q9 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 体調不良や生理中でも施術できますか？</div>
-                        <div class="faq-answer">A: 生理中の施術は可能ですが、体調がすぐれない場合は無理をせずご相談ください。婦人科系で通院もしくは治療を継続されている方は、お身体の状態によってお控えいただく場合がございます。事前にお気軽にご相談ください。</div>
-                    </div>
-                    
-                    <!-- Q10 -->
-                    <div class="faq-item">
-                        <div class="faq-question">Q: 妊娠中・産後・授乳中でも施術できますか？</div>
-                        <div class="faq-answer">A: 妊娠中および授乳中の方はお控えいただいております。産後は卒乳後、6ヶ月以降で体調が安定してからご利用いただけます。</div>
-                    </div>
-                </div>
-            </div>
+  ob_start();
+?>
+  <div id="faq-modal" class="js-modal_wrap faq-modal">
+    <div class="js-modal_bg"></div>
+    <div class="js-modal_cont">
+      <button class="js-modal_close" aria-label="モーダルを閉じる">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="modal-hero">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq-hero.jpg" alt="FAQ" />
+        <h2 class="modal-hero-title">FAQ</h2>
+      </div>
+
+      <div class="modal-content">
+        <div class="faq-list">
+          <!-- Q1 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 予約方法を教えてください</div>
+            <div class="faq-answer">A: お電話（営業時間内）、LINE、またはホットペッパービューティーから24時間ご予約いただけます。</div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 予約の変更・キャンセルはできますか？</div>
+            <div class="faq-answer">A: はい、可能です。ただし、変更・キャンセルは2営業日前までにお願いいたします。それ以降の場合は、回数券の消化またはキャンセル料が発生する場合がございます。お電話またはLINEにてご連絡ください。</div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 支払い方法を教えてください</div>
+            <div class="faq-answer">A: 現金、クレジットカード、電子マネーがご利用いただけます。</div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: どんな施術をしますか？</div>
+            <div class="faq-answer">A: 都内でも珍しいマシンとオールハンドのハイブリッド施術が特徴です。オールハンドではバスト周りだけでなく、背面や二の腕、フットマッサージなど、バストに関わるお身体全体をしっかりケアしてまいります。</div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 何回通えば良いですか？通う頻度は？</div>
+            <div class="faq-answer">A: バストアップなどの効果実感には、6回以上、2～3ヶ月以上をおすすめしております。お客様お一人おひとりの状態に合わせて、最適なペースをカウンセリング時にお伝えいたします。最初は2週間に1回がベースとなり、徐々にペースは減っていきます。</div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 年齢制限はありますか？</div>
+            <div class="faq-answer">A: 18歳以上の方からご利用いただけます。未成年の方は保護者の同意が必要です。</div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 無料カウンセリングだけでも良いですか？</div>
+            <div class="faq-answer">A: はい、もちろんです。無料カウンセリングのみも大歓迎です。施術内容やお悩みについて、じっくりお話を伺い、不安や疑問を解消してからご判断いただけますので、お気軽にご相談ください。</div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: バストの下垂や左右差は改善できますか？</div>
+            <div class="faq-answer">A: はい、可能です。バストを支える筋肉を整えることで下垂の改善が期待でき、左右のバランスを整える施術も行います。お一人おひとりの状態に合わせてケアいたします。</div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 体調不良や生理中でも施術できますか？</div>
+            <div class="faq-answer">A: 生理中の施術は可能ですが、体調がすぐれない場合は無理をせずご相談ください。婦人科系で通院もしくは治療を継続されている方は、お身体の状態によってお控えいただく場合がございます。事前にお気軽にご相談ください。</div>
+          </div>
+
+          <!-- Q10 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 妊娠中・産後・授乳中でも施術できますか？</div>
+            <div class="faq-answer">A: 妊娠中および授乳中の方はお控えいただいております。産後は卒乳後、6ヶ月以降で体調が安定してからご利用いただけます。</div>
+          </div>
         </div>
+      </div>
     </div>
-    <?php
-    return ob_get_clean();
+  </div>
+<?php
+  return ob_get_clean();
 }
 add_shortcode('faq_modal', 'ptl_faq_modal_shortcode');
 
