@@ -4367,3 +4367,16 @@ function ptl_blog_list_modal_shortcode($atts)
   return ob_get_clean();
 }
 add_shortcode('blog_list_modal', 'ptl_blog_list_modal_shortcode');
+
+/**
+ * ========================================
+ * プライバシーポリシーモーダル
+ * ========================================
+ */
+function ptl_privacy_modal_shortcode()
+{
+  ob_start();
+  get_template_part('template-parts/section', 'privacy');
+  return ob_get_clean();
+}
+add_shortcode('privacy_modal', 'ptl_privacy_modal_shortcode');

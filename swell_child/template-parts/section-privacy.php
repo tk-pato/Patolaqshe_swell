@@ -1,217 +1,155 @@
 <?php
 /**
- * Template part: Privacy Policy Modal
- * 
- * @package swell_child
- * @subpackage template-parts
+ * プライバシーポリシーモーダル
  */
-
-// ========================================
-// プライバシーポリシーモーダル
-// ========================================
 ?>
-<div id="privacy-modal" class="js-modal_wrap privacy-modal">
-  <div class="js-modal_bg"></div>
-  <div class="js-modal_cont privacy-modal__container">
-    <!-- モーダルクローズボタン -->
-    <button class="js-modal_close privacy-modal__close" aria-label="モーダルを閉じる">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-
-    <!-- スクロール可能なコンテンツエリア -->
-    <div class="privacy-modal__content">
-      <!-- タイトルセクション -->
-      <header class="privacy-modal__header">
-        <h2 class="privacy-modal__title">プライバシーポリシー</h2>
-        <p class="privacy-modal__updated">最終更新：<?php echo date('Y年m月d日'); ?></p>
-      </header>
-
-      <!-- プライバシーポリシー本文 -->
-      <main class="privacy-modal__body">
-        <!-- セクション1: 定義 -->
-        <section class="privacy-section" id="privacy-1">
-          <h3 class="privacy-section__title">1. 定義</h3>
-          <div class="privacy-section__content">
-            <p>本プライバシーポリシーにおいて、以下の用語は次のとおり定義します。</p>
-            <dl class="privacy-definition-list">
-              <dt class="privacy-definition-list__term">個人情報</dt>
-              <dd class="privacy-definition-list__definition">姓名、生年月日、住所、電話番号、メールアドレス等、特定の個人を識別できる情報</dd>
-              
-              <dt class="privacy-definition-list__term">当社</dt>
-              <dd class="privacy-definition-list__definition">Patolaqshe（パトラクシェ）およびそれぞれの店舗運営企業</dd>
-              
-              <dt class="privacy-definition-list__term">利用者</dt>
-              <dd class="privacy-definition-list__definition">本Webサイトおよび当社提供サービスを利用する全ての者</dd>
-            </dl>
-          </div>
-        </section>
-
-        <!-- セクション2: 個人情報の収集 -->
-        <section class="privacy-section" id="privacy-2">
-          <h3 class="privacy-section__title">2. 個人情報の収集</h3>
-          <div class="privacy-section__content">
-            <p>当社は、以下の方法で個人情報を収集します：</p>
-            <ul class="privacy-list">
-              <li>お問い合わせフォームへの入力</li>
-              <li>ご予約時の登録情報</li>
-              <li>メールマガジン購読申し込み</li>
-              <li>アクセス解析ツールによる情報収集</li>
-              <li>クッキーやIPアドレスの記録</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- セクション3: 個人情報の利用目的 -->
-        <section class="privacy-section" id="privacy-3">
-          <h3 class="privacy-section__title">3. 個人情報の利用目的</h3>
-          <div class="privacy-section__content">
-            <p>収集した個人情報は、以下の目的に限定して使用します：</p>
-            <ul class="privacy-list">
-              <li>ご予約の管理と確認</li>
-              <li>お問い合わせへのご回答</li>
-              <li>サービス提供に関する連絡</li>
-              <li>メールマガジン配信（ご希望者のみ）</li>
-              <li>サービス向上のためのアンケート実施</li>
-              <li>マーケティング施策の実行（ご同意いただいた場合）</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- セクション4: 個人情報の取り扱い -->
-        <section class="privacy-section" id="privacy-4">
-          <h3 class.privacy-section__title">4. 個人情報の取り扱い</h3>
-          <div class="privacy-section__content">
-            <p>当社は、個人情報を適切かつ安全に取り扱うため、以下の措置を講じています：</p>
-            <ul class="privacy-list">
-              <li>SSL（暗号化通信）による情報保護</li>
-              <li>アクセス権限の制限</li>
-              <li>定期的なセキュリティ監査</li>
-              <li>適切なファイアウォール設置</li>
-              <li>従業員への個人情報保護教育</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- セクション5: 個人情報の保管期間 -->
-        <section class="privacy-section" id="privacy-5">
-          <h3 class="privacy-section__title">5. 個人情報の保管期間</h3>
-          <div class="privacy-section__content">
-            <p>個人情報の保管期間は、利用目的の遂行に必要な期間とします。以下に保管期間の目安を示します：</p>
-            <ul class="privacy-list">
-              <li><strong>予約情報：</strong>サービス提供終了から1年間</li>
-              <li><strong>お問い合わせ：</strong>対応完了から2年間</li>
-              <li><strong>メールマガジン登録者情報：</strong>購読中止から6ヶ月間</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- セクション6: セキュリティ -->
-        <section class="privacy-section" id="privacy-6">
-          <h3 class="privacy-section__title">6. セキュリティ対策</h3>
-          <div class="privacy-section__content">
-            <p>当社は、個人情報の漏洩、紛失、破損等を防ぐため、技術的・物理的・人的対策を実施しています：</p>
-            <ul class="privacy-list">
-              <li>Webサイトの脆弱性診断を定期実施</li>
-              <li>個人情報を扱うシステムへのパスワード管理</li>
-              <li>従業員への厳格な秘密保持契約</li>
-              <li>万が一の漏洩時の報告体制整備</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- セクション7: クッキーとアクセス解析 -->
-        <section class="privacy-section" id="privacy-7">
-          <h3 class="privacy-section__title">7. クッキーとアクセス解析</h3>
-          <div class="privacy-section__content">
-            <p>本Webサイトでは、利用者の利便性向上とアクセス解析のため、クッキーを使用しています：</p>
-            <ul class="privacy-list">
-              <li><strong>Google Analytics：</strong>サイト利用統計収集</li>
-              <li><strong>セッションクッキー：</strong>ログイン情報の一時保存</li>
-              <li><strong>広告配信：</strong>興味関心に基づいた広告表示（ご希望に応じて無効化可能）</li>
-            </ul>
-            <p>ブラウザの設定でクッキーを無効化できますが、一部機能が使用できなくなる場合があります。</p>
-          </div>
-        </section>
-
-        <!-- セクション8: 第三者への情報提供 -->
-        <section class="privacy-section" id="privacy-8">
-          <h3 class="privacy-section__title">8. 第三者への情報提供</h3>
-          <div class="privacy-section__content">
-            <p>当社は、以下の場合を除き、個人情報を第三者に開示しません：</p>
-            <ul class="privacy-list">
-              <li>法令に基づく開示請求がある場合</li>
-              <li>人命や身体の安全に危険がある場合</li>
-              <li>犯罪行為の防止・摘発に必要な場合</li>
-              <li>ご本人の明示的な同意がある場合</li>
-            </ul>
-            <p>ただし、提携先企業（予約システム、メール配信サービス等）への情報提供は、本ポリシーに基づいて実施されます。</p>
-          </div>
-        </section>
-
-        <!-- セクション9: お客様の権利 -->
-        <section class="privacy-section" id="privacy-9">
-          <h3 class="privacy-section__title">9. お客様の権利</h3>
-          <div class="privacy-section__content">
-            <p>ご自身の個人情報について、以下の権利があります：</p>
-            <ul class="privacy-list">
-              <li><strong>開示請求：</strong>当社が保有する個人情報の開示</li>
-              <li><strong>訂正請求：</strong>誤りのある情報の訂正</li>
-              <li><strong>削除請求：</strong>個人情報の削除（法定保管期間を除く）</li>
-              <li><strong>利用停止請求：</strong>個人情報の利用停止</li>
-            </ul>
-            <p>上記の請求は、以下の「お問い合わせ」欄の連絡先からお申し込みください。</p>
-          </div>
-        </section>
-
-        <!-- セクション10: お問い合わせ -->
-        <section class="privacy-section" id="privacy-10">
-          <h3 class="privacy-section__title">10. お問い合わせ</h3>
-          <div class="privacy-section__content">
-            <p>本プライバシーポリシーに関するご質問、ご要望、個人情報の開示請求などは、以下の連絡先までお気軽にお問い合わせください：</p>
+<div class="privacy-modal js-modal" style="display: none;">
+    <div class="js-modal_bg"></div>
+    <div class="js-modal_cont">
+        <button class="js-modal_close" aria-label="閉じる">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        
+        <div class="privacy-modal__content">
+            <h2>プライバシーポリシー</h2>
             
-            <div class="privacy-contact">
-              <h4 class="privacy-contact__title">Patolaqshe（パトラクシェ）</h4>
-              
-              <div class="privacy-contact__section">
-                <h5 class="privacy-contact__section-title">代官山店</h5>
-                <p><strong>住所：</strong>〒150-0034 東京都渋谷区代官山町18-8<br>ホーイ代官山ビル 3F</p>
-                <p><strong>電話：</strong><a href="tel:03-xxxx-xxxx">03-xxxx-xxxx</a></p>
-                <p><strong>メール：</strong><a href="mailto:contact@patolaqshe.com">contact@patolaqshe.com</a></p>
-              </div>
+            <section>
+                <h3>1. 個人情報の定義</h3>
+                <p>個人情報とは、生存する個人に関する情報であって、当該情報に含まれる氏名・生年月日・性別・メールアドレス・住所その他の記述等によって特定の個人を識別できるもの（他の情報と容易に照合することができ、それにより特定の個人を識別することができるものを含みます。）又は個人識別符号が含まれるものをいいます。</p>
+                <p>また、その他本ポリシーにおいて使用する用語は、個人情報の保護に関する法律において定義されている用語の例によるものと致します。</p>
+            </section>
 
-              <div class="privacy-contact__section">
-                <h5 class="privacy-contact__section-title">銀座店</h5>
-                <p><strong>住所：</strong>〒104-0061 東京都中央区銀座X-XX-X<br>銀座ビル X階</p>
-                <p><strong>電話：</strong><a href="tel:03-xxxx-xxxx">03-xxxx-xxxx</a></p>
-                <p><strong>メール：</strong><a href="mailto:contact@patolaqshe.com">contact@patolaqshe.com</a></p>
-              </div>
+            <section>
+                <h3>2. 個人情報の当社での利用目的</h3>
+                <p>（1）当社は、お客様の個人情報を、以下の目的で利用致します。</p>
+                <h4>お客様からご請求・お問い合わせ等に対応する過程での利用</h4>
+                <ul>
+                    <li>お客様からのご注文の処理</li>
+                    <li>お客様に対する商品の発送、役務の提供</li>
+                    <li>お客様に対する商品・役務の対価のご請求</li>
+                    <li>お客様からのお支払いの処理</li>
+                    <li>お客様に販売・提供した商品・役務に関するアフターサービスのご連絡・ご確認</li>
+                    <li>お客様からのご要望・お問合せ・苦情等への対応</li>
+                    <li>お客様に対して商品・役務を販売・提供する過程で必要なお客様の本人確認</li>
+                    <li>お客様からご請求いただいた資料などの送付</li>
+                    <li>製品・サービスに関する案内（DM等のお知らせを含む）資料等の送付</li>
+                    <li>当社の規約、ポリシー等に違反する行為に対する対応</li>
+                    <li>当社の規約、ポリシー違反等の変更時のお客様に対する通知</li>
+                </ul>
+                
+                <h4>当社の業務改善等のための利用</h4>
+                <ul>
+                    <li>新商品・役務の開発などの参考</li>
+                    <li>当社の送品・役務の販売・提供に関連して、個人を識別できない形式に加工した統計データの作成</li>
+                    <li>当社の商品・役務及びウェブサイトの更新・改善・カスタマイズ</li>
+                </ul>
+                
+                <h4>マーケティング等のための利用</h4>
+                <ul>
+                    <li>当社又は第三者による公告の配信又は表示</li>
+                    <li>当マーケティング、新商品・新サービスのご案内その他の販売促進活動への利用</li>
+                    <li>当社の商品・役務及びウェブサイトの更新・改善・カスタマイズ</li>
+                </ul>
 
-              <div class="privacy-contact__section">
-                <h5 class="privacy-contact__section-title">マリアージュ</h5>
-                <p><strong>住所：</strong>お問い合わせください</p>
-                <p><strong>電話：</strong><a href="tel:03-xxxx-xxxx">03-xxxx-xxxx</a></p>
-                <p><strong>メール：</strong><a href="mailto:contact@patolaqshe.com">contact@patolaqshe.com</a></p>
-              </div>
-            </div>
+                <p>（2）当社は、上記（1）の個人情報の利用目的と関連性を有すると合理的に認められる範囲内で上記（1）の個人情報の利用目的を変更することがあります。この場合、当社は、速やかに変更後の個人情報の利用目的をお客様に対して通知し、又は公表します。</p>
+                
+                <p>（3）当社は、個人情報の保護に関する法律その他の法定により許容される事由がある場合を除いて、あらかじめお客様の同意を得ない限り、上記（1）（2）の利用目的の達成に必要な範囲を超えて、個人情報を取扱うことは致しません。</p>
+            </section>
 
-            <p style="margin-top: 20px; font-size: 14px; color: #666;">
-              <strong>個人情報保護方針についてのご質問：</strong><br>
-              個人情報の取り扱い、プライバシー保護についてご不明な点がございましたら、<br>
-              お気軽に上記の連絡先までお問い合わせください。
-            </p>
-          </div>
-        </section>
+            <section>
+                <h3>3. 個人情報の適正な取得</h3>
+                <p>（1）当社は、適正な手段に基づき個人情報報を取得するものとし、偽りその他の不正な手段により個人情報を取得することは致しません。</p>
+                <p>（2）当社は、個人情報保護法その他の法令により許容される事由がある場合を除いて、あらかじめお客様の同意を得ない限り、お客様の要配慮個人情報を取得することは致しません。</p>
+            </section>
 
-        <!-- 最後の更新日時 -->
-        <footer class="privacy-modal__footer">
-          <p style="font-size: 12px; color: #999; margin-top: 40px;">
-            本プライバシーポリシーは予告なく改定される場合があります。<br>
-            最新版は常にこのページをご確認ください。
-          </p>
-        </footer>
-      </main>
+            <section>
+                <h3>4. 個人情報の第三者への開示</h3>
+                <p>（1）当社は、原則として、お客様にご提供いただいた個人情報を第三者に開示することはいたしません。但し、以下のような場合、当社は、お客様の個人情報を第三者に開示することができるものとしますので、ご了承下さい。</p>
+                <ul>
+                    <li>個人情報の開示にあたりお客様の事前の同意がある場合</li>
+                    <li>国・地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して、当社が協力する必要がある場合であって、利用者本人の同意を得ることが困難又は当該事務の遂行に支障を及ぼすおそれがある場合</li>
+                    <li>その他の法令により当社による開示又は提供義務が定められている場合</li>
+                    <li>本人又は第三者の生命、身体、財産の保護のために必要がある場合であって、利用者本人の同意を得ることが困難である場合</li>
+                    <li>当社の利用目的の達成に必要な範囲内で個人情報の取り扱いの全部又は一部を委託する場合</li>
+                    <li>当社が合併その他の事由による事業の承継に伴って個人情報が提供される場合</li>
+                    <li>その他本ポリシーに定める利用目的の達成に必要な範囲内で個人情報の開示が必要であると当社が判断した場合</li>
+                </ul>
+
+                <p>（2）当社が、第三者に対して、個人情報を開示する場合には、お客様に対して、以下の項目を明らかにいたします。</p>
+                <ul>
+                    <li>第三者にお客様の個人情報の提供を行うこと</li>
+                    <li>第三者に提供を行うお客様の個人情報の項目</li>
+                    <li>お客様の個人情報を提供する第三者の範囲</li>
+                    <li>お客様の個人情報の開示を受ける第三者の利用目的</li>
+                    <li>個人情報の管理について責任を有する者の氏名又は名称</li>
+                    <li>個人情報の管理を有する者が法人の場合は、代表者名と会社所在地</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>5. 個人情報の安全管理等について</h3>
+                <p>（1）当社は、利用目的の達成に必要な範囲内において、個人情報を正確かつ最新の内容に保つように努めるものとします。</p>
+                <p>（2）当社は、その取り扱う個人情報につき、漏洩、滅失または毀損の防止その他個人情報の安全管理のために必要かつ適切な措置を講じるものとし、当社の従業員及び委託先に対して必要かつ適切な監督を行い、「各サロン」でご提供いただいたお客様の個人情報は、「各サロン」の責任者が責任を持って管理するものとします。</p>
+            </section>
+
+            <section>
+                <h3>6. インターネット上のプライバシーについて</h3>
+                <p>当社に関係のない、掲示板・チャット・その他ネット上の公共機関において、お客様が自発的に個人情報を開示した場合、その情報は他の利用者によって使用・悪用される可能性を留意してご利用ください。当社はこれらの独立した規約や活動に対していかなる義務や責任も負いかねます。</p>
+            </section>
+
+            <section>
+                <h3>7. 保有個人情報の開示等の請求等</h3>
+                <p>（1）個人情報の保護に関する法律の定めに基づき、お客様から、当該お客様が識別される保有個人情報の利用目的の通知のご請求があった場合、当社は、お客様ご本人からのお求めであることを確認したうえで、個人情報保護法の定めに従い、速やかに対応致します。なお、保有個人情報の利用目的の通知につきましては、手数料を頂戴しておりますので、あらかじめご了承ください。</p>
+                <p>（2）個人情報の保護に関する法律の定めに基づき、お客様から、当該お客様が識別される保有個人情報の開示、訂正等又は利用停止等のご請求があった場合、当社は、お客様ご本人からのご請求であることを確認したうえで、個人情報の保護に関する法律の定めに従い、速やかにご対応致します。なお、個人情報の開示につきましては、手数料を頂戴しておりますので、あらかじめ了承ください。</p>
+            </section>
+
+            <section>
+                <h3>8. Cookie（クッキー）その他の技術の利用</h3>
+                <p>お客様は、本ウェブサイトの利用において、次の方法及び目的における「Cookie（クッキー）」情報の収集に許可を与えるものとします。</p>
+                
+                <p>（1）本ウェブサイトではサービス向上のため、Google Inc．が提供する「Google Analytics」を利用しております。Google Analyticsは、ユーザーの環境上に「Cookie（クッキー）」という情報を生成することで、IPアドレス等のユーザーの情報の一部がGoogle Inc．に送信することがあります。それらの情報は、本サイトにおけるユーザー全体に対して行動分析を行うことで、本ウェブサイト及び当社の提供するその他のサービスの品質向上のために使用されます（ユーザー個人を特定でするものではありません）。</p>
+                
+                <p>（2）第三者が、本ウェブサイトを訪問したユーザーのCookie情報を取得して、広告配信に利用している場合があります（そのCookie情報に個人情報は含まれません）。第三者により取得された情報に関しては、その第三者が定める個人情報管理方針に従うものとします。なお、Cookie情報は、ユーザー側でブラウザの設定を変更することで、生成を拒否することが可能です。ただし、その場合本ウェブサイト及びそのブラウザで閲覧するすべてのウェブページにおいて機能の一部が利用できなくなる可能性があります。</p>
+
+                <h4>Cookieを利用した広告配信について</h4>
+                <p>Google・Yahoo!を含む第三者配信事業者によって、インターネット上のさまざまなWebサイトに当社の広告が掲載されています。Google・Yahoo!を含む第三者配信事業者はCookieを使用し、当Webサイトに対する過去のアクセス情報に基づいて広告を配信します。ユーザーはGoogle広告のオプトアウトページにアクセスし、GoogleによるCookieの使用を無効にできます。（または、Network Advertising Initiativeのオプトアウトページにアクセスし、第三者配信事業者によるCookieの使用を無効にできます）。</p>
+                
+                <p>▼Yahoo!広告のオプトアウトページ<br>
+                https://btoptout.yahoo.co.jp/optout/index.html</p>
+                
+                <p>▼Google広告のオプトアウトページ<br>
+                https://policies.google.com/technologies/ads</p>
+                
+                <p>▼Network Advertising Initiativeのオプトアウトページ<br>
+                https://optout.networkadvertising.org/?c=1</p>
+            </section>
+
+            <section>
+                <h3>9. 個人情報に関するお問い合わせ</h3>
+                <p>当社は、お客様からお客様ご自身の個人情報についての照会、修正、削除若しくは利用停止等のご依頼又はその他当社に関する苦情・相談等のお申し出があった場合には、合理的な範囲内において適切に対応いたします。お申し出をいただく場合には、下記問い合せ先宛にご連絡下さい。</p>
+                
+                <p>その他、ご提供いただいた個人情報の取扱いに関するご要望・お問い合わせは、下記までお願いいたします。</p>
+                
+                <div class="company-info">
+                    <p>〒150-0034<br>
+                    東京都渋谷区代官山町18-8 堀井代官山ビル3F<br>
+                    TEL: 03-5489-7118</p>
+                    
+                    <p>バストケア専門サロン Patolaqshe（パトラクシェ）<br>
+                    代表　北野美帆<br>
+                    個人情報 係</p>
+                </div>
+            </section>
+
+            <section>
+                <h3>10. 本ポリシーの変更</h3>
+                <p>当社は、お客様の個人情報の取り扱いに関する運用状況を適宜見直し、継続的な改善に努めるものとし、必要に応じて本ポリシーを変更することがあります。当社が本ポリシーを変更した場合には、当社のホームページに掲載する方法により、お客様にお知らせ致します。</p>
+                
+                <p>改定日：令和6年12月8日</p>
+            </section>
+        </div>
     </div>
-  </div>
 </div>
