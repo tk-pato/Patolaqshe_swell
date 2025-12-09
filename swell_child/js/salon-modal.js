@@ -1,9 +1,9 @@
 /**
- * Salon Modal JavaScript (Angelica完全準拠版)
- * サロンポップアップ機能
+ * Salon Modal JavaScript
+ * サロンモーダルウィンドウ機能（700ms統一版）
  * 
- * @version 3.0.0
- * @date 2025-12-04
+ * @version 4.0.0
+ * @date 2025-12-09
  */
 
 (function() {
@@ -11,9 +11,8 @@
     
     function initSalonModal() {
         // STEP1: モーダルをbody直下に移動
-        const modals = document.querySelectorAll('.js-modal_wrap');
+        const modals = document.querySelectorAll('.p-salon');
         modals.forEach(function(modal) {
-            // ブロック内に閉じ込められているモーダルをbody直下に移動
             document.body.appendChild(modal);
             console.log('[Salon Modal] モーダルをbody直下に移動:', modal.id);
         });
@@ -28,7 +27,7 @@
         
         console.log('[Salon Modal] 初期化開始:', triggers.length, 'トリガー検出');
         
-        // モーダルを開く（Angelica方式: onclickを使用）
+        // モーダルを開く
         triggers.forEach(function(trigger, index) {
             trigger.onclick = function(e) {
                 e.preventDefault();
@@ -41,27 +40,44 @@
                     return;
                 }
                 
-                // Angelica準拠: closest('.js-modal_wrap')を使用
-                const modalWrap = modalElement.closest('.js-modal_wrap') || modalElement;
-                modalWrap.classList.add('js-modalitem_open');
+                console.log('[Salon Modal] モーダル要素取得成功:', modalElement);
+                
+                // 1. まず表示
+                modalElement.classList.add('js-modalitem_open');
                 document.body.classList.add('js-modal_open');
                 
-                console.log('[Salon Modal] モーダル opened:', modalId);
+                // 2. 次のフレームでアニメーション開始（700ms）
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        modalElement.classList.add('js-modal_animating');
+                    });
+                });
+                
+                console.log('[Salon Modal] モーダル opened (700ms animation)');
             };
             
             console.log('[Salon Modal] トリガー', index + 1, '登録完了:', trigger.getAttribute('data-modal'));
         });
         
-        // モーダルを閉じる（Angelica方式: onclickを使用）
-        const closeBtns = document.querySelectorAll('.js-modal_close');
+        // モーダルを閉じる
+        const closeBtns = document.querySelectorAll('.p-salon .js-modal_close');
         closeBtns.forEach(function(btn, index) {
             btn.onclick = function(e) {
                 e.preventDefault();
                 const modal = this.closest('.js-modal_wrap');
                 if (modal) {
-                    modal.classList.remove('js-modalitem_open');
-                    document.body.classList.remove('js-modal_open');
-                    console.log('[Salon Modal] モーダル closed:', modal.id);
+                    // アニメーション開始
+                    modal.classList.remove('js-modal_animating');
+                    modal.classList.add('js-modal_closing');
+                    
+                    // アニメーション完了後にクラスを削除（700ms）
+                    setTimeout(function() {
+                        modal.classList.remove('js-modalitem_open');
+                        modal.classList.remove('js-modal_closing');
+                        document.body.classList.remove('js-modal_open');
+                    }, 700);
+                    
+                    console.log('[Salon Modal] モーダル closed (700ms animation)');
                 } else {
                     console.warn('[Salon Modal] 閉じるボタンの親モーダルが見つかりません');
                 }
@@ -70,30 +86,58 @@
             console.log('[Salon Modal] 閉じるボタン', index + 1, '登録完了');
         });
         
+        // 背景クリックで閉じる
+        const backgrounds = document.querySelectorAll('.p-salon .js-modal_bg');
+        backgrounds.forEach(function(bg) {
+            bg.onclick = function(e) {
+                if (e.target === this) {
+                    const modal = this.closest('.js-modal_wrap');
+                    if (modal) {
+                        // アニメーション開始
+                        modal.classList.remove('js-modal_animating');
+                        modal.classList.add('js-modal_closing');
+                        
+                        // アニメーション完了後にクラスを削除（700ms）
+                        setTimeout(function() {
+                            modal.classList.remove('js-modalitem_open');
+                            modal.classList.remove('js-modal_closing');
+                            document.body.classList.remove('js-modal_open');
+                        }, 700);
+                        
+                        console.log('[Salon Modal] 背景クリックでモーダル closed (700ms)');
+                    }
+                }
+            };
+        });
+        
         // ESCキーで閉じる
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' || e.keyCode === 27) {
-                const openModal = document.querySelector('.js-modal_wrap.js-modalitem_open');
+                const openModal = document.querySelector('.p-salon.js-modalitem_open');
                 if (openModal) {
-                    openModal.classList.remove('js-modalitem_open');
-                    document.body.classList.remove('js-modal_open');
-                    console.log('[Salon Modal] ESCキーでモーダル closed');
+                    // アニメーション開始
+                    openModal.classList.remove('js-modal_animating');
+                    openModal.classList.add('js-modal_closing');
+                    
+                    // アニメーション完了後にクラスを削除（700ms）
+                    setTimeout(function() {
+                        openModal.classList.remove('js-modalitem_open');
+                        openModal.classList.remove('js-modal_closing');
+                        document.body.classList.remove('js-modal_open');
+                    }, 700);
+                    
+                    console.log('[Salon Modal] ESCキーでモーダル closed (700ms)');
                 }
             }
         });
         
-        console.log('[Salon Modal] 初期化完了');
-        console.log('[Salon Modal] デバッグ情報:');
-        console.log('  - トリガー数:', triggers.length);
-        console.log('  - 閉じるボタン数:', closeBtns.length);
-        console.log('  - モーダル数:', document.querySelectorAll('.js-modal_wrap').length);
+        console.log('[Salon Modal] 初期化完了（700ms統一・複数トリガー対応）');
     }
     
-    // DOM読み込み完了後に初期化
+    // DOMContentLoadedで初期化
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initSalonModal);
     } else {
         initSalonModal();
     }
-    
 })();
