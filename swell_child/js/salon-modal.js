@@ -42,16 +42,10 @@
                 
                 console.log('[Salon Modal] モーダル要素取得成功:', modalElement);
                 
-                // 1. まず表示
+                // モーダルを開く（即座にアニメーション開始）
                 modalElement.classList.add('js-modalitem_open');
+                modalElement.classList.add('js-modal_animating');
                 document.body.classList.add('js-modal_open');
-                
-                // 2. 次のフレームでアニメーション開始（700ms）
-                requestAnimationFrame(function() {
-                    requestAnimationFrame(function() {
-                        modalElement.classList.add('js-modal_animating');
-                    });
-                });
                 
                 console.log('[Salon Modal] モーダル opened (700ms animation)');
             };
