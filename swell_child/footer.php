@@ -86,7 +86,7 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 						<a href="javascript:void(0);" class="ptl-footer__nav-link blog-modal-trigger" data-modal-id="<?php echo esc_attr($modal_id); ?>">BLOG</a>
 					</li>
 						<li class="ptl-footer__nav-item">
-							<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger">PRIVACY</a>
+							<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger">PRIV</a>
 						</li>
 					</ul>
 				</nav>				<!-- コピーライト -->
