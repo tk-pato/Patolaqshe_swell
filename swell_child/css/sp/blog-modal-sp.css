@@ -20,9 +20,7 @@
 }
 
 .blog-modal.js-modalitem_open {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
 }
 
 .blog-modal .js-modal_bg {

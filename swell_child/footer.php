@@ -98,6 +98,10 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	echo do_shortcode('[privacy_modal]');
 ?>
 <?php
+	// ブログモーダルを出力
+	echo do_shortcode('[blog_list_modal]');
+?>
+<?php
 	// 固定フッターメニュー
 	if ( has_nav_menu( 'fix_bottom_menu' ) ) :
 		$cache_key = $SETTING['cache_bottom_menu'] ? 'fix_bottom_menu' : '';
