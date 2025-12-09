@@ -94,6 +94,10 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	?>
 </footer>
 <?php
+	// プライバシーポリシーモーダルを出力
+	echo do_shortcode('[privacy_modal]');
+?>
+<?php
 	// 固定フッターメニュー
 	if ( has_nav_menu( 'fix_bottom_menu' ) ) :
 		$cache_key = $SETTING['cache_bottom_menu'] ? 'fix_bottom_menu' : '';
@@ -105,9 +109,6 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 
 	// モーダル
 	SWELL_Theme::get_parts( 'parts/footer/modals' );
-	
-	// プライバシーポリシーモーダル
-	get_template_part( 'template-parts/section', 'privacy' );
 ?>
 </div><!--/ #all_wrapp-->
 <?php
