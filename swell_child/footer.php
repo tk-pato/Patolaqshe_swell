@@ -111,4 +111,95 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 wp_footer();
 echo $SETTING['foot_code']; // phpcs:ignore
 ?>
+<script>
+// プライバシーポリシーモーダル
+(function() {
+    
+    function initPrivacyModal() {
+        console.log('[Privacy Modal] 初期化開始');
+        
+        const trigger = document.querySelector('.privacy-modal-trigger');
+        const modal = document.querySelector('.privacy-modal');
+        
+        if (!trigger || !modal) {
+            console.log('[Privacy Modal] トリガーまたはモーダルが見つかりません');
+            return;
+        }
+        
+        // モーダルを開く
+        trigger.onclick = function(e) {
+            e.preventDefault();
+            modal.classList.add('js-modalitem_open');
+            document.body.classList.add('js-modal_open');
+            console.log('[Privacy Modal] モーダル opened');
+        };
+        
+        // 閉じるボタン
+        const closeBtns = modal.querySelectorAll('.js-modal_close');
+        closeBtns.forEach(function(btn) {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                // アニメーション開始
+                modal.classList.add('js-modal_closing');
+                
+                // アニメーション完了後にクラスを削除
+                setTimeout(function() {
+                    modal.classList.remove('js-modalitem_open');
+                    modal.classList.remove('js-modal_closing');
+                    document.body.classList.remove('js-modal_open');
+                }, 700); // CSS transitionと同じ時間
+                
+                console.log('[Privacy Modal] モーダル closed');
+            };
+        });
+        
+        // 背景クリック
+        const bg = modal.querySelector('.js-modal_bg');
+        if (bg) {
+            bg.onclick = function(e) {
+                if (e.target === bg) {
+                    e.preventDefault();
+                    // アニメーション開始
+                    modal.classList.add('js-modal_closing');
+                    
+                    // アニメーション完了後にクラスを削除
+                    setTimeout(function() {
+                        modal.classList.remove('js-modalitem_open');
+                        modal.classList.remove('js-modal_closing');
+                        document.body.classList.remove('js-modal_open');
+                    }, 700); // CSS transitionと同じ時間
+                    
+                    console.log('[Privacy Modal] 背景クリックでモーダル closed');
+                }
+            };
+        }
+        
+        // ESCキー
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('js-modalitem_open')) {
+                // アニメーション開始
+                modal.classList.add('js-modal_closing');
+                
+                // アニメーション完了後にクラスを削除
+                setTimeout(function() {
+                    modal.classList.remove('js-modalitem_open');
+                    modal.classList.remove('js-modal_closing');
+                    document.body.classList.remove('js-modal_open');
+                }, 700); // CSS transitionと同じ時間
+                
+                console.log('[Privacy Modal] ESCキーでモーダル closed');
+            }
+        });
+        
+        console.log('[Privacy Modal] 初期化完了');
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPrivacyModal);
+    } else {
+        initPrivacyModal();
+    }
+    
+})();
+</script>
 </body></html>

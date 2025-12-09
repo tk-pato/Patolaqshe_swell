@@ -719,3 +719,206 @@ Version: 1.0.0
   outline: none;
 }
 
+/* =====================================================
+   プライバシーポリシーモーダル
+   ===================================================== */
+
+/* モーダル基本構造 */
+.privacy-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+.privacy-modal.js-modalitem_open {
+    display: block;
+}
+
+/* 背景オーバーレイ */
+.privacy-modal .js-modal_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+/* モーダルコンテンツ */
+.privacy-modal .js-modal_cont {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 90%;
+    max-width: 800px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    overflow-y: auto;
+    z-index: 1;
+    transform: translateX(100%);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 開いた状態 */
+.privacy-modal.js-modalitem_open .js-modal_cont {
+    transform: translateX(0);
+}
+
+/* 閉じるアニメーション */
+.privacy-modal.js-modal_closing .js-modal_cont {
+    transform: translateX(100%);
+}
+
+/* 閉じるボタン */
+.privacy-modal .js-modal_close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.privacy-modal .js-modal_close:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.privacy-modal .js-modal_close svg {
+    width: 20px;
+    height: 20px;
+    stroke: #333;
+}
+
+/* コンテンツエリア */
+.privacy-modal__content {
+    padding: 80px 40px 40px;
+    color: #333;
+}
+
+.privacy-modal__content h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #333;
+}
+
+.privacy-modal__content section {
+    margin-bottom: 40px;
+}
+
+.privacy-modal__content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.privacy-modal__content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.privacy-modal__content p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.privacy-modal__content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.privacy-modal__content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.privacy-modal__content ul li::before {
+    content: '・';
+    position: absolute;
+    left: 0;
+    color: #333;
+}
+
+.privacy-modal__content .company-info {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.privacy-modal__content .company-info p {
+    margin-bottom: 10px;
+}
+
+/* SPレイアウト */
+@media (max-width: 767px) {
+    .privacy-modal .js-modal_cont {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .privacy-modal__content {
+        padding: 60px 20px 40px;
+    }
+    
+    .privacy-modal__content h2 {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    
+    .privacy-modal__content h3 {
+        font-size: 18px;
+    }
+    
+    .privacy-modal__content h4 {
+        font-size: 15px;
+    }
+    
+    .privacy-modal__content p,
+    .privacy-modal__content ul li {
+        font-size: 13px;
+    }
+    
+    .privacy-modal .js-modal_close {
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* モーダル表示時のbodyスクロール防止 */
+body.js-modal_open {
+    overflow: hidden;
+}
