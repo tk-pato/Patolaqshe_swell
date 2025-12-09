@@ -3782,7 +3782,7 @@ function pato_enqueue_salon_modal_assets()
     'pato-salon-modal-sp',
     get_stylesheet_directory_uri() . '/css/sp/salon-modal-sp.css',
     array(),
-    '4.0.1',
+    '4.0.2',
     'screen and (max-width: 767px)'
   );
 }
