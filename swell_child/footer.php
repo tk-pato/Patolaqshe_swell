@@ -74,7 +74,16 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 							<a href="<?php echo esc_url(home_url('/faq/')); ?>" class="ptl-footer__nav-link">FAQ</a>
 						</li>
 					<li class="ptl-footer__nav-item">
-						<a href="#" class="ptl-footer__nav-link blog-modal-trigger">BLOG</a>
+						<?php
+						// 現在のページを判定してモーダルIDを切り替え
+						$modal_id = 'blog-modal-all'; // デフォルト：グランドトップ
+						if (is_page('daikanyama')) {
+							$modal_id = 'blog-modal-daikanyama';
+						} elseif (is_page('ginza')) {
+							$modal_id = 'blog-modal-ginza';
+						}
+						?>
+						<a href="#" class="ptl-footer__nav-link blog-modal-trigger" data-modal-id="<?php echo esc_attr($modal_id); ?>">BLOG</a>
 					</li>
 						<li class="ptl-footer__nav-item">
 							<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger">PRIVACY</a>
@@ -98,8 +107,17 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	echo do_shortcode('[privacy_modal]');
 ?>
 <?php
-	// ブログモーダルを出力
-	echo do_shortcode('[blog_list_modal]');
+	// ブログモーダルを出力（ページごとに店舗別）
+	if (is_page('daikanyama')) {
+		// 代官山ページ：グランドのみ + 代官山
+		echo do_shortcode('[blog_list_modal store="daikanyama"]');
+	} elseif (is_page('ginza')) {
+		// 銀座ページ：グランドのみ + 銀座
+		echo do_shortcode('[blog_list_modal store="ginza"]');
+	} else {
+		// グランドトップ：すべて
+		echo do_shortcode('[blog_list_modal]');
+	}
 ?>
 <?php
 	// 固定フッターメニュー
