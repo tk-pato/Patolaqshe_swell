@@ -3803,16 +3803,8 @@ function pato_enqueue_blog_modal_assets()
   );
 
   // サイトナビ BLOG モーダルトリガー用 JS
-  $sitenav_js_path = get_stylesheet_directory() . '/js/sitenav-blog-modal.js';
-  if (file_exists($sitenav_js_path)) {
-    wp_enqueue_script(
-      'sitenav-blog-modal',
-      get_stylesheet_directory_uri() . '/js/sitenav-blog-modal.js',
-      array('pato-blog-modal'),
-      filemtime($sitenav_js_path),
-      true
-    );
-  }
+  // サイトナビおよびニュースのモーダルトリガーは
+  // `swell_child/js/modal-triggers.js` に統合しました。個別ファイルの読み込みは不要です。
 
   // CSS PC
   $css_pc_path = get_stylesheet_directory() . '/css/pc/blog-modal-pc.css';
@@ -4528,20 +4520,32 @@ add_action('wp_enqueue_scripts', 'pato_enqueue_news_modal_assets');
 /**
  * ニュースセクションMOREボタンモーダルトリガー用JS
  */
-function pato_enqueue_news_more_trigger()
+function pato_enqueue_modal_triggers()
 {
-  $js_path = get_stylesheet_directory() . '/js/news-more-trigger.js';
+  // 統合トリガーファイル
+  $js_path = get_stylesheet_directory() . '/js/modal-triggers.js';
   if (file_exists($js_path)) {
+    // blog/news モーダル本体に依存させる
+    $deps = array();
+    $blog_modal_path = get_stylesheet_directory() . '/js/blog-modal.js';
+    $news_modal_path = get_stylesheet_directory() . '/js/news-modal.js';
+    if (file_exists($blog_modal_path)) {
+      $deps[] = 'pato-blog-modal';
+    }
+    if (file_exists($news_modal_path)) {
+      $deps[] = 'pato-news-modal';
+    }
+
     wp_enqueue_script(
-      'news-more-trigger',
-      get_stylesheet_directory_uri() . '/js/news-more-trigger.js',
-      array('pato-news-modal'),
+      'pato-modal-triggers',
+      get_stylesheet_directory_uri() . '/js/modal-triggers.js',
+      $deps,
       filemtime($js_path),
       true
     );
   }
 }
-add_action('wp_enqueue_scripts', 'pato_enqueue_news_more_trigger');
+add_action('wp_enqueue_scripts', 'pato_enqueue_modal_triggers');
 
 /**
  * ========================================

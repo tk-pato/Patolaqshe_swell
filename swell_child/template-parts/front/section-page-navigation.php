@@ -95,7 +95,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
             ?>
                 <a class="ptlNavHero__btn" href="<?php echo esc_url($href); ?>">
                     <span class="ptlNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-                                                        ?></span>
+                                                    ?></span>
                     <span class="ptlNavHero__label"><?php echo esc_html($label); ?></span>
                 </a>
             <?php endforeach; ?>
