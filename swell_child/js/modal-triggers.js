@@ -41,11 +41,13 @@
   }
 
   function initNewsMoreTrigger() {
-    const moreBtn = document.querySelector('.ptlNews__moreBtn');
-    if (!moreBtn) return;
-    moreBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      openModalById('news-modal-all');
+    const moreBtns = document.querySelectorAll('.ptlNews__moreBtn');
+    if (!moreBtns.length) return;
+    moreBtns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModalById('news-modal-all');
+      });
     });
   }
 
