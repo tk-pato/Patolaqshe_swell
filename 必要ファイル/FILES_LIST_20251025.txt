@@ -290,3 +290,4 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/temp
 # - 常に最新の main ブランチを参照
 
 swell_child/img/news-modal.jpg
+swell_child/js/modal-triggers.js
