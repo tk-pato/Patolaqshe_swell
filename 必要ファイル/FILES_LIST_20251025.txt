@@ -184,6 +184,9 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/s
 # js/blog-modal.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/blog-modal.js
 
+# js/news-modal.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/news-modal.js
+
 # js/sitenav-blog-modal.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/sitenav-blog-modal.js
 
@@ -207,8 +210,14 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/
 # css/pc/blog-modal-pc.css
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/blog-modal-pc.css
 
+# css/pc/news-modal-pc.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/pc/news-modal-pc.css
+
 # css/sp/blog-modal-sp.css
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/blog-modal-sp.css
+
+# css/sp/news-modal-sp.css
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/css/sp/news-modal-sp.css
 
 # ========================================
 # テンプレートパーツ（最新版）
