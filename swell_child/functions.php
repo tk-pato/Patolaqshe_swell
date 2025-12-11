@@ -1,3 +1,91 @@
+/**
+ * ========================================
+ * ニュースモーダルウィンドウ
+ * ========================================
+ * 使い方:
+ * [news_list_modal]
+ */
+function ptl_news_list_modal_shortcode($atts)
+{
+  $atts = shortcode_atts(array(
+    'store' => 'all',
+  ), $atts);
+
+  $store = sanitize_text_field($atts['store']);
+
+  // ニュース記事を取得
+  $args = array(
+    'post_type' => 'post',
+    'posts_per_page' => -1,
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'meta_query' => array(
+      array(
+        'key' => '_post_category',
+        'value' => 'news',
+        'compare' => '='
+      )
+    )
+  );
+
+  // 店舗指定がある場合
+  if ($store !== 'all') {
+    $args['tax_query'] = array(
+      array(
+        'taxonomy' => 'store_location',
+        'field' => 'slug',
+        'terms' => $store,
+      )
+    );
+  }
+
+  $news_posts = get_posts($args);
+
+  // モーダルID生成
+  $modal_id = 'news-modal-' . $store;
+
+  ob_start();
+?>
+
+  <!-- ニュースモーダル本体 -->
+  <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap news-modal">
+    <div class="js-modal_cont">
+      <button class="js-modal_close news-modal__close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="news-modal__content">
+        <!-- バナー画像 -->
+        <div class="news-modal__hero">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/news-modal.jpg" alt="NEWS" loading="lazy">
+          <div class="news-modal__hero-text">NEWS</div>
+        </div>
+
+        <!-- ニュースリスト -->
+        <div class="news-modal__list">
+          <?php if (!empty($news_posts)): ?>
+            <?php foreach ($news_posts as $post): ?>
+              <a href="<?php echo get_permalink($post->ID); ?>" class="news-modal__item">
+                <span class="news-modal__date"><?php echo get_the_date('Y.m.d', $post->ID); ?></span>
+                <span class="news-modal__title"><?php echo esc_html(get_the_title($post->ID)); ?></span>
+              </a>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <p class="news-modal__empty">まだニュース記事がありません。</p>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+    <div class="js-modal_bg js-modal_close"></div>
+  </div>
+
+<?php
+  return ob_get_clean();
+}
+add_shortcode('news_list_modal', 'ptl_news_list_modal_shortcode');
 <?php
 if (!defined('ABSPATH')) exit;
 
