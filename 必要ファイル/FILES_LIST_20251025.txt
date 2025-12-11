@@ -289,3 +289,4 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/temp
 # - .broken ファイルを削除
 # - 常に最新の main ブランチを参照
 
+swell_child/img/news-modal.jpg
