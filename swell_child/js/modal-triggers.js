@@ -63,7 +63,7 @@
       if (label && label.textContent.trim() === 'SALON') {
         btn.addEventListener('click', function(e) {
           e.preventDefault();
-          const salonSection = document.getElementById('section-salon');
+          const salonSection = document.getElementById('salon');
           if (salonSection) {
             salonSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             console.log('[Modal Triggers] SALONセクションまでスクロールしました');
