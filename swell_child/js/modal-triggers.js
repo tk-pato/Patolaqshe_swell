@@ -51,9 +51,52 @@
     });
   }
 
+  /**
+   * サイトナビのSALONバナーをクリックするとサロンセクションまでスクロール
+   */
+  function initSiteNavSalonScroll() {
+    const navButtons = document.querySelectorAll('.ptlNavHero__btn');
+    if (!navButtons.length) return;
+
+    navButtons.forEach(function(btn) {
+      const label = btn.querySelector('.ptlNavHero__label');
+      if (label && label.textContent.trim() === 'SALON') {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const salonSection = document.getElementById('section-salon');
+          if (salonSection) {
+            salonSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            console.log('[Modal Triggers] SALONセクションまでスクロールしました');
+          } else {
+            console.error('[Modal Triggers] SALONセクションが見つかりません');
+          }
+        });
+        console.log('[Modal Triggers] SALONバナーにスクロールイベントを設定');
+      }
+    });
+  }
+
+  /**
+   * サイトナビのCONTACTバナーにWOWモーダルトリガークラスを追加
+   */
+  function initSiteNavContactModal() {
+    const navButtons = document.querySelectorAll('.ptlNavHero__btn');
+    if (!navButtons.length) return;
+
+    navButtons.forEach(function(btn) {
+      const label = btn.querySelector('.ptlNavHero__label');
+      if (label && label.textContent.trim() === 'CONTACT') {
+        btn.classList.add('wow-modal-id-1');
+        console.log('[Modal Triggers] CONTACTバナーにWOWモーダルトリガークラスを追加');
+      }
+    });
+  }
+
   function init() {
     initSiteNavBlogModal();
     initNewsMoreTrigger();
+    initSiteNavSalonScroll();
+    initSiteNavContactModal();
   }
 
   if (document.readyState === 'loading') {
