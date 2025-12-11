@@ -189,6 +189,9 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/n
 
 # js/sitenav-blog-modal.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/sitenav-blog-modal.js
+ 
+# js/news-more-trigger.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/news-more-trigger.js
 
 # js/faq-modal.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/faq-modal.js
