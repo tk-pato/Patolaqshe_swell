@@ -4526,6 +4526,24 @@ function pato_enqueue_news_modal_assets()
 add_action('wp_enqueue_scripts', 'pato_enqueue_news_modal_assets');
 
 /**
+ * ニュースセクションMOREボタンモーダルトリガー用JS
+ */
+function pato_enqueue_news_more_trigger()
+{
+  $js_path = get_stylesheet_directory() . '/js/news-more-trigger.js';
+  if (file_exists($js_path)) {
+    wp_enqueue_script(
+      'news-more-trigger',
+      get_stylesheet_directory_uri() . '/js/news-more-trigger.js',
+      array('pato-news-modal'),
+      filemtime($js_path),
+      true
+    );
+  }
+}
+add_action('wp_enqueue_scripts', 'pato_enqueue_news_more_trigger');
+
+/**
  * ========================================
  * FAQモーダル
  * ========================================
