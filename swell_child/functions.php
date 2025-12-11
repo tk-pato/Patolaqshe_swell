@@ -3802,6 +3802,18 @@ function pato_enqueue_blog_modal_assets()
     true
   );
 
+  // サイトナビ BLOG モーダルトリガー用 JS
+  $sitenav_js_path = get_stylesheet_directory() . '/js/sitenav-blog-modal.js';
+  if (file_exists($sitenav_js_path)) {
+    wp_enqueue_script(
+      'sitenav-blog-modal',
+      get_stylesheet_directory_uri() . '/js/sitenav-blog-modal.js',
+      array('pato-blog-modal'),
+      filemtime($sitenav_js_path),
+      true
+    );
+  }
+
   // CSS PC
   $css_pc_path = get_stylesheet_directory() . '/css/pc/blog-modal-pc.css';
   if (file_exists($css_pc_path)) {

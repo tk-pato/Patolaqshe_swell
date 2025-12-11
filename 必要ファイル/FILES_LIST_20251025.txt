@@ -184,6 +184,9 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/s
 # js/blog-modal.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/blog-modal.js
 
+# js/sitenav-blog-modal.js
+https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/sitenav-blog-modal.js
+
 # js/faq-modal.js
 https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/js/faq-modal.js
 
