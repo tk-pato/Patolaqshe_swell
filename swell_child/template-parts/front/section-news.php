@@ -72,4 +72,5 @@ $news_q = $force_fallback ? null : new WP_Query($query_args);
             </a>
         </div>
     </div>
+    <?php echo do_shortcode('[news_list_modal]'); ?>
 </section>
