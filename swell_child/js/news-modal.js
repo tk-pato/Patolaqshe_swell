@@ -20,11 +20,6 @@
         // STEP2: トリガーボタンの登録
         const triggers = document.querySelectorAll('.news-modal-trigger');
         
-        if (!triggers.length) {
-            console.warn('[News Modal] トリガーが見つかりません');
-            return;
-        }
-        
         console.log('[News Modal] 初期化開始:', triggers.length, 'トリガー検出');
         
         // モーダルを開く
