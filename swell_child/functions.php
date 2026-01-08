@@ -4652,3 +4652,69 @@ function ptl_privacy_modal_shortcode()
   return ob_get_clean();
 }
 add_shortcode('privacy_modal', 'ptl_privacy_modal_shortcode');
+// =====================================================
+// お客様の声ショートコード
+// =====================================================
+add_shortcode('voice_list', 'display_voice_list');
+function display_voice_list() {
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => 10,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'post_tag',
+                'field' => 'slug',
+                'terms' => 'お客様の声'
+            )
+        )
+    );
+    
+    $query = new WP_Query($args);
+    $output = '<div class="voice-list-custom">';
+    
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            
+            $customer_name = get_post_meta(get_the_ID(), 'お客様名', true);
+            $voice_title = get_post_meta(get_the_ID(), '見出し', true);
+            $rating = get_post_meta(get_the_ID(), '星評価', true);
+            $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
+            
+            $output .= '<div class="voice-card-item">';
+            
+            // アイキャッチ画像
+            $output .= '<div class="voice-card-thumb">';
+            if ($thumbnail) {
+                $output .= $thumbnail;
+            }
+            $output .= '</div>';
+            
+            // コンテンツ
+            $output .= '<div class="voice-card-content">';
+            
+            if ($voice_title) {
+                $output .= '<h3 class="voice-card-title">' . esc_html($voice_title) . '</h3>';
+            }
+            
+            if ($rating) {
+                $stars = str_repeat('☆', intval($rating));
+                $output .= '<div class="voice-card-rating">' . $stars . '</div>';
+            }
+            
+            if ($customer_name) {
+                $output .= '<div class="voice-card-name">' . esc_html($customer_name) . '</div>';
+            }
+            
+            $output .= '<div class="voice-card-text">' . get_the_content() . '</div>';
+            $output .= '</div>';
+            
+            $output .= '</div>';
+        }
+    }
+    
+    $output .= '</div>';
+    wp_reset_postdata();
+    
+    return $output;
+}
