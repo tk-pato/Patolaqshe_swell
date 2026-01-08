@@ -4676,9 +4676,9 @@ function display_voice_list() {
         while ($query->have_posts()) {
             $query->the_post();
             
-            $customer_name = get_post_meta(get_the_ID(), 'お客様名', true);
-            $voice_title = get_post_meta(get_the_ID(), '見出し', true);
-            $rating = get_post_meta(get_the_ID(), '星評価', true);
+            $customer_name = get_post_meta(get_the_ID(), '_customer_name', true);
+            $voice_title = get_post_meta(get_the_ID(), '_uservoice_title', true);
+            $rating = get_post_meta(get_the_ID(), '_rating', true);
             $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
             
             $output .= '<div class="voice-card-item">';
