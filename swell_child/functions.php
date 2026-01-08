@@ -4662,8 +4662,8 @@ function display_voice_list() {
         'posts_per_page' => 10,
         'tax_query' => array(
             array(
-                'taxonomy' => 'post_tag',
-                'field' => 'slug',
+                'taxonomy' => 'article_type',
+                'field' => 'name',
                 'terms' => 'お客様の声'
             )
         )
