@@ -126,7 +126,7 @@ if (!defined('ABSPATH')) exit;
 
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
             <div class="ptlVoice__more">
-                <a class="ptlNews__moreBtn" href="<?php echo esc_url(home_url('/uservoice/')); ?>">
+                <a class="ptlVoice__moreBtn" href="https://patolaqshe.com/media/voice/">
                     <span class="ptlNews__moreLabel">MORE</span>
                     <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
                 </a>

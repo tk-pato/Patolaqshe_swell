@@ -50,13 +50,13 @@ $cards = [
     [
         'title' => 'BRIDAL',
         'desc' => '結婚式を最高の思い出にするための特別なプランをご用意しています。',
-        'url' => home_url('/bridal/'),
+        'url' => 'https://patolaqshe.com/media/mariage/',
         'image' => $resolve_image($card1_img, $default_img),
     ],
     [
         'title' => 'INFORMATION',
         'desc' => '最新のキャンペーン情報やお得なプランをいち早くお届けします。',
-        'url' => home_url('/info/'),
+        'url' => 'https://patolaqshe.com/media/informatio/',
         'image' => $resolve_image($card2_img, $default_img),
     ],
     [
