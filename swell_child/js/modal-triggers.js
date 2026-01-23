@@ -41,9 +41,7 @@
   }
 
   function initNewsMoreTrigger() {
-    const newsSection = document.getElementById('news');
-    if (!newsSection) return;
-    const moreBtns = newsSection.querySelectorAll('.ptlNews__moreBtn');
+    const moreBtns = document.querySelectorAll('.news-modal-trigger');
     if (!moreBtns.length) return;
     moreBtns.forEach(function(btn) {
       btn.addEventListener('click', function(e) {

@@ -66,7 +66,7 @@ $news_q = $force_fallback ? null : new WP_Query($query_args);
         </ul>
 
         <div class="ptlNews__more">
-            <a class="ptlNews__moreBtn" href="<?php echo esc_url($more_url); ?>">
+            <a class="ptlNews__moreBtn news-modal-trigger" href="<?php echo esc_url($more_url); ?>">
                 <span class="ptlNews__moreLabel">MORE</span>
                 <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
             </a>
