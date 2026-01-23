@@ -16,7 +16,7 @@ $default_items = [
     ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => home_url('/collection/')],
     ['label' => 'SALON',      'slug' => 'salon',      'url' => home_url('/salon/')],
     ['label' => 'BRIDAL',     'slug' => 'bridal',     'url' => 'https://patolaqshe.com/media/mariage/'],
-    ['label' => 'INFO',       'slug' => 'info',       'url' => home_url('/info/'),
+    ['label' => 'INFO',       'slug' => 'info',       'url' => home_url('/info/')],
     // COLUM → BLOG に名称変更
     ['label' => 'BLOG',       'slug' => 'blog',       'url' => (function () {
         $pid = (int) get_option('page_for_posts');

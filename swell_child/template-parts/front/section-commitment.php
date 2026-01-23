@@ -105,7 +105,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
             <?php endforeach; ?>
         </div>
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <a class="ptlCommit__more" href="<?php echo esc_url(home_url('/reason/')); ?>">
+            <a class="ptlCommit__more" href="https://patolaqshe.com/media/about/">
                 <span class="ptlNews__moreLabel">MORE</span>
                 <span class="ptlNews__moreArrow" aria-hidden="true">&rarr;</span>
             </a>
