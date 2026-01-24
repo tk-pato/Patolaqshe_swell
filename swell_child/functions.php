@@ -4745,9 +4745,11 @@ function ptl_register_menu_category_taxonomy()
     'labels' => $labels,
     'show_ui' => true,
     'show_admin_column' => true,
+    'show_in_quick_edit' => true,
+    'meta_box_cb' => null,
+    'show_in_rest' => true, // ブロックエディタで使用可能
     'query_var' => true,
     'rewrite' => array('slug' => 'menu-category'),
-    'show_in_rest' => true, // ブロックエディタで使用可能
     'public' => true,
   );
 
