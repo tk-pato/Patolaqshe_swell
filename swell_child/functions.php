@@ -4024,6 +4024,10 @@ function ptl_register_article_type_taxonomy()
   if (!term_exists('ブログ記事', 'article_type')) {
     wp_insert_term('ブログ記事', 'article_type', array('slug' => 'blog'));
   }
+
+  if (!term_exists('メニュー', 'article_type')) {
+    wp_insert_term('メニュー', 'article_type', array('slug' => 'menu'));
+  }
 }
 add_action('init', 'ptl_register_article_type_taxonomy');
 
@@ -4718,3 +4722,44 @@ function display_voice_list() {
     
     return $output;
 }
+
+// メニューカテゴリータクソノミーの登録
+function ptl_register_menu_category_taxonomy()
+{
+  $labels = array(
+    'name' => 'メニューカテゴリー',
+    'singular_name' => 'メニューカテゴリー',
+    'search_items' => 'メニューカテゴリーを検索',
+    'all_items' => 'すべてのメニューカテゴリー',
+    'edit_item' => 'メニューカテゴリーを編集',
+    'update_item' => 'メニューカテゴリーを更新',
+    'add_new_item' => '新規メニューカテゴリーを追加',
+    'new_item_name' => '新しいメニューカテゴリー名',
+    'menu_name' => 'メニューカテゴリー',
+  );
+
+  $args = array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'menu-category'),
+    'show_in_rest' => true, // ブロックエディタで使用可能
+    'public' => true,
+  );
+
+  register_taxonomy('menu_category', array('post'), $args);
+
+  // デフォルトタームの登録
+  if (!term_exists('バスト', 'menu_category')) {
+    wp_insert_term('バスト', 'menu_category', array('slug' => 'bust'));
+  }
+  if (!term_exists('フェイシャル', 'menu_category')) {
+    wp_insert_term('フェイシャル', 'menu_category', array('slug' => 'facial'));
+  }
+  if (!term_exists('ボディ', 'menu_category')) {
+    wp_insert_term('ボディ', 'menu_category', array('slug' => 'body'));
+  }
+}
+add_action('init', 'ptl_register_menu_category_taxonomy');
