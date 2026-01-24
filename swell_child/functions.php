@@ -673,22 +673,6 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
       'step' => 0.05,
     ],
   ]);
-
-  // 動画（メディア）
-  $wp_customize->add_setting('ptl_nav_video', [
-    'type'              => 'theme_mod',
-    'transport'         => 'refresh',
-    'sanitize_callback' => function ($v) {
-      return is_numeric($v) ? (int)$v : esc_url_raw($v);
-    },
-  ]);
-  if (class_exists('WP_Customize_Media_Control')) {
-    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'ptl_nav_video', [
-      'label'     => '背景動画（推奨: MP4）',
-      'section'   => 'ptl_navigation',
-      'mime_type' => 'video',
-    ]));
-  }
 });
 
 // ===========================================
@@ -1061,7 +1045,6 @@ add_action('wp_enqueue_scripts', function () {
   $sections = [
     ['section-infohub', 'ptlHub', ['child_style'], '-sp', 'section-infohub.js'],
     ['section-news', 'ptlNews', ['child_style'], '-sp', null],
-    ['footer', 'ptl-footer', ['child_style'], '-sp', null],
   ];
 
   foreach ($sections as list($file_prefix, $handle, $deps, $sp_suffix, $js_file)) {
