@@ -1424,11 +1424,13 @@ function ptl_post_type_selector_callback($post)
   echo '<option value="news"' . selected($post_category, 'news', false) . '>📰 ニュース</option>';
   echo '<option value="uservoice"' . selected($post_category, 'uservoice', false) . '>⭐ お客様の声</option>';
   echo '<option value="blog"' . selected($post_category, 'blog', false) . '>📝 ブログ記事</option>';
+  echo '<option value="menu"' . selected($post_category, 'menu', false) . '>🍽️ メニュー</option>';
   echo '</select>';
   echo '<p class="description">記事の種別を選択してください。<br>';
   echo '・<strong>ニュース</strong>：NEWSセクションに表示<br>';
   echo '・<strong>お客様の声</strong>：USER\'S VOICEセクションに表示<br>';
-  echo '・<strong>ブログ記事</strong>：ブログセクションに表示</p>';
+  echo '・<strong>ブログ記事</strong>：ブログセクションに表示<br>';
+  echo '・<strong>メニュー</strong>：メニュースライダーに表示</p>';
 }
 
 // お客様の声専用メタフィールドの条件表示
