@@ -1626,12 +1626,24 @@ function ptl_menu_conditional_meta_box_callback($post)
   wp_nonce_field('ptl_menu_conditional_meta', 'ptl_menu_conditional_nonce');
 
   $post_category = get_post_meta($post->ID, '_post_category', true);
+  
+  // 既存フィールド
   $menu_card_title = get_post_meta($post->ID, '_menu_card_title', true);
   $menu_subtitle = get_post_meta($post->ID, '_menu_subtitle', true);
   $menu_description = get_post_meta($post->ID, '_menu_description', true);
   $menu_duration = get_post_meta($post->ID, '_menu_duration', true);
   $menu_price = get_post_meta($post->ID, '_menu_price', true);
   $menu_regular_price = get_post_meta($post->ID, '_menu_regular_price', true);
+  
+  // 新規フィールド
+  $menu_slug = get_post_meta($post->ID, '_menu_slug', true);
+  $menu_category = get_post_meta($post->ID, '_menu_category', true);
+  $menu_locations = get_post_meta($post->ID, '_menu_locations', true);
+  if (!is_array($menu_locations)) {
+    $menu_locations = array();
+  }
+  $menu_booking_type = get_post_meta($post->ID, '_menu_booking_type', true);
+  $menu_page_url = get_post_meta($post->ID, '_menu_page_url', true);
 
   echo '<div id="menu-fields" style="display:' . ($post_category === 'menu' ? 'block' : 'none') . ';">';
   echo '<table class="form-table">';
@@ -1703,9 +1715,85 @@ function ptl_menu_conditional_meta_box_callback($post)
   echo '</div>';
   echo '</div>';
   
+  // 区切り線
+  echo '<hr style="margin:30px 0; border:none; border-top:2px solid #C9A962;" />';
+  echo '<h3 style="color:#C9A962; margin-bottom:20px;">予約関連設定</h3>';
+  
+  echo '<table class="form-table">';
+  
+  // メニュー識別子
+  echo '<tr>';
+  echo '<th><label for="menu_slug">メニュー識別子 <span style="color:red;">*</span></label></th>';
+  echo '<td>';
+  echo '<input type="text" id="menu_slug" name="menu_slug" value="' . esc_attr($menu_slug) . '" style="width:300px;" placeholder="例: bust-1" pattern="[a-z0-9\-]+" required />';
+  echo '<p class="description">必須。半角英数字とハイフン（-）のみ。例: bust-1, facial-a, body-x<br>';
+  echo 'GAS予約システムのURLパラメータとして使用されます。</p>';
+  echo '</td>';
+  echo '</tr>';
+  
+  // カテゴリー
+  echo '<tr>';
+  echo '<th><label>カテゴリー <span style="color:red;">*</span></label></th>';
+  echo '<td>';
+  echo '<label style="margin-right:20px;">';
+  echo '<input type="radio" name="menu_category" value="bust" ' . checked($menu_category, 'bust', false) . ' />';
+  echo ' バスト/ボディ';
+  echo '</label>';
+  echo '<label>';
+  echo '<input type="radio" name="menu_category" value="facial" ' . checked($menu_category, 'facial', false) . ' />';
+  echo ' フェイシャル';
+  echo '</label>';
+  echo '<p class="description">必須。GASカレンダーの振り分けに使用されます。<br>';
+  echo 'バスト/ボディ: 同じカレンダー、フェイシャル: 別カレンダー</p>';
+  echo '</td>';
+  echo '</tr>';
+  
+  // 対象店舗
+  echo '<tr>';
+  echo '<th><label>対象店舗 <span style="color:red;">*</span></label></th>';
+  echo '<td>';
+  echo '<label style="display:block; margin-bottom:8px;">';
+  echo '<input type="checkbox" name="menu_locations[]" value="daikanyama" ' . (in_array('daikanyama', $menu_locations) ? 'checked' : '') . ' />';
+  echo ' 代官山店';
+  echo '</label>';
+  echo '<label style="display:block;">';
+  echo '<input type="checkbox" name="menu_locations[]" value="ginza" ' . (in_array('ginza', $menu_locations) ? 'checked' : '') . ' />';
+  echo ' 銀座店';
+  echo '</label>';
+  echo '<p class="description">必須。このメニューを提供する店舗を選択してください。両方選択可能。</p>';
+  echo '</td>';
+  echo '</tr>';
+  
+  // 予約リンク先
+  echo '<tr>';
+  echo '<th><label>予約リンク先 <span style="color:red;">*</span></label></th>';
+  echo '<td>';
+  echo '<label style="display:block; margin-bottom:8px;">';
+  echo '<input type="radio" name="menu_booking_type" value="page" ' . checked($menu_booking_type, 'page', false) . ' id="booking_type_page" />';
+  echo ' 固定ページ（詳細ページあり）';
+  echo '</label>';
+  echo '<label style="display:block;">';
+  echo '<input type="radio" name="menu_booking_type" value="direct" ' . checked($menu_booking_type, 'direct', false) . ' id="booking_type_direct" />';
+  echo ' 直接予約（GASカレンダーへ直接）';
+  echo '</label>';
+  echo '<p class="description">必須。スワイパーカードまたは一覧カードからのリンク先を選択してください。</p>';
+  echo '</td>';
+  echo '</tr>';
+  
+  // 固定ページURL（条件表示）
+  echo '<tr id="page_url_row" style="display:' . ($menu_booking_type === 'page' ? 'table-row' : 'none') . ';">';
+  echo '<th><label for="menu_page_url">固定ページURL</label></th>';
+  echo '<td>';
+  echo '<input type="text" id="menu_page_url" name="menu_page_url" value="' . esc_attr($menu_page_url) . '" style="width:100%;" placeholder="例: /menu/body-x/" />';
+  echo '<p class="description">「固定ページ」選択時のみ必須。相対パスで入力してください。<br>';
+  echo '例: /menu/body-x/ または https://patolaqshe.com/menu/body-x/</p>';
+  echo '</td>';
+  echo '</tr>';
+  
+  echo '</table>';
   echo '</div>';
 
-  // JavaScript: 記事種別の変更を監視 + 価格プレビュー
+  // JavaScript: 記事種別の変更を監視 + 価格プレビュー + 条件表示
   echo '<script>
   (function($) {
     $(document).ready(function() {
@@ -1754,6 +1842,15 @@ function ptl_menu_conditional_meta_box_callback($post)
       
       // 初回表示時にプレビュー更新
       updatePricePreview();
+      
+      // 予約リンク先の変更を監視（固定ページURL表示/非表示）
+      $("input[name=\"menu_booking_type\"]").on("change", function() {
+        if ($("#booking_type_page").is(":checked")) {
+          $("#page_url_row").show();
+        } else {
+          $("#page_url_row").hide();
+        }
+      });
     });
   })(jQuery);
   </script>';
@@ -1818,6 +1915,42 @@ add_action('save_post', function ($post_id) {
     update_post_meta($post_id, '_menu_regular_price', $regular_price);
   } else {
     delete_post_meta($post_id, '_menu_regular_price');
+  }
+  
+  // メニュー識別子
+  if (isset($_POST['menu_slug'])) {
+    $slug = sanitize_text_field($_POST['menu_slug']);
+    // 半角英数字とハイフンのみ許可
+    $slug = preg_replace('/[^a-z0-9\-]/', '', strtolower($slug));
+    update_post_meta($post_id, '_menu_slug', $slug);
+  }
+  
+  // カテゴリー
+  if (isset($_POST['menu_category'])) {
+    $category = sanitize_text_field($_POST['menu_category']);
+    update_post_meta($post_id, '_menu_category', $category);
+  }
+  
+  // 対象店舗
+  if (isset($_POST['menu_locations']) && is_array($_POST['menu_locations'])) {
+    $locations = array_map('sanitize_text_field', $_POST['menu_locations']);
+    update_post_meta($post_id, '_menu_locations', $locations);
+  } else {
+    delete_post_meta($post_id, '_menu_locations');
+  }
+  
+  // 予約リンク先
+  if (isset($_POST['menu_booking_type'])) {
+    $booking_type = sanitize_text_field($_POST['menu_booking_type']);
+    update_post_meta($post_id, '_menu_booking_type', $booking_type);
+  }
+  
+  // 固定ページURL
+  if (isset($_POST['menu_page_url'])) {
+    $page_url = esc_url_raw($_POST['menu_page_url']);
+    update_post_meta($post_id, '_menu_page_url', $page_url);
+  } else {
+    delete_post_meta($post_id, '_menu_page_url');
   }
 }, 10, 1);
 
