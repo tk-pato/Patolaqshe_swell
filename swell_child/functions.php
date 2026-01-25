@@ -1605,6 +1605,222 @@ add_action('save_post', function ($post_id) {
   }
 });
 
+// ========================================
+// メニュー専用メタフィールド（条件表示）
+// ========================================
+
+// メニュー詳細メタボックスの追加
+add_action('add_meta_boxes', function () {
+  add_meta_box(
+    'menu_details_conditional',
+    'メニュー詳細',
+    'ptl_menu_conditional_meta_box_callback',
+    'post',
+    'normal',
+    'high'
+  );
+});
+
+function ptl_menu_conditional_meta_box_callback($post)
+{
+  wp_nonce_field('ptl_menu_conditional_meta', 'ptl_menu_conditional_nonce');
+
+  $post_category = get_post_meta($post->ID, '_post_category', true);
+  $menu_card_title = get_post_meta($post->ID, '_menu_card_title', true);
+  $menu_subtitle = get_post_meta($post->ID, '_menu_subtitle', true);
+  $menu_description = get_post_meta($post->ID, '_menu_description', true);
+  $menu_duration = get_post_meta($post->ID, '_menu_duration', true);
+  $menu_price = get_post_meta($post->ID, '_menu_price', true);
+  $menu_regular_price = get_post_meta($post->ID, '_menu_regular_price', true);
+
+  echo '<div id="menu-fields" style="display:' . ($post_category === 'menu' ? 'block' : 'none') . ';">';
+  echo '<table class="form-table">';
+
+  // カードタイトル
+  echo '<tr>';
+  echo '<th><label for="menu_card_title">カードタイトル</label></th>';
+  echo '<td>';
+  echo '<input type="text" id="menu_card_title" name="menu_card_title" value="' . esc_attr($menu_card_title) . '" style="width:100%;" maxlength="36" placeholder="例: バストアップコース" />';
+  echo '<p class="description">最大36文字。スライダーカードに表示されるタイトル。</p>';
+  echo '</td>';
+  echo '</tr>';
+
+  // サブタイトル
+  echo '<tr>';
+  echo '<th><label for="menu_subtitle">サブタイトル</label></th>';
+  echo '<td>';
+  echo '<textarea id="menu_subtitle" name="menu_subtitle" rows="3" style="width:100%;" maxlength="70" placeholder="例: 都内随一のフラッシュ2000発×オールハンド施術&#10;サイズアップしたい方におすすめ">' . esc_textarea($menu_subtitle) . '</textarea>';
+  echo '<p class="description">最大70文字。キャッチコピー。改行可能。</p>';
+  echo '</td>';
+  echo '</tr>';
+
+  // ディスクリプション
+  echo '<tr>';
+  echo '<th><label for="menu_description">ディスクリプション</label></th>';
+  echo '<td>';
+  echo '<textarea id="menu_description" name="menu_description" rows="4" style="width:100%;" maxlength="90" placeholder="例: フラッシュ×オールハンドのハイブリッドケア。「理想のフワフワバスト」へ導く、多くのお客様にサイズアップを実感いただいている人気No.1メニューです。">' . esc_textarea($menu_description) . '</textarea>';
+  echo '<p class="description">最大90文字。メニューの説明文。</p>';
+  echo '</td>';
+  echo '</tr>';
+
+  // 施術時間
+  echo '<tr>';
+  echo '<th><label for="menu_duration">施術時間</label></th>';
+  echo '<td>';
+  echo '<input type="number" id="menu_duration" name="menu_duration" value="' . esc_attr($menu_duration) . '" style="width:150px;" placeholder="60" min="0" step="1" />';
+  echo '<span style="margin-left:8px;">分</span>';
+  echo '<p class="description">オプション。半角数字のみ。例: 60、90、120</p>';
+  echo '</td>';
+  echo '</tr>';
+
+  // 体験価格/販売価格
+  echo '<tr>';
+  echo '<th><label for="menu_price">体験価格/販売価格 <span style="color:red;">*</span></label></th>';
+  echo '<td>';
+  echo '<input type="number" id="menu_price" name="menu_price" value="' . esc_attr($menu_price) . '" style="width:200px;" placeholder="5800" min="0" step="1" required />';
+  echo '<span style="margin-left:8px;">円（税込）</span>';
+  echo '<p class="description">必須。半角数字のみ。例: 5800、9500、35000</p>';
+  echo '</td>';
+  echo '</tr>';
+
+  // 通常価格
+  echo '<tr>';
+  echo '<th><label for="menu_regular_price">通常価格</label></th>';
+  echo '<td>';
+  echo '<input type="number" id="menu_regular_price" name="menu_regular_price" value="' . esc_attr($menu_regular_price) . '" style="width:200px;" placeholder="16000" min="0" step="1" />';
+  echo '<span style="margin-left:8px;">円（税込）</span>';
+  echo '<p class="description">オプション。空欄可（安い商品の場合）。半角数字のみ。例: 16000、35000</p>';
+  echo '</td>';
+  echo '</tr>';
+
+  echo '</table>';
+  
+  // 価格表示プレビュー
+  echo '<div style="margin-top:20px; padding:15px; background:#f0f0f1; border-radius:4px;">';
+  echo '<strong>価格表示プレビュー：</strong><br>';
+  echo '<div id="price-preview" style="margin-top:8px; font-size:14px; color:#2c3338;">';
+  echo '入力後に自動更新されます';
+  echo '</div>';
+  echo '</div>';
+  
+  echo '</div>';
+
+  // JavaScript: 記事種別の変更を監視 + 価格プレビュー
+  echo '<script>
+  (function($) {
+    $(document).ready(function() {
+      // 記事種別の変更監視
+      $("#post_category_select").on("change", function() {
+        if ($(this).val() === "menu") {
+          $("#menu-fields").show();
+        } else {
+          $("#menu-fields").hide();
+        }
+      });
+      
+      // 価格プレビュー更新関数
+      function updatePricePreview() {
+        var duration = $("#menu_duration").val();
+        var price = $("#menu_price").val();
+        var regularPrice = $("#menu_regular_price").val();
+        var preview = "";
+        
+        if (!price) {
+          preview = "体験価格/販売価格を入力してください";
+        } else {
+          var priceFormatted = parseInt(price).toLocaleString();
+          
+          if (regularPrice) {
+            var regularPriceFormatted = parseInt(regularPrice).toLocaleString();
+            if (duration) {
+              preview = "体験価格 " + duration + "分 " + priceFormatted + "円（税込） （通常" + regularPriceFormatted + "円）";
+            } else {
+              preview = "体験価格 " + priceFormatted + "円（税込） （通常" + regularPriceFormatted + "円）";
+            }
+          } else {
+            if (duration) {
+              preview = duration + "分 " + priceFormatted + "円（税込）";
+            } else {
+              preview = priceFormatted + "円（税込）";
+            }
+          }
+        }
+        
+        $("#price-preview").text(preview);
+      }
+      
+      // 価格フィールドの変更を監視
+      $("#menu_duration, #menu_price, #menu_regular_price").on("input", updatePricePreview);
+      
+      // 初回表示時にプレビュー更新
+      updatePricePreview();
+    });
+  })(jQuery);
+  </script>';
+}
+
+// メニュー詳細の保存
+add_action('save_post', function ($post_id) {
+  // ノンス検証
+  if (!isset($_POST['ptl_menu_conditional_nonce']) || 
+      !wp_verify_nonce($_POST['ptl_menu_conditional_nonce'], 'ptl_menu_conditional_meta')) {
+    return;
+  }
+
+  // 自動保存時は何もしない
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    return;
+  }
+
+  // 権限チェック
+  if (!current_user_can('edit_post', $post_id)) {
+    return;
+  }
+
+  // カードタイトル
+  if (isset($_POST['menu_card_title'])) {
+    $title = sanitize_text_field($_POST['menu_card_title']);
+    $title = mb_substr($title, 0, 36); // 36文字制限
+    update_post_meta($post_id, '_menu_card_title', $title);
+  }
+
+  // サブタイトル
+  if (isset($_POST['menu_subtitle'])) {
+    $subtitle = sanitize_textarea_field($_POST['menu_subtitle']);
+    $subtitle = mb_substr($subtitle, 0, 70); // 70文字制限
+    update_post_meta($post_id, '_menu_subtitle', $subtitle);
+  }
+
+  // ディスクリプション
+  if (isset($_POST['menu_description'])) {
+    $description = sanitize_textarea_field($_POST['menu_description']);
+    $description = mb_substr($description, 0, 90); // 90文字制限
+    update_post_meta($post_id, '_menu_description', $description);
+  }
+
+  // 施術時間
+  if (isset($_POST['menu_duration']) && $_POST['menu_duration'] !== '') {
+    $duration = intval($_POST['menu_duration']);
+    update_post_meta($post_id, '_menu_duration', $duration);
+  } else {
+    delete_post_meta($post_id, '_menu_duration');
+  }
+
+  // 体験価格/販売価格
+  if (isset($_POST['menu_price']) && $_POST['menu_price'] !== '') {
+    $price = intval($_POST['menu_price']);
+    update_post_meta($post_id, '_menu_price', $price);
+  }
+
+  // 通常価格
+  if (isset($_POST['menu_regular_price']) && $_POST['menu_regular_price'] !== '') {
+    $regular_price = intval($_POST['menu_regular_price']);
+    update_post_meta($post_id, '_menu_regular_price', $regular_price);
+  } else {
+    delete_post_meta($post_id, '_menu_regular_price');
+  }
+}, 10, 1);
+
 // 管理画面の投稿一覧に記事種別カラムを追加
 add_filter('manage_posts_columns', function ($columns) {
   $new_columns = [];
