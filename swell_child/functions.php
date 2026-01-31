@@ -5103,6 +5103,12 @@ add_action('init', 'ptl_register_menu_category_taxonomy');
 // 投稿リストブロックにメニューカスタムフィールドを表示
 // ============================================================
 add_filter('swell_parts/postlist-data', function($data, $post_id) {
+  // 記事種別が「メニュー」の場合のみ処理
+  $post_category = get_post_meta($post_id, '_post_category', true);
+  if ($post_category !== 'menu') {
+    return $data;
+  }
+  
   // カードタイトルをタイトルに使用
   $card_title = get_post_meta($post_id, '_menu_card_title', true);
   if ($card_title) {
