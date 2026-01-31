@@ -5102,25 +5102,34 @@ add_action('init', 'ptl_register_menu_category_taxonomy');
 // ============================================================
 // 投稿リストブロックにメニューカスタムフィールドを表示
 // ============================================================
-add_filter('swell_parts/postlist-data', function($data, $post_id) {
+
+// タイトルをカードタイトルに置き換え
+add_filter('the_title', function($title, $post_id) {
   // 記事種別が「メニュー」の場合のみ処理
   $post_category = get_post_meta($post_id, '_post_category', true);
   if ($post_category !== 'menu') {
-    return $data;
+    return $title;
   }
   
-  // カードタイトルをタイトルに使用
+  // カードタイトルを取得
   $card_title = get_post_meta($post_id, '_menu_card_title', true);
-  if ($card_title) {
-    $data['title'] = esc_html($card_title);
+  return $card_title ? $card_title : $title;
+}, 10, 2);
+
+// 抜粋をカスタムフィールドに置き換え（SWELLの get_excerpt() メソッド用）
+add_filter('swell_get_excerpt', function($excerpt, $post_data) {
+  // 記事種別が「メニュー」の場合のみ処理
+  $post_category = get_post_meta($post_data->ID, '_post_category', true);
+  if ($post_category !== 'menu') {
+    return $excerpt;
   }
   
-  // サブタイトル + ディスクリプション + 価格を抜粋に使用
-  $subtitle = get_post_meta($post_id, '_menu_subtitle', true);
-  $description = get_post_meta($post_id, '_menu_description', true);
-  $duration = get_post_meta($post_id, '_menu_duration', true);
-  $price = get_post_meta($post_id, '_menu_price', true);
-  $regular_price = get_post_meta($post_id, '_menu_regular_price', true);
+  // カスタムフィールドを取得
+  $subtitle = get_post_meta($post_data->ID, '_menu_subtitle', true);
+  $description = get_post_meta($post_data->ID, '_menu_description', true);
+  $duration = get_post_meta($post_data->ID, '_menu_duration', true);
+  $price = get_post_meta($post_data->ID, '_menu_price', true);
+  $regular_price = get_post_meta($post_data->ID, '_menu_regular_price', true);
   
   $custom_excerpt = '';
   
@@ -5149,9 +5158,5 @@ add_filter('swell_parts/postlist-data', function($data, $post_id) {
     $custom_excerpt .= '</div>';
   }
   
-  if ($custom_excerpt) {
-    $data['excerpt'] = $custom_excerpt;
-  }
-  
-  return $data;
+  return $custom_excerpt ? $custom_excerpt : $excerpt;
 }, 10, 2);
