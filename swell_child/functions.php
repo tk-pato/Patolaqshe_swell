@@ -5098,3 +5098,54 @@ function ptl_register_menu_category_taxonomy()
   }
 }
 add_action('init', 'ptl_register_menu_category_taxonomy');
+
+// ============================================================
+// 投稿リストブロックにメニューカスタムフィールドを表示
+// ============================================================
+add_filter('swell_parts/postlist-data', function($data, $post_id) {
+  // カードタイトルをタイトルに使用
+  $card_title = get_post_meta($post_id, '_menu_card_title', true);
+  if ($card_title) {
+    $data['title'] = esc_html($card_title);
+  }
+  
+  // サブタイトル + ディスクリプション + 価格を抜粋に使用
+  $subtitle = get_post_meta($post_id, '_menu_subtitle', true);
+  $description = get_post_meta($post_id, '_menu_description', true);
+  $duration = get_post_meta($post_id, '_menu_duration', true);
+  $price = get_post_meta($post_id, '_menu_price', true);
+  $regular_price = get_post_meta($post_id, '_menu_regular_price', true);
+  
+  $custom_excerpt = '';
+  
+  // サブタイトル
+  if ($subtitle) {
+    $custom_excerpt .= '<div class="menu-subtitle">' . nl2br(esc_html($subtitle)) . '</div>';
+  }
+  
+  // ディスクリプション
+  if ($description) {
+    $custom_excerpt .= '<div class="menu-description">' . esc_html($description) . '</div>';
+  }
+  
+  // 価格表示
+  if ($price || $regular_price) {
+    $custom_excerpt .= '<div class="menu-price">';
+    if ($duration) {
+      $custom_excerpt .= '<span class="menu-duration">' . esc_html($duration) . '分</span> ';
+    }
+    if ($regular_price) {
+      $custom_excerpt .= '<span class="menu-regular-price">通常¥' . number_format($regular_price) . '</span> → ';
+    }
+    if ($price) {
+      $custom_excerpt .= '<span class="menu-current-price">¥' . number_format($price) . '</span>';
+    }
+    $custom_excerpt .= '</div>';
+  }
+  
+  if ($custom_excerpt) {
+    $data['excerpt'] = $custom_excerpt;
+  }
+  
+  return $data;
+}, 10, 2);
