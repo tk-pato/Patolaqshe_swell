@@ -5116,20 +5116,25 @@ add_filter('the_title', function($title, $post_id) {
   return $card_title ? $card_title : $title;
 }, 10, 2);
 
-// 抜粋をカスタムフィールドに置き換え（SWELLの get_excerpt() メソッド用）
-add_filter('swell_get_excerpt', function($excerpt, $post_data) {
+// 抜粋をカスタムフィールドに置き換え（the_excerpt フィルター）
+add_filter('the_excerpt', function($excerpt) {
+  global $post;
+  if (!$post) {
+    return $excerpt;
+  }
+  
   // 記事種別が「メニュー」の場合のみ処理
-  $post_category = get_post_meta($post_data->ID, '_post_category', true);
+  $post_category = get_post_meta($post->ID, '_post_category', true);
   if ($post_category !== 'menu') {
     return $excerpt;
   }
   
   // カスタムフィールドを取得
-  $subtitle = get_post_meta($post_data->ID, '_menu_subtitle', true);
-  $description = get_post_meta($post_data->ID, '_menu_description', true);
-  $duration = get_post_meta($post_data->ID, '_menu_duration', true);
-  $price = get_post_meta($post_data->ID, '_menu_price', true);
-  $regular_price = get_post_meta($post_data->ID, '_menu_regular_price', true);
+  $subtitle = get_post_meta($post->ID, '_menu_subtitle', true);
+  $description = get_post_meta($post->ID, '_menu_description', true);
+  $duration = get_post_meta($post->ID, '_menu_duration', true);
+  $price = get_post_meta($post->ID, '_menu_price', true);
+  $regular_price = get_post_meta($post->ID, '_menu_regular_price', true);
   
   $custom_excerpt = '';
   
@@ -5159,4 +5164,4 @@ add_filter('swell_get_excerpt', function($excerpt, $post_data) {
   }
   
   return $custom_excerpt ? $custom_excerpt : $excerpt;
-}, 10, 2);
+});
