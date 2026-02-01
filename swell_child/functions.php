@@ -5116,13 +5116,8 @@ add_filter('the_title', function($title, $post_id) {
   return $card_title ? $card_title : $title;
 }, 10, 2);
 
-// 抜粋をカスタムフィールドに置き換え（the_excerpt フィルター）
-add_filter('the_excerpt', function($excerpt) {
-  global $post;
-  if (!$post) {
-    return $excerpt;
-  }
-  
+// 抜粋をカスタムフィールドに置き換え（WordPress標準フィルター）
+add_filter('get_the_excerpt', function($excerpt, $post) {
   // 記事種別が「メニュー」の場合のみ処理
   $post_category = get_post_meta($post->ID, '_post_category', true);
   if ($post_category !== 'menu') {
@@ -5164,4 +5159,4 @@ add_filter('the_excerpt', function($excerpt) {
   }
   
   return $custom_excerpt ? $custom_excerpt : $excerpt;
-});
+}, 10, 2);
