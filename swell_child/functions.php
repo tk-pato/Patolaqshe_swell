@@ -4752,3 +4752,117 @@ function ptl_register_menu_category_taxonomy()
 }
 add_action('init', 'ptl_register_menu_category_taxonomy');
 
+/**
+ * 店舗選択モーダルウィンドウ
+ * フェイシャル・ボディの予約ボタンから呼び出される
+ */
+function add_store_select_modal() {
+  ?>
+  <!-- 店舗選択モーダルウィンドウ -->
+  <div id="store-select-modal" class="pato-modal" style="display:none;">
+    <div class="pato-modal-overlay"></div>
+    <div class="pato-modal-content">
+      <button class="pato-modal-close" aria-label="閉じる">&times;</button>
+
+      <!-- バナー画像 -->
+      <div class="pato-modal-banner">
+        <img src="https://patolaqshe.com/media/wp-content/uploads/2025/12/ナノ+フット.jpg" alt="予約" loading="lazy">
+      </div>
+
+      <!-- タイトル・説明 -->
+      <h3 class="pato-modal-title">どちらの店舗で予約しますか？</h3>
+
+      <!-- 店舗選択ボタン -->
+      <div class="pato-modal-buttons">
+        <a href="#" class="pato-modal-btn pato-modal-btn-daikanyama" data-store="daikanyama">
+          <span class="store-name">代官山店</span>
+          <span class="store-subtitle">恵比寿・代官山</span>
+        </a>
+        <a href="#" class="pato-modal-btn pato-modal-btn-ginza" data-store="ginza">
+          <span class="store-name">銀座店</span>
+          <span class="store-subtitle">GINZA</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function($) {
+    $(document).ready(function() {
+
+      // 予約ボタンクリック（facial-content、body-content内）
+      $('#facial-content .reserve-btn, #body-content .reserve-btn').on('click', function(e) {
+        e.preventDefault();
+
+        // どのセクションから開いたかを記録
+        var section = $(this).closest('#facial-content').length ? 'facial' : 'body';
+        $('#store-select-modal').data('section', section);
+
+        // モーダル表示
+        $('#store-select-modal').fadeIn(300);
+        $('body').css('overflow', 'hidden');
+      });
+
+      // 代官山店ボタンクリック
+      $('.pato-modal-btn-daikanyama').on('click', function(e) {
+        e.preventDefault();
+        var section = $('#store-select-modal').data('section');
+
+        // スクエア予約URL（仮）
+        var url = '';
+        if (section === 'facial') {
+          url = 'https://square.site/book/XXXXX/daikanyama-facial';
+        } else if (section === 'body') {
+          url = 'https://square.site/book/XXXXX/daikanyama-body';
+        }
+
+        if (url) {
+          window.open(url, '_blank');
+        }
+
+        $('#store-select-modal').fadeOut(300);
+        $('body').css('overflow', '');
+      });
+
+      // 銀座店ボタンクリック
+      $('.pato-modal-btn-ginza').on('click', function(e) {
+        e.preventDefault();
+        var section = $('#store-select-modal').data('section');
+
+        // スクエア予約URL（仮）
+        var url = '';
+        if (section === 'facial') {
+          url = 'https://square.site/book/XXXXX/ginza-facial';
+        } else if (section === 'body') {
+          url = 'https://square.site/book/XXXXX/ginza-body';
+        }
+
+        if (url) {
+          window.open(url, '_blank');
+        }
+
+        $('#store-select-modal').fadeOut(300);
+        $('body').css('overflow', '');
+      });
+
+      // 閉じるボタン・オーバーレイクリック
+      $('.pato-modal-close, .pato-modal-overlay').on('click', function() {
+        $('#store-select-modal').fadeOut(300);
+        $('body').css('overflow', '');
+      });
+
+      // ESCキーで閉じる
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#store-select-modal').is(':visible')) {
+          $('#store-select-modal').fadeOut(300);
+          $('body').css('overflow', '');
+        }
+      });
+
+    });
+  })(jQuery);
+  </script>
+  <?php
+}
+add_action('wp_footer', 'add_store_select_modal');
+
