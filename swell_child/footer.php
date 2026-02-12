@@ -65,7 +65,7 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 							<a href="<?php echo esc_url(home_url('/info/')); ?>" class="ptl-footer__nav-link">INFO</a>
 						</li>
 						<li class="ptl-footer__nav-item">
-							<a href="<?php echo esc_url(home_url('/menu/')); ?>" class="ptl-footer__nav-link">MENU</a>
+							<a href="<?php echo esc_url(home_url('/service/')); ?>" class="ptl-footer__nav-link">MENU</a>
 						</li>
 						<li class="ptl-footer__nav-item">
 							<a href="<?php echo esc_url(home_url('/voice/')); ?>" class="ptl-footer__nav-link">VOICE</a>

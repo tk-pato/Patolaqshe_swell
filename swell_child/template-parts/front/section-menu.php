@@ -33,7 +33,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
             <!-- メインコンテンツ -->
             <div class="ptlMenu__main">
                 <div class="ptlMenu__mainContent">
-                    <a href="<?php echo esc_url(home_url('/lp03/')); ?>" class="ptlMenu__mainLink">
+                    <a href="<?php echo esc_url(home_url('/service/#bust-content')); ?>" class="ptlMenu__mainLink">
                         <div class="ptlMenu__mainImage">
                             <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
                         </div>
@@ -49,7 +49,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
             <div class="ptlMenu__sub">
                 <div class="ptlMenu__subGrid">
                     <div class="ptlMenu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/sizeup/')); ?>" class="ptlMenu__subLink">
+                        <a href="<?php echo esc_url(home_url('/service/#facial-content')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="フェイシャル" loading="lazy" decoding="async">
                             </div>
@@ -58,7 +58,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     </div>
 
                     <div class="ptlMenu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/down/')); ?>" class="ptlMenu__subLink">
+                        <a href="<?php echo esc_url(home_url('/service/#body-content')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="ボディケア" loading="lazy" decoding="async">
                             </div>
@@ -67,7 +67,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     </div>
 
                     <div class="ptlMenu__subItem">
-                        <a href="<?php echo esc_url(home_url('/menu/distance/')); ?>" class="ptlMenu__subLink">
+                        <a href="<?php echo esc_url(home_url('/service/#bust-content')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="バストケアグッズ" loading="lazy" decoding="async">
                             </div>
@@ -80,7 +80,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
 
         <!-- MORE ボタン -->
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
-            <a class="ptlNews__moreBtn" href="<?php echo esc_url(home_url('/menu/')); ?>">
+            <a class="ptlNews__moreBtn" href="<?php echo esc_url(home_url('/service/')); ?>">
                 <span class="ptlNews__moreLabel">MORE</span>
                 <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
             </a>

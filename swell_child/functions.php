@@ -4871,7 +4871,7 @@ function pato_store_modal_css()
     }
     .pato-modal-banner {
       width: 100%;
-      height: 300px;
+      height: 400px;
       overflow: hidden;
       border-radius: 20px 20px 0 0;
     }
@@ -4991,7 +4991,7 @@ function pato_store_modal_css()
     }
     .pato-modal-banner {
       width: 100%;
-      height: 200px;
+      height: 267px;
       overflow: hidden;
       border-radius: 16px 16px 0 0;
     }
