@@ -37,7 +37,7 @@
     }
 
     // reserve-btn トリガー登録
-    var reserveBtns = document.querySelectorAll('#facial-content .reserve-btn, #body-content .reserve-btn');
+    var reserveBtns = document.querySelectorAll('#facial-content .reserve-btn, #body-content .reserve-btn, #bust-content .reserve-btn');
     console.log('[Store Modal] reserve-btn検出:', reserveBtns.length);
 
     reserveBtns.forEach(function(btn, index) {
@@ -46,7 +46,7 @@
         e.preventDefault();
         e.stopPropagation();
 
-        var section = btn.closest('#facial-content') ? 'facial' : 'body';
+        var section = btn.closest('#facial-content') ? 'facial' : btn.closest('#bust-content') ? 'bust' : 'body';
         console.log('[Store Modal] トリガークリック(div):', section);
         openModal(section);
       };
@@ -58,7 +58,7 @@
           e.preventDefault();
           e.stopPropagation();
 
-          var section = btn.closest('#facial-content') ? 'facial' : 'body';
+          var section = btn.closest('#facial-content') ? 'facial' : btn.closest('#bust-content') ? 'bust' : 'body';
           console.log('[Store Modal] トリガークリック(a):', section);
           openModal(section);
         };
@@ -74,9 +74,11 @@
         e.preventDefault();
         var url = '';
         if (currentSection === 'facial') {
-          url = 'https://square.site/book/XXXXX/daikanyama-facial';
+          url = 'https://book.squareup.com/appointments/xgp5fm2xb93b2t/location/5PESR3FP3XMAS/services/EL5PVFHAOJVW4O3DSY2H2TIG';
         } else if (currentSection === 'body') {
-          url = 'https://square.site/book/XXXXX/daikanyama-body';
+          url = 'https://book.squareup.com/appointments/xgp5fm2xb93b2t/location/5PESR3FP3XMAS/services/CILKFLR3KMORKZPF6ULTTUJF';
+        } else if (currentSection === 'bust') {
+          url = 'https://book.squareup.com/appointments/xgp5fm2xb93b2t/location/5PESR3FP3XMAS';
         }
         if (url) { window.open(url, '_blank'); }
         closeModal();
@@ -90,9 +92,11 @@
         e.preventDefault();
         var url = '';
         if (currentSection === 'facial') {
-          url = 'https://square.site/book/XXXXX/ginza-facial';
+          url = 'https://book.squareup.com/appointments/qt8e7316fy17nd/location/CMN5YZFYZARSA/services/3TCVDDG5RUL7K5RKNH6VUQZG';
         } else if (currentSection === 'body') {
-          url = 'https://square.site/book/XXXXX/ginza-body';
+          url = 'https://book.squareup.com/appointments/qt8e7316fy17nd/location/CMN5YZFYZARSA/services/TA6JUQJMHM4VHORAUJQC6PDM';
+        } else if (currentSection === 'bust') {
+          url = 'https://book.squareup.com/appointments/qt8e7316fy17nd/location/CMN5YZFYZARSA';
         }
         if (url) { window.open(url, '_blank'); }
         closeModal();
