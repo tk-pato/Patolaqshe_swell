@@ -4764,7 +4764,7 @@ function add_store_select_modal() {
     <div class="pato-modal-content">
       <button class="pato-modal-close" aria-label="閉じる">&times;</button>
       <div class="pato-modal-banner">
-        <img src="https://patolaqshe.com/media/wp-content/uploads/2025/12/ナノ＋フット.jpg" alt="予約" loading="lazy">
+        <img src="https://patolaqshe.com/media/wp-content/uploads/2025/12/shop-banner.jpg" alt="予約" loading="lazy">
       </div>
       <h3 class="pato-modal-title">どちらの店舗で予約しますか？</h3>
       <div class="pato-modal-buttons">
