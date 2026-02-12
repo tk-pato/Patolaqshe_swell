@@ -45,25 +45,24 @@ $resolve_image = function($value, $default) {
     return esc_url($value);
 };
 
-$default_img = get_stylesheet_directory_uri() . '/img/makup.jpg';
 $cards = [
     [
         'title' => 'BRIDAL',
         'desc' => '結婚式を最高の思い出にするための特別なプランをご用意しています。',
         'url' => 'https://patolaqshe.com/media/mariage/',
-        'image' => $resolve_image($card1_img, $default_img),
+        'image' => $resolve_image($card1_img, 'https://patolaqshe.com/media/wp-content/uploads/2026/01/bridal_banner.jpg'),
     ],
     [
         'title' => 'INFORMATION',
         'desc' => '最新のキャンペーン情報やお得なプランをいち早くお届けします。',
         'url' => 'https://patolaqshe.com/media/informatio/',
-        'image' => $resolve_image($card2_img, $default_img),
+        'image' => $resolve_image($card2_img, 'https://patolaqshe.com/media/wp-content/uploads/2026/01/info_banner.jpg'),
     ],
     [
         'title' => 'FAQ',
         'desc' => 'よくあるご質問にお答えします。お気軽にお問い合わせください。',
         'url' => 'javascript:void(0);',
-        'image' => $resolve_image($card3_img, $default_img),
+        'image' => $resolve_image($card3_img, 'https://patolaqshe.com/media/wp-content/uploads/2026/01/contact_banner.jpg'),
         'is_modal' => true,
         'modal_id' => 'faq-modal',
     ],
