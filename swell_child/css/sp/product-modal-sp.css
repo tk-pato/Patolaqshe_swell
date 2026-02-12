@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+/**
+ * Product Modal - SP Version
+ * 商品モーダルウィンドウ（SP）
+ *
+ * @version 1.0.0
+ * @date 2026-02-12
+ */
+
+@media (max-width: 767px) {
+.product-modal.js-modal_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+.product-modal.js-modalitem_open {
+    display: block;
+}
+
+.product-modal .js-modal_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    cursor: pointer;
+    z-index: 0;
+}
+
+/* モーダルコンテンツ */
+.product-modal .js-modal_cont {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-modal.js-modalitem_open .js-modal_cont {
+    transform: translateX(100%);
+}
+
+.product-modal.js-modal_animating .js-modal_cont {
+    transform: translateX(0);
+}
+
+.product-modal.js-modal_closing .js-modal_cont {
+    transform: translateX(100%);
+}
+
+.product-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.product-modal__close svg {
+    width: 18px;
+    height: 18px;
+    stroke: #333;
+}
+
+.product-modal__content {
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* バナー画像（SP） */
+.product-modal__hero {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.product-modal__hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.product-modal__hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.1em;
+}
+
+/* 商品セクション（SP） */
+.product-modal__body {
+    padding: 30px 20px 40px;
+}
+
+.product-section {
+    margin-bottom: 40px;
+}
+
+.product-section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.product-image {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-text {
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+}
+
+/* お問い合わせボタン（SP） */
+.product-contact {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.product-contact-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+}

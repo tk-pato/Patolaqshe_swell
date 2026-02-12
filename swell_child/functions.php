@@ -5053,3 +5053,109 @@ function pato_store_modal_css()
 }
 add_action('wp_head', 'pato_store_modal_css');
 
+/**
+ * 商品モーダルウィンドウ
+ * グランドトップのコレクションバナーから呼び出される
+ */
+function add_product_modal() {
+  ?>
+  <!-- 商品モーダルウィンドウ -->
+  <div id="product-modal" class="js-modal_wrap product-modal">
+    <div class="js-modal_cont">
+      <button class="js-modal_close product-modal__close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="product-modal__content">
+        <!-- バナー画像 -->
+        <div class="product-modal__hero">
+          <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/モーダルウィンドウバナー.jpg" alt="PRODUCT" loading="lazy">
+          <div class="product-modal__hero-text">PRODUCT</div>
+        </div>
+
+        <!-- 商品コンテンツ -->
+        <div class="product-modal__body">
+
+          <!-- 化粧品セクション -->
+          <div class="product-section">
+            <h3 class="product-section-title">化粧品</h3>
+            <div class="product-image">
+              <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/リアボーテ.jpg" alt="化粧品" loading="lazy">
+            </div>
+            <div class="product-text">
+              <p>最高品質の美容成分を配合した、バストケア専用化粧品。肌に優しく、効果的なケアを実現します。</p>
+            </div>
+          </div>
+
+          <!-- 下着セクション -->
+          <div class="product-section">
+            <h3 class="product-section-title">下着</h3>
+            <div class="product-image">
+              <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/ラヴィエール.jpg" alt="下着" loading="lazy">
+            </div>
+            <div class="product-text">
+              <p>美しいバストラインをサポートする補正下着。快適な着け心地と優れた補正力を兼ね備えています。</p>
+            </div>
+          </div>
+
+          <!-- お問い合わせボタン -->
+          <div class="product-contact">
+            <button class="product-contact-btn" type="button">
+              商品についてお問い合わせ
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="js-modal_bg js-modal_close"></div>
+  </div>
+  <?php
+}
+add_action('wp_footer', 'add_product_modal');
+
+/**
+ * 商品モーダル用CSS/JS読み込み
+ */
+function pato_enqueue_product_modal_assets()
+{
+  // JavaScript
+  $js_path = get_stylesheet_directory() . '/js/product-modal.js';
+  if (file_exists($js_path)) {
+    wp_enqueue_script(
+      'pato-product-modal',
+      get_stylesheet_directory_uri() . '/js/product-modal.js',
+      array(),
+      filemtime($js_path),
+      true
+    );
+  }
+
+  // CSS PC
+  $css_pc_path = get_stylesheet_directory() . '/css/pc/product-modal-pc.css';
+  if (file_exists($css_pc_path)) {
+    wp_enqueue_style(
+      'pato-product-modal-pc',
+      get_stylesheet_directory_uri() . '/css/pc/product-modal-pc.css',
+      array(),
+      filemtime($css_pc_path),
+      'screen and (min-width: 768px)'
+    );
+  }
+
+  // CSS SP
+  $css_sp_path = get_stylesheet_directory() . '/css/sp/product-modal-sp.css';
+  if (file_exists($css_sp_path)) {
+    wp_enqueue_style(
+      'pato-product-modal-sp',
+      get_stylesheet_directory_uri() . '/css/sp/product-modal-sp.css',
+      array(),
+      filemtime($css_sp_path),
+      'screen and (max-width: 767px)'
+    );
+  }
+}
+add_action('wp_enqueue_scripts', 'pato_enqueue_product_modal_assets');
+

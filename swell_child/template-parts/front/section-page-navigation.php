@@ -13,7 +13,7 @@ $p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
 $default_items = [
     ['label' => 'COMMITMENT', 'slug' => 'commitment', 'url' => 'https://patolaqshe.com/media/about/'],
     ['label' => 'TREATMENT',  'slug' => 'treatment',  'url' => home_url('/service/')],
-    ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => home_url('/service/')],
+    ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => 'javascript:void(0);', 'is_modal' => true, 'modal_class' => 'product-modal-trigger', 'modal_id' => 'product-modal'],
     ['label' => 'SALON',      'slug' => 'salon',      'url' => home_url('/salon/')],
     ['label' => 'BRIDAL',     'slug' => 'bridal',     'url' => 'https://patolaqshe.com/media/mariage/'],
     ['label' => 'INFO',       'slug' => 'info',       'url' => home_url('/info/')],
@@ -93,8 +93,8 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     $icon_html = ptl_nav_placeholder_svg($label);
                 }
             ?>
-                <a class="ptlNavHero__btn" href="<?php echo esc_url($href); ?>">
-                    <span class="ptlNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                <a class="ptlNavHero__btn<?php echo !empty($it['modal_class']) ? ' ' . esc_attr($it['modal_class']) : ''; ?>" href="<?php echo esc_url($href); ?>"<?php echo !empty($it['modal_id']) ? ' data-modal-id="' . esc_attr($it['modal_id']) . '"' : ''; ?>>
+                    <span class="ptlNavHero__icon"><?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                     ?></span>
                     <span class="ptlNavHero__label"><?php echo esc_html($label); ?></span>
                 </a>
