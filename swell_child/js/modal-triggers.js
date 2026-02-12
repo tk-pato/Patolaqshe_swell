@@ -13,7 +13,6 @@
   function openModalById(modalId) {
     const modalElement = document.getElementById(modalId);
     if (!modalElement) {
-      console.error('[modal-triggers] モーダルが見つかりません:', modalId);
       return;
     }
     modalElement.classList.add('js-modalitem_open');
@@ -66,12 +65,9 @@
           const salonSection = document.getElementById('salon');
           if (salonSection) {
             salonSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            console.log('[Modal Triggers] SALONセクションまでスクロールしました');
           } else {
-            console.error('[Modal Triggers] SALONセクションが見つかりません');
           }
         });
-        console.log('[Modal Triggers] SALONバナーにスクロールイベントを設定');
       }
     });
   }
@@ -87,7 +83,6 @@
       const label = btn.querySelector('.ptlNavHero__label');
       if (label && label.textContent.trim() === 'CONTACT') {
         btn.classList.add('wow-modal-id-1');
-        console.log('[Modal Triggers] CONTACTバナーにWOWモーダルトリガークラスを追加');
       }
     });
   }

@@ -14,24 +14,20 @@
         var modals = document.querySelectorAll('.product-modal');
         modals.forEach(function(modal) {
             document.body.appendChild(modal);
-            console.log('[Product Modal] モーダルをbody直下に移動:', modal.id);
         });
 
         // STEP2: トリガーボタンの登録
         var triggers = document.querySelectorAll('.product-modal-trigger');
 
-        console.log('[Product Modal] 初期化開始:', triggers.length, 'トリガー検出');
 
         // モーダルを開く
         triggers.forEach(function(trigger, index) {
             trigger.onclick = function(e) {
                 e.preventDefault();
                 var modalId = this.getAttribute('data-modal-id') || 'product-modal';
-                console.log('[Product Modal] トリガークリック:', modalId);
 
                 var modalElement = document.getElementById(modalId);
                 if (!modalElement) {
-                    console.error('[Product Modal] モーダルが見つかりません:', modalId);
                     return;
                 }
 
@@ -45,10 +41,8 @@
                     });
                 });
 
-                console.log('[Product Modal] モーダル opened:', modalId);
             };
 
-            console.log('[Product Modal] トリガー', index + 1, '登録完了');
         });
 
         // 閉じる関数
@@ -58,7 +52,6 @@
                 modal.classList.remove('js-modalitem_open');
                 document.body.classList.remove('js-modal_open');
             }, 700);
-            console.log('[Product Modal] モーダル closed:', modal.id);
         }
 
         // モーダルを閉じる（閉じるボタン）
@@ -71,7 +64,6 @@
                     closeProductModal(modal);
                 }
             };
-            console.log('[Product Modal] 閉じるボタン', index + 1, '登録完了');
         });
 
         // 背景クリックで閉じる
@@ -113,13 +105,11 @@
                     var wowModal = document.getElementById('wow-modal-id-1');
                     if (wowModal) {
                         wowModal.classList.add('mw-open');
-                        console.log('[Product Modal] お問い合わせモーダル opened');
                     }
                 }, 400);
             };
         }
 
-        console.log('[Product Modal] 初期化完了');
     }
 
     // DOM読み込み完了後に初期化

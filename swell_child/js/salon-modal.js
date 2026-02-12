@@ -14,43 +14,35 @@
         const modals = document.querySelectorAll('.p-salon');
         modals.forEach(function(modal) {
             document.body.appendChild(modal);
-            console.log('[Salon Modal] モーダルをbody直下に移動:', modal.id);
         });
         
         // STEP2: トリガーボタンの登録
         const triggers = document.querySelectorAll('.js-modal_btn');
         
         if (!triggers.length) {
-            console.warn('[Salon Modal] トリガーが見つかりません');
             return;
         }
         
-        console.log('[Salon Modal] 初期化開始:', triggers.length, 'トリガー検出');
         
         // モーダルを開く
         triggers.forEach(function(trigger, index) {
             trigger.onclick = function(e) {
                 e.preventDefault();
                 const modalId = this.getAttribute('data-modal');
-                console.log('[Salon Modal] トリガークリック:', modalId);
                 
                 const modalElement = document.getElementById(modalId);
                 if (!modalElement) {
-                    console.error('[Salon Modal] モーダルが見つかりません:', modalId);
                     return;
                 }
                 
-                console.log('[Salon Modal] モーダル要素取得成功:', modalElement);
                 
                 // モーダルを開く（即座にアニメーション開始）
                 modalElement.classList.add('js-modalitem_open');
                 modalElement.classList.add('js-modal_animating');
                 document.body.classList.add('js-modal_open');
                 
-                console.log('[Salon Modal] モーダル opened (700ms animation)');
             };
             
-            console.log('[Salon Modal] トリガー', index + 1, '登録完了:', trigger.getAttribute('data-modal'));
         });
         
         // モーダルを閉じる
@@ -71,13 +63,10 @@
                         document.body.classList.remove('js-modal_open');
                     }, 700);
                     
-                    console.log('[Salon Modal] モーダル closed (700ms animation)');
                 } else {
-                    console.warn('[Salon Modal] 閉じるボタンの親モーダルが見つかりません');
                 }
             };
             
-            console.log('[Salon Modal] 閉じるボタン', index + 1, '登録完了');
         });
         
         // 背景クリックで閉じる
@@ -98,7 +87,6 @@
                             document.body.classList.remove('js-modal_open');
                         }, 700);
                         
-                        console.log('[Salon Modal] 背景クリックでモーダル closed (700ms)');
                     }
                 }
             };
@@ -120,12 +108,10 @@
                         document.body.classList.remove('js-modal_open');
                     }, 700);
                     
-                    console.log('[Salon Modal] ESCキーでモーダル closed (700ms)');
                 }
             }
         });
         
-        console.log('[Salon Modal] 初期化完了（700ms統一・複数トリガー対応）');
     }
     
     // DOMContentLoadedで初期化

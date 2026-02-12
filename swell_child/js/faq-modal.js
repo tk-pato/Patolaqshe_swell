@@ -14,33 +14,27 @@
         const modals = document.querySelectorAll('.faq-modal');
         modals.forEach(function(modal) {
             document.body.appendChild(modal);
-            console.log('[FAQ Modal] モーダルをbody直下に移動:', modal.id);
         });
         
         // STEP2: トリガーボタンの登録
         const triggers = document.querySelectorAll('.faq-modal-trigger');
         
         if (!triggers.length) {
-            console.warn('[FAQ Modal] トリガーが見つかりません');
             return;
         }
         
-        console.log('[FAQ Modal] 初期化開始:', triggers.length, 'トリガー検出');
         
         // モーダルを開く
         triggers.forEach(function(trigger, index) {
             trigger.onclick = function(e) {
                 e.preventDefault();
                 const modalId = 'faq-modal';
-                console.log('[FAQ Modal] トリガークリック:', modalId);
                 
                 const modalElement = document.getElementById(modalId);
                 if (!modalElement) {
-                    console.error('[FAQ Modal] モーダルが見つかりません:', modalId);
                     return;
                 }
                 
-                console.log('[FAQ Modal] モーダル要素取得成功:', modalElement);
                 
                 // 1. まず表示
                 modalElement.classList.add('js-modalitem_open');
@@ -53,10 +47,8 @@
                     });
                 });
                 
-                console.log('[FAQ Modal] モーダル opened (700ms animation)');
             };
             
-            console.log('[FAQ Modal] トリガー', index + 1, '登録完了:', trigger.getAttribute('data-modal-id'));
         });
         
         // モーダルを閉じる
@@ -77,9 +69,7 @@
                         document.body.classList.remove('js-modal_open');
                     }, 700);
                     
-                    console.log('[FAQ Modal] モーダル closed (700ms animation)');
                 } else {
-                    console.warn('[FAQ Modal] 閉じるボタンの親モーダルが見つかりません');
                 }
             };
         });
@@ -102,7 +92,6 @@
                             document.body.classList.remove('js-modal_open');
                         }, 700);
                         
-                        console.log('[FAQ Modal] 背景クリックでモーダル closed (700ms animation)');
                     }
                 }
             };
@@ -124,12 +113,10 @@
                         document.body.classList.remove('js-modal_open');
                     }, 700);
                     
-                    console.log('[FAQ Modal] ESCキーでモーダル closed (700ms animation)');
                 }
             }
         });
         
-        console.log('[FAQ Modal] 初期化完了（700ms統一）');
     }
     
     // DOM読み込み完了後に初期化

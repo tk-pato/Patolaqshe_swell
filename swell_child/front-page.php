@@ -3,12 +3,6 @@
 if (! defined('ABSPATH')) exit;
 
 // ========== デバッグ: front-page.php 読み込み確認 ==========
-error_log('========================================');
-error_log('🏠 front-page.php が読み込まれました');
-error_log('🕐 タイムスタンプ: ' . date('Y-m-d H:i:s'));
-error_log('📄 リクエストURI: ' . $_SERVER['REQUEST_URI']);
-error_log('🌐 ホームURL: ' . home_url());
-error_log('========================================');
 
 // 最強対策: 出力バッファリングでSWELLの投稿リスト出力を完全制御
 ob_start();
@@ -126,15 +120,9 @@ echo $header_output;
 
 	<?php /* BLOGセクション: INFOHUB の直後に配置（再表示） */ ?>
 	<?php
-	error_log('----------------------------------------');
-	error_log('📍 get_template_part("blog") を呼び出します');
-	error_log('🔍 呼び出し位置: front-page.php 120行目付近');
 
 	get_template_part('template-parts/front/section', 'blog');
 
-	error_log('✅ get_template_part("blog") の呼び出し完了');
-	error_log('ℹ️ section-blog.php のデバッグ出力を確認してください');
-	error_log('----------------------------------------');
 	?>
 
 	<?php /* ページコンテンツのブロック出力は無効化（投稿リストが含まれるため） */ ?>
@@ -142,10 +130,6 @@ echo $header_output;
 </main>
 
 <?php
-error_log('========================================');
-error_log('🏁 front-page.php の処理完了');
-error_log('🕐 タイムスタンプ: ' . date('Y-m-d H:i:s'));
-error_log('========================================');
 ?>
 
 <?php get_footer(); ?>

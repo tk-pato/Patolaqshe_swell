@@ -3181,33 +3181,13 @@ add_action('wp_head', function () {
  * @return string 修正後のテンプレートパス
  */
 add_filter('template_include', function ($template) {
-  // デバッグ: 現在選択されているテンプレートを記録
-  error_log('========== TEMPLATE FILTER ==========');
-  error_log('🎯 WordPress が選択したテンプレート: ' . basename($template));
-  error_log('🔍 is_front_page(): ' . (is_front_page() ? 'TRUE ✅' : 'FALSE ❌'));
-  error_log('🔍 is_home(): ' . (is_home() ? 'TRUE' : 'FALSE'));
-  error_log('🔍 is_page(): ' . (is_page() ? 'TRUE' : 'FALSE'));
-
   // フロントページの場合、強制的に front-page.php を使用
   if (is_front_page()) {
     $front_page_template = get_stylesheet_directory() . '/front-page.php';
-
-    // ファイルの存在確認
     if (file_exists($front_page_template)) {
-      error_log('✅ front-page.php を強制使用します');
-      error_log('📂 パス: ' . $front_page_template);
-      error_log('=====================================');
       return $front_page_template;
-    } else {
-      error_log('⚠️ 警告: front-page.php が見つかりません');
-      error_log('📂 探した場所: ' . $front_page_template);
     }
   }
-
-  error_log('ℹ️ テンプレートを変更せず元のテンプレートを使用: ' . basename($template));
-  error_log('=====================================');
-
-  // その他の場合は元のテンプレートを返す
   return $template;
 }, 999);
 

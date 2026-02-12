@@ -13,7 +13,6 @@
   function collect() {
     items = [];
     var nodeList = document.querySelectorAll('.ptlNavHero[data-parallax="bg"], .ptlIssues[data-parallax="bg"], .ptl-pageNavHero[data-parallax="bg"]');
-    console.log('[Parallax] Found sections:', nodeList.length);
     if (!nodeList || !nodeList.length) return;
 
   for (var i = 0; i < nodeList.length; i++) {
@@ -22,13 +21,11 @@
       var speed = parseFloat(sec.getAttribute('data-parallax-speed') || '0.3');
       if (!isFinite(speed)) speed = 0.3;
       speed = Math.max(0, Math.min(1, speed));
-      console.log('[Parallax] Section', i, 'speed:', speed, '(DEFAULT 0.3 - MAX EFFECT)');
 
       // クランプ率: 0..0.3（端が出ないように最大移動量を抑制）0.25 = セクション高さの25%まで移動
       var clampRatio = parseFloat(sec.getAttribute('data-parallax-clamp') || '0.25');
       if (!isFinite(clampRatio)) clampRatio = 0.25;
       clampRatio = Math.max(0, Math.min(0.3, clampRatio));
-      console.log('[Parallax] Section', i, 'clampRatio:', clampRatio, '(DEFAULT 0.25)');
 
   // 絶対最大移動量（px）で上書き可能（例: data-parallax-distance="120"）
       var maxDistancePx = parseFloat(sec.getAttribute('data-parallax-distance') || '');
@@ -49,7 +46,6 @@
       var tPic = (!tVideo && !tImg && sec.querySelector('.ptlNavHero__image, .ptlIssues__image, .ptl-pageNavHero__image')) || null;
       var tBg  = (!tVideo && !tImg && !tPic && sec.querySelector('.ptlNavHero__bg, .ptlIssues__bg, .ptl-pageNavHero__bg')) || null;
       target = tVideo || tImg || tPic || tBg;
-      console.log('[Parallax] Section', i, 'target:', target ? target.tagName + '.' + target.className : 'NOT FOUND');
       if (!target) continue;
 
       // 視覚的に動作していることを判別しやすいようにフラグ付け
@@ -95,7 +91,6 @@
       // 最小拡大率を1.5に設定（parallax効果を劇的に）
       if (scale < 1.5) scale = 1.5;
       
-      console.log('[Parallax] Section', i, 'final scale:', scale.toFixed(3), 'move:', move.toFixed(2), 'px');
       
       // data-parallax-scale属性の指定値を最優先で適用
       if (it.minScale && it.minScale > scale) scale = it.minScale;
@@ -117,9 +112,7 @@
   }
 
   function init() {
-    console.log('[Parallax] Initializing...');
     collect();
-    console.log('[Parallax] Collected', items.length, 'parallax items');
     // 初回適用（ロード直後に一度動かしておく）
     applyParallax();
   }

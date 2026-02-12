@@ -146,13 +146,11 @@ echo $SETTING['foot_code']; // phpcs:ignore
 (function() {
     
     function initPrivacyModal() {
-        console.log('[Privacy Modal] 初期化開始');
         
         const trigger = document.querySelector('.privacy-modal-trigger');
         const modal = document.querySelector('.privacy-modal');
         
         if (!trigger || !modal) {
-            console.log('[Privacy Modal] トリガーまたはモーダルが見つかりません');
             return;
         }
         
@@ -170,7 +168,6 @@ echo $SETTING['foot_code']; // phpcs:ignore
                 });
             });
             
-            console.log('[Privacy Modal] モーダル opened');
         };
         
         // 閉じるボタン
@@ -189,7 +186,6 @@ echo $SETTING['foot_code']; // phpcs:ignore
                     document.body.classList.remove('js-modal_open');
                 }, 700); // CSS transitionと同じ時間
                 
-                console.log('[Privacy Modal] モーダル closed');
             };
         });
         
@@ -210,7 +206,6 @@ echo $SETTING['foot_code']; // phpcs:ignore
                         document.body.classList.remove('js-modal_open');
                     }, 700); // CSS transitionと同じ時間
                     
-                    console.log('[Privacy Modal] 背景クリックでモーダル closed');
                 }
             };
         }
@@ -229,11 +224,9 @@ echo $SETTING['foot_code']; // phpcs:ignore
                     document.body.classList.remove('js-modal_open');
                 }, 700); // CSS transitionと同じ時間
                 
-                console.log('[Privacy Modal] ESCキーでモーダル closed');
             }
         });
         
-        console.log('[Privacy Modal] 初期化完了');
     }
     
     if (document.readyState === 'loading') {

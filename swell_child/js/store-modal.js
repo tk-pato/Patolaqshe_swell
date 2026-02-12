@@ -12,11 +12,9 @@
   function initStoreModal() {
     var modal = document.getElementById('store-select-modal');
     if (!modal) {
-      console.log('[Store Modal] モーダル要素なし - スキップ');
       return;
     }
 
-    console.log('[Store Modal] 初期化開始');
 
     var currentSection = '';
 
@@ -25,7 +23,6 @@
       currentSection = section;
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-      console.log('[Store Modal] モーダル opened:', section);
     }
 
     // モーダルを閉じる
@@ -33,12 +30,10 @@
       modal.style.display = 'none';
       document.body.style.overflow = '';
       currentSection = '';
-      console.log('[Store Modal] モーダル closed');
     }
 
     // reserve-btn トリガー登録
     var reserveBtns = document.querySelectorAll('#facial-content .reserve-btn, #body-content .reserve-btn, #bust-content .reserve-btn');
-    console.log('[Store Modal] reserve-btn検出:', reserveBtns.length);
 
     reserveBtns.forEach(function(btn, index) {
       // div自体にクリックハンドラ
@@ -47,7 +42,6 @@
         e.stopPropagation();
 
         var section = btn.closest('#facial-content') ? 'facial' : btn.closest('#bust-content') ? 'bust' : 'body';
-        console.log('[Store Modal] トリガークリック(div):', section);
         openModal(section);
       };
 
@@ -59,12 +53,10 @@
           e.stopPropagation();
 
           var section = btn.closest('#facial-content') ? 'facial' : btn.closest('#bust-content') ? 'bust' : 'body';
-          console.log('[Store Modal] トリガークリック(a):', section);
           openModal(section);
         };
       }
 
-      console.log('[Store Modal] トリガー', index + 1, '登録完了');
     });
 
     // 代官山店ボタン
@@ -127,7 +119,6 @@
       }
     });
 
-    console.log('[Store Modal] 初期化完了');
   }
 
   // DOM準備完了後に初期化

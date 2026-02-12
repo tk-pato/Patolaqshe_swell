@@ -5,9 +5,6 @@
  */
 
 // ========== デバッグ出力開始 ==========
-error_log('========== BLOG SECTION DEBUG START ==========');
-error_log('📍 section-blog.php が読み込まれました');
-error_log('🕐 タイムスタンプ: ' . date('Y-m-d H:i:s'));
 
 // 最新のブログ記事を10件取得（記事種別「ブログ記事」のみ）
 $blog_posts = get_posts([
@@ -26,11 +23,8 @@ $blog_posts = get_posts([
 ]);
 
 // デバッグ: 取得した投稿の情報
-error_log('📊 取得した投稿数: ' . count($blog_posts));
-error_log('🔍 投稿配列が空か: ' . (empty($blog_posts) ? 'YES (空)' : 'NO (データあり)'));
 
 if (!empty($blog_posts)) {
-    error_log('--- 投稿リスト ---');
     foreach ($blog_posts as $index => $post) {
         error_log(sprintf(
             '[%d] ID=%d, タイトル=%s, ステータス=%s, 日付=%s',
@@ -42,7 +36,6 @@ if (!empty($blog_posts)) {
         ));
     }
 } else {
-    error_log('⚠️ 警告: 投稿が1件も取得できませんでした');
 
     // 全ステータスを含めて再取得
     $all_posts = get_posts([
@@ -50,10 +43,8 @@ if (!empty($blog_posts)) {
         'posts_per_page' => -1,
         'post_status' => 'any',
     ]);
-    error_log('📊 全ステータス含めた投稿数: ' . count($all_posts));
 
     if (!empty($all_posts)) {
-        error_log('--- 全投稿のステータス ---');
         foreach ($all_posts as $post) {
             error_log(sprintf(
                 'ID=%d, タイトル=%s, ステータス=%s',
@@ -65,7 +56,6 @@ if (!empty($blog_posts)) {
     }
 }
 
-error_log('========== BLOG SECTION DEBUG END ==========');
 
 // デフォルト画像のパス
 $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
@@ -85,9 +75,7 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
         </div>
 
         <?php
-        error_log('🔀 条件分岐: empty($blog_posts) = ' . (empty($blog_posts) ? 'true' : 'false'));
         if (!empty($blog_posts)):
-            error_log('✅ 投稿あり: カードコンテナを出力します');
         ?>
             <!-- カードコンテナ -->
             <div class="ptlBlog__container">
@@ -121,7 +109,6 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
             </div>
         <?php
         else:
-            error_log('⚠️ 投稿なし: 空メッセージを出力します');
         ?>
             <!-- 投稿がない場合 -->
             <div class="ptlBlog__empty">
