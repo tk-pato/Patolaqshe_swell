@@ -4780,102 +4780,276 @@ function add_store_select_modal() {
     </div>
   </div>
 
-  <script>
-  (function() {
-    'use strict';
-
-    var modal = document.getElementById('store-select-modal');
-    if (!modal) return;
-
-    var currentSection = '';
-
-    // モーダルを開く
-    function openModal(section) {
-      currentSection = section;
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    // モーダルを閉じる
-    function closeModal() {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-      currentSection = '';
-    }
-
-    // 予約ボタンクリック - イベント委譲（vanilla JS）
-    document.addEventListener('click', function(e) {
-      var target = e.target;
-      // reserve-btn自体またはその子要素（aタグ、spanなど）をクリックした場合
-      var reserveBtn = target.closest('.reserve-btn');
-      if (!reserveBtn) return;
-
-      // #facial-content または #body-content 内のreserve-btnのみ対象
-      var facialParent = reserveBtn.closest('#facial-content');
-      var bodyParent = reserveBtn.closest('#body-content');
-      if (!facialParent && !bodyParent) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      var section = facialParent ? 'facial' : 'body';
-      openModal(section);
-    }, true);
-
-    // 代官山店ボタン
-    var daikanyamaBtn = modal.querySelector('.pato-modal-btn-daikanyama');
-    if (daikanyamaBtn) {
-      daikanyamaBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var url = '';
-        if (currentSection === 'facial') {
-          url = 'https://square.site/book/XXXXX/daikanyama-facial';
-        } else if (currentSection === 'body') {
-          url = 'https://square.site/book/XXXXX/daikanyama-body';
-        }
-        if (url) { window.open(url, '_blank'); }
-        closeModal();
-      });
-    }
-
-    // 銀座店ボタン
-    var ginzaBtn = modal.querySelector('.pato-modal-btn-ginza');
-    if (ginzaBtn) {
-      ginzaBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var url = '';
-        if (currentSection === 'facial') {
-          url = 'https://square.site/book/XXXXX/ginza-facial';
-        } else if (currentSection === 'body') {
-          url = 'https://square.site/book/XXXXX/ginza-body';
-        }
-        if (url) { window.open(url, '_blank'); }
-        closeModal();
-      });
-    }
-
-    // 閉じるボタン
-    var closeBtn = modal.querySelector('.pato-modal-close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeModal);
-    }
-
-    // オーバーレイクリック
-    var overlay = modal.querySelector('.pato-modal-overlay');
-    if (overlay) {
-      overlay.addEventListener('click', closeModal);
-    }
-
-    // ESCキー
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.style.display !== 'none') {
-        closeModal();
-      }
-    });
-
-  })();
-  </script>
   <?php
 }
 add_action('wp_footer', 'add_store_select_modal');
+
+/**
+ * 店舗選択モーダル JavaScript 読み込み
+ */
+function pato_enqueue_store_modal_assets()
+{
+  $js_path = get_stylesheet_directory() . '/js/store-modal.js';
+  if (file_exists($js_path)) {
+    wp_enqueue_script(
+      'pato-store-modal',
+      get_stylesheet_directory_uri() . '/js/store-modal.js',
+      array(),
+      filemtime($js_path),
+      true
+    );
+  }
+}
+add_action('wp_enqueue_scripts', 'pato_enqueue_store_modal_assets');
+
+/**
+ * 店舗選択モーダル CSS 注入
+ */
+function pato_store_modal_css()
+{
+  ?>
+  <style id="pato-store-modal-css">
+  /* PC版 */
+  @media (min-width: 768px) {
+    .pato-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pato-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+    .pato-modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 0;
+      z-index: 2;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    .pato-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .pato-modal-close:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: rotate(90deg);
+    }
+    .pato-modal-banner {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+    }
+    .pato-modal-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .pato-modal-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      margin: 40px 0 30px 0;
+      padding: 0 40px;
+    }
+    .pato-modal-buttons {
+      display: flex;
+      gap: 20px;
+      padding: 0 40px 40px 40px;
+      justify-content: center;
+    }
+    .pato-modal-btn {
+      flex: 1;
+      max-width: 300px;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .pato-modal-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .pato-modal-btn .store-name {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+    .pato-modal-btn .store-subtitle {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+  /* SP版 */
+  @media screen and (max-width: 767px) {
+    .pato-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .pato-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1;
+    }
+    .pato-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 16px;
+      padding: 0;
+      z-index: 2;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    .pato-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 35px;
+      height: 35px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      font-size: 20px;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .pato-modal-close:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+    .pato-modal-banner {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 16px 16px 0 0;
+    }
+    .pato-modal-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .pato-modal-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      margin: 30px 0 20px 0;
+      padding: 0 20px;
+    }
+    .pato-modal-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 0 20px 30px 20px;
+    }
+    .pato-modal-btn {
+      width: 100%;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .pato-modal-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+    .pato-modal-btn .store-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+    .pato-modal-btn .store-subtitle {
+      font-size: 13px;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+  }
+  </style>
+  <?php
+}
+add_action('wp_head', 'pato_store_modal_css');
 
