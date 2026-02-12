@@ -35,7 +35,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                 <div class="ptlMenu__mainContent">
                     <a href="<?php echo esc_url(home_url('/service/#bust-content')); ?>" class="ptlMenu__mainLink">
                         <div class="ptlMenu__mainImage">
-                            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
+                            <img src="https://patolaqshe.com/media/wp-content/uploads/2025/11/0H9A1096.jpg" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
                         </div>
                         <div class="ptlMenu__mainText">
                             <h3 class="ptlMenu__mainTitle">バストアップ施術</h3>
@@ -51,7 +51,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/service/#facial-content')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="フェイシャル" loading="lazy" decoding="async">
+                                <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/フェイシャルバナー.jpg" alt="フェイシャル" loading="lazy" decoding="async">
                             </div>
                             <h4 class="ptlMenu__subTitle">フェイシャル</h4>
                         </a>
@@ -60,7 +60,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/service/#body-content')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="ボディケア" loading="lazy" decoding="async">
+                                <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/ボディバナー2.jpg" alt="ボディケア" loading="lazy" decoding="async">
                             </div>
                             <h4 class="ptlMenu__subTitle">ボディケア</h4>
                         </a>
@@ -69,7 +69,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/service/#bust-content')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/makup.jpg'); ?>" alt="バストケアグッズ" loading="lazy" decoding="async">
+                                <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/モーダルウィンドウバナー.jpg" alt="バストケアグッズ" loading="lazy" decoding="async">
                             </div>
                             <h4 class="ptlMenu__subTitle">バストケアグッズ</h4>
                         </a>
