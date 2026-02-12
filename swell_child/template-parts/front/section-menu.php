@@ -67,7 +67,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     </div>
 
                     <div class="ptlMenu__subItem">
-                        <a href="<?php echo esc_url(home_url('/service/#bust-content')); ?>" class="ptlMenu__subLink">
+                        <a href="javascript:void(0);" class="ptlMenu__subLink product-modal-trigger" data-modal-id="product-modal">
                             <div class="ptlMenu__subImage">
                                 <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/モーダルウィンドウバナー.jpg" alt="バストケアグッズ" loading="lazy" decoding="async">
                             </div>
