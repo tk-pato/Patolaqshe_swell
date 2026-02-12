@@ -4781,67 +4781,99 @@ function add_store_select_modal() {
   </div>
 
   <script>
-  (function($) {
-    $(document).ready(function() {
+  (function() {
+    'use strict';
 
-      // 予約ボタンクリック - イベント委譲で確実に捕捉
-      // .reserve-btnはdivに付与、中のaタグクリックも捕捉
-      $(document).on('click', '#facial-content .reserve-btn, #body-content .reserve-btn, #facial-content .reserve-btn a, #body-content .reserve-btn a', function(e) {
+    var modal = document.getElementById('store-select-modal');
+    if (!modal) return;
+
+    var currentSection = '';
+
+    // モーダルを開く
+    function openModal(section) {
+      currentSection = section;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      currentSection = '';
+    }
+
+    // 予約ボタンクリック - イベント委譲（vanilla JS）
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      // reserve-btn自体またはその子要素（aタグ、spanなど）をクリックした場合
+      var reserveBtn = target.closest('.reserve-btn');
+      if (!reserveBtn) return;
+
+      // #facial-content または #body-content 内のreserve-btnのみ対象
+      var facialParent = reserveBtn.closest('#facial-content');
+      var bodyParent = reserveBtn.closest('#body-content');
+      if (!facialParent && !bodyParent) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      var section = facialParent ? 'facial' : 'body';
+      openModal(section);
+    }, true);
+
+    // 代官山店ボタン
+    var daikanyamaBtn = modal.querySelector('.pato-modal-btn-daikanyama');
+    if (daikanyamaBtn) {
+      daikanyamaBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        e.stopPropagation();
-
-        var section = $(this).closest('#facial-content').length ? 'facial' : 'body';
-        $('#store-select-modal').data('section', section);
-        $('#store-select-modal').fadeIn(300);
-        $('body').css('overflow', 'hidden');
-      });
-
-      // 代官山店ボタン
-      $('.pato-modal-btn-daikanyama').on('click', function(e) {
-        e.preventDefault();
-        var section = $('#store-select-modal').data('section');
         var url = '';
-        if (section === 'facial') {
+        if (currentSection === 'facial') {
           url = 'https://square.site/book/XXXXX/daikanyama-facial';
-        } else if (section === 'body') {
+        } else if (currentSection === 'body') {
           url = 'https://square.site/book/XXXXX/daikanyama-body';
         }
         if (url) { window.open(url, '_blank'); }
-        $('#store-select-modal').fadeOut(300);
-        $('body').css('overflow', '');
+        closeModal();
       });
+    }
 
-      // 銀座店ボタン
-      $('.pato-modal-btn-ginza').on('click', function(e) {
+    // 銀座店ボタン
+    var ginzaBtn = modal.querySelector('.pato-modal-btn-ginza');
+    if (ginzaBtn) {
+      ginzaBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        var section = $('#store-select-modal').data('section');
         var url = '';
-        if (section === 'facial') {
+        if (currentSection === 'facial') {
           url = 'https://square.site/book/XXXXX/ginza-facial';
-        } else if (section === 'body') {
+        } else if (currentSection === 'body') {
           url = 'https://square.site/book/XXXXX/ginza-body';
         }
         if (url) { window.open(url, '_blank'); }
-        $('#store-select-modal').fadeOut(300);
-        $('body').css('overflow', '');
+        closeModal();
       });
+    }
 
-      // 閉じる
-      $('.pato-modal-close, .pato-modal-overlay').on('click', function() {
-        $('#store-select-modal').fadeOut(300);
-        $('body').css('overflow', '');
-      });
+    // 閉じるボタン
+    var closeBtn = modal.querySelector('.pato-modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
 
-      // ESCキー
-      $(document).on('keydown', function(e) {
-        if (e.key === 'Escape' && $('#store-select-modal').is(':visible')) {
-          $('#store-select-modal').fadeOut(300);
-          $('body').css('overflow', '');
-        }
-      });
+    // オーバーレイクリック
+    var overlay = modal.querySelector('.pato-modal-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', closeModal);
+    }
 
+    // ESCキー
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display !== 'none') {
+        closeModal();
+      }
     });
-  })(jQuery);
+
+  })();
   </script>
   <?php
 }
