@@ -12,7 +12,7 @@ $p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
 // 8ボタン（リンクは後から差し替え想定。フィルターで上書き可）
 $default_items = [
     ['label' => 'COMMITMENT', 'slug' => 'commitment', 'url' => 'https://patolaqshe.com/media/about/'],
-    ['label' => 'TREATMENT',  'slug' => 'treatment',  'url' => home_url('/service/#bust-content')],
+    ['label' => 'TREATMENT',  'slug' => 'treatment',  'url' => home_url('/service/')],
     ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => home_url('/service/')],
     ['label' => 'SALON',      'slug' => 'salon',      'url' => home_url('/salon/')],
     ['label' => 'BRIDAL',     'slug' => 'bridal',     'url' => 'https://patolaqshe.com/media/mariage/'],
