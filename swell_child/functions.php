@@ -6269,3 +6269,32 @@ add_action('wp_head', function () {
     echo "\n</script>\n";
 }, 5);
 
+/**
+ * 関連記事を同じカテゴリ・タグのみに絞る
+ */
+add_filter('swell_related_posts_args', function($args) {
+    $categories = wp_get_post_categories(get_the_ID());
+    if (!empty($categories)) {
+        $args['category__in'] = $categories;
+    } else {
+        $tags = wp_get_post_tags(get_the_ID(), array('fields' => 'ids'));
+        if (!empty($tags)) {
+            $args['tag__in'] = $tags;
+        }
+    }
+    return $args;
+});
+
+/**
+ * 投稿詳細ページ用ガラス調背景CSSを読み込み
+ */
+add_action('wp_enqueue_scripts', function() {
+    if (is_single()) {
+        wp_enqueue_style(
+            'single-post-bg',
+            get_stylesheet_directory_uri() . '/css/single-post-bg.css',
+            array(),
+            filemtime(get_stylesheet_directory() . '/css/single-post-bg.css')
+        );
+    }
+}, 20);

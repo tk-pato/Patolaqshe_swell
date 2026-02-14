@@ -1,0 +1,95 @@
+/* ======================================
+   投稿詳細ページ: ガラス調透明感背景
+====================================== */
+
+/* 記事全体の背景グラデーション */
+.l-article {
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #fafafa 0%,
+        #f5f3f0 50%,
+        #faf8f6 100%
+    );
+    min-height: 100vh;
+}
+
+/* ガラス調の透明レイヤー */
+.l-article::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(198, 181, 150, 0.05) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(198, 181, 150, 0.03) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 記事コンテンツエリア: ガラスモルフィズム効果 */
+.l-article__inner {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow:
+        0 8px 32px 0 rgba(198, 181, 150, 0.15),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+    padding: 60px 80px;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+/* アイキャッチ画像エリアもガラス調 */
+.p-article__thumbnail {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 関連記事エリアもガラス調 */
+.p-relatedPosts {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+/* PC表示 */
+@media (min-width: 768px) {
+    .l-article__inner {
+        padding: 60px 80px;
+        margin: 40px auto;
+    }
+}
+
+/* SP表示 */
+@media (max-width: 767px) {
+    .l-article__inner {
+        padding: 30px 20px;
+        margin: 20px 10px;
+        border-radius: 12px;
+    }
+
+    .p-relatedPosts {
+        padding: 20px;
+        margin-top: 30px;
+    }
+}

@@ -1134,3 +1134,22 @@ body.js-modal_open {
     font-size: 14px;
   }
 }
+
+/* ======================================
+   投稿詳細ページ: 不要要素の非表示
+====================================== */
+
+/* SNSシェアボタンを非表示 */
+.p-articleBottom__sns,
+.p-shareButtons,
+.swell-block-shareButtons,
+.wp-block-swell-sns-buttons {
+    display: none !important;
+}
+
+/* 「この記事を書いた人」を非表示 */
+.p-articleBottom__author,
+.p-authorBox,
+.author-box {
+    display: none !important;
+}
