@@ -65,12 +65,12 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 // 各メニューアイテムに対応する画像パス・タイトル・ディスクリプションを設定
                 switch ($label) {
                     case 'COMMITMENT':
-                        $image_src = get_stylesheet_directory_uri() . '/img/hair.jpg';
+                        $image_src = 'https://patolaqshe.com/media/wp-content/uploads/2026/02/累計3万.jpg';
                         $box_title = '創業13年・累計3万人超の実績';
                         $box_desc = '2012年の開業以来、延べ30,000人以上の施術実績。長年の経験と信頼で、初めての方も安心してお任せいただけます。';
                         break;
                     case 'TREATMENT':
-                        $image_src = get_stylesheet_directory_uri() . '/img/makup.jpg';
+                        $image_src = 'https://patolaqshe.com/media/wp-content/uploads/2026/02/フラッシュ.jpg';
                         $box_title = '都内随一の2000ショット照射';
                         $box_desc = 'バストアップ専用機による驚愕の高密度2000ショット照射で、深部までしっかりアプローチ。熟練のハンドマッサージ（乳腰ケア）、ナノカレント（生体電流）を使用した育乳メソッドなど、豊富な施術メニューから最適な組み合わせをご提案します。';
                         break;
@@ -80,7 +80,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         $box_desc = 'エステティシャン歴14年のオーナーをはじめ、経験豊富なスタッフがお一人おひとりのお悩みに寄り添います。カウンセリングから施術まで、完全オーダーメイドでご提案いたします。';
                         break;
                     case 'SALON':
-                        $image_src = get_stylesheet_directory_uri() . '/img/spa.jpg';
+                        $image_src = 'https://patolaqshe.com/media/wp-content/uploads/2026/02/効果.jpg';
                         $box_title = 'モデル等も通う効果実感率99%';
                         $box_desc = '芸能人・モデル・インフルエンサーもお忍びで通う実績。効果体感率99%、平均2カップアップの結果にこだわります。銀座駅や恵比寿駅からも駅近の好立地で、お仕事帰りにも通いやすい環境です。';
                         break;
