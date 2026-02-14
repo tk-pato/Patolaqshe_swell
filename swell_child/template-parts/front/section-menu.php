@@ -28,14 +28,14 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
         </div>
 
-        <!-- MENU Content (Rococo Style) -->
+        <!-- MENU Content -->
         <div class="ptlMenu__content">
             <!-- メインコンテンツ -->
             <div class="ptlMenu__main">
                 <div class="ptlMenu__mainContent">
                     <a href="<?php echo esc_url(home_url('/service/#bust-content')); ?>" class="ptlMenu__mainLink">
                         <div class="ptlMenu__mainImage">
-                            <img src="https://patolaqshe.com/media/wp-content/uploads/2025/11/0H9A1096.jpg" alt="Rococo式 バストアップ施術" loading="lazy" decoding="async">
+                            <img src="https://patolaqshe.com/media/wp-content/uploads/2025/11/0H9A1096.jpg" alt="バストアップ施術" loading="lazy" decoding="async">
                         </div>
                         <div class="ptlMenu__mainText">
                             <h3 class="ptlMenu__mainTitle">バストアップ施術</h3>

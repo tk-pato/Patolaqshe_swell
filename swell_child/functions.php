@@ -2584,18 +2584,42 @@ add_action('admin_init', function () {
 
 // SEOメタタグを<head>に出力
 add_action('wp_head', function () {
+  // 個別記事
   if (is_single()) {
     global $post;
-
     $meta_description = get_post_meta($post->ID, '_ptl_meta_description', true);
     $meta_keywords = get_post_meta($post->ID, '_ptl_meta_keywords', true);
-
     if ($meta_description) {
       echo '<meta name="description" content="' . esc_attr($meta_description) . '">' . "\n";
     }
-
     if ($meta_keywords) {
       echo '<meta name="keywords" content="' . esc_attr($meta_keywords) . '">' . "\n";
+    }
+    return;
+  }
+
+  // トップページ・固定ページ用 meta description
+  $descriptions = [
+    'front_page'    => 'バストアップ専門エステサロン パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。無料カウンセリング受付中。',
+    'daikanyama'    => 'パトラクシェ恵比寿・代官山店｜バストアップ専門エステサロン。代官山駅徒歩2分、恵比寿駅徒歩6分。平日12:00-20:00、土日祝11:00-19:00。初回体験9,500円。',
+    'ginza'         => 'パトラクシェ銀座店｜バストアップ専門エステサロン。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。平日13:00-21:00、土日祝11:00-19:00。初回体験9,500円。',
+    'service'       => 'パトラクシェの施術メニュー｜バストアップ・フェイシャル・ボディケア。マシンとオールハンドのハイブリッド施術で理想のボディラインへ。銀座・代官山。',
+    'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
+    'mariage'       => 'パトラクシェ マリアージュ｜銀座の結婚相談所。結婚式を最高の思い出にするブライダルエステプラン。バストアップ専門サロンならではの特別メニュー。',
+    'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
+    'information'   => 'パトラクシェ採用情報｜エステティシャン募集。正社員月給24万〜35万円、未経験歓迎。充実した研修制度、独立開業支援あり。銀座・代官山勤務。',
+    'privacy-policy' => 'プライバシーポリシー｜パトラクシェ。お客様の個人情報の取り扱いについて。',
+  ];
+
+  if (is_front_page()) {
+    echo '<meta name="description" content="' . esc_attr($descriptions['front_page']) . '">' . "\n";
+    return;
+  }
+
+  if (is_page()) {
+    $slug = get_post_field('post_name', get_post());
+    if (isset($descriptions[$slug])) {
+      echo '<meta name="description" content="' . esc_attr($descriptions[$slug]) . '">' . "\n";
     }
   }
 }, 1);
@@ -4535,7 +4559,7 @@ function ptl_faq_modal_shortcode()
       </button>
 
       <div class="modal-hero">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/FAQ-modal.jpg" alt="FAQ" />
+        <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/parallax動画①-mp4-image.jpg" alt="FAQ" />
         <h2 class="modal-hero-title">FAQ</h2>
       </div>
 
@@ -5138,4 +5162,967 @@ function pato_enqueue_product_modal_assets()
   }
 }
 add_action('wp_enqueue_scripts', 'pato_enqueue_product_modal_assets');
+
+/**
+ * 構造化データ（JSON-LD）- SEO/GEO対策
+ * トップページのみ出力
+ */
+add_action('wp_head', function () {
+    if (!is_front_page()) return;
+
+    $logo_url = 'https://patolaqshe.com/wp-content/themes/swell_child/img/intrologo.png';
+
+    $structured_data = [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
+            // 1. 恵比寿・代官山店
+            [
+                '@type'       => 'BeautySalon',
+                '@id'         => 'https://patolaqshe.com/#daikanyama',
+                'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
+                'description' => 'バストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。',
+                'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
+                'url'         => 'https://patolaqshe.com/daikanyama/',
+                'telephone'   => '03-5489-7118',
+                'priceRange'  => '¥¥',
+                'currenciesAccepted' => 'JPY',
+                'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
+                'address'     => [
+                    '@type'           => 'PostalAddress',
+                    'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                    'addressLocality' => '渋谷区',
+                    'addressRegion'   => '東京都',
+                    'postalCode'      => '150-0034',
+                    'addressCountry'  => 'JP',
+                ],
+                'geo' => [
+                    '@type'     => 'GeoCoordinates',
+                    'latitude'  => 35.649642,
+                    'longitude' => 139.701838,
+                ],
+                'openingHoursSpecification' => [
+                    [
+                        '@type'     => 'OpeningHoursSpecification',
+                        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                        'opens'     => '12:00',
+                        'closes'    => '20:00',
+                    ],
+                    [
+                        '@type'     => 'OpeningHoursSpecification',
+                        'dayOfWeek' => ['Saturday', 'Sunday'],
+                        'opens'     => '11:00',
+                        'closes'    => '19:00',
+                    ],
+                ],
+                'hasMap'      => 'https://maps.google.com/?q=東京都渋谷区代官山町18-8+堀井代官山ビル3F',
+                'parentOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'sameAs' => [
+                    'https://beauty.hotpepper.jp/kr/slnH000263216/',
+                    'https://beauty.rakuten.co.jp/s6000025008/',
+                    'https://minimodel.jp/r/W1skc0C',
+                    'https://www.google.com/maps?cid=3885199838792015163',
+                    'https://www.instagram.com/patolaqshe_daikanyama/',
+                    'https://www.threads.com/@patolaqshe_daikanyama',
+                    'https://www.facebook.com/166513353554642',
+                    'https://twitter.com/Patolaqshe',
+                    'https://www.youtube.com/channel/UCH796fTXjWNg6BtUSOeSP8A',
+                    'https://www.tiktok.com/@patolaqshe',
+                ],
+                'potentialAction' => [
+                    [
+                        '@type'  => 'ReserveAction',
+                        'name'   => 'ホットペッパーで予約',
+                        'target' => [
+                            '@type'       => 'EntryPoint',
+                            'urlTemplate' => 'https://beauty.hotpepper.jp/kr/slnH000263216/',
+                            'actionPlatform' => [
+                                'https://schema.org/DesktopWebPlatform',
+                                'https://schema.org/MobileWebPlatform',
+                            ],
+                        ],
+                        'result' => [
+                            '@type' => 'Reservation',
+                            'name'  => '施術予約（ホットペッパービューティー）',
+                        ],
+                    ],
+                    [
+                        '@type'  => 'ReserveAction',
+                        'name'   => '公式サイトで予約',
+                        'target' => [
+                            '@type'       => 'EntryPoint',
+                            'urlTemplate' => 'https://book.squareup.com/appointments/xgp5fm2xb93b2t/location/5PESR3FP3XMAS/services',
+                            'actionPlatform' => [
+                                'https://schema.org/DesktopWebPlatform',
+                                'https://schema.org/MobileWebPlatform',
+                            ],
+                        ],
+                        'result' => [
+                            '@type' => 'Reservation',
+                            'name'  => '施術予約（公式予約）',
+                        ],
+                    ],
+                ],
+                'hasOfferCatalog' => [
+                    '@type' => 'OfferCatalog',
+                    'name'  => '施術メニュー',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'OfferCatalog',
+                            'name'  => 'バストアップ',
+                            'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'itemOffered' => [
+                                        '@type'       => 'Service',
+                                        'name'        => 'バストアップ施術',
+                                        'description' => 'マシンとオールハンドのハイブリッド施術。都内随一の2000ショット照射で深部までアプローチ。',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            '@type' => 'OfferCatalog',
+                            'name'  => 'フェイシャル',
+                            'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'itemOffered' => [
+                                        '@type' => 'Service',
+                                        'name'  => 'フェイシャルケア',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            '@type' => 'OfferCatalog',
+                            'name'  => 'ボディケア',
+                            'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'itemOffered' => [
+                                        '@type' => 'Service',
+                                        'name'  => 'ボディケア',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'areaServed'  => [
+                    ['@type' => 'City', 'name' => '渋谷区'],
+                    ['@type' => 'City', 'name' => '恵比寿'],
+                    ['@type' => 'City', 'name' => '代官山'],
+                ],
+            ],
+            // 2. 銀座店
+            [
+                '@type'       => 'BeautySalon',
+                '@id'         => 'https://patolaqshe.com/#ginza',
+                'name'        => 'バストアップ専門パトラクシェ銀座店',
+                'description' => 'バストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。',
+                'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
+                'url'         => 'https://patolaqshe.com/ginza/',
+                'telephone'   => '03-6264-4343',
+                'priceRange'  => '¥¥',
+                'currenciesAccepted' => 'JPY',
+                'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
+                'address'     => [
+                    '@type'           => 'PostalAddress',
+                    'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                    'addressLocality' => '中央区',
+                    'addressRegion'   => '東京都',
+                    'postalCode'      => '104-0061',
+                    'addressCountry'  => 'JP',
+                ],
+                'geo' => [
+                    '@type'     => 'GeoCoordinates',
+                    'latitude'  => 35.674583,
+                    'longitude' => 139.765120,
+                ],
+                'openingHoursSpecification' => [
+                    [
+                        '@type'     => 'OpeningHoursSpecification',
+                        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                        'opens'     => '13:00',
+                        'closes'    => '21:00',
+                    ],
+                    [
+                        '@type'     => 'OpeningHoursSpecification',
+                        'dayOfWeek' => ['Saturday', 'Sunday'],
+                        'opens'     => '11:00',
+                        'closes'    => '19:00',
+                    ],
+                ],
+                'hasMap'      => 'https://maps.google.com/?q=東京都中央区銀座1-6-6+GINZA+ARROWS+6F',
+                'parentOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'sameAs' => [
+                    'https://beauty.hotpepper.jp/kr/slnH000334472/',
+                    'https://beauty.rakuten.co.jp/s6000025009/',
+                    'https://minimodel.jp/r/r057c2c',
+                    'https://www.google.com/maps?cid=12930228174206556429',
+                    'https://www.instagram.com/patolaqshe_ginza/',
+                    'https://www.threads.com/@patolaqshe_ginza',
+                    'https://www.facebook.com/400906620113685',
+                    'https://twitter.com/Patolaqshe',
+                    'https://www.youtube.com/channel/UCH796fTXjWNg6BtUSOeSP8A',
+                    'https://www.tiktok.com/@patolaqshe',
+                ],
+                'potentialAction' => [
+                    [
+                        '@type'  => 'ReserveAction',
+                        'name'   => 'ホットペッパーで予約',
+                        'target' => [
+                            '@type'       => 'EntryPoint',
+                            'urlTemplate' => 'https://beauty.hotpepper.jp/kr/slnH000334472/',
+                            'actionPlatform' => [
+                                'https://schema.org/DesktopWebPlatform',
+                                'https://schema.org/MobileWebPlatform',
+                            ],
+                        ],
+                        'result' => [
+                            '@type' => 'Reservation',
+                            'name'  => '施術予約（ホットペッパービューティー）',
+                        ],
+                    ],
+                    [
+                        '@type'  => 'ReserveAction',
+                        'name'   => '公式サイトで予約',
+                        'target' => [
+                            '@type'       => 'EntryPoint',
+                            'urlTemplate' => 'https://book.squareup.com/appointments/qt8e7316fy17nd/location/CMN5YZFYZARSA/services',
+                            'actionPlatform' => [
+                                'https://schema.org/DesktopWebPlatform',
+                                'https://schema.org/MobileWebPlatform',
+                            ],
+                        ],
+                        'result' => [
+                            '@type' => 'Reservation',
+                            'name'  => '施術予約（公式予約）',
+                        ],
+                    ],
+                ],
+                'hasOfferCatalog' => [
+                    '@type' => 'OfferCatalog',
+                    'name'  => '施術メニュー',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'OfferCatalog',
+                            'name'  => 'バストアップ',
+                            'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'itemOffered' => [
+                                        '@type'       => 'Service',
+                                        'name'        => 'バストアップ施術',
+                                        'description' => 'マシンとオールハンドのハイブリッド施術。都内随一の2000ショット照射で深部までアプローチ。',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            '@type' => 'OfferCatalog',
+                            'name'  => 'フェイシャル',
+                            'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'itemOffered' => [
+                                        '@type' => 'Service',
+                                        'name'  => 'フェイシャルケア',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            '@type' => 'OfferCatalog',
+                            'name'  => 'ボディケア',
+                            'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'itemOffered' => [
+                                        '@type' => 'Service',
+                                        'name'  => 'ボディケア',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'areaServed'  => [
+                    ['@type' => 'City', 'name' => '中央区'],
+                    ['@type' => 'City', 'name' => '銀座'],
+                    ['@type' => 'City', 'name' => '有楽町'],
+                ],
+            ],
+            // 3. Organization
+            [
+                '@type' => 'Organization',
+                '@id'   => 'https://patolaqshe.com/#organization',
+                'name'  => 'Patolaqshe（パトラクシェ）',
+                'alternateName' => 'パトラクシェ',
+                'url'   => 'https://patolaqshe.com/',
+                'logo'  => [
+                    '@type'      => 'ImageObject',
+                    'url'        => $logo_url,
+                ],
+                'contactPoint' => [
+                    '@type'             => 'ContactPoint',
+                    'telephone'         => '03-5489-7118',
+                    'contactType'       => 'customer service',
+                    'areaServed'        => 'JP',
+                    'availableLanguage' => 'Japanese',
+                ],
+                'sameAs' => [
+                    'https://beauty.hotpepper.jp/kr/slnH000263216/',
+                    'https://beauty.hotpepper.jp/kr/slnH000334472/',
+                    'https://beauty.rakuten.co.jp/s6000025008/',
+                    'https://beauty.rakuten.co.jp/s6000025009/',
+                    'https://minimodel.jp/r/W1skc0C',
+                    'https://minimodel.jp/r/r057c2c',
+                    'https://www.google.com/maps?cid=3885199838792015163',
+                    'https://www.google.com/maps?cid=12930228174206556429',
+                    'https://www.instagram.com/patolaqshe_daikanyama/',
+                    'https://www.instagram.com/patolaqshe_ginza/',
+                    'https://www.threads.com/@patolaqshe_daikanyama',
+                    'https://www.threads.com/@patolaqshe_ginza',
+                    'https://www.facebook.com/166513353554642',
+                    'https://www.facebook.com/400906620113685',
+                    'https://twitter.com/Patolaqshe',
+                    'https://www.youtube.com/channel/UCH796fTXjWNg6BtUSOeSP8A',
+                    'https://www.tiktok.com/@patolaqshe',
+                ],
+                'subOrganization' => [
+                    ['@id' => 'https://patolaqshe.com/#daikanyama'],
+                    ['@id' => 'https://patolaqshe.com/#ginza'],
+                ],
+            ],
+            // 4. WebSite
+            [
+                '@type' => 'WebSite',
+                '@id'   => 'https://patolaqshe.com/#website',
+                'name'  => 'Patolaqshe（パトラクシェ）',
+                'url'   => 'https://patolaqshe.com/',
+                'publisher' => ['@id' => 'https://patolaqshe.com/#organization'],
+            ],
+            // 5. BreadcrumbList
+            [
+                '@type'           => 'BreadcrumbList',
+                '@id'             => 'https://patolaqshe.com/#breadcrumb',
+                'itemListElement' => [
+                    [
+                        '@type'    => 'ListItem',
+                        'position' => 1,
+                        'name'     => 'ホーム',
+                        'item'     => 'https://patolaqshe.com/',
+                    ],
+                ],
+            ],
+            // 6. FAQPage（モーダルFAQ）
+            [
+                '@type'      => 'FAQPage',
+                '@id'        => 'https://patolaqshe.com/#faq',
+                'mainEntity' => [
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '予約方法を教えてください',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'お電話（営業時間内）、LINE、またはホットペッパービューティーから24時間ご予約いただけます。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '予約の変更・キャンセルはできますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'はい、可能です。ただし、変更・キャンセルは2営業日前までにお願いいたします。それ以降の場合は、回数券の消化またはキャンセル料が発生する場合がございます。お電話またはLINEにてご連絡ください。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '支払い方法を教えてください',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => '現金、クレジットカード、電子マネーがご利用いただけます。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => 'どんな施術をしますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => '都内でも珍しいマシンとオールハンドのハイブリッド施術が特徴です。オールハンドではバスト周りだけでなく、背面や二の腕、フットマッサージなど、バストに関わるお身体全体をしっかりケアしてまいります。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '何回通えば良いですか？通う頻度は？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'バストアップなどの効果実感には、6回以上、2～3ヶ月以上をおすすめしております。お客様お一人おひとりの状態に合わせて、最適なペースをカウンセリング時にお伝えいたします。最初は2週間に1回がベースとなり、徐々にペースは減っていきます。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '年齢制限はありますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => '18歳以上の方からご利用いただけます。未成年の方は保護者の同意が必要です。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '無料カウンセリングだけでも良いですか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'はい、もちろんです。無料カウンセリングのみも大歓迎です。施術内容やお悩みについて、じっくりお話を伺い、不安や疑問を解消してからご判断いただけますので、お気軽にご相談ください。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => 'バストの下垂や左右差は改善できますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'はい、可能です。バストを支える筋肉を整えることで下垂の改善が期待でき、左右のバランスを整える施術も行います。お一人おひとりの状態に合わせてケアいたします。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '体調不良や生理中でも施術できますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => '生理中の施術は可能ですが、体調がすぐれない場合は無理をせずご相談ください。婦人科系で通院もしくは治療を継続されている方は、お身体の状態によってお控えいただく場合がございます。事前にお気軽にご相談ください。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '妊娠中・産後・授乳中でも施術できますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => '妊娠中および授乳中の方はお控えいただいております。産後は卒乳後、6ヶ月以降で体調が安定してからご利用いただけます。',
+                        ],
+                    ],
+                ],
+            ],
+            // 7. Product - バストケア化粧品（商品モーダル）
+            [
+                '@type'       => 'Product',
+                '@id'         => 'https://patolaqshe.com/#product-cosmetics',
+                'name'        => 'バストケア専用化粧品',
+                'description' => '最高品質の美容成分を配合した、バストケア専用化粧品。肌に優しく、効果的なケアを実現します。',
+                'brand'       => ['@id' => 'https://patolaqshe.com/#organization'],
+                'category'    => '化粧品',
+            ],
+            // 8. Product - 補正下着（商品モーダル）
+            [
+                '@type'       => 'Product',
+                '@id'         => 'https://patolaqshe.com/#product-underwear',
+                'name'        => '補正下着',
+                'description' => '美しいバストラインをサポートする補正下着。快適な着け心地と優れた補正力を兼ね備えています。',
+                'brand'       => ['@id' => 'https://patolaqshe.com/#organization'],
+                'category'    => '下着',
+            ],
+            // 9. JobPosting - 正社員
+            [
+                '@type'            => 'JobPosting',
+                '@id'              => 'https://patolaqshe.com/#job-fulltime',
+                'title'            => 'エステティシャン（正社員）',
+                'description'      => 'バストアップ専門エステサロンでのエステティシャン業務。マシンとオールハンドのハイブリッド施術を担当。未経験歓迎、充実した研修制度あり。独立開業支援制度あり。',
+                'datePosted'       => '2026-01-01',
+                'employmentType'   => 'FULL_TIME',
+                'url'              => 'https://patolaqshe.com/information/',
+                'baseSalary'       => [
+                    '@type'    => 'MonetaryAmount',
+                    'currency' => 'JPY',
+                    'value'    => [
+                        '@type'    => 'QuantitativeValue',
+                        'minValue' => 240000,
+                        'maxValue' => 350000,
+                        'unitText' => 'MONTH',
+                    ],
+                ],
+                'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'jobLocation' => [
+                    [
+                        '@type'   => 'Place',
+                        'name'    => 'パトラクシェ恵比寿・代官山店',
+                        'address' => [
+                            '@type'           => 'PostalAddress',
+                            'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                            'addressLocality' => '渋谷区',
+                            'addressRegion'   => '東京都',
+                            'postalCode'      => '150-0034',
+                            'addressCountry'  => 'JP',
+                        ],
+                    ],
+                    [
+                        '@type'   => 'Place',
+                        'name'    => 'パトラクシェ銀座店',
+                        'address' => [
+                            '@type'           => 'PostalAddress',
+                            'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                            'addressLocality' => '中央区',
+                            'addressRegion'   => '東京都',
+                            'postalCode'      => '104-0061',
+                            'addressCountry'  => 'JP',
+                        ],
+                    ],
+                ],
+                'qualifications'         => '学歴不問、未経験歓迎、エステティシャン経験者優遇',
+                'jobBenefits'            => '各種保険完備、交通費全額支給、制服貸与、昇給制度、充実した研修制度（会社負担）、技術習得支援、独立開業支援制度',
+                'workHours'              => '実働8時間・休憩1時間（代官山: 平日12:30-20:30/土日祝10:30-19:30、銀座: 平日13:30-21:30/土日祝10:30-19:30）',
+                'applicantLocationRequirements' => [
+                    '@type' => 'Country',
+                    'name'  => 'Japan',
+                ],
+            ],
+            // 8. JobPosting - アルバイト
+            [
+                '@type'            => 'JobPosting',
+                '@id'              => 'https://patolaqshe.com/#job-parttime',
+                'title'            => 'エステティシャン（アルバイト）',
+                'description'      => 'バストアップ専門エステサロンでのエステティシャン業務。未経験歓迎、充実した研修制度あり。',
+                'datePosted'       => '2026-01-01',
+                'employmentType'   => 'PART_TIME',
+                'url'              => 'https://patolaqshe.com/information/',
+                'baseSalary'       => [
+                    '@type'    => 'MonetaryAmount',
+                    'currency' => 'JPY',
+                    'value'    => [
+                        '@type'    => 'QuantitativeValue',
+                        'minValue' => 1300,
+                        'maxValue' => 1800,
+                        'unitText' => 'HOUR',
+                    ],
+                ],
+                'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'jobLocation' => [
+                    [
+                        '@type'   => 'Place',
+                        'name'    => 'パトラクシェ恵比寿・代官山店',
+                        'address' => [
+                            '@type'           => 'PostalAddress',
+                            'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                            'addressLocality' => '渋谷区',
+                            'addressRegion'   => '東京都',
+                            'postalCode'      => '150-0034',
+                            'addressCountry'  => 'JP',
+                        ],
+                    ],
+                    [
+                        '@type'   => 'Place',
+                        'name'    => 'パトラクシェ銀座店',
+                        'address' => [
+                            '@type'           => 'PostalAddress',
+                            'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                            'addressLocality' => '中央区',
+                            'addressRegion'   => '東京都',
+                            'postalCode'      => '104-0061',
+                            'addressCountry'  => 'JP',
+                        ],
+                    ],
+                ],
+                'qualifications' => '学歴不問、未経験歓迎、エステティシャン経験者優遇',
+                'jobBenefits'    => '交通費全額支給、制服貸与、研修制度あり',
+            ],
+            // 9. JobPosting - 業務委託
+            [
+                '@type'            => 'JobPosting',
+                '@id'              => 'https://patolaqshe.com/#job-contractor',
+                'title'            => 'エステティシャン（業務委託）',
+                'description'      => 'バストアップ専門エステサロンでの業務委託エステティシャン。経験者歓迎、報酬応相談。',
+                'datePosted'       => '2026-01-01',
+                'employmentType'   => 'CONTRACTOR',
+                'url'              => 'https://patolaqshe.com/information/',
+                'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'jobLocation' => [
+                    [
+                        '@type'   => 'Place',
+                        'name'    => 'パトラクシェ恵比寿・代官山店',
+                        'address' => [
+                            '@type'           => 'PostalAddress',
+                            'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                            'addressLocality' => '渋谷区',
+                            'addressRegion'   => '東京都',
+                            'postalCode'      => '150-0034',
+                            'addressCountry'  => 'JP',
+                        ],
+                    ],
+                    [
+                        '@type'   => 'Place',
+                        'name'    => 'パトラクシェ銀座店',
+                        'address' => [
+                            '@type'           => 'PostalAddress',
+                            'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                            'addressLocality' => '中央区',
+                            'addressRegion'   => '東京都',
+                            'postalCode'      => '104-0061',
+                            'addressCountry'  => 'JP',
+                        ],
+                    ],
+                ],
+                'qualifications' => '学歴不問、エステティシャン経験者歓迎',
+            ],
+        ],
+    ];
+
+    echo '<script type="application/ld+json">' . "\n";
+    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    echo "\n</script>\n";
+}, 5);
+
+/**
+ * 構造化データ（JSON-LD）- 子ページ用
+ * 各ページに適した構造化データを出力
+ */
+add_action('wp_head', function () {
+    if (is_front_page()) return;
+    if (!is_page()) return;
+
+    $slug = get_post_field('post_name', get_post());
+    $graph = [];
+
+    // ----- 共通: BreadcrumbList -----
+    $page_title = get_the_title();
+    $graph[] = [
+        '@type'           => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type'    => 'ListItem',
+                'position' => 1,
+                'name'     => 'ホーム',
+                'item'     => 'https://patolaqshe.com/',
+            ],
+            [
+                '@type'    => 'ListItem',
+                'position' => 2,
+                'name'     => $page_title,
+                'item'     => 'https://patolaqshe.com/' . $slug . '/',
+            ],
+        ],
+    ];
+
+    // ----- 代官山店ページ -----
+    if ($slug === 'daikanyama') {
+        $graph[] = [
+            '@type'       => 'BeautySalon',
+            '@id'         => 'https://patolaqshe.com/#daikanyama',
+            'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
+            'description' => 'バストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。',
+            'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
+            'url'         => 'https://patolaqshe.com/daikanyama/',
+            'telephone'   => '03-5489-7118',
+            'priceRange'  => '¥¥',
+            'address'     => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                'addressLocality' => '渋谷区',
+                'addressRegion'   => '東京都',
+                'postalCode'      => '150-0034',
+                'addressCountry'  => 'JP',
+            ],
+            'geo' => [
+                '@type'     => 'GeoCoordinates',
+                'latitude'  => 35.649642,
+                'longitude' => 139.701838,
+            ],
+            'openingHoursSpecification' => [
+                [
+                    '@type'     => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                    'opens'     => '12:00',
+                    'closes'    => '20:00',
+                ],
+                [
+                    '@type'     => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Saturday', 'Sunday'],
+                    'opens'     => '11:00',
+                    'closes'    => '19:00',
+                ],
+            ],
+            'parentOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+            'sameAs' => [
+                'https://beauty.hotpepper.jp/kr/slnH000263216/',
+                'https://beauty.rakuten.co.jp/s6000025008/',
+                'https://minimodel.jp/r/W1skc0C',
+                'https://www.google.com/maps?cid=3885199838792015163',
+                'https://www.instagram.com/patolaqshe_daikanyama/',
+                'https://www.threads.com/@patolaqshe_daikanyama',
+            ],
+            'potentialAction' => [
+                [
+                    '@type'  => 'ReserveAction',
+                    'name'   => 'ホットペッパーで予約',
+                    'target' => [
+                        '@type'       => 'EntryPoint',
+                        'urlTemplate' => 'https://beauty.hotpepper.jp/kr/slnH000263216/',
+                    ],
+                ],
+                [
+                    '@type'  => 'ReserveAction',
+                    'name'   => '公式サイトで予約',
+                    'target' => [
+                        '@type'       => 'EntryPoint',
+                        'urlTemplate' => 'https://book.squareup.com/appointments/xgp5fm2xb93b2t/location/5PESR3FP3XMAS/services',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    // ----- 銀座店ページ -----
+    if ($slug === 'ginza') {
+        $graph[] = [
+            '@type'       => 'BeautySalon',
+            '@id'         => 'https://patolaqshe.com/#ginza',
+            'name'        => 'バストアップ専門パトラクシェ銀座店',
+            'description' => 'バストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。',
+            'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
+            'url'         => 'https://patolaqshe.com/ginza/',
+            'telephone'   => '03-6264-4343',
+            'priceRange'  => '¥¥',
+            'address'     => [
+                '@type'           => 'PostalAddress',
+                'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                'addressLocality' => '中央区',
+                'addressRegion'   => '東京都',
+                'postalCode'      => '104-0061',
+                'addressCountry'  => 'JP',
+            ],
+            'geo' => [
+                '@type'     => 'GeoCoordinates',
+                'latitude'  => 35.674583,
+                'longitude' => 139.765120,
+            ],
+            'openingHoursSpecification' => [
+                [
+                    '@type'     => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                    'opens'     => '13:00',
+                    'closes'    => '21:00',
+                ],
+                [
+                    '@type'     => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Saturday', 'Sunday'],
+                    'opens'     => '11:00',
+                    'closes'    => '19:00',
+                ],
+            ],
+            'parentOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+            'sameAs' => [
+                'https://beauty.hotpepper.jp/kr/slnH000334472/',
+                'https://beauty.rakuten.co.jp/s6000025009/',
+                'https://minimodel.jp/r/r057c2c',
+                'https://www.google.com/maps?cid=12930228174206556429',
+                'https://www.instagram.com/patolaqshe_ginza/',
+                'https://www.threads.com/@patolaqshe_ginza',
+            ],
+            'potentialAction' => [
+                [
+                    '@type'  => 'ReserveAction',
+                    'name'   => 'ホットペッパーで予約',
+                    'target' => [
+                        '@type'       => 'EntryPoint',
+                        'urlTemplate' => 'https://beauty.hotpepper.jp/kr/slnH000334472/',
+                    ],
+                ],
+                [
+                    '@type'  => 'ReserveAction',
+                    'name'   => '公式サイトで予約',
+                    'target' => [
+                        '@type'       => 'EntryPoint',
+                        'urlTemplate' => 'https://book.squareup.com/appointments/qt8e7316fy17nd/location/CMN5YZFYZARSA/services',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    // ----- サービスページ -----
+    if ($slug === 'service') {
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => 'バストアップ施術',
+            'description' => 'マシンとオールハンドのハイブリッド施術。都内随一の2000ショット照射で深部までアプローチ。',
+            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'serviceType' => 'バストアップエステ',
+            'areaServed'  => [
+                ['@type' => 'City', 'name' => '渋谷区'],
+                ['@type' => 'City', 'name' => '中央区'],
+            ],
+            'url' => 'https://patolaqshe.com/service/',
+        ];
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => 'フェイシャルケア',
+            'description' => 'お顔の美容トリートメント施術。',
+            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'serviceType' => 'フェイシャルエステ',
+            'url'         => 'https://patolaqshe.com/service/',
+        ];
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => 'ボディケア',
+            'description' => '全身の美容トリートメント施術。',
+            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'serviceType' => 'ボディエステ',
+            'url'         => 'https://patolaqshe.com/service/',
+        ];
+    }
+
+    // ----- コースページ -----
+    if ($slug === 'course') {
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => 'バストアップコース（90分）',
+            'description' => 'フラッシュ×オールハンド施術による人気No.1メニュー。左右差補正、ハリ・弾力回復、ボリュームアップ、谷間形成に対応。',
+            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'serviceType' => 'バストアップエステ',
+            'url'         => 'https://patolaqshe.com/course/',
+            'offers'      => [
+                '@type'         => 'Offer',
+                'price'         => '9500',
+                'priceCurrency' => 'JPY',
+                'name'          => '初回限定価格',
+                'availability'  => 'https://schema.org/InStock',
+                'url'           => 'https://patolaqshe.com/course/',
+                'priceValidUntil' => '2026-12-31',
+            ],
+        ];
+    }
+
+    // ----- 結婚相談所ページ -----
+    if ($slug === 'mariage') {
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => 'パトラクシェ マリアージュ',
+            'description' => '銀座の結婚相談所。結婚式を最高の思い出にするための特別なブライダルエステプランをご用意。',
+            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'serviceType' => 'ブライダルエステ',
+            'areaServed'  => [
+                ['@type' => 'City', 'name' => '銀座'],
+            ],
+            'url' => 'https://patolaqshe.com/mariage/',
+        ];
+    }
+
+    // ----- お客様の声ページ -----
+    if ($slug === 'voice') {
+        $graph[] = [
+            '@type'  => 'WebPage',
+            'name'   => 'お客様の声',
+            'url'    => 'https://patolaqshe.com/voice/',
+            'about'  => ['@id' => 'https://patolaqshe.com/#organization'],
+            'description' => 'パトラクシェをご利用いただいたお客様の体験談・Before/After。',
+        ];
+    }
+
+    // ----- 求人ページ -----
+    if ($slug === 'information') {
+        $graph[] = [
+            '@type'            => 'JobPosting',
+            'title'            => 'エステティシャン（正社員）',
+            'description'      => 'バストアップ専門エステサロンでのエステティシャン業務。未経験歓迎、充実した研修制度あり。独立開業支援制度あり。',
+            'datePosted'       => '2026-01-01',
+            'employmentType'   => 'FULL_TIME',
+            'url'              => 'https://patolaqshe.com/information/',
+            'baseSalary'       => [
+                '@type'    => 'MonetaryAmount',
+                'currency' => 'JPY',
+                'value'    => [
+                    '@type'    => 'QuantitativeValue',
+                    'minValue' => 240000,
+                    'maxValue' => 350000,
+                    'unitText' => 'MONTH',
+                ],
+            ],
+            'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+            'jobLocation' => [
+                [
+                    '@type'   => 'Place',
+                    'name'    => 'パトラクシェ恵比寿・代官山店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                        'addressLocality' => '渋谷区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '150-0034',
+                        'addressCountry'  => 'JP',
+                    ],
+                ],
+                [
+                    '@type'   => 'Place',
+                    'name'    => 'パトラクシェ銀座店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                        'addressLocality' => '中央区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '104-0061',
+                        'addressCountry'  => 'JP',
+                    ],
+                ],
+            ],
+            'qualifications'  => '学歴不問、未経験歓迎、エステティシャン経験者優遇',
+            'jobBenefits'     => '各種保険完備、交通費全額支給、制服貸与、昇給制度、充実した研修制度（会社負担）、技術習得支援、独立開業支援制度',
+            'workHours'       => '実働8時間・休憩1時間',
+        ];
+        $graph[] = [
+            '@type'            => 'JobPosting',
+            'title'            => 'エステティシャン（アルバイト）',
+            'description'      => 'バストアップ専門エステサロンでのエステティシャン業務。未経験歓迎。',
+            'datePosted'       => '2026-01-01',
+            'employmentType'   => 'PART_TIME',
+            'url'              => 'https://patolaqshe.com/information/',
+            'baseSalary'       => [
+                '@type'    => 'MonetaryAmount',
+                'currency' => 'JPY',
+                'value'    => [
+                    '@type'    => 'QuantitativeValue',
+                    'minValue' => 1300,
+                    'maxValue' => 1800,
+                    'unitText' => 'HOUR',
+                ],
+            ],
+            'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+            'jobLocation' => [
+                [
+                    '@type'   => 'Place',
+                    'name'    => 'パトラクシェ恵比寿・代官山店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                        'addressLocality' => '渋谷区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '150-0034',
+                        'addressCountry'  => 'JP',
+                    ],
+                ],
+                [
+                    '@type'   => 'Place',
+                    'name'    => 'パトラクシェ銀座店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                        'addressLocality' => '中央区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '104-0061',
+                        'addressCountry'  => 'JP',
+                    ],
+                ],
+            ],
+            'qualifications' => '学歴不問、未経験歓迎',
+        ];
+    }
+
+    if (empty($graph)) return;
+
+    $structured_data = [
+        '@context' => 'https://schema.org',
+        '@graph'   => $graph,
+    ];
+
+    echo '<script type="application/ld+json">' . "\n";
+    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    echo "\n</script>\n";
+}, 5);
 

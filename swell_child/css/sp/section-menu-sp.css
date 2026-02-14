@@ -1,6 +1,6 @@
 /* === MENU Section (SP版: 959px以下) === */
 
-/* SP: メインカードを縦並び（Rococo準拠） */
+/* SP: メインカードを縦並び */
 #menu .ptlMenu__mainContent {
   display: block !important;
   background: rgba(255, 255, 255, 0.25);
