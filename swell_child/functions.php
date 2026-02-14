@@ -6270,17 +6270,19 @@ add_action('wp_head', function () {
 }, 5);
 
 /**
- * 関連記事を同じカテゴリ・タグのみに絞る
+ * 関連記事を同じ article_type（ブログ記事/お客様の声/ニュース）のみに絞る
  */
 add_filter('swell_related_post_args', function($args) {
-    $categories = wp_get_post_categories(get_the_ID());
-    if (!empty($categories)) {
-        $args['category__in'] = $categories;
-    } else {
-        $tags = wp_get_post_tags(get_the_ID(), array('fields' => 'ids'));
-        if (!empty($tags)) {
-            $args['tag__in'] = $tags;
-        }
+    $post_id = get_the_ID();
+    $article_types = wp_get_post_terms($post_id, 'article_type', ['fields' => 'slugs']);
+    if (!empty($article_types) && !is_wp_error($article_types)) {
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'article_type',
+                'field'    => 'slug',
+                'terms'    => $article_types,
+            ],
+        ];
     }
     return $args;
 });
