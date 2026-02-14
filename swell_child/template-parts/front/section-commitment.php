@@ -75,7 +75,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         $box_desc = 'バストアップ専用機による驚愕の高密度2000ショット照射で、深部までしっかりアプローチ。熟練のハンドマッサージ（乳腰ケア）、ナノカレント（生体電流）を使用した育乳メソッドなど、豊富な施術メニューから最適な組み合わせをご提案します。';
                         break;
                     case 'COLLECTION':
-                        $image_src = get_stylesheet_directory_uri() . '/img/nail.jpg';
+                        $image_src = 'https://patolaqshe.com/media/wp-content/uploads/2026/02/カウンセリング.jpg';
                         $box_title = '熟練スタッフによる丁寧なカウンセリング';
                         $box_desc = 'エステティシャン歴14年のオーナーをはじめ、経験豊富なスタッフがお一人おひとりのお悩みに寄り添います。カウンセリングから施術まで、完全オーダーメイドでご提案いたします。';
                         break;
