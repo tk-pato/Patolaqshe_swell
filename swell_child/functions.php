@@ -4559,7 +4559,7 @@ function ptl_faq_modal_shortcode()
       </button>
 
       <div class="modal-hero">
-        <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/FAQバナー用.jpg" alt="FAQ" />
+        <img src="https://patolaqshe.com/wp-content/uploads/2026/02/FAQバナー用.jpg" alt="FAQ" />
         <h2 class="modal-hero-title">FAQ</h2>
       </div>
 
@@ -4768,7 +4768,7 @@ function add_store_select_modal() {
     <div class="pato-modal-content">
       <button class="pato-modal-close" aria-label="閉じる">&times;</button>
       <div class="pato-modal-banner">
-        <img src="https://patolaqshe.com/media/wp-content/uploads/2025/12/shop-banner.jpg" alt="予約" loading="lazy">
+        <img src="https://patolaqshe.com/wp-content/uploads/2025/12/shop-banner.jpg" alt="予約" loading="lazy">
       </div>
       <h3 class="pato-modal-title">どちらの店舗で予約しますか？</h3>
       <div class="pato-modal-buttons">
@@ -5075,7 +5075,7 @@ function add_product_modal() {
       <div class="product-modal__content">
         <!-- バナー画像 -->
         <div class="product-modal__hero">
-          <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/モーダルウィンドウバナー.jpg" alt="PRODUCT" loading="lazy">
+          <img src="https://patolaqshe.com/wp-content/uploads/2026/02/モーダルウィンドウバナー.jpg" alt="PRODUCT" loading="lazy">
           <div class="product-modal__hero-text">PRODUCT</div>
         </div>
 
@@ -5086,7 +5086,7 @@ function add_product_modal() {
           <div class="product-section">
             <h3 class="product-section-title">化粧品</h3>
             <div class="product-image">
-              <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/リアボーテ.jpg" alt="化粧品" loading="lazy">
+              <img src="https://patolaqshe.com/wp-content/uploads/2026/02/リアボーテ.jpg" alt="化粧品" loading="lazy">
             </div>
             <div class="product-text">
               <p>最高品質の美容成分を配合した、バストケア専用化粧品。肌に優しく、効果的なケアを実現します。</p>
@@ -5097,7 +5097,7 @@ function add_product_modal() {
           <div class="product-section">
             <h3 class="product-section-title">下着</h3>
             <div class="product-image">
-              <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/ラヴィエール.jpg" alt="下着" loading="lazy">
+              <img src="https://patolaqshe.com/wp-content/uploads/2026/02/ラヴィエール.jpg" alt="下着" loading="lazy">
             </div>
             <div class="product-text">
               <p>美しいバストラインをサポートする補正下着。快適な着け心地と優れた補正力を兼ね備えています。</p>
@@ -6300,3 +6300,76 @@ add_action('wp_enqueue_scripts', function() {
         );
     }
 }, 20);
+
+/**
+ * OGPタグ・Twitterカード出力
+ */
+add_action('wp_head', function () {
+    // Google Analytics 4
+    ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLB7ZC2RF8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZLB7ZC2RF8');
+    </script>
+    <?php
+
+    $og_type = 'website';
+    $og_site_name = 'バストアップ専門サロン パトラクシェ';
+    $og_image = get_stylesheet_directory_uri() . '/img/ogp-image.jpg';
+
+    if (is_front_page() || is_home()) {
+        $og_title = 'バストアップ専門サロン パトラクシェ｜銀座・代官山';
+        $og_description = 'バストアップ専門エステサロン パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。無料カウンセリング受付中。';
+        $og_url = home_url('/');
+    } elseif (is_page()) {
+        $slug = get_post_field('post_name', get_post());
+        $og_title = get_the_title() . ' | パトラクシェ';
+        $og_url = get_permalink();
+        $page_descriptions = [
+            'daikanyama'    => 'パトラクシェ恵比寿・代官山店｜バストアップ専門エステサロン。代官山駅徒歩2分、恵比寿駅徒歩6分。平日12:00-20:00、土日祝11:00-19:00。初回体験9,500円。',
+            'ginza'         => 'パトラクシェ銀座店｜バストアップ専門エステサロン。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。平日13:00-21:00、土日祝11:00-19:00。初回体験9,500円。',
+            'service'       => 'パトラクシェの施術メニュー｜バストアップ・フェイシャル・ボディケア。マシンとオールハンドのハイブリッド施術で理想のボディラインへ。銀座・代官山。',
+            'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
+            'mariage'       => 'パトラクシェ マリアージュ｜銀座の結婚相談所。結婚式を最高の思い出にするブライダルエステプラン。バストアップ専門サロンならではの特別メニュー。',
+            'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
+            'about'         => 'パトラクシェについて｜バストアップ専門エステサロン。創業13年、累計3万人超の施術実績。恵比寿・代官山、銀座の2店舗。',
+            'information'   => 'パトラクシェ採用情報｜エステティシャン募集。正社員月給24万〜35万円、未経験歓迎。充実した研修制度、独立開業支援あり。銀座・代官山勤務。',
+        ];
+        $og_description = isset($page_descriptions[$slug]) ? $page_descriptions[$slug] : 'バストアップ専門サロン パトラクシェ';
+        if (has_post_thumbnail()) {
+            $og_image = get_the_post_thumbnail_url(null, 'large');
+        }
+    } elseif (is_single()) {
+        $og_title = get_the_title() . ' | パトラクシェ';
+        $og_description = get_the_excerpt() ?: 'バストアップ専門サロン パトラクシェ';
+        $og_url = get_permalink();
+        $og_type = 'article';
+        if (has_post_thumbnail()) {
+            $og_image = get_the_post_thumbnail_url(null, 'large');
+        }
+    } else {
+        $og_title = wp_get_document_title();
+        $og_description = 'バストアップ専門サロン パトラクシェ';
+        $og_url = home_url('/');
+    }
+
+    echo '<meta property="og:title" content="' . esc_attr($og_title) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($og_description) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($og_url) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($og_image) . '">' . "\n";
+    echo '<meta property="og:type" content="' . esc_attr($og_type) . '">' . "\n";
+    echo '<meta property="og:site_name" content="' . esc_attr($og_site_name) . '">' . "\n";
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($og_title) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($og_description) . '">' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url($og_image) . '">' . "\n";
+}, 2);
+
+/**
+ * WordPress標準サイトマップを有効化（SWELLのデフォルト無効化を上書き）
+ */
+add_filter('wp_sitemaps_enabled', '__return_true', 20);
