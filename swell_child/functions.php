@@ -4559,7 +4559,7 @@ function ptl_faq_modal_shortcode()
       </button>
 
       <div class="modal-hero">
-        <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/parallax動画①-mp4-image.jpg" alt="FAQ" />
+        <img src="https://patolaqshe.com/media/wp-content/uploads/2026/02/FAQ.jpg" alt="FAQ" />
         <h2 class="modal-hero-title">FAQ</h2>
       </div>
 
