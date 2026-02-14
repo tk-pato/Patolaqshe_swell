@@ -1139,17 +1139,15 @@ body.js-modal_open {
    投稿詳細ページ: 不要要素の非表示
 ====================================== */
 
-/* SNSシェアボタンを非表示 */
-.p-articleBottom__sns,
-.p-shareButtons,
-.swell-block-shareButtons,
-.wp-block-swell-sns-buttons {
+/* SNSシェアボタンを非表示（SWELL純正クラス） */
+.c-shareBtns,
+.c-shareBtns__list,
+.c-shareBtns__message {
     display: none !important;
 }
 
-/* 「この記事を書いた人」を非表示 */
-.p-articleBottom__author,
-.p-authorBox,
-.author-box {
+/* 「この記事を書いた人」を非表示（SWELL純正クラス） */
+.l-articleBottom__section.-author,
+.p-authorBox {
     display: none !important;
 }

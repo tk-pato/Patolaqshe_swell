@@ -6272,7 +6272,7 @@ add_action('wp_head', function () {
 /**
  * 関連記事を同じカテゴリ・タグのみに絞る
  */
-add_filter('swell_related_posts_args', function($args) {
+add_filter('swell_related_post_args', function($args) {
     $categories = wp_get_post_categories(get_the_ID());
     if (!empty($categories)) {
         $args['category__in'] = $categories;

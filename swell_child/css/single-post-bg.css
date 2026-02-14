@@ -1,9 +1,10 @@
 /* ======================================
    投稿詳細ページ: ガラス調透明感背景
+   ※ is_single() 時のみ functions.php から読み込み
 ====================================== */
 
-/* 記事全体の背景グラデーション */
-.l-article {
+/* 記事ページ全体の背景グラデーション */
+body.single .l-content {
     position: relative;
     background: linear-gradient(
         135deg,
@@ -11,11 +12,10 @@
         #f5f3f0 50%,
         #faf8f6 100%
     );
-    min-height: 100vh;
 }
 
 /* ガラス調の透明レイヤー */
-.l-article::before {
+body.single .l-content::before {
     content: '';
     position: absolute;
     top: 0;
@@ -38,35 +38,31 @@
 }
 
 /* 記事コンテンツエリア: ガラスモルフィズム効果 */
-.l-article__inner {
+body.single .l-mainContent .post_content,
+body.single .l-mainContent > .l-article {
     position: relative;
     z-index: 1;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 16px;
-    box-shadow:
-        0 8px 32px 0 rgba(198, 181, 150, 0.15),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
-    padding: 60px 80px;
-    margin: 40px auto;
-    max-width: 900px;
+    box-shadow: 0 8px 32px 0 rgba(198, 181, 150, 0.12);
+    padding: 40px 60px;
+    margin: 20px auto;
 }
 
-/* アイキャッチ画像エリアもガラス調 */
-.p-article__thumbnail {
+/* アイキャッチ画像エリア */
+body.single .p-articleThumb {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* 関連記事エリアもガラス調 */
-.p-relatedPosts {
+body.single .p-relatedPosts {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 12px;
     padding: 30px;
     margin-top: 40px;
@@ -74,21 +70,22 @@
 
 /* PC表示 */
 @media (min-width: 768px) {
-    .l-article__inner {
-        padding: 60px 80px;
-        margin: 40px auto;
+    body.single .l-mainContent .post_content,
+    body.single .l-mainContent > .l-article {
+        padding: 40px 60px;
     }
 }
 
 /* SP表示 */
 @media (max-width: 767px) {
-    .l-article__inner {
-        padding: 30px 20px;
-        margin: 20px 10px;
+    body.single .l-mainContent .post_content,
+    body.single .l-mainContent > .l-article {
+        padding: 24px 16px;
+        margin: 10px;
         border-radius: 12px;
     }
 
-    .p-relatedPosts {
+    body.single .p-relatedPosts {
         padding: 20px;
         margin-top: 30px;
     }
