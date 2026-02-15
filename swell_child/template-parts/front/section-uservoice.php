@@ -22,6 +22,7 @@ if (!defined('ABSPATH')) exit;
                         $rating = (int)get_post_meta(get_the_ID(), '_rating', true);
                         $customer_image = get_post_meta(get_the_ID(), '_customer_image', true);
                         $uservoice_title = get_post_meta(get_the_ID(), '_uservoice_title', true);
+                        $fallback_title = get_the_date('Y/n');
                 ?>
                         <div class="swiper-slide">
                             <div class="feedback-card">
@@ -38,7 +39,7 @@ if (!defined('ABSPATH')) exit;
                                     <?php endif; ?>
                                 </div>
 
-                                <h3 class="feedback-title"><?php echo esc_html($uservoice_title ? $uservoice_title : get_the_title()); ?></h3>
+                                <h3 class="feedback-title"><?php echo esc_html($uservoice_title ? $uservoice_title : $fallback_title); ?></h3>
 
                                 <div class="feedback-content">
                                     <p><?php the_content(); ?></p>
@@ -126,7 +127,7 @@ if (!defined('ABSPATH')) exit;
 
         <div class="ptl-section__more" style="text-align:center;margin:24px 0;">
             <div class="ptlVoice__more">
-                <a class="ptlNews__moreBtn" href="https://patolaqshe.com/media/voice/">
+                <a class="ptlNews__moreBtn" href="https://patolaqshe.com/voice/">
                     <span class="ptlNews__moreLabel">MORE</span>
                     <span class="ptlNews__moreArrow" aria-hidden="true">→</span>
                 </a>

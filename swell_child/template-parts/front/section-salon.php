@@ -19,7 +19,7 @@ $p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
 $salons = [
     [
         'name' => '恵比寿・代官山店',
-        'page_url' => 'https://patolaqshe.com/media/daikanyama/',
+        'page_url' => 'https://patolaqshe.com/daikanyama/',
         'image' => get_stylesheet_directory_uri() . '/img/daikanyama.jpg',
         'address' => '〒150-0034 東京都渋谷区代官山町18-8 堀井代官山ビル3F',
         'tel' => '03-5489-7118',
@@ -38,7 +38,7 @@ $salons = [
     ],
     [
         'name' => '銀座店',
-        'page_url' => 'https://patolaqshe.com/media/ginza/',
+        'page_url' => 'https://patolaqshe.com/ginza/',
         'image' => get_stylesheet_directory_uri() . '/img/ginza.jpg',
         'address' => '〒104-0061 東京都中央区銀座1-6-6 GINZA ARROWS 6F',
         'tel' => '03-6264-4343',

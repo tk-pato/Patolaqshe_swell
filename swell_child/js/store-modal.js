@@ -32,31 +32,42 @@
       currentSection = '';
     }
 
+    // セクション判定ヘルパー
+    function getSection(el) {
+      if (el.closest('#facial-content')) return 'facial';
+      if (el.closest('#bust-content')) return 'bust';
+      if (el.closest('#body-content')) return 'body';
+      return '';
+    }
+
     // reserve-btn トリガー登録
     var reserveBtns = document.querySelectorAll('#facial-content .reserve-btn, #body-content .reserve-btn, #bust-content .reserve-btn');
 
-    reserveBtns.forEach(function(btn, index) {
-      // div自体にクリックハンドラ
+    reserveBtns.forEach(function(btn) {
       btn.onclick = function(e) {
         e.preventDefault();
         e.stopPropagation();
-
-        var section = btn.closest('#facial-content') ? 'facial' : btn.closest('#bust-content') ? 'bust' : 'body';
-        openModal(section);
+        openModal(getSection(btn));
       };
-
-      // 中のaタグにもクリックハンドラ
       var link = btn.querySelector('a');
       if (link) {
         link.onclick = function(e) {
           e.preventDefault();
           e.stopPropagation();
-
-          var section = btn.closest('#facial-content') ? 'facial' : btn.closest('#bust-content') ? 'bust' : 'body';
-          openModal(section);
+          openModal(getSection(btn));
         };
       }
+    });
 
+    // メニューカード（投稿リスト）のクリックもモーダルを開く
+    var menuCards = document.querySelectorAll('#facial-content .p-postList__link, #body-content .p-postList__link, #bust-content .p-postList__link');
+
+    menuCards.forEach(function(card) {
+      card.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(getSection(card));
+      };
     });
 
     // 代官山店ボタン

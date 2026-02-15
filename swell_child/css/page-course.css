@@ -1,0 +1,973 @@
+/* =====================================================
+   共通ページCSS（クリーンアップ版）
+   course、voice等の固定ページで使用
+   ===================================================== */
+
+html {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+body {
+  background: transparent !important;
+  background-color: transparent !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 動画背景用のスタイル */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =====================================================
+   イントロセクション（フルワイド）
+   ===================================================== */
+
+.intro-section {
+  max-width: 1200px;
+  margin: 0 auto !important;
+}
+
+/* ヒーローセクション（内側のフルワイド） */
+.hero-section {
+  position: relative !important;
+  max-width: 1200px;
+  margin: 0 auto !important;
+  min-height: 513px !important;
+}
+
+.hero-section .wp-block-image {
+  margin: 0 !important;
+  width: 70% !important;
+  height: 473px !important;
+}
+
+.hero-section .wp-block-image img {
+  width: 100% !important;
+  height: 473px !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 16px !important;
+}
+
+/* =====================================================
+   ガラスボックス
+   ===================================================== */
+
+.glass-box {
+  position: absolute !important;
+  right: 20px !important;
+  top: 100px !important;
+  bottom: auto !important;
+  width: 450px !important;
+  height: 400px !important;
+  z-index: 10 !important;
+  
+  /* ガラス調スタイル */
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 16px !important;
+  
+  padding: 32px !important;
+  margin: 0 !important;
+  
+  /* 縦方向の配置 */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* ボックス内 H3 */
+.glass-box h3 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #c8a76b !important;
+  line-height: 1.6 !important;
+  margin: 0 0 20px 0 !important;
+  letter-spacing: 0.05em !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  background: none !important;
+  background-color: transparent !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+  padding: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.glass-box h3::before,
+.glass-box h3::after {
+  display: none !important;
+}
+
+/* ボックス内 ディスクリプション */
+.glass-box .description {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: #333 !important;
+  margin: 0 !important;
+}
+
+#l-container,
+#l-content,
+.l-article,
+.l-main {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.l-header {
+  position: relative;
+  z-index: 100;
+  background: transparent !important;
+}
+
+.l-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.l-content > *:first-child,
+.l-article > *:first-child,
+.intro-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.js-adjust-header-height,
+.has-sticky-header {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* =====================================================
+   フッター ガラス調デザイン
+   ===================================================== */
+
+.l-footer {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  margin-top: 0 !important;
+}
+
+.l-footer footer,
+.l-footer .ptl-footer,
+.l-footer .ptl-footer-inner,
+.l-footer .ptl-footer__lower {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.l-footer .ptl-footer__lower-inner {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+/* =====================================================
+   テキスト色設定（PC）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .l-article { color: #333 !important; }
+  .l-article h2,
+  .l-article h3,
+  .l-article h4,
+  .l-article p,
+  .l-article li,
+  .l-article span {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+}
+
+/* =====================================================
+   セクションタイトル（共通）
+   ===================================================== */
+
+.section-title {
+  text-align: center !important;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin: 80px auto 40px !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 50px !important;
+  display: block !important;
+  width: 400px !important;
+  max-width: 90% !important;
+  position: relative;
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.section-title::before {
+  content: '／';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+.section-title::after {
+  content: '／';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+/* =====================================================
+   テキスト選択色
+   ===================================================== */
+
+::selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+::-moz-selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+/* =====================================================
+   ガラス調・透明背景（共通クラス）
+   ===================================================== */
+
+.glass-bg {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.transparent-bg {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* =====================================================
+   コンテンツ余白調整
+   ===================================================== */
+
+.l-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.l-article { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.wp-block-group:last-child,
+.swell-block-fullWide:last-child,
+.l-content > *:last-child { margin-bottom: 0 !important; }
+
+/* =====================================================
+   こんな人におすすめセクション
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .recommend-section {
+    padding: 0 0 80px 0;
+  }
+  
+  .recommend-box {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .recommend-box h4 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #c8a76b;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  
+  .recommend-box h4::before,
+  .recommend-box h4::after {
+    display: none;
+  }
+  
+  .recommend-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .recommend-box ul li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 16px;
+    line-height: 1.8;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .recommend-box ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #c8a76b;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+/* =====================================================
+   4つのお悩みアプローチセクション
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .concern-approach {
+    padding: 80px 0;
+  }
+  
+  /* セクションタイトル（H3） */
+  .concern-content h3 {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  
+  .concern-content h3::before,
+  .concern-content h3::after {
+    display: none;
+  }
+  
+  /* カラム全体 */
+  .concern-item {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+    align-items: center;
+  }
+  
+  .concern-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* 左カラム（画像） */
+  .concern-item > .wp-block-column:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* 画像サイズ調整 */
+  .concern-item img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+  }
+  
+  /* 右カラム（テキスト） */
+  .concern-item > .wp-block-column:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* カラム内のH4 */
+  .concern-content h4 {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  
+  .concern-content h4::before,
+  .concern-content h4::after {
+    display: none;
+  }
+  
+  /* カラム内の段落 */
+  .concern-item p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333;
+    margin: 0;
+  }
+}
+
+/* =====================================================
+   スマホ版設定
+   ===================================================== */
+
+@media screen and (max-width: 767px) {
+  /* SP版も動画背景を使用 */
+  body { background: transparent !important; }
+  
+  .transparent-bg {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .l-article { color: #fff !important; }
+  
+  .l-article h2,
+  .l-article h3,
+  .l-article h4 {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    border: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+  
+  .l-article p,
+  .l-article li,
+  .l-article span {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .section-title {
+    font-size: 16px;
+    margin: 60px auto 30px !important;
+    width: 300px !important;
+    max-width: 85% !important;
+    padding: 0 35px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .section-title::before,
+  .section-title::after {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* イントロセクション（SP版） */
+  .intro-section {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+  
+  /* ヒーローセクション（SP版） */
+  .hero-section {
+    position: relative !important;
+    max-width: 100%;
+    min-height: auto !important;
+    padding: 0;
+  }
+  
+  .hero-section .wp-block-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  .hero-section .wp-block-image img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+  
+  /* ガラスボックス（SP版） */
+  .glass-box {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 0 0 0 !important;
+    
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 0 0 16px 16px !important;
+    
+    padding: 24px !important;
+  }
+  
+  /* SP版 H3 */
+  .glass-box h3 {
+    font-size: 16px !important;
+    margin: 0 0 12px 0 !important;
+    color: #f4d47c !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* SP版 ディスクリプション */
+  .glass-box .description {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* こんな人におすすめセクション（SP版） */
+  .recommend-section {
+    padding: 0 0 60px 0;
+  }
+  
+  .recommend-box {
+    padding: 24px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+  }
+  
+  .recommend-box h4 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #f4d47c;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  
+  .recommend-box h4::before,
+  .recommend-box h4::after {
+    display: none;
+  }
+  
+  .recommend-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .recommend-box ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    line-height: 1.7;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+  }
+  
+  .recommend-box ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #f4d47c;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  /* 4つのお悩みアプローチセクション（SP版） */
+  .concern-approach {
+    padding: 60px 0;
+  }
+  
+  /* セクションタイトル（H3・SP版） */
+  .concern-content h3 {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  
+  .concern-content h3::before,
+  .concern-content h3::after {
+    display: none;
+  }
+  
+  /* カラム全体（SP版） */
+  .concern-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  
+  .concern-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* 画像（SP版） */
+  .concern-item > .wp-block-column:first-child {
+    order: 1;
+    margin-bottom: 20px;
+  }
+  
+  .concern-item img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* テキスト（SP版） */
+  .concern-item > .wp-block-column:last-child {
+    order: 2;
+  }
+  
+  /* カラム内のH4（SP版） */
+  .concern-content h4 {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  
+  .concern-content h4::before,
+  .concern-content h4::after {
+    display: none;
+  }
+  
+  /* カラム内の段落（SP版） */
+  .concern-item p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+}
+
+/* =====================================================
+   価格・予約ボタンセクション
+   ===================================================== */
+
+/* PC版 */
+@media (min-width: 768px) {
+  .price-section {
+    padding: 60px 0;
+  }
+  
+  /* グループ全体にガラス調 */
+  .price-content {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  /* カラム全体 */
+  .price-content .wp-block-columns {
+    margin-bottom: 0 !important;
+    gap: 0 !important;
+  }
+  
+  /* 左カラム（濃い白ガラス調） */
+  .price-content .wp-block-columns .wp-block-column:first-child {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding: 30px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+  
+  /* 右カラム（既存ガラス調と同じ色） */
+  .price-content .wp-block-columns .wp-block-column:last-child {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    padding: 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+  
+  /* 右カラム内の段落 */
+  .price-content .wp-block-columns .wp-block-column:last-child p {
+    margin: 0 0 8px 0 !important;
+  }
+  
+  .price-content .wp-block-columns .wp-block-column:last-child p:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* SP版 */
+@media screen and (max-width: 767px) {
+  .price-section {
+    padding: 40px 0;
+  }
+  
+  /* グループ全体にガラス調 */
+  .price-content {
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    margin: 0 20px !important;
+    overflow: hidden !important;
+  }
+  
+  /* カラム全体 */
+  .price-content .wp-block-columns {
+    margin-bottom: 0 !important;
+    gap: 0 !important;
+  }
+  
+  /* 左カラム（濃い白ガラス調） */
+  .price-content .wp-block-columns .wp-block-column:first-child {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding: 25px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+  
+  /* 右カラム（既存ガラス調と同じ色） */
+  .price-content .wp-block-columns .wp-block-column:last-child {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    padding: 25px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+  
+  /* 右カラム内の段落 */
+  .price-content .wp-block-columns .wp-block-column:last-child p {
+    margin: 0 0 6px 0 !important;
+  }
+  
+  .price-content .wp-block-columns .wp-block-column:last-child p:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* =====================================================
+   予約ボタンセクション
+   ===================================================== */
+
+/* PC版 */
+@media (min-width: 768px) {
+  .reservation-section {
+    padding: 60px 0;
+  }
+  
+  .reservation-content {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  /* ガラス調ボタン */
+  .reservation-content .wp-block-button,
+  .reservation-content .swell-block-button {
+    margin: 0 0 20px 0 !important;
+  }
+  
+  .reservation-content .wp-block-button:last-child,
+  .reservation-content .swell-block-button:last-child {
+    margin-bottom: 0 !important;
+  }
+  
+  /* 追加CSSクラス方式（確実） */
+  .reservation-btn,
+  a.reservation-btn {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50px !important;
+    padding: 20px 40px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    display: block !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .reservation-btn:hover,
+  a.reservation-btn:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* セレクタ方式（フォールバック） */
+  .reservation-content .wp-block-button__link,
+  .reservation-content .swell-block-button__link,
+  .reservation-content .wp-block-button .swell-block-button__link {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50px !important;
+    padding: 20px 40px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    display: block !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .reservation-content .wp-block-button__link:hover,
+  .reservation-content .swell-block-button__link:hover,
+  .reservation-content .wp-block-button .swell-block-button__link:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+/* SP版 */
+@media screen and (max-width: 767px) {
+  .reservation-section {
+    padding: 40px 0;
+  }
+  
+  .reservation-content {
+    padding: 0 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  
+  /* ガラス調ボタン */
+  .reservation-content .wp-block-button,
+  .reservation-content .swell-block-button {
+    margin: 0 0 16px 0 !important;
+  }
+  
+  .reservation-content .wp-block-button:last-child,
+  .reservation-content .swell-block-button:last-child {
+    margin-bottom: 0 !important;
+  }
+  
+  /* 追加CSSクラス方式（確実） */
+  .reservation-btn,
+  a.reservation-btn {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50px !important;
+    padding: 16px 30px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    display: block !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .reservation-btn:hover,
+  a.reservation-btn:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* セレクタ方式（フォールバック） */
+  .reservation-content .wp-block-button__link,
+  .reservation-content .swell-block-button__link,
+  .reservation-content .wp-block-button .swell-block-button__link {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 50px !important;
+    padding: 16px 30px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    display: block !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .reservation-content .wp-block-button__link:hover,
+  .reservation-content .swell-block-button__link:hover,
+  .reservation-content .wp-block-button .swell-block-button__link:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+}

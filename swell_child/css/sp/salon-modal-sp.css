@@ -204,8 +204,8 @@ body.js-modal_open {
 /* モーダル内ホットペッパーロゴ */
 .salon-modal__hotpepper-logo {
     position: absolute;
-    bottom: 0;
-    right: 20px;
+    top: 0;
+    right: 0;
     width: 20px;
     height: 20px;
     z-index: 101;
@@ -343,6 +343,41 @@ body.js-modal_open {
   margin: 12px 0 4px 0;
   font-size: 0.85em;
   color: #666;
+}
+
+/* =====================================================
+   モーダルウィンドウ内：駅からの道順（SP）
+   ===================================================== */
+
+.salon-modal-route {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+  z-index: 10;
+}
+
+.salon-modal-route__title {
+  font-size: 11px;
+  font-weight: 600;
+  color: inherit;
+  margin: 0 0 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.salon-modal-route__text {
+  font-size: 11px;
+  color: inherit;
+  line-height: 1.8;
+  margin: 0;
+  letter-spacing: 0.03em;
 }
 
 /* =====================================================

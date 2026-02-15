@@ -4,8 +4,6 @@
  * BLOG セクション（自動横スクロール）
  */
 
-// ========== デバッグ出力開始 ==========
-
 // 最新のブログ記事を10件取得（記事種別「ブログ記事」のみ）
 $blog_posts = get_posts([
     'post_type' => 'post',
@@ -22,46 +20,10 @@ $blog_posts = get_posts([
     ]
 ]);
 
-// デバッグ: 取得した投稿の情報
-
-if (!empty($blog_posts)) {
-    foreach ($blog_posts as $index => $post) {
-        error_log(sprintf(
-            '[%d] ID=%d, タイトル=%s, ステータス=%s, 日付=%s',
-            $index + 1,
-            $post->ID,
-            $post->post_title,
-            $post->post_status,
-            $post->post_date
-        ));
-    }
-} else {
-
-    // 全ステータスを含めて再取得
-    $all_posts = get_posts([
-        'post_type' => 'post',
-        'posts_per_page' => -1,
-        'post_status' => 'any',
-    ]);
-
-    if (!empty($all_posts)) {
-        foreach ($all_posts as $post) {
-            error_log(sprintf(
-                'ID=%d, タイトル=%s, ステータス=%s',
-                $post->ID,
-                $post->post_title,
-                $post->post_status
-            ));
-        }
-    }
-}
-
 
 // デフォルト画像のパス
 $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
 ?>
-<?php error_log('🎨 HTML出力開始: <section id="section-blog"> を出力します'); ?>
-
 <section id="section-blog" class="ptl-section ptlBlog">
     <div class="ptl-section__inner">
 
@@ -130,4 +92,3 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
     <?php echo do_shortcode('[blog_list_modal]'); ?>
 
 </section>
-<?php error_log('🏁 HTML出力完了: </section> を出力しました'); ?>

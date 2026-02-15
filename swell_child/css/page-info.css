@@ -1,0 +1,950 @@
+body {
+  background-image: url('https://patolaqshe.com/wp-content/uploads/2026/01/recruit-pc-bg.jpg');
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+}
+
+html {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+#l-container,
+#l-content,
+.l-article,
+.l-main {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.l-header {
+  position: relative;
+  z-index: 100;
+  background: transparent !important;
+}
+
+.l-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.l-content > *:first-child,
+.l-article > *:first-child,
+.intro-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.js-adjust-header-height,
+.has-sticky-header {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.l-footer {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.l-footer footer,
+.l-footer .ptl-footer,
+.l-footer .ptl-footer-inner,
+.l-footer .ptl-footer__lower {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.l-footer .ptl-footer__lower-inner {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+.p-mainVisual__scroll {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: fixed !important;
+  bottom: 0vh !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 100 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #fff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.p-mainVisual__scroll,
+.p-mainVisual__scroll * {
+  color: #fff !important;
+}
+
+.p-mainVisual__scrollArrow {
+  width: 21px !important;
+  height: 21px !important;
+  fill: #fff !important;
+  animation: scrollArrowBounce 2s infinite !important;
+}
+
+@keyframes scrollArrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+.p-mainVisual__scrollLabel {
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  margin-top: 5px !important;
+  text-transform: uppercase !important;
+  color: #fff !important;
+}
+
+@media (min-width: 768px) {
+  .l-article { color: #333 !important; }
+  .l-article h2:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article h3:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article h4:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article p:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article li:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article span:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+}
+
+.section-title {
+  text-align: center !important;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin: 80px auto 40px !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 50px !important;
+  display: block !important;
+  width: 400px !important;
+  max-width: 90% !important;
+  position: relative;
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.section-title::before {
+  content: '/';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+.section-title::after {
+  content: '/';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+::selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+::-moz-selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+.transparent-bg {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  body { background: transparent !important; }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://patolaqshe.com/wp-content/uploads/2026/01/voice-bg-sp.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    z-index: -1;
+  }
+  .transparent-bg {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .l-article { color: #fff !important; }
+  .l-article h2:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article h3:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article h4:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    border: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-style: none !important;
+    border-width: 0 !important;
+    border-color: transparent !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+  .l-article p:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article li:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article span:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  .l-article a:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    text-decoration: underline !important;
+  }
+  .l-article a:hover:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    opacity: 0.8;
+  }
+  .section-title {
+    font-size: 16px;
+    margin: 60px auto 30px !important;
+    width: 300px !important;
+    max-width: 85% !important;
+    padding: 0 35px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  .section-title::before,
+  .section-title::after {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+@media (max-width: 959px) {
+  .p-mainVisual__scroll { bottom: 15vh !important; }
+}
+
+.p-mainVisual__scroll,
+.p-mainVisual__scroll *,
+.p-mainVisual__scrollArrow,
+.p-mainVisual__scrollLabel { color: #fff !important; }
+.p-mainVisual__scrollArrow { fill: #fff !important; }
+
+/* =====================================================
+   イントロ動画バナー
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .intro-section {
+    position: relative;
+    width: 100%;
+    max-width: 1118px;
+    margin: 0 auto 20px;
+  }
+
+  .intro-video-banner {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .intro-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro-section {
+    position: relative;
+    width: 100%;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+  }
+
+  .intro-video-banner {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .intro-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+/* =====================================================
+   求める人物像セクション（recruit-person）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .recruit-person {
+    max-width: 1200px;
+    margin: 0 auto 80px !important;
+    padding: 0 60px !important;
+  }
+
+  .recruit-person .swell-block-columns {
+    gap: 60px !important;
+  }
+
+  .recruit-person .swell-block-columns__inner {
+    gap: 60px !important;
+  }
+
+  .recruit-person .wp-block-column {
+    flex-basis: calc(33.333% - 40px) !important;
+  }
+
+  .recruit-person h3 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+    color: #333 !important;
+    border: none !important;
+  }
+
+  .recruit-person h3::before,
+  .recruit-person h3::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .recruit-person p {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: #333 !important;
+    text-align: center !important;
+  }
+
+  .recruit-person .wp-block-image {
+    margin: 0 auto 30px !important;
+    text-align: center !important;
+  }
+
+  .recruit-person .wp-block-image img {
+    width: 800px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .recruit-person {
+    margin: 60px auto 0;
+    padding: 0 20px;
+  }
+
+  .recruit-person .wp-block-columns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recruit-person .wp-block-column {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .recruit-person .wp-block-image {
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+
+  .recruit-person .wp-block-image img {
+    width: 100% !important;
+    max-width: 800px !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .recruit-person h3 {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    margin: 0 0 20px 0 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    text-align: center !important;
+    border: none !important;
+  }
+
+  .recruit-person h3::before,
+  .recruit-person h3::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .recruit-person p {
+    font-size: 14px !important;
+    margin: 0 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    text-align: center !important;
+  }
+}
+
+/* =====================================================
+   3列qualitiesセクション（recruit-qualities）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .recruit-qualities {
+    max-width: 1200px;
+    margin: 0 auto 80px !important;
+    padding: 0 60px !important;
+  }
+
+  .recruit-qualities > .wp-block-group__inner-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 60px !important;
+  }
+
+  .recruit-qualities h3 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+    color: #333 !important;
+    border: none !important;
+  }
+
+  .recruit-qualities h3::before,
+  .recruit-qualities h3::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .recruit-qualities p {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: #333 !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .recruit-qualities,
+  .transparent-bg.recruit-qualities {
+    margin: 60px auto !important;
+    padding: 0 20px !important;
+  }
+
+  .recruit-qualities h3 {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    margin: 40px 0 20px 0 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    text-align: center !important;
+    border: none !important;
+  }
+
+  .recruit-qualities h3::before,
+  .recruit-qualities h3::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .recruit-qualities > .wp-block-group__inner-container > .wp-block-group:first-child h3 {
+    margin-top: 0 !important;
+  }
+
+  .recruit-qualities p {
+    font-size: 14px !important;
+    margin: 0 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    text-align: center !important;
+  }
+}
+
+/* =====================================================
+   募集要項セクション（recruit-requirements）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .recruit-requirements {
+    max-width: 1200px;
+    margin: 80px auto !important;
+    padding: 0 60px !important;
+  }
+
+  .recruit-requirements table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .recruit-requirements th,
+  .recruit-requirements td {
+    padding: 24px 30px;
+    border: none;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.8;
+  }
+
+  .recruit-requirements th {
+    background: rgba(240, 235, 230, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+    width: 200px;
+  }
+
+  .recruit-requirements td {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 15px;
+    color: #333;
+  }
+
+  .recruit-requirements p {
+    font-size: 16px !important;
+    line-height: 2 !important;
+    color: #333 !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .recruit-requirements {
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .recruit-requirements table {
+    width: 100%;
+    border: none;
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  .recruit-requirements thead {
+    display: none;
+  }
+
+  .recruit-requirements tbody {
+    display: block;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .recruit-requirements tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 0;
+    background: transparent;
+  }
+
+  .recruit-requirements tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .recruit-requirements th,
+  .recruit-requirements td {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    text-align: left;
+  }
+
+  .recruit-requirements th {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .recruit-requirements td {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    background: transparent;
+    padding-bottom: 12px;
+  }
+
+  .recruit-requirements p {
+    font-size: 15px !important;
+    line-height: 1.9 !important;
+    color: #fff !important;
+    text-align: center !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    margin-bottom: 16px !important;
+  }
+
+  .recruit-requirements a {
+    color: #fff;
+    text-decoration: underline;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .recruit-requirements a:hover {
+    opacity: 0.8;
+  }
+}
+
+/* =====================================================
+   FAQセクション（recruit-faq）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .recruit-faq {
+    max-width: 1200px;
+    margin: 0 auto 80px !important;
+    padding: 0 60px !important;
+  }
+
+  .faq-section-title {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin: 0 auto 24px !important;
+    color: #333 !important;
+    border: none !important;
+  }
+
+  .recruit-faq:first-of-type .faq-section-title {
+    margin-top: 0 !important;
+  }
+
+  .recruit-faq:not(:first-of-type) .faq-section-title {
+    margin-top: 80px !important;
+  }
+
+  .recruit-faq .swell-block-accordion {
+    margin-bottom: 16px !important;
+  }
+
+  .recruit-faq .swell-block-accordion__title {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 20px 24px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+  }
+
+  .recruit-faq .swell-block-accordion__body {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+    padding: 24px !important;
+    margin-top: -12px !important;
+  }
+
+  .recruit-faq .swell-block-accordion__body > p:first-child {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #d4668f !important;
+    margin-bottom: 12px !important;
+    line-height: 1.7 !important;
+  }
+
+  .recruit-faq .swell-block-accordion__body > p:not(:first-child) {
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 1.8 !important;
+    color: #333 !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .recruit-faq,
+  .transparent-bg.recruit-faq {
+    margin: 60px auto !important;
+    padding: 0 20px !important;
+  }
+
+  .faq-section-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin: 0 auto 20px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    border: none !important;
+  }
+
+  .recruit-faq:first-of-type .faq-section-title {
+    margin-top: 0 !important;
+  }
+
+  .recruit-faq:not(:first-of-type) .faq-section-title {
+    margin-top: 60px !important;
+  }
+
+  .recruit-faq .swell-block-accordion {
+    margin-bottom: 16px !important;
+  }
+
+  .recruit-faq .swell-block-accordion__title {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 18px 20px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .recruit-faq .swell-block-accordion__body {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+    padding: 20px !important;
+    margin-top: -12px !important;
+  }
+
+  .recruit-faq .swell-block-accordion__body > p:first-child {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #ffc0d4 !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    margin-bottom: 10px !important;
+    line-height: 1.7 !important;
+  }
+
+  .recruit-faq .swell-block-accordion__body > p:not(:first-child) {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.8 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    margin: 0 !important;
+  }
+}
+
+/* =====================================================
+   女性専用サロンポリシーセクション（lgbtq-policy）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .lgbtq-policy {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 60px;
+  }
+
+  .lgbtq-policy h3 {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    margin: 40px 0 20px 0;
+    color: #333;
+    border: none;
+  }
+
+  .lgbtq-policy h3::before,
+  .lgbtq-policy h3::after {
+    content: none;
+    display: none;
+  }
+
+  .lgbtq-policy p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #333;
+    margin-bottom: 20px;
+  }
+}
+
+/* =====================================================
+   応募ボタンセクション（recruit-apply）
+   ※ ボタンリンク: #
+   ※ WordPress側でSWELLボタンブロックの「追加CSSクラス」に
+   ※   wow-modal-id-1
+   ※ を追加すると、クリック時にcontactモーダルが開きます。
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .recruit-apply,
+  .transparent-bg.recruit-apply {
+    max-width: 1200px;
+    margin: 80px auto 120px !important;
+    padding: 0 60px !important;
+    text-align: center !important;
+  }
+
+  .recruit-apply-button.swell-block-button {
+    display: inline-block !important;
+  }
+
+  .recruit-apply-button.swell-block-button a {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #333 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    padding: 24px 60px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .recruit-apply-button.swell-block-button a:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-2px) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .lgbtq-policy {
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .lgbtq-policy h3 {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    margin: 30px 0 15px 0;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    border: none;
+  }
+
+  .lgbtq-policy h3::before,
+  .lgbtq-policy h3::after {
+    content: none;
+    display: none;
+  }
+
+  .lgbtq-policy p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .recruit-apply,
+  .transparent-bg.recruit-apply {
+    margin: 60px auto 80px !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+  }
+
+  .recruit-apply-button.swell-block-button {
+    display: inline-block !important;
+  }
+
+  .recruit-apply-button.swell-block-button a {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 20px 60px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    display: inline-block !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .recruit-apply-button.swell-block-button a:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+

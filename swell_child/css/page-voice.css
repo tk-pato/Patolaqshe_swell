@@ -1,0 +1,265 @@
+/* =====================================================
+   お客様の声ページ - 共通CSS（クリーンアップ版）
+   ===================================================== */
+
+body {
+  background-image: url('https://patolaqshe.com/wp-content/uploads/2026/01/recruit-pc-bg.jpg');
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+}
+
+html {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+body {
+  background-color: transparent !important;
+}
+
+#l-container,
+#l-content,
+.l-article,
+.l-main {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.l-header {
+  position: relative;
+  z-index: 100;
+  background: transparent !important;
+}
+
+.l-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.l-content > *:first-child,
+.l-article > *:first-child,
+.intro-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.js-adjust-header-height,
+.has-sticky-header {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* =====================================================
+   フッター ガラス調デザイン
+   ===================================================== */
+
+.l-footer {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  margin-top: 0 !important;
+}
+
+.l-footer footer,
+.l-footer .ptl-footer,
+.l-footer .ptl-footer-inner,
+.l-footer .ptl-footer__lower {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.l-footer .ptl-footer__lower-inner {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+/* =====================================================
+   テキスト色設定（PC）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .l-article { color: #333 !important; }
+  .l-article h2,
+  .l-article h3,
+  .l-article h4,
+  .l-article p,
+  .l-article li,
+  .l-article span {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+}
+
+/* =====================================================
+   セクションタイトル（共通）
+   ===================================================== */
+
+.section-title {
+  text-align: center !important;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin: 80px auto 40px !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 50px !important;
+  display: block !important;
+  width: 400px !important;
+  max-width: 90% !important;
+  position: relative;
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.section-title::before {
+  content: '／';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+.section-title::after {
+  content: '／';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+/* =====================================================
+   テキスト選択色
+   ===================================================== */
+
+::selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+::-moz-selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+/* =====================================================
+   ガラス調・透明背景（共通クラス）
+   ===================================================== */
+
+.glass-bg {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.transparent-bg {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* =====================================================
+   コンテンツ余白調整
+   ===================================================== */
+
+.l-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.l-article { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.wp-block-group:last-child,
+.swell-block-fullWide:last-child,
+.l-content > *:last-child { margin-bottom: 0 !important; }
+
+/* =====================================================
+   スマホ版設定
+   ===================================================== */
+
+@media screen and (max-width: 767px) {
+  /* SP版背景 */
+  body { background: transparent !important; }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://patolaqshe.com/wp-content/uploads/2026/01/voice-bg-sp.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    z-index: -1;
+  }
+  
+  .transparent-bg {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .l-article { color: #fff !important; }
+  
+  .l-article h2,
+  .l-article h3,
+  .l-article h4 {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    border: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+  
+  .l-article p,
+  .l-article li,
+  .l-article span {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .section-title {
+    font-size: 16px;
+    margin: 60px auto 30px !important;
+    width: 300px !important;
+    max-width: 85% !important;
+    padding: 0 35px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .section-title::before,
+  .section-title::after {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+}

@@ -1,0 +1,35 @@
+/* トップに戻るボタンの矢印を上向きに */
+.c-pagetop__arrow,
+.p-pagetop__arrow,
+#page_top .arrow,
+#page_top::before,
+#page_top::after,
+#page-top .arrow,
+.pagetop-btn::before,
+.to-top::before,
+.swell-block-button__arrow,
+.c-pagetop::before,
+.p-pagetop::before,
+.c-btn__arrow {
+  transform: rotate(-90deg) !important;
+}
+
+/* FontAwesome使用時 */
+#page_top .fa-chevron-right,
+#page_top .fa-angle-right,
+#page-top .fa-chevron-right,
+#page-top .fa-angle-right,
+.c-pagetop .fa-chevron-right,
+.p-pagetop .fa-chevron-right,
+.fa-chevron-right,
+.fa-angle-right {
+  transform: rotate(-90deg) !important;
+}
+
+/* SWELL標準のトップボタン位置確保 */
+#page_top,
+#page-top,
+.c-pagetop,
+.p-pagetop {
+  z-index: 9999 !important;
+}

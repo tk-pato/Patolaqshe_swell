@@ -154,7 +154,7 @@
                 <h3>11. サービス提供対象者について</h3>
                 <p>当サロンは、生物学的な性が女性の方のみを対象としたサービスを提供しております。</p>
                 <p>これは、完全個室でのデリケートな施術において、お客様とスタッフの双方が安心してご利用いただける環境を維持するための方針です。</p>
-                <p>詳しい方針については<a href="https://patolaqshe.com/media/information#lgbtq-policy">採用情報ページ</a>をご覧ください。</p>
+                <p>詳しい方針については<a href="https://patolaqshe.com/information#lgbtq-policy">採用情報ページ</a>をご覧ください。</p>
                 <p>改定日：令和6年12月8日</p>
             </section>
         </div>

@@ -1,0 +1,1377 @@
+/* =====================================================
+   サービスページ - 完全版CSS
+   ===================================================== */
+
+/* 背景動画 */
+.bg-movie {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 0 !important;
+  overflow: visible !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+.fixed-video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.fixed-video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* 基本設定 */
+html, body, #l-container, #l-content, .l-article, .l-main {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.l-header {
+  position: relative;
+  z-index: 100;
+  background: transparent !important;
+}
+
+.l-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.l-content > *:first-child,
+.l-article > *:first-child,
+.intro-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.js-adjust-header-height,
+.has-sticky-header {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* フッター */
+.l-footer {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  margin-top: 0 !important;
+}
+
+.l-footer footer,
+.l-footer .ptl-footer,
+.l-footer .ptl-footer-inner,
+.l-footer .ptl-footer__lower {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.l-footer .ptl-footer__lower-inner {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+/* テキスト・タイトル設定 */
+@media (min-width: 768px) {
+  .l-article { color: #333 !important; }
+  .l-article h2, .l-article h3, .l-article h4,
+  .l-article p, .l-article li, .l-article span {
+    color: #333 !important;
+    text-shadow: none !important;
+  }
+}
+
+.section-title {
+  text-align: center !important;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin: 80px auto 40px !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 50px !important;
+  display: block !important;
+  width: 400px !important;
+  max-width: 90% !important;
+  position: relative;
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.section-title::before { content: '／'; position: absolute; left: 0; top: 50%; transform: translateY(-50%); color: #333; text-shadow: none !important; }
+.section-title::after { content: '／'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); color: #333; text-shadow: none !important; }
+
+::selection { background: #ffd5d5; color: #333; }
+::-moz-selection { background: #ffd5d5; color: #333; }
+
+.glass-bg {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.transparent-bg {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.l-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.l-article { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.wp-block-group:last-child,
+.swell-block-fullWide:last-child,
+.l-content > *:last-child { margin-bottom: 0 !important; }
+
+/* =====================================================
+   投稿リストブロック
+   ===================================================== */
+
+/* 【最重要】aタグの角丸クリッピングを解除 */
+.p-postList__link,
+.c-postList__link,
+.p-postList__item > a,
+.c-postList__item > a,
+body .p-postList__link,
+body .c-postList__link,
+body .p-postList__item > a,
+body .c-postList__item > a {
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+/* 共通設定（PC版のみ適用 - SP版Swiperのmarginを壊さないため） */
+@media (min-width: 768px) {
+  body .p-postList__item,
+  body .c-postList__item,
+  body .wp-block-post-template li {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+    backdrop-filter: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* PC版 */
+@media (min-width: 768px) {
+  body .p-postList, body .c-postList {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    min-height: 500px !important;
+  }
+
+  body .p-postList__item {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 500px !important;
+  }
+
+  body .p-postList__link {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 500px !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  body .p-postList__thumb,
+  body .p-postList .p-postList__thumb,
+  body .c-postList .p-postList__thumb {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    z-index: 1000 !important;
+    pointer-events: none !important;
+  }
+
+  body .p-postList__thumb img,
+  body .p-postList .p-postList__thumb img,
+  body .c-postList .p-postList__thumb img {
+    width: 100% !important;
+    height: 240px !important;
+    object-fit: cover !important;
+    border-radius: 12px 12px 0 0 !important;
+    transition: transform 0.5s ease;
+    vertical-align: bottom !important;
+    display: block !important;
+    pointer-events: auto !important;
+  }
+
+  body .p-postList__body {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    min-height: 500px !important;
+    padding-top: 180px !important;
+    padding-right: 24px !important;
+    padding-bottom: 24px !important;
+    padding-left: 24px !important;
+    margin: 0 !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    display: flex;
+    flex-direction: column;
+    z-index: 1 !important;
+  }
+
+  body .p-postList__link:hover .p-postList__thumbnail img {
+    transform: scale(1.05);
+  }
+
+  body .p-postList__link:hover {
+    transform: translateY(-8px);
+    transition: transform 0.3s ease;
+  }
+
+  body .p-postList__title {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  body .menu-subtitle {
+    display: block !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #d63638 !important;
+    line-height: 1.6 !important;
+    margin-bottom: 12px !important;
+  }
+
+  body .menu-description {
+    display: block !important;
+    font-size: 0.9rem !important;
+    color: #666 !important;
+    line-height: 1.7 !important;
+    margin-bottom: 16px !important;
+  }
+
+  body .menu-price {
+    display: block !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    line-height: 1.5 !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid #e0e0e0 !important;
+  }
+}
+
+/* =====================================================
+   SP版 (.menu-card-list) カードスタイル
+   - Swiperスライダーはそのまま動作させる
+   - 画像を手前(z-index:100)、ガラスを奥(z-index:10)
+
+   ★ セレクタは実際のHTMLクラス .p-postList__thumb を使用
+   ===================================================== */
+@media screen and (max-width: 767px) {
+
+  /* ----- menu-card-list ラッパー: 上のガラスボックスと横幅を揃える ----- */
+  body .menu-card-list {
+    padding-left: 4% !important;
+    padding-right: 4% !important;
+  }
+
+  /* ----- Swiperコンテナ: overflow hidden + パディング確保 ----- */
+  body .menu-card-list .p-postList.swiper {
+    overflow: hidden !important;
+    padding-bottom: 50px !important;
+    margin-bottom: -10px !important;
+  }
+
+  /* ----- 各カード: 背景リセット + overflow hidden で遷移時のガラスちらつき防止 ----- */
+  body .menu-card-list .p-postList__item,
+  body .menu-card-list .swiper-slide {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* ----- リンク(a): カード全体を1つのGPUレイヤーに事前合成 ----- */
+  body .menu-card-list .p-postList__link {
+    display: block !important;
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: visible !important;
+    height: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: transform !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+
+  /* ----- サムネイル(画像): 最前面 z-index:100 / margin-bottom で下に被せる ----- */
+  body .menu-card-list .p-postList__thumb,
+  body .menu-card-list .p-postList__thumb.c-postThumb {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 0 -80px 0 !important;
+    z-index: 100 !important;
+    pointer-events: none !important;
+    transform: translateZ(1px) !important;
+    -webkit-transform: translateZ(1px) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+
+  body .menu-card-list .p-postList__thumb img,
+  body .menu-card-list .c-postThumb__img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 12px 12px 0 0 !important;
+    display: block !important;
+    vertical-align: bottom !important;
+    pointer-events: auto !important;
+  }
+
+  /* ----- ボディ(ガラス板): 背面 z-index:10 / 上にはみ出さない ----- */
+  body .menu-card-list .p-postList__body {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 100px 16px 16px 16px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    z-index: 10 !important;
+    white-space: normal !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+
+  /* ----- テキストスタイル ----- */
+  body .menu-card-list .p-postList__title {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  body .menu-card-list .p-postList__excerpt {
+    font-size: 0.8rem !important;
+    color: #fff !important;
+    line-height: 1.6 !important;
+    margin-bottom: 10px !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* ----- Swiperページネーション ----- */
+  body .menu-card-list .swiper-pagination {
+    bottom: 15px !important;
+  }
+
+  body .menu-card-list .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  body .menu-card-list .swiper-pagination-bullet-active {
+    background: #fff !important;
+  }
+}
+
+/* =====================================================
+   メインコース
+   ===================================================== */
+@media (min-width: 768px) {
+  .main-course {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  /* 画像カラム（inline flex-basis:40%）*/
+  .main-course > .wp-block-column[style*="40%"] {
+    flex: 0 0 calc(40% - 20px) !important;
+    width: calc(40% - 20px) !important;
+  }
+
+  /* テキストカラム（inline flex-basis:60%）*/
+  .main-course > .wp-block-column[style*="60%"] {
+    flex: 0 0 calc(60% - 20px) !important;
+    width: calc(60% - 20px) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .main-course img { width: 100%; height: auto; border-radius: 8px; object-fit: cover; }
+
+  .main-course h3 {
+    font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #333;
+    border-bottom: none !important; text-decoration: none !important; background: none !important; padding-bottom: 0 !important;
+  }
+
+  /* テキストカラム内のサブタイトル・説明文（60%カラムを対象） */
+  .main-course > .wp-block-column[style*="60%"] > p:nth-child(2),
+  .main-course > .wp-block-column[style*="60%"] > p:nth-child(3) {
+    color: #c8a76b; font-size: 16px; font-weight: 500; margin-bottom: 8px;
+  }
+
+  .main-course > .wp-block-column[style*="60%"] > p:nth-child(4) {
+    font-size: 15px; line-height: 1.8; color: #333; margin-bottom: 24px;
+  }
+
+  .main-course .wp-block-button {
+    margin-top: 0 !important; display: flex !important; justify-content: flex-end !important;
+  }
+
+  .main-course .wp-block-button__link {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: #333 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    padding: 12px 32px !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease !important;
+  }
+  .main-course .wp-block-button__link:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px);
+  }
+}
+
+/* =====================================================
+   詳細説明エリア
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .course-detail {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+  }
+
+  .course-detail > .wp-block-column:first-child {
+    flex: 0 0 calc(60% - 20px) !important;
+    width: calc(60% - 20px) !important;
+  }
+  .course-detail > .wp-block-column:first-child p {
+    font-size: 15px; line-height: 1.8; color: #333;
+  }
+
+  .course-detail > .wp-block-column:last-child {
+    flex: 0 0 calc(40% - 20px) !important;
+    width: calc(40% - 20px) !important;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .course-detail > .wp-block-column:last-child > p:nth-child(1) {
+    background: rgba(200, 167, 107, 0.3); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 13px; font-weight: 500; color: #333; margin: 0;
+  }
+  .course-detail > .wp-block-column:last-child > p:nth-child(2) {
+    text-align: center; font-size: 18px; font-weight: 600; color: #333; margin: 0;
+  }
+  .course-detail > .wp-block-column:last-child > p:nth-child(3) {
+    background: rgba(200, 167, 107, 0.3); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 13px; font-weight: 500; color: #333; margin: 0; margin-top: 8px;
+  }
+  .course-detail > .wp-block-column:last-child > p:nth-child(4) {
+    text-align: center; font-size: 16px; font-weight: 700; color: #ff0000 !important; margin: 0;
+  }
+}
+
+/* =====================================================
+   サブセクションタイトル
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .bust-content > h3 {
+    text-align: center !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.15em !important;
+    margin: 60px auto 40px !important;
+    color: #333 !important;
+    position: relative;
+    padding: 0 40px !important;
+    border: none !important;
+    text-decoration: none !important;
+    background: none !important;
+    display: block !important;
+  }
+
+  .bust-content > h3::before, .bust-content > h3::after {
+    content: '・' !important;
+    position: absolute; top: 50%; transform: translateY(-50%);
+    color: #c8a76b; font-size: 12px;
+    border: none !important; background: none !important;
+    width: auto !important; height: auto !important; display: inline !important;
+  }
+  .bust-content > h3::before { left: 0; }
+  .bust-content > h3::after { right: 0; }
+}
+
+/* =====================================================
+   H3・H4下線完全削除
+   ===================================================== */
+
+h3, h4, .l-article h3, .l-article h4,
+.bust-content h3, .bust-content h4,
+.main-course h3, .main-course h4,
+.course-detail h3, .course-detail h4 {
+  border: none !important; border-bottom: none !important; border-top: none !important;
+  text-decoration: none !important; background: none !important;
+  padding-bottom: 0 !important; box-shadow: none !important;
+}
+
+h3::before, h3::after, h4::before, h4::after {
+  display: none !important; content: none !important;
+}
+
+/* YouTube埋め込み角丸 */
+#bust-content .wp-block-embed-youtube .wp-block-embed__wrapper,
+#facial-content .wp-block-embed-youtube .wp-block-embed__wrapper,
+#body-content .wp-block-embed-youtube .wp-block-embed__wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* YouTube動画サイズ（PC版：max-width 800px） */
+@media (min-width: 768px) {
+  #bust-content .wp-block-embed-youtube,
+  #facial-content .wp-block-embed-youtube,
+  #body-content .wp-block-embed-youtube {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* =====================================================
+   フェイシャル：体験メニューセクション（PC版）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  #facial-content .menu-section {
+    padding: 0;
+  }
+
+  #facial-content .menu-box {
+    padding: 0;
+    background: transparent;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  #facial-content .menu-box h4 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #c8a76b;
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  #facial-content .menu-box h4::before,
+  #facial-content .menu-box h4::after {
+    display: none !important;
+  }
+
+  /* テーブル外枠（figure.wp-block-table）にガラス背景 */
+  #facial-content .menu-box .wp-block-table {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+  }
+
+  #facial-content .menu-box table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: transparent !important;
+  }
+
+  /* 全セル共通：枠線なし */
+  #facial-content .menu-box table td,
+  #facial-content .menu-box table th {
+    border: none !important;
+    padding: 12px 16px !important;
+    font-size: 15px !important;
+    color: #333 !important;
+  }
+
+  /* ヘッダー行（1行目） */
+  #facial-content .menu-box table tbody tr:first-child td {
+    background: rgba(200, 167, 107, 0.2) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #c8a76b !important;
+  }
+
+  /* 左列 */
+  #facial-content .menu-box table td:first-child {
+    text-align: left !important;
+    width: 70% !important;
+  }
+
+  /* 右列（価格） */
+  #facial-content .menu-box table td:last-child {
+    text-align: right !important;
+    width: 30% !important;
+    font-weight: 600 !important;
+    color: #c8a76b !important;
+  }
+}
+
+/* =====================================================
+   ボディセクション（PC版）
+   ===================================================== */
+
+@media (min-width: 768px) {
+  /* --- body-course-detail --- */
+  #body-content .body-course-detail {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+  }
+
+  #body-content .body-course-detail > .wp-block-column[style*="60%"] {
+    flex: 0 0 calc(60% - 20px) !important;
+    width: calc(60% - 20px) !important;
+  }
+  #body-content .body-course-detail > .wp-block-column[style*="60%"] p {
+    font-size: 15px; line-height: 1.8; color: #333;
+  }
+
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] {
+    flex: 0 0 calc(40% - 20px) !important;
+    width: calc(40% - 20px) !important;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(1) {
+    background: rgba(200, 167, 107, 0.3); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 13px; font-weight: 500; color: #333; margin: 0;
+  }
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(2) {
+    text-align: center; font-size: 18px; font-weight: 600; color: #333; margin: 0;
+  }
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(3) {
+    background: rgba(200, 167, 107, 0.3); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 13px; font-weight: 500; color: #333; margin: 0; margin-top: 8px;
+  }
+  /* 価格：黒字（facialの赤字と異なる） */
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(4) {
+    text-align: center; font-size: 16px; font-weight: 700; color: #333 !important; margin: 0;
+  }
+
+  /* --- body-menu-box --- */
+  #body-content .body-menu-box {
+    padding: 0;
+    background: transparent;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  #body-content .body-menu-box h4 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #c8a76b;
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  #body-content .body-menu-box h4::before,
+  #body-content .body-menu-box h4::after {
+    display: none !important;
+  }
+
+  /* テーブル外枠にガラス背景 */
+  #body-content .body-menu-box .wp-block-table {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+  }
+
+  #body-content .body-menu-box table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: transparent !important;
+  }
+
+  /* 全セル共通：枠線なし */
+  #body-content .body-menu-box table td,
+  #body-content .body-menu-box table th {
+    border: none !important;
+    padding: 12px 16px !important;
+    font-size: 15px !important;
+    color: #333 !important;
+  }
+
+  /* タイトル行（1行目、4行目、7行目）：ゴールドガラス + ゴールド文字 */
+  #body-content .body-menu-box table tbody tr:nth-child(1) td,
+  #body-content .body-menu-box table tbody tr:nth-child(4) td,
+  #body-content .body-menu-box table tbody tr:nth-child(7) td {
+    background: rgba(200, 167, 107, 0.2) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #c8a76b !important;
+  }
+
+  /* 左列 */
+  #body-content .body-menu-box table td:first-child {
+    text-align: left !important;
+    width: 70% !important;
+  }
+
+  /* 右列（価格） */
+  #body-content .body-menu-box table td:last-child {
+    text-align: right !important;
+    width: 30% !important;
+    font-weight: 600 !important;
+    color: #c8a76b !important;
+  }
+}
+
+/* =====================================================
+   スマホ版設定
+   ===================================================== */
+
+@media screen and (max-width: 767px) {
+  body { background: transparent !important; }
+  .transparent-bg {
+    background: transparent !important; backdrop-filter: none !important;
+    border: none !important; box-shadow: none !important;
+  }
+
+  .l-article { color: #fff !important; }
+  .l-article h2, .l-article h3, .l-article h4, .l-article p, .l-article li, .l-article span {
+    color: #fff !important; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .section-title {
+    font-size: 16px; margin: 60px auto 30px !important; width: 300px !important;
+    max-width: 85% !important; padding: 0 35px !important; color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  .section-title::before, .section-title::after { color: #fff !important; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important; }
+
+  .bust-content > h3 {
+    text-align: center !important; font-size: 14px !important; font-weight: 500 !important;
+    letter-spacing: 0.15em !important; margin: 50px auto 30px !important;
+    color: #fff !important; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    padding: 0 30px !important; border: none !important;
+  }
+  .bust-content > h3::before, .bust-content > h3::after {
+    content: '・' !important; position: absolute; top: 50%; transform: translateY(-50%);
+    color: #f4d47c; font-size: 10px;
+  }
+  .bust-content > h3::before { left: 0; }
+  .bust-content > h3::after { right: 0; }
+
+  .main-course { display: flex; flex-direction: column; margin-bottom: 30px; }
+  /* SPでは画像カラム(40%)を常に上、テキストカラム(60%)を常に下に表示 */
+  .main-course > .wp-block-column[style*="40%"] { order: 1; margin-bottom: 20px; }
+  .main-course > .wp-block-column[style*="60%"] { order: 2; }
+
+  .main-course img { width: 100%; height: auto; border-radius: 8px; }
+  .main-course h3 {
+    font-size: 20px; font-weight: 600; margin-bottom: 16px; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); border-bottom: none !important;
+  }
+  .main-course > .wp-block-column[style*="60%"] > p:nth-child(2),
+  .main-course > .wp-block-column[style*="60%"] > p:nth-child(3) {
+    color: #f4d47c; font-size: 14px; font-weight: 500; margin-bottom: 6px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  .main-course > .wp-block-column[style*="60%"] > p:nth-child(4) {
+    font-size: 14px; line-height: 1.7; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin-bottom: 20px;
+  }
+  .main-course .wp-block-button { margin-top: 0 !important; display: flex !important; justify-content: flex-end !important; }
+  .main-course .wp-block-button__link {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    font-size: 15px !important; font-weight: 500 !important;
+    padding: 10px 28px !important; border-radius: 50px !important;
+  }
+
+  .course-detail {
+    display: flex; flex-direction: column; margin-top: 30px; padding: 24px 20px;
+    background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 12px;
+  }
+  .course-detail > .wp-block-column:first-child { margin-bottom: 20px; }
+  .course-detail > .wp-block-column:first-child p {
+    font-size: 14px; line-height: 1.7; color: #fff; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  .course-detail > .wp-block-column:last-child { display: flex; flex-direction: column; gap: 12px; }
+
+  .course-detail > .wp-block-column:last-child > p:nth-child(1) {
+    background: rgba(244, 212, 124, 0.4); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 12px; font-weight: 500; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0;
+  }
+  .course-detail > .wp-block-column:last-child > p:nth-child(2) {
+    text-align: center; font-size: 16px; font-weight: 600; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0;
+  }
+  .course-detail > .wp-block-column:last-child > p:nth-child(3) {
+    background: rgba(244, 212, 124, 0.4); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 12px; font-weight: 500; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0; margin-top: 8px;
+  }
+  .course-detail > .wp-block-column:last-child > p:nth-child(4) {
+    text-align: center; font-size: 14px; font-weight: 700; color: #ff6666 !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0;
+  }
+
+  /* =====================================================
+     フェイシャル：体験メニューセクション（SP版）
+     ===================================================== */
+
+  #facial-content .menu-section {
+    padding: 0 0 20px 0;
+  }
+
+  #facial-content .menu-box {
+    padding: 0;
+    background: transparent;
+  }
+
+  #facial-content .menu-box h4 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #f4d47c;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  #facial-content .menu-box h4::before,
+  #facial-content .menu-box h4::after {
+    display: none !important;
+  }
+
+  /* テーブル外枠（figure.wp-block-table）にガラス背景 */
+  #facial-content .menu-box .wp-block-table {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+  }
+
+  #facial-content .menu-box table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: transparent !important;
+  }
+
+  /* 全セル共通：枠線なし */
+  #facial-content .menu-box table td,
+  #facial-content .menu-box table th {
+    border: none !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* ヘッダー行（1行目） */
+  #facial-content .menu-box table tbody tr:first-child td {
+    background: rgba(244, 212, 124, 0.3) !important;
+    font-weight: 600 !important;
+    color: #f4d47c !important;
+  }
+
+  /* 左列 */
+  #facial-content .menu-box table td:first-child {
+    text-align: left !important;
+    width: 65% !important;
+  }
+
+  /* 右列（価格） */
+  #facial-content .menu-box table td:last-child {
+    text-align: right !important;
+    width: 35% !important;
+    font-weight: 600 !important;
+    color: #f4d47c !important;
+  }
+
+  /* =====================================================
+     ボディセクション（SP版）
+     ===================================================== */
+
+  /* --- body-course-detail --- */
+  #body-content .body-course-detail {
+    display: flex; flex-direction: column; margin-top: 30px; padding: 24px 20px;
+    background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 12px;
+  }
+  #body-content .body-course-detail > .wp-block-column[style*="60%"] { margin-bottom: 20px; }
+  #body-content .body-course-detail > .wp-block-column[style*="60%"] p {
+    font-size: 14px; line-height: 1.7; color: #fff; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] { display: flex; flex-direction: column; gap: 12px; }
+
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(1) {
+    background: rgba(244, 212, 124, 0.4); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 12px; font-weight: 500; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0;
+  }
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(2) {
+    text-align: center; font-size: 16px; font-weight: 600; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0;
+  }
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(3) {
+    background: rgba(244, 212, 124, 0.4); padding: 4px 12px; border-radius: 4px;
+    text-align: center; font-size: 12px; font-weight: 500; color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0; margin-top: 8px;
+  }
+  /* 価格：白字（facialの赤字と異なる） */
+  #body-content .body-course-detail > .wp-block-column[style*="40%"] > p:nth-child(4) {
+    text-align: center; font-size: 14px; font-weight: 700; color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); margin: 0;
+  }
+
+  /* --- body-menu-box --- */
+  #body-content .body-menu-box {
+    padding: 0;
+    background: transparent;
+  }
+
+  #body-content .body-menu-box h4 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #f4d47c;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  #body-content .body-menu-box h4::before,
+  #body-content .body-menu-box h4::after {
+    display: none !important;
+  }
+
+  /* テーブル外枠にガラス背景 */
+  #body-content .body-menu-box .wp-block-table {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+  }
+
+  #body-content .body-menu-box table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: transparent !important;
+  }
+
+  /* 全セル共通：枠線なし */
+  #body-content .body-menu-box table td,
+  #body-content .body-menu-box table th {
+    border: none !important;
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* タイトル行（1行目、4行目、7行目）：ゴールドガラス + ゴールド文字 */
+  #body-content .body-menu-box table tbody tr:nth-child(1) td,
+  #body-content .body-menu-box table tbody tr:nth-child(4) td,
+  #body-content .body-menu-box table tbody tr:nth-child(7) td {
+    background: rgba(244, 212, 124, 0.3) !important;
+    font-weight: 600 !important;
+    color: #f4d47c !important;
+  }
+
+  /* 左列 */
+  #body-content .body-menu-box table td:first-child {
+    text-align: left !important;
+    width: 65% !important;
+  }
+
+  /* 右列（価格） */
+  #body-content .body-menu-box table td:last-child {
+    text-align: right !important;
+    width: 35% !important;
+    font-weight: 600 !important;
+    color: #f4d47c !important;
+  }
+}
+
+/* =====================================================
+   店舗選択モーダルウィンドウ
+   ===================================================== */
+
+/* PC版 */
+@media (min-width: 768px) {
+  .pato-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pato-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  .pato-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 0;
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  .pato-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .pato-modal-close:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
+  }
+
+  .pato-modal-banner {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .pato-modal-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .pato-modal-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 40px 0 30px 0;
+    padding: 0 40px;
+  }
+
+  .pato-modal-buttons {
+    display: flex;
+    gap: 20px;
+    padding: 0 40px 40px 40px;
+    justify-content: center;
+  }
+
+  .pato-modal-btn {
+    flex: 1;
+    max-width: 300px;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .pato-modal-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .pato-modal-btn .store-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .pato-modal-btn .store-subtitle {
+    font-size: 14px;
+    color: #666;
+  }
+}
+
+/* SP版 */
+@media screen and (max-width: 767px) {
+  .pato-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .pato-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+  }
+
+  .pato-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    padding: 0;
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  .pato-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .pato-modal-close:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .pato-modal-banner {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .pato-modal-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .pato-modal-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    margin: 30px 0 20px 0;
+    padding: 0 20px;
+  }
+
+  .pato-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px 30px 20px;
+  }
+
+  .pato-modal-btn {
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .pato-modal-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .pato-modal-btn .store-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .pato-modal-btn .store-subtitle {
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+}
+

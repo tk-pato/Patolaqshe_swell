@@ -1,0 +1,1681 @@
+/* =====================================================
+   マリアージュページ - 完全版CSS（ガラス調0.1統一版 + MOREボタンシンプル版 + オーナーの挨拶）
+   ===================================================== */
+
+/* =====================================================
+   ページタイトル・パンくずリスト非表示（読み込み時のちらつき防止）
+   ===================================================== */
+
+.l-mainContent__title,
+.c-pageTitle,
+.p-articleMetas,
+.p-breadcrumb,
+.c-breadcrumb {
+  display: none !important;
+}
+
+/* =====================================================
+   【重要】サイト全体の背景透明化
+   これにより、セクション間の隙間から背景画像が見えるようにする
+   ===================================================== */
+
+/* サイト全体の最も外側の要素の背景を透明に */
+html, 
+body {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* SWELLの主要なラッパーの背景も透明に */
+#l-container,
+#l-content,
+.l-article,
+.l-main {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* =====================================================
+   ヒーローセクション(トップの固定背景画像エリア)
+   ===================================================== */
+
+/* ヒーロー画像を固定背景・全画面表示 */
+.hero-fullwidth-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* フルワイドブロックの内側を上下中央配置 */
+.hero-fullwidth-fixed .wp-block-swell-fullwide__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* より強力な中央配置(複数パターンを試す) */
+.hero-fullwidth-fixed .swell-block-fullWide__inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh !important;
+  position: relative !important;
+}
+
+.hero-fullwidth-fixed > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh !important;
+}
+
+/* =====================================================
+   ロゴアニメーション
+   ===================================================== */
+
+/* ロゴのアニメーション：表示 → 消える */
+.hero-logo {
+  margin: 0 auto;
+  animation: fadeInOut 3s ease-in-out forwards;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* ロゴ画像自体も中央配置を強化 */
+.hero-logo img {
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* テキストのアニメーション:ロゴの後に表示 → 消える */
+.hero-text {
+  opacity: 0;
+  text-align: center;
+  animation: fadeInOut 3s ease-in-out 3.5s forwards;
+}
+
+/* フェードイン → 表示したまま */
+@keyframes fadeInOut {
+  0% { 
+    opacity: 0;
+    pointer-events: none;
+  }
+  15% { 
+    opacity: 1;
+    pointer-events: auto;
+  }
+  100% { 
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+/* =====================================================
+   レイアウト構造(ヘッダー・コンテンツ・フッター)
+   ===================================================== */
+
+/* ヘッダーを透過させて画像の上に表示 */
+.l-header {
+  position: relative;
+  z-index: 100;
+  background: transparent;
+}
+
+/* コンテンツエリアも画像の上に */
+.l-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 100vh;
+}
+
+/* フッターも画像の上に */
+.l-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* =====================================================
+   フッター：ガラスモーフィズム（0.1統一）
+   ===================================================== */
+
+/* フッター全体：透明 */
+.l-footer {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 内側の要素は透明に */
+.l-footer footer,
+.l-footer .ptl-footer,
+.l-footer .ptl-footer-inner,
+.l-footer .ptl-footer__lower {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ナビベース部分のみガラス効果 */
+.l-footer .ptl-footer__lower-inner {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+/* =====================================================
+   Scrollボタン
+   ===================================================== */
+
+/* Scrollボタン：常に表示 */
+.p-mainVisual__scroll {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Scrollボタン基本スタイル(PC) */
+.p-mainVisual__scroll {
+  position: fixed !important;
+  bottom: 0vh !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 100 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #fff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* SCROLL全体と子要素を白に強制 */
+.p-mainVisual__scroll,
+.p-mainVisual__scroll * {
+  color: #fff !important;
+}
+
+/* SVG矢印 */
+.p-mainVisual__scrollArrow {
+  width: 21px !important;
+  height: 21px !important;
+  fill: #fff !important;
+  animation: scrollArrowBounce 2s infinite !important;
+}
+
+/* 矢印のアニメーション */
+@keyframes scrollArrowBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* Scrollテキスト */
+.p-mainVisual__scrollLabel {
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  margin-top: 5px !important;
+  text-transform: uppercase !important;
+  color: #fff !important;
+}
+
+/* =====================================================
+   ページ全体：テキストカラー（PC：#333、SP：白+シャドウ）
+   ===================================================== */
+
+/* PC：記事コンテンツ内のテキストを#333に統一（SCROLLボタン除外） */
+.l-article {
+  color: #333 !important;
+}
+
+.l-article h2:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+.l-article h3:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+.l-article h4:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+.l-article p:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+.l-article li:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+.l-article span:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+/* PC：menu-section内のテキストはブロックエディタの色指定を優先 */
+.menu-section h2,
+.menu-section h3,
+.menu-section h4,
+.menu-section p,
+.menu-section li,
+.menu-section span {
+  color: inherit !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* =====================================================
+   選ばれる理由セクション
+   ===================================================== */
+
+/* リッチカラムブロック全体 */
+.reasons-section .swell-block-columns {
+  margin-top: 40px !important;
+}
+
+/* 各カラム */
+.reasons-section .swell-block-column {
+  margin-bottom: 40px !important;
+}
+
+/* 画像：角丸 */
+.reasons-section img {
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+}
+
+/* H3タイトル */
+.reasons-section h3 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  line-height: 1.4 !important;
+}
+
+/* 区切り線：PC黒 */
+.reasons-section hr {
+  margin: 12px 0 !important;
+  border: none !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ディスクリプション */
+.reasons-section .swell-block-column p {
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  text-align: left !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* =====================================================
+   オーナーの挨拶セクション
+   ===================================================== */
+
+/* PC表示 */
+@media (min-width: 768px) {
+  /* 1. 親グループ（基準点） */
+  .owner-greeting-container {
+    position: relative !important;
+    max-width: 1000px;
+    height: 600px !important;
+    min-height: 600px;
+    margin: 0 auto;
+    overflow: visible !important;
+  }
+
+  /* 2. 枠画像（owner-frame） */
+  .owner-frame {
+    position: absolute !important;
+    top: 45% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 1000px !important;
+    height: 600px !important;
+    max-width: none !important;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+    margin: 0 !important;
+  }
+
+  /* 画像ブロック内のimgタグ */
+  .owner-frame img {
+    width: 1000px !important;
+    height: 600px !important;
+    object-fit: contain;
+  }
+
+  /* 3. 中身のカラム（owner-greeting-content） */
+  .owner-greeting-content {
+    position: absolute !important;
+    top: 46% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2;
+    display: flex !important;
+    align-items: center !important;
+    gap: 40px;
+    width: 85%;
+    max-width: 850px;
+    height: 400px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 左カラム（写真）：上下中央揃え */
+  .owner-greeting-content .wp-block-column:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 400px !important;
+  }
+
+  /* 右カラム（文章）：上下中央揃え */
+  .owner-greeting-content .wp-block-column:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    height: 400px !important;
+  }
+
+  /* オーナー写真の調整 */
+  .owner-greeting-content .wp-block-column:first-child img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+    margin: 0 !important;
+  }
+
+  /* 見出し（H3） */
+  .owner-greeting-content h3 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin: 0 0 12px 0 !important;
+    line-height: 1.4 !important;
+    border-bottom: none !important;
+  }
+
+  /* H3の装飾削除 */
+  .owner-greeting-content h3::after,
+  .owner-greeting-content h3::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* 本文 */
+  .owner-greeting-content .wp-block-column p {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    margin: 0 !important;
+  }
+
+  /* PC：区切り線を非表示 */
+  .owner-greeting-content hr {
+    display: none !important;
+  }
+
+  /* PC：SPのみ表示タイトルを非表示 */
+  .sp-only-title {
+    display: none !important;
+  }
+
+  /* PC：SPのみ表示サブタイトルを非表示 */
+  .sp-only-subtitle {
+    display: none !important;
+  }
+}
+
+/* =====================================================
+   施術の流れセクション
+   ===================================================== */
+
+/* 画像：角丸8px（reasonsセクションと統一） */
+.flow-section img {
+  border-radius: 8px !important;
+}
+
+/* H3タイトル：reasonsセクションと統一 */
+.flow-section h3 {
+  font-size: 16px !important;
+}
+
+/* ディスクリプション：reasonsセクションと統一 */
+.flow-section p {
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+
+/* =====================================================
+   施術メニューセクション - ガラス調0.1統一
+   ===================================================== */
+
+/* フルワイドブロック */
+.menu-section {
+  border-radius: 0 !important;
+}
+
+/* =====================================================
+   料金プランカード
+   ===================================================== */
+
+/* カラムのギャップ調整 */
+.menu-section .wp-block-columns {
+  gap: 30px !important;
+  margin-top: 40px !important;
+  align-items: stretch !important;
+}
+
+/* 料金カード共通：ガラス調 */
+.price-card {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  padding: 40px 30px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  position: relative !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 強調カード（一番人気）：ゴールドガラス調枠 */
+.price-card-featured {
+  border: 3px solid rgba(201, 162, 39, 0.7) !important;
+  box-shadow: 0 8px 32px rgba(201, 162, 39, 0.2) !important;
+}
+
+/* 一番人気バッジ：ガラス調ゴールド */
+.plan-badge {
+  display: inline-block !important;
+  background: rgba(201, 162, 39, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 6px 20px !important;
+  border-radius: 20px !important;
+  margin-bottom: 15px !important;
+  text-align: center !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* シンプルバッジ：ガラス調グレー */
+.plan-badge-simple {
+  display: inline-block !important;
+  background: rgba(100, 100, 100, 0.4) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 6px 20px !important;
+  border-radius: 20px !important;
+  margin-bottom: 15px !important;
+  text-align: center !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* プラン名 */
+.plan-name {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  margin-bottom: 10px !important;
+  text-shadow: none !important;
+}
+
+/* 価格 */
+.plan-price {
+  font-size: 42px !important;
+  font-weight: 700 !important;
+  color: #c9a227 !important;
+  margin-bottom: 5px !important;
+  line-height: 1.2 !important;
+  text-shadow: none !important;
+}
+
+/* 価格注釈 */
+.plan-price-note {
+  font-size: 14px !important;
+  color: #555 !important;
+  margin-bottom: 20px !important;
+  text-shadow: none !important;
+}
+
+/* 説明文 */
+.plan-description {
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: #444 !important;
+  margin-bottom: 25px !important;
+  text-shadow: none !important;
+  flex-grow: 1 !important;
+}
+
+/* ボタン：ガラス調ゴールド */
+.price-card .swell-block-button {
+  width: 100% !important;
+  margin-top: auto !important;
+}
+
+.price-card .swell-block-button a {
+  display: block !important;
+  width: 100% !important;
+  background: rgba(201, 162, 39, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  padding: 15px 20px !important;
+  border-radius: 30px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.price-card .swell-block-button a:hover {
+  background: rgba(201, 162, 39, 0.7) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4) !important;
+}
+
+/* =====================================================
+   比較表
+   ===================================================== */
+
+/* 比較表タイトル */
+.comparison-title {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin-bottom: 30px !important;
+  color: #333 !important;
+  text-shadow: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  background: none !important;
+}
+
+/* H3下線削除 */
+.comparison-title::before,
+.comparison-title::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  background: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* 比較表テーブル：ガラス調（カードと統一 0.25） */
+.comparison-table {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.comparison-table table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 16px 20px !important;
+  text-align: center !important;
+  border: 1px solid rgba(200, 200, 200, 0.4) !important;
+  color: #333 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  font-size: 15px !important;
+}
+
+/* ヘッダー行 */
+.comparison-table thead th {
+  background: rgba(80, 80, 80, 0.2) !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+}
+
+/* 項目列（1列目） */
+.comparison-table td:first-child {
+  font-weight: 500 !important;
+  text-align: left !important;
+}
+
+/* パトラクシェ列（3列目）：背景色のみで強調（枠線なし） */
+.comparison-table th:nth-child(3),
+.comparison-table td:nth-child(3) {
+  background: rgba(201, 162, 39, 0.2) !important;
+}
+
+/* パトラクシェ列の金額：ゴールド色 */
+.comparison-table td:nth-child(3) {
+  color: #9a7b1a !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 最終行（成婚総額）：強調 */
+.comparison-table tbody tr:last-child td {
+  font-weight: 700 !important;
+  font-size: 17px !important;
+}
+
+/* 注釈：左揃え、余白小さく */
+.comparison-note {
+  font-size: 13px !important;
+  color: #444 !important;
+  text-align: left !important;
+  margin-top: 8px !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 上カード：バストアップ施術（PHPグランドトップと統一：0.25） */
+.menu-main-card {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+/* 左カラム：padding 50px固定（PHP版と統一） */
+.menu-main-card .swell-block-columns__item:first-child {
+  padding: 50px !important;
+  padding-top: 12px !important;
+}
+
+/* 左カラム内のh3（タイトル） */
+.menu-main-card .swell-block-columns__item:first-child h3 {
+  text-align: center !important;
+  margin: 0 0 28px 0 !important;
+  letter-spacing: .08em !important;
+}
+
+/* 左カラム内の1つ目の段落 */
+.menu-main-card .swell-block-columns__item:first-child p:first-of-type {
+  text-align: center !important;
+  margin: 4px 0 0 0 !important;
+  line-height: 1.65 !important;
+}
+
+/* 左カラム内の2つ目の段落 */
+.menu-main-card .swell-block-columns__item:first-child p:last-of-type {
+  text-align: center !important;
+  margin: 0 !important;
+  line-height: 1.65 !important;
+}
+
+/* 右カラム：paddingなし */
+.menu-main-card .swell-block-columns__item:last-child {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 画像の基本設定（アスペクト比はブロックエディターで管理） */
+.menu-main-card img {
+  border-radius: 0 !important;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* 画像ホバー効果 */
+.menu-main-card img:hover {
+  transform: scale(1.05);
+}
+
+/* PC版：左カラムpadding（上40 左右10 下0） */
+.menu-main-card-text {
+  padding: 40px 10px 0px 10px !important;
+}
+
+/* 左カラム内のh3フォントサイズ（reasonsセクションと統一） */
+.menu-main-card h3 {
+  font-size: clamp(13px, 1.4vw, 16px) !important;
+}
+
+/* 左カラム内の段落フォントサイズ（reasonsセクションと統一） */
+.menu-main-card p {
+  font-size: clamp(13px, 1.2vw, 15px) !important;
+}
+
+/* 下カード：menu-btm-card（上カードと同じスタイル） */
+.menu-btm-card {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+/* 左カラム：padding 50px固定（PHP版と統一） */
+.menu-btm-card .swell-block-columns__item:first-child {
+  padding: 50px !important;
+  padding-top: 12px !important;
+}
+
+/* 左カラム内のh3（タイトル） */
+.menu-btm-card .swell-block-columns__item:first-child h3 {
+  text-align: center !important;
+  margin: 0 0 28px 0 !important;
+  letter-spacing: .08em !important;
+}
+
+/* 左カラム内の1つ目の段落 */
+.menu-btm-card .swell-block-columns__item:first-child p:first-of-type {
+  text-align: center !important;
+  margin: 4px 0 0 0 !important;
+  line-height: 1.65 !important;
+}
+
+/* 左カラム内の2つ目の段落 */
+.menu-btm-card .swell-block-columns__item:first-child p:last-of-type {
+  text-align: center !important;
+  margin: 0 !important;
+  line-height: 1.65 !important;
+}
+
+/* 右カラム：paddingなし */
+.menu-btm-card .swell-block-columns__item:last-child {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 画像の基本設定（アスペクト比はブロックエディターで管理） */
+.menu-btm-card img {
+  border-radius: 0 !important;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* 画像ホバー効果 */
+.menu-btm-card img:hover {
+  transform: scale(1.05);
+}
+
+/* PC版：左カラムpadding（上40 左右10 下0） */
+.menu-btm-card-text {
+  padding: 40px 10px 0px 10px !important;
+}
+
+/* 左カラム内のh3フォントサイズ（reasonsセクションと統一） */
+.menu-btm-card h3 {
+  font-size: clamp(13px, 1.4vw, 16px) !important;
+}
+
+/* 左カラム内の段落フォントサイズ（reasonsセクションと統一） */
+.menu-btm-card p {
+  font-size: clamp(13px, 1.2vw, 15px) !important;
+}
+
+/* =====================================================
+   子ページ見出し：スラッシュ装飾
+   ===================================================== */
+
+.section-title {
+  text-align: center !important;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin: 80px auto 40px !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 50px !important;
+  display: block !important;
+  width: 400px !important;
+  max-width: 90% !important;
+  position: relative;
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.section-title::before {
+  content: '／';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+.section-title::after {
+  content: '／';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  text-shadow: none !important;
+}
+
+/* =====================================================
+   共通スタイル
+   ===================================================== */
+
+/* テキスト選択時の明るいパステルピンクハイライト */
+::selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+::-moz-selection {
+  background: #ffd5d5;
+  color: #333;
+}
+
+/* ガラスモーフィズム背景(汎用クラス) - フルワイド背景用（0.1統一） */
+.glass-bg {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* 背景透過クラス(汎用クラス) */
+.transparent-bg {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* YouTubeセクション：上下margin・padding削除（PC・SP共通） */
+.youtube-section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* YouTube埋め込み：サイズ調整（バナーサイズに合わせる） */
+.youtube-section .wp-block-embed,
+.youtube-section .wp-block-embed__wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+/* YouTube埋め込み：アスペクト比調整 + 角丸 */
+.youtube-section .wp-block-embed__wrapper iframe,
+.youtube-section .wp-block-embed iframe {
+  max-height: 450px;
+  border-radius: 12px !important;
+}
+
+/* フッター直前の隙間を削除 */
+.l-content {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* 記事エリアの下部余白を削除 */
+.l-article {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* フッターの上部余白を削除 */
+.l-footer {
+  margin-top: 0 !important;
+  border-top: none !important;
+}
+
+/* WordPress標準のスペーシングクラスを無効化 */
+.wp-block-group:last-child,
+.swell-block-fullWide:last-child,
+.l-content > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* =====================================================
+   スマホ対応(767px以下)
+   ===================================================== */
+
+@media screen and (max-width: 767px) {
+  /* SP版：セクションの左右paddingを統一 */
+  .reasons-section,
+  .menu-section,
+  .flow-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  /* SP版：YouTubeセクション調整 */
+  .youtube-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  .youtube-section .wp-block-embed,
+  .youtube-section .wp-block-embed__wrapper {
+    max-width: 100%;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+  
+  .youtube-section .wp-block-embed__wrapper iframe,
+  .youtube-section .wp-block-embed iframe {
+    max-height: 300px;
+    border-radius: 12px !important;
+  }
+  
+  /* SP：記事コンテンツのみ白+濃いシャドウに統一（SCROLLボタン除外） */
+  .l-article {
+    color: #fff !important;
+  }
+  
+  .l-article h2:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article h3:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article h4:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    border: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* SP：section-title（白+シャドウ） */
+  .section-title {
+    font-size: 16px;
+    margin: 60px auto 30px !important;
+    width: 300px !important;
+    max-width: 85% !important;
+    padding: 0 35px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .section-title::before,
+  .section-title::after {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* SP：SPのみ表示タイトル（section-titleスタイル修正版） */
+  .sp-only-title {
+    display: block !important;
+    text-align: center !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em !important;
+    margin: 60px auto 30px !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 35px !important;
+    width: 300px !important;
+    max-width: 85% !important;
+    position: relative !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .sp-only-title::before {
+    content: '／' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    font-weight: 400 !important;
+  }
+
+  .sp-only-title::after {
+    content: '／' !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    font-weight: 400 !important;
+  }
+
+  /* SP：SPのみ表示サブタイトル */
+  .sp-only-subtitle {
+    display: block !important;
+    text-align: center !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    margin: -10px auto 30px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .l-article p:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .l-article li:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *),
+  .l-article span:not(.p-mainVisual__scroll):not(.p-mainVisual__scroll *) {
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* SP：menu-section内のテキストはブロックエディタの色指定を優先 */
+  .menu-section h2,
+  .menu-section h3,
+  .menu-section h4,
+  .menu-section p,
+  .menu-section li,
+  .menu-section span {
+    color: inherit !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* SP：料金プランカード */
+  .menu-section .wp-block-columns {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .price-card {
+    padding: 30px 20px !important;
+  }
+
+  .plan-badge {
+    font-size: 12px !important;
+    padding: 5px 15px !important;
+  }
+
+  .plan-name {
+    font-size: 16px !important;
+  }
+
+  .plan-price {
+    font-size: 36px !important;
+  }
+
+  .plan-price-note {
+    font-size: 13px !important;
+  }
+
+  .plan-description {
+    font-size: 13px !important;
+  }
+
+  .price-card .swell-block-button a {
+    font-size: 14px !important;
+    padding: 12px 15px !important;
+  }
+
+  /* SP：料金カード内のテキストは黒に固定 */
+  .price-card p {
+    color: inherit !important;
+    text-shadow: none !important;
+  }
+
+  /* SP：比較表 */
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 8px !important;
+    font-size: 13px !important;
+  }
+  
+  .comparison-table thead th {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .comparison-table tbody tr:last-child td {
+    font-size: 14px !important;
+  }
+  
+  .comparison-note {
+    font-size: 11px !important;
+  }
+
+  /* ヒーローセクション：SP専用画像使用 */
+  .hero-logo {
+    width: 250px !important;
+    height: 250px !important;
+    animation: fadeInOut 5s ease-in-out forwards;
+    position: absolute !important;
+    top: 40% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .hero-logo img {
+    width: 250px !important;
+    height: 250px !important;
+    max-width: 250px !important;
+    object-fit: contain !important;
+  }
+  
+  .hero-fullwidth-fixed {
+    position: fixed;
+    background-attachment: scroll;
+    background-image: url('https://patolaqshe.com/wp-content/uploads/2026/01/mariage-top-sp.jpg') !important;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  /* 選ばれる理由セクション：SP対応（白+シャドウ） */
+  .reasons-section .swell-block-columns {
+    margin-top: 30px !important;
+  }
+  
+  .reasons-section .swell-block-column {
+    margin-bottom: 32px !important;
+  }
+  
+  /* H3タイトル：SP白+濃いシャドウ */
+  .reasons-section h3 {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* ディスクリプション：SP 14px（統一）+ 濃いシャドウ */
+  .reasons-section .swell-block-column p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* 区切り線：SP白 */
+  .reasons-section hr {
+    margin: 10px 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  /* 画像余白調整 */
+  .reasons-section img {
+    margin-bottom: 12px !important;
+  }
+  
+  /* SP：フッター直前の隙間を削除 */
+  .reasons-section {
+    margin-bottom: 0 !important;
+  }
+
+  /* =====================================================
+     オーナーの挨拶セクション：SP対応（選ばれる理由と統一）
+     ===================================================== */
+
+  /* 枠画像を非表示 */
+  .owner-frame {
+    display: none !important;
+  }
+
+  /* 区切り線を表示（選ばれる理由と統一・修正版） */
+  .owner-greeting-content hr,
+  .owner-divider,
+  hr.owner-divider,
+  .wp-block-separator.owner-divider {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 16px 0 !important;
+    border: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    height: 1px !important;
+  }
+
+  /* コンテナ */
+  .owner-greeting-container {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    padding: 40px 20px;
+  }
+
+  /* カラムを縦並びに、中央配置 */
+  .owner-greeting-content {
+    position: relative;
+    z-index: 2;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 20px;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 左カラム（画像）：中央配置 */
+  .owner-greeting-content .wp-block-column:first-child {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  /* オーナー画像：選ばれる理由と同じサイズ感 */
+  .owner-greeting-content .wp-block-column:first-child img {
+    width: 100% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    object-fit: contain;
+  }
+
+  /* 右カラム（テキスト）：中央配置 */
+  .owner-greeting-content .wp-block-column:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  /* H3：選ばれる理由と統一 */
+  .owner-greeting-content h3 {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+
+  /* H3の装飾（下線等）を確実に削除 */
+  .owner-greeting-content h3::after,
+  .owner-greeting-content h3::before {
+    display: none !important;
+    content: none !important;
+    border: none !important;
+    background: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* ディスクリプション：選ばれる理由と統一 */
+  .owner-greeting-content .wp-block-column p {
+    font-size: 14px !important;
+    line-height: 1.75 !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    color: #fff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* 施術の流れセクション：SP対応 */
+  .flow-section h3 {
+    font-size: 15px !important;
+  }
+  
+  .flow-section p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+  
+  /* SP：カラムブロックを縦並びに変更 */
+  .flow-section .wp-block-columns {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* SP：カラムを100%幅に */
+  .flow-section .wp-block-column {
+    width: 100% !important;
+  }
+  
+  /* パターン1：画像左（デフォルト）- 左カラムが上 */
+  .flow-section .wp-block-columns > .wp-block-column:first-child {
+    order: 1 !important;
+  }
+  
+  .flow-section .wp-block-columns > .wp-block-column:last-child {
+    order: 2 !important;
+  }
+  
+  /* パターン2：画像右（.flow-image-rightクラス付き）- 右カラムが上 */
+  .flow-section .wp-block-columns.flow-image-right > .wp-block-column:first-child {
+    order: 2 !important;
+  }
+  
+  .flow-section .wp-block-columns.flow-image-right > .wp-block-column:last-child {
+    order: 1 !important;
+  }
+  
+  /* 施術メニューセクション：SP対応 */
+  .menu-section {
+    border-radius: 0 !important;
+  }
+  
+  /* 上カード：バストアップ施術（PHPグランドトップと統一：0.25） */
+  .menu-main-card {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 12px !important;
+    padding: 0 !important;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+  }
+  
+  /* リッチカラム：SP版で上下反転（画像が上、テキストが下） */
+  .menu-main-card .swell-block-columns__inner {
+    flex-direction: column-reverse !important;
+  }
+  
+  .menu-main-card .swell-block-columns__item {
+    width: 100% !important;
+  }
+  
+  /* SP：画像（上）はpadding不要 */
+  .menu-main-card .swell-block-columns__item:first-child {
+    padding: 0 !important;
+  }
+  
+  /* SP：テキスト（下）のpadding */
+  .menu-main-card .swell-block-columns__item:last-child {
+    padding: 20px !important;
+  }
+  
+  /* SP：テキスト中央寄せ */
+  .menu-main-card .swell-block-columns__item:last-child h3,
+  .menu-main-card .swell-block-columns__item:last-child p {
+    text-align: center !important;
+  }
+  
+  .menu-main-card img {
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* SP版：左カラム（テキスト部分）padding 全方向10px */
+  .menu-main-card-text {
+    padding: 10px !important;
+  }
+  
+  /* 左カラム内のh3フォントサイズ（reasonsセクションと統一） */
+  .menu-main-card h3 {
+    font-size: clamp(13px, 1.4vw, 16px) !important;
+  }
+  /* 左カラム内の段落フォントサイズ（reasonsセクションと統一） */
+  .menu-main-card p {
+    font-size: clamp(13px, 1.2vw, 15px) !important;
+  }
+  
+  /* 下カード：menu-btm-card（上カードと同じスタイル） */
+  .menu-btm-card {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 12px !important;
+    padding: 0 !important;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+  }
+  
+  /* リッチカラム：SP版で上下反転（画像が上、テキストが下） */
+  .menu-btm-card .swell-block-columns__inner {
+    flex-direction: column-reverse !important;
+  }
+  
+  .menu-btm-card .swell-block-columns__item {
+    width: 100% !important;
+  }
+  
+  /* SP：画像（上）はpadding不要 */
+  .menu-btm-card .swell-block-columns__item:first-child {
+    padding: 0 !important;
+  }
+  
+  /* SP：テキスト（下）のpadding */
+  .menu-btm-card .swell-block-columns__item:last-child {
+    padding: 20px !important;
+  }
+  
+  /* SP：テキスト中央寄せ */
+  .menu-btm-card .swell-block-columns__item:last-child h3,
+  .menu-btm-card .swell-block-columns__item:last-child p {
+    text-align: center !important;
+  }
+  
+  .menu-btm-card img {
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* SP版：左カラム（テキスト部分）padding 全方向10px */
+  .menu-btm-card-text {
+    padding: 10px !important;
+  }
+  
+  /* 左カラム内のh3フォントサイズ（reasonsセクションと統一） */
+  .menu-btm-card h3 {
+    font-size: clamp(13px, 1.4vw, 16px) !important;
+  }
+  /* 左カラム内の段落フォントサイズ（reasonsセクションと統一） */
+  .menu-btm-card p {
+    font-size: clamp(13px, 1.2vw, 15px) !important;
+  }
+}
+
+/* =====================================================
+   タブレット・SP対応(959px以下)
+   ===================================================== */
+
+@media (max-width: 959px) {
+  /* Scrollボタン：SP位置調整 */
+  .p-mainVisual__scroll {
+    bottom: 15vh !important;
+  }
+}
+
+/* =====================================================
+   SCROLL白強制（最優先）
+   ===================================================== */
+
+/* すべてのデバイスでSCROLLボタンを確実に白に */
+.p-mainVisual__scroll,
+.p-mainVisual__scroll *,
+.p-mainVisual__scrollArrow,
+.p-mainVisual__scrollLabel {
+  color: #fff !important;
+}
+
+.p-mainVisual__scrollArrow {
+  fill: #fff !important;
+}
+
+/* =====================================================
+   FAQセクション：MOREボタン
+   シンプル版（ガラス調のみ、サイズ変更なし）
+   ===================================================== */
+
+/* セクション全体を中央寄せ */
+.faq-section {
+  text-align: center;
+}
+
+/* MOREボタン：ガラスモーフィズムのみ（PC & SP共通） */
+.faq-section .more-button .swell-block-button__link {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* ホバー時 */
+.faq-section .more-button .swell-block-button__link:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* PC版：MOREボタンアイコンを#333に */
+@media (min-width: 768px) {
+  .faq-section .more-button .swell-block-button__icon,
+  .faq-section .more-button svg,
+  .faq-section .more-button .icon {
+    color: #333 !important;
+    fill: #333 !important;
+  }
+}
+
+/* =====================================================
+   SP：料金表タップ拡大機能（クローンモーダル方式）
+   ===================================================== */
+
+@media screen and (max-width: 767px) {
+  /* 1. オリジナルの表：タップできることを示す */
+  .comparison-table {
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+  
+  .comparison-table:active {
+    transform: scale(0.98); /* タップ時の沈み込みエフェクト */
+  }
+
+  /* 2. モーダルオーバーレイ（背景） */
+  .table-zoom-overlay {
+    display: none; /* 初期状態は非表示 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* 背景を暗く */
+    z-index: 999999; /* 最前面 */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+
+  /* アクティブ時の表示設定 */
+  .table-zoom-overlay.is-active {
+    opacity: 1;
+  }
+
+  /* 3. モーダル内のラッパー */
+  .table-zoom-wrapper {
+    width: 100%;
+    max-width: 95vw;
+    max-height: 85vh;
+    overflow-y: auto; /* 縦スクロール許可 */
+    border-radius: 12px;
+    /* 慣性スクロール */
+    -webkit-overflow-scrolling: touch;
+    /* スクロールバーを消す */
+    scrollbar-width: none;
+  }
+  
+  .table-zoom-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 4. クローンされた表のスタイル調整 */
+  .table-zoom-wrapper .comparison-table {
+    margin: 0 !important;
+    width: 100% !important;
+    /* 【重要】モーダル内では背景を白くして可読性を確保 */
+    background: #fff !important; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+    cursor: default; /* モーダル内ではカーソル戻す */
+  }
+
+  /* 5. 閉じるボタン */
+  .table-zoom-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 1000000;
+  }
+  
+  /* 6. 「タップで拡大」のガイド表示（任意） */
+  .comparison-table::after {
+    content: 'タップで拡大';
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: #555;
+    margin-top: 5px;
+    opacity: 0.7;
+  }
+}
