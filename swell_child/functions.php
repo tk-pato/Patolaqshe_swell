@@ -6,6 +6,20 @@ add_filter('tiny_mce_plugins', function ($plugins) {
     return array_diff($plugins, ['media']);
 });
 
+/**
+ * ガラス背景クリティカルCSS — 外部CSSより先に<head>内にインライン出力
+ * 外部page-xxx.cssの読み込み遅延による背景チラつき(FOUC)を防止
+ */
+add_action('wp_head', function () {
+  if (!is_page()) return;
+  ?>
+  <style id="ptl-critical-glass">
+  .glass-bg{background:rgba(255,255,255,.1)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;border:1px solid rgba(255,255,255,.3);box-shadow:0 8px 32px rgba(0,0,0,.1);margin-top:0!important;margin-bottom:0!important;border-top:none!important;border-bottom:none!important}
+  .transparent-bg{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:none!important;box-shadow:none!important;margin-top:0!important;margin-bottom:0!important}
+  </style>
+  <?php
+}, 1);
+
 add_action('wp_enqueue_scripts', function () {
   $rel  = '/css/issues-navigation.css';
   $path = get_stylesheet_directory() . $rel;
@@ -2621,14 +2635,14 @@ add_action('wp_head', function () {
 
   // トップページ・固定ページ用 meta description
   $descriptions = [
-    'front_page'    => 'バストアップ専門エステサロン パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。無料カウンセリング受付中。',
+    'front_page'    => 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。無料カウンセリング受付中。',
     'daikanyama'    => 'バストアップ専門パトラクシェ恵比寿・代官山店｜エステサロン。代官山駅徒歩2分、恵比寿駅徒歩6分。平日12:00-20:00、土日祝11:00-19:00。初回体験9,500円。',
     'ginza'         => 'バストアップ専門パトラクシェ銀座店｜エステサロン。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。平日13:00-21:00、土日祝11:00-19:00。初回体験9,500円。',
     'service'       => 'パトラクシェの施術メニュー｜バストアップ・フェイシャル・ボディケア。マシンとオールハンドのハイブリッド施術で理想のボディラインへ。銀座・代官山。',
     'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
     'mariage'       => 'パトラクシェ マリアージュ｜銀座の結婚相談所。結婚式を最高の思い出にするブライダルエステプラン。バストアップ専門サロンならではの特別メニュー。',
     'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
-    'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門サロン パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',
+    'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',
     'privacy-policy' => 'プライバシーポリシー｜パトラクシェ。お客様の個人情報の取り扱いについて。',
   ];
 
@@ -5012,10 +5026,10 @@ add_action('wp_enqueue_scripts', 'pato_enqueue_product_modal_assets');
  */
 add_filter('pre_get_document_title', function ($title) {
     if (is_front_page()) {
-        return 'バストアップ専門サロン パトラクシェ｜恵比寿・代官山・銀座';
+        return 'バストアップ専門パトラクシェ｜恵比寿・代官山・銀座';
     }
     if (is_page('information')) {
-        return 'エステティシャン求人｜銀座・恵比寿 バストアップ専門サロン パトラクシェ';
+        return 'エステティシャン求人｜銀座・恵比寿 バストアップ専門パトラクシェ';
     }
     return $title;
 });
@@ -5398,10 +5412,10 @@ add_action('wp_head', function () {
             [
                 '@type'         => 'WebSite',
                 '@id'           => 'https://patolaqshe.com/#website',
-                'name'          => 'バストアップ専門サロン パトラクシェ',
+                'name'          => 'バストアップ専門パトラクシェ',
                 'alternateName' => 'Patolaqshe（パトラクシェ）',
                 'url'           => 'https://patolaqshe.com/',
-                'description'   => '東京・恵比寿/代官山・銀座のバストアップ専門エステサロン パトラクシェ公式サイト',
+                'description'   => '東京・恵比寿/代官山・銀座のバストアップ専門パトラクシェ公式サイト',
                 'publisher'     => ['@id' => 'https://patolaqshe.com/#organization'],
                 'inLanguage'    => 'ja',
                 'potentialAction' => [
@@ -6513,12 +6527,12 @@ add_action('wp_head', function () {
     <?php
 
     $og_type = 'website';
-    $og_site_name = 'バストアップ専門サロン パトラクシェ';
+    $og_site_name = 'バストアップ専門パトラクシェ';
     $og_image = get_stylesheet_directory_uri() . '/img/ogp-image.jpg';
 
     if (is_front_page() || is_home()) {
-        $og_title = 'バストアップ専門サロン パトラクシェ｜銀座・代官山';
-        $og_description = 'バストアップ専門エステサロン パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。無料カウンセリング受付中。';
+        $og_title = 'バストアップ専門パトラクシェ｜恵比寿・代官山・銀座';
+        $og_description = 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。無料カウンセリング受付中。';
         $og_url = home_url('/');
     } elseif (is_page()) {
         $slug = get_post_field('post_name', get_post());
@@ -6531,10 +6545,10 @@ add_action('wp_head', function () {
             'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
             'mariage'       => 'パトラクシェ マリアージュ｜銀座の結婚相談所。結婚式を最高の思い出にするブライダルエステプラン。バストアップ専門サロンならではの特別メニュー。',
             'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
-            'about'         => 'パトラクシェについて｜バストアップ専門エステサロン。創業13年、累計3万人超の施術実績。恵比寿・代官山、銀座の2店舗。',
-            'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門サロン パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',
+            'about'         => 'パトラクシェについて｜バストアップ専門パトラクシェ。創業13年、累計3万人超の施術実績。恵比寿・代官山、銀座の2店舗。',
+            'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',
         ];
-        $og_description = isset($page_descriptions[$slug]) ? $page_descriptions[$slug] : 'バストアップ専門サロン パトラクシェ';
+        $og_description = isset($page_descriptions[$slug]) ? $page_descriptions[$slug] : 'バストアップ専門パトラクシェ';
         if (has_post_thumbnail()) {
             $og_image = get_the_post_thumbnail_url(null, 'large');
         }
