@@ -6277,6 +6277,34 @@ add_action('wp_head', function () {
             ],
             'url'         => 'https://patolaqshe.com/service/',
         ];
+        // VideoObject — サービスページ埋め込みYouTube
+        $graph[] = [
+            '@type'        => 'VideoObject',
+            'name'         => '【バストアップ】フラッシュバスト（光豊胸）の施術紹介',
+            'description'  => 'バストアップ専門サロン パトラクシェのフラッシュバスト（光豊胸）施術の流れをご紹介。都内随一の2000ショット照射で深部までアプローチ。',
+            'thumbnailUrl' => 'https://i.ytimg.com/vi/L5K1yJkRVh8/hqdefault.jpg',
+            'uploadDate'   => '2024-01-01T00:00:00+09:00',
+            'contentUrl'   => 'https://www.youtube.com/watch?v=L5K1yJkRVh8',
+            'embedUrl'     => 'https://www.youtube.com/embed/L5K1yJkRVh8',
+        ];
+        $graph[] = [
+            '@type'        => 'VideoObject',
+            'name'         => '『10回のエステより1回のハーブ』ハーブトリートメントご紹介（リアボーテ）',
+            'description'  => 'パトラクシェのハーブトリートメント（リアボーテ）の施術紹介。肌再生・美肌効果で内側から美しく。',
+            'thumbnailUrl' => 'https://i.ytimg.com/vi/pd6n5qwLDKo/hqdefault.jpg',
+            'uploadDate'   => '2024-01-01T00:00:00+09:00',
+            'contentUrl'   => 'https://www.youtube.com/watch?v=pd6n5qwLDKo',
+            'embedUrl'     => 'https://www.youtube.com/embed/pd6n5qwLDKo',
+        ];
+        $graph[] = [
+            '@type'        => 'VideoObject',
+            'name'         => '【ホットストーンセラピー】バストアップサロン パトラクシェの施術紹介',
+            'description'  => 'パトラクシェのホットストーンセラピー施術の流れ。温熱効果で血行促進し、バストアップ効果を高めます。',
+            'thumbnailUrl' => 'https://i.ytimg.com/vi/Uk6k-3y5Cos/hqdefault.jpg',
+            'uploadDate'   => '2024-01-01T00:00:00+09:00',
+            'contentUrl'   => 'https://www.youtube.com/watch?v=Uk6k-3y5Cos',
+            'embedUrl'     => 'https://www.youtube.com/embed/Uk6k-3y5Cos',
+        ];
     }
 
     // ----- コースページ -----
@@ -6371,6 +6399,16 @@ add_action('wp_head', function () {
                     ],
                 ],
             ],
+        ];
+        // VideoObject — マリアージュページ埋め込みYouTube
+        $graph[] = [
+            '@type'        => 'VideoObject',
+            'name'         => '【結婚相談所】パトラクシェマリアージュのご紹介',
+            'description'  => '銀座の結婚相談所パトラクシェ マリアージュ。エステサロン発の結婚相談所として外見・内面の両面からトータルサポート。',
+            'thumbnailUrl' => 'https://i.ytimg.com/vi/SjJVlQskK4c/hqdefault.jpg',
+            'uploadDate'   => '2024-01-01T00:00:00+09:00',
+            'contentUrl'   => 'https://www.youtube.com/watch?v=SjJVlQskK4c',
+            'embedUrl'     => 'https://www.youtube.com/embed/SjJVlQskK4c',
         ];
     }
 
