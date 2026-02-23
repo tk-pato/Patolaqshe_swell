@@ -1,3 +1,35 @@
+/* パンくずリスト・タイトルエリア非表示 */
+.p-breadcrumb {
+  display: none !important;
+}
+.l-topTitleArea {
+  display: none !important;
+}
+
+/* ヘッダーをガラス調に */
+#header.l-header {
+  --color_header_bg: transparent !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+#header.l-header::before {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* 固定ヘッダーもガラス調 */
+.l-fixHeader {
+  background: rgba(255, 255, 255, 0.08) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.l-fixHeader::before {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
 body {
   background-image: url('https://patolaqshe.com/wp-content/uploads/2026/01/recruit-pc-bg.jpg');
   background-attachment: fixed !important;
@@ -46,6 +78,32 @@ html {
 .has-sticky-header {
   padding-top: 0 !important;
   margin-top: 0 !important;
+}
+
+/* =====================================================
+   ガラス調・透明背景（共通クラス）
+   ===================================================== */
+
+.glass-bg {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.transparent-bg {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .l-footer {

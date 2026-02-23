@@ -2,6 +2,38 @@
    お客様の声ページ - 共通CSS（クリーンアップ版）
    ===================================================== */
 
+/* パンくずリスト・タイトルエリア非表示 */
+.p-breadcrumb {
+  display: none !important;
+}
+.l-topTitleArea {
+  display: none !important;
+}
+
+/* ヘッダーをガラス調に */
+#header.l-header {
+  --color_header_bg: transparent !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+#header.l-header::before {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* 固定ヘッダーもガラス調 */
+.l-fixHeader {
+  background: rgba(255, 255, 255, 0.08) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.l-fixHeader::before {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
 body {
   background-image: url('https://patolaqshe.com/wp-content/uploads/2026/01/recruit-pc-bg.jpg');
   background-attachment: fixed !important;

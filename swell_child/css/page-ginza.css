@@ -1,5 +1,5 @@
 /* =====================================================
-   代官山店ページ - 完全版CSS（ガラス調0.1統一版 + ブログセクション + MOREボタンシンプル版）
+   銀座店ページ - 完全版CSS（ガラス調0.1統一版 + ブログセクション + MOREボタンシンプル版）
    ===================================================== */
 
 /* パンくずリスト非表示（チラつき防止） */
@@ -774,7 +774,7 @@ body {
   .hero-fullwidth-fixed {
     position: fixed;
     background-attachment: scroll;
-    background-image: url('https://patolaqshe.com/wp-content/uploads/2025/12/仮SPトップ代（子ページトップ）.jpg') !important;
+    background-image: url('https://patolaqshe.com/wp-content/uploads/2025/12/仮SPトップ銀（子ページ）.jpg') !important;
     background-position: center center;
     background-size: cover;
   }
