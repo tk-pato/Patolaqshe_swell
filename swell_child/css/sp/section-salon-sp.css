@@ -186,12 +186,11 @@
     transform: scale(0.98);
   }
   
-  .ptlSalon-map-link img {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
-    border-radius: 4px;
+  .ptlSalon-map-link__icon {
+    width: 20px;
+    height: 20px;
     flex: 0 0 auto;
+    stroke: #ea4335;
   }
   
   .ptlSalon-map-link__text {
