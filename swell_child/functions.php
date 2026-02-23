@@ -5051,7 +5051,7 @@ add_action('wp_head', function () {
                 '@type'       => 'BeautySalon',
                 '@id'         => 'https://patolaqshe.com/#daikanyama',
                 'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-                'description' => 'バストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。',
+                'description' => 'バストアップ専門サロン パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。',
                 'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
                 'url'         => 'https://patolaqshe.com/daikanyama/',
                 'telephone'   => '03-5489-7118',
@@ -5204,7 +5204,7 @@ add_action('wp_head', function () {
                 '@type'       => 'BeautySalon',
                 '@id'         => 'https://patolaqshe.com/#ginza',
                 'name'        => 'バストアップ専門パトラクシェ銀座店',
-                'description' => 'バストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。',
+                'description' => 'バストアップ専門サロン パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。',
                 'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
                 'url'         => 'https://patolaqshe.com/ginza/',
                 'telephone'   => '03-6264-4343',
@@ -5363,7 +5363,7 @@ add_action('wp_head', function () {
                 'url'   => 'https://patolaqshe.com/',
                 'foundingDate'  => '2013',
                 'slogan'        => 'あなたの美しさを最大限に引き出す',
-                'description'   => '東京・恵比寿/代官山・銀座のバストアップ専門エステサロン。創業13年、累計3万人超の施術実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。',
+                'description'   => '東京・恵比寿/代官山・銀座のバストアップ専門サロン パトラクシェ。創業13年、累計3万人超の施術実績。マシンとオールハンドのハイブリッド施術で効果体感率99%。',
                 'logo'  => [
                     '@type'      => 'ImageObject',
                     'url'        => $logo_url,
@@ -5551,7 +5551,7 @@ add_action('wp_head', function () {
                 '@id'              => 'https://patolaqshe.com/#job-fulltime',
                 'title'            => '【銀座・恵比寿】バストアップ専門エステティシャン（正社員）急募',
                 'description'      => '<p><strong>バストアップ専門サロン パトラクシェで正社員エステティシャンを急募！</strong></p>'
-                    . '<p>東京・銀座と恵比寿/代官山の2店舗を展開する、バストアップ専門エステサロンです。創業13年、累計3万人超の施術実績を誇り、マシンとオールハンドのハイブリッド施術が特徴です。</p>'
+                    . '<p>東京・銀座と恵比寿/代官山の2店舗を展開する、バストアップ専門サロンです。創業13年、累計3万人超の施術実績を誇り、マシンとオールハンドのハイブリッド施術が特徴です。</p>'
                     . '<h3>仕事内容</h3>'
                     . '<ul><li>バストアップ施術（マシン施術＋オールハンドマッサージ）</li>'
                     . '<li>カウンセリング・アフターフォロー</li>'
@@ -5647,7 +5647,7 @@ add_action('wp_head', function () {
                 '@id'              => 'https://patolaqshe.com/#job-parttime',
                 'title'            => '【銀座・恵比寿】バストアップサロン エステティシャン（アルバイト）急募',
                 'description'      => '<p><strong>バストアップ専門サロンでアルバイトエステティシャンを急募！</strong></p>'
-                    . '<p>パトラクシェは東京・銀座と恵比寿/代官山の2店舗を展開するバストアップ専門エステサロンです。週3日〜OK、シフト柔軟。未経験の方も研修制度で安心してスタートできます。</p>'
+                    . '<p>パトラクシェは東京・銀座と恵比寿/代官山の2店舗を展開するバストアップ専門サロンです。週3日〜OK、シフト柔軟。未経験の方も研修制度で安心してスタートできます。</p>'
                     . '<h3>仕事内容</h3>'
                     . '<ul><li>バストアップ施術のアシスタント・補助</li>'
                     . '<li>施術（経験に応じてステップアップ）</li>'
@@ -5841,7 +5841,7 @@ add_action('wp_head', function () {
             '@type'       => 'BeautySalon',
             '@id'         => 'https://patolaqshe.com/#daikanyama',
             'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-            'description' => '恵比寿・代官山のバストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。効果体感率99%。',
+            'description' => '恵比寿・代官山のバストアップ専門サロン パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
             'url'         => 'https://patolaqshe.com/daikanyama/',
             'telephone'   => '03-5489-7118',
@@ -5975,7 +5975,7 @@ add_action('wp_head', function () {
             '@type'       => 'BeautySalon',
             '@id'         => 'https://patolaqshe.com/#ginza',
             'name'        => 'バストアップ専門パトラクシェ銀座店',
-            'description' => '銀座のバストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。効果体感率99%。',
+            'description' => '銀座のバストアップ専門サロン パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
             'url'         => 'https://patolaqshe.com/ginza/',
             'telephone'   => '03-6264-4343',
@@ -6159,7 +6159,7 @@ add_action('wp_head', function () {
             '@type'            => 'JobPosting',
             'title'            => '【銀座・恵比寿】バストアップ専門エステティシャン（正社員）急募',
             'description'      => '<p><strong>バストアップ専門サロン パトラクシェで正社員エステティシャンを急募！</strong></p>'
-                . '<p>東京・銀座と恵比寿/代官山の2店舗を展開する、バストアップ専門エステサロンです。創業13年、累計3万人超の施術実績。</p>'
+                . '<p>東京・銀座と恵比寿/代官山の2店舗を展開する、バストアップ専門サロンです。創業13年、累計3万人超の施術実績。</p>'
                 . '<h3>仕事内容</h3><ul><li>バストアップ施術（マシン施術＋オールハンドマッサージ）</li><li>カウンセリング・アフターフォロー</li><li>フェイシャル・ボディケア施術</li></ul>'
                 . '<h3>待遇</h3><ul><li>月給24万〜35万円</li><li>各種保険完備・交通費全額支給</li><li>充実した研修制度（会社負担）</li><li>独立開業支援制度あり</li><li>駅徒歩2分の好立地</li></ul>',
             'datePosted'       => '2026-02-01',
@@ -6421,12 +6421,12 @@ add_action('wp_head', function () {
             '@type'       => 'AboutPage',
             'name'        => 'パトラクシェについて',
             'url'         => 'https://patolaqshe.com/about/',
-            'description' => 'バストアップ専門エステサロン パトラクシェの理念・こだわり・歴史。創業13年、累計3万人超の実績。',
+            'description' => 'バストアップ専門サロン パトラクシェの理念・こだわり・歴史。創業13年、累計3万人超の実績。',
             'mainEntity'  => [
                 '@type'          => 'Organization',
                 '@id'            => 'https://patolaqshe.com/#organization',
                 'name'           => 'パトラクシェ（Patolaqshe）',
-                'description'    => 'バストアップ専門エステサロン。マシンとオールハンドのハイブリッド施術で創業13年・累計3万人超の実績。恵比寿・代官山、銀座の2店舗展開。',
+                'description'    => 'バストアップ専門サロン パトラクシェ。マシンとオールハンドのハイブリッド施術で創業13年・累計3万人超の実績。恵比寿・代官山、銀座の2店舗展開。',
                 'url'            => 'https://patolaqshe.com/',
                 'logo'           => 'https://patolaqshe.com/wp-content/themes/swell_child/img/intrologo.png',
                 'foundingDate'   => '2012',
