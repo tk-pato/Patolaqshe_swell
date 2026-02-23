@@ -3552,8 +3552,8 @@ function ptl_uservoice_slider_shortcode($atts)
           $customer_name = get_post_meta($post->ID, '_customer_name', true);
           $rating = (int)get_post_meta($post->ID, '_rating', true);
           $customer_image = get_post_meta($post->ID, '_customer_image', true);
-          $uservoice_title = get_post_meta($post->ID, '_uservoice_title', true);
-          $fallback_title = get_the_date('Y/n', $post->ID);
+          // _uservoice_title廃止: post_titleに統一
+
         ?>
           <div class="swiper-slide">
             <div class="feedback-card">
@@ -3570,7 +3570,7 @@ function ptl_uservoice_slider_shortcode($atts)
                 <?php endif; ?>
               </div>
 
-              <h3 class="feedback-title"><?php echo esc_html($uservoice_title ? $uservoice_title : $fallback_title); ?></h3>
+              <h3 class="feedback-title"><?php echo esc_html(get_the_title()); ?></h3>
 
               <div class="feedback-content">
                 <p><?php echo get_the_content(); ?></p>
@@ -4645,7 +4645,7 @@ function display_voice_list() {
             $query->the_post();
             
             $customer_name = get_post_meta(get_the_ID(), '_customer_name', true);
-            $voice_title = get_post_meta(get_the_ID(), '_uservoice_title', true);
+            // _uservoice_title廃止: post_titleに統一
             $rating = get_post_meta(get_the_ID(), '_rating', true);
             $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
             
@@ -4661,8 +4661,8 @@ function display_voice_list() {
             // コンテンツ
             $output .= '<div class="voice-card-content">';
             
-            if ($voice_title) {
-                $output .= '<h3 class="voice-card-title">' . esc_html($voice_title) . '</h3>';
+            if (get_the_title()) {
+                $output .= '<h3 class="voice-card-title">' . esc_html(get_the_title()) . '</h3>';
             }
             
             if ($rating) {
