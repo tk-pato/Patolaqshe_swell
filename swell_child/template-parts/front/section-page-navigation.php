@@ -13,7 +13,7 @@ $p_speed   = (float)   ($bg['parallax_speed'] ?? 0.6);
 $default_items = [
     ['label' => 'COMMITMENT', 'slug' => 'commitment', 'url' => 'https://patolaqshe.com/about/'],
     ['label' => 'TREATMENT',  'slug' => 'treatment',  'url' => home_url('/service/')],
-    ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => 'javascript:void(0);', 'is_modal' => true, 'modal_class' => 'product-modal-trigger', 'modal_id' => 'product-modal'],
+    ['label' => 'COLLECTION', 'slug' => 'collection', 'url' => '#product-modal', 'is_modal' => true, 'modal_class' => 'product-modal-trigger', 'modal_id' => 'product-modal'],
     ['label' => 'SALON',      'slug' => 'salon',      'url' => home_url('/salon/')],
     ['label' => 'BRIDAL',     'slug' => 'bridal',     'url' => 'https://patolaqshe.com/mariage/'],
     ['label' => 'INFO',       'slug' => 'info',       'url' => home_url('/info/')],

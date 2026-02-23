@@ -61,7 +61,7 @@ $cards = [
     [
         'title' => 'FAQ',
         'desc' => 'よくあるご質問にお答えします。お気軽にお問い合わせください。',
-        'url' => 'javascript:void(0);',
+        'url' => '#faq-modal',
         'image' => $resolve_image($card3_img, 'https://patolaqshe.com/wp-content/uploads/2026/01/contact_banner.jpg'),
         'is_modal' => true,
         'modal_id' => 'faq-modal',
