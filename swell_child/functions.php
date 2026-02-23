@@ -5527,24 +5527,7 @@ add_action('wp_head', function () {
                     ],
                 ],
             ],
-            // 7. Product - バストケア化粧品（商品モーダル）
-            [
-                '@type'       => 'Product',
-                '@id'         => 'https://patolaqshe.com/#product-cosmetics',
-                'name'        => 'バストケア専用化粧品',
-                'description' => '最高品質の美容成分を配合した、バストケア専用化粧品。肌に優しく、効果的なケアを実現します。',
-                'brand'       => ['@id' => 'https://patolaqshe.com/#organization'],
-                'category'    => '化粧品',
-            ],
-            // 8. Product - 補正下着（商品モーダル）
-            [
-                '@type'       => 'Product',
-                '@id'         => 'https://patolaqshe.com/#product-underwear',
-                'name'        => '補正下着',
-                'description' => '美しいバストラインをサポートする補正下着。快適な着け心地と優れた補正力を兼ね備えています。',
-                'brand'       => ['@id' => 'https://patolaqshe.com/#organization'],
-                'category'    => '下着',
-            ],
+            // Product schema は商品ページ作成時に再追加（offers/image必須フィールド不足でSearch Consoleエラーのため一時削除）
             // 9. JobPosting - 正社員
             [
                 '@type'            => 'JobPosting',
