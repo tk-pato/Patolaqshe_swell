@@ -5026,7 +5026,7 @@ add_action('wp_enqueue_scripts', 'pato_enqueue_product_modal_assets');
  */
 add_filter('pre_get_document_title', function ($title) {
     if (is_front_page()) {
-        return 'バストアップ専門パトラクシェ｜恵比寿・代官山・銀座';
+        return '恵比寿・代官山・銀座のバストアップ専門サロン｜パトラクシェ';
     }
     if (is_page('information')) {
         return 'エステティシャン求人｜銀座・恵比寿 バストアップ専門パトラクシェ';
@@ -5051,7 +5051,7 @@ add_action('wp_head', function () {
                 '@type'       => 'BeautySalon',
                 '@id'         => 'https://patolaqshe.com/#daikanyama',
                 'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-                'description' => 'バストアップ専門パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。',
+                'description' => '恵比寿エリアのバストアップ専門パトラクシェ恵比寿・代官山店。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。JR恵比寿駅徒歩6分、代官山駅徒歩2分。初回体験9,500円。',
                 'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
                 'url'         => 'https://patolaqshe.com/daikanyama/',
                 'telephone'   => '03-5489-7118',
@@ -5193,6 +5193,43 @@ add_action('wp_head', function () {
                     'bestRating'  => '5',
                     'ratingCount' => '77',
                     'reviewCount' => '77',
+                ],
+                'review' => [
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '40代 / パート・アルバイト'],
+                        'datePublished' => '2025-12-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => 'いままで受けたエステで、一番に近いほどの技術でした、またお願いします',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '20代後半 / 会社員'],
+                        'datePublished' => '2026-01-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => '私に合わせたメニュー提案をしてくれます。通って3年目、50回ほど利用していますがいつも大満足です！これからもよろしくお願い致します。',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '30代前半 / 会社員'],
+                        'datePublished' => '2026-01-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => '初めてバストアップを体験しました。心配なことがたくさんありましたが、丁寧に対応して頂きました、効果もちゃんと感じれたので次回も楽しみです。',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '40代 / その他'],
+                        'datePublished' => '2026-01-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => 'とても親身にお話ししてくださるので、安心しました！これからの変化が、楽しみです。',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '20代後半 / パート・アルバイト'],
+                        'datePublished' => '2025-12-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => 'バストアップのために体験で行った中のひとつです。即決する気はなく行ったのですが、コースの内容が非常に満足できるものだったので10回コースを通うことにしました。今後の変化がとても楽しみです。',
+                    ],
                 ],
                 'knowsAbout' => [
                     'バストアップ', 'バストケア', '育乳', 'バストアップエステ',
@@ -5347,6 +5384,43 @@ add_action('wp_head', function () {
                     'bestRating'  => '5',
                     'ratingCount' => '132',
                     'reviewCount' => '132',
+                ],
+                'review' => [
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '20代後半 / 会社員'],
+                        'datePublished' => '2026-02-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => '初めてのバストアップサロンでしたが、担当者の方も優しく丁寧に施術してくださり、安心して通えそうだったので、10回コースを申し込みました。これからもよろしくお願いします！',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '20代後半 / 会社員'],
+                        'datePublished' => '2026-01-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => 'スタッフの方のご対応がとても良く、また行きたいと思いました。',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '20代後半 / 会社員'],
+                        'datePublished' => '2026-02-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => '初めてのバストケアということもあって不安なことも多かったのですが、丁寧にカウンセリング、説明をしてくださり、安心して施術を受けることができました。',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '20代後半 / 会社員'],
+                        'datePublished' => '2026-02-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => 'とてもお話しやすく、楽しく施術を受けさせていただきました！これからの効果にも期待して通いたいと思います。',
+                    ],
+                    [
+                        '@type' => 'Review',
+                        'author' => ['@type' => 'Person', 'name' => '20代前半 / 会社員'],
+                        'datePublished' => '2026-02-01',
+                        'reviewRating' => ['@type' => 'Rating', 'ratingValue' => '5', 'bestRating' => '5'],
+                        'reviewBody' => '効果が目に見えてわかって嬉しかったです。カウンセリングも丁寧で、悩みに真摯に向き合っていただけました。ありがとうございました。',
+                    ],
                 ],
                 'knowsAbout' => [
                     'バストアップ', 'バストケア', '育乳', 'バストアップエステ',
