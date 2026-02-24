@@ -42,8 +42,8 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 				<p class="ptl-footer__salon-label">SALON</p>
 				<div class="ptl-footer__salon-divider"></div>
 				<div class="ptl-footer__salon-links">
-					<a href="<?php echo esc_url(home_url('/salon/daikanyama/')); ?>" class="ptl-footer__salon-link">代官山</a>
-					<a href="<?php echo esc_url(home_url('/salon/ginza/')); ?>" class="ptl-footer__salon-link">銀座</a>
+					<a href="<?php echo esc_url(home_url('/ebisu-daikanyama/')); ?>" class="ptl-footer__salon-link">代官山</a>
+					<a href="<?php echo esc_url(home_url('/ginza/')); ?>" class="ptl-footer__salon-link">銀座</a>
 				</div>
 			</div>
 			
@@ -59,10 +59,10 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 							<a href="<?php echo esc_url(home_url('/')); ?>" class="ptl-footer__nav-link">TOP</a>
 						</li>
 						<li class="ptl-footer__nav-item">
-							<a href="<?php echo esc_url(home_url('/news/')); ?>" class="ptl-footer__nav-link">NEWS</a>
+							<a href="#news-modal-all" class="ptl-footer__nav-link news-modal-trigger" data-modal-id="news-modal-all" aria-label="ニュース一覧を開く">NEWS</a>
 						</li>
 						<li class="ptl-footer__nav-item">
-							<a href="<?php echo esc_url(home_url('/info/')); ?>" class="ptl-footer__nav-link">INFO</a>
+							<a href="<?php echo esc_url(home_url('/information/')); ?>" class="ptl-footer__nav-link">INFO</a>
 						</li>
 						<li class="ptl-footer__nav-item">
 							<a href="<?php echo esc_url(home_url('/service/')); ?>" class="ptl-footer__nav-link">MENU</a>
@@ -117,6 +117,12 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 	} else {
 		// グランドトップ：すべて
 		echo do_shortcode('[blog_list_modal]');
+	}
+?>
+<?php
+	// ニュースモーダルを出力（フロントページ以外のページ用）
+	if (!is_front_page()) {
+		echo do_shortcode('[news_list_modal]');
 	}
 ?>
 <?php
