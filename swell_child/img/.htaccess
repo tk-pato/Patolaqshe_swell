@@ -1,0 +1,17 @@
+# WebP Auto-Serve
+# ブラウザがWebP対応 & .webpファイルが存在する場合、自動でWebP配信
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png)$
+  RewriteCond %1.webp -f
+  RewriteRule (.*)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+</IfModule>
+
+# Vary headerでCDN/プロキシに正しくキャッシュさせる
+<IfModule mod_headers.c>
+  Header append Vary Accept
+</IfModule>
+
+# WebP MIMEタイプ定義
+AddType image/webp .webp

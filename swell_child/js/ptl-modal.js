@@ -47,6 +47,13 @@
             defaultId: 'product-modal',
             useClosingClass: false,
             immediateOpen: false
+        },
+        {
+            modalClass: 'privacy-modal',
+            triggerClass: 'privacy-modal-trigger',
+            defaultId: 'privacy-modal',
+            useClosingClass: true,
+            immediateOpen: false
         }
     ];
 

@@ -35,8 +35,8 @@
   border-bottom: 1px solid #eee; 
   align-items: baseline; 
 }
-.ptlNews__date { 
-  color: #888; 
+.ptlNews__date {
+  color: #777;
   min-width: 8em; 
   font-variant-numeric: tabular-nums;
   font-weight: 400;

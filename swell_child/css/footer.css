@@ -81,10 +81,10 @@
 
 .ptl-footer__salon-label {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   color: #333;
   margin: 0 0 8px 0;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
 }
 
 .ptl-footer__salon-divider {
@@ -175,9 +175,9 @@
 .ptl-footer .ptl-footer__nav .ptl-footer__nav-link {
   font-family: var(--swl-font_family, 'Noto Serif JP', serif) !important;
   font-weight: 500 !important;
-  color: #666 !important;
+  color: #555 !important;
   font-size: 13px !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.12em !important;
   text-decoration: none !important;
   transition: opacity 0.3s;
   display: inline !important;
@@ -202,7 +202,7 @@
   font-family: var(--swl-font_family);
   font-weight: 400;
   font-size: 11px;
-  color: #aaa;
+  color: #777;
   margin: 0;
   line-height: 1;
   letter-spacing: 0.05em;
