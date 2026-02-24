@@ -5241,7 +5241,7 @@ add_action('wp_head', function () {
                 '@type'       => 'BeautySalon',
                 '@id'         => 'https://patolaqshe.com/#ginza',
                 'name'        => 'バストアップ専門パトラクシェ銀座店',
-                'description' => 'バストアップ専門パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。',
+                'description' => '銀座エリアのバストアップ専門パトラクシェ銀座店。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、JR有楽町駅徒歩5分。初回体験9,500円。',
                 'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
                 'url'         => 'https://patolaqshe.com/ginza/',
                 'telephone'   => '03-6264-4343',
