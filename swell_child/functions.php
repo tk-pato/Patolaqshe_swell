@@ -3097,21 +3097,21 @@ function ptl_perf_prepare_webp_structure()
 }
 
 /**
- * クリティカルCSS用のフックポイント予約
+ * CDN preconnect（外部リソースへの事前接続で体感速度向上）
  */
-add_action('wp_head', 'ptl_perf_critical_css_placeholder', 2);
-function ptl_perf_critical_css_placeholder()
+add_action('wp_head', 'ptl_perf_preconnect', 1);
+function ptl_perf_preconnect()
 {
-  // 将来のクリティカルCSS実装用（今は何もしない）
-  // 完成後にここでクリティカルCSSをインライン出力
-  echo "\n<!-- Critical CSS Placeholder (Priority 2) -->\n";
+  echo '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>' . "\n";
+  echo '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>' . "\n";
+  echo '<link rel="dns-prefetch" href="https://www.googletagmanager.com">' . "\n";
 }
 
 /**
- * パフォーマンス最適化用のグローバルフラグ
+ * パフォーマンス最適化有効
  */
 if (!defined('PTL_PERF_OPTIMIZATION_READY')) {
-  define('PTL_PERF_OPTIMIZATION_READY', false); // 完成後にtrueに変更
+  define('PTL_PERF_OPTIMIZATION_READY', true);
 }
 
 /**
@@ -6219,7 +6219,7 @@ add_action('wp_head', function () {
     ];
 
     echo '<script type="application/ld+json">' . "\n";
-    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     echo "\n</script>\n";
 }, 5);
 
@@ -6924,7 +6924,7 @@ add_action('wp_head', function () {
     ];
 
     echo '<script type="application/ld+json">' . "\n";
-    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     echo "\n</script>\n";
 }, 5);
 
