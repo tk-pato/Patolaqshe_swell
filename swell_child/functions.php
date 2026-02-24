@@ -4561,7 +4561,7 @@ function ptl_faq_modal_shortcode()
           <!-- Q4 -->
           <div class="faq-item">
             <div class="faq-question">Q: どんな施術をしますか？</div>
-            <div class="faq-answer">A: 都内でも珍しいマシンとオールハンドのハイブリッド施術が特徴です。オールハンドではバスト周りだけでなく、背面や二の腕、フットマッサージなど、バストに関わるお身体全体をしっかりケアしてまいります。</div>
+            <div class="faq-answer">A: パトラクシェでは、フラッシュバスト（光バストアップ）2000ショット・乳腺マッサージ・ナノカレント（微弱電流）・背面/二の腕/デコルテマッサージ・フットマッサージなど複数の施術を、お客様一人一人の状態に合わせて掛け合わせる「オーダーメイド複合施術」が最大の特徴です。銀座店では骨盤底筋ケア、代官山店ではハプロ社製コラーゲンマシンもご利用いただけます。</div>
           </div>
 
           <!-- Q5 -->
@@ -4598,6 +4598,56 @@ function ptl_faq_modal_shortcode()
           <div class="faq-item">
             <div class="faq-question">Q: 妊娠中・産後・授乳中でも施術できますか？</div>
             <div class="faq-answer">A: 妊娠中および授乳中の方はお控えいただいております。産後は卒乳後、6ヶ月以降で体調が安定してからご利用いただけます。</div>
+          </div>
+
+          <div class="faq-section-label" style="margin: 2em 0 1em; padding: 0.5em 0; border-top: 1px solid rgba(0,0,0,0.08); font-size: 0.85em; color: #999; letter-spacing: 0.05em;">施術・技術について</div>
+
+          <!-- Q11 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: フラッシュバスト（光バストアップ）とは何ですか？なぜ2000ショットが重要なのですか？</div>
+            <div class="faq-answer">A: フラッシュバストは光エネルギーを照射して乳腺や脂肪細胞を深部から活性化する施術です。パトラクシェでは1回あたり都内最大級の2000ショットを照射します。ショット数が多いほど広範囲かつ高密度にアプローチでき、効果の実感度が高まります。他店では数百〜1000ショット程度が一般的であり、2000ショットはパトラクシェの大きな差別化ポイントです。</div>
+          </div>
+
+          <!-- Q12 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: オーダーメイド複合施術とは何ですか？なぜ単体施術より効果が高いのですか？</div>
+            <div class="faq-answer">A: オーダーメイド複合施術とは、フラッシュバスト（光療法）・乳腺マッサージ（オールハンド）・ナノカレント（微弱電流）・背面/二の腕/デコルテマッサージ・骨盤底筋ケアなど複数の施術を、お客様一人一人の状態に合わせて組み合わせるパトラクシェ独自のアプローチです。光療法でコラーゲン生成を促進しながら、同時にハンドマッサージで血流・リンパ循環を促進することで、単体施術では得られない相乗効果が生まれます。</div>
+          </div>
+
+          <!-- Q13 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 乳腺マッサージにはどのような効果がありますか？</div>
+            <div class="faq-answer">A: 乳腺マッサージはパトラクシェの主力施術です。熟練のオールハンド技術で乳腺を丁寧にほぐし、血流・リンパ循環を促進します。乳腺への直接的な刺激がバストのハリ・ボリューム・形の改善をサポートし、フラッシュバストやナノカレントとの複合施術で相乗効果を発揮します。</div>
+          </div>
+
+          <!-- Q14 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 骨盤底筋ケアがバストアップに効果的な理由は？（銀座店限定）</div>
+            <div class="faq-answer">A: 骨盤底筋と胸部は筋膜・横隔膜を介して全身で連動しています。骨盤底筋を整えることで骨盤が安定し、脊椎のアライメントが改善され、自然と胸部が開いてバストが上向きになります。パトラクシェ銀座店では、足裏の反射区刺激と骨盤底筋へのアプローチを組み合わせた専門メニューを提供しています。</div>
+          </div>
+
+          <!-- Q15 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: コラーゲンマシンとバストアップの関係は？（代官山店限定）</div>
+            <div class="faq-answer">A: パトラクシェ代官山店ではオランダ・ハプロ社製のコラーゲンマシンを導入しています。633nm赤色可視光線が真皮層の線維芽細胞を活性化し、コラーゲン・エラスチンの生成を促進します。バストを支えるクーパー靭帯はコラーゲンで構成されており、コラーゲン増加により靭帯が強化され、バストのハリ・弾力が向上します。</div>
+          </div>
+
+          <!-- Q16 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: クーパー靭帯とバストの関係を教えてください</div>
+            <div class="faq-answer">A: クーパー靭帯は乳房内部にある束状の組織で、バストと大胸筋を連結してバストの形とハリを維持する重要な支持組織です。主にコラーゲンタンパク質で構成されており、加齢や重力により伸びると下垂の原因になります。パトラクシェでは、コラーゲンマシン（光療法）やナノカレント（微弱電流）によるコラーゲン生成促進と、オールハンドによる乳腺マッサージを複合的に行い、クーパー靭帯のケアとバスト全体の改善を目指しています。</div>
+          </div>
+
+          <!-- Q17 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: ナノカレント（微弱電流）とは何ですか？</div>
+            <div class="faq-answer">A: ナノカレントは人体の生体電流に近い微弱電流を流す施術です。線維芽細胞を直接刺激してコラーゲン・エラスチンの生成を促進し、バストのハリと弾力を内側から向上させます。フラッシュバスト（光療法）との併用により、光と電流の両方から細胞を活性化する相乗効果が得られます。痛みがなくリラックスしながら受けられるのも特徴です。</div>
+          </div>
+
+          <!-- Q18 -->
+          <div class="faq-item">
+            <div class="faq-question">Q: 他のバストアップサロンとの違いは何ですか？</div>
+            <div class="faq-answer">A: パトラクシェの最大の特徴は、複数の施術を一人一人の状態に合わせて掛け合わせる「オーダーメイド複合施術」です。多くのバストアップサロンでは単一の施術がメインですが、パトラクシェではフラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・背面/二の腕/デコルテマッサージなどを組み合わせます。また、背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップ専門サロンの中でも長いとお客様から評価いただいています。創業13年・累計3万人超の実績に基づく経験から、お客様に最適な施術の組み合わせをご提案します。</div>
           </div>
         </div>
       </div>
@@ -5742,31 +5792,61 @@ add_action('wp_head', function () {
                             'text'  => 'パトラクシェの最大の特徴は、複数の施術を一人一人の状態に合わせて掛け合わせる「オーダーメイド複合施術」です。多くのバストアップサロンでは単一の施術がメインですが、パトラクシェではフラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・背面/二の腕/デコルテマッサージなどを組み合わせます。また、背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップ専門サロンの中でも長いとお客様から評価いただいています。創業13年・累計3万人超の実績に基づく経験から、お客様に最適な施術の組み合わせをご提案します。',
                         ],
                     ],
+                    // --- 求人関連FAQ（求職者向け） ---
+                    [
+                        '@type'          => 'Question',
+                        'name'           => 'パトラクシェでは求人募集していますか？未経験でも応募できますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'はい、現在パトラクシェでは銀座店・代官山店ともにエステティシャンを急募しています。特に銀座店は積極採用中です。正社員（月給24万〜35万円）・アルバイト（時給1,300〜1,800円）・業務委託の3形態で募集しており、未経験の方も大歓迎です。充実した研修制度（費用全額会社負担）で、フラッシュバスト・乳腺マッサージ・ナノカレントなどのバストケア専門技術を一から学べます。学歴不問、エステティシャン経験者は優遇します。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => 'パトラクシェで働く魅力・メリットは何ですか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'パトラクシェで働く魅力は、バストアップ専門の高度な技術を習得できること、銀座一丁目駅/代官山駅から徒歩2分の好立地、完全予約制でゆとりある施術環境、女性スタッフのみの安心な職場です。創業13年・累計3万人超の実績を持つ専門サロンならではの研修制度で、フラッシュバスト・乳腺マッサージ・ナノカレント・骨盤底筋ケア・コラーゲンマシンなど最新の美容技術を学べます。各種保険完備・交通費全額支給・有給休暇に加え、独立開業支援制度もあり、将来の独立も応援しています。',
+                        ],
+                    ],
                 ],
             ],
             // Product schema は商品ページ作成時に再追加（offers/image必須フィールド不足でSearch Consoleエラーのため一時削除）
-            // 9. JobPosting - 正社員
+            // 9. JobPosting - 銀座店 正社員（急募）
             [
                 '@type'            => 'JobPosting',
-                '@id'              => 'https://patolaqshe.com/#job-fulltime',
-                'title'            => '【銀座・恵比寿】バストアップ専門エステティシャン（正社員）急募',
-                'description'      => '<p><strong>バストアップ専門パトラクシェで正社員エステティシャンを急募！</strong></p>'
-                    . '<p>東京・銀座と恵比寿/代官山の2店舗を展開する、バストアップ専門サロンです。創業13年、累計3万人超の施術実績を誇り、マシンとオールハンドのハイブリッド施術が特徴です。</p>'
+                '@id'              => 'https://patolaqshe.com/#job-ginza-fulltime',
+                'title'            => '【銀座駅徒歩2分】バストアップ専門エステティシャン（正社員）急募｜未経験OK',
+                'description'      => '<p><strong>＼ 銀座店スタッフ急募！ ／ バストアップ専門パトラクシェで正社員エステティシャンを募集しています。</strong></p>'
+                    . '<p>パトラクシェは東京・銀座と恵比寿/代官山の2店舗を展開する、創業13年・累計3万人超の施術実績を誇るバストアップ専門サロンです。フラッシュバスト（光バストアップ）2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなど複数の施術を掛け合わせる「オーダーメイド複合施術」で、お客様一人一人に最適なケアを提供しています。</p>'
+                    . '<h3>銀座店について</h3>'
+                    . '<p>銀座一丁目駅から徒歩2分、銀座駅から徒歩5分の好立地。完全予約制のプライベート空間で、リピーター様を中心に落ち着いた環境で施術に集中できます。銀座店限定の骨盤底筋ケアメニューなど、専門性の高い技術を習得できるのも魅力です。</p>'
                     . '<h3>仕事内容</h3>'
-                    . '<ul><li>バストアップ施術（マシン施術＋オールハンドマッサージ）</li>'
-                    . '<li>カウンセリング・アフターフォロー</li>'
-                    . '<li>フェイシャル・ボディケア施術</li>'
-                    . '<li>店舗運営サポート</li></ul>'
-                    . '<h3>こんな方を歓迎</h3>'
-                    . '<ul><li>未経験OK！充実した研修制度で一から学べます</li>'
+                    . '<ul><li>フラッシュバスト（光バストアップマシン）による施術</li>'
+                    . '<li>乳腺マッサージ・背面/二の腕/デコルテマッサージ（オールハンド）</li>'
+                    . '<li>ナノカレント（微弱電流）施術</li>'
+                    . '<li>骨盤底筋ケア・フットマッサージ（銀座店限定メニュー）</li>'
+                    . '<li>カウンセリング・お客様一人一人に合わせた施術プランの提案</li>'
+                    . '<li>アフターフォロー・店舗運営サポート</li></ul>'
+                    . '<h3>習得できる技術</h3>'
+                    . '<ul><li>光バストアップ（フラッシュバスト）の専門技術</li>'
+                    . '<li>乳腺マッサージ・バストケアのオールハンド技術</li>'
+                    . '<li>ナノカレント・骨盤底筋ケアなどの最新美容技術</li>'
+                    . '<li>お客様の状態に合わせたオーダーメイド複合施術の設計力</li>'
+                    . '<li>カウンセリング・接客スキル</li></ul>'
+                    . '<h3>こんな方を歓迎します</h3>'
+                    . '<ul><li>未経験OK！充実した研修制度で一から学べます（研修費用は全額会社負担）</li>'
                     . '<li>エステティシャン経験者優遇（バストケア経験不問）</li>'
                     . '<li>お客様の美しさを引き出すことにやりがいを感じる方</li>'
-                    . '<li>手に職をつけたい方・将来独立を目指す方</li></ul>'
-                    . '<h3>働く環境</h3>'
-                    . '<ul><li>銀座一丁目駅徒歩2分 / 代官山駅徒歩2分の好立地</li>'
-                    . '<li>完全予約制でゆとりある施術</li>'
+                    . '<li>手に職をつけたい方・将来独立を目指す方</li>'
+                    . '<li>専門性の高い技術を身につけたい方</li></ul>'
+                    . '<h3>働く環境・待遇</h3>'
+                    . '<ul><li>銀座一丁目駅徒歩2分・銀座駅徒歩5分の好立地</li>'
+                    . '<li>完全予約制でゆとりある施術（お客様と向き合う時間を大切にしています）</li>'
                     . '<li>女性スタッフのみの安心な職場環境</li>'
-                    . '<li>独立開業支援制度あり</li></ul>',
+                    . '<li>各種保険完備・交通費全額支給</li>'
+                    . '<li>独立開業支援制度あり（将来の独立もサポート）</li>'
+                    . '<li>有給休暇制度あり</li></ul>',
                 'datePosted'       => '2026-02-01',
                 'validThrough'     => '2026-06-30T23:59:59+09:00',
                 'employmentType'   => 'FULL_TIME',
@@ -5775,7 +5855,82 @@ add_action('wp_head', function () {
                 'identifier'       => [
                     '@type' => 'PropertyValue',
                     'name'  => 'Patolaqshe',
-                    'value' => 'PTL-FT-2026-01',
+                    'value' => 'PTL-GINZA-FT-2026-01',
+                ],
+                'baseSalary'       => [
+                    '@type'    => 'MonetaryAmount',
+                    'currency' => 'JPY',
+                    'value'    => [
+                        '@type'    => 'QuantitativeValue',
+                        'minValue' => 240000,
+                        'maxValue' => 350000,
+                        'unitText' => 'MONTH',
+                    ],
+                ],
+                'experienceRequirements' => '未経験歓迎。エステティシャン経験者優遇（バストケア経験不問）。',
+                'educationRequirements'  => [
+                    '@type'                => 'EducationalOccupationalCredential',
+                    'credentialCategory'   => '学歴不問',
+                ],
+                'skills' => 'エステティック技術、カウンセリング、接客、フラッシュバスト施術、オールハンドマッサージ、乳腺マッサージ、ナノカレント、骨盤底筋ケア',
+                'industry' => 'エステティック・美容',
+                'occupationalCategory' => '39-5094',
+                'jobImmediateStart'    => true,
+                'incentiveCompensation' => '昇給制度あり、施術件数に応じたインセンティブ、独立開業支援制度',
+                'specialCommitments'    => '未経験者向け充実研修制度（費用全額会社負担）、技術習得支援、正社員登用実績多数',
+                'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'jobLocation' => [
+                    '@type'   => 'Place',
+                    'name'    => 'バストアップ専門パトラクシェ銀座店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                        'addressLocality' => '中央区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '104-0061',
+                        'addressCountry'  => 'JP',
+                    ],
+                    'geo' => [
+                        '@type'     => 'GeoCoordinates',
+                        'latitude'  => 35.674583,
+                        'longitude' => 139.765120,
+                    ],
+                ],
+                'qualifications'         => '学歴不問、未経験歓迎、エステティシャン経験者優遇',
+                'jobBenefits'            => '各種保険完備、交通費全額支給、制服貸与、昇給制度、充実した研修制度（全額会社負担）、技術習得支援、独立開業支援制度、有給休暇',
+                'workHours'              => '実働8時間・休憩1時間（平日13:30-21:30/土日祝10:30-19:30）',
+                'applicantLocationRequirements' => [
+                    '@type' => 'Country',
+                    'name'  => 'Japan',
+                ],
+            ],
+            // 9b. JobPosting - 代官山店 正社員
+            [
+                '@type'            => 'JobPosting',
+                '@id'              => 'https://patolaqshe.com/#job-daikanyama-fulltime',
+                'title'            => '【恵比寿・代官山駅徒歩2分】バストアップ専門エステティシャン（正社員）｜未経験OK',
+                'description'      => '<p><strong>バストアップ専門パトラクシェ恵比寿・代官山店で正社員エステティシャンを募集！</strong></p>'
+                    . '<p>創業13年・累計3万人超の施術実績を誇るバストアップ専門サロンです。フラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・コラーゲンマシンなど複数の施術を掛け合わせる「オーダーメイド複合施術」が特徴です。</p>'
+                    . '<h3>仕事内容</h3>'
+                    . '<ul><li>フラッシュバスト（光バストアップマシン）による施術</li>'
+                    . '<li>乳腺マッサージ・背面/二の腕/デコルテマッサージ（オールハンド）</li>'
+                    . '<li>ナノカレント（微弱電流）施術</li>'
+                    . '<li>ハプロ社製コラーゲンマシン施術（代官山店限定）</li>'
+                    . '<li>カウンセリング・施術プラン提案・アフターフォロー</li></ul>'
+                    . '<h3>働く環境</h3>'
+                    . '<ul><li>代官山駅徒歩2分の好立地</li>'
+                    . '<li>完全予約制・女性スタッフのみ</li>'
+                    . '<li>各種保険完備・交通費全額支給・有給休暇</li>'
+                    . '<li>充実した研修制度（全額会社負担）・独立開業支援制度</li></ul>',
+                'datePosted'       => '2026-02-01',
+                'validThrough'     => '2026-06-30T23:59:59+09:00',
+                'employmentType'   => 'FULL_TIME',
+                'url'              => 'https://patolaqshe.com/information/',
+                'directApply'      => true,
+                'identifier'       => [
+                    '@type' => 'PropertyValue',
+                    'name'  => 'Patolaqshe',
+                    'value' => 'PTL-DKY-FT-2026-01',
                 ],
                 'baseSalary'       => [
                     '@type'    => 'MonetaryAmount',
@@ -5792,72 +5947,56 @@ add_action('wp_head', function () {
                     '@type'                => 'EducationalOccupationalCredential',
                     'credentialCategory'   => '学歴不問',
                 ],
-                'skills' => 'エステティック技術、カウンセリング、接客、マシン施術、オールハンドマッサージ',
+                'skills' => 'エステティック技術、カウンセリング、接客、フラッシュバスト施術、オールハンドマッサージ、乳腺マッサージ、ナノカレント、コラーゲンマシン',
                 'industry' => 'エステティック・美容',
                 'occupationalCategory' => '39-5094',
                 'jobImmediateStart'    => true,
+                'incentiveCompensation' => '昇給制度あり、施術件数に応じたインセンティブ、独立開業支援制度',
                 'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
                 'jobLocation' => [
-                    [
-                        '@type'   => 'Place',
-                        'name'    => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-                        'address' => [
-                            '@type'           => 'PostalAddress',
-                            'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
-                            'addressLocality' => '渋谷区',
-                            'addressRegion'   => '東京都',
-                            'postalCode'      => '150-0034',
-                            'addressCountry'  => 'JP',
-                        ],
-                        'geo' => [
-                            '@type'     => 'GeoCoordinates',
-                            'latitude'  => 35.649642,
-                            'longitude' => 139.701838,
-                        ],
+                    '@type'   => 'Place',
+                    'name'    => 'バストアップ専門パトラクシェ恵比寿・代官山店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                        'addressLocality' => '渋谷区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '150-0034',
+                        'addressCountry'  => 'JP',
                     ],
-                    [
-                        '@type'   => 'Place',
-                        'name'    => 'バストアップ専門パトラクシェ銀座店',
-                        'address' => [
-                            '@type'           => 'PostalAddress',
-                            'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
-                            'addressLocality' => '中央区',
-                            'addressRegion'   => '東京都',
-                            'postalCode'      => '104-0061',
-                            'addressCountry'  => 'JP',
-                        ],
-                        'geo' => [
-                            '@type'     => 'GeoCoordinates',
-                            'latitude'  => 35.674583,
-                            'longitude' => 139.765120,
-                        ],
+                    'geo' => [
+                        '@type'     => 'GeoCoordinates',
+                        'latitude'  => 35.649642,
+                        'longitude' => 139.701838,
                     ],
                 ],
                 'qualifications'         => '学歴不問、未経験歓迎、エステティシャン経験者優遇',
-                'jobBenefits'            => '各種保険完備、交通費全額支給、制服貸与、昇給制度、充実した研修制度（会社負担）、技術習得支援、独立開業支援制度、有給休暇',
-                'workHours'              => '実働8時間・休憩1時間（代官山: 平日12:30-20:30/土日祝10:30-19:30、銀座: 平日13:30-21:30/土日祝10:30-19:30）',
+                'jobBenefits'            => '各種保険完備、交通費全額支給、制服貸与、昇給制度、充実した研修制度（全額会社負担）、技術習得支援、独立開業支援制度、有給休暇',
+                'workHours'              => '実働8時間・休憩1時間（平日12:30-20:30/土日祝10:30-19:30）',
                 'applicantLocationRequirements' => [
                     '@type' => 'Country',
                     'name'  => 'Japan',
                 ],
             ],
-            // 10. JobPosting - アルバイト
+            // 10. JobPosting - 銀座店 アルバイト（急募）
             [
                 '@type'            => 'JobPosting',
-                '@id'              => 'https://patolaqshe.com/#job-parttime',
-                'title'            => '【銀座・恵比寿】バストアップサロン エステティシャン（アルバイト）急募',
-                'description'      => '<p><strong>バストアップ専門パトラクシェでアルバイトエステティシャンを急募！</strong></p>'
-                    . '<p>パトラクシェは東京・銀座と恵比寿/代官山の2店舗を展開するバストアップ専門サロンです。週3日〜OK、シフト柔軟。未経験の方も研修制度で安心してスタートできます。</p>'
+                '@id'              => 'https://patolaqshe.com/#job-ginza-parttime',
+                'title'            => '【銀座駅徒歩2分】バストアップサロン エステティシャン（アルバイト）急募｜週3日〜OK',
+                'description'      => '<p><strong>＼ 銀座店アルバイトスタッフ急募！ ／</strong></p>'
+                    . '<p>バストアップ専門パトラクシェ銀座店でアルバイトエステティシャンを募集しています。週3日〜OK、シフト柔軟。未経験の方も充実した研修制度で安心してスタートできます。</p>'
+                    . '<p>パトラクシェは創業13年・累計3万人超の施術実績を持つバストアップ専門サロン。フラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなどの「オーダーメイド複合施術」が特徴です。</p>'
                     . '<h3>仕事内容</h3>'
                     . '<ul><li>バストアップ施術のアシスタント・補助</li>'
                     . '<li>施術（経験に応じてステップアップ）</li>'
                     . '<li>受付・カウンセリング対応</li>'
                     . '<li>店舗業務全般</li></ul>'
                     . '<h3>魅力ポイント</h3>'
-                    . '<ul><li>未経験OK・充実した研修制度</li>'
-                    . '<li>銀座一丁目駅徒歩2分 / 代官山駅徒歩2分</li>'
-                    . '<li>正社員登用制度あり</li>'
-                    . '<li>エステの技術を身につけながら働ける</li></ul>',
+                    . '<ul><li>未経験OK！研修制度で一から専門技術が学べる（研修費全額会社負担）</li>'
+                    . '<li>銀座一丁目駅徒歩2分・銀座駅徒歩5分の好立地</li>'
+                    . '<li>正社員登用制度あり（アルバイトからのステップアップ実績あり）</li>'
+                    . '<li>エステの専門技術を身につけながら働ける</li>'
+                    . '<li>完全予約制で落ち着いた環境・女性スタッフのみ</li></ul>',
                 'datePosted'       => '2026-02-01',
                 'validThrough'     => '2026-06-30T23:59:59+09:00',
                 'employmentType'   => 'PART_TIME',
@@ -5866,7 +6005,74 @@ add_action('wp_head', function () {
                 'identifier'       => [
                     '@type' => 'PropertyValue',
                     'name'  => 'Patolaqshe',
-                    'value' => 'PTL-PT-2026-01',
+                    'value' => 'PTL-GINZA-PT-2026-01',
+                ],
+                'baseSalary'       => [
+                    '@type'    => 'MonetaryAmount',
+                    'currency' => 'JPY',
+                    'value'    => [
+                        '@type'    => 'QuantitativeValue',
+                        'minValue' => 1300,
+                        'maxValue' => 1800,
+                        'unitText' => 'HOUR',
+                    ],
+                ],
+                'experienceRequirements' => '未経験歓迎。エステティシャン経験者優遇。',
+                'educationRequirements'  => [
+                    '@type'                => 'EducationalOccupationalCredential',
+                    'credentialCategory'   => '学歴不問',
+                ],
+                'industry' => 'エステティック・美容',
+                'occupationalCategory' => '39-5094',
+                'jobImmediateStart'    => true,
+                'specialCommitments'   => '未経験者向け研修制度完備（費用全額会社負担）、正社員登用制度あり',
+                'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'jobLocation' => [
+                    '@type'   => 'Place',
+                    'name'    => 'バストアップ専門パトラクシェ銀座店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                        'addressLocality' => '中央区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '104-0061',
+                        'addressCountry'  => 'JP',
+                    ],
+                    'geo' => [
+                        '@type'     => 'GeoCoordinates',
+                        'latitude'  => 35.674583,
+                        'longitude' => 139.765120,
+                    ],
+                ],
+                'qualifications' => '学歴不問、未経験歓迎、エステティシャン経験者優遇',
+                'jobBenefits'    => '交通費全額支給、制服貸与、研修制度あり（全額会社負担）、正社員登用制度あり',
+                'workHours'      => '週3日〜OK、シフト制（勤務時間応相談）',
+            ],
+            // 10b. JobPosting - 代官山店 アルバイト
+            [
+                '@type'            => 'JobPosting',
+                '@id'              => 'https://patolaqshe.com/#job-daikanyama-parttime',
+                'title'            => '【恵比寿・代官山駅徒歩2分】バストアップサロン エステティシャン（アルバイト）｜週3日〜OK',
+                'description'      => '<p><strong>バストアップ専門パトラクシェ代官山店でアルバイトエステティシャンを募集！</strong></p>'
+                    . '<p>週3日〜OK、シフト柔軟。創業13年のバストアップ専門サロンで、フラッシュバスト・乳腺マッサージ・コラーゲンマシンなどの専門技術を学びながら働けます。</p>'
+                    . '<h3>仕事内容</h3>'
+                    . '<ul><li>バストアップ施術のアシスタント・補助</li>'
+                    . '<li>施術（経験に応じてステップアップ）</li>'
+                    . '<li>受付・カウンセリング対応</li></ul>'
+                    . '<h3>魅力ポイント</h3>'
+                    . '<ul><li>未経験OK・充実した研修制度（全額会社負担）</li>'
+                    . '<li>代官山駅徒歩2分の好立地</li>'
+                    . '<li>正社員登用制度あり</li>'
+                    . '<li>完全予約制・女性スタッフのみの安心環境</li></ul>',
+                'datePosted'       => '2026-02-01',
+                'validThrough'     => '2026-06-30T23:59:59+09:00',
+                'employmentType'   => 'PART_TIME',
+                'url'              => 'https://patolaqshe.com/information/',
+                'directApply'      => true,
+                'identifier'       => [
+                    '@type' => 'PropertyValue',
+                    'name'  => 'Patolaqshe',
+                    'value' => 'PTL-DKY-PT-2026-01',
                 ],
                 'baseSalary'       => [
                     '@type'    => 'MonetaryAmount',
@@ -5888,60 +6094,42 @@ add_action('wp_head', function () {
                 'jobImmediateStart'    => true,
                 'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
                 'jobLocation' => [
-                    [
-                        '@type'   => 'Place',
-                        'name'    => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-                        'address' => [
-                            '@type'           => 'PostalAddress',
-                            'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
-                            'addressLocality' => '渋谷区',
-                            'addressRegion'   => '東京都',
-                            'postalCode'      => '150-0034',
-                            'addressCountry'  => 'JP',
-                        ],
-                        'geo' => [
-                            '@type'     => 'GeoCoordinates',
-                            'latitude'  => 35.649642,
-                            'longitude' => 139.701838,
-                        ],
+                    '@type'   => 'Place',
+                    'name'    => 'バストアップ専門パトラクシェ恵比寿・代官山店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                        'addressLocality' => '渋谷区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '150-0034',
+                        'addressCountry'  => 'JP',
                     ],
-                    [
-                        '@type'   => 'Place',
-                        'name'    => 'バストアップ専門パトラクシェ銀座店',
-                        'address' => [
-                            '@type'           => 'PostalAddress',
-                            'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
-                            'addressLocality' => '中央区',
-                            'addressRegion'   => '東京都',
-                            'postalCode'      => '104-0061',
-                            'addressCountry'  => 'JP',
-                        ],
-                        'geo' => [
-                            '@type'     => 'GeoCoordinates',
-                            'latitude'  => 35.674583,
-                            'longitude' => 139.765120,
-                        ],
+                    'geo' => [
+                        '@type'     => 'GeoCoordinates',
+                        'latitude'  => 35.649642,
+                        'longitude' => 139.701838,
                     ],
                 ],
                 'qualifications' => '学歴不問、未経験歓迎、エステティシャン経験者優遇',
-                'jobBenefits'    => '交通費全額支給、制服貸与、研修制度あり、正社員登用あり',
+                'jobBenefits'    => '交通費全額支給、制服貸与、研修制度あり（全額会社負担）、正社員登用制度あり',
                 'workHours'      => '週3日〜OK、シフト制（勤務時間応相談）',
             ],
-            // 11. JobPosting - 業務委託
+            // 11. JobPosting - 銀座店 業務委託（急募）
             [
                 '@type'            => 'JobPosting',
-                '@id'              => 'https://patolaqshe.com/#job-contractor',
-                'title'            => '【銀座・恵比寿】バストアップエステティシャン（業務委託）急募',
-                'description'      => '<p><strong>経験者歓迎！業務委託エステティシャンを急募</strong></p>'
-                    . '<p>バストアップ専門パトラクシェで、あなたの技術と経験を活かしませんか？創業13年・累計3万人超の施術実績を持つ専門サロンで、高い技術力を持つお客様に提供できます。</p>'
+                '@id'              => 'https://patolaqshe.com/#job-ginza-contractor',
+                'title'            => '【銀座】バストアップエステティシャン（業務委託）急募｜高報酬・経験者歓迎',
+                'description'      => '<p><strong>＼ 経験者歓迎！銀座店で業務委託エステティシャンを急募 ／</strong></p>'
+                    . '<p>バストアップ専門パトラクシェ銀座店で、あなたの技術と経験を活かしませんか？創業13年・累計3万人超の施術実績を持つ専門サロンで、高い報酬と充実の施術環境を提供します。</p>'
                     . '<h3>仕事内容</h3>'
-                    . '<ul><li>バストアップ施術（マシン＋オールハンド）</li>'
-                    . '<li>カウンセリング・アフターフォロー</li>'
-                    . '<li>施術に付随する業務</li></ul>'
+                    . '<ul><li>フラッシュバスト・乳腺マッサージ・ナノカレントなどのオーダーメイド複合施術</li>'
+                    . '<li>骨盤底筋ケア・フットマッサージ（銀座店限定メニュー）</li>'
+                    . '<li>カウンセリング・アフターフォロー</li></ul>'
                     . '<h3>メリット</h3>'
-                    . '<ul><li>報酬応相談・頑張り次第で高収入</li>'
-                    . '<li>銀座一丁目駅徒歩2分 / 代官山駅徒歩2分</li>'
-                    . '<li>完全予約制でゆとりある施術</li>'
+                    . '<ul><li>報酬応相談・頑張り次第で高収入が可能</li>'
+                    . '<li>銀座一丁目駅徒歩2分の好立地</li>'
+                    . '<li>完全予約制で落ち着いた施術環境</li>'
+                    . '<li>バストケア専門の高度な技術を習得可能</li>'
                     . '<li>独立開業支援制度あり</li></ul>',
                 'datePosted'       => '2026-02-01',
                 'validThrough'     => '2026-06-30T23:59:59+09:00',
@@ -5951,7 +6139,57 @@ add_action('wp_head', function () {
                 'identifier'       => [
                     '@type' => 'PropertyValue',
                     'name'  => 'Patolaqshe',
-                    'value' => 'PTL-CT-2026-01',
+                    'value' => 'PTL-GINZA-CT-2026-01',
+                ],
+                'experienceRequirements' => 'エステティシャン実務経験1年以上',
+                'industry' => 'エステティック・美容',
+                'occupationalCategory' => '39-5094',
+                'jobImmediateStart'    => true,
+                'incentiveCompensation' => '報酬応相談、施術件数に応じた高報酬体系、独立開業支援制度',
+                'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+                'jobLocation' => [
+                    '@type'   => 'Place',
+                    'name'    => 'バストアップ専門パトラクシェ銀座店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
+                        'addressLocality' => '中央区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '104-0061',
+                        'addressCountry'  => 'JP',
+                    ],
+                    'geo' => [
+                        '@type'     => 'GeoCoordinates',
+                        'latitude'  => 35.674583,
+                        'longitude' => 139.765120,
+                    ],
+                ],
+                'qualifications' => 'エステティシャン経験者歓迎（バストケア経験不問）',
+            ],
+            // 11b. JobPosting - 代官山店 業務委託
+            [
+                '@type'            => 'JobPosting',
+                '@id'              => 'https://patolaqshe.com/#job-daikanyama-contractor',
+                'title'            => '【恵比寿・代官山】バストアップエステティシャン（業務委託）｜経験者歓迎',
+                'description'      => '<p><strong>経験者歓迎！代官山店で業務委託エステティシャンを募集</strong></p>'
+                    . '<p>バストアップ専門パトラクシェ代官山店で、あなたの技術を活かしませんか？フラッシュバスト・乳腺マッサージ・コラーゲンマシンなどのオーダーメイド複合施術を提供するサロンです。</p>'
+                    . '<h3>仕事内容</h3>'
+                    . '<ul><li>フラッシュバスト・乳腺マッサージ・ナノカレントなどの施術</li>'
+                    . '<li>ハプロ社製コラーゲンマシン施術（代官山店限定）</li>'
+                    . '<li>カウンセリング・アフターフォロー</li></ul>'
+                    . '<h3>メリット</h3>'
+                    . '<ul><li>報酬応相談・高収入可能</li>'
+                    . '<li>代官山駅徒歩2分</li>'
+                    . '<li>完全予約制・独立開業支援あり</li></ul>',
+                'datePosted'       => '2026-02-01',
+                'validThrough'     => '2026-06-30T23:59:59+09:00',
+                'employmentType'   => 'CONTRACTOR',
+                'url'              => 'https://patolaqshe.com/information/',
+                'directApply'      => true,
+                'identifier'       => [
+                    '@type' => 'PropertyValue',
+                    'name'  => 'Patolaqshe',
+                    'value' => 'PTL-DKY-CT-2026-01',
                 ],
                 'experienceRequirements' => 'エステティシャン実務経験1年以上',
                 'industry' => 'エステティック・美容',
@@ -5959,42 +6197,23 @@ add_action('wp_head', function () {
                 'jobImmediateStart'    => true,
                 'hiringOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
                 'jobLocation' => [
-                    [
-                        '@type'   => 'Place',
-                        'name'    => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-                        'address' => [
-                            '@type'           => 'PostalAddress',
-                            'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
-                            'addressLocality' => '渋谷区',
-                            'addressRegion'   => '東京都',
-                            'postalCode'      => '150-0034',
-                            'addressCountry'  => 'JP',
-                        ],
-                        'geo' => [
-                            '@type'     => 'GeoCoordinates',
-                            'latitude'  => 35.649642,
-                            'longitude' => 139.701838,
-                        ],
+                    '@type'   => 'Place',
+                    'name'    => 'バストアップ専門パトラクシェ恵比寿・代官山店',
+                    'address' => [
+                        '@type'           => 'PostalAddress',
+                        'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                        'addressLocality' => '渋谷区',
+                        'addressRegion'   => '東京都',
+                        'postalCode'      => '150-0034',
+                        'addressCountry'  => 'JP',
                     ],
-                    [
-                        '@type'   => 'Place',
-                        'name'    => 'バストアップ専門パトラクシェ銀座店',
-                        'address' => [
-                            '@type'           => 'PostalAddress',
-                            'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
-                            'addressLocality' => '中央区',
-                            'addressRegion'   => '東京都',
-                            'postalCode'      => '104-0061',
-                            'addressCountry'  => 'JP',
-                        ],
-                        'geo' => [
-                            '@type'     => 'GeoCoordinates',
-                            'latitude'  => 35.674583,
-                            'longitude' => 139.765120,
-                        ],
+                    'geo' => [
+                        '@type'     => 'GeoCoordinates',
+                        'latitude'  => 35.649642,
+                        'longitude' => 139.701838,
                     ],
                 ],
-                'qualifications' => 'エステティシャン経験者歓迎',
+                'qualifications' => 'エステティシャン経験者歓迎（バストケア経験不問）',
             ],
         ],
     ];
