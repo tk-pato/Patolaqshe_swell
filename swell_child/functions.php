@@ -187,7 +187,7 @@ add_action('wp_footer', function () {
       window.addEventListener('resize', tick);
 
       // 6) 予防：外部JSがdisplay:noneを直書きしても勝てるように、周期的に軽く再適用
-      setInterval(forceShow, 1500);
+      setInterval(forceShow, 3000);
     })();
   </script>
   <?php
@@ -321,10 +321,11 @@ add_action('wp_enqueue_scripts', function () {
     }, 1);
   }
 
-  $parallax_js_path = get_stylesheet_directory() . '/js/section-parallax.js';
+  // 統合パララックスJS（旧: section-parallax.js + section-infohub.js）
+  $parallax_js_path = get_stylesheet_directory() . '/js/ptl-parallax.js';
   if (file_exists($parallax_js_path)) {
     $parallax_js_ver = date('Ymdgis', filemtime($parallax_js_path));
-    wp_enqueue_script('child_section_parallax', get_stylesheet_directory_uri() . '/js/section-parallax.js', [], $parallax_js_ver, true);
+    wp_enqueue_script('ptl-parallax', get_stylesheet_directory_uri() . '/js/ptl-parallax.js', [], $parallax_js_ver, true);
   }
 
   // ========================================
@@ -1050,7 +1051,7 @@ add_action('wp_enqueue_scripts', function () {
   // JS（統合版：navigation.js に ptl-nav-fix.js を統合済み）
   $nav_js_path = get_stylesheet_directory() . '/js/navigation.js';
   $nav_js_ver  = file_exists($nav_js_path) ? date('Ymdgis', filemtime($nav_js_path)) : null;
-  wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', ['jquery'], $nav_js_ver, true);
+  wp_enqueue_script('ptl-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', [], $nav_js_ver, true);
 
   // ========================================
   // セクション別CSS読み込みループ（INFO HUB, NEWS, FOOTER）
@@ -1062,7 +1063,7 @@ add_action('wp_enqueue_scripts', function () {
 
   // セクション定義配列：[ファイルプレフィックス, ハンドル名基, 依存関係, SP suffix, JS相対パス]
   $sections = [
-    ['section-infohub', 'ptlHub', ['child_style'], '-sp', 'section-infohub.js'],
+    ['section-infohub', 'ptlHub', ['child_style'], '-sp', null],  // JSはptl-parallax.jsに統合済み
     ['section-news', 'ptlNews', ['child_style'], '-sp', null],
   ];
 
