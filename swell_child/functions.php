@@ -3695,19 +3695,24 @@ add_shortcode('uservoice_slider', 'ptl_uservoice_slider_shortcode');
 
 /**
  * ========================================
- * サロンモーダル機能
+ * 統合モーダルJS + サロン/ブログ/FAQモーダルCSS
  * ========================================
+ * 旧: salon-modal.js, blog-modal.js, faq-modal.js, news-modal.js, product-modal.js
+ * 新: ptl-modal.js（1ファイルに統合）
  */
-function pato_enqueue_salon_modal_assets()
+function pato_enqueue_unified_modal_assets()
 {
+  // 統合モーダルJS（5ファイル分を1つに）
+  $js_path = get_stylesheet_directory() . '/js/ptl-modal.js';
   wp_enqueue_script(
-    'pato-salon-modal',
-    get_stylesheet_directory_uri() . '/js/salon-modal.js',
+    'ptl-modal',
+    get_stylesheet_directory_uri() . '/js/ptl-modal.js',
     array(),
-    '1.0.0',
+    file_exists($js_path) ? filemtime($js_path) : '1.0.0',
     true
   );
 
+  // サロンモーダルCSS
   wp_enqueue_style(
     'pato-salon-modal-pc',
     get_stylesheet_directory_uri() . '/css/pc/salon-modal-pc.css',
@@ -3715,7 +3720,6 @@ function pato_enqueue_salon_modal_assets()
     '1.0.0',
     'screen and (min-width: 768px)'
   );
-
   wp_enqueue_style(
     'pato-salon-modal-sp',
     get_stylesheet_directory_uri() . '/css/sp/salon-modal-sp.css',
@@ -3723,28 +3727,8 @@ function pato_enqueue_salon_modal_assets()
     '4.0.2',
     'screen and (max-width: 767px)'
   );
-}
-add_action('wp_enqueue_scripts', 'pato_enqueue_salon_modal_assets');
 
-/**
- * ブログモーダルのJavaScript/CSS読み込み
- */
-function pato_enqueue_blog_modal_assets()
-{
-  // JavaScript
-  wp_enqueue_script(
-    'pato-blog-modal',
-    get_stylesheet_directory_uri() . '/js/blog-modal.js',
-    array(),
-    '1.0.0',
-    true
-  );
-
-  // サイトナビ BLOG モーダルトリガー用 JS
-  // サイトナビおよびニュースのモーダルトリガーは
-  // `swell_child/js/modal-triggers.js` に統合しました。個別ファイルの読み込みは不要です。
-
-  // CSS PC
+  // ブログモーダルCSS
   $css_pc_path = get_stylesheet_directory() . '/css/pc/blog-modal-pc.css';
   if (file_exists($css_pc_path)) {
     wp_enqueue_style(
@@ -3755,8 +3739,6 @@ function pato_enqueue_blog_modal_assets()
       'screen and (min-width: 768px)'
     );
   }
-
-  // CSS SP
   $css_sp_path = get_stylesheet_directory() . '/css/sp/blog-modal-sp.css';
   if (file_exists($css_sp_path)) {
     wp_enqueue_style(
@@ -3768,22 +3750,7 @@ function pato_enqueue_blog_modal_assets()
     );
   }
 }
-add_action('wp_enqueue_scripts', 'pato_enqueue_blog_modal_assets');
-
-/**
- * FAQモーダルのJavaScript読み込み
- */
-function pato_enqueue_faq_modal_assets()
-{
-  wp_enqueue_script(
-    'pato-faq-modal',
-    get_stylesheet_directory_uri() . '/js/faq-modal.js',
-    array(),
-    '1.0.2',
-    true
-  );
-}
-add_action('wp_enqueue_scripts', 'pato_enqueue_faq_modal_assets');
+add_action('wp_enqueue_scripts', 'pato_enqueue_unified_modal_assets');
 
 function pato_salon_modal_shortcode($atts)
 {
@@ -4443,22 +4410,10 @@ function ptl_news_list_modal_shortcode($atts)
 }
 add_shortcode('news_list_modal', 'ptl_news_list_modal_shortcode');
 /**
- * ニュースモーダル用CSS（PC）enqueue
+ * ニュースモーダル用CSS enqueue（JSはptl-modal.jsに統合済み）
  */
 function pato_enqueue_news_modal_assets()
 {
-  // JavaScript
-  $js_path = get_stylesheet_directory() . '/js/news-modal.js';
-  if (file_exists($js_path)) {
-    wp_enqueue_script(
-      'pato-news-modal',
-      get_stylesheet_directory_uri() . '/js/news-modal.js',
-      array(),
-      filemtime($js_path),
-      true
-    );
-  }
-
   // CSS PC
   $css_pc_path = get_stylesheet_directory() . '/css/pc/news-modal-pc.css';
   if (file_exists($css_pc_path)) {
@@ -4493,21 +4448,10 @@ function pato_enqueue_modal_triggers()
   // 統合トリガーファイル
   $js_path = get_stylesheet_directory() . '/js/modal-triggers.js';
   if (file_exists($js_path)) {
-    // blog/news モーダル本体に依存させる
-    $deps = array();
-    $blog_modal_path = get_stylesheet_directory() . '/js/blog-modal.js';
-    $news_modal_path = get_stylesheet_directory() . '/js/news-modal.js';
-    if (file_exists($blog_modal_path)) {
-      $deps[] = 'pato-blog-modal';
-    }
-    if (file_exists($news_modal_path)) {
-      $deps[] = 'pato-news-modal';
-    }
-
     wp_enqueue_script(
       'pato-modal-triggers',
       get_stylesheet_directory_uri() . '/js/modal-triggers.js',
-      $deps,
+      array('ptl-modal'),
       filemtime($js_path),
       true
     );
@@ -5028,22 +4972,10 @@ function add_product_modal() {
 add_action('wp_footer', 'add_product_modal');
 
 /**
- * 商品モーダル用CSS/JS読み込み
+ * 商品モーダル用CSS読み込み（JSはptl-modal.jsに統合済み）
  */
 function pato_enqueue_product_modal_assets()
 {
-  // JavaScript
-  $js_path = get_stylesheet_directory() . '/js/product-modal.js';
-  if (file_exists($js_path)) {
-    wp_enqueue_script(
-      'pato-product-modal',
-      get_stylesheet_directory_uri() . '/js/product-modal.js',
-      array(),
-      filemtime($js_path),
-      true
-    );
-  }
-
   // CSS PC
   $css_pc_path = get_stylesheet_directory() . '/css/pc/product-modal-pc.css';
   if (file_exists($css_pc_path)) {
