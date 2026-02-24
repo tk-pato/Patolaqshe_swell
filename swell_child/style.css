@@ -9,6 +9,24 @@ Version: 1.0.0
    ここにはセクション余白の記述を置かない
 ======================================== */
 
+/* アクセシビリティ: スキップリンク */
+.ptl-skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100000;
+    padding: 8px 24px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 0 0 8px 8px;
+}
+.ptl-skip-link:focus {
+    top: 0;
+}
+
 /* PCでのMENUボタン非表示（最優先） */
 @media screen and (min-width: 768px) {
     #page-navigation .ptl-nav-toggle,

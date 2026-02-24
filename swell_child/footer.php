@@ -71,7 +71,7 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 							<a href="<?php echo esc_url(home_url('/voice/')); ?>" class="ptl-footer__nav-link">VOICE</a>
 						</li>
 					<li class="ptl-footer__nav-item">
-						<a href="#faq-modal" class="ptl-footer__nav-link faq-modal-trigger" data-modal-id="faq-modal">FAQ</a>
+						<a href="#faq-modal" class="ptl-footer__nav-link faq-modal-trigger" data-modal-id="faq-modal" aria-label="よくあるご質問を開く">FAQ</a>
 					</li>
 					<li class="ptl-footer__nav-item">
 						<?php
@@ -83,10 +83,10 @@ if ( SWELL_Theme::is_show_sidebar() ) {
 							$modal_id = 'blog-modal-ginza';
 						}
 						?>
-						<a href="#<?php echo esc_attr($modal_id); ?>" class="ptl-footer__nav-link blog-modal-trigger" data-modal-id="<?php echo esc_attr($modal_id); ?>">BLOG</a>
+						<a href="#<?php echo esc_attr($modal_id); ?>" class="ptl-footer__nav-link blog-modal-trigger" data-modal-id="<?php echo esc_attr($modal_id); ?>" aria-label="ブログ一覧を開く">BLOG</a>
 					</li>
 					<li class="ptl-footer__nav-item">
-						<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger">PRIV</a>
+						<a href="#privacy-modal" class="ptl-footer__nav-link privacy-modal-trigger" aria-label="プライバシーポリシーを開く">PRIV</a>
 					</li>
 					</ul>
 				</nav>				<!-- コピーライト -->

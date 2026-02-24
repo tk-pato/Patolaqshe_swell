@@ -3,7 +3,7 @@
  * プライバシーポリシーモーダル
  */
 ?>
-<div class="privacy-modal js-modal">
+<div class="privacy-modal js-modal" role="dialog" aria-modal="true" aria-label="プライバシーポリシー">
     <div class="js-modal_bg"></div>
     <div class="js-modal_cont">
         <button class="js-modal_close" aria-label="閉じる">

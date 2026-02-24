@@ -9,6 +9,7 @@
     'use strict';
 
     var TRANSITION_MS = 700;
+    var FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
 
     var MODAL_CONFIGS = [
         {
@@ -49,6 +50,8 @@
         }
     ];
 
+    var lastTrigger = null;
+
     function closeModal(modal, useClosing) {
         modal.classList.remove('js-modal_animating');
         if (useClosing) {
@@ -60,7 +63,31 @@
                 modal.classList.remove('js-modal_closing');
             }
             document.body.classList.remove('js-modal_open');
+            // フォーカスをトリガーに戻す
+            if (lastTrigger && lastTrigger.focus) {
+                lastTrigger.focus();
+                lastTrigger = null;
+            }
         }, TRANSITION_MS);
+    }
+
+    function trapFocus(modal, e) {
+        if (e.key !== 'Tab') return;
+        var focusable = modal.querySelectorAll(FOCUSABLE);
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+            if (document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            }
+        } else {
+            if (document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
     }
 
     function initModal(config) {
@@ -81,6 +108,7 @@
                 var modalEl = document.getElementById(modalId);
                 if (!modalEl) return;
 
+                lastTrigger = this;
                 modalEl.classList.add('js-modalitem_open');
                 document.body.classList.add('js-modal_open');
 
@@ -93,6 +121,12 @@
                         });
                     });
                 }
+
+                // フォーカスをモーダル内の最初の要素に移動
+                setTimeout(function() {
+                    var first = modalEl.querySelector(FOCUSABLE);
+                    if (first) first.focus();
+                }, 100);
             };
         });
 
@@ -118,16 +152,18 @@
     function initAll() {
         MODAL_CONFIGS.forEach(initModal);
 
-        // ESCキーで開いているモーダルを閉じる（1つだけ登録）
+        // ESCキー + フォーカストラップ（1つだけ登録）
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' || e.keyCode === 27) {
-                for (var i = 0; i < MODAL_CONFIGS.length; i++) {
-                    var cfg = MODAL_CONFIGS[i];
-                    var openModal = document.querySelector('.' + cfg.modalClass + '.js-modalitem_open');
-                    if (openModal) {
+            for (var i = 0; i < MODAL_CONFIGS.length; i++) {
+                var cfg = MODAL_CONFIGS[i];
+                var openModal = document.querySelector('.' + cfg.modalClass + '.js-modalitem_open');
+                if (openModal) {
+                    if (e.key === 'Escape' || e.keyCode === 27) {
                         closeModal(openModal, cfg.useClosingClass);
-                        return;
+                    } else {
+                        trapFocus(openModal, e);
                     }
+                    return;
                 }
             }
         });

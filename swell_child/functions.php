@@ -1,6 +1,13 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+/**
+ * アクセシビリティ: スキップリンク
+ */
+add_action('wp_body_open', function () {
+  echo '<a href="#content" class="ptl-skip-link">メインコンテンツへスキップ</a>';
+});
+
 // WP 6.9: media TinyMCE プラグインのスタンドアロンファイルが削除されたためエラー回避
 add_filter('tiny_mce_plugins', function ($plugins) {
     return array_diff($plugins, ['media']);
@@ -3830,7 +3837,7 @@ function pato_salon_modal_shortcode($atts)
     </div>
   </div>
 
-  <div id="salon-modal-<?php echo esc_attr($atts['id']); ?>" class="js-modal_wrap p-salon">
+  <div id="salon-modal-<?php echo esc_attr($atts['id']); ?>" class="js-modal_wrap p-salon" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr($atts['name']); ?>">
     <div class="js-modal_cont">
       <button class="js-modal_close p-ico">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4284,7 +4291,7 @@ function ptl_blog_list_modal_shortcode($atts)
 ?>
 
   <!-- ブログモーダル本体 -->
-  <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap blog-modal">
+  <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap blog-modal" role="dialog" aria-modal="true" aria-label="ブログ一覧">
     <div class="js-modal_cont">
       <button class="js-modal_close blog-modal__close">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4373,7 +4380,7 @@ function ptl_news_list_modal_shortcode($atts)
 ?>
 
   <!-- ニュースモーダル本体 -->
-  <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap news-modal">
+  <div id="<?php echo esc_attr($modal_id); ?>" class="js-modal_wrap news-modal" role="dialog" aria-modal="true" aria-label="ニュース一覧">
     <div class="js-modal_cont">
       <button class="js-modal_close news-modal__close">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4469,7 +4476,7 @@ function ptl_faq_modal_shortcode()
 {
   ob_start();
 ?>
-  <div id="faq-modal" class="js-modal_wrap faq-modal">
+  <div id="faq-modal" class="js-modal_wrap faq-modal" role="dialog" aria-modal="true" aria-label="よくあるご質問">
     <div class="js-modal_bg"></div>
     <div class="js-modal_cont">
       <button class="js-modal_close" aria-label="モーダルを閉じる">
@@ -4792,7 +4799,7 @@ add_action('init', 'ptl_register_blog_category_taxonomy');
 function add_store_select_modal() {
   ?>
   <!-- 店舗選択モーダルウィンドウ -->
-  <div id="store-select-modal" class="pato-modal" style="display:none;">
+  <div id="store-select-modal" class="pato-modal" style="display:none;" role="dialog" aria-modal="true" aria-label="店舗選択">
     <div class="pato-modal-overlay"></div>
     <div class="pato-modal-content">
       <button class="pato-modal-close" aria-label="閉じる">&times;</button>
@@ -4847,43 +4854,8 @@ function pato_store_modal_css()
 }
 add_action('wp_enqueue_scripts', 'pato_store_modal_css');
 
-/**
- * 右クリック禁止・画像保護
- */
-function ptl_image_protection()
-{
-  // 管理画面・ログインユーザーは除外
-  if (is_admin() || current_user_can('edit_posts')) {
-    return;
-  }
-  ?>
-  <style>
-    img {
-      -webkit-user-drag: none;
-      user-drag: none;
-      -webkit-touch-callout: none;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-  </style>
-  <script>
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('dragstart', function(e) { e.preventDefault(); });
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('img').forEach(function(img) { img.setAttribute('draggable', 'false'); });
-      new MutationObserver(function(mutations) {
-        mutations.forEach(function(m) {
-          m.addedNodes.forEach(function(n) {
-            if (n.tagName === 'IMG') n.setAttribute('draggable', 'false');
-            if (n.querySelectorAll) n.querySelectorAll('img').forEach(function(img) { img.setAttribute('draggable', 'false'); });
-          });
-        });
-      }).observe(document.body, { childList: true, subtree: true });
-    });
-  </script>
-  <?php
-}
-add_action('wp_head', 'ptl_image_protection');
+// 画像保護（右クリック禁止・ドラッグ禁止）は削除済み
+// 理由: MutationObserver+contextmenu/dragstartがパフォーマンスに影響、アクセシビリティに反する
 
 /**
  * 前後の記事ナビゲーションを同じ記事種別に限定
@@ -4916,7 +4888,7 @@ add_filter('get_next_post_where', 'ptl_adjacent_post_where', 10, 5);
 function add_product_modal() {
   ?>
   <!-- 商品モーダルウィンドウ -->
-  <div id="product-modal" class="js-modal_wrap product-modal">
+  <div id="product-modal" class="js-modal_wrap product-modal" role="dialog" aria-modal="true" aria-label="商品紹介">
     <div class="js-modal_cont">
       <button class="js-modal_close product-modal__close">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
