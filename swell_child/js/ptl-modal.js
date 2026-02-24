@@ -59,7 +59,8 @@
 
     var lastTrigger = null;
 
-    function closeModal(modal, useClosing) {
+    // fromKeyboard: true = ESCキー操作、false = マウス/タッチ操作
+    function closeModal(modal, useClosing, fromKeyboard) {
         modal.classList.remove('js-modal_animating');
         if (useClosing) {
             modal.classList.add('js-modal_closing');
@@ -70,11 +71,12 @@
                 modal.classList.remove('js-modal_closing');
             }
             document.body.classList.remove('js-modal_open');
-            // フォーカスをトリガーに戻す
-            if (lastTrigger && lastTrigger.focus) {
+            // キーボード操作で閉じた場合のみフォーカスを戻す
+            // （マウス/タッチの場合は :focus-visible による茶色枠が出るため戻さない）
+            if (fromKeyboard && lastTrigger && lastTrigger.focus) {
                 lastTrigger.focus();
-                lastTrigger = null;
             }
+            lastTrigger = null;
         }, TRANSITION_MS);
     }
 
@@ -141,7 +143,7 @@
             btn.onclick = function(e) {
                 e.preventDefault();
                 var modal = this.closest('.js-modal_wrap');
-                if (modal) closeModal(modal, config.useClosingClass);
+                if (modal) closeModal(modal, config.useClosingClass, false);
             };
         });
 
@@ -150,7 +152,7 @@
                 if (e.target === this) {
                     e.preventDefault();
                     var modal = this.closest('.js-modal_wrap');
-                    if (modal) closeModal(modal, config.useClosingClass);
+                    if (modal) closeModal(modal, config.useClosingClass, false);
                 }
             };
         });
@@ -196,7 +198,7 @@
             if (isHorizontal && deltaX > 80) {
                 cont.style.transition = '';
                 cont.style.transform = '';
-                closeModal(modal, useClosing);
+                closeModal(modal, useClosing, false);
             } else {
                 cont.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                 cont.style.transform = 'translateX(0)';
@@ -224,7 +226,7 @@
                 var openModal = document.querySelector('.' + cfg.modalClass + '.js-modalitem_open');
                 if (openModal) {
                     if (e.key === 'Escape' || e.keyCode === 27) {
-                        closeModal(openModal, cfg.useClosingClass);
+                        closeModal(openModal, cfg.useClosingClass, true);
                     } else {
                         trapFocus(openModal, e);
                     }
@@ -239,7 +241,7 @@
             contactBtn.onclick = function(e) {
                 e.preventDefault();
                 var openModal = document.querySelector('.product-modal.js-modalitem_open');
-                if (openModal) closeModal(openModal, false);
+                if (openModal) closeModal(openModal, false, false);
                 setTimeout(function() {
                     var wowModal = document.getElementById('wow-modal-id-1');
                     if (wowModal) wowModal.classList.add('mw-open');
