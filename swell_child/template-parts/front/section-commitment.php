@@ -72,7 +72,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     case 'TREATMENT':
                         $image_src = 'https://patolaqshe.com/wp-content/uploads/2026/02/フラッシュ.jpg';
                         $box_title = '都内随一の2000ショット照射';
-                        $box_desc = 'バストアップ専用機による驚愕の高密度2000ショット照射で、深部までしっかりアプローチ。熟練のハンドマッサージ（乳腰ケア）、ナノカレント（生体電流）を使用した育乳メソッドなど、豊富な施術メニューから最適な組み合わせをご提案します。';
+                        $box_desc = 'バストアップ専用機による驚愕の高密度2000ショット照射で、深部までしっかりアプローチ。熟練のハンドマッサージ（乳腺ケア）、ナノカレント（生体電流）を使用した育乳メソッドなど、豊富な施術メニューから最適な組み合わせをご提案します。';
                         break;
                     case 'COLLECTION':
                         $image_src = 'https://patolaqshe.com/wp-content/uploads/2026/02/カウンセリング.jpg';

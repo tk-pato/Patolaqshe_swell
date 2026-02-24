@@ -51,7 +51,10 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <div class="ptlMenu__subItem">
                         <a href="<?php echo esc_url(home_url('/service/#facial-content')); ?>" class="ptlMenu__subLink">
                             <div class="ptlMenu__subImage">
-                                <img src="https://patolaqshe.com/wp-content/uploads/2026/02/フェイシャルバナー.jpg" alt="フェイシャル" width="1200" height="900" loading="lazy" decoding="async">
+                                <picture>
+                                    <source srcset="https://patolaqshe.com/wp-content/uploads/2026/02/フェイシャル4-optimized.webp" type="image/webp">
+                                    <img src="https://patolaqshe.com/wp-content/uploads/2026/02/フェイシャル4-optimized.jpg" alt="フェイシャル" width="1200" height="900" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                             <h4 class="ptlMenu__subTitle">フェイシャル</h4>
                         </a>

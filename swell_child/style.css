@@ -1,13 +1,15 @@
 /*
 Theme Name: SWELL CHILD
 Template: swell
-Version: 1.0.0
+Version: 1.0.1
 */
 
 /* ========================================
    グローバルCSS: セクション余白は各独自CSSで管理
    ここにはセクション余白の記述を置かない
 ======================================== */
+
+/* [削除] overflow-x: clip はSWELLのページ遷移と競合するため除去 */
 
 /* アクセシビリティ: スキップリンク */
 .ptl-skip-link {
@@ -726,7 +728,7 @@ Version: 1.0.0
 }
 
 /* ========================================
-   ブログモーダルトリガー（buttonタグ）のスタイルリセット
+   フッターモーダルトリガーのフォーカス枠制御
    ======================================== */
 .blog-modal-trigger {
   background: transparent !important;
@@ -736,9 +738,20 @@ Version: 1.0.0
 }
 
 .blog-modal-trigger:hover,
-.blog-modal-trigger:focus {
+.blog-modal-trigger:focus,
+.privacy-modal-trigger:focus,
+.faq-modal-trigger:focus,
+.news-modal-trigger:focus {
   background: transparent !important;
   outline: none;
+}
+
+.blog-modal-trigger:focus-visible,
+.privacy-modal-trigger:focus-visible,
+.faq-modal-trigger:focus-visible,
+.news-modal-trigger:focus-visible {
+  outline: 2px solid #d4a574;
+  outline-offset: 2px;
 }
 
 /* =====================================================

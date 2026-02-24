@@ -53,6 +53,13 @@ add_action('wp_enqueue_scripts', function () {
   if (file_exists($hero_scroll_js)) {
     wp_enqueue_script('ptl-hero-scroll-toggle', get_stylesheet_directory_uri() . '/js/hero-scroll-toggle.js', [], filemtime($hero_scroll_js), true);
   }
+  // ヒーロー動画フォールバック（トップページのみ）
+  if (is_front_page()) {
+    $hero_video_fix = get_stylesheet_directory() . '/js/hero-video-fix.js';
+    if (file_exists($hero_video_fix)) {
+      wp_enqueue_script('ptl-hero-video-fix', get_stylesheet_directory_uri() . '/js/hero-video-fix.js', [], filemtime($hero_video_fix), false);
+    }
+  }
 }, 999);
 
 function ptl_get_nav_background(): array
@@ -2643,12 +2650,12 @@ add_action('wp_head', function () {
 
   // トップページ・固定ページ用 meta description
   $descriptions = [
-    'front_page'    => 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。フラッシュバスト2000ショット・乳腺マッサージ・ナノカレントなど複数施術を掛け合わせるオーダーメイド複合施術。効果体感率99%。無料カウンセリング受付中。',
+    'front_page'    => 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。ドイツHeraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンで都内随一の2000ショット。創業13年・累計3万人超。オーダーメイド複合施術で効果体感率99%。無料カウンセリング受付中。',
     'daikanyama'    => 'バストアップ専門パトラクシェ恵比寿・代官山店。代官山駅徒歩2分、恵比寿駅徒歩6分。平日12:00-20:00、土日祝11:00-19:00。初回体験9,500円。',
     'ginza'         => 'バストアップ専門パトラクシェ銀座店。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。平日13:00-21:00、土日祝11:00-19:00。初回体験9,500円。',
-    'service'       => 'パトラクシェの施術メニュー｜フラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなど複数施術を掛け合わせるオーダーメイド複合施術。バストアップ・フェイシャル・ボディケア。銀座・代官山。',
+    'service'       => 'パトラクシェの施術メニュー｜Heraeus社製ランプ×サファイアクリスタル搭載の専用マシンで2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなど複数施術を掛け合わせるオーダーメイド複合施術。銀座・代官山。',
     'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
-    'mariage'       => 'パトラクシェ マリアージュ｜銀座の結婚相談所。結婚式を最高の思い出にするブライダルエステプラン。バストアップ専門サロンならではの特別メニュー。',
+    'mariage'       => '銀座の結婚相談所パトラクシェ マリアージュ｜30代40代の婚活を美容×カウンセリングでトータルサポート。無料カウンセリング実施中。ブライダルエステ・自分磨きプログラムで成婚まで伴走。銀座一丁目駅徒歩1分。',
     'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
     'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',
     'privacy-policy' => 'プライバシーポリシー｜パトラクシェ。お客様の個人情報の取り扱いについて。',
@@ -2893,65 +2900,13 @@ function ptl_perf_add_version_to_assets($src, $handle)
 // なぜ今やるべきか: 今後追加する画像全てに自動適用、後から手動修正不要
 
 /**
- * WordPress標準のwp_get_attachment_imageにloading="lazy"を自動付与
+ * [無効化] SWELLが独自lazy loading（data-src + class="lazyload"）を持つため、
+ * ブラウザのloading="lazy"を二重追加するとSWELLのJS lazy loadと競合し
+ * 画像が正しく読み込まれなくなる。WordPress 6.x + SWELLで十分対応済み。
  */
-add_filter('wp_get_attachment_image_attributes', 'ptl_perf_add_lazy_loading', 10, 3);
-function ptl_perf_add_lazy_loading($attr, $attachment, $size)
-{
-  // data-no-lazy属性がある場合は除外
-  if (isset($attr['data-no-lazy'])) {
-    unset($attr['data-no-lazy']);
-    return $attr;
-  }
-
-  // 既にloading属性がある場合はスキップ
-  if (!isset($attr['loading'])) {
-    $attr['loading'] = 'lazy';
-  }
-
-  // デコード最適化
-  if (!isset($attr['decoding'])) {
-    $attr['decoding'] = 'async';
-  }
-
-  return $attr;
-}
-
-/**
- * コンテンツ内の画像にloading="lazy"を自動付与
- */
-add_filter('the_content', 'ptl_perf_add_lazy_to_content_images', 20);
-add_filter('widget_text', 'ptl_perf_add_lazy_to_content_images', 20);
-function ptl_perf_add_lazy_to_content_images($content)
-{
-  if (is_admin() || is_feed()) return $content;
-
-  // data-no-lazy属性がある画像は除外
-  $content = preg_replace_callback(
-    '/<img([^>]+?)(?:\/?)>/i',
-    function ($matches) {
-      $img_tag = $matches[0];
-      $attributes = $matches[1];
-
-      // data-no-lazy がある場合はスキップ
-      if (strpos($attributes, 'data-no-lazy') !== false) {
-        return str_replace('data-no-lazy', '', $img_tag);
-      }
-
-      // 既にloading属性がある場合はスキップ
-      if (strpos($attributes, 'loading=') !== false) {
-        return $img_tag;
-      }
-
-      // loading="lazy" と decoding="async" を追加
-      $new_attributes = $attributes . ' loading="lazy" decoding="async"';
-      return '<img' . $new_attributes . '>';
-    },
-    $content
-  );
-
-  return $content;
-}
+// add_filter('wp_get_attachment_image_attributes', 'ptl_perf_add_lazy_loading', 10, 3);
+// add_filter('the_content', 'ptl_perf_add_lazy_to_content_images', 20);
+// add_filter('widget_text', 'ptl_perf_add_lazy_to_content_images', 20);
 
 // ========================================
 // 3. 画像サイズの自動最適化
@@ -3009,74 +2964,21 @@ remove_filter('comment_text_rss', 'wp_staticize_emoji');
 remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 
 /**
- * wp-embed.min.jsの無効化
+ * [無効化] SWELLテーマとの互換性問題のため以下を無効化:
+ * - wp-embed: SWELLの埋め込み機能に影響の可能性
+ * - jQuery Migrate: SWELLのJS（動画読み込み等）が依存
+ * - Dashicons: ログインユーザー向け機能に影響
+ * - Block Library CSS: SWELLのフルワイドブロック等に必要
  */
-add_action('wp_footer', 'ptl_perf_dequeue_embed_script');
-function ptl_perf_dequeue_embed_script()
-{
-  wp_dequeue_script('wp-embed');
-}
+// add_action('wp_footer', 'ptl_perf_dequeue_embed_script');
+// add_action('wp_default_scripts', 'ptl_perf_remove_jquery_migrate');
+// add_action('wp_enqueue_scripts', 'ptl_perf_dequeue_dashicons', 999);
+// add_action('wp_enqueue_scripts', 'ptl_perf_dequeue_block_library', 100);
 
 /**
- * jQuery Migrateの無効化（互換性問題がなければ）
+ * [無効化] SWELLがREST APIを利用するため無効化
  */
-add_action('wp_default_scripts', 'ptl_perf_remove_jquery_migrate');
-function ptl_perf_remove_jquery_migrate($scripts)
-{
-  if (!is_admin() && isset($scripts->registered['jquery'])) {
-    $script = $scripts->registered['jquery'];
-
-    if ($script->deps) {
-      $script->deps = array_diff($script->deps, ['jquery-migrate']);
-    }
-  }
-}
-
-/**
- * フロントエンドでのDashicons無効化
- */
-add_action('wp_enqueue_scripts', 'ptl_perf_dequeue_dashicons', 999);
-function ptl_perf_dequeue_dashicons()
-{
-  if (!is_admin() && !is_user_logged_in()) {
-    wp_dequeue_style('dashicons');
-    wp_deregister_style('dashicons');
-  }
-}
-
-/**
- * Block Editor用CSS/JSの無効化（フロントエンド）
- */
-add_action('wp_enqueue_scripts', 'ptl_perf_dequeue_block_library', 100);
-function ptl_perf_dequeue_block_library()
-{
-  // ブロックエディタを使用しない場合のみ無効化
-  if (!has_blocks()) {
-    wp_dequeue_style('wp-block-library');
-    wp_dequeue_style('wp-block-library-theme');
-    wp_dequeue_style('wc-block-style'); // WooCommerce
-    wp_dequeue_style('global-styles');
-  }
-}
-
-/**
- * 不要なREST APIエンドポイントの無効化
- */
-add_filter('rest_endpoints', 'ptl_perf_disable_unused_rest_endpoints');
-function ptl_perf_disable_unused_rest_endpoints($endpoints)
-{
-  // oembed（埋め込み）を使わない場合
-  if (isset($endpoints['/oembed/1.0/embed'])) {
-    unset($endpoints['/oembed/1.0/embed']);
-  }
-
-  // ユーザー一覧を外部公開しない
-  if (isset($endpoints['/wp/v2/users'])) {
-    unset($endpoints['/wp/v2/users']);
-  }
-
-  return $endpoints;
-}
+// add_filter('rest_endpoints', 'ptl_perf_disable_unused_rest_endpoints');
 
 // ========================================
 // 5. 将来の最適化準備
@@ -3113,6 +3015,37 @@ function ptl_perf_preconnect()
   echo '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>' . "\n";
   echo '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>' . "\n";
   echo '<link rel="dns-prefetch" href="https://www.googletagmanager.com">' . "\n";
+}
+
+/**
+ * 子ページ背景画像のpreloadヒント（CSS background-imageの先行読み込み）
+ */
+add_action('wp_head', 'ptl_perf_preload_page_bg', 2);
+function ptl_perf_preload_page_bg()
+{
+  if (!is_page()) return;
+  $slug = get_post_field('post_name', get_queried_object_id());
+  $is_mobile = wp_is_mobile();
+
+  $bg_map = [
+    'information' => [
+      'pc' => 'https://patolaqshe.com/wp-content/uploads/2026/01/recruit-pc-bg.jpg',
+      'sp' => 'https://patolaqshe.com/wp-content/uploads/2026/01/voice-bg-sp.jpg',
+    ],
+    'about' => [
+      'pc' => 'https://patolaqshe.com/wp-content/uploads/2025/12/about-bg-pc.jpg',
+      'sp' => 'https://patolaqshe.com/wp-content/uploads/2025/12/about-bg-sp.jpg',
+    ],
+    'voice' => [
+      'pc' => 'https://patolaqshe.com/wp-content/uploads/2026/01/recruit-pc-bg.jpg',
+      'sp' => 'https://patolaqshe.com/wp-content/uploads/2026/01/voice-bg-sp.jpg',
+    ],
+  ];
+
+  if (isset($bg_map[$slug])) {
+    $url = $is_mobile ? $bg_map[$slug]['sp'] : $bg_map[$slug]['pc'];
+    echo '<link rel="preload" as="image" href="' . esc_url($url) . '">' . "\n";
+  }
 }
 
 /**
@@ -3721,18 +3654,20 @@ function pato_enqueue_unified_modal_assets()
   );
 
   // サロンモーダルCSS
+  $salon_pc_path = get_stylesheet_directory() . '/css/pc/salon-modal-pc.css';
   wp_enqueue_style(
     'pato-salon-modal-pc',
     get_stylesheet_directory_uri() . '/css/pc/salon-modal-pc.css',
     array(),
-    '1.0.0',
+    file_exists($salon_pc_path) ? filemtime($salon_pc_path) : '1.0.0',
     'screen and (min-width: 768px)'
   );
+  $salon_sp_path = get_stylesheet_directory() . '/css/sp/salon-modal-sp.css';
   wp_enqueue_style(
     'pato-salon-modal-sp',
     get_stylesheet_directory_uri() . '/css/sp/salon-modal-sp.css',
     array(),
-    '4.0.2',
+    file_exists($salon_sp_path) ? filemtime($salon_sp_path) : '1.0.0',
     'screen and (max-width: 767px)'
   );
 
@@ -4557,7 +4492,7 @@ function ptl_faq_modal_shortcode()
           <!-- Q11 -->
           <div class="faq-item">
             <div class="faq-question">Q: フラッシュバスト（光バストアップ）とは何ですか？なぜ2000ショットが重要なのですか？</div>
-            <div class="faq-answer">A: フラッシュバストは光エネルギーを照射して乳腺や脂肪細胞を深部から活性化する施術です。パトラクシェでは1回あたり都内最大級の2000ショットを照射します。ショット数が多いほど広範囲かつ高密度にアプローチでき、効果の実感度が高まります。他店では数百〜1000ショット程度が一般的であり、2000ショットはパトラクシェの大きな差別化ポイントです。</div>
+            <div class="faq-answer">A: フラッシュバストは光エネルギーを照射して乳腺や脂肪細胞を深部から活性化する施術です。パトラクシェでは都内随一の1回2000ショットを照射しますが、重要なのはショット数だけではありません。当サロンのバストアップ専用マシンには、ドイツ・Heraeus（ヘレウス）社製の高品質フラッシュランプとサファイアクリスタルを搭載。Heraeus社は1851年創業の光源技術の世界的リーダーです。脱毛機や複合美容機の転用ではなく、光のパルス幅をバストアップ施術専用に最適化した専用設計で、コストを度外視した高品質部品により2000ショットの最後の1発まで安定した光質を維持します。</div>
           </div>
 
           <!-- Q12 -->
@@ -4599,7 +4534,7 @@ function ptl_faq_modal_shortcode()
           <!-- Q18 -->
           <div class="faq-item">
             <div class="faq-question">Q: 他のバストアップサロンとの違いは何ですか？</div>
-            <div class="faq-answer">A: パトラクシェの最大の特徴は、複数の施術を一人一人の状態に合わせて掛け合わせる「オーダーメイド複合施術」です。多くのバストアップサロンでは単一の施術がメインですが、パトラクシェではフラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・背面/二の腕/デコルテマッサージなどを組み合わせます。また、背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップ専門サロンの中でも長いとお客様から評価いただいています。創業13年・累計3万人超の実績に基づく経験から、お客様に最適な施術の組み合わせをご提案します。</div>
+            <div class="faq-answer">A: パトラクシェが他店と一線を画す理由は大きく3つあります。<strong>第一に、マシンの品質</strong>です。当サロンのフラッシュバストマシンは、脱毛機や複合美容機の転用ではなく、バストアップのためだけに設計された専用マシンです。光源にはドイツ・Heraeus（ヘレウス）社製の高品質フラッシュランプとサファイアクリスタルを搭載し、光のパルス幅もバスト施術専用に最適化。コストを度外視した部品選定により、都内随一の2000ショットの最後の1発まで安定した光質を維持します。<strong>第二に、オーダーメイド複合施術</strong>です。フラッシュバスト・乳腺マッサージ・ナノカレント・背面/デコルテマッサージなどを一人一人の状態に合わせて組み合わせ、単一施術では得られない相乗効果を引き出します。<strong>第三に、施術の丁寧さ</strong>です。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップ専門サロンの中でも長いとお客様から評価いただいています。創業13年・累計3万人超の実績に基づく経験が、この品質を支えています。</div>
           </div>
         </div>
       </div>
@@ -4627,65 +4562,72 @@ add_shortcode('privacy_modal', 'ptl_privacy_modal_shortcode');
 // =====================================================
 add_shortcode('voice_list', 'display_voice_list');
 function display_voice_list() {
-    $args = array(
-        'post_type' => 'post',
-        'posts_per_page' => 10,
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'article_type',
-                'field' => 'name',
-                'terms' => 'お客様の声'
-            )
-        )
-    );
-    
-    $query = new WP_Query($args);
+    $stores = [
+        'daikanyama' => '恵比寿・代官山店',
+        'ginza'      => '銀座店',
+    ];
+
     $output = '<div class="voice-list-custom">';
-    
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            
-            $customer_name = get_post_meta(get_the_ID(), '_customer_name', true);
-            // _uservoice_title廃止: post_titleに統一
-            $rating = get_post_meta(get_the_ID(), '_rating', true);
-            $thumbnail = get_the_post_thumbnail(get_the_ID(), 'thumbnail');
-            
-            $output .= '<div class="voice-card-item">';
-            
-            // アイキャッチ画像
-            $output .= '<div class="voice-card-thumb">';
-            if ($thumbnail) {
-                $output .= $thumbnail;
+
+    foreach ($stores as $store_key => $store_label) {
+        $args = [
+            'post_type'      => 'post',
+            'posts_per_page' => 10,
+            'meta_query'     => [
+                [
+                    'key'     => '_store_locations',
+                    'value'   => $store_key,
+                    'compare' => 'LIKE',
+                ],
+            ],
+            'tax_query'      => [
+                [
+                    'taxonomy' => 'article_type',
+                    'field'    => 'name',
+                    'terms'    => 'お客様の声',
+                ],
+            ],
+        ];
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) {
+            $output .= '<h2 class="voice-store-heading">' . esc_html($store_label) . '</h2>';
+
+            while ($query->have_posts()) {
+                $query->the_post();
+
+                $customer_name = get_post_meta(get_the_ID(), '_customer_name', true);
+                $rating    = get_post_meta(get_the_ID(), '_rating', true);
+                $output .= '<div class="voice-card-item">';
+
+                // コンテンツ
+                $output .= '<div class="voice-card-content">';
+
+                if (get_the_title()) {
+                    $output .= '<h3 class="voice-card-title">' . esc_html(get_the_title()) . '</h3>';
+                }
+
+                if ($rating) {
+                    $stars = str_repeat('☆', intval($rating));
+                    $output .= '<div class="voice-card-rating">' . $stars . '</div>';
+                }
+
+                if ($customer_name) {
+                    $output .= '<div class="voice-card-name">' . esc_html($customer_name) . '</div>';
+                }
+
+                $output .= '<div class="voice-card-text">' . get_the_content() . '</div>';
+                $output .= '</div>';
+
+                $output .= '</div>';
             }
-            $output .= '</div>';
-            
-            // コンテンツ
-            $output .= '<div class="voice-card-content">';
-            
-            if (get_the_title()) {
-                $output .= '<h3 class="voice-card-title">' . esc_html(get_the_title()) . '</h3>';
-            }
-            
-            if ($rating) {
-                $stars = str_repeat('☆', intval($rating));
-                $output .= '<div class="voice-card-rating">' . $stars . '</div>';
-            }
-            
-            if ($customer_name) {
-                $output .= '<div class="voice-card-name">' . esc_html($customer_name) . '</div>';
-            }
-            
-            $output .= '<div class="voice-card-text">' . get_the_content() . '</div>';
-            $output .= '</div>';
-            
-            $output .= '</div>';
         }
+        wp_reset_postdata();
     }
-    
+
     $output .= '</div>';
-    wp_reset_postdata();
-    
+
     return $output;
 }
 
@@ -5049,9 +4991,9 @@ add_action('wp_head', function () {
                     'https://www.google.com/maps?cid=3885199838792015163',
                     'https://www.instagram.com/patolaqshe_daikanyama/',
                     'https://www.threads.com/@patolaqshe_daikanyama',
-                    'https://www.facebook.com/166513353554642',
-                    'https://twitter.com/Patolaqshe',
-                    'https://www.youtube.com/channel/UCH796fTXjWNg6BtUSOeSP8A',
+                    'https://www.facebook.com/profile.php?id=61560845258498',
+                    'https://x.com/patolaqshe',
+                    'https://www.youtube.com/@patolaqshe',
                     'https://www.tiktok.com/@patolaqshe',
                 ],
                 'potentialAction' => [
@@ -5101,7 +5043,7 @@ add_action('wp_head', function () {
                                     'itemOffered' => [
                                         '@type'       => 'Service',
                                         'name'        => 'フラッシュバスト（光バストアップ）',
-                                        'description' => '都内最大級の1回2000ショット照射。光エネルギーで乳腺・脂肪細胞を深部から活性化。乳腺マッサージやナノカレントとのオーダーメイド複合施術により、単体施術を大きく上回る相乗効果を発揮。',
+                                        'description' => 'ドイツ・Heraeus（ヘレウス）社製フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンによる都内随一の1回2000ショット照射。脱毛機や複合美容機の転用ではなく、光のパルス幅をバスト施術専用に最適化した専用設計。高品質部品により最後の1発まで光質が安定し、乳腺・脂肪細胞を深部から活性化。乳腺マッサージやナノカレントとのオーダーメイド複合施術で相乗効果を発揮。',
                                     ],
                                 ],
                                 [
@@ -5232,6 +5174,7 @@ add_action('wp_head', function () {
                     '光バストアップ', 'フラッシュバスト', '乳腺マッサージ',
                     'ナノカレント', 'コラーゲンマシン', 'クーパー靭帯',
                     'オーダーメイド複合施術', '光豊胸',
+                    'Heraeusフラッシュランプ', 'サファイアクリスタル', 'バストアップ専用マシン',
                 ],
             ],
             // 2. 銀座店
@@ -5239,7 +5182,7 @@ add_action('wp_head', function () {
                 '@type'       => 'BeautySalon',
                 '@id'         => 'https://patolaqshe.com/#ginza',
                 'name'        => 'バストアップ専門パトラクシェ銀座店',
-                'description' => '銀座エリアのバストアップ専門パトラクシェ銀座店。都内最大級フラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・背面マッサージ・骨盤底筋ケアなど複数の施術を一人一人の状態に合わせて組み合わせるオーダーメイド複合施術が最大の特徴。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップサロンの中でも長いと好評。創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、JR有楽町駅徒歩5分。初回体験9,500円。',
+                'description' => '銀座エリアのバストアップ専門パトラクシェ銀座店。ドイツ・Heraeus（ヘレウス）社製フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンによる都内随一の2000ショット照射と、乳腺マッサージ・ナノカレント・背面マッサージ・骨盤底筋ケアなど複数の施術を一人一人の状態に合わせて組み合わせるオーダーメイド複合施術が最大の特徴。脱毛機や複合美容機の転用ではなく、バストアップ施術に最適化された専用設計マシンを採用。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップサロンの中でも長いと好評。創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、JR有楽町駅徒歩5分。初回体験9,500円。',
                 'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
                 'url'         => 'https://patolaqshe.com/ginza/',
                 'telephone'   => '03-6264-4343',
@@ -5282,9 +5225,9 @@ add_action('wp_head', function () {
                     'https://www.google.com/maps?cid=12930228174206556429',
                     'https://www.instagram.com/patolaqshe_ginza/',
                     'https://www.threads.com/@patolaqshe_ginza',
-                    'https://www.facebook.com/400906620113685',
-                    'https://twitter.com/Patolaqshe',
-                    'https://www.youtube.com/channel/UCH796fTXjWNg6BtUSOeSP8A',
+                    'https://www.facebook.com/profile.php?id=61560845258498',
+                    'https://x.com/patolaqshe',
+                    'https://www.youtube.com/@patolaqshe',
                     'https://www.tiktok.com/@patolaqshe',
                 ],
                 'potentialAction' => [
@@ -5334,7 +5277,7 @@ add_action('wp_head', function () {
                                     'itemOffered' => [
                                         '@type'       => 'Service',
                                         'name'        => 'フラッシュバスト（光バストアップ）',
-                                        'description' => '都内最大級の1回2000ショット照射。光エネルギーで乳腺・脂肪細胞を深部から活性化。乳腺マッサージやナノカレントとのオーダーメイド複合施術により、単体施術を大きく上回る相乗効果を発揮。',
+                                        'description' => 'ドイツ・Heraeus（ヘレウス）社製フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンによる都内随一の1回2000ショット照射。脱毛機や複合美容機の転用ではなく、光のパルス幅をバスト施術専用に最適化した専用設計。高品質部品により最後の1発まで光質が安定し、乳腺・脂肪細胞を深部から活性化。乳腺マッサージやナノカレントとのオーダーメイド複合施術で相乗効果を発揮。',
                                     ],
                                 ],
                                 [
@@ -5458,6 +5401,7 @@ add_action('wp_head', function () {
                     '光バストアップ', 'フラッシュバスト', '乳腺マッサージ',
                     'ナノカレント', '骨盤底筋ケア', 'クーパー靭帯',
                     'オーダーメイド複合施術', '光豊胸',
+                    'Heraeusフラッシュランプ', 'サファイアクリスタル', 'バストアップ専用マシン',
                 ],
             ],
             // 3. Organization
@@ -5470,7 +5414,7 @@ add_action('wp_head', function () {
                 'url'   => 'https://patolaqshe.com/',
                 'foundingDate'  => '2013',
                 'slogan'        => 'あなたの美しさを最大限に引き出す',
-                'description'   => '東京・恵比寿/代官山・銀座のバストアップ専門パトラクシェ。創業13年、累計3万人超の施術実績。フラッシュバスト・乳腺マッサージ・ナノカレントなど複数施術を一人一人に合わせて掛け合わせるオーダーメイド複合施術で効果体感率99%。',
+                'description'   => '東京・恵比寿/代官山・銀座のバストアップ専門パトラクシェ。ドイツ・Heraeus社製フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンによる都内随一の2000ショットと、熟練のオールハンド技術を掛け合わせるオーダーメイド複合施術。創業13年、累計3万人超の施術実績。効果体感率99%。',
                 'logo'  => [
                     '@type'      => 'ImageObject',
                     'url'        => $logo_url,
@@ -5482,7 +5426,13 @@ add_action('wp_head', function () {
                 ],
                 'knowsAbout' => [
                     'バストアップ', 'バストケア', '育乳', 'バストアップエステ',
-                    'バストアップサロン', '補正下着', 'バストケア化粧品',
+                    'バストアップサロン', '光豊胸', '光バストアップ', 'IPL光照射',
+                    'Heraeusフラッシュランプ', 'サファイアクリスタル', 'バストアップ専用マシン',
+                    'オーダーメイド複合施術', 'フラッシュバスト', '乳腺マッサージ',
+                    'クーパー靭帯ケア', 'ナノカレント', 'コラーゲンマシン', '骨盤底筋ケア',
+                    'デコルテケア', 'バストの下垂改善', 'バストの左右差改善',
+                    'ブライダルバストケア', '産後バストケア', '姿勢改善',
+                    '補正下着', 'バストケア化粧品',
                 ],
                 'contactPoint' => [
                     '@type'             => 'ContactPoint',
@@ -5504,10 +5454,9 @@ add_action('wp_head', function () {
                     'https://www.instagram.com/patolaqshe_ginza/',
                     'https://www.threads.com/@patolaqshe_daikanyama',
                     'https://www.threads.com/@patolaqshe_ginza',
-                    'https://www.facebook.com/166513353554642',
-                    'https://www.facebook.com/400906620113685',
-                    'https://twitter.com/Patolaqshe',
-                    'https://www.youtube.com/channel/UCH796fTXjWNg6BtUSOeSP8A',
+                    'https://www.facebook.com/profile.php?id=61560845258498',
+                    'https://x.com/patolaqshe',
+                    'https://www.youtube.com/@patolaqshe',
                     'https://www.tiktok.com/@patolaqshe',
                 ],
                 'subOrganization' => [
@@ -5638,7 +5587,7 @@ add_action('wp_head', function () {
                         'name'           => 'フラッシュバスト（光バストアップ）とは何ですか？なぜ2000ショットが重要なのですか？',
                         'acceptedAnswer' => [
                             '@type' => 'Answer',
-                            'text'  => 'フラッシュバストは光エネルギーを照射して乳腺や脂肪細胞を深部から活性化する施術です。パトラクシェでは1回あたり都内最大級の2000ショットを照射します。ショット数が多いほど広範囲かつ高密度にアプローチでき、効果の実感度が高まります。他店では数百〜1000ショット程度が一般的であり、2000ショットはパトラクシェの大きな差別化ポイントです。',
+                            'text'  => 'フラッシュバストは光エネルギーを照射して乳腺や脂肪細胞を深部から活性化する施術です。パトラクシェでは都内随一の1回2000ショットを照射しますが、重要なのはショット数だけではありません。当サロンのバストアップ専用マシンには、ドイツ・Heraeus（ヘレウス）社製の高品質フラッシュランプとサファイアクリスタルを搭載しています。Heraeus社は1851年創業の光源技術の世界的リーダーであり、サファイアクリスタルは光の透過率が極めて高く、バストに最適な波長の光を効率的に届けます。さらに、脱毛機や複合美容機の転用ではなく、光のパルス幅をバストアップ施術専用に最適化した専用設計です。コストを度外視した高品質部品の採用により、2000ショットの最後の1発まで安定した光質を維持できることが、10年以上にわたりお客様から効果の評価をいただき続けている理由です。',
                         ],
                     ],
                     [
@@ -5694,7 +5643,7 @@ add_action('wp_head', function () {
                         'name'           => '他のバストアップサロンとパトラクシェの違いは何ですか？',
                         'acceptedAnswer' => [
                             '@type' => 'Answer',
-                            'text'  => 'パトラクシェの最大の特徴は、複数の施術を一人一人の状態に合わせて掛け合わせる「オーダーメイド複合施術」です。多くのバストアップサロンでは単一の施術がメインですが、パトラクシェではフラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・背面/二の腕/デコルテマッサージなどを組み合わせます。また、背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップ専門サロンの中でも長いとお客様から評価いただいています。創業13年・累計3万人超の実績に基づく経験から、お客様に最適な施術の組み合わせをご提案します。',
+                            'text'  => 'パトラクシェが他店と一線を画す理由は大きく3つあります。第一に、マシンの品質です。当サロンのフラッシュバストマシンは、脱毛機や複合美容機の転用ではなく、バストアップのためだけに設計された専用マシンです。光源にはドイツ・Heraeus（ヘレウス）社製の高品質フラッシュランプとサファイアクリスタルを搭載し、光のパルス幅もバスト施術専用に最適化。コストを度外視した部品選定により、都内随一の2000ショットの最後の1発まで安定した光質を維持します。第二に、オーダーメイド複合施術です。フラッシュバスト・乳腺マッサージ・ナノカレント・背面/デコルテマッサージなどを一人一人の状態に合わせて組み合わせ、単一施術では得られない相乗効果を引き出します。第三に、施術の丁寧さです。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップ専門サロンの中でも長いとお客様から評価いただいています。創業13年・累計3万人超の実績に基づく経験が、この品質を支えています。',
                         ],
                     ],
                     // --- 求人関連FAQ（求職者向け） ---
@@ -6165,7 +6114,7 @@ add_action('wp_head', function () {
             '@type'       => 'BeautySalon',
             '@id'         => 'https://patolaqshe.com/#daikanyama',
             'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-            'description' => '恵比寿・代官山のバストアップ専門パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。効果体感率99%。',
+            'description' => '恵比寿・代官山のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
             'url'         => 'https://patolaqshe.com/ebisu-daikanyama/',
             'telephone'   => '03-5489-7118',
@@ -6208,6 +6157,10 @@ add_action('wp_head', function () {
                 'https://www.google.com/maps?cid=3885199838792015163',
                 'https://www.instagram.com/patolaqshe_daikanyama/',
                 'https://www.threads.com/@patolaqshe_daikanyama',
+                'https://www.facebook.com/profile.php?id=61560845258498',
+                'https://x.com/patolaqshe',
+                'https://www.youtube.com/@patolaqshe',
+                'https://www.tiktok.com/@patolaqshe',
             ],
             'aggregateRating' => [
                 '@type'       => 'AggregateRating',
@@ -6227,6 +6180,12 @@ add_action('wp_head', function () {
             'knowsAbout' => [
                 'バストアップ', 'バストケア', '育乳', 'バストアップエステ',
                 '恵比寿バストアップ', '代官山バストアップ', 'バストアップサロン',
+                '光豊胸', '光バストアップ', 'IPL光照射',
+                'Heraeusフラッシュランプ', 'サファイアクリスタル', 'バストアップ専用マシン',
+                'オーダーメイド複合施術', '乳腺マッサージ', 'フラッシュバスト',
+                'クーパー靭帯ケア', 'ナノカレント', 'コラーゲンマシン', '骨盤底筋ケア',
+                'デコルテケア', 'バストの下垂改善', 'バストの左右差改善',
+                'ブライダルバストケア', '産後バストケア',
             ],
             'potentialAction' => [
                 [
@@ -6271,7 +6230,7 @@ add_action('wp_head', function () {
                         'itemOffered' => [
                             '@type'       => 'Service',
                             'name'        => 'バストアップ施術',
-                            'description' => 'マシンとオールハンドのハイブリッド施術。都内随一の2000ショット照射で深部までアプローチ。',
+                            'description' => 'Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。都内随一の2000ショット照射で深部までアプローチ。',
                         ],
                     ],
                     [
@@ -6299,7 +6258,7 @@ add_action('wp_head', function () {
             '@type'       => 'BeautySalon',
             '@id'         => 'https://patolaqshe.com/#ginza',
             'name'        => 'バストアップ専門パトラクシェ銀座店',
-            'description' => '銀座のバストアップ専門パトラクシェ。マシンとオールハンドのハイブリッド施術で、創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。効果体感率99%。',
+            'description' => '銀座のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
             'url'         => 'https://patolaqshe.com/ginza/',
             'telephone'   => '03-6264-4343',
@@ -6342,6 +6301,10 @@ add_action('wp_head', function () {
                 'https://www.google.com/maps?cid=12930228174206556429',
                 'https://www.instagram.com/patolaqshe_ginza/',
                 'https://www.threads.com/@patolaqshe_ginza',
+                'https://www.facebook.com/profile.php?id=61560845258498',
+                'https://x.com/patolaqshe',
+                'https://www.youtube.com/@patolaqshe',
+                'https://www.tiktok.com/@patolaqshe',
             ],
             'aggregateRating' => [
                 '@type'       => 'AggregateRating',
@@ -6362,6 +6325,12 @@ add_action('wp_head', function () {
             'knowsAbout' => [
                 'バストアップ', 'バストケア', '育乳', 'バストアップエステ',
                 '銀座バストアップ', '銀座バストケア', 'バストアップサロン',
+                '光豊胸', '光バストアップ', 'IPL光照射',
+                'Heraeusフラッシュランプ', 'サファイアクリスタル', 'バストアップ専用マシン',
+                'オーダーメイド複合施術', '乳腺マッサージ', 'フラッシュバスト',
+                'クーパー靭帯ケア', 'ナノカレント', 'コラーゲンマシン', '骨盤底筋ケア',
+                'デコルテケア', 'バストの下垂改善', 'バストの左右差改善',
+                'ブライダルバストケア', '産後バストケア',
             ],
             'potentialAction' => [
                 [
@@ -6406,7 +6375,7 @@ add_action('wp_head', function () {
                         'itemOffered' => [
                             '@type'       => 'Service',
                             'name'        => 'バストアップ施術',
-                            'description' => 'マシンとオールハンドのハイブリッド施術。都内随一の2000ショット照射で深部までアプローチ。',
+                            'description' => 'Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。都内随一の2000ショット照射で深部までアプローチ。',
                         ],
                     ],
                     [
@@ -6568,7 +6537,7 @@ add_action('wp_head', function () {
         $graph[] = [
             '@type'       => 'Service',
             'name'        => 'バストアップ施術',
-            'description' => 'マシンとオールハンドのハイブリッド施術。都内随一の2000ショット照射で深部までアプローチ。',
+            'description' => 'Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。都内随一の2000ショット照射で深部までアプローチ。',
             'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
             'serviceType' => 'バストアップエステ',
             'areaServed'  => [
@@ -6656,18 +6625,23 @@ add_action('wp_head', function () {
         ];
     }
 
-    // ----- 結婚相談所ページ -----
+    // ----- 結婚相談所ページ（最大充実版） -----
     if ($slug === 'mariage') {
         $graph[] = [
-            '@type'       => 'LocalBusiness',
-            'additionalType' => 'https://schema.org/ProfessionalService',
+            '@type'       => ['LocalBusiness', 'ProfessionalService'],
             '@id'         => 'https://patolaqshe.com/#mariage',
-            'name'        => 'パトラクシェ マリアージュ（結婚相談所）',
-            'description' => '銀座の結婚相談所。エステサロン発の結婚相談所として、外見・内面の両面からトータルサポート。結婚式を最高の思い出にするための特別なブライダルエステプランもご用意。',
-            'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/mariage.jpg',
+            'name'        => '結婚相談所パトラクシェ マリアージュ',
+            'alternateName' => ['パトラクシェマリアージュ', 'Patolaqshe Mariage', '銀座 結婚相談所 パトラクシェ'],
+            'description' => '銀座駅徒歩1分の結婚相談所。エステサロン13年の実績を持つパトラクシェが運営する、美容×婚活の新しい結婚相談所です。専任カウンセラーによる1対1のお相手紹介・お見合いセッティングに加え、ブライダルエステ・自分磨きプログラムで外見と内面の両面からトータルサポート。成婚までの伴走型サービスで、30代・40代の婚活を全力で応援します。無料カウンセリング実施中。',
+            'image'       => [
+                'https://patolaqshe.com/wp-content/themes/swell_child/img/mariage.jpg',
+            ],
+            'logo'        => 'https://patolaqshe.com/wp-content/themes/swell_child/img/intrologo.png',
             'url'         => 'https://patolaqshe.com/mariage/',
             'telephone'   => '03-6264-4343',
-            'priceRange'  => '¥¥',
+            'priceRange'  => '¥¥〜¥¥¥',
+            'currenciesAccepted' => 'JPY',
+            'paymentAccepted'    => '現金, クレジットカード, 銀行振込',
             'address'     => [
                 '@type'           => 'PostalAddress',
                 'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
@@ -6681,6 +6655,7 @@ add_action('wp_head', function () {
                 'latitude'  => 35.674583,
                 'longitude' => 139.765120,
             ],
+            'hasMap' => 'https://www.google.com/maps?cid=12930228174206556429',
             'openingHoursSpecification' => [
                 [
                     '@type'     => 'OpeningHoursSpecification',
@@ -6696,20 +6671,65 @@ add_action('wp_head', function () {
                 ],
             ],
             'areaServed' => [
+                ['@type' => 'City', 'name' => '銀座'],
                 ['@type' => 'City', 'name' => '中央区'],
+                ['@type' => 'City', 'name' => '千代田区'],
+                ['@type' => 'City', 'name' => '港区'],
                 ['@type' => 'City', 'name' => '渋谷区'],
+                ['@type' => 'City', 'name' => '新宿区'],
+                ['@type' => 'City', 'name' => '品川区'],
+                ['@type' => 'City', 'name' => '有楽町'],
+                ['@type' => 'City', 'name' => '東京駅周辺'],
                 ['@type' => 'State', 'name' => '東京都'],
+                ['@type' => 'State', 'name' => '神奈川県'],
+                ['@type' => 'State', 'name' => '埼玉県'],
+            ],
+            'knowsAbout' => [
+                '結婚相談所', '婚活', 'お見合い', '成婚', '婚活カウンセリング',
+                '30代婚活', '40代婚活', '銀座婚活', '東京婚活',
+                'ブライダルエステ', '結婚準備', 'お相手紹介',
+                '婚活プロフィール写真', '自分磨き', '婚活セミナー',
+                '再婚活', 'シングルマザー婚活', '仲人型結婚相談所',
+            ],
+            'sameAs' => [
+                'https://www.google.com/maps?cid=12930228174206556429',
+                'https://www.instagram.com/patolaqshe_ginza/',
+                'https://www.youtube.com/@patolaqshe',
             ],
             'parentOrganization' => ['@id' => 'https://patolaqshe.com/#organization'],
+            'founder' => [
+                '@type' => 'Person',
+                'name'  => '北野美帆',
+                'jobTitle' => '代表カウンセラー',
+            ],
+            'potentialAction' => [
+                [
+                    '@type'  => 'ReserveAction',
+                    'name'   => '無料カウンセリング予約',
+                    'target' => [
+                        '@type'       => 'EntryPoint',
+                        'urlTemplate' => 'https://tayori.com/form/6d4a08aa86803c6ad6212ff3118789ea2f0b1e61/',
+                        'actionPlatform' => [
+                            'https://schema.org/DesktopWebPlatform',
+                            'https://schema.org/MobileWebPlatform',
+                        ],
+                    ],
+                    'result' => [
+                        '@type' => 'Reservation',
+                        'name'  => '無料カウンセリング',
+                    ],
+                ],
+            ],
             'hasOfferCatalog' => [
                 '@type' => 'OfferCatalog',
-                'name'  => 'ブライダルサービス',
+                'name'  => '結婚相談所・ブライダルサービス',
                 'itemListElement' => [
                     [
                         '@type' => 'Offer',
                         'itemOffered' => [
                             '@type'       => 'Service',
-                            'name'        => '結婚相談所サービス',
+                            'name'        => '結婚相談所サービス（仲人型）',
+                            'description' => '専任カウンセラーによる1対1のお相手紹介・お見合いセッティング・交際サポート・成婚までの伴走型サービス。プロフィール作成支援、デートプランのアドバイス、お断り代行まで手厚くサポート。',
                             'serviceType' => '結婚相談',
                         ],
                     ],
@@ -6718,17 +6738,123 @@ add_action('wp_head', function () {
                         'itemOffered' => [
                             '@type'       => 'Service',
                             'name'        => 'ブライダルエステ',
+                            'description' => '結婚式を最高の思い出にするための特別エステプラン。バストアップ・フェイシャル・ボディケアを組み合わせ、ドレス姿を最も美しく引き立てる花嫁専用の施術コース。',
                             'serviceType' => 'ブライダルエステ',
+                        ],
+                    ],
+                    [
+                        '@type' => 'Offer',
+                        'itemOffered' => [
+                            '@type'       => 'Service',
+                            'name'        => '自分磨きプログラム',
+                            'description' => '婚活成功のための外見・内面トータル自分磨き。美容施術（バストケア・フェイシャル・ボディケア）とカウンセリングを組み合わせ、自信を持ってお見合いに臨める状態を作ります。',
+                            'serviceType' => '婚活サポート',
+                        ],
+                    ],
+                    [
+                        '@type' => 'Offer',
+                        'itemOffered' => [
+                            '@type'       => 'Service',
+                            'name'        => '無料カウンセリング',
+                            'description' => '婚活のお悩みをお聞きし、最適な婚活プランをご提案。結婚相談所の仕組みや料金体系も丁寧にご説明します。銀座サロンでリラックスしながらご相談いただけます。',
+                            'serviceType' => '婚活カウンセリング',
+                            'offers' => [
+                                '@type' => 'Offer',
+                                'price' => '0',
+                                'priceCurrency' => 'JPY',
+                                'name'  => '無料',
+                            ],
+                        ],
+                    ],
+                    [
+                        '@type' => 'Offer',
+                        'itemOffered' => [
+                            '@type'       => 'Service',
+                            'name'        => 'プロフィール写真撮影サポート',
+                            'description' => '婚活プロフィール写真の第一印象を最大限に高める美容施術とスタイリングアドバイス。撮影前のフェイシャルケアで肌の状態を整え、最高の一枚を撮影するサポートを行います。',
+                            'serviceType' => '婚活写真サポート',
                         ],
                     ],
                 ],
             ],
         ];
+
+        // FAQPage — 結婚相談所FAQ（AI検索・リッチリザルト対応）
+        $graph[] = [
+            '@type'      => 'FAQPage',
+            'mainEntity' => [
+                [
+                    '@type'          => 'Question',
+                    'name'           => 'パトラクシェ マリアージュはどんな結婚相談所ですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'エステサロン13年の実績を持つパトラクシェが運営する、美容×婚活をコンセプトにした結婚相談所です。銀座一丁目駅から徒歩1分のサロンで、専任カウンセラーによるお相手紹介・お見合いセッティングに加え、ブライダルエステや自分磨きプログラムで婚活を外見と内面の両面からサポートします。',
+                    ],
+                ],
+                [
+                    '@type'          => 'Question',
+                    'name'           => '結婚相談所の無料カウンセリングでは何を相談できますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => '婚活の現状やお悩み、理想のお相手像、結婚相談所の仕組み・料金体系など、何でもご相談いただけます。銀座の落ち着いたサロン空間でリラックスしながら、専任カウンセラーがあなたに最適な婚活プランをご提案します。無理な勧誘は一切ございません。',
+                    ],
+                ],
+                [
+                    '@type'          => 'Question',
+                    'name'           => '30代後半・40代からの婚活でも大丈夫ですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'もちろんです。30代後半〜40代の方こそ結婚相談所のメリットが大きく、当所でも多くの方が活動されています。年齢を重ねた大人の魅力を最大限に引き出す美容サポートと、経験豊富なカウンセラーの伴走で、焦らず着実に成婚を目指せます。',
+                    ],
+                ],
+                [
+                    '@type'          => 'Question',
+                    'name'           => 'エステサロンの結婚相談所ならではの特徴は何ですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => '美容のプロフェッショナルがバックアップする点が最大の特徴です。お見合い前のフェイシャルケアやバストアップ施術で第一印象を高め、プロフィール写真撮影前の美容サポートも実施。結婚式に向けたブライダルエステまで一貫して対応できるのは、エステサロン発の結婚相談所ならではです。',
+                    ],
+                ],
+                [
+                    '@type'          => 'Question',
+                    'name'           => 'ブライダルエステはどのような内容ですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'ウェディングドレスを最も美しく着こなすための花嫁専用エステプランです。バストアップ施術でデコルテラインを整え、フェイシャルケアで肌を透明感のある状態に、ボディケアで全身を引き締めます。挙式の3〜6ヶ月前からの計画的なケアをおすすめしています。',
+                    ],
+                ],
+                [
+                    '@type'          => 'Question',
+                    'name'           => '銀座のサロンへのアクセス方法を教えてください',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => '東京メトロ有楽町線「銀座一丁目駅」6番出口から徒歩1分、JR「有楽町駅」中央口から徒歩5分です。銀座1-6-6 GINZA ARROWS 6Fにございます。お仕事帰りにも立ち寄りやすい立地です。',
+                    ],
+                ],
+                [
+                    '@type'          => 'Question',
+                    'name'           => '婚活中に自分磨きをするメリットは何ですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => '外見に自信が持てると、お見合いやデートでの印象が格段に変わります。当所では美容施術で外見を整えるだけでなく、自信を取り戻すことで会話も自然に弾み、交際成立率・成婚率の向上につながっています。美容投資は婚活における最もコスパの良い自己投資です。',
+                    ],
+                ],
+                [
+                    '@type'          => 'Question',
+                    'name'           => '再婚やシングルマザーの婚活にも対応していますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'はい、再婚活やシングルマザーの方の婚活も全力でサポートいたします。お一人おひとりの状況に合わせた丁寧なカウンセリングと、理解のあるお相手のご紹介を心がけています。まずは無料カウンセリングでお気軽にご相談ください。',
+                    ],
+                ],
+            ],
+        ];
+
         // VideoObject — マリアージュページ埋め込みYouTube
         $graph[] = [
             '@type'        => 'VideoObject',
             'name'         => '【結婚相談所】パトラクシェマリアージュのご紹介',
-            'description'  => '銀座の結婚相談所パトラクシェ マリアージュ。エステサロン発の結婚相談所として外見・内面の両面からトータルサポート。',
+            'description'  => '銀座の結婚相談所パトラクシェ マリアージュ。エステサロン発の結婚相談所として、外見・内面の両面からトータルサポート。美容×婚活の新しいカタチをご紹介します。',
             'thumbnailUrl' => 'https://i.ytimg.com/vi/SjJVlQskK4c/hqdefault.jpg',
             'uploadDate'   => '2024-01-01T00:00:00+09:00',
             'contentUrl'   => 'https://www.youtube.com/watch?v=SjJVlQskK4c',
@@ -6894,7 +7020,7 @@ add_action('wp_head', function () {
 
     if (is_front_page() || is_home()) {
         $og_title = '恵比寿・代官山・銀座のバストアップ専門サロン｜パトラクシェ';
-        $og_description = 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。創業13年、累計3万人超の実績。フラッシュバスト2000ショット・乳腺マッサージ・ナノカレントなど複数施術を掛け合わせるオーダーメイド複合施術。効果体感率99%。無料カウンセリング受付中。';
+        $og_description = 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。ドイツHeraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンで都内随一の2000ショット。創業13年・累計3万人超。オーダーメイド複合施術で効果体感率99%。無料カウンセリング受付中。';
         $og_url = home_url('/');
     } elseif (is_page()) {
         $slug = get_post_field('post_name', get_post());
@@ -6903,9 +7029,9 @@ add_action('wp_head', function () {
         $page_descriptions = [
             'daikanyama'    => 'バストアップ専門パトラクシェ恵比寿・代官山店。代官山駅徒歩2分、恵比寿駅徒歩6分。平日12:00-20:00、土日祝11:00-19:00。初回体験9,500円。',
             'ginza'         => 'バストアップ専門パトラクシェ銀座店。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。平日13:00-21:00、土日祝11:00-19:00。初回体験9,500円。',
-            'service'       => 'パトラクシェの施術メニュー｜フラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなど複数施術を掛け合わせるオーダーメイド複合施術。バストアップ・フェイシャル・ボディケア。銀座・代官山。',
+            'service'       => 'パトラクシェの施術メニュー｜Heraeus社製ランプ×サファイアクリスタル搭載の専用マシンで2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなど複数施術を掛け合わせるオーダーメイド複合施術。銀座・代官山。',
             'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
-            'mariage'       => 'パトラクシェ マリアージュ｜銀座の結婚相談所。結婚式を最高の思い出にするブライダルエステプラン。バストアップ専門サロンならではの特別メニュー。',
+            'mariage'       => '銀座の結婚相談所パトラクシェ マリアージュ｜30代40代の婚活を美容×カウンセリングでトータルサポート。無料カウンセリング実施中。ブライダルエステ・自分磨きプログラムで成婚まで伴走。銀座一丁目駅徒歩1分。',
             'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
             'about'         => 'パトラクシェについて｜バストアップ専門パトラクシェ。創業13年、累計3万人超の施術実績。恵比寿・代官山、銀座の2店舗。',
             'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',

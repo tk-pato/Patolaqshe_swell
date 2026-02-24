@@ -228,6 +228,21 @@ body {
   margin: 0 auto;
 }
 
+.voice-store-heading {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 40px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.08em;
+}
+
+.voice-store-heading:first-child {
+  margin-top: 0;
+}
+
 .voice-card-item {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);

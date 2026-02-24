@@ -5,9 +5,9 @@
    =========================== */
 
 @media (max-width: 959px) {
-  /* Scrollボタンを画面下から70%の位置、左右中央に配置 */
+  /* Scrollボタンをロゴの下、上から約80%の位置に配置 */
   .p-mainVisual__scroll {
-    bottom: 30vh !important;
+    bottom: 12vh !important;
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
