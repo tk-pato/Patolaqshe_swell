@@ -48,7 +48,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
         <h2 class="ptl-section__title">パトラクシェの魅力</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">選ばれる理由</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" width="494" height="39" style="width:240px;max-width:100%;height:auto;" loading="lazy" decoding="async" />
         </div>
         <div class="ptlCommitHero__grid">
             <?php
@@ -93,7 +93,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
 
                 // 画像パスがある場合はimg要素を生成
                 if (!empty($image_src)) {
-                    $icon_html = '<img src="' . esc_url($image_src) . '" alt="' . esc_attr($label) . '" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;border-radius:8px;" loading="lazy" decoding="async">';
+                    $icon_html = '<img src="' . esc_url($image_src) . '" alt="' . esc_attr($label) . '" width="1200" height="900" style="width:100%;display:block;aspect-ratio:4/3;object-fit:cover;border-radius:8px;" loading="lazy" decoding="async">';
                 }
             ?>
                 <div class="ptlCommitHero__btn">

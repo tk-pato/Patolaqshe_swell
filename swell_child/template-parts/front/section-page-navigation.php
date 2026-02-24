@@ -53,7 +53,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     <?php if (! empty($bg_sp)): ?>
                         <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
                     <?php endif; ?>
-                    <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" decoding="async">
+                    <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" width="1920" height="1080" loading="lazy" decoding="async">
                 </picture>
             <?php endif; ?>
             <div class="ptlNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
@@ -81,11 +81,11 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 if (!$icon_html && $slug) {
                     $png_wh = $icon_dir_abs . $slug . '_wh.png';
                     if (file_exists($png_wh)) {
-                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '_wh.png') . '" alt="" loading="lazy" decoding="async">';
+                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '_wh.png') . '" alt="" width="256" height="256" loading="lazy" decoding="async">';
                     } else {
                         $png = $icon_dir_abs . $slug . '.png';
                         if (file_exists($png)) {
-                            $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" loading="lazy" decoding="async">';
+                            $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" width="256" height="256" loading="lazy" decoding="async">';
                         }
                     }
                 }

@@ -75,7 +75,8 @@ $overlay_style = sprintf('background: rgba(%s, %.2f);', $overlay_rgb, $overlay_o
                 <div class="ptlIntro__brand">
                     <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/intrologo.png'); ?>"
                         alt="<?php echo esc_attr($brand_text); ?>"
-                        class="ptlIntro__brand-logo" />
+                        class="ptlIntro__brand-logo"
+                        width="600" height="161" loading="lazy" decoding="async" />
                     <div class="ptlIntro__brand-ornament"></div>
                 </div>
             <?php endif; ?> <?php if (!empty($subtitle)) : ?>

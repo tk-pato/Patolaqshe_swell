@@ -34,7 +34,7 @@ $news_q = $force_fallback ? null : new WP_Query($query_args);
         <h2 class="ptl-section__title">ニュース</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">最新情報</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" width="494" height="39" style="width:240px;max-width:100%;height:auto;" loading="lazy" decoding="async" />
         </div>
 
         <ul class="ptlNews__list is-titleOnly">

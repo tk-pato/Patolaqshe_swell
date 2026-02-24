@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) exit;
         <h2 class="ptl-section__title">お客様の声</h2>
         <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">体験レビュー</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" width="494" height="39" style="width:240px;max-width:100%;height:auto;" loading="lazy" decoding="async" />
         </div>
 
         <div class="uservoice-slider swiper">
@@ -30,12 +30,12 @@ if (!defined('ABSPATH')) exit;
                                     <?php if ($customer_image):
                                         $image_url = is_numeric($customer_image) ? wp_get_attachment_url($customer_image) : $customer_image;
                                         if ($image_url): ?>
-                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($customer_name); ?>" class="customer-img" />
+                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($customer_name); ?>" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                                         <?php else: ?>
-                                            <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" />
+                                            <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                                         <?php endif; ?>
                                     <?php else: ?>
-                                        <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" />
+                                        <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                                     <?php endif; ?>
                                 </div>
 
@@ -63,7 +63,7 @@ if (!defined('ABSPATH')) exit;
                     <div class="swiper-slide">
                         <div class="feedback-card">
                             <div class="feedback-image">
-                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様1" class="customer-img" />
+                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様1" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                             </div>
                             <h3 class="feedback-title">自分に自信が持てるようになった</h3>
                             <div class="feedback-content">
@@ -82,7 +82,7 @@ if (!defined('ABSPATH')) exit;
                     <div class="swiper-slide">
                         <div class="feedback-card">
                             <div class="feedback-image">
-                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様2" class="customer-img" />
+                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様2" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                             </div>
                             <h3 class="feedback-title">諦めていたけど変化を実感</h3>
                             <div class="feedback-content">
@@ -101,7 +101,7 @@ if (!defined('ABSPATH')) exit;
                     <div class="swiper-slide">
                         <div class="feedback-card">
                             <div class="feedback-image">
-                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様3" class="customer-img" />
+                                <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様3" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                             </div>
                             <h3 class="feedback-title">体質改善にも効果あり</h3>
                             <div class="feedback-content">

@@ -82,7 +82,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
         <h2 class="ptl-section__title">店舗案内</h2>
         <div class="ptl-section__subtitle">アクセス・営業時間</div>
         <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/bg_1.png" alt="ornament" width="494" height="39" style="width:240px;max-width:100%;height:auto;" loading="lazy" decoding="async" />
         </div>
         <div class="ptlSalonHero__grid">
             <?php foreach ($salons as $index => $shop):
@@ -120,7 +120,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                     if ($page_url) {
                         $icon_html .= '<a href="' . esc_url($page_url) . '" class="ptlSalon-image-link">';
                     }
-                    $icon_html .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($name) . '" class="ptlSalon-image" loading="lazy" decoding="async">';
+                    $icon_html .= '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($name) . '" class="ptlSalon-image" width="1920" height="1280" loading="lazy" decoding="async">';
                     if ($page_url) {
                         $icon_html .= '</a>';
                     }
@@ -139,7 +139,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                             <?php if ($page_url): ?></a><?php endif; ?>
                         <?php if ($line): ?>
                             <a href="<?php echo esc_url($line); ?>" target="_blank" rel="noopener" class="ptlSalon-line-link" style="margin-left:10px;display:inline-block;width:1.8em;height:1.8em;">
-                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/line.png'); ?>" alt="LINE" style="width:100%;height:100%;border-radius:4px;" loading="lazy" />
+                                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/line.png'); ?>" alt="LINE" width="512" height="512" style="width:100%;height:100%;border-radius:4px;" loading="lazy" decoding="async" />
                             </a>
                         <?php endif; ?>
                     </div>

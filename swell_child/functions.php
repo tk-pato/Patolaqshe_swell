@@ -971,7 +971,7 @@ add_shortcode('ptl_marquee', function ($atts) {
     <div class="ptl-marquee__track" aria-hidden="true">
       <?php foreach ([$urls, $urls] as $dup): ?>
         <?php foreach ($dup as $u): ?>
-          <div class="ptl-marquee__item"><img src="<?php echo esc_url($u); ?>" alt="" loading="lazy" decoding="async"></div>
+          <div class="ptl-marquee__item"><img src="<?php echo esc_url($u); ?>" alt="" width="480" height="480" loading="lazy" decoding="async"></div>
         <?php endforeach; ?>
       <?php endforeach; ?>
     </div>
@@ -3561,12 +3561,12 @@ function ptl_uservoice_slider_shortcode($atts)
                 <?php if ($customer_image):
                   $image_url = is_numeric($customer_image) ? wp_get_attachment_url($customer_image) : $customer_image;
                   if ($image_url): ?>
-                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($customer_name); ?>" class="customer-img" />
+                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($customer_name); ?>" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                   <?php else: ?>
-                    <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" />
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                   <?php endif; ?>
                 <?php else: ?>
-                  <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" />
+                  <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="<?php echo esc_attr($customer_name ? $customer_name : 'お客様'); ?>" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
                 <?php endif; ?>
               </div>
 
@@ -3592,7 +3592,7 @@ function ptl_uservoice_slider_shortcode($atts)
         <div class="swiper-slide">
           <div class="feedback-card">
             <div class="feedback-image">
-              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様1" class="customer-img" />
+              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様1" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
             </div>
             <h3 class="feedback-title">自分に自信が持てるようになった</h3>
             <div class="feedback-content">
@@ -3611,7 +3611,7 @@ function ptl_uservoice_slider_shortcode($atts)
         <div class="swiper-slide">
           <div class="feedback-card">
             <div class="feedback-image">
-              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様2" class="customer-img" />
+              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様2" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
             </div>
             <h3 class="feedback-title">諦めていたけど変化を実感</h3>
             <div class="feedback-content">
@@ -3630,7 +3630,7 @@ function ptl_uservoice_slider_shortcode($atts)
         <div class="swiper-slide">
           <div class="feedback-card">
             <div class="feedback-image">
-              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様3" class="customer-img" />
+              <img src="<?php echo get_stylesheet_directory_uri() . '/img/nav/salon.png'; ?>" alt="お客様3" class="customer-img" width="256" height="256" loading="lazy" decoding="async" />
             </div>
             <h3 class="feedback-title">体質改善にも効果あり</h3>
             <div class="feedback-content">
@@ -3834,13 +3834,13 @@ function pato_salon_modal_shortcode($atts)
     <div class="salon-modal-trigger__inner">
       <?php if (!empty($atts['image'])): ?>
         <picture class="salon-modal-trigger__image">
-          <img src="<?php echo esc_url($atts['image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>">
+          <img src="<?php echo esc_url($atts['image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>" width="1200" height="800" loading="lazy" decoding="async">
         </picture>
       <?php endif; ?>
 
       <div class="salon-modal-trigger__content">
         <a href="https://beauty.hotpepper.jp/kr/<?php echo esc_attr($hotpepper_id); ?>/?utm_source=site&utm_medium=card&utm_campaign=reserve" class="salon-modal-trigger__hotpepper-logo" target="_blank" rel="noopener noreferrer">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" loading="lazy">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" width="479" height="479" loading="lazy" decoding="async">
         </a>
 
         <?php if (!empty($atts['subtitle'])): ?>
@@ -3910,7 +3910,7 @@ function pato_salon_modal_shortcode($atts)
             <?php endif; ?>
 
             <a href="https://beauty.hotpepper.jp/kr/<?php echo esc_attr($hotpepper_id); ?>/?utm_source=site&utm_medium=modal&utm_campaign=reserve" class="salon-modal__hotpepper-logo" target="_blank" rel="noopener noreferrer">
-              <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" loading="lazy">
+              <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ビューティーロゴ2.png" alt="ホットペッパービューティーで予約" width="479" height="479" loading="lazy" decoding="async">
             </a>
 
             <?php if (!empty($atts['access_route'])): ?>
@@ -3926,7 +3926,7 @@ function pato_salon_modal_shortcode($atts)
               <div class="swiper-wrapper">
                 <div class="c-item swiper-slide">
                   <picture class="c-img">
-                    <img src="<?php echo esc_url($atts['modal_image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>">
+                    <img src="<?php echo esc_url($atts['modal_image']); ?>" alt="<?php echo esc_attr($atts['name']); ?>" width="1200" height="800" loading="lazy" decoding="async">
                   </picture>
                 </div>
               </div>
@@ -4327,7 +4327,7 @@ function ptl_blog_list_modal_shortcode($atts)
       <div class="blog-modal__content">
         <!-- バナー画像 -->
         <div class="blog-modal__hero">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/blog-modal-hero.jpg" alt="BLOG" loading="lazy">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/blog-modal-hero.jpg" alt="BLOG" width="1280" height="960" loading="lazy" decoding="async">
           <div class="blog-modal__hero-text">BLOG</div>
         </div>
 
@@ -4416,7 +4416,7 @@ function ptl_news_list_modal_shortcode($atts)
       <div class="news-modal__content">
         <!-- バナー画像 -->
         <div class="news-modal__hero">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/news-modal.jpg" alt="NEWS" loading="lazy">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/news-modal.jpg" alt="NEWS" width="1600" height="800" loading="lazy" decoding="async">
           <div class="news-modal__hero-text">NEWS</div>
         </div>
 
@@ -4534,7 +4534,7 @@ function ptl_faq_modal_shortcode()
       </button>
 
       <div class="modal-hero">
-        <img src="https://patolaqshe.com/wp-content/uploads/2026/02/FAQバナー用.jpg" alt="FAQ" />
+        <img src="https://patolaqshe.com/wp-content/uploads/2026/02/FAQバナー用.jpg" alt="FAQ" width="1200" height="800" loading="lazy" decoding="async" />
         <h2 class="modal-hero-title">FAQ</h2>
       </div>
 
@@ -4852,7 +4852,7 @@ function add_store_select_modal() {
     <div class="pato-modal-content">
       <button class="pato-modal-close" aria-label="閉じる">&times;</button>
       <div class="pato-modal-banner">
-        <img src="https://patolaqshe.com/wp-content/uploads/2025/12/shop-banner.jpg" alt="予約" loading="lazy">
+        <img src="https://patolaqshe.com/wp-content/uploads/2025/12/shop-banner.jpg" alt="予約" width="1200" height="800" loading="lazy" decoding="async">
       </div>
       <h3 class="pato-modal-title">どちらの店舗で予約しますか？</h3>
       <div class="pato-modal-buttons">
@@ -4982,7 +4982,7 @@ function add_product_modal() {
       <div class="product-modal__content">
         <!-- バナー画像 -->
         <div class="product-modal__hero">
-          <img src="https://patolaqshe.com/wp-content/uploads/2026/02/モーダルウィンドウバナー.jpg" alt="PRODUCT" loading="lazy">
+          <img src="https://patolaqshe.com/wp-content/uploads/2026/02/モーダルウィンドウバナー.jpg" alt="PRODUCT" width="1200" height="800" loading="lazy" decoding="async">
           <div class="product-modal__hero-text">PRODUCT</div>
         </div>
 
@@ -4993,7 +4993,7 @@ function add_product_modal() {
           <div class="product-section">
             <h3 class="product-section-title">化粧品</h3>
             <div class="product-image">
-              <img src="https://patolaqshe.com/wp-content/uploads/2026/02/リアボーテ.jpg" alt="化粧品" loading="lazy">
+              <img src="https://patolaqshe.com/wp-content/uploads/2026/02/リアボーテ.jpg" alt="化粧品" width="1200" height="800" loading="lazy" decoding="async">
             </div>
             <div class="product-text">
               <p>最高品質の美容成分を配合した、バストケア専用化粧品。肌に優しく、効果的なケアを実現します。</p>
@@ -5004,7 +5004,7 @@ function add_product_modal() {
           <div class="product-section">
             <h3 class="product-section-title">下着</h3>
             <div class="product-image">
-              <img src="https://patolaqshe.com/wp-content/uploads/2026/02/ラヴィエール.jpg" alt="下着" loading="lazy">
+              <img src="https://patolaqshe.com/wp-content/uploads/2026/02/ラヴィエール.jpg" alt="下着" width="1200" height="800" loading="lazy" decoding="async">
             </div>
             <div class="product-text">
               <p>美しいバストラインをサポートする補正下着。快適な着け心地と優れた補正力を兼ね備えています。</p>

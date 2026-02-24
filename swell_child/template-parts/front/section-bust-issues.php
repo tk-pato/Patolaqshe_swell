@@ -46,7 +46,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                     <?php if (! empty($bg_sp)): ?>
                         <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
                     <?php endif; ?>
-                    <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" decoding="async">
+                    <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="" width="1920" height="1080" loading="lazy" decoding="async">
                 </picture>
             <?php endif; ?>
             <div class="ptlIssues__overlay ptlNavHero__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
@@ -65,7 +65,7 @@ $has_bg = !empty($video_url) || !empty($bg_pc) || !empty($bg_sp);
                 <?php foreach ($items as $text): if (!is_string($text) || $text === '') continue; ?>
                     <li class="ptlIssues__item">
                         <span class="ptlIssues__icon" aria-hidden="true">
-                            <?php echo $has_check_img ? '<img src="' . esc_url($check_uri) . '" alt="" loading="lazy" decoding="async">' : ptl_check_svg_fallback(); ?>
+                            <?php echo $has_check_img ? '<img src="' . esc_url($check_uri) . '" alt="" width="64" height="64" loading="lazy" decoding="async">' : ptl_check_svg_fallback(); ?>
                         </span>
                         <span class="ptlIssues__text"><?php echo esc_html($text); ?></span>
                     </li>

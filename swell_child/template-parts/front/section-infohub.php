@@ -89,7 +89,7 @@ $cards = [
                 <?php if (!empty($bg_sp)) : ?>
                     <source media="(max-width: 767px)" srcset="<?php echo esc_url($bg_sp); ?>">
                 <?php endif; ?>
-                <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="<?php echo esc_attr($main_title); ?>">
+                <img src="<?php echo esc_url($bg_pc ?: $bg_sp); ?>" alt="<?php echo esc_attr($main_title); ?>" width="1920" height="1080" loading="lazy" decoding="async">
             </picture>
         <?php endif; ?>
         <div class="ptlHub__overlay" style="--overlay: <?php echo esc_attr($overlay); ?>"></div>
@@ -111,7 +111,7 @@ $cards = [
                    class="ptlHub__card<?php echo !empty($card['is_modal']) ? ' faq-modal-trigger' : ''; ?>"
                    <?php echo !empty($card['modal_id']) ? 'data-modal-id="' . esc_attr($card['modal_id']) . '"' : ''; ?>>
                     <div class="ptlHub__media">
-                        <img src="<?php echo esc_url($card['image']); ?>" alt="<?php echo esc_attr($card['title']); ?>">
+                        <img src="<?php echo esc_url($card['image']); ?>" alt="<?php echo esc_attr($card['title']); ?>" width="1200" height="800" loading="lazy" decoding="async">
                     </div>
                     <div class="ptlHub__content">
                         <h3 class="ptlHub__title">

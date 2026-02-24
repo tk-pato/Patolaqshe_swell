@@ -32,7 +32,7 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
             <h2 class="ptl-section__title">コラム</h2>
             <div class="ptl-section__subtitle" style="text-align:center;margin-top:8px;">美容情報</div>
             <div class="ptl-section__ornament" style="text-align:center;margin:12px 0 40px;">
-                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/bg_1.png'); ?>" alt="ornament" style="width:240px;max-width:100%;height:auto;" />
+                <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/bg_1.png'); ?>" alt="ornament" width="494" height="39" style="width:240px;max-width:100%;height:auto;" loading="lazy" decoding="async" />
             </div>
         </div>
 
@@ -54,7 +54,7 @@ $default_image = get_stylesheet_directory_uri() . '/img/spa.jpg';
                                             'loading' => 'lazy',
                                         ]);
                                     } else {
-                                        echo '<img src="' . esc_url($default_image) . '" alt="' . esc_attr(get_the_title($post)) . '" loading="lazy">';
+                                        echo '<img src="' . esc_url($default_image) . '" alt="' . esc_attr(get_the_title($post)) . '" width="1024" height="560" loading="lazy" decoding="async">';
                                     }
                                     ?>
                                 </div>
