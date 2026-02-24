@@ -156,10 +156,68 @@
         });
     }
 
-    function initAll() {
-        MODAL_CONFIGS.forEach(initModal);
+    // SP スワイプで閉じる（左→右スワイプ）
+    function addSwipeToClose(modal, useClosing) {
+        var cont = modal.querySelector('.js-modal_cont');
+        if (!cont) return;
 
-        // ESCキー + フォーカストラップ（1つだけ登録）
+        var startX = 0, startY = 0;
+        var isDragging = false;
+        var isHorizontal = null;
+
+        cont.addEventListener('touchstart', function(e) {
+            if (!modal.classList.contains('js-modalitem_open')) return;
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+            isHorizontal = null;
+        }, { passive: true });
+
+        cont.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            var deltaX = e.touches[0].clientX - startX;
+            var deltaY = e.touches[0].clientY - startY;
+
+            if (isHorizontal === null && (Math.abs(deltaX) > 8 || Math.abs(deltaY) > 8)) {
+                isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
+            }
+            if (!isHorizontal || deltaX <= 0) return;
+
+            e.preventDefault();
+            cont.style.transition = 'none';
+            cont.style.transform = 'translateX(' + deltaX + 'px)';
+        }, { passive: false });
+
+        cont.addEventListener('touchend', function(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            var deltaX = e.changedTouches[0].clientX - startX;
+
+            if (isHorizontal && deltaX > 80) {
+                cont.style.transition = '';
+                cont.style.transform = '';
+                closeModal(modal, useClosing);
+            } else {
+                cont.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                cont.style.transform = 'translateX(0)';
+                setTimeout(function() {
+                    cont.style.transition = '';
+                    cont.style.transform = '';
+                }, 300);
+            }
+            isHorizontal = null;
+        }, { passive: true });
+    }
+
+    function initAll() {
+        MODAL_CONFIGS.forEach(function(cfg) {
+            initModal(cfg);
+            document.querySelectorAll('.' + cfg.modalClass).forEach(function(modal) {
+                addSwipeToClose(modal, cfg.useClosingClass);
+            });
+        });
+
+        // ESC キー + フォーカストラップ（1つだけ登録）
         document.addEventListener('keydown', function(e) {
             for (var i = 0; i < MODAL_CONFIGS.length; i++) {
                 var cfg = MODAL_CONFIGS[i];
