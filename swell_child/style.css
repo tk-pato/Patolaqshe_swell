@@ -11,23 +11,6 @@ Version: 1.0.1
 
 /* [削除] overflow-x: clip はSWELLのページ遷移と競合するため除去 */
 
-/* アクセシビリティ: スキップリンク */
-.ptl-skip-link {
-    position: absolute;
-    top: -100%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100000;
-    padding: 8px 24px;
-    background: #111;
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 0 0 8px 8px;
-}
-.ptl-skip-link:focus {
-    top: 0;
-}
 
 /* PCでのMENUボタン非表示（最優先） */
 @media screen and (min-width: 768px) {

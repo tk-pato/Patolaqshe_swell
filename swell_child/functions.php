@@ -1,13 +1,6 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-/**
- * アクセシビリティ: スキップリンク
- */
-add_action('wp_body_open', function () {
-  echo '<a href="#content" class="ptl-skip-link">メインコンテンツへスキップ</a>';
-});
-
 // WP 6.9: media TinyMCE プラグインのスタンドアロンファイルが削除されたためエラー回避
 add_filter('tiny_mce_plugins', function ($plugins) {
     return array_diff($plugins, ['media']);
