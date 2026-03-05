@@ -24,6 +24,7 @@ $salons = [
         'address' => '〒150-0034 東京都渋谷区代官山町18-8 堀井代官山ビル3F',
         'tel' => '03-5489-7118',
         'line_url' => 'https://lin.ee/JrpP6nV',
+        'instagram_url' => 'https://www.instagram.com/patolaqshe_daikanyama/',
         'business_hours' => [
             '平日' => '12:00-20:00',
             '土日祝' => '11:00-19:00',
@@ -44,6 +45,7 @@ $salons = [
         'address' => '〒104-0061 東京都中央区銀座1-6-6 GINZA ARROWS 6F',
         'tel' => '03-6264-4343',
         'line_url' => 'https://lin.ee/0Fye4Ev',
+        'instagram_url' => 'https://www.instagram.com/patolaqshe_ginza/',
         'business_hours' => [
             '平日' => '13:00-21:00',
             '土日祝' => '11:00-19:00',
@@ -101,6 +103,7 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 $tel  = (string)($shop['tel'] ?? '');
                 $tel_href = $tel ? ('tel:' . preg_replace('/[^0-9+]/', '', $tel)) : '';
                 $line = (string)($shop['line_url'] ?? '');
+                $instagram = (string)($shop['instagram_url'] ?? '');
                 $page = (string)($shop['page_url'] ?? '');
                 $page_url = '';
                 if ($page !== '') {
@@ -144,6 +147,16 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                         <?php if ($line): ?>
                             <a href="<?php echo esc_url($line); ?>" target="_blank" rel="noopener" class="ptlSalon-line-link" style="margin-left:10px;display:inline-block;width:1.8em;height:1.8em;">
                                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/img/line.png'); ?>" alt="LINE" width="512" height="512" style="width:100%;height:100%;border-radius:4px;" loading="lazy" decoding="async" />
+                            </a>
+                        <?php endif; ?>
+                        <?php if ($instagram): ?>
+                            <a href="<?php echo esc_url($instagram); ?>" target="_blank" rel="noopener" class="ptlSalon-ig-link" style="margin-left:6px;display:inline-block;width:1.8em;height:1.8em;" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;">
+                                    <defs><linearGradient id="ig-grad-<?php echo esc_attr($idx); ?>" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#FFDC80"/><stop offset="25%" stop-color="#F77737"/><stop offset="50%" stop-color="#E1306C"/><stop offset="75%" stop-color="#C13584"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
+                                    <rect x="2" y="2" width="20" height="20" rx="6" stroke="url(#ig-grad-<?php echo esc_attr($idx); ?>)" stroke-width="1.8" fill="none"/>
+                                    <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad-<?php echo esc_attr($idx); ?>)" stroke-width="1.8" fill="none"/>
+                                    <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad-<?php echo esc_attr($idx); ?>)"/>
+                                </svg>
                             </a>
                         <?php endif; ?>
                     </div>
