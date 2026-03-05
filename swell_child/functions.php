@@ -50,7 +50,7 @@ add_action('wp_enqueue_scripts', function () {
   if (is_front_page()) {
     $hero_video_fix = get_stylesheet_directory() . '/js/hero-video-fix.js';
     if (file_exists($hero_video_fix)) {
-      wp_enqueue_script('ptl-hero-video-fix', get_stylesheet_directory_uri() . '/js/hero-video-fix.js', [], filemtime($hero_video_fix), false);
+      wp_enqueue_script('ptl-hero-video-fix', get_stylesheet_directory_uri() . '/js/hero-video-fix.js', [], filemtime($hero_video_fix), true);
     }
   }
   // SP ドロワーメニュー スワイプで閉じる（全ページ共通）

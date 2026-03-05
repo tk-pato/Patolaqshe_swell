@@ -1,63 +1,78 @@
 /**
- * ヒーロー動画フォールバック
- * SWELLの data-src-pc / data-src-sp が変換されない場合、
- * または src が設定済みでも再生されていない場合に対応する
+ * ヒーロー動画フォールバック v3
+ *
+ * 問題: SWELLは <source data-src-pc="..."> を JS で src に変換してから
+ *       video.load() を呼ぶ。autoplay属性があってもブラウザが再生しない
+ *       ケースがある（タブ非アクティブ、ページ読み込みタイミング等）。
+ *
+ * 解決: MutationObserver で source[src] が設定された瞬間に play() を呼ぶ。
+ *       SWELLのJS と競合しない（上書きではなく「確認後に再生」）。
  */
 (function () {
-  function fixHeroVideo() {
+  'use strict';
+
+  function tryPlay(video) {
+    if (!video || !video.paused) return;
+    // src が設定されているか確認
+    var source = video.querySelector('source');
+    var hasSrc = (source && source.getAttribute('src')) || video.getAttribute('src');
+    if (!hasSrc) return;
+
+    video.play().catch(function () {});
+  }
+
+  function init() {
     var video = document.querySelector('.p-mainVisual__video');
     if (!video) return;
 
     var source = video.querySelector('source');
     if (!source) return;
 
-    var currentSrc = source.getAttribute('src');
+    // すでに src がある場合はすぐ試行
+    if (source.getAttribute('src')) {
+      tryPlay(video);
+      return;
+    }
 
-    // src未設定 → data-src-pc / data-src-sp から設定
-    if (!currentSrc) {
-      var isMobile = window.innerWidth < 960;
-      var url = isMobile
-        ? source.getAttribute('data-src-sp')
-        : source.getAttribute('data-src-pc');
-
-      if (url) {
-        source.setAttribute('src', url);
-        source.setAttribute('type', 'video/mp4');
-        video.load();
+    // MutationObserver: SWELL が src を設定するのを待つ
+    var observer = new MutationObserver(function (mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].attributeName === 'src') {
+          observer.disconnect();
+          // SWELL の video.load() が終わるのを少し待ってから play()
+          setTimeout(function () { tryPlay(video); }, 100);
+          return;
+        }
       }
-    }
+    });
+    observer.observe(source, { attributes: true, attributeFilter: ['src'] });
 
-    // src設定済みでも停止している場合は再生を試みる
-    if (video.paused) {
-      video.play().catch(function () {});
-    }
+    // フォールバック: 2秒後に SWELL が変換済みなら再生試行
+    setTimeout(function () {
+      observer.disconnect();
+      tryPlay(video);
+    }, 2000);
   }
 
-  // DOMContentLoaded 時
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fixHeroVideo);
-  } else {
-    fixHeroVideo();
-  }
-
-  // load 後（SWELLのJS実行後）に再チェック × 3回
-  window.addEventListener('load', function () {
-    fixHeroVideo();
-    setTimeout(fixHeroVideo, 500);
-    setTimeout(fixHeroVideo, 1500);
-  });
-
-  // bfcache復帰時（ブラウザの戻るボタン）
+  // bfcache（ブラウザ戻るボタン）
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) {
-      fixHeroVideo();
+      var video = document.querySelector('.p-mainVisual__video');
+      if (video) video.play().catch(function () {});
     }
   });
 
-  // visibilitychange: タブが前面に来たとき
+  // visibilitychange（バックグラウンドタブ→フォアグラウンド）
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden) {
-      fixHeroVideo();
+      var video = document.querySelector('.p-mainVisual__video');
+      tryPlay(video);
     }
   });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
