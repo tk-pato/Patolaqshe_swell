@@ -4965,7 +4965,7 @@ add_action('wp_enqueue_scripts', 'pato_enqueue_product_modal_assets');
  */
 add_filter('pre_get_document_title', function ($title) {
     if (is_front_page()) {
-        return '恵比寿・代官山・銀座のバストアップ専門サロン｜パトラクシェ';
+        return '恵比寿・代官山と銀座のバストアップ専門サロン｜パトラクシェ';
     }
     if (is_page('information')) {
         return 'エステティシャン求人｜銀座・恵比寿 バストアップ専門パトラクシェ';
@@ -7124,7 +7124,7 @@ add_action('wp_head', function () {
     $og_image = 'https://patolaqshe.com/wp-content/uploads/2026/02/body_banner_ogp.jpg';
 
     if (is_front_page() || is_home()) {
-        $og_title = '恵比寿・代官山・銀座のバストアップ専門サロン｜パトラクシェ';
+        $og_title = '恵比寿・代官山と銀座のバストアップ専門サロン｜パトラクシェ';
         $og_description = 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。ドイツHeraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンで都内随一の2000ショット。創業13年・延べ7万人以上。オーダーメイド複合施術で効果体感率99%。無料カウンセリング受付中。';
         $og_url = home_url('/');
     } elseif (is_page()) {
