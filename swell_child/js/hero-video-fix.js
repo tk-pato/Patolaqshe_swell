@@ -1,24 +1,67 @@
 /**
- * ヒーロー動画フォールバック v3
+ * ヒーロー動画フォールバック v5 - Safari macOS 対応
  *
- * 問題: SWELLは <source data-src-pc="..."> を JS で src に変換してから
- *       video.load() を呼ぶ。autoplay属性があってもブラウザが再生しない
- *       ケースがある（タブ非アクティブ、ページ読み込みタイミング等）。
- *
- * 解決: MutationObserver で source[src] が設定された瞬間に play() を呼ぶ。
- *       SWELLのJS と競合しない（上書きではなく「確認後に再生」）。
+ * Safari は load() 直後の play() を無視することがある。
+ * canplay イベント後に play() を呼ぶことで確実に再生する。
+ * また Safari は JS プロパティでの muted 設定も必要。
  */
 (function () {
   'use strict';
 
-  function tryPlay(video) {
-    if (!video || !video.paused) return;
-    // src が設定されているか確認
-    var source = video.querySelector('source');
-    var hasSrc = (source && source.getAttribute('src')) || video.getAttribute('src');
-    if (!hasSrc) return;
+  var videoEl = null;
+  var playAttempted = false;
 
-    video.play().catch(function () {});
+  function doPlay(video) {
+    if (playAttempted) return;
+    if (!video || !video.paused) return;
+    playAttempted = true;
+    video.muted = true;
+    video.play().catch(function () {
+      playAttempted = false;
+      // autoplay blocked → 最初のインタラクションで再試行
+      addInteractionFallback(video);
+    });
+  }
+
+  function addInteractionFallback(video) {
+    var events = ['click', 'touchstart', 'scroll', 'keydown'];
+    function onInteraction() {
+      events.forEach(function (ev) {
+        document.removeEventListener(ev, onInteraction, true);
+      });
+      video.muted = true;
+      video.play().catch(function () {});
+    }
+    events.forEach(function (ev) {
+      document.addEventListener(ev, onInteraction, { once: true, capture: true, passive: true });
+    });
+  }
+
+  function setupVideo(video) {
+    if (!video) return;
+    videoEl = video;
+
+    // Safari 向け設定
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+
+    // canplay: データが再生可能になったら play()
+    video.addEventListener('canplay', function onCanPlay() {
+      video.removeEventListener('canplay', onCanPlay);
+      doPlay(video);
+    }, { once: true });
+
+    // canplaythrough でも試みる（canplay が来ない場合の保険）
+    video.addEventListener('canplaythrough', function onCanPlayThrough() {
+      video.removeEventListener('canplaythrough', onCanPlayThrough);
+      doPlay(video);
+    }, { once: true });
+
+    // フォールバック: 2秒後にまだ停止していたら強制 play()
+    setTimeout(function () {
+      if (video.paused) doPlay(video);
+    }, 2000);
   }
 
   function init() {
@@ -28,45 +71,41 @@
     var source = video.querySelector('source');
     if (!source) return;
 
-    // すでに src がある場合はすぐ試行
-    if (source.getAttribute('src')) {
-      tryPlay(video);
-      return;
-    }
+    setupVideo(video);
 
-    // MutationObserver: SWELL が src を設定するのを待つ
-    var observer = new MutationObserver(function (mutations) {
-      for (var i = 0; i < mutations.length; i++) {
-        if (mutations[i].attributeName === 'src') {
-          observer.disconnect();
-          // SWELL の video.load() が終わるのを少し待ってから play()
-          setTimeout(function () { tryPlay(video); }, 100);
-          return;
+    if (!source.getAttribute('src')) {
+      // SWELL がまだ src を設定していない → MutationObserver で待機
+      var observer = new MutationObserver(function (mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === 'src') {
+            observer.disconnect();
+            // src が設定されたので load() を確実に呼ぶ
+            video.load();
+            return; // canplay イベントで play() が呼ばれる
+          }
         }
-      }
-    });
-    observer.observe(source, { attributes: true, attributeFilter: ['src'] });
-
-    // フォールバック: 2秒後に SWELL が変換済みなら再生試行
-    setTimeout(function () {
-      observer.disconnect();
-      tryPlay(video);
-    }, 2000);
+      });
+      observer.observe(source, { attributes: true, attributeFilter: ['src'] });
+    } else {
+      // すでに src 設定済み → load() 呼び直し（canplay を再発火）
+      video.load();
+    }
   }
 
-  // bfcache（ブラウザ戻るボタン）
+  // bfcache（戻るボタン）
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) {
+      playAttempted = false;
       var video = document.querySelector('.p-mainVisual__video');
-      if (video) video.play().catch(function () {});
+      if (video) { video.muted = true; video.play().catch(function(){}); }
     }
   });
 
-  // visibilitychange（バックグラウンドタブ→フォアグラウンド）
+  // visibilitychange（タブ切り替え）
   document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) {
-      var video = document.querySelector('.p-mainVisual__video');
-      tryPlay(video);
+    if (!document.hidden && videoEl && videoEl.paused) {
+      playAttempted = false;
+      doPlay(videoEl);
     }
   });
 
