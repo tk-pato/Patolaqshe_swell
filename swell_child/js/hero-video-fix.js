@@ -1,7 +1,7 @@
 /**
  * ヒーロー動画フォールバック
- * SWELLの data-src-pc / data-src-sp が変換されない場合に
- * 確実に video source を設定する
+ * SWELLの data-src-pc / data-src-sp が変換されない場合、
+ * または src が設定済みでも再生されていない場合に対応する
  */
 (function () {
   function fixHeroVideo() {
@@ -11,28 +11,41 @@
     var source = video.querySelector('source');
     if (!source) return;
 
-    // 既にsrcが設定済みならスキップ
-    if (source.getAttribute('src')) return;
+    var currentSrc = source.getAttribute('src');
 
-    var isMobile = window.innerWidth < 960;
-    var url = isMobile
-      ? source.getAttribute('data-src-sp')
-      : source.getAttribute('data-src-pc');
+    // src未設定 → data-src-pc / data-src-sp から設定
+    if (!currentSrc) {
+      var isMobile = window.innerWidth < 960;
+      var url = isMobile
+        ? source.getAttribute('data-src-sp')
+        : source.getAttribute('data-src-pc');
 
-    if (url) {
-      source.setAttribute('src', url);
-      source.setAttribute('type', 'video/mp4');
-      video.load();
+      if (url) {
+        source.setAttribute('src', url);
+        source.setAttribute('type', 'video/mp4');
+        video.load();
+      }
+    }
+
+    // src設定済みでも停止している場合は再生を試みる
+    if (video.paused) {
       video.play().catch(function () {});
     }
   }
 
-  // DOMContentLoaded時
+  // DOMContentLoaded 時
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', fixHeroVideo);
   } else {
     fixHeroVideo();
   }
+
+  // load 後（SWELLのJS実行後）に再チェック × 3回
+  window.addEventListener('load', function () {
+    fixHeroVideo();
+    setTimeout(fixHeroVideo, 500);
+    setTimeout(fixHeroVideo, 1500);
+  });
 
   // bfcache復帰時（ブラウザの戻るボタン）
   window.addEventListener('pageshow', function (e) {
@@ -41,8 +54,10 @@
     }
   });
 
-  // SWELLのJS実行後にも再チェック（500ms後）
-  window.addEventListener('load', function () {
-    setTimeout(fixHeroVideo, 500);
+  // visibilitychange: タブが前面に来たとき
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) {
+      fixHeroVideo();
+    }
   });
 })();

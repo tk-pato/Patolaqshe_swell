@@ -53,6 +53,11 @@ add_action('wp_enqueue_scripts', function () {
       wp_enqueue_script('ptl-hero-video-fix', get_stylesheet_directory_uri() . '/js/hero-video-fix.js', [], filemtime($hero_video_fix), false);
     }
   }
+  // SP ドロワーメニュー スワイプで閉じる（全ページ共通）
+  $sp_drawer_swipe = get_stylesheet_directory() . '/js/sp-drawer-swipe.js';
+  if (file_exists($sp_drawer_swipe)) {
+    wp_enqueue_script('ptl-sp-drawer-swipe', get_stylesheet_directory_uri() . '/js/sp-drawer-swipe.js', [], filemtime($sp_drawer_swipe), true);
+  }
 }, 999);
 
 function ptl_get_nav_background(): array
