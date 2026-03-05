@@ -1186,3 +1186,36 @@ body.js-modal_open {
 .p-authorBox {
     display: none !important;
 }
+
+/* ======================================
+   SP ドロワーメニュー: ガラス調背景
+   ヘッダー・フッターと統一した半透明効果
+====================================== */
+
+/* ドロワー本体をガラス調に */
+.p-spMenu__inner {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* :before 擬似要素（SWELL が黒背景をここに塗る）を透明化 */
+.p-spMenu__inner::before {
+  background: transparent !important;
+}
+
+/* メニューリンクの文字色を暗色に統一 */
+.p-spMenu__inner .c-spnav a,
+.p-spMenu__inner .c-spnav .menu-item > a {
+  color: #2A2018 !important;
+}
+
+/* ボーダー区切り線も薄めに */
+.p-spMenu__inner .c-spnav a {
+  border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 閉じる（×）ボタンも同色に */
+.p-spMenu__closeBtn {
+  color: #2A2018 !important;
+}

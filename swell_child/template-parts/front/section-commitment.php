@@ -66,8 +66,8 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 switch ($label) {
                     case 'COMMITMENT':
                         $image_src = 'https://patolaqshe.com/wp-content/uploads/2026/02/累計3万.jpg';
-                        $box_title = '創業13年・累計3万人超の実績';
-                        $box_desc = '2012年の開業以来、延べ30,000人以上の施術実績。長年の経験と信頼で、初めての方も安心してお任せいただけます。';
+                        $box_title = '創業13年・延べ7万人以上の実績';
+                        $box_desc = '2012年の開業以来、延べ70,000人以上の施術実績。長年の経験と信頼で、初めての方も安心してお任せいただけます。';
                         break;
                     case 'TREATMENT':
                         $image_src = 'https://patolaqshe.com/wp-content/uploads/2026/02/フラッシュ.jpg';
