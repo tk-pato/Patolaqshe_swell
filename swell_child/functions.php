@@ -4990,13 +4990,14 @@ add_action('wp_head', function () {
                 '@type'       => 'BeautySalon',
                 '@id'         => 'https://patolaqshe.com/#daikanyama',
                 'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-                'description' => '恵比寿エリアのバストアップ専門パトラクシェ恵比寿・代官山店。都内最大級フラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・背面マッサージ・コラーゲンマシンなど複数の施術を一人一人の状態に合わせて組み合わせるオーダーメイド複合施術が最大の特徴。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップサロンの中でも長いと好評。創業13年・累計3万人超の実績。JR恵比寿駅徒歩6分、代官山駅徒歩2分。初回体験9,500円。',
+                'description' => '恵比寿エリアのバストアップ専門パトラクシェ恵比寿・代官山店。都内最大級フラッシュバスト2000ショット・乳腺マッサージ・ナノカレント・背面マッサージ・コラーゲンマシンなど複数の施術を一人一人の状態に合わせて組み合わせるオーダーメイド複合施術が最大の特徴。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップサロンの中でも長いと好評。創業13年・2店舗で延べ7万人以上の施術実績。JR恵比寿駅徒歩6分、代官山駅徒歩2分。初回体験9,500円。',
                 'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
                 'url'         => 'https://patolaqshe.com/ebisu-daikanyama/',
                 'telephone'   => '03-5489-7118',
                 'priceRange'  => '¥¥',
                 'currenciesAccepted' => 'JPY',
                 'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
+                'audience'    => ['@type' => 'PeopleAudience', 'suggestedGender' => 'female', 'suggestedMinAge' => 18],
                 'address'     => [
                     '@type'           => 'PostalAddress',
                     'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
@@ -5082,6 +5083,23 @@ add_action('wp_head', function () {
                             '@type' => 'OfferCatalog',
                             'name'  => 'バストアップ',
                             'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'price' => '9500',
+                                    'priceCurrency' => 'JPY',
+                                    'priceSpecification' => [
+                                        '@type' => 'UnitPriceSpecification',
+                                        'price' => '9500',
+                                        'priceCurrency' => 'JPY',
+                                        'name'  => '初回体験価格',
+                                        'description' => '通常35,000円→初回限定9,500円（税込）。LINE友だち追加で更に1,000円OFFの8,500円。',
+                                    ],
+                                    'itemOffered' => [
+                                        '@type'       => 'Service',
+                                        'name'        => '【人気No.1】バストアップコース（90分）',
+                                        'description' => '一番人気のバストアップコース。カウンセリング＋フラッシュバスト2000ショット＋乳腺マッサージ＋ナノカレント＋背面/二の腕/デコルテマッサージなど、通常と同じオーダーメイド複合施術をフルコースで体験。通常35,000円が初回限定9,500円（税込）。LINE公式アカウント「パトラクシェ初回特典」（@893dppcn）を友だち追加するとさらに1,000円OFFの8,500円で体験可能。',
+                                    ],
+                                ],
                                 [
                                     '@type' => 'Offer',
                                     'itemOffered' => [
@@ -5226,13 +5244,14 @@ add_action('wp_head', function () {
                 '@type'       => 'BeautySalon',
                 '@id'         => 'https://patolaqshe.com/#ginza',
                 'name'        => 'バストアップ専門パトラクシェ銀座店',
-                'description' => '銀座エリアのバストアップ専門パトラクシェ銀座店。ドイツ・Heraeus（ヘレウス）社製フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンによる都内随一の2000ショット照射と、乳腺マッサージ・ナノカレント・背面マッサージ・骨盤底筋ケアなど複数の施術を一人一人の状態に合わせて組み合わせるオーダーメイド複合施術が最大の特徴。脱毛機や複合美容機の転用ではなく、バストアップ施術に最適化された専用設計マシンを採用。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップサロンの中でも長いと好評。創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、JR有楽町駅徒歩5分。初回体験9,500円。',
+                'description' => '銀座エリアのバストアップ専門パトラクシェ銀座店。ドイツ・Heraeus（ヘレウス）社製フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンによる都内随一の2000ショット照射と、乳腺マッサージ・ナノカレント・背面マッサージ・骨盤底筋ケアなど複数の施術を一人一人の状態に合わせて組み合わせるオーダーメイド複合施術が最大の特徴。脱毛機や複合美容機の転用ではなく、バストアップ施術に最適化された専用設計マシンを採用。背面・二の腕・デコルテなどお身体全体を触る施術時間がバストアップサロンの中でも長いと好評。創業13年・2店舗で延べ7万人以上の施術実績。銀座一丁目駅徒歩2分、JR有楽町駅徒歩5分。初回体験9,500円。',
                 'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
                 'url'         => 'https://patolaqshe.com/ginza/',
                 'telephone'   => '03-6264-4343',
                 'priceRange'  => '¥¥',
                 'currenciesAccepted' => 'JPY',
                 'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
+                'audience'    => ['@type' => 'PeopleAudience', 'suggestedGender' => 'female', 'suggestedMinAge' => 18],
                 'address'     => [
                     '@type'           => 'PostalAddress',
                     'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
@@ -5318,6 +5337,23 @@ add_action('wp_head', function () {
                             '@type' => 'OfferCatalog',
                             'name'  => 'バストアップ',
                             'itemListElement' => [
+                                [
+                                    '@type' => 'Offer',
+                                    'price' => '9500',
+                                    'priceCurrency' => 'JPY',
+                                    'priceSpecification' => [
+                                        '@type' => 'UnitPriceSpecification',
+                                        'price' => '9500',
+                                        'priceCurrency' => 'JPY',
+                                        'name'  => '初回体験価格',
+                                        'description' => '通常35,000円→初回限定9,500円（税込）。LINE友だち追加で更に1,000円OFFの8,500円。',
+                                    ],
+                                    'itemOffered' => [
+                                        '@type'       => 'Service',
+                                        'name'        => '【人気No.1】バストアップコース（90分）',
+                                        'description' => '一番人気のバストアップコース。カウンセリング＋フラッシュバスト2000ショット＋乳腺マッサージ＋ナノカレント＋背面/二の腕/デコルテマッサージなど、通常と同じオーダーメイド複合施術をフルコースで体験。通常35,000円が初回限定9,500円（税込）。LINE公式アカウント「パトラクシェ初回特典」（@893dppcn）を友だち追加するとさらに1,000円OFFの8,500円で体験可能。',
+                                    ],
+                                ],
                                 [
                                     '@type' => 'Offer',
                                     'itemOffered' => [
@@ -5777,6 +5813,22 @@ add_action('wp_head', function () {
                         'acceptedAnswer' => [
                             '@type' => 'Answer',
                             'text'  => 'はい、パトラクシェには複数のLINE公式アカウントがあります。初めてのお客様は「パトラクシェ初回特典」（@893dppcn）を友だち追加すると1,000円OFFチケットを受け取れます。既存のお客様は恵比寿・代官山店（@patolaqshe）または銀座店（@patolaqshe-ginza）からご予約・お問い合わせが可能です。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => 'LINE1,000円OFFクーポンの使い方・利用方法を教えてください',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'ご利用方法はとても簡単です。①LINE公式アカウント「パトラクシェ初回特典」（@893dppcn）を友だち追加します。②リッチメニューから「恵比寿・代官山店のクーポン」または「銀座店のクーポン」をタップすると、1,000円OFFチケットが届きます。③ホットペッパービューティーから通常クーポンでご予約ください。④ご来店時にLINEのクーポン画面をスタッフにお見せいただくと、クーポン価格からさらに1,000円OFFが適用されます。なお、ホットペッパービューティーの一部期間限定キャンペーンクーポンとの併用はできません。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => 'パトラクシェの効果体感率・満足度はどのくらいですか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'パトラクシェの効果体感率は99%です。創業13年・2店舗で延べ7万人以上の施術実績があり、ホットペッパービューティーの口コミ評価は恵比寿・代官山店4.92、銀座店4.96と非常に高い評価をいただいています。初回体験でも通常と同じオーダーメイド複合施術をフルコースで受けられるため、多くのお客様に1回目から効果を実感いただいています。',
                         ],
                     ],
                     // --- 求人関連FAQ（求職者向け） ---
@@ -6247,13 +6299,14 @@ add_action('wp_head', function () {
             '@type'       => 'BeautySalon',
             '@id'         => 'https://patolaqshe.com/#daikanyama',
             'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-            'description' => '恵比寿・代官山のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・累計3万人超の実績。恵比寿駅徒歩6分、代官山駅徒歩2分。効果体感率99%。',
+            'description' => '恵比寿・代官山のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・2店舗で延べ7万人以上の施術実績。恵比寿駅徒歩6分、代官山駅徒歩2分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
             'url'         => 'https://patolaqshe.com/ebisu-daikanyama/',
             'telephone'   => '03-5489-7118',
             'priceRange'  => '¥¥',
             'currenciesAccepted' => 'JPY',
             'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
+            'audience'    => ['@type' => 'PeopleAudience', 'suggestedGender' => 'female', 'suggestedMinAge' => 18],
             'address'     => [
                 '@type'           => 'PostalAddress',
                 'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
@@ -6393,13 +6446,14 @@ add_action('wp_head', function () {
             '@type'       => 'BeautySalon',
             '@id'         => 'https://patolaqshe.com/#ginza',
             'name'        => 'バストアップ専門パトラクシェ銀座店',
-            'description' => '銀座のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・累計3万人超の実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。効果体感率99%。',
+            'description' => '銀座のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・2店舗で延べ7万人以上の施術実績。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/ginza.jpg',
             'url'         => 'https://patolaqshe.com/ginza/',
             'telephone'   => '03-6264-4343',
             'priceRange'  => '¥¥',
             'currenciesAccepted' => 'JPY',
             'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
+            'audience'    => ['@type' => 'PeopleAudience', 'suggestedGender' => 'female', 'suggestedMinAge' => 18],
             'address'     => [
                 '@type'           => 'PostalAddress',
                 'streetAddress'   => '銀座1-6-6 GINZA ARROWS 6F',
