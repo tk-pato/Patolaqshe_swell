@@ -5169,7 +5169,7 @@ add_action('wp_head', function () {
                 ],
                 'aggregateRating' => [
                     '@type'       => 'AggregateRating',
-                    'ratingValue' => '4.87',
+                    'ratingValue' => '4.92',
                     'bestRating'  => '5',
                     'ratingCount' => '77',
                     'reviewCount' => '77',
@@ -6268,7 +6268,7 @@ add_action('wp_head', function () {
             ],
             'aggregateRating' => [
                 '@type'       => 'AggregateRating',
-                'ratingValue' => '4.87',
+                'ratingValue' => '4.92',
                 'bestRating'  => '5',
                 'ratingCount' => '77',
                 'reviewCount' => '77',
