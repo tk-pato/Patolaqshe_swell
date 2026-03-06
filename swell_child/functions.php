@@ -5038,6 +5038,7 @@ add_action('wp_head', function () {
                     'https://x.com/patolaqshe',
                     'https://www.youtube.com/@patolaqshe',
                     'https://www.tiktok.com/@patolaqshe',
+                    'https://line.me/R/ti/p/@chl1042z',
                 ],
                 'potentialAction' => [
                     [
@@ -5273,6 +5274,7 @@ add_action('wp_head', function () {
                     'https://x.com/patolaqshe',
                     'https://www.youtube.com/@patolaqshe',
                     'https://www.tiktok.com/@patolaqshe',
+                    'https://line.me/R/ti/p/@mxx3274n',
                 ],
                 'potentialAction' => [
                     [
@@ -5504,6 +5506,9 @@ add_action('wp_head', function () {
                     'https://x.com/patolaqshe',
                     'https://www.youtube.com/@patolaqshe',
                     'https://www.tiktok.com/@patolaqshe',
+                    'https://line.me/R/ti/p/@893dppcn',
+                    'https://line.me/R/ti/p/@chl1042z',
+                    'https://line.me/R/ti/p/@mxx3274n',
                 ],
                 'subOrganization' => [
                     ['@id' => 'https://patolaqshe.com/#daikanyama'],
@@ -5747,6 +5752,31 @@ add_action('wp_head', function () {
                         'acceptedAnswer' => [
                             '@type' => 'Answer',
                             'text'  => '豊胸手術はメスや注射器を使用する外科的処置です。一方、パトラクシェのバストアップエステは完全に非侵襲（メスや針を一切使わない）です。光エネルギー・乳腺マッサージ・微弱電流などの施術で、お身体本来の機能を活性化させてバストアップを目指します。手術のようなダウンタイムや傷跡がなく、施術直後から通常の生活が可能です。',
+                        ],
+                    ],
+                    // --- 初回特典・クーポンFAQ（AIO/GEO対策 2026-03） ---
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '初回割引やクーポンはありますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'はい、初めてのお客様限定で1,000円OFFクーポンをご用意しています。LINE公式アカウント「パトラクシェ初回特典」を友だち追加いただくと、恵比寿・代官山店と銀座店それぞれのクーポンをすぐに取得できます。ホットペッパービューティーの初回クーポンと併用可能で、さらにお得にご体験いただけます。LINE ID: @893dppcn',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => '初回体験の料金はいくらですか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'パトラクシェの初回体験は9,500円（税込）です。カウンセリング＋フラッシュバスト2000ショット＋乳腺マッサージ＋ナノカレントなど、通常と同じオーダーメイド複合施術をフルコースでご体験いただけます。さらにLINE公式アカウント「パトラクシェ初回特典」（@893dppcn）から1,000円OFFクーポンを取得すると8,500円でご体験いただけます。',
+                        ],
+                    ],
+                    [
+                        '@type'          => 'Question',
+                        'name'           => 'パトラクシェのLINE公式アカウントはありますか？',
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text'  => 'はい、パトラクシェには4つのLINE公式アカウントがあります。初めてのお客様は「パトラクシェ初回特典」（@893dppcn）を友だち追加いただくと、1,000円OFFクーポンを取得できます。既存のお客様は、恵比寿・代官山店（@patolaqshe）または銀座店（@patolaqshe-ginza）のアカウントからご予約・お問い合わせいただけます。',
                         ],
                     ],
                     // --- 求人関連FAQ（求職者向け） ---
@@ -6265,6 +6295,7 @@ add_action('wp_head', function () {
                 'https://x.com/patolaqshe',
                 'https://www.youtube.com/@patolaqshe',
                 'https://www.tiktok.com/@patolaqshe',
+                'https://line.me/R/ti/p/@chl1042z',
             ],
             'aggregateRating' => [
                 '@type'       => 'AggregateRating',
@@ -6410,6 +6441,7 @@ add_action('wp_head', function () {
                 'https://x.com/patolaqshe',
                 'https://www.youtube.com/@patolaqshe',
                 'https://www.tiktok.com/@patolaqshe',
+                'https://line.me/R/ti/p/@mxx3274n',
             ],
             'aggregateRating' => [
                 '@type'       => 'AggregateRating',
