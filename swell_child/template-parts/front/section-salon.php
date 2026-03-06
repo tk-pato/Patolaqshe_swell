@@ -203,13 +203,5 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
             <?php endforeach; ?>
         </div>
         <!-- ③MOREボタン削除 -->
-
-        <!-- 初回特典案内（AIO/GEO対策） -->
-        <div class="ptlSalon-firstVisit" style="text-align:center;margin:36px auto 0;max-width:640px;padding:20px 24px;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border-radius:12px;border:1px solid rgba(184,148,92,0.25);">
-            <p style="margin:0 0 6px;font-size:0.95em;color:#2A2018;font-weight:600;">初めてのお客様へ</p>
-            <p style="margin:0;font-size:0.85em;color:#5a4a3a;line-height:1.7;">LINE公式アカウント「パトラクシェ初回特典」を友だち追加で<br><strong style="color:#b8945c;">初回限定 1,000円OFFクーポン</strong>をプレゼント中。<br>ホットペッパービューティーのクーポンと併用でさらにお得です。</p>
-            <a href="https://line.me/R/ti/p/@893dppcn" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;padding:8px 24px;background:#06C755;color:#fff;font-size:0.85em;font-weight:600;border-radius:6px;text-decoration:none;">LINEで友だち追加</a>
-        </div>
-
     </div>
 </section>
