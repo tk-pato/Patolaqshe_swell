@@ -2630,47 +2630,7 @@ add_action('admin_init', function () {
   }
 });
 
-// SEOメタタグを<head>に出力
-add_action('wp_head', function () {
-  // 個別記事
-  if (is_single()) {
-    global $post;
-    $meta_description = get_post_meta($post->ID, '_ptl_meta_description', true);
-    $meta_keywords = get_post_meta($post->ID, '_ptl_meta_keywords', true);
-    if ($meta_description) {
-      echo '<meta name="description" content="' . esc_attr($meta_description) . '">' . "\n";
-    }
-    if ($meta_keywords) {
-      echo '<meta name="keywords" content="' . esc_attr($meta_keywords) . '">' . "\n";
-    }
-    return;
-  }
-
-  // トップページ・固定ページ用 meta description
-  $descriptions = [
-    'front_page'    => 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。ドイツHeraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンで都内随一の2000ショット。創業13年・延べ7万人以上。オーダーメイド複合施術で効果体感率99%。無料カウンセリング受付中。',
-    'daikanyama'    => 'バストアップ専門パトラクシェ恵比寿・代官山店。代官山駅徒歩2分、恵比寿駅徒歩6分。平日12:00-20:00、土日祝11:00-19:00。初回体験9,500円。',
-    'ginza'         => 'バストアップ専門パトラクシェ銀座店。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。平日13:00-21:00、土日祝11:00-19:00。初回体験9,500円。',
-    'service'       => 'パトラクシェの施術メニュー｜Heraeus社製ランプ×サファイアクリスタル搭載の専用マシンで2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなど複数施術を掛け合わせるオーダーメイド複合施術。銀座・代官山。',
-    'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
-    'mariage'       => '銀座の結婚相談所パトラクシェ マリアージュ｜30代40代の婚活を美容×カウンセリングでトータルサポート。無料カウンセリング実施中。ブライダルエステ・自分磨きプログラムで成婚まで伴走。銀座一丁目駅徒歩1分。',
-    'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
-    'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',
-    'privacy-policy' => 'プライバシーポリシー｜パトラクシェ。お客様の個人情報の取り扱いについて。',
-  ];
-
-  if (is_front_page()) {
-    echo '<meta name="description" content="' . esc_attr($descriptions['front_page']) . '">' . "\n";
-    return;
-  }
-
-  if (is_page()) {
-    $slug = get_post_field('post_name', get_post());
-    if (isset($descriptions[$slug])) {
-      echo '<meta name="description" content="' . esc_attr($descriptions[$slug]) . '">' . "\n";
-    }
-  }
-}, 1);
+// SEOメタタグは SEO SIMPLE PACK プラグインに委譲（functions.phpでの手動出力を廃止）
 
 // 最強対策: すべてのWordPressフックでSWELL投稿リストを無効化
 add_action('init', function () {
@@ -5179,6 +5139,7 @@ add_action('wp_head', function () {
                     ],
                 ],
                 'areaServed'  => [
+                    ['@type' => 'State', 'name' => '東京都'],
                     ['@type' => 'City', 'name' => '渋谷区'],
                     ['@type' => 'City', 'name' => '恵比寿'],
                     ['@type' => 'City', 'name' => '代官山'],
@@ -5425,6 +5386,7 @@ add_action('wp_head', function () {
                     ],
                 ],
                 'areaServed'  => [
+                    ['@type' => 'State', 'name' => '東京都'],
                     ['@type' => 'City', 'name' => '中央区'],
                     ['@type' => 'City', 'name' => '銀座'],
                     ['@type' => 'City', 'name' => '有楽町'],
@@ -6294,36 +6256,36 @@ add_action('wp_head', function () {
     ];
 
     // ----- 代官山店ページ -----
-    if ($slug === 'daikanyama') {
+    if ($slug === 'ebisu-daikanyama') {
         $graph[] = [
             '@type'       => 'BeautySalon',
             '@id'         => 'https://patolaqshe.com/#daikanyama',
             'name'        => 'バストアップ専門パトラクシェ恵比寿・代官山店',
-            'description' => '恵比寿・代官山のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・2店舗で延べ7万人以上の施術実績。恵比寿駅徒歩6分、代官山駅徒歩2分。効果体感率99%。',
+            'description' => '恵比寿・代官山のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・2店舗で延べ7万人以上の施術実績。代官山駅徒歩2分、恵比寿駅徒歩6分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
             'url'         => 'https://patolaqshe.com/ebisu-daikanyama/',
-            'telephone'   => '03-5489-7118',
+            'telephone'   => '03-6416-3430',
             'priceRange'  => '¥¥',
             'currenciesAccepted' => 'JPY',
             'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
             'audience'    => ['@type' => 'PeopleAudience', 'suggestedGender' => 'female', 'suggestedMinAge' => 18],
             'address'     => [
                 '@type'           => 'PostalAddress',
-                'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
+                'streetAddress'   => '猿楽町25-1 AS代官山207',
                 'addressLocality' => '渋谷区',
                 'addressRegion'   => '東京都',
-                'postalCode'      => '150-0034',
+                'postalCode'      => '150-0033',
                 'addressCountry'  => 'JP',
             ],
             'geo' => [
                 '@type'     => 'GeoCoordinates',
-                'latitude'  => 35.649642,
-                'longitude' => 139.701838,
+                'latitude'  => 35.6498,
+                'longitude' => 139.7008,
             ],
             'openingHoursSpecification' => [
                 [
                     '@type'     => 'OpeningHoursSpecification',
-                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
                     'opens'     => '12:00',
                     'closes'    => '20:00',
                 ],
@@ -6359,9 +6321,10 @@ add_action('wp_head', function () {
             ],
             'areaServed'  => [
                 ['@type' => 'City', 'name' => '渋谷区'],
-                ['@type' => 'City', 'name' => '恵比寿'],
                 ['@type' => 'City', 'name' => '代官山'],
+                ['@type' => 'City', 'name' => '恵比寿'],
                 ['@type' => 'City', 'name' => '中目黒'],
+                ['@type' => 'City', 'name' => '猿楽町'],
                 ['@type' => 'City', 'name' => '広尾'],
                 ['@type' => 'City', 'name' => '目黒'],
             ],
@@ -7190,10 +7153,9 @@ add_action('wp_enqueue_scripts', function() {
 }, 20);
 
 /**
- * OGPタグ・Twitterカード出力
+ * Google Analytics 4
  */
 add_action('wp_head', function () {
-    // Google Analytics 4
     ?>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLB7ZC2RF8"></script>
@@ -7204,58 +7166,25 @@ add_action('wp_head', function () {
       gtag('config', 'G-ZLB7ZC2RF8');
     </script>
     <?php
+    // OGP/Twitterカードは SEO SIMPLE PACK プラグインに委譲
+}, 2);
 
-    $og_type = 'website';
-    $og_site_name = 'バストアップ専門パトラクシェ';
-    $og_image = 'https://patolaqshe.com/wp-content/uploads/2026/02/body_banner_ogp.jpg';
+/**
+ * SSP補完: og:image / twitter:image / twitter:card をSSP出力後に追加
+ * SSP 3.6.2はフロントページでog:imageを出力しないため補完する
+ */
+add_action('wp_head', function () {
+    $default_image = 'https://patolaqshe.com/wp-content/uploads/2026/01/esthe_banner.jpg';
+    $og_image = $default_image;
 
-    if (is_front_page() || is_home()) {
-        $og_title = '恵比寿・代官山と銀座のバストアップ専門サロン｜パトラクシェ';
-        $og_description = 'バストアップ専門パトラクシェ｜銀座・恵比寿・代官山。ドイツHeraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンで都内随一の2000ショット。創業13年・延べ7万人以上。オーダーメイド複合施術で効果体感率99%。無料カウンセリング受付中。';
-        $og_url = home_url('/');
-    } elseif (is_page()) {
-        $slug = get_post_field('post_name', get_post());
-        $og_title = get_the_title() . ' | パトラクシェ';
-        $og_url = get_permalink();
-        $page_descriptions = [
-            'daikanyama'    => 'バストアップ専門パトラクシェ恵比寿・代官山店。代官山駅徒歩2分、恵比寿駅徒歩6分。平日12:00-20:00、土日祝11:00-19:00。初回体験9,500円。',
-            'ginza'         => 'バストアップ専門パトラクシェ銀座店。銀座一丁目駅徒歩2分、有楽町駅徒歩5分。平日13:00-21:00、土日祝11:00-19:00。初回体験9,500円。',
-            'service'       => 'パトラクシェの施術メニュー｜Heraeus社製ランプ×サファイアクリスタル搭載の専用マシンで2000ショット・乳腺マッサージ・ナノカレント・骨盤底筋ケアなど複数施術を掛け合わせるオーダーメイド複合施術。銀座・代官山。',
-            'course'        => 'バストアップコース（90分）｜パトラクシェ人気No.1メニュー。初回限定9,500円（税込）。フラッシュ×オールハンド施術で左右差補正・下垂改善・ボリュームアップ。',
-            'mariage'       => '銀座の結婚相談所パトラクシェ マリアージュ｜30代40代の婚活を美容×カウンセリングでトータルサポート。無料カウンセリング実施中。ブライダルエステ・自分磨きプログラムで成婚まで伴走。銀座一丁目駅徒歩1分。',
-            'voice'         => 'お客様の声・体験談｜パトラクシェ。バストアップ施術を受けたお客様のリアルなBefore/Afterと感想をご紹介。効果体感率99%の実績。',
-            'about'         => 'パトラクシェについて｜バストアップ専門パトラクシェ。創業13年、延べ7万人以上の施術実績。恵比寿・代官山、銀座の2店舗。',
-            'information'   => 'エステティシャン急募｜銀座・恵比寿のバストアップ専門パトラクシェ。正社員月給24万〜35万円・アルバイト時給1,300〜1,800円。未経験歓迎、充実した研修制度、独立開業支援あり。駅徒歩2分の好立地。',
-        ];
-        $og_description = isset($page_descriptions[$slug]) ? $page_descriptions[$slug] : 'バストアップ専門パトラクシェ';
-        if (has_post_thumbnail()) {
-            $og_image = get_the_post_thumbnail_url(null, 'large');
-        }
-    } elseif (is_single()) {
-        $og_title = get_the_title() . ' | パトラクシェ';
-        $og_description = get_the_excerpt() ?: 'バストアップ専門パトラクシェ';
-        $og_url = get_permalink();
-        $og_type = 'article';
-        if (has_post_thumbnail()) {
-            $og_image = get_the_post_thumbnail_url(null, 'large');
-        }
-    } else {
-        $og_title = wp_get_document_title();
-        $og_description = 'バストアップ専門パトラクシェ';
-        $og_url = home_url('/');
+    if ((is_single() || is_page()) && has_post_thumbnail()) {
+        $og_image = get_the_post_thumbnail_url(null, 'large') ?: $default_image;
     }
 
-    echo '<meta property="og:title" content="' . esc_attr($og_title) . '">' . "\n";
-    echo '<meta property="og:description" content="' . esc_attr($og_description) . '">' . "\n";
-    echo '<meta property="og:url" content="' . esc_url($og_url) . '">' . "\n";
     echo '<meta property="og:image" content="' . esc_url($og_image) . '">' . "\n";
-    echo '<meta property="og:type" content="' . esc_attr($og_type) . '">' . "\n";
-    echo '<meta property="og:site_name" content="' . esc_attr($og_site_name) . '">' . "\n";
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
-    echo '<meta name="twitter:title" content="' . esc_attr($og_title) . '">' . "\n";
-    echo '<meta name="twitter:description" content="' . esc_attr($og_description) . '">' . "\n";
     echo '<meta name="twitter:image" content="' . esc_url($og_image) . '">' . "\n";
-}, 2);
+}, 99);
 
 /**
  * WordPress標準サイトマップを有効化（SWELLのデフォルト無効化を上書き）
@@ -7312,3 +7241,162 @@ add_action('wp_enqueue_scripts', function () {
     }
   }
 }, 20);
+
+/**
+ * 投稿スラッグ自動英語化
+ * 日本語タイトルからSEOフレンドリーな英語スラッグを自動生成
+ */
+add_filter('wp_insert_post_data', function ($data, $postarr) {
+  if ($data['post_type'] !== 'post') return $data;
+  if ($data['post_status'] === 'auto-draft') return $data;
+
+  $slug = $data['post_name'];
+  $title = $data['post_title'];
+  if (empty($title)) return $data;
+
+  // 既にASCII英語スラッグなら何もしない
+  $decoded = urldecode($slug);
+  if ($decoded === $slug && preg_match('/^[a-z0-9\-]+$/', $slug) && strlen($slug) > 3) {
+    return $data;
+  }
+
+  $keyword_map = [
+    'バストアップ' => 'bust-up', 'バストケア' => 'bust-care', 'バスト' => 'bust',
+    'デコルテ' => 'decollete', 'フェイシャル' => 'facial', 'スキンケア' => 'skincare',
+    '乳腺' => 'mammary', 'マッサージ' => 'massage', 'コラーゲン' => 'collagen',
+    'ナノカレント' => 'nano-current', 'フラッシュ' => 'flash',
+    'ホットストーン' => 'hot-stone', '温活' => 'warm-therapy',
+    '花粉' => 'pollen', '紫外線' => 'uv', '日焼け' => 'sunburn',
+    '乾燥' => 'dry', '冷え' => 'cold', '保湿' => 'moisturize',
+    '春' => 'spring', '夏' => 'summer', '秋' => 'autumn', '冬' => 'winter',
+    '銀座' => 'ginza', '代官山' => 'daikanyama', '恵比寿' => 'ebisu',
+    'セルフケア' => 'self-care', 'ホームケア' => 'home-care',
+    '姿勢' => 'posture', '猫背' => 'round-back', 'ブラジャー' => 'bra',
+    '口コミ' => 'reviews', 'お客様の声' => 'voice', '体験' => 'experience',
+    '効果' => 'effect', '実感' => 'results', '改善' => 'improve',
+    'カウンセリング' => 'counseling', '施術' => 'treatment',
+    '営業カレンダー' => 'calendar', 'お知らせ' => 'news',
+    'リニューアル' => 'renewal', '求人' => 'recruit',
+    '30代' => '30s', '40代' => '40s', '20代' => '20s', '50代' => '50s',
+    '美肌' => 'beautiful-skin', '美胸' => 'beautiful-bust',
+    'ニキビ' => 'acne', 'シミ' => 'spots', 'たるみ' => 'sagging',
+    'ホルモン' => 'hormone', '女性' => 'women',
+    '初めて' => 'first-time', '人気' => 'popular', '専門' => 'specialist',
+    '左右差' => 'asymmetry', '離れ胸' => 'wide-set',
+    '授乳' => 'breastfeeding', '産後' => 'postpartum',
+    'コース' => 'course', 'メニュー' => 'menu', '料金' => 'price',
+    'サロン' => 'salon', 'エステ' => 'esthetic',
+  ];
+
+  $parts = [];
+  $remaining = $title;
+  uksort($keyword_map, function($a, $b) { return mb_strlen($b) - mb_strlen($a); });
+  foreach ($keyword_map as $jp => $en) {
+    if (mb_strpos($remaining, $jp) !== false) {
+      $parts[] = $en;
+      $remaining = str_replace($jp, '', $remaining);
+    }
+  }
+
+  if (!empty($parts)) {
+    $slug_candidate = implode('-', array_unique(array_slice($parts, 0, 5)));
+    $date_part = date('Ymd', strtotime($data['post_date']));
+    $new_slug = $slug_candidate . '-' . $date_part;
+    $data['post_name'] = sanitize_title($new_slug);
+  }
+
+  return $data;
+}, 10, 2);
+
+/**
+ * Person schema（オーナー情報）+ Speakable schema
+ * トップページにのみ出力 — E-E-A-T強化 + 音声AI対応
+ */
+add_action('wp_head', function () {
+  if (!is_front_page()) return;
+  $person_schema = [
+    '@context' => 'https://schema.org',
+    '@type'    => 'Person',
+    'name'     => '矢野 志保',
+    'jobTitle' => 'オーナーエステティシャン',
+    'worksFor' => [
+      '@type' => 'Organization',
+      'name'  => 'パトラクシェ',
+    ],
+    'knowsAbout' => [
+      'バストアップ', 'バストケア', '乳腺マッサージ', 'フラッシュバスト',
+      'ナノカレント', 'エステティック', '美容',
+    ],
+    'description' => 'パトラクシェ代表。エステティシャン歴14年以上。延べ7万人以上のバストケア施術実績を持つバストアップの専門家。',
+  ];
+  $speakable_schema = [
+    '@context' => 'https://schema.org',
+    '@type'    => 'WebPage',
+    'name'     => '恵比寿・代官山と銀座のバストアップ専門サロン パトラクシェ',
+    'speakable' => [
+      '@type'   => 'SpeakableSpecification',
+      'cssSelector' => ['.l-mainContent', '.p-articleBody'],
+    ],
+    'url' => home_url('/'),
+  ];
+  echo '<script type="application/ld+json">' . json_encode($person_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+  echo '<script type="application/ld+json">' . json_encode($speakable_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+}, 5);
+
+// =============================================
+// IndexNow API - 投稿公開/更新時にBing・Yandex等へ即時通知
+// =============================================
+define('INDEXNOW_API_KEY', 'rr508jt44qavhg49hui2ezoachcqm3yo');
+
+/**
+ * 投稿がpublish状態になった時にIndexNow APIへURLを送信
+ */
+function patolaqshe_indexnow_notify($post_id, $post = null) {
+  // 自動保存・リビジョンは除外
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+  if (wp_is_post_revision($post_id)) return;
+
+  // $postが渡されない場合は取得
+  if (!$post) {
+    $post = get_post($post_id);
+  }
+
+  // publish状態の投稿・固定ページのみ
+  if ($post->post_status !== 'publish') return;
+  if (!in_array($post->post_type, ['post', 'page'])) return;
+
+  $url = get_permalink($post_id);
+  $host = wp_parse_url(home_url(), PHP_URL_HOST);
+  $key = INDEXNOW_API_KEY;
+  $key_location = home_url('/' . $key . '.txt');
+
+  $body = json_encode([
+    'host'        => $host,
+    'key'         => $key,
+    'keyLocation' => $key_location,
+    'urlList'     => [$url],
+  ]);
+
+  $response = wp_remote_post('https://api.indexnow.org/indexnow', [
+    'headers' => [
+      'Content-Type' => 'application/json; charset=utf-8',
+    ],
+    'body'      => $body,
+    'timeout'   => 10,
+    'blocking'  => false, // 非同期で送信（ユーザーを待たせない）
+  ]);
+
+  // デバッグ用ログ（必要に応じてコメントアウト）
+  if (is_wp_error($response)) {
+    error_log('[IndexNow] Error for ' . $url . ': ' . $response->get_error_message());
+  } else {
+    error_log('[IndexNow] Submitted: ' . $url);
+  }
+}
+
+// publish_post: 投稿が公開された時
+add_action('publish_post', 'patolaqshe_indexnow_notify', 10, 2);
+// save_post: 投稿が保存された時（更新含む）
+add_action('save_post', 'patolaqshe_indexnow_notify', 10, 2);
+// 固定ページの公開時
+add_action('publish_page', 'patolaqshe_indexnow_notify', 10, 2);
