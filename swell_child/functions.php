@@ -5544,7 +5544,7 @@ add_action('wp_head', function () {
                 'alternateName' => 'パトラクシェ',
                 'legalName'     => 'パトラクシェ',
                 'url'   => 'https://patolaqshe.com/',
-                'foundingDate'  => '2013',
+                'foundingDate'  => '2012',
                 'slogan'        => 'あなたの美しさを最大限に引き出す',
                 'description'   => '東京・恵比寿/代官山・銀座のバストアップ専門パトラクシェ。ドイツ・Heraeus社製フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンによる都内随一の2000ショットと、熟練のオールハンド技術を掛け合わせるオーダーメイド複合施術。創業13年・2店舗で延べ7万人以上の施術実績。効果体感率99%。',
                 'logo'  => [
