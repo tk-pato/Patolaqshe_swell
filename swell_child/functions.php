@@ -6831,41 +6831,130 @@ add_action('wp_head', function () {
 
     // ----- サービスページ -----
     if ($slug === 'service') {
+        // --- 共通エリア ---
+        $area_served = [
+            ['@type' => 'City', 'name' => '渋谷区'],
+            ['@type' => 'City', 'name' => '中央区'],
+        ];
+        $provider_ref = ['@id' => 'https://patolaqshe.com/#organization'];
+
         $graph[] = [
             '@type'       => 'Service',
             'name'        => 'バストアップ施術',
             'description' => 'Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。都内随一の2000ショット照射で深部までアプローチ。',
-            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'provider'    => $provider_ref,
             'serviceType' => 'バストアップエステ',
-            'areaServed'  => [
-                ['@type' => 'City', 'name' => '渋谷区'],
-                ['@type' => 'City', 'name' => '中央区'],
+            'areaServed'  => $area_served,
+            'url'         => 'https://patolaqshe.com/service/',
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'バストアップコース 90分 初回体験',
+                    'price'         => '9500',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '人気No.1。フラッシュ2000ショット×オールハンド乳腺マッサージの90分フルコース。通常35,000円→初回限定9,500円。',
+                    'url'           => 'https://patolaqshe.com/course/',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'スタンダード育乳 60分 初回体験',
+                    'price'         => '6980',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '乳腺マッサージ＋フラッシュ照射の60分。通常26,000円→初回限定6,980円。',
+                    'url'           => 'https://patolaqshe.com/menu-standard-bust-60min/',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'オールハンド育乳 45分 体験',
+                    'price'         => '8000',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => 'マシン不使用。熟練ハンド技術のみで乳腺を活性化。通常29,000円→体験8,000円。',
+                    'url'           => 'https://patolaqshe.com/menu-hand-massage-45min/',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'ナノカレント×フラッシュ 90分 体験',
+                    'price'         => '12000',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => 'ナノカレントで女性ホルモンにアプローチ＋フラッシュ照射の贅沢90分。通常42,000円→体験12,000円。',
+                    'url'           => 'https://patolaqshe.com/menu-full-course-90min/',
+                    'priceValidUntil' => '2026-12-31',
+                ],
             ],
-            'url' => 'https://patolaqshe.com/service/',
         ];
         $graph[] = [
             '@type'       => 'Service',
             'name'        => 'フェイシャルケア',
             'description' => 'お顔のリフトアップ・小顔・毛穴ケアなど、お悩みに合わせたフェイシャル美容トリートメント施術。',
-            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'provider'    => $provider_ref,
             'serviceType' => 'フェイシャルエステ',
-            'areaServed'  => [
-                ['@type' => 'City', 'name' => '渋谷区'],
-                ['@type' => 'City', 'name' => '中央区'],
-            ],
+            'areaServed'  => $area_served,
             'url'         => 'https://patolaqshe.com/service/',
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => '幹細胞ハーブトリートメント 初回',
+                    'price'         => '16500',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '「10回のエステより1回のハーブ」。剥離のないリバースエイジングケア。通常22,000円→初回16,500円。',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => '光フェイシャル 2回体験',
+                    'price'         => '11000',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => '毛穴レスコース',
+                    'price'         => '6500',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                ],
+            ],
         ];
         $graph[] = [
             '@type'       => 'Service',
             'name'        => 'ボディケア',
-            'description' => '痩身・セルライトケア・引き締めなど、全身の美容トリートメント施術。',
-            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'description' => 'ホットストーンセラピー・コラーゲンマシン・背面マッサージなど、全身の美容トリートメント施術。',
+            'provider'    => $provider_ref,
             'serviceType' => 'ボディエステ',
-            'areaServed'  => [
-                ['@type' => 'City', 'name' => '渋谷区'],
-                ['@type' => 'City', 'name' => '中央区'],
-            ],
+            'areaServed'  => $area_served,
             'url'         => 'https://patolaqshe.com/service/',
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'ホットストーンセラピー（銀座店限定）',
+                    'price'         => '5500',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '遠赤外線放出の特殊石で血流改善。バストアップ・引き締め効果を高める温熱ケア。',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'コラーゲンマシーン（恵比寿・代官山店限定）',
+                    'price'         => '3300',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => 'ピンク色光照射で細胞活性化。コラーゲン生成を促進しハリのある肌へ。',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => '背面マッサージ 30分',
+                    'price'         => '5500',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                ],
+            ],
         ];
         $graph[] = [
             '@type'       => 'Service',
@@ -6942,6 +7031,70 @@ add_action('wp_head', function () {
             'uploadDate'   => '2024-01-01T00:00:00+09:00',
             'contentUrl'   => 'https://www.youtube.com/watch?v=Uk6k-3y5Cos',
             'embedUrl'     => 'https://www.youtube.com/embed/Uk6k-3y5Cos',
+        ];
+    }
+
+    // ----- 個別メニューページ -----
+    // 新メニュー追加時: $menu_pages 配列に追記するだけでOK
+    $menu_pages = [
+        'menu-full-course-90min' => [
+            'name'        => '【90分フルコース】ナノカレント×フラッシュ',
+            'description' => 'ナノカレントが女性ホルモンにアプローチし、バストアップに適した体内環境を整える。フットマッサージによる全身血流改善＋フラッシュ照射の贅沢90分フルトリートメント。',
+            'serviceType' => 'バストアップエステ',
+            'duration'    => 'PT90M',
+            'price'       => '12000',
+            'priceRegular' => '42000',
+            'offerName'   => '初回体験価格',
+        ],
+        'menu-standard-bust-60min' => [
+            'name'        => '【スタンダード育乳】乳腺マッサージ＋フラッシュ 60分',
+            'description' => '背面マッサージ→乳腺マッサージ→フラッシュ照射の王道60分コース。肩甲骨周辺の凝りをほぐし、脂肪細胞を膨らませて定着。熟練ハンド技術と光照射のハイブリッドケア。',
+            'serviceType' => 'バストアップエステ',
+            'duration'    => 'PT60M',
+            'price'       => '6980',
+            'priceRegular' => '26000',
+            'offerName'   => '初回体験価格',
+        ],
+        'menu-hand-massage-45min' => [
+            'name'        => '【オールハンド育乳】乳腺マッサージ 45分',
+            'description' => 'マシン不使用。熟練エステティシャンのハンド技術のみで筋膜の癒着をクリアにし、未発達の乳腺を活性化。マシン施術が苦手な方にもおすすめ。',
+            'serviceType' => 'バストアップエステ',
+            'duration'    => 'PT45M',
+            'price'       => '8000',
+            'priceRegular' => '29000',
+            'offerName'   => '体験価格',
+        ],
+    ];
+
+    if (isset($menu_pages[$slug])) {
+        $menu = $menu_pages[$slug];
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => $menu['name'],
+            'description' => $menu['description'],
+            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'serviceType' => $menu['serviceType'],
+            'areaServed'  => [
+                ['@type' => 'City', 'name' => '渋谷区'],
+                ['@type' => 'City', 'name' => '中央区'],
+            ],
+            'url'         => 'https://patolaqshe.com/' . $slug . '/',
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => $menu['offerName'],
+                    'price'         => $menu['price'],
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '通常' . number_format((int)$menu['priceRegular']) . '円→' . $menu['offerName'] . number_format((int)$menu['price']) . '円',
+                    'url'           => 'https://patolaqshe.com/' . $slug . '/',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+            ],
+            'additionalProperty' => [
+                ['@type' => 'PropertyValue', 'name' => '所要時間', 'value' => $menu['duration']],
+                ['@type' => 'PropertyValue', 'name' => '通常価格', 'value' => number_format((int)$menu['priceRegular']) . '円（税込）'],
+            ],
         ];
     }
 
