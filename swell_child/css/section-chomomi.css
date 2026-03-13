@@ -1,0 +1,446 @@
+/* ============================================
+   腸もみセクション - section-chomomi.css
+   ============================================ */
+
+.ptlChomomi {
+  padding: 80px 0 60px;
+  background: linear-gradient(165deg, #faf8f5 0%, #f5f0eb 40%, #eee8e0 100%);
+  position: relative;
+  overflow: hidden;
+}
+.ptlChomomi::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(180,160,130,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Badge */
+.ptlChomomi__badge {
+  display: inline-block;
+  margin: 0 auto 16px;
+  padding: 6px 24px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #fff;
+  background: linear-gradient(135deg, #8b7355 0%, #a08060 100%);
+  border-radius: 30px;
+  text-align: center;
+  width: fit-content;
+}
+.ptlChomomi .ptl-section__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Catch */
+.ptlChomomi__catch {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.ptlChomomi__catchText {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 20px;
+  line-height: 2;
+  color: #3a3028;
+  letter-spacing: 2px;
+}
+
+/* Mechanism */
+.ptlChomomi__mechanism {
+  width: 100%;
+  max-width: 960px;
+  margin-bottom: 48px;
+}
+.ptlChomomi__mechanismTitle {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #8b7355;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+.ptlChomomi__mechanismGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.ptlChomomi__mechanismCard {
+  background: rgba(255,255,255,0.7);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.ptlChomomi__mechanismIcon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  color: #8b7355;
+}
+.ptlChomomi__mechanismIcon svg {
+  width: 100%;
+  height: 100%;
+}
+.ptlChomomi__mechanismName {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 16px;
+  color: #3a3028;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.ptlChomomi__mechanismName span {
+  display: block;
+  font-size: 12px;
+  font-family: sans-serif;
+  color: #8b7355;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+.ptlChomomi__mechanismDesc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #666;
+}
+
+/* Evidence */
+.ptlChomomi__evidence {
+  width: 100%;
+  max-width: 640px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  text-align: center;
+}
+.ptlChomomi__evidenceGrid {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 12px;
+}
+.ptlChomomi__evidenceStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ptlChomomi__evidenceNum {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #8b7355;
+  line-height: 1.2;
+}
+.ptlChomomi__evidenceNum small {
+  font-size: 16px;
+  font-weight: 400;
+}
+.ptlChomomi__evidenceLabel {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+.ptlChomomi__evidenceSource {
+  font-size: 11px;
+  color: #999;
+}
+
+/* Flow */
+.ptlChomomi__flow {
+  width: 100%;
+  max-width: 960px;
+  margin-bottom: 48px;
+}
+.ptlChomomi__flowTitle {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #8b7355;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+.ptlChomomi__flowSteps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+.ptlChomomi__flowStep {
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  padding: 20px 8px;
+  text-align: center;
+  min-width: 0;
+  flex: 1 1 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.ptlChomomi__flowStep--highlight {
+  background: linear-gradient(135deg, #8b7355 0%, #a08060 100%);
+  color: #fff;
+}
+.ptlChomomi__flowStep--highlight .ptlChomomi__flowNum,
+.ptlChomomi__flowStep--highlight .ptlChomomi__flowName,
+.ptlChomomi__flowStep--highlight .ptlChomomi__flowDesc {
+  color: #fff;
+}
+.ptlChomomi__flowNum {
+  display: block;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 11px;
+  color: #8b7355;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.ptlChomomi__flowName {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3a3028;
+  margin-bottom: 4px;
+}
+.ptlChomomi__flowDesc {
+  display: block;
+  font-size: 11px;
+  color: #999;
+}
+.ptlChomomi__flowArrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  position: relative;
+}
+.ptlChomomi__flowArrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #8b7355;
+  border-bottom: 2px solid #8b7355;
+}
+
+/* Price */
+.ptlChomomi__price {
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+.ptlChomomi__priceCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+.ptlChomomi__priceCard {
+  background: rgba(255,255,255,0.7);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.ptlChomomi__priceCard--main {
+  border: 2px solid #8b7355;
+}
+.ptlChomomi__priceLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3a3028;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.ptlChomomi__priceOld {
+  display: block;
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+.ptlChomomi__priceCurrent {
+  font-size: 14px;
+  color: #3a3028;
+}
+.ptlChomomi__priceCurrent strong {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 32px;
+  color: #8b7355;
+}
+.ptlChomomi__priceCurrent small {
+  font-size: 12px;
+  color: #666;
+}
+.ptlChomomi__priceNote {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+
+/* CTA */
+.ptlChomomi__cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ptlChomomi__ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  border-radius: 60px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.ptlChomomi__ctaBtn--primary {
+  background: linear-gradient(135deg, #8b7355 0%, #a08060 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(139,115,85,0.3);
+}
+.ptlChomomi__ctaBtn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(139,115,85,0.4);
+  color: #fff;
+  opacity: 0.95;
+}
+
+/* ===== SP ===== */
+@media (max-width: 767px) {
+  .ptlChomomi {
+    padding: 56px 0 48px;
+  }
+  .ptlChomomi__catchText {
+    font-size: 17px;
+  }
+  .ptlChomomi__mechanismGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .ptlChomomi__mechanismCard {
+    padding: 24px 20px;
+    background: rgba(235, 225, 210, 0.8);
+  }
+  .ptlChomomi__evidence {
+    background: rgba(235, 225, 210, 0.8);
+  }
+  .ptlChomomi__flowStep {
+    background: rgba(235, 225, 210, 0.8);
+  }
+  .ptlChomomi__flowStep--highlight {
+    background: linear-gradient(135deg, #8b7355 0%, #a08060 100%);
+  }
+  .ptlChomomi__priceCard {
+    background: rgba(235, 225, 210, 0.8);
+  }
+  .ptlChomomi__evidenceGrid {
+    gap: 24px;
+  }
+  .ptlChomomi__evidenceNum {
+    font-size: 32px;
+  }
+  .ptlChomomi__flowSteps {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ptlChomomi__flowStep {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 16px 20px;
+  }
+  .ptlChomomi__flowNum {
+    margin-bottom: 0;
+    min-width: 24px;
+  }
+  .ptlChomomi__flowName {
+    margin-bottom: 0;
+  }
+  .ptlChomomi__flowArrow {
+    transform: rotate(90deg);
+    width: 12px;
+    height: 12px;
+  }
+  .ptlChomomi__priceCards {
+    grid-template-columns: 1fr;
+  }
+  .ptlChomomi__priceCurrent strong {
+    font-size: 28px;
+  }
+  .ptlChomomi__ctaBtn {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+}
+
+/* ===== Service page overrides: White Glass ===== */
+.ptlChomomi--service {
+  margin-top: 48px;
+  border-radius: 20px;
+  padding: 60px 32px 48px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+}
+.ptlChomomi--service .ptl-section__inner {
+  max-width: 100%;
+}
+.ptlChomomi__serviceTitle {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #3a3028;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.ptlChomomi__serviceSubtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #8b7355;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+/* 今だけバッジ */
+.ptlChomomi__priceLimited {
+  display: inline-block;
+  padding: 3px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 767px) {
+  .ptlChomomi--service {
+    margin-top: 32px;
+    padding: 40px 16px 36px;
+    border-radius: 16px;
+  }
+  .ptlChomomi__serviceTitle {
+    font-size: 20px;
+  }
+}
