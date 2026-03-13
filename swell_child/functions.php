@@ -7034,70 +7034,6 @@ add_action('wp_head', function () {
         ];
     }
 
-    // ----- 個別メニューページ -----
-    // 新メニュー追加時: $menu_pages 配列に追記するだけでOK
-    $menu_pages = [
-        'menu-full-course-90min' => [
-            'name'        => '【90分フルコース】ナノカレント×フラッシュ',
-            'description' => 'ナノカレントが女性ホルモンにアプローチし、バストアップに適した体内環境を整える。フットマッサージによる全身血流改善＋フラッシュ照射の贅沢90分フルトリートメント。',
-            'serviceType' => 'バストアップエステ',
-            'duration'    => 'PT90M',
-            'price'       => '12000',
-            'priceRegular' => '42000',
-            'offerName'   => '初回体験価格',
-        ],
-        'menu-standard-bust-60min' => [
-            'name'        => '【スタンダード育乳】乳腺マッサージ＋フラッシュ 60分',
-            'description' => '背面マッサージ→乳腺マッサージ→フラッシュ照射の王道60分コース。肩甲骨周辺の凝りをほぐし、脂肪細胞を膨らませて定着。熟練ハンド技術と光照射のハイブリッドケア。',
-            'serviceType' => 'バストアップエステ',
-            'duration'    => 'PT60M',
-            'price'       => '6980',
-            'priceRegular' => '26000',
-            'offerName'   => '初回体験価格',
-        ],
-        'menu-hand-massage-45min' => [
-            'name'        => '【オールハンド育乳】乳腺マッサージ 45分',
-            'description' => 'マシン不使用。熟練エステティシャンのハンド技術のみで筋膜の癒着をクリアにし、未発達の乳腺を活性化。マシン施術が苦手な方にもおすすめ。',
-            'serviceType' => 'バストアップエステ',
-            'duration'    => 'PT45M',
-            'price'       => '8000',
-            'priceRegular' => '29000',
-            'offerName'   => '体験価格',
-        ],
-    ];
-
-    if (isset($menu_pages[$slug])) {
-        $menu = $menu_pages[$slug];
-        $graph[] = [
-            '@type'       => 'Service',
-            'name'        => $menu['name'],
-            'description' => $menu['description'],
-            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
-            'serviceType' => $menu['serviceType'],
-            'areaServed'  => [
-                ['@type' => 'City', 'name' => '渋谷区'],
-                ['@type' => 'City', 'name' => '中央区'],
-            ],
-            'url'         => 'https://patolaqshe.com/' . $slug . '/',
-            'offers'      => [
-                [
-                    '@type'         => 'Offer',
-                    'name'          => $menu['offerName'],
-                    'price'         => $menu['price'],
-                    'priceCurrency' => 'JPY',
-                    'availability'  => 'https://schema.org/InStock',
-                    'description'   => '通常' . number_format((int)$menu['priceRegular']) . '円→' . $menu['offerName'] . number_format((int)$menu['price']) . '円',
-                    'url'           => 'https://patolaqshe.com/' . $slug . '/',
-                    'priceValidUntil' => '2026-12-31',
-                ],
-            ],
-            'additionalProperty' => [
-                ['@type' => 'PropertyValue', 'name' => '所要時間', 'value' => $menu['duration']],
-                ['@type' => 'PropertyValue', 'name' => '通常価格', 'value' => number_format((int)$menu['priceRegular']) . '円（税込）'],
-            ],
-        ];
-    }
-
     // ----- コースページ -----
     if ($slug === 'course') {
         $graph[] = [
@@ -7947,3 +7883,87 @@ function ptl_inject_chomomi_service($content)
   return $content;
 }
 add_filter('the_content', 'ptl_inject_chomomi_service', 20);
+
+// ================================================================
+// 構造化データ（JSON-LD）- 個別メニュー投稿用
+// 新メニュー追加時: $menu_posts 配列に追記するだけでOK
+// ================================================================
+add_action('wp_head', function () {
+    if (!is_single()) return;
+
+    $slug = get_post_field('post_name', get_post());
+
+    $menu_posts = [
+        'menu-full-course-90min' => [
+            'name'        => '【90分フルコース】ナノカレント×フラッシュ',
+            'description' => 'ナノカレントが女性ホルモンにアプローチし、バストアップに適した体内環境を整える。フットマッサージによる全身血流改善＋フラッシュ照射の贅沢90分フルトリートメント。',
+            'serviceType' => 'バストアップエステ',
+            'duration'    => 'PT90M',
+            'price'       => '12000',
+            'priceRegular' => '42000',
+            'offerName'   => '初回体験価格',
+        ],
+        'menu-standard-bust-60min' => [
+            'name'        => '【スタンダード育乳】乳腺マッサージ＋フラッシュ 60分',
+            'description' => '背面マッサージ→乳腺マッサージ→フラッシュ照射の王道60分コース。肩甲骨周辺の凝りをほぐし、脂肪細胞を膨らませて定着。熟練ハンド技術と光照射のハイブリッドケア。',
+            'serviceType' => 'バストアップエステ',
+            'duration'    => 'PT60M',
+            'price'       => '6980',
+            'priceRegular' => '26000',
+            'offerName'   => '初回体験価格',
+        ],
+        'menu-hand-massage-45min' => [
+            'name'        => '【オールハンド育乳】乳腺マッサージ 45分',
+            'description' => 'マシン不使用。熟練エステティシャンのハンド技術のみで筋膜の癒着をクリアにし、未発達の乳腺を活性化。マシン施術が苦手な方にもおすすめ。',
+            'serviceType' => 'バストアップエステ',
+            'duration'    => 'PT45M',
+            'price'       => '8000',
+            'priceRegular' => '29000',
+            'offerName'   => '体験価格',
+        ],
+    ];
+
+    if (!isset($menu_posts[$slug])) return;
+
+    $menu = $menu_posts[$slug];
+    $graph = [
+        [
+            '@type'       => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'ホーム', 'item' => 'https://patolaqshe.com/'],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => '施術メニュー', 'item' => 'https://patolaqshe.com/service/'],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => $menu['name'], 'item' => 'https://patolaqshe.com/' . $slug . '/'],
+            ],
+        ],
+        [
+            '@type'       => 'Service',
+            'name'        => $menu['name'],
+            'description' => $menu['description'],
+            'provider'    => ['@id' => 'https://patolaqshe.com/#organization'],
+            'serviceType' => $menu['serviceType'],
+            'areaServed'  => [
+                ['@type' => 'City', 'name' => '渋谷区'],
+                ['@type' => 'City', 'name' => '中央区'],
+            ],
+            'url'         => 'https://patolaqshe.com/' . $slug . '/',
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => $menu['offerName'],
+                    'price'         => $menu['price'],
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '通常' . number_format((int)$menu['priceRegular']) . '円→' . $menu['offerName'] . number_format((int)$menu['price']) . '円',
+                    'url'           => 'https://patolaqshe.com/' . $slug . '/',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+            ],
+            'additionalProperty' => [
+                ['@type' => 'PropertyValue', 'name' => '所要時間', 'value' => $menu['duration']],
+                ['@type' => 'PropertyValue', 'name' => '通常価格', 'value' => number_format((int)$menu['priceRegular']) . '円（税込）'],
+            ],
+        ],
+    ];
+
+    echo '<script type="application/ld+json">' . json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+});
