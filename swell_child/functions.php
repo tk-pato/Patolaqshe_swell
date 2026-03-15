@@ -7489,6 +7489,14 @@ add_action('wp_head', function () {
       gtag('js', new Date());
       gtag('config', 'G-ZLB7ZC2RF8');
     </script>
+    <!-- Microsoft Clarity -->
+    <script>
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "vw63xrrbj3");
+    </script>
     <?php
     // OGP/Twitterカードは SEO SIMPLE PACK プラグインに委譲
 }, 2);
