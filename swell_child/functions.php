@@ -985,7 +985,7 @@ add_shortcode('ptl_marquee', function ($atts) {
     <div class="ptl-marquee__track" aria-hidden="true">
       <?php foreach ([$urls, $urls] as $dup): ?>
         <?php foreach ($dup as $u): ?>
-          <div class="ptl-marquee__item"><img src="<?php echo esc_url($u); ?>" alt="" width="480" height="480" loading="lazy" decoding="async"></div>
+          <div class="ptl-marquee__item"><img src="<?php echo esc_url($u); ?>" alt="パトラクシェ施術実績" width="480" height="480" loading="lazy" decoding="async"></div>
         <?php endforeach; ?>
       <?php endforeach; ?>
     </div>

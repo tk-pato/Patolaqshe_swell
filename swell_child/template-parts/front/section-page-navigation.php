@@ -81,11 +81,11 @@ if (!function_exists('ptl_nav_placeholder_svg')) {
                 if (!$icon_html && $slug) {
                     $png_wh = $icon_dir_abs . $slug . '_wh.png';
                     if (file_exists($png_wh)) {
-                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '_wh.png') . '" alt="" width="256" height="256" loading="lazy" decoding="async">';
+                        $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '_wh.png') . '" alt="' . esc_attr($label) . '" width="256" height="256" loading="lazy" decoding="async">';
                     } else {
                         $png = $icon_dir_abs . $slug . '.png';
                         if (file_exists($png)) {
-                            $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="" width="256" height="256" loading="lazy" decoding="async">';
+                            $icon_html = '<img src="' . esc_url($icon_dir_uri . $slug . '.png') . '" alt="' . esc_attr($label) . '" width="256" height="256" loading="lazy" decoding="async">';
                         }
                     }
                 }
