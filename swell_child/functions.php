@@ -4953,7 +4953,7 @@ add_action('wp_enqueue_scripts', 'pato_enqueue_product_modal_assets');
  */
 add_filter('pre_get_document_title', function ($title) {
     if (is_front_page()) {
-        return '恵比寿・代官山と銀座のバストアップ専門サロン｜パトラクシェ';
+        return '恵比寿・代官山と銀座のバストアップ専門パトラクシェ';
     }
     if (is_page('information')) {
         return 'エステティシャン求人｜銀座・恵比寿 バストアップ専門パトラクシェ';
@@ -7658,7 +7658,7 @@ add_action('wp_head', function () {
   $speakable_schema = [
     '@context' => 'https://schema.org',
     '@type'    => 'WebPage',
-    'name'     => '恵比寿・代官山と銀座のバストアップ専門サロン パトラクシェ',
+    'name'     => '恵比寿・代官山と銀座のバストアップ専門パトラクシェ',
     'speakable' => [
       '@type'   => 'SpeakableSpecification',
       'cssSelector' => ['.l-mainContent', '.p-articleBody'],
