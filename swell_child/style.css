@@ -953,6 +953,21 @@ body.js-modal_open {
    FAQモーダル：全ページ共通スタイル
    ===================================================== */
 
+/* FAQモーダル非表示（他モーダルと統一） */
+.faq-modal.js-modal_wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+}
+
+.faq-modal.js-modalitem_open {
+  display: block;
+}
+
 /* モーダル背景 */
 .faq-modal .js-modal_bg {
   background: transparent !important;
