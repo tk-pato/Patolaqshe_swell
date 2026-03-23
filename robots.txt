@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /media/
+Disallow: /author/
+Disallow: /blog-category/
+Disallow: /article-type/
+Disallow: /*?a8=
+Disallow: /*?attachment_id=
+Disallow: /*?p=
+Disallow: /*/feed/
+
+Sitemap: https://patolaqshe.com/wp-sitemap.xml
