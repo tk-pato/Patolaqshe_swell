@@ -7975,3 +7975,17 @@ add_action('wp_head', function () {
 
     echo '<script type="application/ld+json">' . json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
 });
+
+// ========== Search Console: 不要なサイトマップを除外 (2026-03-23) ==========
+// タクソノミーアーカイブ（article_type, blog_category, category）と著者アーカイブを除外
+add_filter('wp_sitemaps_add_provider', function ($provider, $name) {
+    if ($name === 'users') return false;
+    return $provider;
+}, 10, 2);
+
+add_filter('wp_sitemaps_taxonomies', function ($taxonomies) {
+    unset($taxonomies['article_type']);
+    unset($taxonomies['blog_category']);
+    unset($taxonomies['category']);
+    return $taxonomies;
+});
