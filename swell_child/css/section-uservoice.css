@@ -171,8 +171,9 @@
     margin-right: auto;
 }
 
-/* フィードバックタイトル */
-.feedback-title {
+/* フィードバックタイトル（SWELLデフォルトh3装飾を完全無効化） */
+.feedback-title,
+h3.feedback-title {
     font-size: clamp(13px, 1.4vw, 16px);
     font-weight: 600;
     color: #444;
@@ -181,6 +182,11 @@
     margin-bottom: 6px;
     letter-spacing: .08em;
     font-family: inherit;
+    border: none !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
 }
 
 /* フィードバック内容 */

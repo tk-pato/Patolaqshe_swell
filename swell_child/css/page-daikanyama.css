@@ -1125,7 +1125,7 @@ body {
   position: relative;
 }
 
-/* PC用：カード間の区切り線 */
+/* PC用：カード間の区切り線（spaceBetween: 24 → right: -12px） */
 @media (min-width: 768px) {
   .voice-section .swiper-slide:not(:last-child) .feedback-card::after {
     content: '';
@@ -1136,6 +1136,13 @@ body {
     width: 1px;
     background-color: #e0e0e0;
     z-index: 1;
+  }
+}
+
+/* カード位置をナビ線と均等に */
+@media (min-width: 768px) {
+  .voice-section .uservoice-slider .swiper {
+    padding: 0 60px;
   }
 }
 
@@ -1168,7 +1175,20 @@ body {
   margin-bottom: 6px;
   letter-spacing: 0.08em;
   border: none !important;
+  border-bottom: none !important;
   padding-bottom: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* SWELLデフォルトh3装飾を完全無効化 */
+.voice-section h3.feedback-title,
+.uservoice-slider h3.feedback-title {
+  border: none !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
 }
 
 /* 本文 */
@@ -1408,10 +1428,10 @@ body {
   cursor: pointer;
 }
 
-/* カードホバー効果 */
+/* カードホバー効果（無効化） */
 .voice-card-link:hover .feedback-card {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2) !important;
+  transform: none;
+  box-shadow: none !important;
 }
 
 /* リンクテキストの色を維持 */

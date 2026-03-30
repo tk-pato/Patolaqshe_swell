@@ -3452,7 +3452,9 @@ function ptl_uservoice_slider_shortcode($atts)
           $customer_name = get_post_meta($post->ID, '_customer_name', true);
           $rating = (int)get_post_meta($post->ID, '_rating', true);
           $customer_image = get_post_meta($post->ID, '_customer_image', true);
-          // _uservoice_title廃止: post_titleに統一
+          $post_title = get_the_title($post->ID);
+          $uservoice_title = get_post_meta($post->ID, '_uservoice_title', true);
+          $display_title = $uservoice_title ? $uservoice_title : ($post_title ? $post_title : get_the_date('Y/n', $post->ID));
 
         ?>
           <div class="swiper-slide">
@@ -3470,10 +3472,10 @@ function ptl_uservoice_slider_shortcode($atts)
                 <?php endif; ?>
               </div>
 
-              <h3 class="feedback-title"><?php echo esc_html(get_the_title()); ?></h3>
+              <h3 class="feedback-title"><?php echo esc_html($display_title); ?></h3>
 
               <div class="feedback-content">
-                <p><?php echo get_the_content(); ?></p>
+                <p><?php echo apply_filters('the_content', $post->post_content); ?></p>
               </div>
 
               <div class="feedback-author"><?php echo esc_html($customer_name ? $customer_name : '匿名のお客様'); ?></div>
