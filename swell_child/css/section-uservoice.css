@@ -188,6 +188,13 @@ h3.feedback-title {
     background: none !important;
     box-shadow: none !important;
 }
+.feedback-title::before,
+.feedback-title::after,
+h3.feedback-title::before,
+h3.feedback-title::after {
+    content: none !important;
+    display: none !important;
+}
 
 /* フィードバック内容 */
 .feedback-content {

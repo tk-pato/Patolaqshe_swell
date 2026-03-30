@@ -1190,6 +1190,13 @@ body {
   background: none !important;
   box-shadow: none !important;
 }
+.voice-section h3.feedback-title::before,
+.voice-section h3.feedback-title::after,
+.uservoice-slider h3.feedback-title::before,
+.uservoice-slider h3.feedback-title::after {
+  content: none !important;
+  display: none !important;
+}
 
 /* 本文 */
 .voice-section .feedback-content {

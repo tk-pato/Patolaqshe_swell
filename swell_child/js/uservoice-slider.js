@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initUserVoiceSlider() {
-    const sliderElement = document.querySelector('.uservoice-slider');
+    // フロントページ（#uservoice内）のスライダーのみ対象
+    // 子ページはショートコード内のインラインscriptで初期化する
+    const sliderElement = document.querySelector('#uservoice .uservoice-slider');
     if (!sliderElement) {
         return;
     }
@@ -30,12 +32,11 @@ function initUserVoiceSlider() {
     }
 
     try {
-        const swiper = new Swiper('.uservoice-slider', {
+        const swiper = new Swiper('#uservoice .uservoice-slider', {
             direction: 'horizontal',
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
-            centeredSlides: true,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
@@ -53,18 +54,15 @@ function initUserVoiceSlider() {
                 320: {
                     slidesPerView: 1,
                     spaceBetween: 20,
-                    centeredSlides: true,
-                },
+                        },
                 768: {
                     slidesPerView: 3,
                     spaceBetween: 24,
-                    centeredSlides: true,
-                },
+                        },
                 1024: {
                     slidesPerView: 3,
                     spaceBetween: 30,
-                    centeredSlides: true,
-                }
+                        }
             },
             keyboard: {
                 enabled: true,

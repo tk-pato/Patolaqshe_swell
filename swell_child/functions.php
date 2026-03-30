@@ -3015,6 +3015,111 @@ if (!defined('PTL_PERF_OPTIMIZATION_READY')) {
 }
 
 /**
+ * 非クリティカルCSSを非同期読み込みに変更（レンダリングブロック削減）
+ * ファーストビューに必要なCSS（ヘッダー・ヒーロー・第1セクション）だけブロック、
+ * それ以外はmedia="print"→onload="this.media='all'"で非同期化
+ */
+add_filter('style_loader_tag', 'ptl_async_noncritical_css', 10, 4);
+function ptl_async_noncritical_css($html, $handle, $href, $media)
+{
+  // ファーストビューに必須のCSS（これだけブロックで残す）
+  $critical_handles = [
+    'child_style',              // 子テーマ基本
+    'ptl-navigation-style',     // ヘッダーナビ
+    'ptl-navigation-pc',
+    'ptl-navigation-sp',
+    'ptl-hero-scroll-sp',       // ヒーロー
+    'ptlCommit',                // 第1セクション
+    'ptlCommit-pc',
+    'ptlCommit-sp',
+  ];
+  // SWELL親テーマのCSS（IDにswell-を含むもの等）はWordPressコアなので触らない
+  // ただしswell_swiperとswiper（CDN）は遅延可能
+  $async_handles = [
+    // モーダル系
+    'pato-salon-modal-pc', 'pato-salon-modal-sp',
+    'pato-blog-modal-pc', 'pato-blog-modal-sp',
+    'pato-news-modal-pc', 'pato-news-modal-sp',
+    'pato-product-modal-pc', 'pato-product-modal-sp',
+    'pato-store-modal',
+    // UI部品
+    'ptl-pagetop-arrow', 'ptl-float-menu',
+    'swell-print',
+    // フッター（スクロール最下部）
+    'ptl_footer', 'ptl_footer-pc', 'ptl_footer-sp',
+    // 下部セクション（ファーストビュー外）
+    'ptl_section_menu', 'ptl_section_menu-pc', 'ptl_section_menu-sp',
+    'ptl_section_salon', 'ptl_section_salon-pc', 'ptl_section_salon-sp',
+    'ptlChomomi',
+    'ptlHub', 'ptlHub-pc', 'ptlHub-sp',
+    'ptlNews', 'ptlNews-pc', 'ptlNews-sp',
+    'ptl-uservoice', 'ptl-uservoice-pc', 'ptl-uservoice-sp',
+    'ptl_section_intro', 'ptlIntro-pc', 'ptlIntro-sp',
+    'ptl-blog', 'ptlBlog-pc', 'ptlBlog-sp',
+    'swell-child-sp-titles',
+    'ptl-order-sp',
+    'ptl-issues-bundle', 'ptl-issues-pc', 'ptl-issues-sp',
+    // Swiper（スクロール後に必要）
+    'swell_swiper', 'swiper',
+    // プラグイン
+    'modal-window', 'contact-form-7',
+    'ptl-breadcrumb',
+  ];
+  if (in_array($handle, $async_handles)) {
+    // media="all" → media="print" onload="this.media='all'" に変換
+    $html = str_replace(
+      "media='{$media}'",
+      "media='print' onload=\"this.media='all'\"",
+      $html
+    );
+    $html = str_replace(
+      "media=\"{$media}\"",
+      "media=\"print\" onload=\"this.media='all'\"",
+      $html
+    );
+    // media付きCSS（screen and ...）の場合
+    if ($media !== 'all') {
+      $html = preg_replace(
+        '/media=["\'][^"\']*["\']/',
+        'media="print" onload="this.media=\'' . esc_attr($media) . '\'"',
+        $html,
+        1
+      );
+    }
+  }
+  return $html;
+}
+
+/**
+ * 動画の遅延読み込み（preload="none" + IntersectionObserverで再生開始）
+ */
+add_action('wp_footer', 'ptl_lazy_video_script', 99);
+function ptl_lazy_video_script()
+{
+?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('video[autoplay]').forEach(function(v) {
+    v.removeAttribute('autoplay');
+    v.setAttribute('preload', 'none');
+    v.pause();
+    var ob = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.setAttribute('preload', 'auto');
+          e.target.play();
+          ob.unobserve(e.target);
+        }
+      });
+    }, {rootMargin: '200px'});
+    ob.observe(v);
+  });
+});
+</script>
+<?php
+}
+
+/**
  * フローティングメニューの読み込み
  */
 add_action('wp_enqueue_scripts', function () {
