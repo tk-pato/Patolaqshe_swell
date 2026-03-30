@@ -1,19 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    if (typeof Swiper === 'undefined') {
-        const swiperCSS = document.createElement('link');
-        swiperCSS.rel = 'stylesheet';
-        swiperCSS.href = 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css';
-        document.head.appendChild(swiperCSS);
-
-        const swiperJS = document.createElement('script');
-        swiperJS.src = 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js';
-        swiperJS.onload = function() {
-            initUserVoiceSlider();
-        };
-        document.head.appendChild(swiperJS);
-    } else {
-        initUserVoiceSlider();
-    }
+    // SWELL内蔵Swiper（swell_swiper）がWP依存関係で読み込み済み
+    initUserVoiceSlider();
 });
 
 function initUserVoiceSlider() {

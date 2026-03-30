@@ -1,4 +1,12 @@
 <?php
+// HTML gzip圧縮（zlib使用）— .htaccessのDEFLATEが効かない環境の対策
+if (!defined('DOING_AJAX') && !defined('DOING_CRON')) {
+    if (extension_loaded('zlib') && !ini_get('zlib.output_compression')) {
+        ini_set('zlib.output_compression', 'On');
+        ini_set('zlib.output_compression_level', '6');
+    }
+}
+
 if (!defined('ABSPATH')) exit;
 
 // WP 6.9: media TinyMCE プラグインのスタンドアロンファイルが削除されたためエラー回避
@@ -2131,18 +2139,15 @@ add_action('manage_uservoice_posts_custom_column', function ($column, $post_id) 
 
 add_action('wp_enqueue_scripts', function () {
 
-  // Swiper CDN を登録（未登録なら）
-  if (! wp_style_is('swiper', 'registered')) {
-    wp_register_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', [], '8.4.7');
-  }
-  if (! wp_script_is('swiper', 'registered')) {
-    wp_register_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', [], '8.4.7', true);
-  }
+  // SWELL内蔵Swiper（swell_swiper）を使用（CDN版は不要）
+  // swell_swiper は親テーマが register 済み。念のため enqueue しておく
+  wp_enqueue_style('swell_swiper');
+  wp_enqueue_script('swell_swiper');
 
   // お客様の声 CSS（PC/SP分離対応）
   $css = get_stylesheet_directory() . '/css/section-uservoice.css';
   if (file_exists($css) && ! wp_style_is('ptl-uservoice', 'enqueued')) {
-    wp_enqueue_style('ptl-uservoice', get_stylesheet_directory_uri() . '/css/section-uservoice.css', ['child_style', 'swiper'], filemtime($css));
+    wp_enqueue_style('ptl-uservoice', get_stylesheet_directory_uri() . '/css/section-uservoice.css', ['child_style', 'swell_swiper'], filemtime($css));
   }
 
   // お客様の声 - PC専用CSS
@@ -2160,7 +2165,7 @@ add_action('wp_enqueue_scripts', function () {
   // お客様の声 JS（Swiperに依存）
   $js = get_stylesheet_directory() . '/js/uservoice-slider.js';
   if (file_exists($js) && ! wp_script_is('ptl-uservoice', 'enqueued')) {
-    wp_enqueue_script('ptl-uservoice', get_stylesheet_directory_uri() . '/js/uservoice-slider.js', ['swiper'], filemtime($js), true);
+    wp_enqueue_script('ptl-uservoice', get_stylesheet_directory_uri() . '/js/uservoice-slider.js', ['swell_swiper'], filemtime($js), true);
   }
 
   // INTRO Section CSS（PC/SP分離対応）
@@ -2973,6 +2978,8 @@ function ptl_perf_preconnect()
 {
   echo '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>' . "\n";
   echo '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>' . "\n";
+  echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+  echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
   echo '<link rel="dns-prefetch" href="https://www.googletagmanager.com">' . "\n";
 }
 
@@ -3089,6 +3096,21 @@ function ptl_async_noncritical_css($html, $handle, $href, $media)
   }
   return $html;
 }
+
+/**
+ * Contact Form 7 の JS を contactページ以外で除外（パフォーマンス最適化）
+ * フロントページのモーダル内にCF7フォームがある場合があるため、
+ * contactページ以外でもCSSは非同期で残す（上記 async_handles で対応済み）
+ */
+add_action('wp_enqueue_scripts', function () {
+  if (!is_page('contact') && !is_front_page()) {
+    wp_dequeue_script('contact-form-7');
+    wp_dequeue_style('contact-form-7');
+    // CF7 validation JS も除外
+    wp_dequeue_script('wpcf7-recaptcha');
+    wp_dequeue_script('swv');
+  }
+}, 20);
 
 /**
  * 動画の遅延読み込み（preload="none" + IntersectionObserverで再生開始）
