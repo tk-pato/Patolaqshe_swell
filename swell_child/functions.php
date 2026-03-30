@@ -3566,7 +3566,6 @@ function ptl_uservoice_slider_shortcode($atts)
           loop: true,
           slidesPerView: 1,
           spaceBetween: 16,
-          centeredSlides: true,
           speed: 1500,
           breakpoints: {
             768: {
@@ -6546,6 +6545,113 @@ add_action('wp_head', function () {
                 ],
             ],
         ];
+
+        // FAQPage — 代官山店
+        $graph[] = [
+            '@type'      => 'FAQPage',
+            'mainEntity' => [
+                [
+                    '@type' => 'Question',
+                    'name'  => '予約方法を教えてください',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'お電話（営業時間内）、LINE、またはホットペッパービューティーから24時間ご予約いただけます。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '予約の変更・キャンセルはできますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'はい、可能です。ただし、変更・キャンセルは2営業日前までにお願いいたします。それ以降の場合は、回数券の消化またはキャンセル料が発生する場合がございます。お電話またはLINEにてご連絡ください。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '支払い方法を教えてください',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => '現金、クレジットカード、電子マネーがご利用いただけます。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => 'どんな施術をしますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'ドイツ・Heraeus社製フラッシュランプ×サファイアクリスタル搭載のバストアップ専用マシンによる光照射と、熟練セラピストによるオールハンド乳腺マッサージを組み合わせたオーダーメイド複合施術です。都内随一の1回2000ショット照射で深部までアプローチします。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '何回通えば良いですか？通う頻度は？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'バストアップなどの効果実感には、6回以上、2～3ヶ月以上をおすすめしております。お客様お一人おひとりの状態に合わせて、最適なペースをカウンセリング時にお伝えいたします。最初は2週間に1回がベースとなり、徐々にペースは減っていきます。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '無料カウンセリングだけでも良いですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'はい、もちろんです。無料カウンセリングのみも大歓迎です。施術内容やお悩みについて、じっくりお話を伺い、不安や疑問を解消してからご判断いただけますので、お気軽にご相談ください。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => 'バストの下垂や左右差は改善できますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'はい、可能です。バストを支える筋肉を整えることで下垂の改善が期待でき、左右のバランスを整える施術も行います。お一人おひとりの状態に合わせてケアいたします。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => 'フラッシュバスト（光バストアップ）とは何ですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'フラッシュバストは光エネルギーを照射して乳腺や脂肪細胞を深部から活性化する施術です。パトラクシェでは都内随一の1回2000ショットを照射。ドイツ・Heraeus社製の高品質フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンを使用しています。',
+                    ],
+                ],
+            ],
+        ];
+
+        // Service — 代官山店バストアップ施術
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => 'バストアップ施術（恵比寿・代官山店）',
+            'description' => 'Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。都内随一の2000ショット照射で深部までアプローチ。創業13年・延べ7万人以上の施術実績。',
+            'provider'    => ['@id' => 'https://patolaqshe.com/#daikanyama'],
+            'serviceType' => 'バストアップエステ',
+            'areaServed'  => [
+                ['@type' => 'City', 'name' => '渋谷区'],
+                ['@type' => 'City', 'name' => '代官山'],
+                ['@type' => 'City', 'name' => '恵比寿'],
+            ],
+            'url'         => 'https://patolaqshe.com/ebisu-daikanyama/',
+            'category'    => 'バストアップ・育乳・光豊胸',
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'バストアップコース 90分 初回体験',
+                    'price'         => '9500',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '人気No.1。フラッシュ2000ショット×オールハンド乳腺マッサージの90分フルコース。通常35,000円→初回限定9,500円。',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'スタンダード育乳 60分 初回体験',
+                    'price'         => '6980',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '乳腺マッサージ＋フラッシュ照射の60分。通常26,000円→初回限定6,980円。',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+            ],
+        ];
     }
 
     // ----- 銀座店ページ -----
@@ -6691,6 +6797,113 @@ add_action('wp_head', function () {
                             'name'  => 'ボディケア',
                         ],
                     ],
+                ],
+            ],
+        ];
+
+        // FAQPage — 銀座店
+        $graph[] = [
+            '@type'      => 'FAQPage',
+            'mainEntity' => [
+                [
+                    '@type' => 'Question',
+                    'name'  => '予約方法を教えてください',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'お電話（営業時間内）、LINE、またはホットペッパービューティーから24時間ご予約いただけます。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '予約の変更・キャンセルはできますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'はい、可能です。ただし、変更・キャンセルは2営業日前までにお願いいたします。それ以降の場合は、回数券の消化またはキャンセル料が発生する場合がございます。お電話またはLINEにてご連絡ください。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '支払い方法を教えてください',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => '現金、クレジットカード、電子マネーがご利用いただけます。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => 'どんな施術をしますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'ドイツ・Heraeus社製フラッシュランプ×サファイアクリスタル搭載のバストアップ専用マシンによる光照射と、熟練セラピストによるオールハンド乳腺マッサージを組み合わせたオーダーメイド複合施術です。都内随一の1回2000ショット照射で深部までアプローチします。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '何回通えば良いですか？通う頻度は？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'バストアップなどの効果実感には、6回以上、2～3ヶ月以上をおすすめしております。お客様お一人おひとりの状態に合わせて、最適なペースをカウンセリング時にお伝えいたします。最初は2週間に1回がベースとなり、徐々にペースは減っていきます。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => '無料カウンセリングだけでも良いですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'はい、もちろんです。無料カウンセリングのみも大歓迎です。施術内容やお悩みについて、じっくりお話を伺い、不安や疑問を解消してからご判断いただけますので、お気軽にご相談ください。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => 'バストの下垂や左右差は改善できますか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'はい、可能です。バストを支える筋肉を整えることで下垂の改善が期待でき、左右のバランスを整える施術も行います。お一人おひとりの状態に合わせてケアいたします。',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name'  => 'フラッシュバスト（光バストアップ）とは何ですか？',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => 'フラッシュバストは光エネルギーを照射して乳腺や脂肪細胞を深部から活性化する施術です。パトラクシェでは都内随一の1回2000ショットを照射。ドイツ・Heraeus社製の高品質フラッシュランプとサファイアクリスタルを搭載したバストアップ専用マシンを使用しています。',
+                    ],
+                ],
+            ],
+        ];
+
+        // Service — 銀座店バストアップ施術
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => 'バストアップ施術（銀座店）',
+            'description' => 'Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。都内随一の2000ショット照射で深部までアプローチ。創業13年・延べ7万人以上の施術実績。',
+            'provider'    => ['@id' => 'https://patolaqshe.com/#ginza'],
+            'serviceType' => 'バストアップエステ',
+            'areaServed'  => [
+                ['@type' => 'City', 'name' => '中央区'],
+                ['@type' => 'City', 'name' => '銀座'],
+                ['@type' => 'City', 'name' => '有楽町'],
+            ],
+            'url'         => 'https://patolaqshe.com/ginza/',
+            'category'    => 'バストアップ・育乳・光豊胸',
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'バストアップコース 90分 初回体験',
+                    'price'         => '9500',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '人気No.1。フラッシュ2000ショット×オールハンド乳腺マッサージの90分フルコース。通常35,000円→初回限定9,500円。',
+                    'priceValidUntil' => '2026-12-31',
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'スタンダード育乳 60分 初回体験',
+                    'price'         => '6980',
+                    'priceCurrency' => 'JPY',
+                    'availability'  => 'https://schema.org/InStock',
+                    'description'   => '乳腺マッサージ＋フラッシュ照射の60分。通常26,000円→初回限定6,980円。',
+                    'priceValidUntil' => '2026-12-31',
                 ],
             ],
         ];

@@ -31,30 +31,6 @@ RedirectMatch 301 ^/daikanyama\.php$ /ebisu-daikanyama/
 RedirectMatch 301 ^/contact/?$ /information/
 # END 301 Redirects
 
-# BEGIN Search Console Cleanup (2026-03-23)
-<IfModule mod_rewrite.c>
-RewriteEngine On
-
-# 410 Gone for spam a8 affiliate URLs
-RewriteCond %{QUERY_STRING} ^a8= [NC]
-RewriteRule ^$ - [G,L]
-
-# 410 Gone for old WordPress attachment pages
-RewriteCond %{QUERY_STRING} ^attachment_id= [NC]
-RewriteRule ^$ - [G,L]
-
-# 410 Gone for old WordPress post ID URLs (deleted posts)
-RewriteCond %{QUERY_STRING} ^p=[0-9]+ [NC]
-RewriteRule ^$ - [G,L]
-
-# 410 Gone for old /media/ paths
-RewriteRule ^media/ - [G,L]
-
-# 301 Redirect /*/feed/ to parent page
-RewriteRule ^(.+)/feed/?$ /$1/ [R=301,L]
-</IfModule>
-# END Search Console Cleanup
-
 # BEGIN WordPress
 # "BEGIN WordPress" から "END WordPress" までのディレクティブ (行) は
 # 動的に生成され、WordPress フィルターによってのみ修正が可能です。
