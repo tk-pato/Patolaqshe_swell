@@ -18,24 +18,7 @@
   }
 }
 
-/* PC・タブレット用カード間グレー線 */
-  #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
-    content: '';
-    position: absolute;
-    top: 10%;
-    right: -12px;
-    bottom: 10%;
-    width: 1px;
-    background-color: #e0e0e0;
-    z-index: 1;
-  }
-
-/* タブレット時の線の調整 */
-  #uservoice .swiper-slide:not(:last-child) .feedback-card::after {
-    background-color: #d0d0d0;
-    top: 8%;
-    bottom: 8%;
-  }
+/* カード間グレー線はsection-uservoice.cssで管理 */
   
   /* タブレット時の3枚表示調整 */
   #uservoice .feedback-card {

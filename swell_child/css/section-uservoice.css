@@ -486,7 +486,7 @@
     }
 }
 
-/* PC・タブレット用カード間グレー線（spaceBetween/2でセンタリング） */
+/* PC・タブレット用カード間グレー線（spaceBetween/2 + card margin 8pxでセンタリング） */
 @media (min-width: 960px) {
     #uservoice .swiper-slide:not(:last-child) .feedback-card::after,
     #voice-section .swiper-slide:not(:last-child) .feedback-card::after,
@@ -494,7 +494,7 @@
         content: '';
         position: absolute;
         top: 10%;
-        right: -12px;
+        right: -20px;
         bottom: 10%;
         width: 1px;
         background-color: #e0e0e0;
@@ -506,7 +506,7 @@
     #uservoice .swiper-slide:not(:last-child) .feedback-card::after,
     #voice-section .swiper-slide:not(:last-child) .feedback-card::after,
     .uservoice-slider .swiper-slide:not(:last-child) .feedback-card::after {
-        right: -15px;
+        right: -23px;
     }
 }
 
