@@ -3042,32 +3042,20 @@ function ptl_async_noncritical_css($html, $handle, $href, $media)
   ];
   // SWELL親テーマのCSS（IDにswell-を含むもの等）はWordPressコアなので触らない
   // ただしswell_swiperとswiper（CDN）は遅延可能
+  // CLS防止のため、セクションレイアウトCSSはブロックで残す
+  // モーダル・フッター・UI部品など、レイアウトに影響しないもののみ非同期化
   $async_handles = [
-    // モーダル系
+    // モーダル系（クリックまで不要）
     'pato-salon-modal-pc', 'pato-salon-modal-sp',
     'pato-blog-modal-pc', 'pato-blog-modal-sp',
     'pato-news-modal-pc', 'pato-news-modal-sp',
     'pato-product-modal-pc', 'pato-product-modal-sp',
     'pato-store-modal',
-    // UI部品
+    // UI部品（フロート・スクロールトップ）
     'ptl-pagetop-arrow', 'ptl-float-menu',
     'swell-print',
-    // フッター（スクロール最下部）
+    // フッター（最下部、レイアウトシフト影響なし）
     'ptl_footer', 'ptl_footer-pc', 'ptl_footer-sp',
-    // 下部セクション（ファーストビュー外）
-    'ptl_section_menu', 'ptl_section_menu-pc', 'ptl_section_menu-sp',
-    'ptl_section_salon', 'ptl_section_salon-pc', 'ptl_section_salon-sp',
-    'ptlChomomi',
-    'ptlHub', 'ptlHub-pc', 'ptlHub-sp',
-    'ptlNews', 'ptlNews-pc', 'ptlNews-sp',
-    'ptl-uservoice', 'ptl-uservoice-pc', 'ptl-uservoice-sp',
-    'ptl_section_intro', 'ptlIntro-pc', 'ptlIntro-sp',
-    'ptl-blog', 'ptlBlog-pc', 'ptlBlog-sp',
-    'swell-child-sp-titles',
-    'ptl-order-sp',
-    'ptl-issues-bundle', 'ptl-issues-pc', 'ptl-issues-sp',
-    // Swiper（スクロール後に必要）
-    'swell_swiper', 'swiper',
     // プラグイン
     'modal-window', 'contact-form-7',
     'ptl-breadcrumb',
