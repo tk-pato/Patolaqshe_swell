@@ -6523,23 +6523,23 @@ add_action('wp_head', function () {
             'description' => '恵比寿・代官山のバストアップ専門パトラクシェ。ドイツ・Heraeus社製ランプ×サファイアクリスタル搭載のバストアップ専用マシンとオールハンドによるオーダーメイド複合施術。創業13年・2店舗で延べ7万人以上の施術実績。代官山駅徒歩2分、恵比寿駅徒歩6分。効果体感率99%。',
             'image'       => 'https://patolaqshe.com/wp-content/themes/swell_child/img/daikanyama.jpg',
             'url'         => 'https://patolaqshe.com/ebisu-daikanyama/',
-            'telephone'   => '03-6416-3430',
+            'telephone'   => '03-5489-7118',
             'priceRange'  => '¥¥',
             'currenciesAccepted' => 'JPY',
             'paymentAccepted'    => '現金, クレジットカード, 電子マネー',
             'audience'    => ['@type' => 'PeopleAudience', 'suggestedGender' => 'female', 'suggestedMinAge' => 18],
             'address'     => [
                 '@type'           => 'PostalAddress',
-                'streetAddress'   => '猿楽町25-1 AS代官山207',
+                'streetAddress'   => '代官山町18-8 堀井代官山ビル3F',
                 'addressLocality' => '渋谷区',
                 'addressRegion'   => '東京都',
-                'postalCode'      => '150-0033',
+                'postalCode'      => '150-0034',
                 'addressCountry'  => 'JP',
             ],
             'geo' => [
                 '@type'     => 'GeoCoordinates',
-                'latitude'  => 35.6498,
-                'longitude' => 139.7008,
+                'latitude'  => 35.649642,
+                'longitude' => 139.700800,
             ],
             'openingHoursSpecification' => [
                 [
