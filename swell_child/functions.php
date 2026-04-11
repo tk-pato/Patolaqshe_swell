@@ -5755,6 +5755,17 @@ add_action('wp_head', function () {
                     ],
                 ],
             ],
+        ],
+    ];
+
+    echo '<script type="application/ld+json">' . "\n";
+    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo "\n</script>\n";
+
+    // ── Block 2: FAQPage（分割出力 — AIクローラーの読み取り精度向上） ──
+    $faq_data = [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
             // 6. FAQPage（モーダルFAQ）
             [
                 '@type'      => 'FAQPage',
@@ -6071,7 +6082,17 @@ add_action('wp_head', function () {
                     ],
                 ],
             ],
-            // Product schema は商品ページ作成時に再追加（offers/image必須フィールド不足でSearch Consoleエラーのため一時削除）
+        ],
+    ];
+
+    echo '<script type="application/ld+json">' . "\n";
+    echo wp_json_encode($faq_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo "\n</script>\n";
+
+    // ── Block 3: JobPosting（分割出力 — AIクローラーの読み取り精度向上） ──
+    $job_data = [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
             // 9. JobPosting - 銀座店 正社員（急募）
             [
                 '@type'            => 'JobPosting',
@@ -6479,7 +6500,7 @@ add_action('wp_head', function () {
     ];
 
     echo '<script type="application/ld+json">' . "\n";
-    echo wp_json_encode($structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo wp_json_encode($job_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     echo "\n</script>\n";
 }, 5);
 
