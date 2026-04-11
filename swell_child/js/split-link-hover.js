@@ -17,8 +17,8 @@
   var SELECTORS = [
     ".ptl-footer__nav-link",
     ".ptl-footer__salon-link",
-    ".l-fixHeader .c-gnav .c-gnav__item > a",
-    ".l-header .c-gnav .c-gnav__item > a",
+    "#gnav .menu-item > a",
+    ".l-fixHeader .menu-item > a",
   ].join(", ");
 
   function initSplitLinks() {
