@@ -207,3 +207,37 @@
   line-height: 1;
   letter-spacing: 0.05em;
 }
+
+/* ========================================
+   Split Link Hover Animation
+   ======================================== */
+.splitlink-ready {
+  display: inline-block;
+  overflow: hidden;
+}
+.splitlink-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+.splitlink-before {
+  display: inline-flex;
+  align-items: center;
+}
+.splitlink-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+}
+.splitlink-before span,
+.splitlink-after span {
+  display: inline-block;
+  line-height: 1.2;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.splitlink-after span {
+  transform: translateY(100%);
+}

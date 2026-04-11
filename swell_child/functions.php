@@ -8319,3 +8319,11 @@ add_filter('wp_sitemaps_taxonomies', function ($taxonomies) {
     unset($taxonomies['category']);
     return $taxonomies;
 });
+
+/* Split Link Hover Animation（フッター + ヘッダーナビ） */
+add_action('wp_enqueue_scripts', function () {
+  $js = get_stylesheet_directory() . '/js/split-link-hover.js';
+  if (file_exists($js)) {
+    wp_enqueue_script('ptl-splitlink', get_stylesheet_directory_uri() . '/js/split-link-hover.js', [], filemtime($js), true);
+  }
+}, 999);
