@@ -17,8 +17,6 @@
   var SELECTORS = [
     ".ptl-footer__nav-link",
     ".ptl-footer__salon-link",
-    "#gnav .menu-item > a",
-    ".l-fixHeader .menu-item > a",
   ].join(", ");
 
   function initSplitLinks() {
