@@ -5078,6 +5078,34 @@ add_filter('pre_get_document_title', function ($title) {
 });
 
 /**
+ * MEO対策: geo メタタグ（geo.region / geo.position / ICBM）
+ * ページごとに最適な店舗座標を出力
+ */
+add_action('wp_head', function () {
+    $slug = '';
+    if (!is_front_page() && is_page()) {
+        $slug = get_post_field('post_name', get_post());
+    }
+
+    // 銀座店ページ
+    if ($slug === 'ginza') {
+        $lat = '35.674583';
+        $lng = '139.765120';
+        $placename = 'Ginza, Chuo-ku, Tokyo';
+    } else {
+        // トップページ・代官山店ページ・その他 → 代官山店（本店）
+        $lat = '35.649642';
+        $lng = '139.701838';
+        $placename = 'Daikanyama, Shibuya-ku, Tokyo';
+    }
+
+    echo '<meta name="geo.region" content="JP-13" />' . "\n";
+    echo '<meta name="geo.placename" content="' . $placename . '" />' . "\n";
+    echo '<meta name="geo.position" content="' . $lat . ';' . $lng . '" />' . "\n";
+    echo '<meta name="ICBM" content="' . $lat . ', ' . $lng . '" />' . "\n";
+}, 3);
+
+/**
  * 構造化データ（JSON-LD）- SEO/GEO対策
  * トップページのみ出力
  */
@@ -5317,6 +5345,16 @@ add_action('wp_head', function () {
                     ['@type' => 'City', 'name' => '中目黒'],
                     ['@type' => 'City', 'name' => '広尾'],
                     ['@type' => 'City', 'name' => '目黒'],
+                    [
+                        '@type' => 'GeoCircle',
+                        'geoMidpoint' => [
+                            '@type'     => 'GeoCoordinates',
+                            'latitude'  => 35.649642,
+                            'longitude' => 139.701838,
+                        ],
+                        'geoRadius' => '5000',
+                        'description' => '恵比寿・代官山店を中心とした半径5km圏内',
+                    ],
                 ],
                 'aggregateRating' => [
                     '@type'       => 'AggregateRating',
@@ -5595,6 +5633,16 @@ add_action('wp_head', function () {
                     ['@type' => 'City', 'name' => '東銀座'],
                     ['@type' => 'City', 'name' => '日比谷'],
                     ['@type' => 'City', 'name' => '京橋'],
+                    [
+                        '@type' => 'GeoCircle',
+                        'geoMidpoint' => [
+                            '@type'     => 'GeoCoordinates',
+                            'latitude'  => 35.674583,
+                            'longitude' => 139.765120,
+                        ],
+                        'geoRadius' => '5000',
+                        'description' => '銀座店を中心とした半径5km圏内',
+                    ],
                 ],
                 'aggregateRating' => [
                     '@type'       => 'AggregateRating',
