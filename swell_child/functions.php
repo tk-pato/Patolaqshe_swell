@@ -5117,6 +5117,13 @@ add_action('wp_head', function () {
     $structured_data = [
         '@context' => 'https://schema.org',
         '@graph'   => [
+            // 0. BreadcrumbList（トップページ）
+            [
+                '@type' => 'BreadcrumbList',
+                'itemListElement' => [
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'ホーム', 'item' => 'https://patolaqshe.com/'],
+                ],
+            ],
             // 1. 恵比寿・代官山店
             [
                 '@type'       => 'BeautySalon',
@@ -8283,6 +8290,68 @@ function ptl_inject_chomomi_service($content)
   return $content;
 }
 add_filter('the_content', 'ptl_inject_chomomi_service', 20);
+
+// ================================================================
+// 構造化データ（JSON-LD）- ブログ記事用 BlogPosting
+// ================================================================
+add_action('wp_head', function () {
+    if (!is_single()) return;
+    if (get_post_type() !== 'post') return;
+
+    $post = get_post();
+    $slug = get_post_field('post_name', $post);
+
+    // メニュー投稿は別のJSON-LDで処理するのでスキップ
+    $menu_slugs = ['menu-full-course-90min', 'menu-standard-bust-60min', 'menu-hand-massage-45min'];
+    if (in_array($slug, $menu_slugs, true)) return;
+
+    $title       = get_the_title($post);
+    $url         = get_permalink($post);
+    $excerpt     = get_the_excerpt($post);
+    $published   = get_the_date('c', $post);
+    $modified    = get_the_modified_date('c', $post);
+    $thumbnail   = get_the_post_thumbnail_url($post, 'full') ?: 'https://patolaqshe.com/wp-content/uploads/2026/01/esthe_banner.jpg';
+
+    // カスタムmeta descriptionがあれば使用
+    $meta_desc = get_post_meta($post->ID, '_ptl_meta_description', true);
+    $description = $meta_desc ?: $excerpt;
+
+    // article_typeからセクション名を取得
+    $article_types = wp_get_post_terms($post->ID, 'article_type', ['fields' => 'names']);
+    $section = !empty($article_types) && !is_wp_error($article_types) ? $article_types[0] : 'ブログ';
+
+    $graph = [
+        [
+            '@type'       => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'ホーム', 'item' => 'https://patolaqshe.com/'],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => $section, 'item' => 'https://patolaqshe.com/blog/'],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => $title],
+            ],
+        ],
+        [
+            '@type'            => 'BlogPosting',
+            'headline'         => $title,
+            'description'      => $description,
+            'url'              => $url,
+            'datePublished'    => $published,
+            'dateModified'     => $modified,
+            'image'            => $thumbnail,
+            'articleSection'   => $section,
+            'inLanguage'       => 'ja',
+            'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $url],
+            'author'           => [
+                '@type' => 'Person',
+                'name'  => '北野 美帆',
+                'url'   => 'https://patolaqshe.com/',
+                'jobTitle' => 'オーナーエステティシャン',
+            ],
+            'publisher' => ['@id' => 'https://patolaqshe.com/#organization'],
+        ],
+    ];
+
+    echo '<script type="application/ld+json">' . wp_json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+}, 5);
 
 // ================================================================
 // 構造化データ（JSON-LD）- 個別メニュー投稿用
