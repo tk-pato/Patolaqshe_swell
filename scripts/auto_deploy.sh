@@ -93,7 +93,7 @@ if [ -n "$ADDED" ]; then
 fi
 
 # RSYNC to remote server
-RSYNC_DEST="patolaqshe@www3521.sakura.ne.jp:/home/patolaqshe/www/media/wp-content/themes/"
+RSYNC_DEST="patolaqshe@www3521.sakura.ne.jp:/home/patolaqshe/www/wp-content/themes/"
 
 if [ "$DRY_RUN" -eq 1 ]; then
   echo "DRY RUN: would run rsync --relative -avz --files-from=/tmp/rsync_files.txt $ROOT/ $RSYNC_DEST"
@@ -107,7 +107,7 @@ rsync --relative -avz --files-from=/tmp/rsync_files.txt "$ROOT/" "$RSYNC_DEST"
 echo "Server-side verification (simple existence checks)"
 while read -r f; do
   echo "Verifying $f on server..."
-  ssh patolaqshe@www3521.sakura.ne.jp "if [ -f /home/patolaqshe/www/media/wp-content/themes/$f ]; then echo 'FOUND: $f'; else echo 'MISSING: $f'; fi"
+  ssh patolaqshe@www3521.sakura.ne.jp "if [ -f /home/patolaqshe/www/wp-content/themes/$f ]; then echo 'FOUND: $f'; else echo 'MISSING: $f'; fi"
 done < /tmp/rsync_files.txt
 
 echo "auto_deploy: done"
