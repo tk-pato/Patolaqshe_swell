@@ -54,6 +54,9 @@
   height: 100vh;
   z-index: -1;
   overflow: hidden;
+  /* iOS動画非再生時のフォールバック背景 */
+  background: linear-gradient(135deg, #f5f0eb 0%, #e8ddd3 50%, #d4c4b0 100%);
+  background-size: cover;
 }
 
 .fixed-video-background video {

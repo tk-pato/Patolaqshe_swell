@@ -8137,6 +8137,54 @@ add_action('wp_head', function () {
   echo '<script type="application/ld+json">' . json_encode($speakable_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
 }, 5);
 
+/**
+ * ブログ一覧ページ用 CollectionPage + BreadcrumbList schema
+ * is_home() = 「投稿ページ」に指定された固定ページ（/blog/）で出力
+ * AI検索（ChatGPT/Claude/Perplexity/Gemini）からの引用機会を増やすため
+ */
+add_action('wp_head', function () {
+  if (!is_home() || is_front_page()) return;
+
+  $blog_url = home_url('/blog/');
+  $collection_schema = [
+    '@context' => 'https://schema.org',
+    '@type'    => 'CollectionPage',
+    '@id'      => $blog_url,
+    'url'      => $blog_url,
+    'name'     => 'ブログ｜バストアップ・美容・腸活の専門コラム',
+    'description' => 'パトラクシェのオーナーエステティシャン・北野美帆が執筆する、バストアップ・バストケア・腸活・美容に関する専門コラム。',
+    'isPartOf' => ['@id' => home_url('/#website')],
+    'inLanguage' => 'ja',
+    'publisher' => ['@id' => 'https://patolaqshe.com/#organization'],
+    'about' => [
+      ['@type' => 'Thing', 'name' => 'バストアップ'],
+      ['@type' => 'Thing', 'name' => 'バストケア'],
+      ['@type' => 'Thing', 'name' => '腸活'],
+      ['@type' => 'Thing', 'name' => '美容'],
+    ],
+  ];
+  $breadcrumb_schema = [
+    '@context' => 'https://schema.org',
+    '@type'    => 'BreadcrumbList',
+    'itemListElement' => [
+      [
+        '@type' => 'ListItem',
+        'position' => 1,
+        'name' => 'ホーム',
+        'item' => home_url('/'),
+      ],
+      [
+        '@type' => 'ListItem',
+        'position' => 2,
+        'name' => 'ブログ',
+        'item' => $blog_url,
+      ],
+    ],
+  ];
+  echo '<script type="application/ld+json">' . json_encode($collection_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+  echo '<script type="application/ld+json">' . json_encode($breadcrumb_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+}, 5);
+
 // =============================================
 // IndexNow API - 投稿公開/更新時にBing・Yandex等へ即時通知
 // =============================================
