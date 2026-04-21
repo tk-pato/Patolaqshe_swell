@@ -292,3 +292,4 @@ https://raw.githubusercontent.com/tk-pato/Patolaqshe_swell/main/swell_child/temp
 swell_child/img/news-modal.jpg
 swell_child/js/modal-triggers.js
 swell_child/_backup_v1_menu/section-menu-sp.css
+swell_child/_backup_v1_menu/section-menu.css
