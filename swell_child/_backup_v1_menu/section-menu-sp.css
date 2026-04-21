@@ -1,0 +1,129 @@
+/* === MENU Section (SP版: 959px以下) === */
+
+/* SP: メインカードを縦並び */
+#menu .ptlMenu__mainContent {
+  display: block !important;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* SP: メイン画像を通常配置 */
+#menu .ptlMenu__mainImage {
+  width: auto !important;
+  position: relative !important;
+  overflow: hidden;
+}
+
+#menu .ptlMenu__mainImage img {
+  position: relative !important;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* SP: メインテキスト */
+#menu .ptlMenu__mainText {
+  padding: 20px;
+  background: transparent;
+}
+
+#menu .ptlMenu__mainTitle {
+  font-size: 1.3rem;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#menu .ptlMenu__mainDesc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: left;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* SP: サブカードを縦1列表示 */
+#menu .ptlMenu__subGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#menu .ptlMenu__subItem {
+  flex: none !important;
+  width: 100%;
+  background: transparent;
+}
+
+#menu .ptlMenu__subLink {
+  padding: 14px 8px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#menu .ptlMenu__subImage {
+  margin-bottom: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#menu .ptlMenu__subTitle {
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 12px !important;
+  display: inline-block !important;
+  padding: 5px 35px 5px 10px !important;
+  font-size: clamp(14px, 1.4vw, 16px) !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  color: #fff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 0;
+}
+
+#menu .ptlMenu__subTitle::after {
+  content: '>' !important;
+  position: absolute !important;
+  right: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: #fff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* MORE */
+#menu .ptlMenu__more {
+  margin-top: 40px;
+}
+
+#menu .ptlMenu__moreBtn {
+  padding: 12px 25px;
+  font-size: 1rem;
+}
+
+/* ptlMenuHero グリッド - SP: 2列 */
+.ptlMenuHero {
+  padding: 0;
+}
+
+.ptlMenuHero__grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ptlMenuHero__label {
+  font-size: 14px;
+}
+
+/* セクション余白 - SP */
+#menu {
+  margin-bottom: 60px;
+}

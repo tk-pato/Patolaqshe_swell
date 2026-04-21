@@ -8567,3 +8567,66 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('ptl-splitlink', get_stylesheet_directory_uri() . '/js/split-link-hover.js', [], filemtime($js), true);
   }
 }, 999);
+
+// ========== コメント機能を完全無効化 (2026-04-21) ==========
+// 海外からのスパムコメント大量流入のため、全面停止
+// ブログコメントは集客導線として使用していない
+
+// 全投稿タイプでコメント・トラックバックサポートを削除
+add_action('init', function () {
+    foreach (get_post_types() as $post_type) {
+        if (post_type_supports($post_type, 'comments')) {
+            remove_post_type_support($post_type, 'comments');
+            remove_post_type_support($post_type, 'trackbacks');
+        }
+    }
+}, 100);
+
+// 新規コメント・ピンバック受付を全拒否
+add_filter('comments_open', '__return_false', 20, 2);
+add_filter('pings_open', '__return_false', 20, 2);
+
+// 既存コメントの表示を抑制
+add_filter('comments_array', '__return_empty_array', 10, 2);
+add_filter('get_comments_number', '__return_zero', 10, 2);
+
+// 管理バーからコメントメニューを削除
+add_action('wp_before_admin_bar_render', function () {
+    global $wp_admin_bar;
+    if (is_object($wp_admin_bar)) {
+        $wp_admin_bar->remove_menu('comments');
+    }
+});
+
+// 管理メニューからコメントページを削除
+add_action('admin_menu', function () {
+    remove_menu_page('edit-comments.php');
+});
+
+// ダッシュボードのコメントウィジェットを削除
+add_action('admin_init', function () {
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+});
+
+// コメントフィードを停止（スパムボットの参照元を潰す）
+add_action('template_redirect', function () {
+    if (is_comment_feed()) {
+        wp_redirect(home_url(), 301);
+        exit;
+    }
+});
+
+// REST API経由のコメント投稿を無効化
+add_filter('rest_endpoints', function ($endpoints) {
+    foreach (['/wp/v2/comments', '/wp/v2/comments/(?P<id>[\d]+)'] as $ep) {
+        if (isset($endpoints[$ep])) unset($endpoints[$ep]);
+    }
+    return $endpoints;
+});
+
+// XML-RPC のピンバックメソッドを削除（スパム経路の遮断）
+add_filter('xmlrpc_methods', function ($methods) {
+    unset($methods['pingback.ping']);
+    unset($methods['pingback.extensions.getPingbacks']);
+    return $methods;
+});
