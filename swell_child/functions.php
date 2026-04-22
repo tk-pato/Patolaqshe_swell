@@ -8630,3 +8630,73 @@ add_filter('xmlrpc_methods', function ($methods) {
     unset($methods['pingback.extensions.getPingbacks']);
     return $methods;
 });
+
+// ========== SEO/AIO最適化: title・meta descriptionフィルター (2026-04-22) ==========
+
+// titleタグ上書き
+add_filter('pre_get_document_title', function ($title) {
+    if (is_front_page()) {
+        return '銀座・恵比寿のバストアップ専門サロン パトラクシェ｜育乳・バストケア';
+    }
+    if (is_page('ginza')) {
+        return '銀座でバストアップならパトラクシェ銀座店｜育乳・豊胸ケア専門サロン';
+    }
+    if (is_page('ebisu-daikanyama')) {
+        return '恵比寿・代官山でバストアップならパトラクシェ｜育乳・豊胸ケア専門サロン';
+    }
+    if (is_page('service')) {
+        return 'バストアップ施術メニュー・料金｜パトラクシェ【銀座・恵比寿】';
+    }
+    if (is_page('mariage')) {
+        return 'ブライダルバストケア｜結婚式前のバストアップ専門パトラクシェ【銀座・恵比寿】';
+    }
+    return $title;
+}, 999);
+
+// SEO SIMPLE PACKのmeta description上書き
+add_filter('ssp_output_description', function ($desc) {
+    if (is_front_page()) {
+        return '銀座・恵比寿のバストアップ専門サロン「パトラクシェ」。創業13年・延べ7万人の施術実績。痩せ型でも育乳可能な独自のハイブリッド施術（光照射2,000ショット×オールハンド乳腺マッサージ）。効果体感率99%。初回体験90分9,500円。';
+    }
+    if (is_page('ginza')) {
+        return '銀座のバストアップ専門サロン「パトラクシェ銀座店」。銀座一丁目駅徒歩2分。痩せ型でも育乳可能な独自技術。光照射2,000ショット×オールハンド施術。Google評価4.8、口コミ259件。初回体験90分9,500円。';
+    }
+    if (is_page('ebisu-daikanyama')) {
+        return '恵比寿・代官山のバストアップ専門サロン「パトラクシェ」。代官山駅徒歩2分・恵比寿駅徒歩6分。痩せ型でも育乳可能な独自技術。光照射2,000ショット×オールハンド施術。Google評価4.92、口コミ77件。初回体験90分9,500円。';
+    }
+    if (is_page('service')) {
+        return 'パトラクシェのバストアップ施術メニューと料金一覧。90分フルコース初回9,500円、オールハンド育乳45分体験8,000円、ナノカレント×フラッシュ90分体験12,000円。銀座・恵比寿の2店舗。';
+    }
+    if (is_page('mariage')) {
+        return '結婚式前のバストアップ・デコルテケア専門。ウェディングドレス映えする理想のバストラインへ。銀座・代官山の2店舗。挙式3ヶ月前からのスタートがおすすめ。初回体験90分9,500円。';
+    }
+    return $desc;
+}, 999);
+
+// OGP titleも同期（SEO SIMPLE PACKのog:title）
+add_filter('ssp_output_og_title', function ($title) {
+    if (is_front_page()) {
+        return '銀座・恵比寿のバストアップ専門サロン パトラクシェ｜育乳・バストケア';
+    }
+    if (is_page('ginza')) {
+        return '銀座でバストアップならパトラクシェ銀座店｜育乳・豊胸ケア専門サロン';
+    }
+    if (is_page('ebisu-daikanyama')) {
+        return '恵比寿・代官山でバストアップならパトラクシェ｜育乳・豊胸ケア専門サロン';
+    }
+    return $title;
+}, 999);
+
+// OGP descriptionも同期
+add_filter('ssp_output_og_description', function ($desc) {
+    if (is_front_page()) {
+        return '銀座・恵比寿のバストアップ専門サロン「パトラクシェ」。創業13年・延べ7万人の施術実績。痩せ型でも育乳可能な独自のハイブリッド施術。効果体感率99%。初回体験90分9,500円。';
+    }
+    if (is_page('ginza')) {
+        return '銀座のバストアップ専門サロン「パトラクシェ銀座店」。銀座一丁目駅徒歩2分。痩せ型でも育乳可能。Google評価4.8。初回体験90分9,500円。';
+    }
+    if (is_page('ebisu-daikanyama')) {
+        return '恵比寿・代官山のバストアップ専門サロン「パトラクシェ」。代官山駅徒歩2分。痩せ型でも育乳可能。Google評価4.92。初回体験90分9,500円。';
+    }
+    return $desc;
+}, 999);
