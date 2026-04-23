@@ -8955,3 +8955,65 @@ add_filter('ssp_output_og_description', function ($desc) {
     }
     return $desc;
 }, 999);
+
+/**
+ * [暫定] CONTACT ボタンを仮モーダル（問合せ停止案内）に付け替える
+ * - 既存 modal-window-1 (CF7) は温存
+ * - 解除するときは本関数まるごと削除すればOK（2026-04-23 追加、海外スパム対策期間限定）
+ */
+add_action('wp_footer', function () { ?>
+<style id="ptl-contact-suspended-style">
+.ptl-contact-suspended{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;}
+.ptl-contact-suspended.is-open{display:flex;}
+.ptl-contact-suspended__overlay{position:absolute;inset:0;background:rgba(20,20,20,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.ptl-contact-suspended__panel{position:relative;max-width:540px;width:100%;padding:36px 32px 28px;border-radius:18px;background:rgba(255,255,255,0.78);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,0.6);box-shadow:0 20px 60px rgba(0,0,0,0.25);text-align:center;}
+.ptl-contact-suspended__title{margin:0 0 14px;font-size:18px;font-weight:600;color:#c0392b;letter-spacing:0.02em;}
+.ptl-contact-suspended__msg{margin:0 0 22px;font-size:14px;line-height:1.9;color:#333;}
+.ptl-contact-suspended__msg strong{color:#111;}
+.ptl-contact-suspended__store{margin-top:16px;padding:14px 16px 16px;background:rgba(255,255,255,0.55);border-radius:12px;border:1px solid rgba(255,255,255,0.7);}
+.ptl-contact-suspended__store-name{font-size:13px;font-weight:600;color:#555;margin-bottom:10px;letter-spacing:0.05em;}
+.ptl-contact-suspended__actions{display:flex;flex-direction:column;gap:8px;}
+.ptl-contact-suspended__btn{display:inline-block;padding:12px 18px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;}
+.ptl-contact-suspended__btn--tel{background:#2d3748;color:#fff;}
+.ptl-contact-suspended__btn--line{background:#06C755;color:#fff;}
+.ptl-contact-suspended__btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,0.18);}
+.ptl-contact-suspended__close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:none;background:transparent;font-size:22px;color:#555;cursor:pointer;line-height:1;}
+.ptl-contact-suspended__close:hover{color:#000;}
+@media(max-width:480px){.ptl-contact-suspended__panel{padding:30px 22px 22px;}.ptl-contact-suspended__title{font-size:16px;}.ptl-contact-suspended__msg{font-size:13px;}}
+</style>
+<div id="ptl-contact-suspended" class="ptl-contact-suspended" role="dialog" aria-modal="true" aria-labelledby="ptl-contact-suspended-title" aria-hidden="true">
+  <div class="ptl-contact-suspended__overlay" data-ptl-close></div>
+  <div class="ptl-contact-suspended__panel">
+    <button type="button" class="ptl-contact-suspended__close" aria-label="閉じる" data-ptl-close>&times;</button>
+    <h3 id="ptl-contact-suspended-title" class="ptl-contact-suspended__title">📢 お問い合わせフォーム 一時停止のお知らせ</h3>
+    <p class="ptl-contact-suspended__msg">海外からの迷惑メール対策のため、現在お問い合わせフォームを一時停止しております。<br>ご用のある方は、<strong>お電話</strong>または<strong>公式LINE</strong>までお気軽にお問い合わせくださいませ。</p>
+    <div class="ptl-contact-suspended__store">
+      <div class="ptl-contact-suspended__store-name">恵比寿・代官山店</div>
+      <div class="ptl-contact-suspended__actions">
+        <a class="ptl-contact-suspended__btn ptl-contact-suspended__btn--tel" href="tel:03-5489-7118">📞 03-5489-7118</a>
+        <a class="ptl-contact-suspended__btn ptl-contact-suspended__btn--line" href="https://line.me/R/ti/p/@chl1042z" target="_blank" rel="noopener">LINEで問い合わせる</a>
+      </div>
+    </div>
+    <div class="ptl-contact-suspended__store">
+      <div class="ptl-contact-suspended__store-name">銀座店</div>
+      <div class="ptl-contact-suspended__actions">
+        <a class="ptl-contact-suspended__btn ptl-contact-suspended__btn--tel" href="tel:03-6264-4343">📞 03-6264-4343</a>
+        <a class="ptl-contact-suspended__btn ptl-contact-suspended__btn--line" href="https://line.me/R/ti/p/@mxx3274n" target="_blank" rel="noopener">LINEで問い合わせる</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script id="ptl-contact-suspended-script">
+(function(){
+  var modal = document.getElementById('ptl-contact-suspended');
+  if(!modal) return;
+  function open(){ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  document.querySelectorAll('a[href="#wow-modal-id-1"], a[href$="#wow-modal-id-1"]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(); }, true);
+  });
+  modal.querySelectorAll('[data-ptl-close]').forEach(function(el){ el.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('is-open')) close(); });
+})();
+</script>
+<?php });
