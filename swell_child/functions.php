@@ -2767,6 +2767,12 @@ add_filter('the_content', function ($content) {
   return $content;
 }, 5);
 
+// 一時デバッグ: サーバーが受け取った UA を HTML コメントに出力（後で削除）
+add_action('wp_head', function() {
+  $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+  echo "\n<!-- PTL_DEBUG_UA: " . htmlspecialchars($ua, ENT_QUOTES, 'UTF-8') . " -->\n";
+}, 1);
+
 // フロントだけ投稿系ブロックを無効化（ダブル保険）
 add_filter('render_block', function ($block_content, $block) {
   if (is_front_page() && is_page() && isset($block['blockName'])) {
