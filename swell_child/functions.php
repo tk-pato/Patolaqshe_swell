@@ -9028,7 +9028,7 @@ add_action('wp_footer', function () { ?>
   if(!modal) return;
   function open(){ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
   function close(){ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  document.querySelectorAll('a[href="#wow-modal-id-1"], a[href$="#wow-modal-id-1"]').forEach(function(a){
+  document.querySelectorAll('a[href="#wow-modal-id-1"], a[href$="#wow-modal-id-1"], a.modal-contact-btn').forEach(function(a){
     a.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(); }, true);
   });
   modal.querySelectorAll('[data-ptl-close]').forEach(function(el){ el.addEventListener('click', close); });
