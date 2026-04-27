@@ -2712,8 +2712,26 @@ add_filter('the_content', function ($content) {
 
 // AIO最適化: 店舗ページ冒頭にAI検索向け要約を追加
 // AIクローラーが最初に読む部分に差別化情報を集約する
+// ※ 通常ユーザーには出力せず、Bot/AIクローラーにのみ出力（クローキング回避＋SEO/UX両立）
 add_filter('the_content', function ($content) {
   if (!is_page() || !in_the_loop() || !is_main_query()) return $content;
+
+  // Bot/AIクローラー判定 — 該当しなければ素通し
+  $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+  $bot_signatures = [
+    'Googlebot', 'Google-Extended', 'GPTBot', 'ChatGPT-User', 'OAI-SearchBot',
+    'ClaudeBot', 'Claude-Web', 'anthropic-ai',
+    'PerplexityBot', 'Perplexity-User',
+    'Bingbot', 'BingPreview', 'Applebot', 'Applebot-Extended',
+    'DuckDuckBot', 'Baiduspider', 'YandexBot',
+    'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Slackbot',
+    'Bytespider', 'CCBot',
+  ];
+  $is_bot = false;
+  foreach ($bot_signatures as $sig) {
+    if (stripos($ua, $sig) !== false) { $is_bot = true; break; }
+  }
+  if (!$is_bot) return $content;
 
   global $post;
   $slug = $post->post_name ?? '';
