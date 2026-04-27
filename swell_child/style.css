@@ -1217,3 +1217,11 @@ body.js-modal_open {
 .p-spMenu__closeBtn {
   color: #2A2018 !important;
 }
+
+/* ===== 緊急: AIO SEO summary（aio-summary）の表面露出を非表示 =====
+   functions.php で挿入している aio-summary div が
+   サロンページ・お客様の声カード等に漏れて表示されていたため非表示化。
+   HTMLには残るのでAI検索エンジン向けの説明テキストは保持される。 */
+.aio-summary {
+  display: none !important;
+}
